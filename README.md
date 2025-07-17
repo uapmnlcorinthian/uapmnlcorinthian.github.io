@@ -1,1 +1,1 @@
-# mcc.2025
+# [mcc.2025](https://manilacorinthianchapter.github.io/mcc)
