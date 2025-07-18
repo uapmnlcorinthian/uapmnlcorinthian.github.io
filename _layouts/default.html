@@ -4,12 +4,10 @@
   {% include head.html %}
 </head>
 <body class="d-flex flex-column h-100">
-  {% include header.html %}
-  
+  {% include header.html %}   <!-- ⬅︎ the ONE and only header -->
   <main id="mainContent" class="container">
     {{ content }}
   </main>
-
   {% include footer.html %}
   {% include scripts.html %}
 </body>

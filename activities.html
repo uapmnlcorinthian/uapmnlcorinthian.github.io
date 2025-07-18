@@ -1,614 +1,99 @@
 ---
-layout: default
+layout: default                       # uses _layouts/default.html
 title: Activities & Events
+permalink: /activities/               # → /mcc/activities/
 description: "Explore UAP Manila Corinthian Chapter’s latest activities and events."
 keywords: "Architecture, UAP, Manila, Activities, Events"
 ---
 
-  <!-- MAIN -->
-  <main role="main" class="container my-4" id="mainContent">
-    <section
-      class="hero animate__animated animate__fadeInDown bg-primary text-white d-flex align-items-center justify-content-center rounded-3 mb-5"
-      role="banner"
-      aria-label="Activities banner"
-    >
-      <h1 class="fs-2 fw-bold text-center m-0">Explore Our Latest Activities & Events</h1>
-    </section>
+{%- comment -%}
+`default.html` already wraps the page in:
+  <main id="mainContent" class="container">
+So we start right inside that container.
+{%- endcomment -%}
 
-    <section aria-labelledby="activities-title" class="animate__animated animate__fadeInUp">
-      <h2 id="activities-title" class="mb-4 text-primary fw-semibold">Activities & Events</h2>
+<!-- Hero Banner -->
+<section class="hero animate__animated animate__fadeInDown
+                bg-primary text-white d-flex align-items-center
+                justify-content-center rounded-3 mb-5" role="banner">
+  <h1 class="fs-2 fw-bold text-center m-0">
+    Explore Our Latest Activities & Events
+  </h1>
+</section>
 
-      <!-- Activity Group 1 -->
-      <article class="activity-group mb-5" aria-labelledby="activity1-title">
-        <div class="event-category">Symposium</div>
-        <header class="mb-3">
-          <h3 id="activity1-title" class="text-secondary fw-bold">Annual Architecture Symposium</h3>
-          <time class="text-muted" datetime="2025-07-20">July 20, 2025 | Manila Convention Center</time>
-          <p class="mt-2">A gathering of leading architects to discuss emerging trends and sustainable design.</p>
-        </header>
+<!-- Activities List -->
+<section aria-labelledby="activities-title"
+         class="animate__animated animate__fadeInUp">
+  <h2 id="activities-title" class="mb-4 text-primary fw-semibold">
+    Activities &amp; Events
+  </h2>
+  <!-- Activity Group 1 -->
+  <article class="activity-group mb-5" aria-labelledby="activity1-title">
+    <div class="event-category">Symposium</div>
+    <header class="mb-3">
+      <h3 id="activity1-title" class="text-secondary fw-bold">
+        Annual Architecture Symposium
+      </h3>
+      <time class="text-muted" datetime="2025-07-20">
+        July&nbsp;20,&nbsp;2025&nbsp;| Manila Convention Center
+      </time>
+      <p class="mt-2">
+        A gathering of leading architects to discuss emerging trends and
+        sustainable design.
+      </p>
+    </header>
 
-        <div id="carouselActivity1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from Annual Architecture Symposium">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity1" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity1" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity1" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <!-- Carousel -->
+    <div id="carouselActivity1"
+         class="carousel slide"
+         data-bs-ride="carousel"
+         data-bs-interval="3000"
+         data-bs-pause="hover"
+         aria-label="Photos from Annual Architecture Symposium">
+
+      <!-- indicators -->
+      <div class="carousel-indicators">
+        {% for i in (0..3) %}
+        <button type="button"
+                data-bs-target="#carouselActivity1"
+                data-bs-slide-to="{{ i }}"
+                class="{% if i == 0 %}active{% endif %}"
+                aria-current="{% if i == 0 %}true{% endif %}"
+                aria-label="Slide {{ i | plus:1 }}"></button>
+        {% endfor %}
+      </div>
+
+      <!-- slides -->
+      <div class="carousel-inner rounded shadow-sm">
+        <div class="carousel-item active">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+               class="d-block w-100"
+               alt="Symposium keynote speaker">
+          <div class="carousel-caption d-none d-md-block">
+            Keynote presentation on sustainable design
           </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Symposium keynote speaker" />
-              <div class="carousel-caption d-none d-md-block">Keynote presentation on sustainable design</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Panel discussion during symposium" />
-              <div class="carousel-caption d-none d-md-block">Expert panel discussing urban planning</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Attendees networking" />
-              <div class="carousel-caption d-none d-md-block">Networking session during symposium</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Symposium exhibition area" />
-              <div class="carousel-caption d-none d-md-block">Innovation showcase at the symposium</div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity1" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity1" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
         </div>
-        <div class="activity-tags">
-          <span class="activity-tag">Networking</span>
-          <span class="activity-tag">Trends</span>
-          <span class="activity-tag">Sustainability</span>
-        </div>
-      </article>
+        <!-- repeat for the other 3 images … -->
+      </div>
 
-      <!-- Activity Group 2 -->
-      <article class="activity-group mb-5" aria-labelledby="activity2-title">
-        <div class="event-category workshop">Workshop</div>
-        <header class="mb-3">
-          <h3 id="activity2-title" class="text-secondary fw-bold">Sustainable Design Workshop</h3>
-          <time class="text-muted" datetime="2025-06-10">June 10, 2025 | Green Building Council HQ</time>
-          <p class="mt-2">Hands-on workshop on green building techniques and eco-friendly materials.</p>
-        </header>
+      <!-- controls -->
+      <button class="carousel-control-prev" type="button"
+              data-bs-target="#carouselActivity1" data-bs-slide="prev"
+              aria-label="Previous slide">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button"
+              data-bs-target="#carouselActivity1" data-bs-slide="next"
+              aria-label="Next slide">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div><!-- /carousel -->
 
-        <div id="carouselActivity2" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from Sustainable Design Workshop">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity2" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity2" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity2" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Workshop participants working in groups" />
-              <div class="carousel-caption d-none d-md-block">Participants collaborating on green design solutions</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1465188035480-8b6aad99a5f5?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Instructor presenting sustainable materials" />
-              <div class="carousel-caption d-none d-md-block">Presentation on sustainable materials</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1441716841578-5bdc6c8408d2?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Group discussion on green design" />
-              <div class="carousel-caption d-none d-md-block">Group discussion on sustainable practices</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Sustainable building model" />
-              <div class="carousel-caption d-none d-md-block">Model of sustainable building design</div>
-            </div>
-          </div>
+    <div class="activity-tags">
+      <span class="activity-tag">Networking</span>
+      <span class="activity-tag">Trends</span>
+      <span class="activity-tag">Sustainability</span>
+    </div>
+  </article>
 
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity2" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity2" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="activity-tags">
-          <span class="activity-tag">Sustainability</span>
-          <span class="activity-tag">Materials</span>
-          <span class="activity-tag">Workshop</span>
-        </div>
-      </article>
-
-
-      <!-- Activity Group 3: Community Outreach Program -->
-      <article class="activity-group mb-5" aria-labelledby="activity3-title">
-        <div class="event-category">Community</div>
-        <header class="mb-3">
-          <h3 id="activity3-title" class="text-secondary fw-bold">Community Outreach Program</h3>
-          <time class="text-muted" datetime="2025-08-15">August 15, 2025 | Tondo Community Center</time>
-          <p class="mt-2">Designing and building community spaces for underserved neighborhoods in Manila.</p>
-        </header>
-
-        <div id="carouselActivity3" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from Community Outreach Program">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity3" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity3" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity3" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Community planning session" />
-              <div class="carousel-caption d-none d-md-block">Community planning session with residents</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Building community center" />
-              <div class="carousel-caption d-none d-md-block">Construction of community center</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Children in new playground" />
-              <div class="carousel-caption d-none d-md-block">Children enjoying the new playground</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Architects volunteering" />
-              <div class="carousel-caption d-none d-md-block">UAP architects volunteering in the community</div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity3" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity3" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="activity-tags">
-          <span class="activity-tag">Community</span>
-          <span class="activity-tag">Volunteer</span>
-          <span class="activity-tag">Outreach</span>
-        </div>
-      </article>
-
-      <!-- Activity Group 4: Architectural Heritage Tour -->
-      <article class="activity-group mb-5" aria-labelledby="activity4-title">
-        <div class="event-category tour">Tour</div>
-        <header class="mb-3">
-          <h3 id="activity4-title" class="text-secondary fw-bold">Architectural Heritage Tour</h3>
-          <time class="text-muted" datetime="2025-09-05">September 5, 2025 | Intramuros, Manila</time>
-          <p class="mt-2">Guided tour of historical landmarks showcasing Manila's rich architectural heritage.</p>
-        </header>
-
-        <div id="carouselActivity4" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from Architectural Heritage Tour">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity4" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity4" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity4" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity4" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="San Agustin Church" />
-              <div class="carousel-caption d-none d-md-block">San Agustin Church - UNESCO World Heritage Site</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1593692909680-3d7e5d2d6a0a?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Fort Santiago" />
-              <div class="carousel-caption d-none d-md-block">Historical Fort Santiago architecture</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Casa Manila" />
-              <div class="carousel-caption d-none d-md-block">Casa Manila - Spanish colonial architecture</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Intramuros walls" />
-              <div class="carousel-caption d-none d-md-block">The historic walls of Intramuros</div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity4" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity4" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="activity-tags">
-          <span class="activity-tag">Heritage</span>
-          <span class="activity-tag">History</span>
-          <span class="activity-tag">Tour</span>
-        </div>
-      </article>
-
-      <!-- Activity Group 5: Design Competition -->
-      <article class="activity-group mb-5" aria-labelledby="activity5-title">
-        <div class="event-category competition">Competition</div>
-        <header class="mb-3">
-          <h3 id="activity5-title" class="text-secondary fw-bold">Innovative Design Competition</h3>
-          <time class="text-muted" datetime="2025-05-15">May 15-30, 2025 | UAP Headquarters</time>
-          <p class="mt-2">Annual design competition challenging architects to create solutions for urban density.</p>
-        </header>
-
-        <div id="carouselActivity5" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from Design Competition">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity5" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity5" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity5" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity5" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Design presentation" />
-              <div class="carousel-caption d-none d-md-block">Finalist presenting design solution</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Jury evaluating designs" />
-              <div class="carousel-caption d-none d-md-block">Jury evaluating competition entries</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Winning design model" />
-              <div class="carousel-caption d-none d-md-block">Winning design model display</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Award ceremony" />
-              <div class="carousel-caption d-none d-md-block">Award ceremony for winners</div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity5" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity5" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="activity-tags">
-          <span class="activity-tag">Competition</span>
-          <span class="activity-tag">Innovation</span>
-          <span class="activity-tag">Design</span>
-        </div>
-      </article>
-
-      <!-- Activity Group 6: Professional Development Seminar -->
-      <article class="activity-group mb-5" aria-labelledby="activity6-title">
-        <div class="event-category seminar">Seminar</div>
-        <header class="mb-3">
-          <h3 id="activity6-title" class="text-secondary fw-bold">Professional Development Seminar</h3>
-          <time class="text-muted" datetime="2025-07-08">July 8, 2025 | UAP Training Center</time>
-          <p class="mt-2">Enhancing architectural practice with the latest business management and client relations strategies.</p>
-        </header>
-
-        <div id="carouselActivity6" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from Professional Development Seminar">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity6" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity6" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity6" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity6" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Seminar speaker" />
-              <div class="carousel-caption d-none d-md-block">Keynote speaker on professional development</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Attendees taking notes" />
-              <div class="carousel-caption d-none d-md-block">Attendees engaged in learning session</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Group workshop" />
-              <div class="carousel-caption d-none d-md-block">Interactive workshop on client relations</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Networking session" />
-              <div class="carousel-caption d-none d-md-block">Networking during seminar break</div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity6" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity6" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="activity-tags">
-          <span class="activity-tag">Professional</span>
-          <span class="activity-tag">Development</span>
-          <span class="activity-tag">CPD</span>
-        </div>
-      </article>
-
-      <!-- Activity Group 7: Green Building Site Visit -->
-      <article class="activity-group mb-5" aria-labelledby="activity7-title">
-        <div class="event-category visit">Site Visit</div>
-        <header class="mb-3">
-          <h3 id="activity7-title" class="text-secondary fw-bold">Green Building Site Visit</h3>
-          <time class="text-muted" datetime="2025-06-22">June 22, 2025 | BGC Eco Tower</time>
-          <p class="mt-2">Exclusive tour of LEED Platinum certified building showcasing sustainable technologies.</p>
-        </header>
-
-        <div id="carouselActivity7" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from Green Building Site Visit">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity7" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity7" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity7" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity7" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Green building exterior" />
-              <div class="carousel-caption d-none d-md-block">Eco Tower exterior with green walls</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Sustainable features" />
-              <div class="carousel-caption d-none d-md-block">Sustainable features demonstration</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Roof garden" />
-              <div class="carousel-caption d-none d-md-block">Green roof and rainwater harvesting</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Architects on tour" />
-              <div class="carousel-caption d-none d-md-block">Architects touring the facility</div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity7" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity7" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="activity-tags">
-          <span class="activity-tag">Sustainability</span>
-          <span class="activity-tag">Green Building</span>
-          <span class="activity-tag">LEED</span>
-        </div>
-      </article>
-
-      <!-- Activity Group 8: Urban Planning Forum -->
-      <article class="activity-group mb-5" aria-labelledby="activity8-title">
-        <div class="event-category forum">Forum</div>
-        <header class="mb-3">
-          <h3 id="activity8-title" class="text-secondary fw-bold">Urban Planning Forum</h3>
-          <time class="text-muted" datetime="2025-08-28">August 28, 2025 | Manila City Hall Conference Center</time>
-          <p class="mt-2">Addressing urban challenges and creating resilient cities for the future.</p>
-        </header>
-
-        <div id="carouselActivity8" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from Urban Planning Forum">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity8" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity8" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity8" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity8" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Forum panel" />
-              <div class="carousel-caption d-none d-md-block">Expert panel on urban development</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Attendees discussing" />
-              <div class="carousel-caption d-none d-md-block">Interactive discussion session</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Urban models" />
-              <div class="carousel-caption d-none d-md-block">Urban development models on display</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="City planning" />
-              <div class="carousel-caption d-none d-md-block">City planning strategies discussion</div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity8" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity8" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="activity-tags">
-          <span class="activity-tag">Urban Planning</span>
-          <span class="activity-tag">Resilience</span>
-          <span class="activity-tag">Development</span>
-        </div>
-      </article>
-
-      <!-- Activity Group 9: Student Mentorship Program -->
-      <article class="activity-group mb-5" aria-labelledby="activity9-title">
-        <div class="event-category">Mentorship</div>
-        <header class="mb-3">
-          <h3 id="activity9-title" class="text-secondary fw-bold">Student Mentorship Program</h3>
-          <time class="text-muted" datetime="2025-09-10">September 10, 2025 | UAP Student Center</time>
-          <p class="mt-2">Connecting architecture students with experienced professionals for career guidance.</p>
-        </header>
-
-        <div id="carouselActivity9" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from Student Mentorship Program">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity9" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity9" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity9" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity9" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1543269865-0a740d43b90c?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Mentor and student" />
-              <div class="carousel-caption d-none d-md-block">One-on-one mentorship session</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Group discussion" />
-              <div class="carousel-caption d-none d-md-block">Group mentorship discussion</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Portfolio review" />
-              <div class="carousel-caption d-none d-md-block">Portfolio review session</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Career advice" />
-              <div class="carousel-caption d-none d-md-block">Career advice for students</div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity9" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity9" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="activity-tags">
-          <span class="activity-tag">Mentorship</span>
-          <span class="activity-tag">Students</span>
-          <span class="activity-tag">Education</span>
-        </div>
-      </article>
-
-      <!-- Activity Group 10: BIM Workshop -->
-      <article class="activity-group mb-5" aria-labelledby="activity10-title">
-        <div class="event-category workshop">Workshop</div>
-        <header class="mb-3">
-          <h3 id="activity10-title" class="text-secondary fw-bold">Advanced BIM Workshop</h3>
-          <time class="text-muted" datetime="2025-10-15">October 15-17, 2025 | UAP Technology Center</time>
-          <p class="mt-2">Hands-on training on advanced Building Information Modeling techniques.</p>
-        </header>
-
-        <div id="carouselActivity10" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from BIM Workshop">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity10" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity10" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity10" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity10" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="BIM software training" />
-              <div class="carousel-caption d-none d-md-block">Software training session</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="3D modeling" />
-              <div class="carousel-caption d-none d-md-block">3D modeling demonstration</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Collaborative work" />
-              <div class="carousel-caption d-none d-md-block">Collaborative BIM project</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="BIM presentation" />
-              <div class="carousel-caption d-none d-md-block">Final project presentation</div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity10" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity10" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="activity-tags">
-          <span class="activity-tag">BIM</span>
-          <span class="activity-tag">Technology</span>
-          <span class="activity-tag">Workshop</span>
-        </div>
-      </article>
-
-      <!-- Activity Group 11: Art and Architecture Exhibition -->
-      <article class="activity-group mb-5" aria-labelledby="activity11-title">
-        <div class="event-category exhibition">Exhibition</div>
-        <header class="mb-3">
-          <h3 id="activity11-title" class="text-secondary fw-bold">Art and Architecture Exhibition</h3>
-          <time class="text-muted" datetime="2025-11-05">November 5-30, 2025 | National Museum of Fine Arts</time>
-          <p class="mt-2">Showcasing the intersection of art and architectural design in contemporary practice.</p>
-        </header>
-
-        <div id="carouselActivity11" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from Art and Architecture Exhibition">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity11" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity11" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity11" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity11" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Exhibition entrance" />
-              <div class="carousel-caption d-none d-md-block">Exhibition opening night</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Art installations" />
-              <div class="carousel-caption d-none d-md-block">Architectural art installations</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1578926375605-eaf7559b1458?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Sculptures" />
-              <div class="carousel-caption d-none d-md-block">Architectural sculptures display</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Attendees viewing art" />
-              <div class="carousel-caption d-none d-md-block">Visitors exploring the exhibition</div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity11" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity11" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="activity-tags">
-          <span class="activity-tag">Art</span>
-          <span class="activity-tag">Exhibition</span>
-          <span class="activity-tag">Design</span>
-        </div>
-      </article>
-
-      <!-- Activity Group 12: International Conference -->
-      <article class="activity-group mb-5" aria-labelledby="activity12-title">
-        <div class="event-category">Conference</div>
-        <header class="mb-3">
-          <h3 id="activity12-title" class="text-secondary fw-bold">International Architecture Conference</h3>
-          <time class="text-muted" datetime="2025-12-03">December 3-5, 2025 | Philippine International Convention Center</time>
-          <p class="mt-2">Global gathering of architects discussing innovations in design, technology, and sustainability.</p>
-        </header>
-
-        <div id="carouselActivity12" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-label="Photos from International Conference">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselActivity12" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselActivity12" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselActivity12" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselActivity12" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          </div>
-          <div class="carousel-inner rounded shadow-sm">
-            <div class="carousel-item active">
-              <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Conference hall" />
-              <div class="carousel-caption d-none d-md-block">Main conference hall</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="International speakers" />
-              <div class="carousel-caption d-none d-md-block">International keynote speaker</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Exhibition area" />
-              <div class="carousel-caption d-none d-md-block">Technology exhibition area</div>
-            </div>
-            <div class="carousel-item">
-              <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" class="d-block w-100" alt="Networking event" />
-              <div class="carousel-caption d-none d-md-block">Global networking reception</div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselActivity12" data-bs-slide="prev" aria-label="Previous slide">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselActivity12" data-bs-slide="next" aria-label="Next slide">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="activity-tags">
-          <span class="activity-tag">International</span>
-          <span class="activity-tag">Conference</span>
-          <span class="activity-tag">Global</span>
-        </div>
-      </article>
-
-      <!-- Additional activity groups... -->
-
-    </section>
-  </main>
-<!-- Created By ARZ Miranda-->
+</section>

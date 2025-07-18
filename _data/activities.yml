@@ -1,0 +1,114 @@
+- title: "Annual Architecture Symposium"
+  category: "Symposium"
+  date: 2025-07-20
+  location: "Manila Convention Center"
+  description: "A gathering of leading architects to discuss emerging trends and sustainable design."
+  tags:
+    - Networking
+    - Trends
+    - Sustainability
+  images:
+    - url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+      alt: "Symposium keynote speaker"
+      caption: "Keynote presentation on sustainable design"
+    - url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+      alt: "Panel discussion during symposium"
+      caption: "Expert panel discussing urban planning"
+    - url: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80"
+      alt: "Attendees networking"
+      caption: "Networking session during symposium"
+    - url: "https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=800&q=80"
+      alt: "Symposium exhibition area"
+      caption: "Innovation showcase at the symposium"
+
+- title: "Sustainable Design Workshop"
+  category: "Workshop"
+  date: 2025-06-10
+  location: "Green Building Council HQ"
+  description: "Hands-on workshop on green building techniques and eco-friendly materials."
+  tags:
+    - Sustainability
+    - Materials
+    - Workshop
+  images:
+    - url: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80"
+      alt: "Workshop participants working in groups"
+      caption: "Participants collaborating on green design solutions"
+    - url: "https://images.unsplash.com/photo-1465188035480-8b6aad99a5f5?auto=format&fit=crop&w=800&q=80"
+      alt: "Instructor presenting sustainable materials"
+      caption: "Presentation on sustainable materials"
+    - url: "https://images.unsplash.com/photo-1441716841578-5bdc6c8408d2?auto=format&fit=crop&w=800&q=80"
+      alt: "Group discussion on green design"
+      caption: "Group discussion on sustainable practices"
+    - url: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80"
+      alt: "Sustainable building model"
+      caption: "Model of sustainable building design"
+
+- title: "Community Outreach Program"
+  category: "Community"
+  date: 2025-08-15
+  location: "Tondo Community Center"
+  description: "Designing and building community spaces for underserved neighborhoods in Manila."
+  tags:
+    - Community
+    - Volunteer
+    - Outreach
+  images:
+    - url: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=800&q=80"
+      alt: "Community planning session"
+      caption: "Community planning session with residents"
+    - url: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80"
+      alt: "Building community center"
+      caption: "Construction of community center"
+    - url: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80"
+      alt: "Children in new playground"
+      caption: "Children enjoying the new playground"
+    - url: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80"
+      alt: "Architects volunteering"
+      caption: "UAP architects volunteering in the community"
+
+- title: "Architectural Heritage Tour"
+  category: "Tour"
+  date: 2025-09-05
+  location: "Intramuros, Manila"
+  description: "Guided tour of historical landmarks showcasing Manila's rich architectural heritage."
+  tags:
+    - Heritage
+    - History
+    - Tour
+  images:
+    - url: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=80"
+      alt: "San Agustin Church"
+      caption: "San Agustin Church - UNESCO World Heritage Site"
+    - url: "https://images.unsplash.com/photo-1593692909680-3d7e5d2d6a0a?auto=format&fit=crop&w=800&q=80"
+      alt: "Fort Santiago"
+      caption: "Historical Fort Santiago architecture"
+    - url: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80"
+      alt: "Casa Manila"
+      caption: "Casa Manila - Spanish colonial architecture"
+    - url: "https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?auto=format&fit=crop&w=800&q=80"
+      alt: "Intramuros walls"
+      caption: "The historic walls of Intramuros"
+
+- title: "Innovative Design Competition"
+  category: "Competition"
+  date: 2025-05-15
+  location: "UAP Headquarters"
+  description: "Annual design competition challenging architects to create solutions for urban density."
+  tags:
+    - Competition
+    - Innovation
+    - Design
+  images:
+    - url: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80"
+      alt: "Design presentation"
+      caption: "Finalist presenting design solution"
+    - url: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=800&q=80"
+      alt: "Jury evaluating designs"
+      caption: "Jury evaluating competition entries"
+    - url: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80"
+      alt: "Winning design model"
+      caption: "Winning design model display"
+    - url: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=800&q=80"
+      alt: "Award ceremony"
+      caption: "Award ceremony for winners"

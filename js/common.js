@@ -41,15 +41,25 @@ async function L(){
     if(!f.checkValidity()){ f.classList.add('was-validated'); return }
     b.disabled=true;
 
+    const checkSB = () => new Promise(resolve => {
+      const interval = setInterval(() => {
+        if (window.sb) {
+          clearInterval(interval);
+          resolve(window.sb);
+        }
+      }, 50);
+    });
+
+    const sbClient = await checkSB();
+
     const sel = [
       'row_id','username','password','name','prc_license','address','birthday','contact_no','email','membership_active','total_due','batch','company','position',
-      // all years you use; add future columns here
       'chapter_dues_2023','chapter_dues_penalty_2023','chapter_payment_date_2023','iapoa_dues_2023','iapoa_dues_penalty_2023','iapoa_payment_date_2023',
       'chapter_dues_2022','chapter_dues_penalty_2022','chapter_payment_date_2022','iapoa_dues_2022','iapoa_dues_penalty_2022','iapoa_payment_date_2022',
       'chapter_dues_2021','chapter_dues_penalty_2021','chapter_payment_date_2021','iapoa_dues_2021','iapoa_dues_penalty_2021','iapoa_payment_date_2021'
     ].join(',');
 
-    const { data:d, error:er } = await sb.from('xxsr_001').select(sel).eq('username',u.value.trim().toLowerCase()).maybeSingle();
+    const { data:d, error:er } = await sbClient.from('xxsr_001').select(sel).eq('username',u.value.trim().toLowerCase()).maybeSingle();
     if(er||!d||p.value!==d.password){
       alert('Invalid username or password.');
       b.disabled=false;
@@ -67,16 +77,15 @@ async function L(){
       pi:{ n:d.name, prc:d.prc_license, a:d.address, b:d.birthday, c:d.contact_no, e:d.email, bt:d.batch||'', co:d.company||'', po:d.position||'' },
       act:d.membership_active, due:d.total_due, pay
     }));
-    location.href='account.html';
+    location.href='{{ site.baseurl }}/account/';
   };
 }
 
 /* ---- ACCOUNT ---- */
 function A(){
   const ud = JSON.parse(sessionStorage.getItem('userData')||'null');
-  if(!ud?.ok) return location.href='login_page.html';
+  if(!ud?.ok) return location.href='{{ site.baseurl }}/login/';
 
-  // populate profile
   const p = ud.pi;
   $('#cardName').textContent=p.n;
   $('#cardBatch').textContent=p.bt;
@@ -100,7 +109,6 @@ function A(){
   });
   $('#totalDue').textContent = money(ud.due);
 
-  // DYNAMIC YEARS & TABLE
   const pay = ud.pay||{};
   const yrs = [...new Set(Object.keys(pay)
     .map(k=>k.match(/_(\d{4})$/))
@@ -108,11 +116,9 @@ function A(){
     .map(m=>m[1])
   )].sort((a,b)=>b-a);
 
-  // header
   const headRow = document.querySelector('#paymentsTable thead tr');
   yrs.forEach(y=> headRow.insertAdjacentHTML('beforeend',`<th>${y}</th>`));
 
-  // categories
   const chapterCats = [
     {label:'Chapter Dues',        key:'chapter_dues',         money:true},
     {label:'Chapter Penalty',     key:'chapter_dues_penalty', money:true},
@@ -148,12 +154,10 @@ if(t){
   t.onclick = ()=> scrollTo({top:0,behavior:'smooth'});
 }
 
-// ---- LOGOUT ----
 const logoutBtn = document.getElementById('logoutBtn');
 if (logoutBtn) {
   logoutBtn.addEventListener('click', () => {
-    sessionStorage.removeItem('userData');   // clear our data
-    location.href = 'index.html';            // go home
+    sessionStorage.removeItem('userData');
+    location.href = '{{ site.baseurl }}/';
   });
 }
-

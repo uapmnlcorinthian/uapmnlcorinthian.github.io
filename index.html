@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /
 title: Home
 description: "UAP Manila Corinthian Chapter – Premier community of architectural professionals in Manila. Join events, workshops, and networking opportunities."
 keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community, Workshops, Events"
@@ -26,50 +27,19 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
     </div>
 
     <div class="carousel-inner rounded shadow-sm">
-      <!-- Slide 1 -->
-      <div class="carousel-item active">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+      {% assign slides = site.data.activities | slice: 0,4 %}
+      {% for activity in slides %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <img src="{{ activity.images[0].url }}"
              class="d-block w-100"
-             alt="Symposium keynote speaker" />
+             alt="{{ activity.images[0].alt }}" />
         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-3 py-2">
-          <h5>Annual Architecture Symposium</h5>
-          <p>Keynote presentation on sustainable design.</p>
-          <p><small>July 20, 2025 | Manila Convention Center</small></p>
+          <h5>{{ activity.title }}</h5>
+          <p>{{ activity.images[0].caption }}</p>
+          <p><small>{{ activity.date | date: "%B %-d, %Y" }} | {{ activity.location }}</small></p>
         </div>
       </div>
-      <!-- Slide 2 -->
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80"
-             class="d-block w-100"
-             alt="Panel discussion during symposium" />
-        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-3 py-2">
-          <h5>Annual Architecture Symposium</h5>
-          <p>Expert panel discussing urban planning.</p>
-          <p><small>July 20, 2025 | Manila Convention Center</small></p>
-        </div>
-      </div>
-      <!-- Slide 3 -->
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=80"
-             class="d-block w-100"
-             alt="Workshop participants working in groups" />
-        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-3 py-2">
-          <h5>Sustainable Design Workshop</h5>
-          <p>Participants collaborating on green design solutions.</p>
-          <p><small>June 10, 2025 | Green Building Council HQ</small></p>
-        </div>
-      </div>
-      <!-- Slide 4 -->
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
-             class="d-block w-100"
-             alt="Instructor presenting sustainable materials" />
-        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-3 py-2">
-          <h5>Sustainable Design Workshop</h5>
-          <p>Presentation on sustainable materials.</p>
-          <p><small>June 10, 2025 | Green Building Council HQ</small></p>
-        </div>
-      </div>
+      {% endfor %}
     </div>
 
     <button class="carousel-control-prev"
@@ -89,7 +59,6 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
   </div>
 </section>
 
-<!-- Main Content -->
 <main role="main" class="container" id="mainContent">
 
   <!-- Hero -->

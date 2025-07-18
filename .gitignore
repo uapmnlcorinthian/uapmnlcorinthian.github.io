@@ -1,1 +1,5 @@
+# Jekyll build output
 _site/
+
+# Local helper scripts
+MCC WEBSITE.bat
