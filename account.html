@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
@@ -14,11 +13,41 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Optional: Improve sensitive field layout */
+    .sensitive-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sensitive-text {
+      user-select: none;
+      font-family: monospace;
+      letter-spacing: 0.15em;
+      margin: 0;
+      white-space: nowrap;
+    }
+    .toggle-sensitive-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--bs-primary);
+      padding: 0;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+    }
+    .toggle-sensitive-btn:focus {
+      outline: 2px solid var(--bs-primary);
+      outline-offset: 2px;
+    }
+  </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
   <!-- HEADER -->
-  <header class="d-flex align-items-center justify-content-between px-3 py-2 bg-white border-bottom">
+  <header class="d-flex align-items-center justify-content-between px-3 py-2 bg-white border-bottom shadow-sm">
     <a href="index.html" class="d-flex align-items-center text-decoration-none" aria-label="UAP Manila Corinthian Chapter homepage">
       <img src="images/MCC logo.png" alt="UAP Manila Corinthian Chapter Logo" style="height:50px" />
     </a>
@@ -37,17 +66,6 @@
       <div id="accountInfo" role="region" aria-live="polite" tabindex="0" class="mb-4">
         <!-- Personal info populated by JS -->
       </div>
-
-      <button
-        id="toggleSensitiveBtn"
-        class="btn btn-warning text-primary fw-semibold mb-4"
-        aria-pressed="false"
-        aria-controls="accountInfo"
-        aria-label="Show sensitive information"
-        type="button"
-      >
-        Show Sensitive Information
-      </button>
 
       <section aria-labelledby="payments-title" class="payments-section mb-5">
         <h2 id="payments-title" class="text-primary fw-semibold mb-3">Dues & Payments</h2>
@@ -78,6 +96,7 @@
           class="btn btn-outline-primary fw-semibold mt-3"
           aria-expanded="false"
           type="button"
+          aria-controls="paymentsBody"
         >
           Show All Records
         </button>
@@ -90,7 +109,6 @@
         <a href="mailto:chapter@example.com" class="btn btn-warning text-primary fw-semibold mt-3" aria-label="Email the chapter for payment or inquiries">Contact Chapter / Payment Info</a>
       </section>
     </section>
-
   </main>
 
   <!-- FOOTER -->
@@ -101,8 +119,162 @@
   <!-- Bootstrap JS Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Your common JS -->
-  <script src="js/common.js"></script>
+  <!-- Supabase + Account page script -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const supabaseUrl = 'https://fvaahtqjusfniadwvoyw.supabase.co';
+    const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY'; // Replace with your anon key
+    const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
+
+    const username = sessionStorage.getItem('username');
+    if (!username) {
+      alert('Please log in first.');
+      window.location.href = 'login_page.html';
+      return;
+    }
+
+    try {
+      // Fetch user personal info
+      const { data: user, error: userError } = await supabase
+        .from('xxsr_001')
+        .select(`
+          name,
+          prc_license,
+          address,
+          birthday,
+          contact_no,
+          email,
+          membership_active,
+          total_due
+        `)
+        .eq('username', username)
+        .single();
+
+      if (userError || !user) throw userError || new Error('User not found');
+
+      const infoDiv = document.getElementById('accountInfo');
+      infoDiv.innerHTML = `
+        ${renderSensitiveField('Name', user.name, false)}
+        ${renderSensitiveField('PRC License', user.prc_license, true)}
+        ${renderSensitiveField('Address', user.address, true)}
+        ${renderSensitiveField('Birthday', formatDate(user.birthday), true)}
+        ${renderSensitiveField('Contact No.', user.contact_no, true)}
+        ${renderSensitiveField('Email', user.email, true)}
+      `;
+
+      // Fetch payment records
+      const { data: payments, error: paymentsError } = await supabase
+        .from('user_payments')
+        .select(`
+          fiscal_year,
+          chapter_dues,
+          chapter_dues_penalty,
+          chapter_payment_date,
+          iapoa_dues,
+          iapoa_dues_penalty,
+          iapoa_payment_date
+        `)
+        .eq('username', username)
+        .order('fiscal_year', { ascending: false });
+
+      if (paymentsError) throw paymentsError;
+
+      const paymentsBody = document.getElementById('paymentsBody');
+      if (payments && payments.length) {
+        paymentsBody.innerHTML = payments.map(p => `
+          <tr>
+            <td>${p.fiscal_year}</td>
+            <td>₱${p.chapter_dues ?? '0'}</td>
+            <td>₱${p.chapter_dues_penalty ?? '0'}</td>
+            <td>${formatDate(p.chapter_payment_date)}</td>
+            <td>₱${p.iapoa_dues ?? '0'}</td>
+            <td>₱${p.iapoa_dues_penalty ?? '0'}</td>
+            <td>${formatDate(p.iapoa_payment_date)}</td>
+          </tr>
+        `).join('');
+      } else {
+        paymentsBody.innerHTML = '<tr><td colspan="7" class="text-center">No payment records found.</td></tr>';
+      }
+
+      // Summary
+      document.getElementById('membershipStatus').textContent = user.membership_active || '';
+      document.getElementById('totalDue').textContent = user.total_due ?? '0';
+
+      // Sensitive info toggle buttons
+      initSensitiveToggles();
+
+      // Show All Records button logic
+      const toggleAllBtn = document.getElementById('toggleAllRecordsBtn');
+      toggleAllBtn.addEventListener('click', () => {
+        const expanded = toggleAllBtn.getAttribute('aria-expanded') === 'true';
+        toggleAllBtn.setAttribute('aria-expanded', !expanded);
+        toggleAllBtn.textContent = expanded ? 'Show All Records' : 'Hide Records';
+        document.getElementById('paymentsBody').classList.toggle('show-all');
+      });
+
+    } catch (err) {
+      console.error('Error loading account info:', err);
+      alert('Failed to load your account information. Please try again later.');
+    }
+
+    // Helpers
+
+    function renderSensitiveField(label, value, masked = true) {
+      const safeValue = value ?? '';
+      const maskedValue = '••••••••••••••••';
+
+      if (!masked) {
+        return `<p><strong>${label}:</strong> ${safeValue}</p>`;
+      }
+
+      // Return a wrapper with masked span + toggle button
+      return `
+        <p>
+          <strong>${label}:</strong>
+          <span class="sensitive-text" aria-hidden="true">${maskedValue}</span>
+          <button type="button" class="toggle-sensitive-btn" aria-label="Show ${label}">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </p>`;
+    }
+
+    function initSensitiveToggles() {
+      const buttons = document.querySelectorAll('.toggle-sensitive-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const span = btn.previousElementSibling;
+          const isHidden = span.getAttribute('aria-hidden') === 'true';
+
+          if (isHidden) {
+            span.textContent = span.dataset.realValue || span.textContent;
+            span.setAttribute('aria-hidden', 'false');
+            btn.querySelector('i').classList.replace('fa-eye', 'fa-eye-slash');
+            btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Show', 'Hide'));
+          } else {
+            span.dataset.realValue = span.textContent;
+            span.textContent = '••••••••••••••••';
+            span.setAttribute('aria-hidden', 'true');
+            btn.querySelector('i').classList.replace('fa-eye-slash', 'fa-eye');
+            btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Hide', 'Show'));
+          }
+        });
+
+        // Initialize masked state and save real value
+        const span = btn.previousElementSibling;
+        span.dataset.realValue = span.textContent;
+        span.textContent = '••••••••••••••••';
+        span.setAttribute('aria-hidden', 'true');
+      });
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      if (isNaN(date)) return '';
+      return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+  });
+  </script>
 </body>
 </html>
-<!-- Created By ARZ Miranda-->

@@ -1,62 +1,81 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Obfuscated secret token parts (Base64 encoded)
-  const part1 = 'dU5pcVUz';        // 'uNiqU3'
-  const part2 = 'V0azRzMTIzNDU2';  // 'T0k3n123456'
-  const SECRET_TOKEN = atob(part1) + atob(part2);
+  // Initialize Supabase client
+  const supabaseUrl = 'https://fvaahtqjusfniadwvoyw.supabase.co';
+  const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8'; // Replace with your anon key
+  const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
 
   // LOGIN FORM HANDLER
   const form = document.getElementById('loginForm');
+  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+  const usernameInput = form ? form.username : null;
+  const passwordInput = form ? form.password : null;
+
   if (form) {
-    const apiURL = 'https://script.google.com/macros/s/AKfycbzQKcBqQfPnBpZmjaMBt4CS0r79kA5HxlSC-V0MlVkWxbhOOPGJmIsFjRyDJW87HA5buw/exec';
-    const submitBtn = form.querySelector('button[type="submit"]');
-
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
-      const username = form.username.value.trim();
-      const password = form.password.value.trim();
+      e.stopPropagation();
 
-      if (!username || !password) {
-        alert('Please enter username and password.');
+      // Bootstrap validation
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
         return;
       }
+      form.classList.remove('was-validated');
 
       submitBtn.disabled = true;
 
-      const formData = new URLSearchParams({
-        username,
-        password,
-        token: SECRET_TOKEN
-      });
+      const username = usernameInput.value.trim().toLowerCase();
+      const password = passwordInput.value;
 
       try {
-        const res = await fetch(apiURL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: formData.toString(),
-        });
+        // Fetch user data from Supabase
+        const { data: user, error } = await supabase
+          .from('xxsr_001')
+          .select('row_id, username, password, name, prc_license, address, birthday, contact_no, email, membership_active, total_due')
+          .eq('username', username)
+          .single();
 
-        if (!res.ok) throw new Error('Network response was not ok');
-
-        const data = await res.json();
-
-        if (data.status === 'success') {
-          localStorage.setItem('userData', JSON.stringify(data));
-          window.location.href = 'account.html';
-        } else {
-          alert(data.error || 'Login failed. Incorrect username or password.');
+        if (error || !user) {
+          alert('Invalid username or password.');
+          submitBtn.disabled = false;
+          return;
         }
+
+        // Compare bcrypt hash
+        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        if (!passwordMatch) {
+          alert('Invalid username or password.');
+          submitBtn.disabled = false;
+          return;
+        }
+
+        // Store minimal user info in sessionStorage (cleared on tab close)
+        sessionStorage.setItem('userData', JSON.stringify({
+          status: 'success',
+          personalInfo: {
+            name: user.name,
+            prcLicense: user.prc_license,
+            address: user.address,
+            birthday: user.birthday,
+            contactNo: user.contact_no,
+            email: user.email,
+          },
+          membershipActive: user.membership_active,
+          totalDue: user.total_due
+        }));
+
+        window.location.href = 'account.html';
       } catch (err) {
-        alert('An error occurred during login. Please try again later.');
         console.error('Login error:', err);
-      } finally {
+        alert('An error occurred during login. Please try again later.');
         submitBtn.disabled = false;
       }
     });
   }
 
-  // PASSWORD TOGGLE BUTTON (using FontAwesome icons)
+  // PASSWORD TOGGLE BUTTON
   const toggleBtn = document.getElementById('togglePassword');
-  const passwordInput = document.getElementById('password');
 
   if (toggleBtn && passwordInput) {
     toggleBtn.setAttribute('aria-pressed', 'false');
@@ -85,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ACCOUNT PAGE DATA POPULATION
   if (document.body.classList.contains('account-info')) {
-    const userData = JSON.parse(localStorage.getItem('userData'));
+    const userData = JSON.parse(sessionStorage.getItem('userData'));
 
     if (!userData || userData.status !== 'success') {
       alert('Please log in first.');
@@ -107,21 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
 
-    const paymentsBody = document.getElementById('paymentsBody');
-    if (paymentsBody && userData.payments) {
-      paymentsBody.innerHTML = userData.payments.map(payment => `
-        <tr>
-          <td>${payment.fiscalYear}</td>
-          <td>${payment.chapterDues}</td>
-          <td>${payment.chapterDuesPenalty}</td>
-          <td>${payment.chapterPaymentDate}</td>
-          <td>${payment.iapoaDues}</td>
-          <td>${payment.iapoaDuesPenalty}</td>
-          <td>${payment.iapoaPaymentDate}</td>
-        </tr>
-      `).join('');
-    }
-
     const membershipStatusEl = document.getElementById('membershipStatus');
     const totalDueEl = document.getElementById('totalDue');
 
@@ -130,18 +134,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// Back to Top Button Logic
 const backToTopBtn = document.getElementById('backToTopBtn');
 
-window.onscroll = function() {
+window.onscroll = function () {
   if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    backToTopBtn.style.display = "block";
+    backToTopBtn.style.display = 'block';
   } else {
-    backToTopBtn.style.display = "none";
+    backToTopBtn.style.display = 'none';
   }
 };
 
-backToTopBtn.addEventListener('click', () => {
+backToTopBtn?.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-
-  // Created By ARZ Miranda
