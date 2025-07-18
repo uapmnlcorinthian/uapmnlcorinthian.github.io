@@ -77,14 +77,14 @@ async function L(){
       pi:{ n:d.name, prc:d.prc_license, a:d.address, b:d.birthday, c:d.contact_no, e:d.email, bt:d.batch||'', co:d.company||'', po:d.position||'' },
       act:d.membership_active, due:d.total_due, pay
     }));
-    location.href='{{ site.baseurl }}/account/';
+    location.href = 'https://manilacorinthianchapter.github.io/mcc/account/';
   };
 }
 
 /* ---- ACCOUNT ---- */
 function A(){
   const ud = JSON.parse(sessionStorage.getItem('userData')||'null');
-  if(!ud?.ok) return location.href='{{ site.baseurl }}/login/';
+  if(!ud?.ok) return location.href = 'https://manilacorinthianchapter.github.io/mcc/login/';
 
   const p = ud.pi;
   $('#cardName').textContent=p.n;
@@ -158,6 +158,6 @@ const logoutBtn = document.getElementById('logoutBtn');
 if (logoutBtn) {
   logoutBtn.addEventListener('click', () => {
     sessionStorage.removeItem('userData');
-    location.href = '{{ site.baseurl }}/';
+    location.href = 'https://manilacorinthianchapter.github.io/mcc/';
   });
 }
