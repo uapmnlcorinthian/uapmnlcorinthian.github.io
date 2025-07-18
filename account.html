@@ -1,40 +1,22 @@
-<!DOCTYPE html>
-<html lang="en" class="h-100">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>UAP Manila Corinthian Chapter – Account</title>
+---
+layout: default
+title: Account
+description: "Manage your UAP Manila Corinthian Chapter membership details and payment history."
+keywords: "Architecture, UAP, Manila, Account, Membership"
+---
 
-<!-- Bootstrap & Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-
-</head>
-<body class="account-info d-flex flex-column min-vh-100">
-
-<!--‑‑ HEADER NAVBAR‑‑-->
-<header class="d-flex justify-content-between align-items-center px-3 py-2 bg-white border-bottom shadow-sm"> <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none"> <img src="images/MCC logo.png" alt="UAP MCC" style="height:48px"> <span class="fw-semibold text-dark d-none d-md-inline">UAP MCC</span> </a>
-<nav class="d-flex gap-3">
-  <a href="index.html" class="nav-link fw-semibold text-dark">Home</a>
-  <a href="activities.html" class="nav-link fw-semibold text-dark">Activities</a>
-  <a href="account.html" class="nav-link fw-semibold text-primary" aria-current="page">Membership</a>
-  <!-- Logout button -->
-  <button id="logoutBtn" class="btn btn-sm btn-outline-secondary">Logout</button>
-</nav>
-</header>
-
-<!--‑‑ MAIN CONTENT ‑‑-->
-<main class="container my-5 flex-grow-1" id="mainContent"> 
-  
+<main class="account-info d-flex flex-column min-vh-100" id="mainContent">
   <!-- DIGITAL CARD -->
-  <div class="card shadow-sm digital-card">
-    <div class="card-header text-center bg-light"> <img src="images/MCC logo.png" alt="UAP MCC" class="card-header-logo mb-2">
+  <div class="card shadow-sm digital-card mx-auto" style="max-width: 400px;">
+    <div class="card-header text-center bg-light">
+      <img src="{{ site.baseurl }}/images/MCC logo.png" alt="UAP MCC" class="card-header-logo mb-2">
       <div class="card-header-title">UAP Manila Corinthian Chapter</div>
     </div>
     <div class="card-body p-4">
       <h2 id="cardName" class="fw-bold mb-1 text-center">Member Name</h2>
-      <p class="text-center mb-3"><span id="statusBadge" class="badge bg-secondary">Status</span></p>
+      <p class="text-center mb-3">
+        <span id="statusBadge" class="badge bg-secondary">Status</span>
+      </p>
       <div class="row gx-2 gy-1 mb-3 small">
         <div class="col-5 text-end fw-semibold">Batch:</div>
         <div class="col-7" id="cardBatch"></div>
@@ -43,27 +25,37 @@
         <div class="col-5 text-end fw-semibold">Position:</div>
         <div class="col-7" id="cardPosition"></div>
       </div>
-      
-      <!-- sensitive fields -->
       <div class="border-top pt-3 small">
-        <div class="d-flex align-items-center mb-2"> <span class="fw-semibold me-1">PRC License:</span> <span class="sensitive-text flex-grow-1"></span>
-          <button type="button" class="toggle-sensitive-btn ms-2" aria-label="Show PRC"><i class="fa-solid fa-eye"></i></button>
+        <div class="d-flex align-items-center mb-2">
+          <span class="fw-semibold me-1">PRC License:</span>
+          <span class="sensitive-text flex-grow-1"></span>
+          <button type="button" class="toggle-sensitive-btn ms-2" aria-label="Show PRC">
+            <i class="fa-solid fa-eye"></i>
+          </button>
         </div>
-        <div class="d-flex align-items-center mb-2"> <span class="fw-semibold me-1">Email:</span> <span class="sensitive-text flex-grow-1"></span>
-          <button type="button" class="toggle-sensitive-btn ms-2" aria-label="Show Email"><i class="fa-solid fa-eye"></i></button>
+        <div class="d-flex align-items-center mb-2">
+          <span class="fw-semibold me-1">Email:</span>
+          <span class="sensitive-text flex-grow-1"></span>
+          <button type="button" class="toggle-sensitive-btn ms-2" aria-label="Show Email">
+            <i class="fa-solid fa-eye"></i>
+          </button>
         </div>
-        <div class="d-flex align-items-center"> <span class="fw-semibold me-1">Contact No.:</span> <span class="sensitive-text flex-grow-1"></span>
-          <button type="button" class="toggle-sensitive-btn ms-2" aria-label="Show Contact"><i class="fa-solid fa-eye"></i></button>
+        <div class="d-flex align-items-center">
+          <span class="fw-semibold me-1">Contact No.:</span>
+          <span class="sensitive-text flex-grow-1"></span>
+          <button type="button" class="toggle-sensitive-btn ms-2" aria-label="Show Contact">
+            <i class="fa-solid fa-eye"></i>
+          </button>
         </div>
       </div>
     </div>
     <div class="card-footer text-center py-3">
-      <p class="mb-0"><strong>Total Due:</strong><span id="totalDue"></span></p>
+      <p class="mb-0"><strong>Total Due:</strong> <span id="totalDue"></span></p>
     </div>
   </div>
-  
-  <!-- PAYMENT HISTORY (collapsible) -->
-  <section class="mt-5">
+
+  <!-- PAYMENT HISTORY -->
+  <section class="mt-5 container">
     <div class="d-flex align-items-center justify-content-between mb-2">
       <h2 class="h5 text-primary fw-semibold mb-0">Payment History</h2>
       <button id="paymentsToggleBtn"
@@ -72,99 +64,31 @@
         data-bs-toggle="collapse"
         data-bs-target="#paymentsCollapse"
         aria-expanded="true"
-        aria-controls="paymentsCollapse"> <i class="fa-solid fa-angle-down"></i> </button>
+        aria-controls="paymentsCollapse">
+        <i class="fa-solid fa-angle-down"></i>
+      </button>
     </div>
     <div id="paymentsCollapse" class="collapse show">
       <div id="paymentsWrapper" class="table-responsive">
-<table id="paymentsTable" class="table table-sm align-middle text-center mb-0">
-  <thead class="table-light">
-    <tr>
-     <th scope="col"><!-- FISCAL YEAR--></th>
-      <!-- years inserted here… -->
-    </tr>
-  </thead>
-
-  <!-- Chapter Dues Group -->
-  <tbody class="group-chapter">
-    <tr>
-      <th scope="row">Chapter Dues</th>
-      <!-- <td>₱2,000</td><td>₱0</td><td>₱0</td> -->
-    </tr>
-    <tr>
-      <th scope="row">Chapter Penalty</th>
-      <!-- … -->
-    </tr>
-    <tr>
-      <th scope="row">Payment Date</th>
-      <!-- … -->
-    </tr>
-  </tbody>
-
-  <!-- IAPOA Dues Group -->
-  <tbody class="group-iapoa">
-    <tr>
-      <th scope="row">IAPOA Dues</th>
-      <!-- … -->
-    </tr>
-    <tr>
-      <th scope="row">IAPOA Penalty</th>
-      <!-- … -->
-    </tr>
-    <tr>
-      <th scope="row">Payment Date</th>
-      <!-- … -->
-    </tr>
-  </tbody>
-</table>
-
+        <table id="paymentsTable" class="table table-sm align-middle text-center mb-0">
+          <thead class="table-light">
+            <tr>
+              <th scope="col"></th>
+              <!-- years inserted here… -->
+            </tr>
+          </thead>
+          <tbody class="group-chapter">
+            <tr><th scope="row">Chapter Dues</th></tr>
+            <tr><th scope="row">Chapter Penalty</th></tr>
+            <tr><th scope="row">Payment Date</th></tr>
+          </tbody>
+          <tbody class="group-iapoa">
+            <tr><th scope="row">IAPOA Dues</th></tr>
+            <tr><th scope="row">IAPOA Penalty</th></tr>
+            <tr><th scope="row">Payment Date</th></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 </main>
-
-<!-- Back‑to‑top button (required by common.js) -->
-<button id="backToTopBtn" type="button" class="btn btn-primary position-fixed" style="bottom:1.5rem; right:1.5rem; display:none; z-index:1030; border-radius:50%; width:44px; height:44px;"> <i class="fa-solid fa-arrow-up"></i> </button>
-
- <!-- FOOTER -->
-  <footer class="bg-primary text-white py-4">
-    <div class="container text-center">
-      <!-- Partner Logos -->
-      <div class="mb-3">
-        <a href="https://www.unitedarchitects.ph/" target="_blank" class="me-3">
-          <img src="images/uap_logo.png" alt="UAP Logo" style="max-width:125px; height:auto;" />
-        </a>
-        <a href="https://www.facebook.com/manilacorinthianchapter" target="_blank">
-          <img src="images/MCC logo.png" alt="MCC Logo" style="max-width:117px; height:auto;" />
-        </a>
-      </div>
-      <!-- Contact Info -->
-      <div class="mb-3">
-        <i class="fa-solid fa-envelope me-2"></i>
-        <a href="mailto:uapmccmembership@gmail.com" class="text-white">uapmccmembership@gmail.com</a>
-        <span class="mx-3">|</span>
-        <i class="fa-solid fa-map-marker-alt me-2"></i>Metro Manila, 1002
-      </div>
-      <!-- Social Icons (using Font Awesome) -->
-      <div class="mb-3">
-        <a href="https://www.facebook.com/manilacorinthianchapter" target="_blank" class="text-white me-3 fs-4">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://www.instagram.com/uapmanilacorinthian/" target="_blank" class="text-white me-3 fs-4">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.youtube.com/channel/UCj0SstkYSHqjhMcoW5P7DSQ" target="_blank" class="text-white fs-4">
-          <i class="fab fa-youtube"></i>
-        </a>
-      </div>
-      <hr class="border-light" />
-      <div class="small">&copy; 2025 UAP Manila Corinthian Chapter | All Rights Reserved</div>
-    </div>
-  </footer>
-
-<!-- scripts --> 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script> 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
-<script src="js/common.js" defer></script>
-</body>
-</html>

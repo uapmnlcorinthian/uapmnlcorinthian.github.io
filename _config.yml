@@ -1,0 +1,35 @@
+# ─── Site Settings ────────────────────────────────────────────────
+title: "UAP Manila Corinthian Chapter"
+description: "Premier community of architectural professionals in Manila. Join events, workshops, and networking opportunities."
+url: "https://manilacorinthianchapter.github.io"    # no trailing slash
+baseurl: "/mcc"                                      # your repo subpath
+
+# ─── Build Options ───────────────────────────────────────────────
+markdown: kramdown
+permalink: pretty                                   # /about/ instead of /about.html
+
+# ─── Layout Defaults ─────────────────────────────────────────────
+defaults:
+  - scope:
+      path: ""         # all files
+      type: "pages"    # apply to pages
+    values:
+      layout: "default"  # uses _layouts/default.html
+
+# ─── Plugins (GitHub Pages–supported) ────────────────────────────
+plugins:
+  - jekyll-feed           # generates an RSS feed at /feed.xml
+  - jekyll-seo-tag        # injects SEO meta tags automatically
+
+# ─── Exclude from Build ──────────────────────────────────────────
+exclude:
+  - README.md
+  - LICENSE
+  - node_modules
+  - vendor
+
+# ─── Optional Customizations ──────────────────────────────────────
+# You can override directories if needed:
+# includes_dir: _includes
+# layouts_dir:  _layouts
+# data_dir:     _data

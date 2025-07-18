@@ -1,0 +1,54 @@
+<!-- File: _layouts/post.html -->
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+  {% include head.html %}
+  {% comment %} Add page-specific description and Open Graph image if banner is provided {% endcomment %}
+  {% if page.excerpt %}
+    <meta name="description" content="{{ page.excerpt | xml_escape }}" />
+  {% endif %}
+  {% if page.banner %}
+    <meta property="og:image" content="{{ page.banner }}" />
+    <style>
+      .post-banner {
+        background: url('{{ page.banner }}') center/cover no-repeat;
+        height: 300px;
+      }
+    </style>
+  {% endif %}
+</head>
+<body class="d-flex flex-column h-100">
+  {% include header.html %}
+
+  {% if page.banner %}
+    <div class="post-banner w-100" role="img" aria-label="Banner image for {{ page.title }}"></div>
+  {% endif %}
+
+  <main role="main" class="container my-5">
+    <article class="post-content">
+      <header class="mb-4">
+        <h1 class="fw-bold">{{ page.title }}</h1>
+        <p class="text-muted">{{ page.date | date: "%B %-d, %Y" }}</p>
+      </header>
+      {{ content }}
+    </article>
+  </main>
+
+  <!-- Sponsors at bottom -->
+  <section aria-labelledby="sponsors-title" class="py-5 bg-light">
+    <div class="container">
+      <h2 id="sponsors-title" class="h4 mb-4 text-center">Our Sponsors</h2>
+      <div class="d-flex flex-wrap justify-content-center gap-4">
+        {% for sponsor in site.data.sponsors %}
+          <a href="{{ sponsor.url }}" target="_blank" aria-label="{{ sponsor.name }}" class="d-block sponsor-logo">
+            <img src="{{ sponsor.logo }}" alt="{{ sponsor.name }} Logo" style="max-height:60px;" />
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% include footer.html %}
+  {% include scripts.html %}
+</body>
+</html>

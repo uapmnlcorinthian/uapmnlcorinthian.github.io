@@ -1,0 +1,27 @@
+- name: ArchDaily
+  url: https://www.archdaily.com
+  logo: https://upload.wikimedia.org/wikipedia/commons/a/ad/ArchDaily-Logo.svg  # :contentReference[oaicite:0]{index=0}
+
+- name: Autodesk
+  url: https://www.autodesk.com
+  logo: https://upload.wikimedia.org/wikipedia/commons/4/4c/Autodesk_Logo.svg  # 
+
+- name: SketchUp
+  url: https://www.sketchup.com
+  logo: https://upload.wikimedia.org/wikipedia/commons/1/14/SketchUp-Logo.png  # 
+
+- name: Katerra
+  url: https://www.katerra.com
+  logo: https://upload.wikimedia.org/wikipedia/commons/5/50/Katerra_Primary_Logo.jpg  # :contentReference[oaicite:3]{index=3}
+
+- name: Laminam
+  url: https://www.laminam.com
+  logo: https://www.laminam.com/wp-content/uploads/2016/12/Laminam-logo.png
+
+- name: UAP
+  url: https://www.unitedarchitects.ph
+  logo: https://upload.wikimedia.org/wikipedia/commons/2/20/United_Architects_of_the_Philippines_logo.png
+
+- name: Signature
+  url: https://signature-ph.com
+  logo: https://signature-ph.com/wp-content/themes/signature/assets/images/logo.svg
