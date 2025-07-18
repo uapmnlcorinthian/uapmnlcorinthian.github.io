@@ -1,5 +1,6 @@
 /* css/style.css */
-/* Created By ARZ Miranda
+/* Created By ARZ Miranda */
+
 /* Professional brand colors */
 :root {
   --bs-primary: #2C3E50; /* Dark Slate Blue */
@@ -7,6 +8,28 @@
   --bs-body-bg: #F4F6F7; /* Light Gray Blue */
   --text-primary: #34495E; /* Main text */
   --text-secondary: #7F8C8D; /* Secondary text */
+}
+
+/* Digital Card */
+.digital-card {
+  max-width: 480px;
+  margin: auto;
+}
+.card-header-logo {
+  height: 42px;
+}
+.card-header-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+.sensitive-text {
+  user-select: none;
+  letter-spacing: 0.1em;
+}
+.toggle-sensitive-btn {
+  border: none;
+  background: none;
+  color: var(--bs-secondary);
 }
 
 body {
@@ -18,6 +41,7 @@ body {
 }
 
 header {
+  width: 100%;
   background-color: #fff !important; /* keep navbar white */
   border-bottom: 1px solid #d0d7db;
 }
@@ -81,8 +105,56 @@ main {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Payment Table Styling */
+#paymentsWrapper {
+  overflow-x: auto;
+}
+
+#paymentsTable {
+  min-width: 720px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+#paymentsTable th,
+#paymentsTable td {
+  border: 1px solid #e9ecef;
+}
+
+#paymentsTable thead th {
+  background-color: #fff; /* white header background */
+  color: var(--text-primary);
+  font-weight: 600;
+  border-bottom: 1px solid #dee2e6;
+}
+
+#paymentsTable thead th:first-child,
+#paymentsTable tbody th[scope=row] {
+  position: sticky;
+  left: 0;
+  background: #fff;
+  z-index: 2;
+}
+
+/* Subtle separator between groups */
+#paymentsTable tbody.group-iapoa {
+  border-top: 1px dashed #dee2e6;
+}
+
+/* Zebra striping */
+#paymentsTable tbody.group-chapter tr:nth-child(even),
+#paymentsTable tbody.group-iapoa tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Spacer for group heads */
+#paymentsTable tbody.group-iapoa tr:first-child th,
+#paymentsTable tbody.group-iapoa tr:first-child td {
+  padding-top: 1rem;
+}
 /* Footer */
 footer {
+  width: 100%;
   background-color: var(--bs-primary);
   color: #fff;
   padding: 1rem;
@@ -104,7 +176,7 @@ footer {
   padding: 1rem 0;
 }
 
-/* The scrolling track */
+/* Sponsors track */
 .sponsors-track {
   display: flex;
   width: max-content;
@@ -126,14 +198,9 @@ footer {
   transform: scale(1.15);
 }
 
-/* Animation keyframes */
 @keyframes scrollLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* News articles styling */
@@ -147,7 +214,7 @@ section[aria-labelledby="news-title"] article {
 
 section[aria-labelledby="news-title"] article:hover,
 section[aria-labelledby="news-title"] article:focus {
-  background-color: #fff3e0; /* subtle soft orange highlight */
+  background-color: #fff3e0;
   outline: none;
 }
 
@@ -169,7 +236,7 @@ section[aria-labelledby="news-title"] article h3 {
   font-size: 1.5rem;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(230, 126, 34, 0.7);
-  display: none; /* Hidden initially */
+  display: none;
   z-index: 9999;
   transition: background-color 0.3s ease;
 }
@@ -177,7 +244,6 @@ section[aria-labelledby="news-title"] article h3 {
 #backToTopBtn:hover,
 #backToTopBtn:focus {
   background-color: #ca6e17;
-  color: #fff;
   outline: none;
 }
 
@@ -215,52 +281,25 @@ body, html {
 /* Password toggle button */
 .toggle-password-btn {
   position: absolute;
-  right: 0.75rem;
   top: 50%;
+  right: 0.75rem;
   transform: translateY(-50%);
-  background: none;
+  background-color: transparent;
   border: none;
   cursor: pointer;
-  color: #6c757d;
-  padding: 0;
+  color: var(--bs-secondary);
   font-size: 1.25rem;
+  z-index: 2;
 }
 
-/* Focus style for toggle button */
 .toggle-password-btn:focus {
-  outline: 2px solid #fca311;
+  outline: 2px solid var(--bs-secondary);
   outline-offset: 2px;
   border-radius: 0.25rem;
 }
 
-/* Signup text under form */
-.signup-text {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  text-align: center;
-}
-
-/* Signup link */
-.signup-text a {
-  color: #fca311;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-/* Signup link hover/focus */
-.signup-text a:hover,
-.signup-text a:focus {
-  text-decoration: underline;
-  outline: none;
-}
-
-/* Header styles inside login card */
-header {
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-/* Logo in header */
-header img {
-  height: 60px;
+.toggle-password-btn:focus {
+  outline: 2px solid var(--bs-secondary);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
 }

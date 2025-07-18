@@ -1,130 +1,149 @@
-/* ---------- wait until bcrypt is ready ---------- */
+/* ===== UAP‑MCC – Login & Account (compact) ===== */
 (() => {
-  let tries = 0;
-  const grab = () => {
-    // bcryptjs attaches to window.dcodeIO.bcrypt in browsers
-    if (!window.bcrypt && window.dcodeIO?.bcrypt) {
-      window.bcrypt = window.dcodeIO.bcrypt;
+  const u = 'https://fvaahtqjusfniadwvoyw.supabase.co',
+        k = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8';
+  const w = () => {
+    if (window.supabase) {
+      window.sb = window.supabase.createClient(u, k);
+    } else {
+      setTimeout(w, 25);
     }
-    if (window.bcrypt) return;                     // ready
-    if (tries++ < 200) return setTimeout(grab, 20); // wait up to 4 s
-    console.error('bcryptjs not loaded');
   };
-  grab();
+  w();
 })();
 
+const $     = q => document.querySelector(q),
+      mask  = v => '***' + String(v).slice(-4),
+      mail  = m => { const [a,b]=m.split('@'); return b? a[0]+'***@'+b : m },
+      fmt   = d => { const x=new Date(d); return isNaN(x)? '—' : x.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}); },
+      money = v => isNaN(+v)? '—' : '₱'+(+v).toLocaleString();
 
+addEventListener('DOMContentLoaded', ()=>{
+  if ($('#loginForm')) L();
+  if (document.body.classList.contains('account-info')) A();
+});
 
-/* ---------- create global client (wait until SDK present) ---------- */
-(() => {
-  const url  = 'https://fvaahtqjusfniadwvoyw.supabase.co';
-  const anon = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8';
+/* ---- LOGIN ---- */
+async function L(){
+  const f = $('#loginForm'),
+        b = f.querySelector('button[type=submit]'),
+        u = f.username, p=f.password,
+        e = $('#togglePassword');
 
-  let retries = 0;
-  const grab = () => {
-    if (window.sb) return;                             // already done
-    if (window.supabase) {                             // SDK ready
-      window.sb = window.supabase.createClient(url, anon);
+  e.onclick = ()=>{
+    const hidden = p.type==='password';
+    p.type = hidden?'text':'password';
+    e.querySelector('i').className = 'fa-solid '+(hidden?'fa-eye-slash':'fa-eye');
+  };
+
+  f.onsubmit = async ev=>{
+    ev.preventDefault();
+    if(!f.checkValidity()){ f.classList.add('was-validated'); return }
+    b.disabled=true;
+
+    const sel = [
+      'row_id','username','password','name','prc_license','address','birthday','contact_no','email','membership_active','total_due','batch','company','position',
+      // all years you use; add future columns here
+      'chapter_dues_2023','chapter_dues_penalty_2023','chapter_payment_date_2023','iapoa_dues_2023','iapoa_dues_penalty_2023','iapoa_payment_date_2023',
+      'chapter_dues_2022','chapter_dues_penalty_2022','chapter_payment_date_2022','iapoa_dues_2022','iapoa_dues_penalty_2022','iapoa_payment_date_2022',
+      'chapter_dues_2021','chapter_dues_penalty_2021','chapter_payment_date_2021','iapoa_dues_2021','iapoa_dues_penalty_2021','iapoa_payment_date_2021'
+    ].join(',');
+
+    const { data:d, error:er } = await sb.from('xxsr_001').select(sel).eq('username',u.value.trim().toLowerCase()).maybeSingle();
+    if(er||!d||p.value!==d.password){
+      alert('Invalid username or password.');
+      b.disabled=false;
       return;
     }
-    if (retries++ < 300) setTimeout(grab, 20);         // wait up to 6 s
-    else console.error('Supabase SDK not found');
-  };
-  grab();
-})();
 
-/* ---------- main logic ---------- */
-document.addEventListener('DOMContentLoaded', () => {
-  const sb = () => window.sb;                          // getter (may appear late)
-
-  /* helpers */
-  const mask = '••••••••••••••••';
-  const fmt  = s => { const d = new Date(s); return isNaN(d)?'':
-                     d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}); };
-
-  const toggleEye = (btn,inpt) => {
-    if (!btn||!inpt) return;
-    const ic = btn.querySelector('i');
-    const set = sh => ic&&(ic.className='fa-solid '+(sh?'fa-eye-slash':'fa-eye'));
-    set(false);
-    const flip=()=>{const hid=inpt.type==='password';inpt.type=hid?'text':'password';set(hid);
-      btn.setAttribute('aria-label',hid?'Hide password':'Show password');
-      btn.setAttribute('aria-pressed',String(hid));};
-    btn.addEventListener('click',flip);
-    btn.addEventListener('keydown',e=>[' ','Enter'].includes(e.key)&&(e.preventDefault(),flip()));
-  };
-
-  const initSens = () =>
-    document.querySelectorAll('.toggle-sensitive-btn').forEach(b=>{
-      const s=b.previousElementSibling; s.dataset.realValue=s.textContent;
-      s.textContent=mask; s.setAttribute('aria-hidden','true');
-      const ic=b.querySelector('i');
-      b.addEventListener('click',()=>{
-        const hid=s.getAttribute('aria-hidden')==='true';
-        s.textContent=hid?s.dataset.realValue:mask;
-        s.setAttribute('aria-hidden',String(!hid));
-        ic&&(ic.className='fa-solid '+(hid?'fa-eye-slash':'fa-eye'));
-        b.setAttribute('aria-label',b.getAttribute('aria-label').replace(hid?'Show':'Hide',hid?'Hide':'Show'));
-      });
+    const pay = {};
+    Object.keys(d).forEach(k=>{
+      if(/^((chapter|iapoa)_dues|.*_payment_date)/.test(k)) pay[k]=d[k];
     });
 
-  /* login page */
-  const lf=document.getElementById('loginForm');
-  if(lf){
-    const sbt=lf.querySelector('button[type="submit"]');
-    const uI=lf.username, pI=lf.password;
-    toggleEye(document.getElementById('togglePassword'),pI);
+    sessionStorage.setItem('userData', JSON.stringify({
+      ok:1,
+      row:String(d.row_id).trim().toLowerCase(),
+      pi:{ n:d.name, prc:d.prc_license, a:d.address, b:d.birthday, c:d.contact_no, e:d.email, bt:d.batch||'', co:d.company||'', po:d.position||'' },
+      act:d.membership_active, due:d.total_due, pay
+    }));
+    location.href='account.html';
+  };
+}
 
-    lf.addEventListener('submit',async e=>{
-      e.preventDefault();
-      if(!lf.checkValidity()) return lf.classList.add('was-validated');
-      sbt.disabled=true;
+/* ---- ACCOUNT ---- */
+function A(){
+  const ud = JSON.parse(sessionStorage.getItem('userData')||'null');
+  if(!ud?.ok) return location.href='login_page.html';
 
-      const user=uI.value.trim().toLowerCase();
-      const pass=pI.value;
+  // populate profile
+  const p = ud.pi;
+  $('#cardName').textContent=p.n;
+  $('#cardBatch').textContent=p.bt;
+  $('#cardCompany').textContent=p.co;
+  $('#cardPosition').textContent=p.po;
+  const bd=$('#statusBadge'), act=(ud.act||'').toLowerCase().startsWith('a');
+  bd.textContent=act?'Active':'Inactive';
+  bd.className='badge '+(act?'bg-success':'bg-danger');
+  const s=document.querySelectorAll('.sensitive-text');
+  [p.prc,p.e,p.c].forEach((val,i)=>{
+    s[i].textContent = i===1 ? mail(val) : mask(val);
+    s[i].dataset.real = val;
+  });
+  document.querySelectorAll('.toggle-sensitive-btn').forEach(btn=>{
+    btn.onclick=()=>{
+      const sp=btn.previousElementSibling, show=sp.dataset.shown!=='1';
+      sp.textContent = show?sp.dataset.real:(sp===s[1]?mail(sp.dataset.real):mask(sp.dataset.real));
+      sp.dataset.shown = show?'1':'0';
+      btn.querySelector('i').className = 'fa-solid '+(show?'fa-eye-slash':'fa-eye');
+    };
+  });
+  $('#totalDue').textContent = money(ud.due);
 
-      const {data, error}=await sb()
-        .from('xxsr_001')
-        .select('username,password,name,prc_license,address,birthday,contact_no,email,membership_active,total_due')
-        .eq('username',user)
-        .maybeSingle();
+  // DYNAMIC YEARS & TABLE
+  const pay = ud.pay||{};
+  const yrs = [...new Set(Object.keys(pay)
+    .map(k=>k.match(/_(\d{4})$/))
+    .filter(Boolean)
+    .map(m=>m[1])
+  )].sort((a,b)=>b-a);
 
-      if(error||!data||!bcrypt.compareSync(pass,data.password)){
-        alert('Invalid username or password.'); sbt.disabled=false; return;
-      }
+  // header
+  const headRow = document.querySelector('#paymentsTable thead tr');
+  yrs.forEach(y=> headRow.insertAdjacentHTML('beforeend',`<th>${y}</th>`));
 
-      sessionStorage.setItem('userData',JSON.stringify({
-        status:'success',
-        personalInfo:{
-          name:data.name,prcLicense:data.prc_license,address:data.address,
-          birthday:data.birthday,contactNo:data.contact_no,email:data.email},
-        membershipActive:data.membership_active,totalDue:data.total_due
-      }));
-      location.href='account.html';
-    });
+  // categories
+  const chapterCats = [
+    {label:'Chapter Dues',        key:'chapter_dues',         money:true},
+    {label:'Chapter Penalty',     key:'chapter_dues_penalty', money:true},
+    {label:'Payment Date',        key:'chapter_payment_date', date:true}
+  ];
+  const iapoaCats = [
+    {label:'IAPOA Dues',          key:'iapoa_dues',           money:true},
+    {label:'IAPOA Penalty',       key:'iapoa_dues_penalty',   money:true},
+    {label:'Payment Date',        key:'iapoa_payment_date',   date:true}
+  ];
+
+  function buildRows(cats){
+    return cats.map(c=>{
+      const cells = yrs.map(y=>{
+        const v=pay[`${c.key}_${y}`];
+        if(v==null||v==='') return '<td>—</td>';
+        if(c.date)  return `<td>${fmt(v)}</td>`;
+        if(c.money) return `<td>${money(v)}</td>`;
+        return `<td>${v}</td>`;
+      }).join('');
+      return `<tr><th scope="row">${c.label}</th>${cells}</tr>`;
+    }).join('');
   }
 
-  /* account page */
-  if(document.body.classList.contains('account-info')){
-    const ud=JSON.parse(sessionStorage.getItem('userData')||'null');
-    if(!ud?.status){location.href='login_page.html';return;}
-    const i=ud.personalInfo;
-    document.getElementById('accountInfo').innerHTML=`
-      <p><strong>Name:</strong> ${i.name}</p>
-      <p><strong>PRC License:</strong> ${i.prcLicense}</p>
-      <p><strong>Address:</strong> ${i.address}</p>
-      <p><strong>Birthday:</strong> ${fmt(i.birthday)}</p>
-      <p><strong>Contact No.:</strong> ${i.contactNo}</p>
-      <p><strong>Email:</strong> ${i.email}</p>`;
-    document.getElementById('membershipStatus').textContent=ud.membershipActive||'';
-    document.getElementById('totalDue').textContent=ud.totalDue||'';
-    initSens();
-  }
+  document.querySelector('tbody.group-chapter').innerHTML = buildRows(chapterCats);
+  document.querySelector('tbody.group-iapoa').innerHTML  = buildRows(iapoaCats);
+}
 
-  /* back‑to‑top */
-  const tB=document.getElementById('backToTopBtn');
-  tB&&(
-    window.addEventListener('scroll',()=>tB.style.display=scrollY>100?'block':'none'),
-    tB.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}))
-  );
-});
+/* ---- Back‑to‑top (safe) ---- */
+const t = document.getElementById('backToTopBtn');
+if(t){
+  addEventListener('scroll',()=> t.style.display = scrollY>100?'block':'none');
+  t.onclick = ()=> scrollTo({top:0,behavior:'smooth'});
+}
