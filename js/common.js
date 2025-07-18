@@ -1,144 +1,130 @@
-/**
- * common.js
- * Handles user login, session management, and account info population
- * Uses Supabase for backend data and bcryptjs for password verification
- *
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-  /* ----------  CONFIG  ---------- */
-  const supabaseUrl  = 'https://fvaahtqjusfniadwvoyw.supabase.co';
-  const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8';  // ← keep on ONE line
-  const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
-
-  /* ----------  LOGIN PAGE  ---------- */
-  const loginForm = document.getElementById('loginForm');
-  if (loginForm) {
-    const submitBtn     = loginForm.querySelector('button[type="submit"]');
-    const usernameInput = loginForm.username;
-    const passwordInput = loginForm.password;
-    const toggleBtn     = document.getElementById('togglePassword');
-
-    // Toggle‑eye logic
-    if (toggleBtn && passwordInput) {
-      toggleBtn.addEventListener('click', () => {
-        const hidden = passwordInput.type === 'password';
-        passwordInput.type = hidden ? 'text' : 'password';
-        toggleBtn.querySelector('i')?.classList.toggle('fa-eye-slash', hidden);
-        toggleBtn.querySelector('i')?.classList.toggle('fa-eye',       !hidden);
-        toggleBtn.setAttribute('aria-label', hidden ? 'Hide password' : 'Show password');
-        toggleBtn.setAttribute('aria-pressed', String(!hidden));
-      });
+/* ---------- wait until bcrypt is ready ---------- */
+(() => {
+  let tries = 0;
+  const grab = () => {
+    // bcryptjs attaches to window.dcodeIO.bcrypt in browsers
+    if (!window.bcrypt && window.dcodeIO?.bcrypt) {
+      window.bcrypt = window.dcodeIO.bcrypt;
     }
+    if (window.bcrypt) return;                     // ready
+    if (tries++ < 200) return setTimeout(grab, 20); // wait up to 4 s
+    console.error('bcryptjs not loaded');
+  };
+  grab();
+})();
 
-    // Submit handler
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (!loginForm.checkValidity()) {
-        loginForm.classList.add('was-validated');
-        return;
-      }
-      loginForm.classList.remove('was-validated');
-      submitBtn.disabled = true;
 
-      const username = usernameInput.value.trim().toLowerCase();
-      const password = passwordInput.value;
 
-      try {
-        // Fetch user by username
-        const { data: user, error } = await supabase
-          .from('xxsr_001')
-          .select('username,password,name,prc_license,address,birthday,contact_no,email,membership_active,total_due')
-          .eq('username', username)
-          .single();
+/* ---------- create global client (wait until SDK present) ---------- */
+(() => {
+  const url  = 'https://fvaahtqjusfniadwvoyw.supabase.co';
+  const anon = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8';
 
-        if (error || !user || !bcrypt.compareSync(password, user.password)) {
-          alert('Invalid username or password.');
-          submitBtn.disabled = false;
-          return;
-        }
-
-        // Store minimal session data
-        sessionStorage.setItem('userData', JSON.stringify({
-          status: 'success',
-          personalInfo: {
-            name: user.name,
-            prcLicense: user.prc_license,
-            address: user.address,
-            birthday: user.birthday,
-            contactNo: user.contact_no,
-            email: user.email,
-          },
-          membershipActive: user.membership_active,
-          totalDue: user.total_due
-        }));
-
-        window.location.href = 'account.html';
-      } catch (err) {
-        console.error(err);
-        alert('Login failed. Please try again later.');
-        submitBtn.disabled = false;
-      }
-    });
-  }
-
-  /* ----------  ACCOUNT PAGE  ---------- */
-  if (document.body.classList.contains('account-info')) {
-    const userData = JSON.parse(sessionStorage.getItem('userData') || 'null');
-    if (!userData?.status) {
-      alert('Please log in first.');
-      window.location.href = 'login_page.html';
+  let retries = 0;
+  const grab = () => {
+    if (window.sb) return;                             // already done
+    if (window.supabase) {                             // SDK ready
+      window.sb = window.supabase.createClient(url, anon);
       return;
     }
+    if (retries++ < 300) setTimeout(grab, 20);         // wait up to 6 s
+    else console.error('Supabase SDK not found');
+  };
+  grab();
+})();
 
-    // Populate personal info
-    const info = userData.personalInfo;
-    document.getElementById('accountInfo').innerHTML = `
-      <p><strong>Name:</strong> ${info.name}</p>
-      <p><strong>PRC License:</strong> ${info.prcLicense}</p>
-      <p><strong>Address:</strong> ${info.address}</p>
-      <p><strong>Birthday:</strong> ${formatDate(info.birthday)}</p>
-      <p><strong>Contact No.:</strong> ${info.contactNo}</p>
-      <p><strong>Email:</strong> ${info.email}</p>
-    `;
-    document.getElementById('membershipStatus').textContent = userData.membershipActive || '';
-    document.getElementById('totalDue').textContent        = userData.totalDue         || '';
+/* ---------- main logic ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  const sb = () => window.sb;                          // getter (may appear late)
 
-    // Init sensitive toggles if markup exists
-    initSensitiveToggles();
-  }
+  /* helpers */
+  const mask = '••••••••••••••••';
+  const fmt  = s => { const d = new Date(s); return isNaN(d)?'':
+                     d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}); };
 
-  /* ----------  UTILITIES ---------- */
-  function formatDate(str) {
-    const d = new Date(str);
-    return isNaN(d) ? '' : d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-  }
+  const toggleEye = (btn,inpt) => {
+    if (!btn||!inpt) return;
+    const ic = btn.querySelector('i');
+    const set = sh => ic&&(ic.className='fa-solid '+(sh?'fa-eye-slash':'fa-eye'));
+    set(false);
+    const flip=()=>{const hid=inpt.type==='password';inpt.type=hid?'text':'password';set(hid);
+      btn.setAttribute('aria-label',hid?'Hide password':'Show password');
+      btn.setAttribute('aria-pressed',String(hid));};
+    btn.addEventListener('click',flip);
+    btn.addEventListener('keydown',e=>[' ','Enter'].includes(e.key)&&(e.preventDefault(),flip()));
+  };
 
-  function initSensitiveToggles() {
-    document.querySelectorAll('.toggle-sensitive-btn').forEach((btn) => {
-      const span = btn.previousElementSibling;
-      span.dataset.realValue = span.textContent;
-      span.textContent = '••••••••••••••••';
-      span.setAttribute('aria-hidden', 'true');
-
-      btn.addEventListener('click', () => {
-        const hidden = span.getAttribute('aria-hidden') === 'true';
-        span.textContent = hidden ? span.dataset.realValue : '••••••••••••••••';
-        span.setAttribute('aria-hidden', String(!hidden));
-        btn.querySelector('i')?.classList.toggle('fa-eye-slash', hidden);
-        btn.querySelector('i')?.classList.toggle('fa-eye',       !hidden);
-        btn.setAttribute('aria-label', hidden ? btn.getAttribute('aria-label').replace('Show','Hide')
-                                              : btn.getAttribute('aria-label').replace('Hide','Show'));
+  const initSens = () =>
+    document.querySelectorAll('.toggle-sensitive-btn').forEach(b=>{
+      const s=b.previousElementSibling; s.dataset.realValue=s.textContent;
+      s.textContent=mask; s.setAttribute('aria-hidden','true');
+      const ic=b.querySelector('i');
+      b.addEventListener('click',()=>{
+        const hid=s.getAttribute('aria-hidden')==='true';
+        s.textContent=hid?s.dataset.realValue:mask;
+        s.setAttribute('aria-hidden',String(!hid));
+        ic&&(ic.className='fa-solid '+(hid?'fa-eye-slash':'fa-eye'));
+        b.setAttribute('aria-label',b.getAttribute('aria-label').replace(hid?'Show':'Hide',hid?'Hide':'Show'));
       });
     });
+
+  /* login page */
+  const lf=document.getElementById('loginForm');
+  if(lf){
+    const sbt=lf.querySelector('button[type="submit"]');
+    const uI=lf.username, pI=lf.password;
+    toggleEye(document.getElementById('togglePassword'),pI);
+
+    lf.addEventListener('submit',async e=>{
+      e.preventDefault();
+      if(!lf.checkValidity()) return lf.classList.add('was-validated');
+      sbt.disabled=true;
+
+      const user=uI.value.trim().toLowerCase();
+      const pass=pI.value;
+
+      const {data, error}=await sb()
+        .from('xxsr_001')
+        .select('username,password,name,prc_license,address,birthday,contact_no,email,membership_active,total_due')
+        .eq('username',user)
+        .maybeSingle();
+
+      if(error||!data||!bcrypt.compareSync(pass,data.password)){
+        alert('Invalid username or password.'); sbt.disabled=false; return;
+      }
+
+      sessionStorage.setItem('userData',JSON.stringify({
+        status:'success',
+        personalInfo:{
+          name:data.name,prcLicense:data.prc_license,address:data.address,
+          birthday:data.birthday,contactNo:data.contact_no,email:data.email},
+        membershipActive:data.membership_active,totalDue:data.total_due
+      }));
+      location.href='account.html';
+    });
   }
 
-  /* ----------  BACK‑TO‑TOP BUTTON ---------- */
-  const topBtn = document.getElementById('backToTopBtn');
-  if (topBtn) {
-    window.addEventListener('scroll', () => {
-      topBtn.style.display = (document.documentElement.scrollTop > 100) ? 'block' : 'none';
-    });
-    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  /* account page */
+  if(document.body.classList.contains('account-info')){
+    const ud=JSON.parse(sessionStorage.getItem('userData')||'null');
+    if(!ud?.status){location.href='login_page.html';return;}
+    const i=ud.personalInfo;
+    document.getElementById('accountInfo').innerHTML=`
+      <p><strong>Name:</strong> ${i.name}</p>
+      <p><strong>PRC License:</strong> ${i.prcLicense}</p>
+      <p><strong>Address:</strong> ${i.address}</p>
+      <p><strong>Birthday:</strong> ${fmt(i.birthday)}</p>
+      <p><strong>Contact No.:</strong> ${i.contactNo}</p>
+      <p><strong>Email:</strong> ${i.email}</p>`;
+    document.getElementById('membershipStatus').textContent=ud.membershipActive||'';
+    document.getElementById('totalDue').textContent=ud.totalDue||'';
+    initSens();
   }
+
+  /* back‑to‑top */
+  const tB=document.getElementById('backToTopBtn');
+  tB&&(
+    window.addEventListener('scroll',()=>tB.style.display=scrollY>100?'block':'none'),
+    tB.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}))
+  );
 });

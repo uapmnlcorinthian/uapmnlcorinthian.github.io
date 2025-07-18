@@ -11,46 +11,46 @@
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- Custom Styles -->
+  <!-- Site‑wide styles -->
   <link rel="stylesheet" href="css/style.css" />
+
   <style>
-    /* Override container fixed width - allow full width */
+    /* page‑specific tweaks */
     main {
       flex-grow: 1;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 2rem;
-      width: 100vw; /* Full viewport width */
+      width: 100vw;
     }
-
     .login-card {
       max-width: 400px;
-      width: 90%; /* Responsive width */
-      background: white;
+      width: 90%;
+      background: #fff;
       padding: 2rem;
       border-radius: 0.75rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
     }
   </style>
 </head>
-<body class="login-page d-flex flex-column min-vh-100">
 
+<body class="login-page d-flex flex-column min-vh-100">
   <!-- HEADER -->
   <header class="d-flex align-items-center justify-content-between px-3 py-2 bg-white shadow-sm">
     <a href="index.html" class="d-flex align-items-center text-decoration-none">
-      <img src="images/MCC logo.png" alt="UAP Manila Corinthian Chapter Logo" style="height: 50px;" />
+      <img src="images/MCC logo.png" alt="UAP Manila Corinthian Chapter Logo" style="height:50px" />
     </a>
     <nav aria-label="Primary navigation">
-      <a href="index.html" class="nav-link d-inline-block px-2">Home</a>
-      <a href="activities.html" class="nav-link d-inline-block px-2">Activities</a>
-      <a href="login_page.html" class="nav-link d-inline-block px-2">Membership</a>
+      <a href="index.html"        class="nav-link d-inline-block px-2">Home</a>
+      <a href="activities.html"   class="nav-link d-inline-block px-2">Activities</a>
+      <a href="login_page.html"   class="nav-link d-inline-block px-2">Membership</a>
     </nav>
   </header>
 
   <!-- LOGIN FORM -->
   <main role="main">
-    <div class="login-card" role="main" aria-label="Member Login Form">
+    <div class="login-card" aria-label="Member Login Form">
       <header class="mb-4 text-center">
         <img src="images/MCC logo.png" alt="UAP Manila Corinthian Chapter Logo" />
       </header>
@@ -60,39 +60,21 @@
       <form id="loginForm" novalidate>
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            class="form-control"
-            placeholder="Enter your username"
-            required
-            autocomplete="username"
-            aria-describedby="usernameHelp"
-          />
+          <input type="text" id="username" name="username" class="form-control"
+                 placeholder="Enter your username" required autocomplete="username"
+                 aria-describedby="usernameHelp" />
           <div id="usernameHelp" class="form-text">Your membership username.</div>
           <div class="invalid-feedback">Please enter your username.</div>
         </div>
 
         <div class="mb-3 password-wrapper position-relative">
           <label for="password" class="form-label">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-control"
-            placeholder="Enter your password"
-            required
-            autocomplete="current-password"
-            aria-describedby="passwordHelp"
-          />
-          <button
-            type="button"
-            id="togglePassword"
-            class="toggle-password-btn position-absolute top-50 end-0 translate-middle-y me-3"
-            aria-label="Show password"
-            aria-pressed="false"
-          >
+          <input type="password" id="password" name="password" class="form-control"
+                 placeholder="Enter your password" required autocomplete="current-password"
+                 aria-describedby="passwordHelp" />
+          <button type="button" id="togglePassword"
+                  class="toggle-password-btn position-absolute top-50 end-0 translate-middle-y me-3"
+                  aria-label="Show password" aria-pressed="false">
             <i class="fa-solid fa-eye"></i>
           </button>
           <div id="passwordHelp" class="form-text">Keep your password secure.</div>
@@ -110,18 +92,21 @@
 
   <!-- FOOTER -->
   <footer class="bg-primary text-white text-center py-3 mt-auto">
-    &copy; 2025 UAP Manila Corinthian Chapter &nbsp;|&nbsp; All Rights Reserved
-
+    &copy; 2025 UAP Manila Corinthian Chapter | All Rights Reserved
   </footer>
 
-  <!-- Bootstrap JS Bundle (with Popper) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- External libs: Supabase and bcryptjs must be loaded BEFORE your common.js -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+	
+<!-- Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <!-- Your common.js with login logic -->
-  <script src="js/common.js"></script>
+<!-- bcryptjs (no defer, so window.dcodeIO.bcrypt exists BEFORE common.js) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+
+<!-- main logic -->
+<script defer src="js/common.js"></script>
+
+
+
 </body>
 </html>
