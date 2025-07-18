@@ -147,3 +147,13 @@ if(t){
   addEventListener('scroll',()=> t.style.display = scrollY>100?'block':'none');
   t.onclick = ()=> scrollTo({top:0,behavior:'smooth'});
 }
+
+// ---- LOGOUT ----
+const logoutBtn = document.getElementById('logoutBtn');
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', () => {
+    sessionStorage.removeItem('userData');   // clear our data
+    location.href = 'index.html';            // go home
+  });
+}
+

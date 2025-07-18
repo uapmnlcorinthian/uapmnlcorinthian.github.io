@@ -15,7 +15,13 @@
 
 <!--‑‑ HEADER NAVBAR‑‑-->
 <header class="d-flex justify-content-between align-items-center px-3 py-2 bg-white border-bottom shadow-sm"> <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none"> <img src="images/MCC logo.png" alt="UAP MCC" style="height:48px"> <span class="fw-semibold text-dark d-none d-md-inline">UAP MCC</span> </a>
-  <nav class="d-flex gap-3"> <a href="index.html"        class="nav-link fw-semibold text-dark">Home</a> <a href="activities.html"   class="nav-link fw-semibold text-dark">Activities</a> <a href="login_page.html"   class="nav-link fw-semibold text-primary" aria-current="page">Membership</a> </nav>
+<nav class="d-flex gap-3">
+  <a href="index.html" class="nav-link fw-semibold text-dark">Home</a>
+  <a href="activities.html" class="nav-link fw-semibold text-dark">Activities</a>
+  <a href="account.html" class="nav-link fw-semibold text-primary" aria-current="page">Membership</a>
+  <!-- Logout button -->
+  <button id="logoutBtn" class="btn btn-sm btn-outline-secondary">Logout</button>
+</nav>
 </header>
 
 <!--‑‑ MAIN CONTENT ‑‑-->
@@ -52,7 +58,7 @@
       </div>
     </div>
     <div class="card-footer text-center py-3">
-      <p class="mb-0"><strong>Total Due:</strong> ₱<span id="totalDue"></span></p>
+      <p class="mb-0"><strong>Total Due:</strong><span id="totalDue"></span></p>
     </div>
   </div>
   
@@ -73,7 +79,7 @@
 <table id="paymentsTable" class="table table-sm align-middle text-center mb-0">
   <thead class="table-light">
     <tr>
-      <th scope="col">FISCAL YEAR</th>
+     <th scope="col"><!-- FISCAL YEAR--></th>
       <!-- years inserted here… -->
     </tr>
   </thead>
@@ -119,8 +125,41 @@
 <!-- Back‑to‑top button (required by common.js) -->
 <button id="backToTopBtn" type="button" class="btn btn-primary position-fixed" style="bottom:1.5rem; right:1.5rem; display:none; z-index:1030; border-radius:50%; width:44px; height:44px;"> <i class="fa-solid fa-arrow-up"></i> </button>
 
-<!--‑‑ FOOTER ‑‑-->
-<footer class="bg-primary text-white py-3 text-center mt-auto">© 2025 UAP Manila Corinthian Chapter</footer>
+ <!-- FOOTER -->
+  <footer class="bg-primary text-white py-4">
+    <div class="container text-center">
+      <!-- Partner Logos -->
+      <div class="mb-3">
+        <a href="https://www.united-architects.org/" target="_blank" class="me-3">
+          <img src="images/uap_logo.png" alt="UAP Logo" style="max-width:125px; height:auto;" />
+        </a>
+        <a href="https://www.facebook.com/manilacorinthianchapter" target="_blank">
+          <img src="images/MCC logo.png" alt="MCC Logo" style="max-width:117px; height:auto;" />
+        </a>
+      </div>
+      <!-- Contact Info -->
+      <div class="mb-3">
+        <i class="fa-solid fa-envelope me-2"></i>
+        <a href="mailto:uapmccmembership@gmail.com" class="text-white">uapmccmembership@gmail.com</a>
+        <span class="mx-3">|</span>
+        <i class="fa-solid fa-map-marker-alt me-2"></i>Metro Manila, 1002
+      </div>
+      <!-- Social Icons (using Font Awesome) -->
+      <div class="mb-3">
+        <a href="https://www.facebook.com/manilacorinthianchapter" target="_blank" class="text-white me-3 fs-4">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/uapmanilacorinthian/" target="_blank" class="text-white me-3 fs-4">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/channel/UCj0SstkYSHqjhMcoW5P7DSQ" target="_blank" class="text-white fs-4">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      <hr class="border-light" />
+      <div class="small">&copy; 2025 UAP Manila Corinthian Chapter | All Rights Reserved</div>
+    </div>
+  </footer>
 
 <!-- scripts --> 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script> 

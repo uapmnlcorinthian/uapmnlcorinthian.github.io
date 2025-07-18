@@ -303,3 +303,6 @@ body, html {
   outline-offset: 2px;
   border-radius: 0.25rem;
 }
+footer a {
+  text-decoration: none;
+}
