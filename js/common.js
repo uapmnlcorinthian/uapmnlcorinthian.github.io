@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Logout handlers
   function logout() {
     sessionStorage.removeItem('userData');
-    location.href = '/mcc/index/';
+    location.href = '/mcc/';
   }
   ['btnLogoutFooter', 'btnLogoutNav'].forEach(id => {
     document.getElementById(id)?.addEventListener('click', logout);

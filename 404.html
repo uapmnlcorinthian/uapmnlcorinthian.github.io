@@ -5,89 +5,452 @@ description: "This page is under construction or cannot be found."
 permalink: /404.html
 ---
 
-<main class="d-flex flex-column justify-content-center align-items-center text-center vh-100 px-3">
-  <h1 class="display-4 fw-bold mb-3">Oops! Page Not Found</h1>
-  <p class="lead text-muted mb-4">
-    Much like an unapproved blueprint, this page hasn’t made it past the drawing board yet.<br>
-    While we fix it, enjoy clearing the construction site in our Minesweeper game!
+<!-- FontAwesome CSS for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pZYz9Gtxp6zgjrtdYC7kqXuPTtKfUlpzh9iG6lH6Yf4tF75VoLC0TV00vHy1M0bH1P4fwvqqIyuLzsnXzoT9Ww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  #game-container {
+  position: relative;
+  width: 90vw;
+  max-width: 480px;
+  height: 640px;
+
+  /* Background with smaller height */
+  background-image: url('images/skyline.svg');
+  background-repeat: repeat-x;
+  background-position: 0 bottom;
+  background-size: auto 60%; /* 60% of container height */
+
+  /* Use a lighter overlay with CSS gradient for less darkness */
+  background-blend-mode: lighten;
+  background-color: rgba(255, 255, 255, 0.5); /* light overlay */
+
+  animation: scrollBackground 30s linear infinite;
+
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  user-select: none;
+}
+
+@keyframes scrollBackground {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -1200px; /* match SVG width */
+  }
+}
+
+  #bird {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%);
+    user-select: none;
+    pointer-events: none;
+    transition: transform 0.1s ease;
+    filter: drop-shadow(2px 4px 2px rgba(0,0,0,0.4));
+  }
+  .pipe {
+    position: absolute;
+    border-radius: 5px;
+    user-select: none;
+    border: 3px solid #004d00;
+  }
+  #pauseResumeBtn {
+    min-width: 90px;
+  }
+  #pauseOverlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.35);
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 700;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none;
+  }
+</style>
+
+<main class="d-flex flex-column justify-content-center align-items-center text-center vh-100 px-3" role="main">
+  <h1 class="display-4 fw-bold mb-2">Oops! Page Not Found</h1>
+  <p class="lead fst-italic text-muted mb-3" style="max-width: 480px; font-weight: 500;">
+    "Just like an architect overcomes design challenges to build lasting structures, every flap through these obstacles is a step toward conquering challenges and reaching new heights."
   </p>
 
-  <a href="{{ site.baseurl }}/" class="btn btn-primary btn-lg mb-4" aria-label="Go back to homepage">🏠 Return Home</a>
+  <a href="{{ site.baseurl }}/" class="btn btn-primary btn-lg mb-3" aria-label="Go back to homepage">🏠 Return Home</a>
 
-  <div id="controls" class="d-flex flex-wrap justify-content-center gap-3 mb-3" role="region" aria-label="Game controls">
-    <label for="size-select" class="form-label mb-0">Grid Size:</label>
-    <select id="size-select" class="form-select w-auto" aria-describedby="size-desc">
-      <option value="10">Small (10×10)</option>
-      <option value="15">Medium (15×15)</option>
-      <option value="20" selected>Large (20×20)</option>
-    </select>
-    <span id="size-desc" class="visually-hidden">Choose Minesweeper grid size</span>
-    <button id="reset-btn" class="btn btn-outline-primary" type="button" aria-label="Reset game">Reset Game</button>
+  <div id="scoreboard" class="mb-2" aria-live="polite" aria-atomic="true" role="region" style="font-weight:600; font-size:1.1rem;">
+    Last Score: <span id="lastScore">0</span> | Score: <span id="score">0</span> | High Score: <span id="highscore">0</span>
   </div>
 
-  <div id="scoreboard" class="mb-3" aria-live="polite" aria-atomic="true">
-    Score: <span id="score">0</span> | High Score: <span id="highscore">0</span>
+  <div class="d-flex justify-content-center mb-3">
+    <button id="pauseResumeBtn" class="btn btn-outline-primary btn-sm" aria-pressed="false" aria-label="Pause game">
+      <i class="fa-solid fa-pause"></i> Pause
+    </button>
   </div>
 
-  <div id="game-container" class="mx-auto" role="grid" aria-label="Minesweeper grid" style="max-width:640px; aspect-ratio:1;"></div>
-  <div id="explosion" aria-hidden="true"></div>
+  <div id="game-container" role="application" aria-label="Infinite Flappy Bird style game with MCC logo as bird" tabindex="0" aria-live="polite" aria-relevant="additions removals">
+    <img id="bird" src="{{ site.baseurl }}/images/MCC logo.png" alt="MCC Logo Bird" aria-hidden="true" />
+    <div id="pauseOverlay" role="alert" aria-live="assertive">Paused</div>
+  </div>
 </main>
 
-{% include scripts.html %}
-{% comment %}
-<!--
-  Project: UAP Manila Corinthian Chapter Website
-  Author: ArZ Miranda
-  Date Created: 2025-07-19
-  Last Modified: 2025-07-19
-  Version: 1.0.0
+<script>
+(() => {
+  const gameContainer = document.getElementById('game-container');
+  const bird = document.getElementById('bird');
+  const scoreEl = document.getElementById('score');
+  const lastScoreEl = document.getElementById('lastScore');
+  const highScoreEl = document.getElementById('highscore');
+  const pauseOverlay = document.getElementById('pauseOverlay');
+  const pauseResumeBtn = document.getElementById('pauseResumeBtn');
 
-  Description:
-    This script powers the interactive features of the UAP Manila Corinthian Chapter (MCC) website.
-    It enables members to securely log in and view their personalized account information,
-    including membership status, payment history, and contact details.
-    The script also enhances the user experience by providing convenient tools such as password visibility toggling
-    and easy options to save or print membership data.
-    Data shown is dynamically updated from the MCC membership database to ensure accuracy and relevance.
+  const pipeColors = [
+  '#FF0000', // Red
+  '#FF4500', // Orange Red
+  '#FF6347', // Tomato
+  '#FF7F50', // Coral
+  '#FF8C00', // Dark Orange
+  '#FFA500', // Orange
+  '#FFD700', // Gold
+  '#FFFF00', // Yellow
+  '#FFFFE0', // Light Yellow
+  '#ADFF2F', // Green Yellow
+  '#7FFF00', // Chartreuse
+  '#32CD32', // Lime Green
+  '#008000', // Green
+  '#006400', // Dark Green
+  '#00FA9A', // Medium Spring Green
+  '#00FF7F', // Spring Green
+  '#40E0D0', // Turquoise
+  '#48D1CC', // Medium Turquoise
+  '#00CED1', // Dark Turquoise
+  '#00BFFF', // Deep Sky Blue
+  '#1E90FF', // Dodger Blue
+  '#4169E1', // Royal Blue
+  '#0000FF', // Blue
+  '#00008B', // Dark Blue
+  '#8A2BE2', // Blue Violet
+  '#9400D3', // Dark Violet
+  '#9932CC', // Dark Orchid
+  '#BA55D3', // Medium Orchid
+  '#C71585', // Medium Violet Red
+  '#FF00FF', // Magenta
+  '#FF69B4', // Hot Pink
+  '#FF1493', // Deep Pink
+  '#DB7093', // Pale Violet Red
+  '#FFC0CB'  // Pink
+];
+const gravityBase = 0.35;
+  const flapBase = -5.5;
+  const pipeSpeedBase = 1.5;
+  const pipeGapBase = 150;
+  const pipeWidth = 50;
+  const pipeIntervalBase = 2000;
 
-  Usage:
-    - This script expects specific DOM elements present on the page:
-      - Login page: #loginForm, username and password inputs, toggle password button.
-      - Account page: Elements with IDs such as #cardName, #statusBadge, #totalDue,
-        payment tables (#paymentsTable), and toggle-sensitive buttons.
-    - It relies on Bootstrap 5 for styling and interactivity,
-      FontAwesome 6 for icons,
-      and Supabase JS SDK v2 for backend database interactions.
-    - User session data is stored in sessionStorage under 'userData' key.
-    - Account info is auto-populated on page load if valid session data exists.
+  function getGameWidth() {
+    const vw = window.innerWidth * 0.9;
+    return Math.min(480, vw);
+  }
+  function getGameHeight() {
+    return getGameWidth() * 4 / 3;
+  }
+  function setGameSize() {
+    const w = getGameWidth();
+    const h = getGameHeight();
+    gameContainer.style.width = w + 'px';
+    gameContainer.style.height = h + 'px';
+  }
 
-  Dependencies:
-    - Supabase JavaScript SDK v2 (https://supabase.com/docs/reference/javascript/installing)
-    - Bootstrap 5 CSS & JS (https://getbootstrap.com/)
-    - FontAwesome 6 Icons (https://fontawesome.com/)
+  let gravity, flapStrength, pipeSpeed, pipeGap, pipeInterval;
+  let birdY, birdVelocity;
+  let score = 0, lastScore = 0, highScore = 0;
+  let pipes = [];
+  let gameRunning = false;
+  let pipeTimer = null;
+  let animationFrameId = null;
 
-  Change Log:
-    2025-07-19 - v1.0.0 - Initial implementation with login, session handling, account rendering, and usability features.
+  // Setup audio
+  const audioFlap = new Audio("https://actions.google.com/sounds/v1/animals/bird_flapping_wings.ogg");
+  const audioScore = new Audio("https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg");
+  const audioGameOver = new Audio("https://actions.google.com/sounds/v1/cartoon/metal_clank.ogg");
 
-  Notes:
-    - Ensure that the <body> tag on the account page includes the 'account-info' class to trigger account initialization.
-    - Sensitive member data such as PRC License, Email, and Contact Number are masked by default and toggleable for user convenience.
-    - Payment data columns for different years are dynamically retrieved from Supabase for future-proofing.
-    - Right-click and keyboard shortcut blocking have been disabled to improve user experience.
+  function createPipe() {
+    const gapTop = Math.random() * (gameContainer.clientHeight - pipeGap - 80) + 40;
+    const pipeTop = document.createElement('div');
+    const pipeBottom = document.createElement('div');
+    const color = pipeColors[Math.floor(Math.random() * pipeColors.length)];
 
-  Contact:
-    UAP Manila Corinthian Chapter
-    Email: uapmccmembership@gmail.com
-    Website: https://manilacorinthianchapter.github.io/mcc/
+    [pipeTop, pipeBottom].forEach(pipe => {
+      pipe.className = 'pipe';
+      pipe.style.width = pipeWidth + 'px';
+      pipe.style.left = gameContainer.clientWidth + 'px';
+      pipe.style.backgroundColor = color;
+      pipe.style.borderRadius = '5px';
+      pipe.style.userSelect = 'none';
+      pipe.style.position = 'absolute';
+      pipe.style.border = '3px solid #004d00';
+    });
 
-  License:
-    Proprietary - For internal use by UAP MCC only
- 
-  __  __  _____ _____   ___   ___ ___  _____            _____   ______
- |  \/  |/ ____/ ____| |__ \ / _ \__ \| ____|     /\   |  __ \ |___  /
- | \  / | |   | |         ) | | | | ) | |__      /  \  | |__) |   / / 
- | |\/| | |   | |        / /| | | |/ /|___ \    / /\ \ |  _  /   / /  
- | |  | | |___| |____   / /_| |_| / /_ ___) |  / ____ \| | \ \  / /__ 
- |_|  |_|\_____\_____| |____|\___/____|____/  /_/    \_\_|  \_\/_____|
- -->    
-{% endcomment %}
+    pipeTop.style.height = gapTop + 'px';
+    pipeTop.style.top = '0';
+
+    pipeBottom.style.height = (gameContainer.clientHeight - gapTop - pipeGap) + 'px';
+    pipeBottom.style.top = (gapTop + pipeGap) + 'px';
+
+    gameContainer.appendChild(pipeTop);
+    gameContainer.appendChild(pipeBottom);
+
+    pipes.push({ top: pipeTop, bottom: pipeBottom, x: gameContainer.clientWidth, passed: false });
+  }
+
+  function updatePipes() {
+    pipes.forEach((pipe, i) => {
+      pipe.x -= pipeSpeed;
+      pipe.top.style.left = pipe.x + 'px';
+      pipe.bottom.style.left = pipe.x + 'px';
+
+      if (!pipe.passed && pipe.x + pipeWidth < bird.offsetLeft) {
+        score++;
+        scoreEl.textContent = score;
+        audioScore.play();
+        pipe.passed = true;
+
+        if (score % 5 === 0) {
+          pipeSpeed += 0.15;
+          pipeGap = Math.max(110, pipeGap - 5);
+          pipeInterval = Math.max(1200, pipeInterval - 100);
+          clearInterval(pipeTimer);
+          pipeTimer = setInterval(createPipe, pipeInterval);
+        }
+      }
+
+      if (pipe.x + pipeWidth < 0) {
+        gameContainer.removeChild(pipe.top);
+        gameContainer.removeChild(pipe.bottom);
+        pipes.splice(i, 1);
+      }
+    });
+  }
+
+  function checkCollision() {
+    const birdRect = bird.getBoundingClientRect();
+
+    if (birdY < 0 || birdY + bird.clientHeight > gameContainer.clientHeight) return true;
+
+    for (const pipe of pipes) {
+      const topRect = pipe.top.getBoundingClientRect();
+      const bottomRect = pipe.bottom.getBoundingClientRect();
+
+      if (birdRect.right > topRect.left && birdRect.left < topRect.right) {
+        if (birdRect.top < topRect.bottom || birdRect.bottom > bottomRect.top) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  function resetGame() {
+    birdY = gameContainer.clientHeight / 2;
+    birdVelocity = 0;
+    lastScore = score;
+    lastScoreEl.textContent = lastScore;
+    score = 0;
+    scoreEl.textContent = score;
+    pipeSpeed = pipeSpeedBase;
+    pipeGap = pipeGapBase;
+    pipeInterval = pipeIntervalBase;
+
+    pipes.forEach(pipe => {
+      gameContainer.removeChild(pipe.top);
+      gameContainer.removeChild(pipe.bottom);
+    });
+    pipes = [];
+
+    if (pipeTimer) clearInterval(pipeTimer);
+    pipeTimer = setInterval(createPipe, pipeInterval);
+
+    if (!gameRunning) {
+      gameRunning = true;
+      pauseOverlay.style.display = 'none';
+      pauseResumeBtn.setAttribute('aria-pressed', 'false');
+      pauseResumeBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
+      pauseResumeBtn.setAttribute('aria-label', 'Pause game');
+      gameLoop();
+    }
+  }
+
+  function gameOver() {
+    gameRunning = false;
+    audioGameOver.play();
+    if (score > highScore) {
+      highScore = score;
+      highScoreEl.textContent = highScore;
+    }
+
+    pauseOverlay.textContent = `Game Over! Your score: ${score}.`;
+    pauseOverlay.style.display = 'flex';
+
+    // Show modal
+    showGameOverPrompt();
+
+    pauseResumeBtn.disabled = true;
+  }
+
+  function showGameOverPrompt() {
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '50%';
+    modal.style.left = '50%';
+    modal.style.transform = 'translate(-50%, -50%)';
+    modal.style.background = 'rgba(0,0,0,0.85)';
+    modal.style.color = '#fff';
+    modal.style.padding = '1.5rem 2rem';
+    modal.style.borderRadius = '12px';
+    modal.style.zIndex = '1000';
+    modal.style.textAlign = 'center';
+    modal.style.userSelect = 'none';
+
+    const message = document.createElement('p');
+    message.textContent = `Game Over! Your score: ${score}`;
+    message.style.marginBottom = '1rem';
+    message.style.fontSize = '1.25rem';
+
+    const btnOk = document.createElement('button');
+    btnOk.textContent = 'OK';
+    btnOk.className = 'btn btn-primary btn-lg';
+    btnOk.style.minWidth = '100px';
+
+    btnOk.onclick = () => {
+      document.body.removeChild(modal);
+      pauseResumeBtn.disabled = false;
+      resetGame();
+    };
+
+    modal.appendChild(message);
+    modal.appendChild(btnOk);
+    document.body.appendChild(modal);
+
+    function resumeHandler(e) {
+      if (e.type === 'click' || (e.type === 'keydown' && (e.code === 'Space' || e.key === 'Enter'))) {
+        e.preventDefault();
+        btnOk.click();
+      }
+    }
+
+    document.addEventListener('keydown', resumeHandler);
+    modal.addEventListener('click', resumeHandler);
+
+    btnOk.addEventListener('click', () => {
+      document.removeEventListener('keydown', resumeHandler);
+      modal.removeEventListener('click', resumeHandler);
+    });
+  }
+
+  function gameLoop() {
+    if (!gameRunning) return;
+    birdVelocity += gravity;
+    birdY += birdVelocity;
+
+    if (birdY < 0) birdY = 0;
+    if (birdY + bird.clientHeight > gameContainer.clientHeight) birdY = gameContainer.clientHeight - bird.clientHeight;
+
+    bird.style.top = birdY + 'px';
+
+    updatePipes();
+
+    if (checkCollision()) {
+      gameOver();
+      return;
+    }
+
+    animationFrameId = requestAnimationFrame(gameLoop);
+  }
+
+  function flap() {
+    birdVelocity = flapStrength;
+    bird.style.transform = 'translateY(-50%) rotate(-25deg)';
+    setTimeout(() => {
+      bird.style.transform = 'translateY(-50%) rotate(0deg)';
+    }, 150);
+    audioFlap.play();
+  }
+
+  pauseResumeBtn.addEventListener('click', () => {
+    if (gameRunning) {
+      gameRunning = false;
+      clearInterval(pipeTimer);
+      pauseOverlay.textContent = 'Paused';
+      pauseOverlay.style.display = 'flex';
+      pauseResumeBtn.setAttribute('aria-pressed', 'true');
+      pauseResumeBtn.innerHTML = '<i class="fa-solid fa-play"></i> Resume';
+      pauseResumeBtn.setAttribute('aria-label', 'Resume game');
+    } else {
+      gameRunning = true;
+      pipeTimer = setInterval(createPipe, pipeInterval);
+      pauseOverlay.style.display = 'none';
+      pauseResumeBtn.setAttribute('aria-pressed', 'false');
+      pauseResumeBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
+      pauseResumeBtn.setAttribute('aria-label', 'Pause game');
+      gameLoop();
+    }
+  });
+
+  window.addEventListener('keydown', e => {
+    if ((e.code === 'Space' || e.code === 'ArrowUp') && gameRunning) {
+      e.preventDefault();
+      flap();
+    } else if ((e.code === 'Space' || e.code === 'Enter') && !gameRunning) {
+      e.preventDefault();
+      const modalOkBtn = document.querySelector('button.btn-primary');
+      if (modalOkBtn) modalOkBtn.click();
+    }
+  });
+
+  gameContainer.addEventListener('click', () => {
+    if (gameRunning) {
+      flap();
+    } else {
+      if (!pauseResumeBtn.disabled && pauseResumeBtn.getAttribute('aria-pressed') === 'true') {
+        pauseResumeBtn.click();
+      }
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    setGameSize();
+  });
+
+  function setGameSize() {
+    const w = getGameWidth();
+    const h = getGameHeight();
+    gameContainer.style.width = w + 'px';
+    gameContainer.style.height = h + 'px';
+  }
+  function getGameWidth() {
+    const vw = window.innerWidth * 0.9;
+    return Math.min(480, vw);
+  }
+  function getGameHeight() {
+    return getGameWidth() * 4 / 3;
+  }
+
+  setGameSize();
+
+  gravity = gravityBase * (gameContainer.clientHeight / 480);
+  flapStrength = flapBase * (gameContainer.clientHeight / 480);
+  pipeSpeed = pipeSpeedBase * (gameContainer.clientWidth / 320);
+  pipeGap = pipeGapBase * (gameContainer.clientHeight / 480);
+  pipeInterval = pipeIntervalBase;
+
+  resetGame();
+})();
+</script>
