@@ -1,0 +1,138 @@
+---
+layout: default
+title: Member Login
+permalink: /login2/
+description: "UAP Manila Corinthian Chapter – Member login page."
+keywords: "Architecture, UAP, Manila, Member Login"
+---
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+  html, body {
+    height: 100%;
+    margin: 0; padding: 0;
+    background: #f8f9fa;
+  }
+
+  main#mainContent {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    box-sizing: border-box;
+    display: flex;
+    gap: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+</style>
+
+<main id="mainContent" role="main">
+
+  <!-- Instructions Section -->
+  <section class="instructions" aria-label="Instructions on how to become a member">
+    <h2 class="mb-3 fw-bold">How to Become a Member</h2>
+    <ol style="line-height:1.6; font-size:1.05rem;">
+      <li>Visit our <a href="{{ site.baseurl }}/signup/" class="fw-semibold text-decoration-none">Sign Up page</a> and complete the application form.</li>
+      <li>Submit required documents such as a valid ID and proof of professional affiliation.</li>
+      <li>Pay the membership fee through our secure payment gateway.</li>
+      <li>Await confirmation and approval from the UAP Manila Corinthian Chapter.</li>
+      <li>Receive your membership credentials and enjoy member benefits.</li>
+    </ol>
+    <p class="mt-4 fst-italic">Questions? Email us at <a href="mailto:support@uapmcc.ph" class="text-decoration-none">support@uapmcc.ph</a></p>
+  </section>
+
+  <!-- Login Card Section -->
+  <section class="login-card" aria-label="Member login form">
+    <header class="mb-4 text-center">
+      <img src="{{ site.baseurl }}/images/MCC logo.png" alt="UAP Manila Corinthian Chapter Logo" style="height:50px" />
+    </header>
+
+    <h1 class="h4 mb-4 text-center">Member Login</h1>
+
+    <form id="loginForm" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required autocomplete="username" aria-describedby="usernameHelp" />
+        <div id="usernameHelp" class="form-text">Your membership username.</div>
+        <div class="invalid-feedback">Please enter your username.</div>
+      </div>
+
+      <div class="mb-3 position-relative">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required autocomplete="current-password" aria-describedby="passwordHelp" />
+        <button type="button" id="togglePassword" class="toggle-password-btn position-absolute top-50 end-0 translate-middle-y me-3" aria-label="Show password" aria-pressed="false">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+        <div id="passwordHelp" class="form-text">Keep your password secure.</div>
+        <div class="invalid-feedback">Please enter your password.</div>
+      </div>
+
+      <button type="submit" class="btn btn-warning w-100 text-primary fw-semibold">Login</button>
+    </form>
+
+    <p class="signup-text mt-3 text-center">
+      Not a member yet? <a href="{{ site.baseurl }}/signup/">Sign up here</a>
+    </p>
+  </section>
+  <!-- Toggle Button for Small Screens -->
+  <button id="toggleViewBtn" aria-expanded="false" aria-controls="loginForm" aria-label="Show login form"
+    class="btn btn-warning w-100 text-primary fw-semibold mt-3">
+    Login here
+  </button>
+
+</main>
+
+<script>
+  (function() {
+    const toggleBtn = document.getElementById('toggleViewBtn');
+    const loginCard = document.querySelector('.login-card');
+    const instructions = document.querySelector('.instructions');
+
+    function showLogin() {
+      loginCard.style.display = 'block';
+      instructions.style.display = 'none';
+      toggleBtn.textContent = 'Back to instructions';
+      toggleBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function showInstructions() {
+      loginCard.style.display = 'none';
+      instructions.style.display = 'block';
+      toggleBtn.textContent = 'Login here';
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const loginVisible = loginCard.style.display === 'block';
+      if (loginVisible) {
+        showInstructions();
+      } else {
+        showLogin();
+      }
+    });
+
+    function handleResize() {
+      if (window.innerWidth >= 992) {
+        // On large screens show both
+        loginCard.style.display = 'block';
+        instructions.style.display = 'block';
+        toggleBtn.style.display = 'none';
+      } else {
+        // On small screens, default to instructions visible, login hidden
+        if (!loginCard.style.display || loginCard.style.display === 'none') {
+          showInstructions();
+          toggleBtn.style.display = 'block';
+        }
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    // Initialize on DOM load
+    window.addEventListener('DOMContentLoaded', () => {
+      handleResize();
+    });
+  })();
+</script>

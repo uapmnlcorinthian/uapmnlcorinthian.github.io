@@ -320,7 +320,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: auto;
   padding: 1rem;
 }
 
@@ -332,6 +332,7 @@ body, html {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   width: 100%;
   max-width: 400px;
+  height: auto;
 }
 
 /* Password input wrapper for positioning toggle */
@@ -431,3 +432,276 @@ footer a {
     gap: 0.5rem;
   }
 }
+
+/* =========================
+   Navbar Responsive Toggle
+   ========================= */
+
+/* Hide burger toggle by default */
+.navbar-toggler-custom {
+  display: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Show burger toggle below 990px */
+@media (max-width: 989px) {
+  .navbar-toggler-custom {
+    display: inline-flex;
+  }
+
+  /* Hide desktop menu below 990px */
+  .desktop-menu {
+    display: none !important;
+  }
+}
+
+/* Show desktop menu on 990px and wider */
+@media (min-width: 990px) {
+  .desktop-menu {
+    display: flex !important;
+  }
+
+  .navbar-toggler-custom {
+    display: none !important;
+  }
+}
+
+/* Transparent hamburger button styling */
+.navbar-toggler-custom .navbar-toggler-icon {
+  filter: invert(20%) sepia(0%) saturate(0%) hue-rotate(200deg) brightness(90%) contrast(90%);
+}
+
+/* =======================
+   Dropdown Menu Overlay
+   ======================= */
+
+.navbar .dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  z-index: 1050;
+  margin: 0 !important;
+  border: none !important;            /* Remove border/frame */
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
+  background-color: var(--bs-body-bg) !important; /* match body bg */
+  border-radius: 0.25rem !important;
+  padding: 0.25rem 0; /* Reduce vertical padding for compactness */
+}
+
+/* Tighten dropdown items spacing */
+.navbar .dropdown-menu .dropdown-item {
+  padding: 0.3rem 1.25rem; /* less vertical padding */
+  font-size: 0.9rem;       /* optional smaller text */
+}
+
+/* Reduce divider margins */
+.navbar .dropdown-menu .dropdown-divider {
+  margin: 0.3rem 0;
+}
+
+/* Show dropdown on toggle */
+.navbar .nav-item.dropdown.show > .dropdown-menu {
+  display: block;
+}
+
+/* Prevent navbar height change */
+.navbar {
+  position: relative;
+  overflow: visible;
+  z-index: 1030;
+}
+
+/* ======================
+   Offcanvas Sidebar Styles
+   ====================== */
+
+/* Ensure offcanvas covers from right side */
+.offcanvas.offcanvas-end {
+  width: 280px;
+  background-color: #fff;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+  z-index: 1060;
+}
+
+/* Offcanvas header styling */
+.offcanvas-header {
+  border-bottom: 1px solid #d0d7db;
+  padding: 1rem 1rem 0.75rem;
+}
+
+/* Offcanvas title */
+.offcanvas-title {
+  font-weight: 600;
+  color: var(--bs-primary);
+}
+
+/* Offcanvas close button styling */
+.offcanvas-header .btn-close {
+  filter: invert(15%) sepia(10%) saturate(750%) hue-rotate(190deg) brightness(75%) contrast(80%);
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.offcanvas-header .btn-close:hover,
+.offcanvas-header .btn-close:focus {
+  opacity: 1;
+  outline: none;
+}
+
+/* Offcanvas body padding */
+.offcanvas-body {
+  padding: 1rem;
+}
+
+/* Offcanvas nav links */
+.offcanvas-body .nav-link {
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 0.4rem 0;
+}
+
+.offcanvas-body .nav-link:hover,
+.offcanvas-body .nav-link:focus {
+  color: var(--bs-secondary);
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Offcanvas dropdown inside offcanvas */
+.offcanvas-body .dropdown-menu {
+  position: static !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+  margin: 0.25rem 0 0 0 !important;
+}
+
+/* Dropdown divider style inside offcanvas */
+.offcanvas-body .dropdown-divider {
+  border-top: 1px solid #d0d7db;
+  margin: 0.5rem 0;
+}
+
+/* Buttons inside offcanvas full width */
+.offcanvas-body .btn {
+  width: 100%;
+}
+
+/* ======================
+   Dropdown toggle no frame
+   ====================== */
+
+/* Remove border and shadow from dropdown toggles on desktop */
+.navbar .nav-link.dropdown-toggle {
+  border: none;
+  box-shadow: none;
+  padding-right: 0.3rem; /* keep caret visible */
+}
+
+/* Remove outline on focus, use custom */
+.navbar .nav-link.dropdown-toggle:focus {
+  outline: 2px solid var(--bs-secondary);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* ====================
+   Additional Tweaks
+   ==================== */
+
+/* Ensure dropdown caret is visible and consistent */
+.navbar .nav-link.dropdown-toggle::after {
+  margin-left: 0.2rem;
+  vertical-align: baseline;
+  border-top-color: var(--text-primary);
+}
+
+/* Hover/focus for desktop nav links */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--bs-secondary);
+  text-decoration: underline;
+  outline: none;
+  cursor: pointer;
+}
+/* Remove gap below About Us toggle in offcanvas menu */
+.offcanvas-body .nav-item.dropdown > .dropdown-menu {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove padding/margin from the About Us toggle itself */
+.offcanvas-body .nav-item.dropdown > .nav-link.dropdown-toggle {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Optional: tighten spacing of dropdown items */
+.offcanvas-body .dropdown-menu .dropdown-item {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+/* Member Login Page Styles */
+
+
+.login-card,
+.instructions {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  background: #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.instructions {
+  background-color: #fff3cd;
+  border: 2px solid #ffc107;
+  color: #856404;
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+}
+
+/* Responsive stacking and toggle button for small screens */
+@media (max-width: 991.98px) {
+  main#mainContent {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .login-card {
+    display: none;
+    margin-bottom: 1rem;
+  }
+
+  .instructions {
+    margin-bottom: 1rem;
+  }
+
+  #toggleViewBtn {
+    display: block;
+    position: static;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 1rem;
+    box-shadow: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #toggleViewBtn:hover {
+    background-color: #e0a800;
+  }
+}
+
+/* Hide toggle button on larger screens */
+@media (min-width: 992px) {
+  #toggleViewBtn {
+    display: none;
+  }
+}
+
