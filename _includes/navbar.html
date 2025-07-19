@@ -1,6 +1,15 @@
 <!-- _includes/navbar.html -->
-<nav aria-label="Primary navigation" class="d-flex align-items-center">
+<nav aria-label="Primary navigation" class="d-flex align-items-center gap-3">
   <a href="{{ site.baseurl }}/" class="nav-link d-inline-block px-2">Home</a>
   <a href="{{ site.baseurl }}/activities/" class="nav-link d-inline-block px-2">Activities</a>
   <a href="{{ site.baseurl }}/login/" class="nav-link d-inline-block px-2">Membership</a>
+
+  <!-- Auth buttons hidden by default -->
+  <button id="btnSaveScreenshotNav" class="btn btn-outline-primary btn-sm d-none" title="Save account info as PDF/image" type="button">
+    <i class="fa-solid fa-download"></i> Save Screenshot
+  </button>
+  <button id="btnLogoutNav" class="btn btn-outline-danger btn-sm d-none" title="Logout" type="button">
+    <i class="fa-solid fa-right-from-bracket"></i> Logout
+  </button>
 </nav>
+
