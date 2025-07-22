@@ -7,7 +7,7 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
 ---
 
 <!-- Banner Carousel -->
-<section aria-label="Featured activities and events banner" class="mb-4">
+<section aria-label="Featured activities and events banner" class="mb-4" data-aos="fade-up">
   <div id="homepageBannerCarousel"
        class="carousel slide"
        data-bs-ride="carousel"
@@ -33,7 +33,7 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
           <img src="{{ activity.images[0].url }}"
                class="d-block w-100"
                alt="{{ activity.images[0].alt }}" />
-          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-3 py-2">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-3 py-2 animate__animated animate__fadeInUp">
             <h5>{{ activity.title }}</h5>
             <p>{{ activity.images[0].caption }}</p>
             <p><small>{{ activity.date | date: "%B %-d, %Y" }} | {{ activity.location }}</small></p>
@@ -62,44 +62,40 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
 <main role="main" class="container" id="mainContent">
 
   <!-- Hero -->
-  <section class="hero animate__animated animate__fadeInDown"
-           role="banner"
-           aria-label="Welcome banner for UAP Manila Corinthian Chapter">
+  <section class="hero animate__animated animate__fadeInDown" data-aos="fade-down" role="banner" aria-label="Welcome banner for UAP Manila Corinthian Chapter">
     Be Part of the Premier Architecture Community in Manila
   </section>
 
   <!-- About -->
-  <section aria-labelledby="about-title"
-           class="mb-5 animate__animated animate__fadeInUp">
+  <section aria-labelledby="about-title" class="mb-5" data-aos="fade-up">
     <h2 id="about-title" class="mb-3">About Being a Member</h2>
     <p>Joining the UAP Manila Corinthian Chapter means becoming part of a dynamic community of architectural professionals dedicated to excellence, innovation, and advocacy in the built environment.</p>
     <p>Enjoy exclusive access to industry events, educational programs, and networking opportunities.</p>
-    <div class="ratio ratio-16x9 mb-3"
-         tabindex="0"
-         aria-label="Promotional video about UAP MCC membership">
+    <div class="ratio ratio-16x9 mb-3" tabindex="0" aria-label="Promotional video about UAP MCC membership" data-aos="zoom-in">
       <iframe src="https://www.youtube.com/embed/FzoHIHF_EZA"
               title="Promotional video about UAP MCC membership"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen>
       </iframe>
     </div>
-	<div class="text-center my-5">
-	  <a id="joinBtn"
-		 href="{{ site.baseurl }}/membership.html"
-		 class="btn btn-success btn-lg shadow-lg animate__animated animate__pulse animate__infinite"
-		 role="button"
-		 aria-label="Join the Chapter">
-		<i class="fas fa-paper-plane me-2"></i> Join Our Chapter
-	  </a>
-	</div>
+    <div class="text-center my-5" data-aos="pulse" data-aos-delay="200">
+      <a id="joinBtn"
+         href="{{ site.baseurl }}/membership.html"
+         class="btn btn-success btn-lg shadow-lg animate__animated animate__pulse animate__infinite"
+         role="button"
+         aria-label="Join the Chapter">
+        <i class="fas fa-paper-plane me-2"></i> Join Our Chapter
+      </a>
+    </div>
   </section>
+
   {% include sponsors-footer.html %}
+
   <!-- News -->
-  <section aria-labelledby="news-title"
-           class="mb-5 animate__animated animate__fadeInUp">
+  <section aria-labelledby="news-title" class="mb-5" data-aos="fade-up">
     <h2 id="news-title" class="mb-3">Latest Activities & Announcements</h2>
     {% for post in site.posts limit:4 %}
-      <article class="mb-3">
+      <article class="mb-3 animate__animated animate__fadeInUp" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 100 }}">
         <a href="{{ site.baseurl }}{{ post.url }}"
            class="text-decoration-none text-reset">
           <h3>{{ post.title }}</h3>
@@ -110,11 +106,11 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
   </section>
 
 </main>
+
 <!-- Canvas‑Confetti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
   document.getElementById('joinBtn').addEventListener('click', function(e) {
-    // small delay so we still navigate to the membership page
     confetti({
       particleCount: 100,
       spread: 60,
@@ -126,4 +122,3 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
     e.preventDefault();
   });
 </script>
-

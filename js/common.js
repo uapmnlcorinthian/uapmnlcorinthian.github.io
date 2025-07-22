@@ -148,3 +148,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   const btnShow=$('#btnShowUpdate'),wrap=$('#updateWrapper');
   if(btnShow&&wrap){let init=false; btnShow.addEventListener('click',()=>{ wrap.classList.toggle('d-none'); if(!init&&!wrap.classList.contains('d-none')){ initUpdateForm(); init=true; }}); }
 });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+      duration: 800,   // animation duration in ms
+      once: true       // whether animation should happen only once
+    });
+  });
+  
+  
+  

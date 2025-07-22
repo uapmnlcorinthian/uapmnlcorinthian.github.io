@@ -2,26 +2,56 @@
 <html lang="en" class="h-100">
 <head>
   {% include head.html %}
+  <!-- AOS Animate On Scroll CSS -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    rel="stylesheet"
+  />
 </head>
 <body>
   {% include header.html %}
-  <!-- put this DIV at the very top of <body> -->
-<div id="top"></div>
+
+  <!-- Back-to-top anchor -->
+  <div id="top"></div>
+
   <div id="mainContent" class="container">
     {{ content }}
   </div>
+
   {% include footer.html %}
   {% include scripts.html %}
-  
-<!-- place near the end of <body> -->
-<a id="btnTop" href="#top"
-   class="btn btn-secondary shadow position-fixed bottom-0 end-0 m-3 d-none"
-   style="z-index:1030;" aria-label="Back to top">
-  <i class="fa-solid fa-arrow-up"></i>
-</a>
 
-</body>                                                                  
+  <!-- AOS Animate On Scroll JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({
+        duration: 800,
+        once: true
+      });
+
+      // Back-to-top button behavior
+      const btn = document.getElementById('btnTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          btn.classList.remove('d-none');
+        } else {
+          btn.classList.add('d-none');
+        }
+      });
+    });
+  </script>
+
+  <!-- Back to top button -->
+  <a id="btnTop" href="#top"
+     class="btn btn-secondary shadow position-fixed bottom-0 end-0 m-3 d-none"
+     style="z-index:1030;" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </a>
+
+</body>
 </html>
+
 <!--
   Project: UAP Manila Corinthian Chapter Website
   Author: ArZ Miranda

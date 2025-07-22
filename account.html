@@ -5,20 +5,31 @@ permalink: /account/
 description: "Manage your UAP Manila Corinthian Chapter membership details and payment history."
 keywords: "Architecture, UAP, Manila, Account, Membership"
 ---
+
+<style>
+  /* Rotate collapse icons smoothly */
+  .rotate-icon {
+    transition: transform 0.3s ease;
+  }
+  .btn[aria-expanded="true"] .rotate-icon {
+    transform: rotate(180deg);
+  }
+</style>
+
 <!-- ------------- ACCOUNT PAGE ------------- -->
-<div class="account-info d-flex flex-column min-vh-100">
+<div class="account-info d-flex flex-column min-vh-100 py-4" data-aos="fade-up">
 
   <!-- ▸ DIGITAL CARD -->
-  <div class="card shadow-sm digital-card mx-auto" style="max-width: 400px;">
+  <div class="card shadow-sm digital-card mx-auto mb-5" style="max-width: 400px;" data-aos="fade-right">
     <div class="card-header text-center bg-light">
       <img src="{{ site.baseurl }}/images/MCC logo.png" alt="UAP MCC" class="card-header-logo mb-2" />
-      <div class="card-header-title">UAP Manila Corinthian Chapter</div>
+      <div class="card-header-title fw-semibold">UAP Manila Corinthian Chapter</div>
     </div>
 
     <div class="card-body p-4">
       <h2 id="cardName" class="fw-bold mb-1 text-center">Member Name</h2>
       <p class="text-center mb-3">
-        <span id="statusBadge" class="badge bg-secondary">Status</span>
+        <span id="statusBadge" class="badge bg-secondary" aria-live="polite">Status</span>
       </p>
 
       <div class="row gx-2 gy-1 mb-3 small">
@@ -27,66 +38,87 @@ keywords: "Architecture, UAP, Manila, Account, Membership"
         <div class="col-5 text-end fw-semibold">Position:</div><div class="col-7" id="cardPosition"></div>
       </div>
 
-      <div class="border-top pt-3 small">
+      <hr />
+      <div class="small">
         <!-- PRC -->
         <div class="d-flex align-items-center mb-2">
           <span class="fw-semibold me-1">PRC License:</span>
-          <span id="prcLicense" class="sensitive-text flex-grow-1" tabindex="0">*</span>
-          <button type="button" class="toggle-sensitive-btn ms-2" aria-label="Show PRC">
+          <span id="prcLicense" class="sensitive-text flex-grow-1" tabindex="0" aria-label="PRC license masked">*</span>
+          <button type="button" class="toggle-sensitive-btn btn btn-sm btn-outline-secondary ms-2" aria-label="Toggle PRC">
             <i class="fa-solid fa-eye"></i>
           </button>
         </div>
         <!-- EMAIL -->
         <div class="d-flex align-items-center mb-2">
           <span class="fw-semibold me-1">Email:</span>
-          <span id="email" class="sensitive-text flex-grow-1" tabindex="0">*</span>
-          <button type="button" class="toggle-sensitive-btn ms-2" aria-label="Show Email">
+          <span id="email" class="sensitive-text flex-grow-1" tabindex="0" aria-label="Email masked">*</span>
+          <button type="button" class="toggle-sensitive-btn btn btn-sm btn-outline-secondary ms-2" aria-label="Toggle Email">
             <i class="fa-solid fa-eye"></i>
           </button>
         </div>
         <!-- CONTACT -->
         <div class="d-flex align-items-center">
           <span class="fw-semibold me-1">Contact No.:</span>
-          <span id="contactNo" class="sensitive-text flex-grow-1" tabindex="0">*</span>
-          <button type="button" class="toggle-sensitive-btn ms-2" aria-label="Show Contact">
+          <span id="contactNo" class="sensitive-text flex-grow-1" tabindex="0" aria-label="Contact number masked">*</span>
+          <button type="button" class="toggle-sensitive-btn btn btn-sm btn-outline-secondary ms-2" aria-label="Toggle Contact">
             <i class="fa-solid fa-eye"></i>
           </button>
         </div>
       </div>
     </div>
 
-    <div class="card-footer text-center py-3">
+    <div class="card-footer text-center py-3 bg-light">
       <p class="mb-0"><strong>Total Due:</strong> <span id="totalDue">₱0</span></p>
     </div>
   </div>
   <!-- /DIGITAL CARD -->
 
-  <!-- ▸ PAYMENT HISTORY -->
-  <section class="mt-5 container">
+<!-- ▸ PAYMENT HISTORY -->
+  <section class="container" data-aos="fade-left">
     <div class="d-flex align-items-center justify-content-between mb-2">
       <h2 class="h5 text-primary fw-semibold mb-0">Payment History</h2>
       <button id="paymentsToggleBtn" class="btn btn-sm btn-outline-secondary" type="button"
               data-bs-toggle="collapse" data-bs-target="#paymentsCollapse"
               aria-expanded="true" aria-controls="paymentsCollapse">
-        <i class="fa-solid fa-angle-down"></i>
+        <i class="fa-solid fa-angle-down rotate-icon"></i>
       </button>
     </div>
 
     <div id="paymentsCollapse" class="collapse show">
-      <div id="paymentsWrapper" class="table-responsive">
-        <table id="paymentsTable" class="table table-sm align-middle text-center mb-0">
-          <thead class="table-light"><tr><th scope="col"></th></tr></thead>
-          <tbody class="group-chapter">
+      <div id="paymentsWrapper" class="d-flex">
+
+        <!-- Static Labels Table -->
+        <table class="table table-sm mb-0 flex-shrink-0 me-2" style="width:auto; white-space: nowrap;">
+          <thead class="visually-hidden">
+            <tr><th></th></tr>
+          </thead>
+          <tbody class="group-chapter-labels">
             <tr><th scope="row">Chapter Dues</th></tr>
             <tr><th scope="row">Chapter Penalty</th></tr>
             <tr><th scope="row">Payment Date</th></tr>
           </tbody>
-          <tbody class="group-iapoa">
+          <tbody class="group-iapoa-labels">
             <tr><th scope="row">IAPOA Dues</th></tr>
             <tr><th scope="row">IAPOA Penalty</th></tr>
             <tr><th scope="row">Payment Date</th></tr>
           </tbody>
         </table>
+
+        <!-- Scrollable Data Table -->
+        <div class="flex-grow-1 overflow-auto">
+          <table id="paymentsTable" class="table table-sm align-middle text-center mb-0" style="min-width:600px;">
+            <thead class="table-light">
+              <tr></tr>
+            </thead>
+            <tbody class="group-chapter">
+              <tr></tr><tr></tr><tr></tr>
+            </tbody>
+            <tbody class="group-iapoa">
+              <tr></tr><tr></tr><tr></tr>
+            </tbody>
+          </table>
+        </div>
+
       </div>
     </div>
 
@@ -101,14 +133,14 @@ keywords: "Architecture, UAP, Manila, Account, Membership"
     </div>
   </section>
   <!-- /PAYMENT HISTORY -->
-</div>
 
-<!-- ▸ UPDATE INFO BUTTON -->
-<div class="container text-end mt-4">
-  <button id="btnShowUpdate" class="btn btn-outline-primary btn-sm">
-    <i class="fa-solid fa-pen-to-square me-1"></i> Update Info
-  </button>
-</div>
+  <!-- ▸ UPDATE INFO COLLAPSE -->
+  <div class="container text-end mt-4">
+    <button id="btnShowUpdate" class="btn btn-outline-primary btn-sm" type="button"
+            data-bs-toggle="collapse" data-bs-target="#updateWrapper" aria-expanded="false">
+      <i class="fa-solid fa-pen-to-square me-1"></i> Update Info
+    </button>
+  </div>
 
 <!-- ▸ UPDATE INFO CARD (hidden by default) -->
 <section id="updateWrapper" class="container mt-3 d-none">
