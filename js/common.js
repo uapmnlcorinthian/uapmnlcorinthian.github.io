@@ -155,6 +155,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       once: true       // whether animation should happen only once
     });
   });
+
   
   
   

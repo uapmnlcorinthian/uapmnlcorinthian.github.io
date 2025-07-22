@@ -21,27 +21,6 @@
   {% include footer.html %}
   {% include scripts.html %}
 
-  <!-- AOS Animate On Scroll JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      AOS.init({
-        duration: 800,
-        once: true
-      });
-
-      // Back-to-top button behavior
-      const btn = document.getElementById('btnTop');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          btn.classList.remove('d-none');
-        } else {
-          btn.classList.add('d-none');
-        }
-      });
-    });
-  </script>
-
   <!-- Back to top button -->
   <a id="btnTop" href="#top"
      class="btn btn-secondary shadow position-fixed bottom-0 end-0 m-3 d-none"
