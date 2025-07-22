@@ -5,96 +5,85 @@ title: "Board of Directors"
 description: "Meet the leadership team of UAP Manila Corinthian Chapter — visionary architects committed to excellence."
 keywords: "Architecture, UAP, Board of Directors, Manila Corinthian Chapter, Leadership"
 ---
-<section aria-labelledby="bod-title" class="my-5">
-  <h1 id="bod-title" class="mb-4 text-center animate__animated animate__fadeInDown">
-    Board of Directors
-  </h1>
-  <p class="lead text-center mb-5 animate__animated animate__fadeIn">
-    Visionary professionals steering the chapter toward innovation and impact.
-  </p>
 
-  <!-- Top Level -->
-  <div class="row justify-content-center g-4 mb-4">
-    {% assign boss = site.data.bod | where: 'position', 'Chapter President' %}
-    {% for m in boss %}
-      <div class="col-12 col-md-6">
-        <article class="card border-0 shadow-sm text-center h-100 bod-card opacity-0">
-          <img src="{{ m.image }}" class="card-img-top" alt="Portrait of {{ m.name }}" />
-          <div class="card-body p-3">
-            <h2 class="card-title h5 mb-1">{{ m.name }}</h2>
-            <p class="card-subtitle mb-2 text-muted">{{ m.position }}</p>
+<section aria-labelledby="bod-title" class="py-5 bg-light">
+  <div class="container">
+    <h1 id="bod-title" class="mb-4 text-center display-6" data-aos="fade-down" data-aos-duration="800">
+      Board of Directors
+    </h1>
+    <p class="lead text-center mb-5" data-aos="fade-up" data-aos-delay="200">
+      Visionary professionals steering the chapter toward innovation and impact.
+    </p>
+
+    <!-- Chapter President -->
+    <div class="row justify-content-center mb-5">
+      {% assign pres = site.data.bod | where: 'position', 'Chapter President' | first %}
+      <div class="col-12 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+        <div class="card border-0 shadow-lg text-center h-100 hover-shadow">
+          <img src="{{ pres.image }}" class="card-img-top rounded-top" alt="Portrait of {{ pres.name }}" loading="lazy" />
+          <div class="card-body">
+            <h2 class="h5 mb-1">{{ pres.name }}</h2>
+            <p class="text-muted mb-0">{{ pres.position }}</p>
           </div>
-        </article>
-      </div>
-    {% endfor %}
-  </div>
-
-  <!-- Second Level -->
-  {% assign second = "Vice President for Program & Development|Vice President for Operation|Secretary|Treasurer|Auditor|Protocol Director" | split: "|" %}
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-4">
-    {% for p in second %}
-      {% assign mem = site.data.bod | where: 'position', p | first %}
-      {% if mem %}
-        <div class="col d-flex">
-          <article class="card border-0 shadow-sm flex-fill text-center h-100 bod-card opacity-0">
-            <img src="{{ mem.image }}" class="card-img-top" alt="Portrait of {{ mem.name }}" />
-            <div class="card-body p-3">
-              <h3 class="card-title h6 mb-1">{{ mem.name }}</h3>
-              <p class="card-subtitle mb-2 text-muted small">{{ mem.position }}</p>
-            </div>
-          </article>
         </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-
-  <!-- Directors -->
-  {% assign directors = site.data.bod
-     | where_exp: "item", "item.position contains 'Director'"
-     | where_exp: "item", "item.position != 'Protocol Director'" %}
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-    {% for m in directors %}
-      <div class="col d-flex">
-        <article class="card border-0 shadow-sm flex-fill text-center h-100 bod-card opacity-0">
-          <img src="{{ m.image }}" class="card-img-top" alt="Portrait of {{ m.name }}" />
-          <div class="card-body p-3">
-            <h3 class="card-title h6 mb-1">{{ m.name }}</h3>
-            <p class="card-subtitle mb-2 text-muted small">{{ m.position }}</p>
-          </div>
-        </article>
       </div>
-    {% endfor %}
-  </div>
+    </div>
 
-  <!-- Immediate Past President -->
-  <div class="row justify-content-center g-4 mt-4">
-    {% assign ipp = site.data.bod | where: 'position', 'Immediate Chapter President' %}
-    {% for m in ipp %}
-      <div class="col-12 col-md-6">
-        <article class="card border-0 shadow-sm text-center h-100 bod-card opacity-0">
-          <img src="{{ m.image }}" class="card-img-top" alt="Portrait of {{ m.name }}" />
-          <div class="card-body p-3">
-            <h3 class="card-title h6 mb-1">{{ m.name }}</h3>
-            <p class="card-subtitle mb-2 text-muted">{{ m.position }}</p>
+    <!-- Executive Team -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5">
+      {% assign exec_positions = "Vice President for Program & Development|Vice President for Operation|Secretary|Treasurer|Auditor|Protocol Director" | split: "|" %}
+      {% for pos in exec_positions %}
+        {% assign exec = site.data.bod | where: 'position', pos | first %}
+        {% if exec %}
+          <div class="col" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 100 }}">
+            <div class="card border-0 shadow-sm text-center h-100 hover-shadow">
+              <img src="{{ exec.image }}" class="card-img-top rounded-top" alt="Portrait of {{ exec.name }}" loading="lazy" />
+              <div class="card-body">
+                <h3 class="h6 mb-1">{{ exec.name }}</h3>
+                <p class="text-muted small mb-0">{{ exec.position }}</p>
+              </div>
+            </div>
           </div>
-        </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Directors Grid -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+      {% assign directors = site.data.bod
+         | where_exp: "item", "item.position contains 'Director'"
+         | where_exp: "item", "item.position != 'Protocol Director'" %}
+      {% for d in directors %}
+        <div class="col" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 80 }}">
+          <div class="card border-0 shadow-sm text-center h-100 hover-shadow">
+            <img src="{{ d.image }}" class="card-img-top rounded-top" alt="Portrait of {{ d.name }}" loading="lazy" />
+            <div class="card-body">
+              <h4 class="h6 mb-1">{{ d.name }}</h4>
+              <p class="text-muted small mb-0">{{ d.position }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Immediate Past President -->
+    {% assign ipp = site.data.bod | where: 'position', 'Immediate Chapter President' | first %}
+    {% if ipp %}
+      <div class="row justify-content-center mt-5" data-aos="zoom-in" data-aos-delay="300">
+        <div class="col-12 col-md-6">
+          <div class="card border-0 shadow-lg text-center h-100 hover-shadow">
+            <img src="{{ ipp.image }}" class="card-img-top rounded-top" alt="Portrait of {{ ipp.name }}" loading="lazy" />
+            <div class="card-body">
+              <h4 class="h6 mb-1">{{ ipp.name }}</h4>
+              <p class="text-muted mb-0">{{ ipp.position }}</p>
+            </div>
+          </div>
+        </div>
       </div>
-    {% endfor %}
+    {% endif %}
   </div>
 </section>
 
-<!-- Scroll‑triggered animation -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(el => {
-        if (el.isIntersecting) {
-          el.target.classList.remove('opacity-0');
-          el.target.classList.add('animate__animated', 'animate__fadeInUp');
-          io.unobserve(el.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.bod-card').forEach(card => io.observe(card));
-  });
-</script>
+<style>
+  .hover-shadow:hover { transform: translateY(-4px); box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); transition: all .3s ease; }
+</style>

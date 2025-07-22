@@ -6,16 +6,6 @@ description: "Manage your UAP Manila Corinthian Chapter membership details and p
 keywords: "Architecture, UAP, Manila, Account, Membership"
 ---
 
-<style>
-  /* Rotate collapse icons smoothly */
-  .rotate-icon {
-    transition: transform 0.3s ease;
-  }
-  .btn[aria-expanded="true"] .rotate-icon {
-    transform: rotate(180deg);
-  }
-</style>
-
 <!-- ------------- ACCOUNT PAGE ------------- -->
 <div class="account-info d-flex flex-column min-vh-100 py-4" data-aos="fade-up">
 
@@ -73,7 +63,7 @@ keywords: "Architecture, UAP, Manila, Account, Membership"
   </div>
   <!-- /DIGITAL CARD -->
 
-<!-- ▸ PAYMENT HISTORY -->
+  <!-- ▸ PAYMENT HISTORY -->
   <section class="container" data-aos="fade-left">
     <div class="d-flex align-items-center justify-content-between mb-2">
       <h2 class="h5 text-primary fw-semibold mb-0">Payment History</h2>
@@ -142,78 +132,83 @@ keywords: "Architecture, UAP, Manila, Account, Membership"
     </button>
   </div>
 
-<!-- ▸ UPDATE INFO CARD (hidden by default) -->
-<section id="updateWrapper" class="container mt-3 d-none">
-  <div class="card shadow-sm mx-auto" style="max-width: 600px;">
-    <div class="card-header bg-light fw-semibold text-primary">
-      Update Your Information
-    </div>
+  <!-- ▸ UPDATE INFO CARD (hidden by default) -->
+  <section id="updateWrapper" class="container mt-3 collapse">
+    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+      <div class="card-header bg-light fw-semibold text-primary">
+        Update Your Information
+      </div>
 
-    <div class="card-body">
-      <form id="updateInfoForm" class="row g-3 needs-validation" novalidate>
-        <!-- Current password -->
-        <div class="col-md-6 position-relative">
-          <label for="currentPassword" class="form-label">
-            Current Password <span class="text-danger">*</span>
-          </label>
-          <input type="password" id="currentPassword" name="currentPassword"
-                 class="form-control" required>
-        </div>
+      <div class="card-body">
+        <form id="updateInfoForm" class="row g-3 needs-validation" novalidate>
+          <!-- Current password -->
+          <div class="col-md-6 position-relative">
+            <label for="currentPassword" class="form-label">
+              Current Password <span class="text-danger">*</span>
+            </label>
+            <input type="password" id="currentPassword" name="currentPassword"
+                   class="form-control" required>
+          </div>
 
-        <!-- New password -->
-        <div class="col-md-6 position-relative">
-          <label for="password" class="form-label">New Password</label>
-          <input type="password" id="password" name="password" class="form-control">
-          <!-- Strength bar is injected by JS -->
-        </div>
-
-        <!-- Confirm -->
-        <div class="col-md-6">
-          <label for="confirmPassword" class="form-label">Confirm New Password</label>
-          <input type="password" id="confirmPassword" name="confirmPassword"
-                 class="form-control">
-        </div>
-
-        <!-- Username -->
-        <div class="col-md-6">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" id="username" name="username" class="form-control">
-        </div>
-
-        <!-- Email -->
-        <div class="col-md-6">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" id="email" name="email" class="form-control">
-        </div>
-
-        <!-- Contact -->
-        <div class="col-md-6">
-          <label for="contact" class="form-label">Contact No.</label>
-          <input type="text" id="contact" name="contact" class="form-control">
-        </div>
-
-        <!-- Company -->
-        <div class="col-md-6">
-          <label for="company" class="form-label">Company</label>
-          <input type="text" id="company" name="company" class="form-control">
-        </div>
-
-        <!-- Position -->
-        <div class="col-md-6">
-          <label for="position" class="form-label">Position</label>
-          <input type="text" id="position" name="position" class="form-control">
-        </div>
-
-        <!-- Submit -->
-        <div class="col-12 text-end">
-          <button type="submit" class="btn btn-primary btn-sm">
-            <i class="fa-solid fa-cloud-upload me-1"></i> Submit
-          </button>
-        </div>
-
-        <div id="updateFeedback" class="col-12 small text-danger mt-2"></div>
-      </form>
-    </div>
+          <!-- New password -->
+          <div class="col-md-6">
+  <label for="password" class="form-label">New Password</label>
+  <div class="position-relative password-wrapper">
+    <input type="password" id="password" name="password" class="form-control pe-5">
+    <!-- eye button will go here -->
   </div>
-</section>
-<!-- /UPDATE INFO CARD -->
+  <!-- strength bar & messages will be injected _below_ -->
+</div>
+
+          <!-- Confirm -->
+          <div class="col-md-6">
+            <label for="confirmPassword" class="form-label">Confirm New Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword"
+                   class="form-control">
+          </div>
+
+          <!-- Username -->
+          <div class="col-md-6">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" name="username" class="form-control">
+          </div>
+
+          <!-- Email -->
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-control">
+          </div>
+
+          <!-- Contact -->
+          <div class="col-md-6">
+            <label for="contact" class="form-label">Contact No.</label>
+            <input type="text" id="contact" name="contact" class="form-control">
+          </div>
+
+          <!-- Company -->
+          <div class="col-md-6">
+            <label for="company" class="form-label">Company</label>
+            <input type="text" id="company" name="company" class="form-control">
+          </div>
+
+          <!-- Position -->
+          <div class="col-md-6">
+            <label for="position" class="form-label">Position</label>
+            <input type="text" id="position" name="position" class="form-control">
+          </div>
+
+          <!-- Submit -->
+          <div class="col-12 text-end">
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-cloud-upload me-1"></i> Submit
+            </button>
+          </div>
+
+          <div id="updateFeedback" class="col-12 small text-danger mt-2"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- /UPDATE INFO CARD -->
+
+</div>
