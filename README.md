@@ -1,5 +1,5 @@
-# https://manilacorinthianchapter.github.io/mcc
-# UAP Manila Corinthian Chapter Website
+# https://manilacorinthianchapter.github.io
+# [UAP Manila Corinthian Chapter Website](https://manilacorinthianchapter.github.io)
 
 ---
 
