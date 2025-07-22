@@ -42,13 +42,13 @@ async function initLogin() {
     const { data } = await sb.from('xxsr_001').select([...fixed,...cols].join(',')).eq('username',usr.value.trim().toLowerCase()).maybeSingle();
     if(!data||pwd.value!==data.password){alert('Invalid username or password.');return(btn.disabled=false);} const pay={}; cols.forEach(k=>pay[k]=data[k]); delete data.password;
     sessionStorage.setItem('userData',JSON.stringify({ok:1,row:String(data.row_id).toLowerCase(),pi:{n:data.name,prc:data.prc_license,a:data.address,b:data.birthday,c:data.contact_no,e:data.email,bt:data.batch||'',co:data.company||'',po:data.position||''},act:data.membership_active,due:data.total_due,pay}));
-    location.href='/mcc/account/';
+    location.href='/account/';
   };
 }
 
 /* ── ACCOUNT ── */
 function initAccount() {
-  const u=JSON.parse(sessionStorage.getItem('userData')||'null'); if(!u?.ok) return(location.href='/mcc/login/');
+  const u=JSON.parse(sessionStorage.getItem('userData')||'null'); if(!u?.ok) return(location.href='/login/');
   const pi=u.pi; $('#cardName').textContent=pi.n||'*no data*'; $('#cardBatch').textContent=pi.bt||'*no data*'; $('#cardCompany').textContent=pi.co||'*no data*'; $('#cardPosition').textContent=pi.po||'*no data*';
   const badge=$('#statusBadge'); if(badge){const a=(u.act||'').toLowerCase().startsWith('a'); badge.textContent=a?'Active':'Inactive'; badge.className='badge '+(a?'bg-success':'bg-danger');}
   [{id:'prcLicense',v:pi.prc,fn:mask},{id:'email',v:pi.e,fn:mailMask},{id:'contactNo',v:pi.c,fn:mask}].forEach(({id,v,fn})=>{const el=$('#'+id); if(el){el.textContent=v?fn(v):'*no data*'; el.dataset.real=v||''; el.dataset.shown='0';}});
@@ -122,7 +122,7 @@ function initUpdateForm(){
     localStorage.setItem(limitKey,today);
     alert('Update successful. You will now be logged out for security reasons.');
     sessionStorage.removeItem('userData');
-    location.href='/mcc/login/';
+    location.href='/login/';
   };
 } /* end initUpdateForm */
 
@@ -130,7 +130,7 @@ function initUpdateForm(){
 document.addEventListener('DOMContentLoaded',()=>{
   if($('#loginForm')) initLogin();
   if(document.querySelector('.account-info')) initAccount();
-  const logout=()=>{sessionStorage.removeItem('userData');location.href='/mcc/';};
+  const logout=()=>{sessionStorage.removeItem('userData');location.href='/';};
   ['btnLogoutFooter','btnLogoutNav'].forEach(id=>$('#'+id)?.addEventListener('click',logout));
   const snap=()=>window.print(); ['btnSaveScreenshot','btnSaveScreenshotNav'].forEach(id=>$('#'+id)?.addEventListener('click',snap));
   if(document.querySelector('.account-info')){
