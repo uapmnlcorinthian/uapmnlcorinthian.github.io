@@ -27,6 +27,11 @@ exclude:
   - LICENSE
   - node_modules
   - vendor
+  - account1.html
+  - activities1.html
+  - bod1.html
+  - index1.html
+  - login1.html
 
 # ─── Optional Customizations ──────────────────────────────────────
 # You can override directories if needed:
