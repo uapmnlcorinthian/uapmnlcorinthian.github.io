@@ -18,6 +18,8 @@
   {% endif %}
 </head>
 <body class="d-flex flex-column h-100">
+<!-- put this DIV at the very top of <body> -->
+<div id="top"></div>
   {% include header.html %}
 
   {% if page.banner %}
@@ -37,5 +39,12 @@
   {% include sponsors-footer.html %}
   {% include footer.html %}
   {% include scripts.html %}
+<!-- place near the end of <body> -->
+<a id="btnTop" href="#top"
+   class="btn btn-secondary shadow position-fixed bottom-0 end-0 m-3 d-none"
+   style="z-index:1030;" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</a>
+
 </body>
 </html>

@@ -5,11 +5,21 @@
 </head>
 <body>
   {% include header.html %}
+  <!-- put this DIV at the very top of <body> -->
+<div id="top"></div>
   <div id="mainContent" class="container">
     {{ content }}
   </div>
   {% include footer.html %}
   {% include scripts.html %}
+  
+<!-- place near the end of <body> -->
+<a id="btnTop" href="#top"
+   class="btn btn-secondary shadow position-fixed bottom-0 end-0 m-3 d-none"
+   style="z-index:1030;" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</a>
+
 </body>                                                                  
 </html>
 <!--

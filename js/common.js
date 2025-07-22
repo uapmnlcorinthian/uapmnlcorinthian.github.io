@@ -126,6 +126,15 @@ function initUpdateForm(){
   };
 } /* end initUpdateForm */
 
+/* show button only after scrolling 200 px */
+document.addEventListener('scroll', () => {
+  const btn = document.getElementById('btnTop');
+  if (!btn) return;
+  btn.classList.toggle('d-none', window.scrollY < 200);
+});
+
+/* optional: smooth scroll for the whole page */
+document.documentElement.style.scrollBehavior = 'smooth';
 /* ── DOM‑READY BOOTSTRAP ── */
 document.addEventListener('DOMContentLoaded',()=>{
   if($('#loginForm')) initLogin();
