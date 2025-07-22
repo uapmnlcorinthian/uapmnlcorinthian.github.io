@@ -2,7 +2,7 @@
 title: "UAP Manila Corinthian Chapter"
 description: "Premier community of architectural professionals in Manila. Join events, workshops, and networking opportunities."
 url: "https://manilacorinthianchapter.github.io"    # no trailing slash
-baseurl: "/mcc"                                      # your repo subpath
+baseurl: ""                                      # your repo subpath
 
 # ─── Build Options ───────────────────────────────────────────────
 markdown: kramdown
