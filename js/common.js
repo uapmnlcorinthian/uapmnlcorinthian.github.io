@@ -66,7 +66,7 @@ function initAccount() {
 /* ── UPDATE‑INFO FORM ── */
 function initUpdateForm(){
   const form=$('#updateInfoForm'); if(!form) return; const fb=$('#updateFeedback'); const btn=form.querySelector('button[type=submit]');
-  const user=JSON.parse(sessionStorage.getItem('userData')||'null'); if(!user?.ok) return(location.href='/mcc/login/');
+  const user=JSON.parse(sessionStorage.getItem('userData')||'null'); if(!user?.ok) return(location.href='/login/');
 
   /* disable browser autofill */
   form.autocomplete='off';

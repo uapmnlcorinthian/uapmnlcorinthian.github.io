@@ -1,0 +1,11 @@
+<div class="bg-light py-3">
+  <div class="container d-flex flex-wrap justify-content-center gap-3">
+    {% for s in site.data.sponsors | where: "active", true | sort: "order" %}
+      <a href="{{ s.website }}" target="_blank" class="d-block">
+        <img src="{{ s.logo }}"
+             alt="{{ s.alt | default: s.name }}"
+             style="height:40px;" />
+      </a>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,22 @@
+{%- assign active = site.data.sponsors | where: "active", true -%}
+<div id="sponsorsCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {%- assign all = active | sort: "order" -%}
+    {%- for s in all -%}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="d-flex justify-content-center py-4">
+          <img src="{{ s.logo }}"
+               alt="{{ s.alt | default: s.name }}"
+               class="d-block"
+               style="max-height:100px;" />
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#sponsorsCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#sponsorsCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>

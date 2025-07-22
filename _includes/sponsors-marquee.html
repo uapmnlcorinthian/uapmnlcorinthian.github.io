@@ -1,0 +1,22 @@
+<div class="sponsor-marquee overflow-hidden position-relative">
+  <div class="d-flex align-items-center animate-marquee">
+    {% for s in site.data.sponsors | where: "active", true | sort: "order" %}
+      <a href="{{ s.website }}" class="me-4">
+        <img src="{{ s.logo }}"
+             alt="{{ s.alt | default: s.name }}"
+             class="sponsor-logo"
+             style="max-height:60px;" />
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+@keyframes marquee {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+</style>

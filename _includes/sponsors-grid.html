@@ -1,0 +1,18 @@
+{%- assign active = site.data.sponsors | where: "active", true -%}
+{%- for tier in site.data.sponsor_config.tiers -%}
+  {%- assign group = active | where: "tier", tier.name | sort: "order" -%}
+  {%- if group.size > 0 -%}
+    <h2 class="mt-5">{{ tier.label }}</h2>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+      {%- for s in group -%}
+        <div class="col text-center">
+          <a href="{{ s.website }}" target="_blank" rel="noopener">
+            <img src="{{ s.logo }}"
+                 alt="{{ s.alt | default: s.name }}"
+                 class="img-fluid sponsor-logo" />
+          </a>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+{%- endfor -%}

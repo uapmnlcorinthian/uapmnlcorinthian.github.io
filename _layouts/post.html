@@ -34,20 +34,7 @@
     </article>
   </main>
 
-  <!-- Sponsors at bottom -->
-  <section aria-labelledby="sponsors-title" class="py-5 bg-light">
-    <div class="container">
-      <h2 id="sponsors-title" class="h4 mb-4 text-center">Our Sponsors</h2>
-      <div class="d-flex flex-wrap justify-content-center gap-4">
-        {% for sponsor in site.data.sponsors %}
-          <a href="{{ sponsor.url }}" target="_blank" aria-label="{{ sponsor.name }}" class="d-block sponsor-logo">
-            <img src="{{ sponsor.logo }}" alt="{{ sponsor.name }} Logo" style="max-height:60px;" />
-          </a>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-
+  {% include sponsors-footer.html %}
   {% include footer.html %}
   {% include scripts.html %}
 </body>

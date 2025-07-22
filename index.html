@@ -29,16 +29,16 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
     <div class="carousel-inner rounded shadow-sm">
       {% assign slides = site.data.activities | slice: 0,4 %}
       {% for activity in slides %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}">
-        <img src="{{ activity.images[0].url }}"
-             class="d-block w-100"
-             alt="{{ activity.images[0].alt }}" />
-        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-3 py-2">
-          <h5>{{ activity.title }}</h5>
-          <p>{{ activity.images[0].caption }}</p>
-          <p><small>{{ activity.date | date: "%B %-d, %Y" }} | {{ activity.location }}</small></p>
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <img src="{{ activity.images[0].url }}"
+               class="d-block w-100"
+               alt="{{ activity.images[0].alt }}" />
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-3 py-2">
+            <h5>{{ activity.title }}</h5>
+            <p>{{ activity.images[0].caption }}</p>
+            <p><small>{{ activity.date | date: "%B %-d, %Y" }} | {{ activity.location }}</small></p>
+          </div>
         </div>
-      </div>
       {% endfor %}
     </div>
 
@@ -83,33 +83,17 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
               allowfullscreen>
       </iframe>
     </div>
-    <a href="{{ site.baseurl }}/membership.html"
-       class="cta-button btn btn-warning btn-lg text-primary fw-semibold"
-       aria-label="Go to Membership page to join">
-      Join the Chapter
-    </a>
+	<div class="text-center my-5">
+	  <a id="joinBtn"
+		 href="{{ site.baseurl }}/membership.html"
+		 class="btn btn-success btn-lg shadow-lg animate__animated animate__pulse animate__infinite"
+		 role="button"
+		 aria-label="Join the Chapter">
+		<i class="fas fa-paper-plane me-2"></i> Join the Chapter
+	  </a>
+	</div>
   </section>
-
-  <!-- Sponsors -->
-  <section aria-labelledby="sponsors-title"
-           class="sponsors-marquee"
-           tabindex="0"
-           aria-live="polite">
-    <h2 id="sponsors-title" class="visually-hidden">Our Sponsors</h2>
-    <div class="sponsors-track" aria-label="Scrolling sponsors logos">
-      {% for sponsor in site.data.sponsors %}
-        <a href="{{ sponsor.url }}"
-           target="_blank"
-           class="sponsor-logo"
-           aria-label="{{ sponsor.name }}">
-          <img src="{{ sponsor.logo }}"
-               alt="{{ sponsor.name }} Logo"
-               loading="lazy" />
-        </a>
-      {% endfor %}
-    </div>
-  </section>
-
+  {% include sponsors-footer.html %}
   <!-- News -->
   <section aria-labelledby="news-title"
            class="mb-5 animate__animated animate__fadeInUp">
@@ -124,61 +108,22 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
       </article>
     {% endfor %}
   </section>
+
 </main>
-{% comment %}
-<!--
-  Project: UAP Manila Corinthian Chapter Website
-  Author: ArZ Miranda
-  Date Created: 2025-07-19
-  Last Modified: 2025-07-19
-  Version: 1.0.0
+<!-- Canvas‑Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  document.getElementById('joinBtn').addEventListener('click', function(e) {
+    // small delay so we still navigate to the membership page
+    confetti({
+      particleCount: 100,
+      spread: 60,
+      origin: { y: 0.6 }
+    });
+    setTimeout(() => {
+      window.location = this.href;
+    }, 500);
+    e.preventDefault();
+  });
+</script>
 
-  Description:
-    This script powers the interactive features of the UAP Manila Corinthian Chapter (MCC) website.
-    It enables members to securely log in and view their personalized account information,
-    including membership status, payment history, and contact details.
-    The script also enhances the user experience by providing convenient tools such as password visibility toggling
-    and easy options to save or print membership data.
-    Data shown is dynamically updated from the MCC membership database to ensure accuracy and relevance.
-
-  Usage:
-    - This script expects specific DOM elements present on the page:
-      - Login page: #loginForm, username and password inputs, toggle password button.
-      - Account page: Elements with IDs such as #cardName, #statusBadge, #totalDue,
-        payment tables (#paymentsTable), and toggle-sensitive buttons.
-    - It relies on Bootstrap 5 for styling and interactivity,
-      FontAwesome 6 for icons,
-      and Supabase JS SDK v2 for backend database interactions.
-    - User session data is stored in sessionStorage under 'userData' key.
-    - Account info is auto-populated on page load if valid session data exists.
-
-  Dependencies:
-    - Supabase JavaScript SDK v2 (https://supabase.com/docs/reference/javascript/installing)
-    - Bootstrap 5 CSS & JS (https://getbootstrap.com/)
-    - FontAwesome 6 Icons (https://fontawesome.com/)
-
-  Change Log:
-    2025-07-19 - v1.0.0 - Initial implementation with login, session handling, account rendering, and usability features.
-
-  Notes:
-    - Ensure that the <body> tag on the account page includes the 'account-info' class to trigger account initialization.
-    - Sensitive member data such as PRC License, Email, and Contact Number are masked by default and toggleable for user convenience.
-    - Payment data columns for different years are dynamically retrieved from Supabase for future-proofing.
-    - Right-click and keyboard shortcut blocking have been disabled to improve user experience.
-
-  Contact:
-    UAP Manila Corinthian Chapter
-    Email: uapmccmembership@gmail.com
-    Website: https://manilacorinthianchapter.github.io/mcc/
-
-  License:
-    Proprietary - For internal use by UAP MCC only
- 
-  __  __  _____ _____   ___   ___ ___  _____            _____   ______
- |  \/  |/ ____/ ____| |__ \ / _ \__ \| ____|     /\   |  __ \ |___  /
- | \  / | |   | |         ) | | | | ) | |__      /  \  | |__) |   / / 
- | |\/| | |   | |        / /| | | |/ /|___ \    / /\ \ |  _  /   / /  
- | |  | | |___| |____   / /_| |_| / /_ ___) |  / ____ \| | \ \  / /__ 
- |_|  |_|\_____\_____| |____|\___/____|____/  /_/    \_\_|  \_\/_____|
- -->    
-{% endcomment %}
