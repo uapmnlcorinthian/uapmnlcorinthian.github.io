@@ -2,7 +2,7 @@
 ---
 layout: post
 title: "Urban Resilience Initiative: Building a Sustainable Future"
-date: 2025-09-01 10:00:00 +0800
+date: 2025-05-01 10:00:00 +0800
 banner: "https://images.unsplash.com/photo-1562072548-12a8f5c08f0b?auto=format&fit=crop&w=1200&q=80"
 excerpt: "A deep dive into our Urban Resilience Initiative, exploring strategies for sustainable growth, climate adaptation, and community engagement in Metro Manila."
 ---

@@ -2,7 +2,7 @@
 ---
 layout: post
 title: "Annual General Meeting Scheduled"
-date: 2025-08-15 14:00:00 +0800
+date: 2025-06-15 14:00:00 +0800
 banner: "https://images.unsplash.com/photo-1581092331555-c3a2c61a4d8a?auto=format&fit=crop&w=1200&q=80"
 excerpt: "Network, vote, and collaborate at the UAP MCC Annual General Meeting on August 15, 2025."
 ---
