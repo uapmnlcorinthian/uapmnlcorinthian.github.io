@@ -55,47 +55,43 @@ async function initLogin() {
     });
   }
 
- form.addEventListener('submit', async ev => {
-   ev.preventDefault();
+	form.addEventListener('submit', async (ev) => {
+	  ev.preventDefault();
 
-   // 1) HTML5 form validation
-   if (!form.checkValidity()) {
-     form.classList.add('was-validated');
-     return;
-   }
+	  // 1) Validate fields
+	  if (!form.checkValidity()) {
+		form.classList.add('was-validated');
+		return;
+	  }
 
-   // 2) Client‑side CAPTCHA check
-   const captchaResp = grecaptcha.getResponse();
-   if (!captchaResp) {
-     alert('Please confirm you are human.');
-     return;
-   }
+	  // 2) Check reCAPTCHA
+	  const token = grecaptcha.getResponse();
+	  if (!token) {
+		alert('Please confirm you are human.');
+		return;
+	  }
+	  btn.disabled = true;
 
-   btn.disabled = true;
+	  // 3) Wait for Supabase client
+	  const sb = await new Promise((res) => {
+		const i = setInterval(() => {
+		  if (window.sb) {
+			clearInterval(i);
+			res(window.sb);
+		  }
+		}, 25);
+	  });
 
-   // 3) Server‑side CAPTCHA verification
-   const verify = await fetch('https://fvaahtqjusfniadwvoyw.functions.supabase.co/verifyCaptcha', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify({ token: captchaResp })
-   }).then(r => r.json());
-
-   if (!verify.success) {
-     alert('Captcha failed. Try again.');
-     grecaptcha.reset();
-     btn.disabled = false;
-     return;
-   }
-
-    // wait for supabase client
-   const sb = await new Promise(r => {
-     const i = setInterval(()=>{
-       if (window.sb) {
-         clearInterval(i);
-         r(window.sb);
-       }
-     }, 25);
-   });
+	  // 4) Verify via Supabase Functions SDK (handles CORS for you)
+	  const { data, error } = await sb.functions.invoke('verifyCaptcha', {
+		body: { token }
+	  });
+	  if (error || !data?.success) {
+		alert('CAPTCHA verification failed. Please try again.');
+		btn.disabled = false;
+		grecaptcha.reset();
+		return;
+	  }
 
     const cols = await getPaymentColumns(sb);
     const fixed = [
