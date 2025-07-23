@@ -39,101 +39,111 @@ async function getPaymentColumns(sb, tbl='xxsr_001') {
 
 /* ── LOGIN ── */
 async function initLogin() {
-  const form = $('#loginForm'); if (!form) return;
-  const btn  = form.querySelector('button[type=submit]');
-  const usr  = form.username, pwd = form.password;
-  const tgl  = $('#togglePassword');
+  const form   = document.getElementById('loginForm');
+  if (!form) return;
 
-  // Simple eye toggle
-  if (tgl) {
-    tgl.addEventListener('click', ()=>{
-      const isHidden = pwd.type === 'password';
-      pwd.type = isHidden ? 'text' : 'password';
-      tgl.querySelector('i').className = 'fa-solid ' +
-        (isHidden ? 'fa-eye-slash' : 'fa-eye');
-      tgl.setAttribute('aria-pressed', String(isHidden));
+  const btn    = form.querySelector('button[type=submit]');
+  const usr    = form.username;
+  const pwd    = form.password;
+  const toggle = document.getElementById('togglePassword');
+
+  // ── Password show/hide ──
+  toggle?.addEventListener('click', () => {
+    const hidden = pwd.type === 'password';
+    pwd.type = hidden ? 'text' : 'password';
+    toggle.querySelector('i').className = hidden
+      ? 'fa-solid fa-eye-slash'
+      : 'fa-solid fa-eye';
+    toggle.setAttribute('aria-pressed', String(hidden));
+  });
+
+  // ── Submit handler ──
+  form.addEventListener('submit', async ev => {
+    ev.preventDefault();
+
+    // 1) HTML5 validation
+    if (!form.checkValidity()) {
+      form.classList.add('was-validated');
+      return;
+    }
+
+    // 2) reCAPTCHA token
+    const token = grecaptcha.getResponse();
+    if (!token) {
+      alert('Please confirm you are human.');
+      return;
+    }
+    btn.disabled = true;
+
+    // 3) Wait for Supabase client
+    const sb = await new Promise(res => {
+      const id = setInterval(() => {
+        if (window.sb) {
+          clearInterval(id);
+          res(window.sb);
+        }
+      }, 25);
     });
-  }
 
-	form.addEventListener('submit', async (ev) => {
-	  ev.preventDefault();
-
-	  // 1) Validate fields
-	  if (!form.checkValidity()) {
-		form.classList.add('was-validated');
-		return;
-	  }
-
-	  // 2) Check reCAPTCHA
-	  const token = grecaptcha.getResponse();
-	  if (!token) {
-		alert('Please confirm you are human.');
-		return;
-	  }
-	  btn.disabled = true;
-
-	  // 3) Wait for Supabase client
-	  const sb = await new Promise((res) => {
-		const i = setInterval(() => {
-		  if (window.sb) {
-			clearInterval(i);
-			res(window.sb);
-		  }
-		}, 25);
-	  });
-
-	  // 4) Verify via Supabase Functions SDK (handles CORS for you)
-	  const { data, error } = await sb.functions.invoke('verifyCaptcha', {
-		body: { token }
-	  });
-	  if (error || !data?.success) {
-		alert('CAPTCHA verification failed. Please try again.');
-		btn.disabled = false;
-		grecaptcha.reset();
-		return;
-	  }
-
-    const cols = await getPaymentColumns(sb);
-    const fixed = [
-      'row_id','username','password','name','prc_license','address',
-      'birthday','contact_no','email','membership_active','total_due',
-      'batch','company','position'
-    ];
-    const { data } = await sb.from('xxsr_001')
-                             .select([...fixed, ...cols].join(','))
-                             .eq('username', usr.value.trim().toLowerCase())
-                             .maybeSingle();
-
-    if (!data || pwd.value !== data.password) {
-      alert('Invalid username or password.');
+    // 4) Verify CAPTCHA via SDK
+    const { data: capResp, error: capErr } = await sb.functions.invoke(
+      'verifyCaptcha',
+      { body: { token } }
+    );
+    if (capErr || !capResp?.success) {
+      alert('CAPTCHA failed. Try again.');
+      grecaptcha.reset();
       btn.disabled = false;
       return;
     }
 
-    const pay = {};
-    cols.forEach(k=> pay[k] = data[k]);
-    delete data.password;
+    // 5) Supabase login lookup
+    try {
+      const cols  = await getPaymentColumns(sb);
+      const fixed = [
+        'row_id','username','password','name','prc_license','address',
+        'birthday','contact_no','email','membership_active','total_due',
+        'batch','company','position'
+      ];
+      const { data: user, error: authErr } = await sb
+        .from('xxsr_001')
+        .select([...fixed, ...cols].join(','))
+        .eq('username', usr.value.trim().toLowerCase())
+        .maybeSingle();
 
-    sessionStorage.setItem('userData', JSON.stringify({
-      ok: 1,
-      row: String(data.row_id).toLowerCase(),
-      pi: {
-        n: data.name,
-        prc: data.prc_license,
-        a: data.address,
-        b: data.birthday,
-        c: data.contact_no,
-        e: data.email,
-        bt: data.batch||'',
-        co: data.company||'',
-        po: data.position||''
-      },
-      act: data.membership_active,
-      due: data.total_due,
-      pay
-    }));
+      if (authErr || !user || pwd.value !== user.password) {
+        throw new Error('Invalid username or password.');
+      }
 
-    location.href = '/account/';
+      // Strip password & build session
+      const pay = Object.fromEntries(cols.map(k => [k, user[k]]));
+      delete user.password;
+
+      sessionStorage.setItem('userData', JSON.stringify({
+        ok: 1,
+        row: String(user.row_id).toLowerCase(),
+        pi: {
+          n:   user.name,
+          prc: user.prc_license,
+          a:   user.address,
+          b:   user.birthday,
+          c:   user.contact_no,
+          e:   user.email,
+          bt:  user.batch    || '',
+          co:  user.company  || '',
+          po:  user.position || ''
+        },
+        act: user.membership_active,
+        due: user.total_due,
+        pay
+      }));
+
+      // Redirect on success
+      location.href = '/account/';
+    } catch (err) {
+      alert(err.message || 'Login failed. Please try again.');
+      btn.disabled = false;
+    }
   });
 }
 

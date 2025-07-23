@@ -1,7 +1,7 @@
 import { serve } from "https://deno.land/x/sift@0.4.3/mod.ts";
 
-const CORS = {
-  "Access-Control-Allow-Origin": "*",
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",          // or lock to your domains
   "Access-Control-Allow-Methods": "OPTIONS,POST",
   "Access-Control-Allow-Headers": "Content-Type",
 };
@@ -9,15 +9,14 @@ const CORS = {
 serve(async (req) => {
   // 1) Preflight
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: CORS });
+    return new Response(null, { headers: CORS_HEADERS });
   }
 
+  // 2) Your existing verify logic...
   try {
-    // 2) Parse token
     const { token } = await req.json();
-    if (!token) throw new Error("No token");
+    if (!token) throw new Error();
 
-    // 3) Verify with Google
     const secret = Deno.env.get("RECAPTCHA_SECRET")!;
     const params = new URLSearchParams({ secret, response: token });
     const googleRes = await fetch(
@@ -30,14 +29,14 @@ serve(async (req) => {
     );
     const data = await googleRes.json();
 
-    // 4) Return JSON + CORS
-    return new Response(JSON.stringify({ success: !!data.success }), {
-      headers: { ...CORS, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ success: Boolean(data.success) }),
+      { headers: { ...CORS_HEADERS, "Content-Type": "application/json" } }
+    );
   } catch {
-    return new Response(JSON.stringify({ success: false }), {
-      status: 500,
-      headers: { ...CORS, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ success: false }),
+      { status: 500, headers: { ...CORS_HEADERS, "Content-Type": "application/json" } }
+    );
   }
 });
