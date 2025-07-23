@@ -55,23 +55,47 @@ async function initLogin() {
     });
   }
 
-  form.addEventListener('submit', async ev => {
-    ev.preventDefault();
-    if (!form.checkValidity()) {
-      form.classList.add('was-validated');
-      return;
-    }
-    btn.disabled = true;
+ form.addEventListener('submit', async ev => {
+   ev.preventDefault();
+
+   // 1) HTML5 form validation
+   if (!form.checkValidity()) {
+     form.classList.add('was-validated');
+     return;
+   }
+
+   // 2) Client‑side CAPTCHA check
+   const captchaResp = grecaptcha.getResponse();
+   if (!captchaResp) {
+     alert('Please confirm you are human.');
+     return;
+   }
+
+   btn.disabled = true;
+
+   // 3) Server‑side CAPTCHA verification
+   const verify = await fetch('/.netlify/functions/verifyCaptcha', {
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json' },
+     body: JSON.stringify({ token: captchaResp })
+   }).then(r => r.json());
+
+   if (!verify.success) {
+     alert('Captcha failed. Try again.');
+     grecaptcha.reset();
+     btn.disabled = false;
+     return;
+   }
 
     // wait for supabase client
-    const sb = await new Promise(r => {
-      const i = setInterval(()=>{
-        if (window.sb) {
-          clearInterval(i);
-          r(window.sb);
-        }
-      }, 25);
-    });
+   const sb = await new Promise(r => {
+     const i = setInterval(()=>{
+       if (window.sb) {
+         clearInterval(i);
+         r(window.sb);
+       }
+     }, 25);
+   });
 
     const cols = await getPaymentColumns(sb);
     const fixed = [
@@ -429,9 +453,8 @@ document.addEventListener('DOMContentLoaded', () => {
   for (let i = 0; i < 32; i++) {
     token += alpha.charAt(Math.floor(Math.random() * alpha.length));
   }
-  history.replaceState(null, '', '/uapMCC_' + token);
+  history.replaceState(null, '', '/#uapMCC_' + token);
 });
-
 
 
 
