@@ -74,7 +74,7 @@ async function initLogin() {
    btn.disabled = true;
 
    // 3) Server‑side CAPTCHA verification
-   const verify = await fetch('/.netlify/functions/verifyCaptcha', {
+   const verify = await fetch('https://fvaahtqjusfniadwvoyw.functions.supabase.co/verifyCaptcha', {
      method: 'POST',
      headers: { 'Content-Type': 'application/json' },
      body: JSON.stringify({ token: captchaResp })
