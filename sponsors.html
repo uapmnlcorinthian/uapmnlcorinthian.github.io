@@ -1,12 +1,664 @@
 ---
 layout: default
 permalink: /sponsors/
-title: Our Sponsors
-description: "Meet the companies and organizations supporting UAP Manila Corinthian Chapter."
+title: Sponsors Placement Demo
+description: "Demonstration of Sponsorship Tiers Placement"
+keywords: "sponsors, tier, placement, UAP MCC"
 ---
+    <style>
+        :root {
+            --platinum: #e5e4e2;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            padding-top: 40px;
+        }
+		  .text-dark * {
+    color: #000 !important;
+  }
+        
+        /* Platinum Styles */
+        .platinum-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-bottom: 4px solid var(--platinum);
+        }
+        
+        .platinum-logo {
+            transition: all 0.3s ease;
+            border: 3px solid var(--platinum);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .platinum-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        
+        /* Gold Styles */
+        .gold-sidebar {
+            background: linear-gradient(to bottom, #fff9db 0%, #fff3bf 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 20px;
+        }
+        
+        .gold-card {
+            transition: all 0.3s ease;
+            border: 1px solid #ffd700;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            margin-bottom: 15px;
+        }
+        
+        .gold-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(255, 215, 0, 0.3);
+        }
+        
+        .gold-card .logo-container {
+            padding: 10px;
+            text-align: center;
+            background: #fffdf0;
+        }
+        
+        .gold-card .details {
+            padding: 12px;
+            background: white;
+        }
+        
+        /* Bronze Styles */
+        .bronze-grid {
+            background: linear-gradient(to bottom, #f5f5f5 0%, #e9e9e9 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 4px solid var(--bronze);
+        }
+        
+        .bronze-item {
+            transition: all 0.3s ease;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        
+        .bronze-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(205, 127, 50, 0.2);
+        }
+        
+        /* Silver Styles */
+        .silver-footer {
+            background: linear-gradient(to right, #f8f9fa 0%, #e9ecef 100%);
+            border-top: 4px solid var(--silver);
+            padding: 30px 0;
+        }
+        
+        .silver-item {
+            transition: all 0.3s ease;
+            padding: 10px;
+            margin: 10px;
+			max-width: 250px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        
+        .silver-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(192, 192, 192, 0.3);
+        }
+        
+        /* Animations */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Placeholder Styles */
+        .placeholder {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 2px dashed #0d6efd;
+        }
+        
+        .placeholder em {
+            color: #0d6efd;
+            font-style: normal;
+            font-weight: 500;
+        }
+        
+        /* Sticky Header */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 10px 0;
+            display: none;
+        }
+        
+        /* Section Banner */
+        .section-banner {
+            background: linear-gradient(to right, #ffd700, #ffec99);
+            padding: 8px 15px;
+            border-radius: 30px;
+            margin: 20px 0;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ffd700, transparent);
+            margin: 30px 0;
+        }
+        
+        .content-section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .sponsor-logo {
+            max-width: 100%;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+    </style>
 
-<section class="container py-5">
-  <h1 class="mb-4">Our Valued Sponsors</h1>
-  {% comment %} Reuse the grid include for full directory {% endcomment %}
-  {% include sponsors-grid.html %}
+<!-- Banner Carousel -->
+<section aria-label="Featured activities and events banner" class="mb-4" data-aos="fade-up" data-aos-duration="800">
+  <div id="homepageBannerCarousel"
+       class="carousel slide"
+       data-bs-ride="carousel"
+       data-bs-interval="4000"
+       data-bs-pause="hover"
+       aria-live="polite"
+       role="region">
+
+    <div class="carousel-indicators">
+      {% for i in (0..3) %}
+        <button type="button"
+                data-bs-target="#homepageBannerCarousel"
+                data-bs-slide-to="{{ i }}"
+                class="{% if i == 0 %}active{% endif %}"
+                aria-current="{% if i == 0 %}true{% endif %}"
+                aria-label="Slide {{ i | plus:1 }}"></button>
+      {% endfor %}
+    </div>
+
+    <div class="carousel-inner rounded shadow-sm">
+      {% assign slides = site.data.activities | slice: 0,4 %}
+      {% for activity in slides %}
+        <div class="carousel-item{% if forloop.first %} active{% endif %}">
+          <img src="{{ activity.images[0].url }}"
+               class="d-block w-100"
+               alt="{{ activity.images[0].alt }}"
+               loading="lazy" />
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-3 py-2 animate__animated animate__fadeInUp"
+               data-aos="fade-up" data-aos-delay="200">
+            <h5>{{ activity.title }}</h5>
+            <p>{{ activity.images[0].caption }}</p>
+            <p><small>{{ activity.date | date: "%B %-d, %Y" }} | {{ activity.location }}</small></p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#homepageBannerCarousel" data-bs-slide="prev" aria-label="Previous slide">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#homepageBannerCarousel" data-bs-slide="next" aria-label="Next slide">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </section>
+
+<body>
+    <!-- Sticky Header -->
+    <div class="sticky-header" id="stickyHeader">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <!-- Logos will be added dynamically -->
+            </div>
+        </div>
+		<!-- Disclaimer -->
+        <div class="alert alert-warning text-center mt-3">
+            <strong>Note:</strong> This is a sample layout for demonstration purposes only and is subject to final webpage approval.
+        </div>
+    </div>
+
+    <main id="mainContent" role="main" class="container">
+        <!-- Banner Carousel -->
+        <section aria-label="Featured activities and events banner" class="mb-4" data-aos="fade-up" data-aos-duration="800">
+            <div id="homepageBannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-pause="hover" aria-live="polite" role="region">
+                <!-- Carousel content -->
+            </section>
+
+        <!-- Platinum Sponsors Section -->
+        <section id="platinum-sponsors" class="py-5 bg-light" data-aos="fade-down" data-aos-duration="800">
+            <!-- Platinum Carousel -->
+            <div class="container mb-4">
+                <div class="carousel slide" id="platinumCarousel" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded shadow">
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-around">
+                                <img src="/images/sponsors/p_sponsor.png" alt="Platinum Sponsor" class="img-fluid rounded shadow platinum-logo">
+                                <img src="/images/sponsors/p_sponsor.png" alt="Platinum Sponsor" class="img-fluid rounded shadow platinum-logo">
+                                <img src="/images/sponsors/p_sponsor.png" alt="Platinum Sponsor" class="img-fluid rounded shadow platinum-logo">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-around">
+                                <img src="/images/sponsors/p_sponsor.png" alt="Platinum Sponsor" class="img-fluid rounded shadow platinum-logo">
+                                <img src="/images/sponsors/p_sponsor.png" alt="Platinum Sponsor" class="img-fluid rounded shadow platinum-logo">
+                                <img src="/images/sponsors/p_sponsor.png" alt="Platinum Sponsor" class="img-fluid rounded shadow platinum-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container text-center">
+                <h2 class="mb-4 animate__animated animate__fadeInDown">Platinum Sponsors</h2></div>
+				  <!-- Hero -->
+   <header class="hero animate__animated animate__fadeInDown text-center my-5" data-aos="fade-down" data-aos-duration="800" role="banner" aria-label="Welcome banner for UAP Manila Corinthian Chapter">
+    <h1 class="display-5 text-dark">Be Part of the Premier Architecture Community in Manila</h1>
+  </header>
+  <!-- About -->
+  <section aria-labelledby="about-title" class="mb-5" data-aos="fade-up" data-aos-duration="800">
+    <h2 id="about-title" class="mb-3">About Being a Member</h2>
+    <p>Joining the UAP Manila Corinthian Chapter means becoming part of a dynamic community of architectural professionals dedicated to excellence, innovation, and advocacy in the built environment.</p>
+    <p>Enjoy exclusive access to industry events, educational programs, and networking opportunities.</p>
+    <div class="ratio ratio-16x9 mb-4" tabindex="0" aria-label="Promotional video about UAP MCC membership" data-aos="zoom-in" data-aos-delay="200">
+      <iframe src="https://www.youtube.com/embed/FzoHIHF_EZA"
+              title="Promotional video about UAP MCC membership"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen loading="lazy">
+      </iframe>
+    </div>
+    <div class="text-center my-5" data-aos="pulse" data-aos-delay="400">
+      <a id="joinBtn"
+         href="{{ site.baseurl }}/membership.html"
+         class="btn btn-success btn-lg shadow-lg"
+         role="button"
+         aria-label="Join the Chapter">
+        <i class="fas fa-paper-plane me-2"></i> Join Our Chapter
+      </a>
+    </div>
+  </section>
+<!--             <div class="container text-center">
+                <h2 class="mb-4 animate__animated animate__fadeInDown">Platinum Sponsors</h2>
+                <div class="row justify-content-center align-items-center mb-4">
+                    <div class="col-6 col-sm-4 col-md-2 mb-3">
+                        <a href="#" target="_blank" aria-label="Platinum Sponsor 1">
+                            <img src="/images/sponsors/p_sponsor.png" alt="Platinum Sponsor" class="img-fluid rounded shadow platinum-logo floating">
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 mb-3">
+                        <a href="#" target="_blank" aria-label="Platinum Sponsor 2">
+                            <img src="/images/sponsors/p_sponsor.png" alt="Platinum Sponsor" class="img-fluid rounded shadow platinum-logo floating">
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 mb-3">
+                        <a href="#" target="_blank" aria-label="Platinum Sponsor 3">
+                            <img src="/images/sponsors/p_sponsor.png" alt="Platinum Sponsor" class="img-fluid rounded shadow platinum-logo floating">
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 mb-3">
+                        <a href="#" target="_blank" aria-label="Platinum Sponsor 4">
+                            <img src="/images/sponsors/p_sponsor.png" alt="Platinum Sponsor" class="img-fluid rounded shadow platinum-logo floating">
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-2 mb-3">
+                        <a href="#" target="_blank" aria-label="Platinum Sponsor 5">
+                            <img src="/images/sponsors/p_sponsor.png" alt="Platinum Sponsor" class="img-fluid rounded shadow platinum-logo floating">
+                        </a>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h5>Key Benefits:</h5>
+                        <ul class="text-start">
+                            <li>12-month Facebook & Website exposure</li>
+                            <li>4 product talks at General Membership Meetings (GMM)</li>
+                            <li>Logo featured in all official media</li>
+                            <li>3 event invites</li>
+                            <li>Exclusive access to member insights</li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+
+
+        <!-- Main Content & Sidebar Layout -->
+        <div class="container my-5">
+            <div class="row">
+                <!-- Sidebar: Gold Sponsors -->
+                <aside class="col-lg-3 mb-4" data-aos="fade-right" data-aos-duration="800">
+                    <!-- Gold Widget -->
+                    <div class="gold-sidebar mb-4">
+                        <h3 class="h5 mb-3 text-center">Gold Sponsors</h3>
+                        <div class="mb-3">
+                            <h6 class="text-center">Key Benefits:</h6>
+                            <ul class="small text-start">
+                                <li>9-month Facebook & Website exposure</li>
+                                <li>3 product talks at GMM</li>
+                                <li>2 event invites</li>
+                                <li>Logo in 3 months' photo/video posts</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="gold-card">
+                            <div class="logo-container">
+                                <img src="/images/sponsors/g_sponsor.png" alt="Gold Sponsor" class="sponsor-logo pulse">
+                            </div>
+                            <div class="details">
+                                <h6 class="text-center mb-1">Gold Sponsor 1</h6>
+                                <p class="small text-muted text-center mb-0">Premium construction solutions</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gold-card">
+                            <div class="logo-container">
+                                <img src="/images/sponsors/g_sponsor.png" alt="Gold Sponsor" class="sponsor-logo pulse">
+                            </div>
+                            <div class="details">
+                                <h6 class="text-center mb-1">Gold Sponsor 2</h6>
+                                <p class="small text-muted text-center mb-0">Architectural innovation leader</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gold-card">
+                            <div class="logo-container">
+                                <img src="/images/sponsors/g_sponsor.png" alt="Gold Sponsor" class="sponsor-logo pulse">
+                            </div>
+                            <div class="details">
+                                <h6 class="text-center mb-1">Gold Sponsor 3</h6>
+                                <p class="small text-muted text-center mb-0">Sustainable building materials</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Section Banner -->
+                    <div class="section-banner text-center w-100">
+                        <img src="/images/sponsors/g_sponsor.png" alt="Gold Sponsor Banner" class="img-fluid">
+                    </div>
+                </aside>
+
+                <!-- Main Content Area -->
+                <div class="col-lg-9">
+                    <!-- Detailed Overview -->
+                    <section id="detailed-content" class="content-section" data-aos="fade-up" data-aos-duration="800">
+                        <h2 class="mb-4">In-Depth Overview of Sponsorship Opportunities</h2>
+                        <p class="mb-3">
+                            Welcome to the comprehensive guide to our sponsorship tiers at UAP Manila Corinthian Chapter. Each tier offers unique benefits and prime logo placements across our website and events.
+                        </p>
+                        
+                        <div class="section-divider"></div>
+                        
+                        <h3>Platinum Sponsorship</h3>
+                        <p>
+                            Our Platinum sponsors receive the highest level of visibility and engagement opportunities. They are featured prominently throughout our website and at all major events. Platinum sponsors enjoy year-round exposure and multiple speaking opportunities at our General Membership Meetings.
+                        </p>
+                        
+                       
+						<br>
+                        		<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+<br>
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+		</p>
+                        <h3>Gold Sponsorship</h3>
+                        <p>
+                            Gold sponsors receive significant visibility through our website and social media channels. They have opportunities to present at GMMs and participate in key events throughout the year. Gold sponsors are recognized in our event materials and receive special mentions in our communications.
+                        </p>
+                        
+												<br>
+                        		<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+<br>
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+		</p>
+                        <div class="section-divider"></div>
+                        
+                        <h3>Silver Sponsorship</h3>
+                        <p>
+                            Silver sponsors benefit from targeted exposure during specific campaigns and events. They receive recognition on our website and social media during their sponsorship period. Silver sponsors also have the opportunity to participate in select events and networking opportunities.
+                        </p>
+                        		<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+		</p>
+                        <div class="section-banner text-center w-100">
+                            <img src="/images/sponsors/g_sponsor.png" alt="Gold Sponsor Banner" class="img-fluid">
+                        </div>
+						<br>
+                        		<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+<br>
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+		</p>
+                        <h3>Bronze Sponsorship</h3>
+                        <p>
+                            Bronze sponsors receive essential exposure to our membership base. They are featured on our website and in event materials for specific events they sponsor. Bronze sponsorship provides an excellent entry point for companies looking to engage with our professional community.
+                        </p>
+                    </section>
+
+                    <!-- Bronze Sponsors -->
+                    <section id="bronze-sponsors" class="bronze-grid mt-5" data-aos="fade-up" data-aos-duration="800">
+                        <h3 class="h5 mb-4 text-center">Bronze Sponsors</h3>
+                        <div class="mb-4">
+                            <h6 class="text-center">Key Benefits:</h6>
+                            <ul class="text-center list-unstyled">
+                                <li>3-month Facebook exposure</li>
+                                <li>1 product talk at GMM</li>
+                                <li>1 event invite</li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="bronze-item">
+                                    <a href="#" target="_blank" aria-label="Bronze Sponsor 1">
+                                        <img src="/images/sponsors/b_sponsor.png" alt="Bronze Sponsor" class="img-fluid rounded">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="bronze-item">
+                                    <a href="#" target="_blank" aria-label="Bronze Sponsor 2">
+                                        <img src="/images/sponsors/b_sponsor.png" alt="Bronze Sponsor" class="img-fluid rounded">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="bronze-item">
+                                    <a href="#" target="_blank" aria-label="Bronze Sponsor 3">
+                                        <img src="/images/sponsors/b_sponsor.png" alt="Bronze Sponsor" class="img-fluid rounded">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="bronze-item">
+                                    <a href="#" target="_blank" aria-label="Bronze Sponsor 4">
+                                        <img src="/images/sponsors/b_sponsor.png" alt="Bronze Sponsor" class="img-fluid rounded">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="bronze-item">
+                                    <a href="#" target="_blank" aria-label="Bronze Sponsor 5">
+                                        <img src="/images/sponsors/b_sponsor.png" alt="Bronze Sponsor" class="img-fluid rounded">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+		<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+		</p><br>
+		
+				<p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+		</p>
+        <!-- Silver Sponsors: Footer Section -->
+        <footer class="silver-footer py-4 text-center" data-aos="fade-up" data-aos-duration="800">
+            <div class="container">
+                <h4 class="h6 mb-4 text-dark">Silver Sponsors</h4>
+                <div class="mb-4">
+                    <h6 class="text-dark">Key Benefits:</h6>
+                    <ul class="small text-start d-inline-block text-left">
+                        <li class="text-dark">6-month Facebook feature</li>
+                        <li class="text-dark">2 product talks at GMM</li>
+                        <li class="text-dark">1 event invite</li>
+                        <li class="text-dark">Media shoutouts</li>
+                    </ul>
+                </div>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <div class="silver-item">
+                        <a href="#" target="_blank" aria-label="Silver Sponsor 1">
+                            <img src="/images/sponsors/s_sponsor.png" alt="Silver Sponsor" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="silver-item">
+                        <a href="#" target="_blank" aria-label="Silver Sponsor 2">
+                            <img src="/images/sponsors/s_sponsor.png" alt="Silver Sponsor" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="silver-item">
+                        <a href="#" target="_blank" aria-label="Silver Sponsor 3">
+                            <img src="/images/sponsors/s_sponsor.png" alt="Silver Sponsor" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="silver-item">
+                        <a href="#" target="_blank" aria-label="Silver Sponsor 4">
+                            <img src="/images/sponsors/s_sponsor.png" alt="Silver Sponsor" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="silver-item">
+                        <a href="#" target="_blank" aria-label="Silver Sponsor 5">
+                            <img src="/images/sponsors/s_sponsor.png" alt="Silver Sponsor" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="silver-item">
+                        <a href="#" target="_blank" aria-label="Silver Sponsor 6">
+                            <img src="/images/sponsors/s_sponsor.png" alt="Silver Sponsor" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize carousels
+        const platinumCarousel = new bootstrap.Carousel(document.getElementById('platinumCarousel'), {
+            interval: 5000, // Rotate every 5 seconds
+            wrap: true
+        });
+        
+        // Sticky header functionality
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('stickyHeader');
+            if (window.scrollY > 300) {
+                header.style.display = 'block';
+            } else {
+                header.style.display = 'none';
+            }
+        });
+        
+        // Create sticky header content
+        function initStickyHeader() {
+            const header = document.getElementById('stickyHeader');
+            const row = header.querySelector('.row');
+            
+            // Add platinum logos to sticky header
+            for (let i = 1; i <= 5; i++) {
+                const col = document.createElement('div');
+                col.className = 'col-4 col-md-2';
+                
+                const img = document.createElement('img');
+                img.src="/images/sponsors/p_sponsor.png";
+                img.alt = `Platinum Sponsor ${i}`;
+                img.className = 'img-fluid';
+                
+                col.appendChild(img);
+                row.appendChild(col);
+            }
+        }
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            initStickyHeader();
+            
+            // Add animation to sponsor logos
+            const sponsorLogos = document.querySelectorAll('.sponsor-logo');
+            sponsorLogos.forEach(logo => {
+                logo.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                });
+                
+                logo.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Rotate silver sponsors on each page load
+            const silverContainer = document.querySelector('.silver-footer .d-flex');
+            const silverItems = Array.from(silverContainer.children);
+            
+            // Shuffle array
+            for (let i = silverItems.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [silverItems[i], silverItems[j]] = [silverItems[j], silverItems[i]];
+            }
+            
+            // Clear and re-add shuffled items
+            silverContainer.innerHTML = '';
+            silverItems.forEach(item => silverContainer.appendChild(item));
+        });
+    </script>
+</body>
+</html>
