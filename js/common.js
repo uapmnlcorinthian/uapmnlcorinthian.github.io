@@ -1,8 +1,4 @@
 /* js/common.js – v1.4.2 (2025‑07‑22)
-   • Password‑wrapper so eye stays in place
-   • Use Bootstrap collapse events for Update Info
-   • Removed manual d‑none toggling
-   • Added autocomplete=off on update form
 */
 
 /* ╭─ Supabase bootstrap (retry) ─╮ */
@@ -254,12 +250,14 @@ function initUpdateForm(){
   pw.classList.add('pe-5');
 
   // inject eye in wrapper
-  const eye = document.createElement('button');
-  eye.type = 'button';
-  eye.className = [
-    'btn','btn-sm','btn-outline-secondary',
-    'position-absolute','end-0','top-50','translate-middle-y','me-2'
-  ].join(' ');
+const eye = document.createElement('button');
+eye.type = 'button';
+eye.className = [
+  'btn', 'btn-sm',
+  'border-0', 'bg-transparent',
+  'position-absolute', 'end-0', 'top-50', 'translate-middle-y',
+  'me-2'
+].join(' ');
   eye.setAttribute('aria-label','Show/hide password');
   eye.innerHTML = '<i class="fa-solid fa-eye"></i>';
   wrap.appendChild(eye);
@@ -404,7 +402,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         || (e.ctrlKey && ['U','S','P'].includes(e.key.toUpperCase()));
       if (blocked) {
         e.preventDefault();
-        alert('This action is disabled for security reasons.');
       }
     });
   }
@@ -420,3 +417,23 @@ document.addEventListener('DOMContentLoaded', ()=>{
 document.addEventListener('DOMContentLoaded', () => {
   if (window.AOS) AOS.init({ duration: 800, once: true });
 });
+
+// url obscure
+document.addEventListener('DOMContentLoaded', () => {
+  const targets = ['/account/','/another‑page/',];
+  const path    = window.location.pathname;
+  if (!targets.includes(path)) return;
+
+  const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+  let token = '';
+  for (let i = 0; i < 32; i++) {
+    token += alpha.charAt(Math.floor(Math.random() * alpha.length));
+  }
+  history.replaceState(null, '', '/uapMCC_' + token);
+});
+
+
+
+
+
+

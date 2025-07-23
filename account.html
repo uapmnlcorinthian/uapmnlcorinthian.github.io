@@ -6,10 +6,9 @@ description: "Manage your UAP Manila Corinthian Chapter membership details and p
 keywords: "Architecture, UAP, Manila, Account, Membership"
 ---
 
-<!-- ------------- ACCOUNT PAGE ------------- -->
 <div class="account-info d-flex flex-column min-vh-100 py-4" data-aos="fade-up">
 
-  <!-- ▸ DIGITAL CARD -->
+  
   <div class="card shadow-sm digital-card mx-auto mb-5" style="max-width: 400px;" data-aos="fade-right">
     <div class="card-header text-center bg-light">
       <img src="{{ site.baseurl }}/images/MCC logo.png" alt="UAP MCC" class="card-header-logo mb-2" />
@@ -30,29 +29,35 @@ keywords: "Architecture, UAP, Manila, Account, Membership"
 
       <hr />
       <div class="small">
-        <!-- PRC -->
+        
         <div class="d-flex align-items-center mb-2">
           <span class="fw-semibold me-1">PRC License:</span>
           <span id="prcLicense" class="sensitive-text flex-grow-1" tabindex="0" aria-label="PRC license masked">*</span>
-          <button type="button" class="toggle-sensitive-btn btn btn-sm btn-outline-secondary ms-2" aria-label="Toggle PRC">
-            <i class="fa-solid fa-eye"></i>
-          </button>
+          <button type="button"
+        class="toggle-sensitive-btn btn btn-sm border-0 bg-transparent text-body ms-2"
+        aria-label="Toggle PRC">
+  <i class="fa-solid fa-eye"></i>
+</button>
         </div>
-        <!-- EMAIL -->
+        
         <div class="d-flex align-items-center mb-2">
           <span class="fw-semibold me-1">Email:</span>
           <span id="email" class="sensitive-text flex-grow-1" tabindex="0" aria-label="Email masked">*</span>
-          <button type="button" class="toggle-sensitive-btn btn btn-sm btn-outline-secondary ms-2" aria-label="Toggle Email">
-            <i class="fa-solid fa-eye"></i>
-          </button>
+          <button type="button"
+        class="toggle-sensitive-btn btn btn-sm border-0 bg-transparent text-body ms-2"
+        aria-label="Toggle PRC">
+  <i class="fa-solid fa-eye"></i>
+</button>
         </div>
-        <!-- CONTACT -->
+        
         <div class="d-flex align-items-center">
           <span class="fw-semibold me-1">Contact No.:</span>
           <span id="contactNo" class="sensitive-text flex-grow-1" tabindex="0" aria-label="Contact number masked">*</span>
-          <button type="button" class="toggle-sensitive-btn btn btn-sm btn-outline-secondary ms-2" aria-label="Toggle Contact">
-            <i class="fa-solid fa-eye"></i>
-          </button>
+          <button type="button"
+        class="toggle-sensitive-btn btn btn-sm border-0 bg-transparent text-body ms-2"
+        aria-label="Toggle PRC">
+  <i class="fa-solid fa-eye"></i>
+</button>
         </div>
       </div>
     </div>
@@ -61,9 +66,9 @@ keywords: "Architecture, UAP, Manila, Account, Membership"
       <p class="mb-0"><strong>Total Due:</strong> <span id="totalDue">₱0</span></p>
     </div>
   </div>
-  <!-- /DIGITAL CARD -->
+  
 
-  <!-- ▸ PAYMENT HISTORY -->
+  
   <section class="container" data-aos="fade-left">
     <div class="d-flex align-items-center justify-content-between mb-2">
       <h2 class="h5 text-primary fw-semibold mb-0">Payment History</h2>
@@ -74,65 +79,69 @@ keywords: "Architecture, UAP, Manila, Account, Membership"
       </button>
     </div>
 
-    <div id="paymentsCollapse" class="collapse show">
-      <div id="paymentsWrapper" class="d-flex">
+		<div id="paymentsCollapse" class="collapse show">
+		  <div id="paymentsWrapper" class="d-flex">
+			<div class="scrollable-table-container">
+			  <table
+				id="paymentsTable"
+				class="table table-sm align-middle text-center mb-0 payment-table"
+			  >
+				<thead class="table-light">
+				  <tr>
+					<th class="sticky-col">Year</th>
+					<!-- JS‑injected year columns go here -->
+				  </tr>
+				</thead>
+				<tbody class="group-chapter">
+				  <tr>
+					<th scope="row" class="sticky-col">Chapter Dues</th>
+					<!-- JS‑injected cells -->
+				  </tr>
+				  <tr>
+					<th scope="row" class="sticky-col">Chapter Penalty</th>
+				  </tr>
+				  <tr>
+					<th scope="row" class="sticky-col">Payment Date</th>
+				  </tr>
+				</tbody>
+				<tbody class="group-iapoa">
+				  <tr>
+					<th scope="row" class="sticky-col">IAPOA Dues</th>
+				  </tr>
+				  <tr>
+					<th scope="row" class="sticky-col">IAPOA Penalty</th>
+				  </tr>
+				  <tr>
+					<th scope="row" class="sticky-col">IAPOA Payment Date</th>
+				  </tr>
+				</tbody>
+			  </table>
+			</div><!-- /.scrollable-table-container -->
+		  </div><!-- /#paymentsWrapper -->
+		</div><!-- /#paymentsCollapse -->
 
-        <!-- Static Labels Table -->
-        <table class="table table-sm mb-0 flex-shrink-0 me-2" style="width:auto; white-space: nowrap;">
-          <thead class="visually-hidden">
-            <tr><th></th></tr>
-          </thead>
-          <tbody class="group-chapter-labels">
-            <tr><th scope="row">Chapter Dues</th></tr>
-            <tr><th scope="row">Chapter Penalty</th></tr>
-            <tr><th scope="row">Payment Date</th></tr>
-          </tbody>
-          <tbody class="group-iapoa-labels">
-            <tr><th scope="row">IAPOA Dues</th></tr>
-            <tr><th scope="row">IAPOA Penalty</th></tr>
-            <tr><th scope="row">Payment Date</th></tr>
-          </tbody>
-        </table>
 
-        <!-- Scrollable Data Table -->
-        <div class="flex-grow-1 overflow-auto">
-          <table id="paymentsTable" class="table table-sm align-middle text-center mb-0" style="min-width:600px;">
-            <thead class="table-light">
-              <tr></tr>
-            </thead>
-            <tbody class="group-chapter">
-              <tr></tr><tr></tr><tr></tr>
-            </tbody>
-            <tbody class="group-iapoa">
-              <tr></tr><tr></tr><tr></tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- action buttons -->
-    <div class="mt-4 d-flex justify-content-end gap-2">
+    
+    <div class="mt-4 d-flex justify-content-center gap-2">
       <button id="btnSaveScreenshot" class="btn btn-outline-primary btn-sm" title="Save info">
         <i class="fa-solid fa-download me-1"></i> Save
       </button>
       <button id="btnLogoutFooter" class="btn btn-outline-danger btn-sm" title="Logout">
         <i class="fa-solid fa-right-from-bracket me-1"></i> Logout
       </button>
-    </div>
-  </section>
-  <!-- /PAYMENT HISTORY -->
-
-  <!-- ▸ UPDATE INFO COLLAPSE -->
-  <div class="container text-end mt-4">
-    <button id="btnShowUpdate" class="btn btn-outline-primary btn-sm" type="button"
+	      <button id="btnShowUpdate" class="btn btn-outline-primary btn-sm" type="button"
             data-bs-toggle="collapse" data-bs-target="#updateWrapper" aria-expanded="false">
       <i class="fa-solid fa-pen-to-square me-1"></i> Update Info
     </button>
+    </div>
+  </section> 
+
+  
+  <div class="container text-end mt-4">
+
   </div>
 
-  <!-- ▸ UPDATE INFO CARD (hidden by default) -->
+  
   <section id="updateWrapper" class="container mt-3 collapse">
     <div class="card shadow-sm mx-auto" style="max-width: 600px;">
       <div class="card-header bg-light fw-semibold text-primary">
@@ -141,7 +150,7 @@ keywords: "Architecture, UAP, Manila, Account, Membership"
 
       <div class="card-body">
         <form id="updateInfoForm" class="row g-3 needs-validation" novalidate>
-          <!-- Current password -->
+          
           <div class="col-md-6 position-relative">
             <label for="currentPassword" class="form-label">
               Current Password <span class="text-danger">*</span>
@@ -150,54 +159,52 @@ keywords: "Architecture, UAP, Manila, Account, Membership"
                    class="form-control" required>
           </div>
 
-          <!-- New password -->
+          
           <div class="col-md-6">
   <label for="password" class="form-label">New Password</label>
   <div class="position-relative password-wrapper">
     <input type="password" id="password" name="password" class="form-control pe-5">
-    <!-- eye button will go here -->
+    
   </div>
-  <!-- strength bar & messages will be injected _below_ -->
-</div>
-
-          <!-- Confirm -->
+  
+</div>          
           <div class="col-md-6">
             <label for="confirmPassword" class="form-label">Confirm New Password</label>
             <input type="password" id="confirmPassword" name="confirmPassword"
                    class="form-control">
           </div>
 
-          <!-- Username -->
+          
           <div class="col-md-6">
             <label for="username" class="form-label">Username</label>
             <input type="text" id="username" name="username" class="form-control">
           </div>
 
-          <!-- Email -->
+          
           <div class="col-md-6">
             <label for="email" class="form-label">Email</label>
             <input type="email" id="email" name="email" class="form-control">
           </div>
 
-          <!-- Contact -->
+          
           <div class="col-md-6">
             <label for="contact" class="form-label">Contact No.</label>
             <input type="text" id="contact" name="contact" class="form-control">
           </div>
 
-          <!-- Company -->
+          
           <div class="col-md-6">
             <label for="company" class="form-label">Company</label>
             <input type="text" id="company" name="company" class="form-control">
           </div>
 
-          <!-- Position -->
+          
           <div class="col-md-6">
             <label for="position" class="form-label">Position</label>
             <input type="text" id="position" name="position" class="form-control">
           </div>
 
-          <!-- Submit -->
+          
           <div class="col-12 text-end">
             <button type="submit" class="btn btn-primary btn-sm">
               <i class="fa-solid fa-cloud-upload me-1"></i> Submit
@@ -209,6 +216,4 @@ keywords: "Architecture, UAP, Manila, Account, Membership"
       </div>
     </div>
   </section>
-  <!-- /UPDATE INFO CARD -->
-
 </div>

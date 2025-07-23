@@ -409,23 +409,16 @@ body, html {
   outline: none;
   cursor: pointer;
 }
-
-/* ====================
-   Additional Tweaks
-   ==================== */
-
-/* Remove gap below About Us toggle in offcanvas menu */
-.offcanvas-body .nav-item.dropdown > .dropdown-menu {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
+/* Freeze first-column cells */
+.sticky-col {
+  position: sticky;   /* enable stickiness */
+  left: 0;            /* pin at the left edge */
+  background: #fff;   /* opaque background */
+  z-index: 2;         /* layer above regular cells */
 }
-/* Remove padding/margin from the About Us toggle itself */
-.offcanvas-body .nav-item.dropdown > .nav-link.dropdown-toggle {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-/* Tighten spacing of dropdown items (again) */
-.offcanvas-body .dropdown-menu .dropdown-item {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+
+/* Ensure header cell sits above row labels */
+thead .sticky-col {
+  top: 0;             /* pin to the top of the scroll container */
+  z-index: 3;         /* highest layer for the header */
 }
