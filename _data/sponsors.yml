@@ -2,200 +2,280 @@
 
 - name: ArchDaily
   website: https://www.archdaily.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/ArchDaily-Logo.svg/512px-ArchDaily-Logo.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/ArchDaily-Logo.svg/512px-ArchDaily-Logo.svg
   tier: Diamond
   active: true
   order: 10
   alt: "ArchDaily logo"
-  contact_email: info@archdaily.com  
-  # verified on Commons :contentReference[oaicite:0]{index=0}
+  tagline: "Your daily architecture source"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: info@archdaily.com
 
 - name: Autodesk
   website: https://www.autodesk.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Autodesk_Logo_2021.svg/512px-Autodesk_Logo_2021.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Autodesk_Logo_2021.svg/512px-Autodesk_Logo_2021.svg
   tier: Diamond
   active: true
   order: 20
   alt: "Autodesk logo"
-  contact_email: support@autodesk.com  
-  # verified on Commons :contentReference[oaicite:1]{index=1}
+  tagline: "Design and make anything"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: support@autodesk.com
 
 - name: Bentley Systems
   website: https://www.bentley.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Bentley_Systems_logo.svg/512px-Bentley_Systems_logo.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Bentley_Systems_logo.svg/512px-Bentley_Systems_logo.svg
   tier: Diamond
   active: true
   order: 30
   alt: "Bentley Systems logo"
-  contact_email: info@bentley.com  
-  # verified on Commons :contentReference[oaicite:2]{index=2}
+  tagline: "Infrastructure engineering software"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: info@bentley.com
 
 - name: Gensler
   website: https://www.gensler.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Gensler_logo.svg/512px-Gensler_logo.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Gensler_logo.svg/512px-Gensler_logo.svg
   tier: Diamond
   active: true
   order: 40
   alt: "Gensler logo"
-  contact_email: contact@gensler.com  
-  # verified on Commons :contentReference[oaicite:3]{index=3}
+  tagline: "Design for a better world"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: contact@gensler.com
 
 - name: SketchUp
   website: https://www.sketchup.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/SketchUp_Logo_2020.svg/512px-SketchUp_Logo_2020.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/SketchUp_Logo_2020.svg/512px-SketchUp_Logo_2020.svg
   tier: Platinum
   active: true
   order: 50
   alt: "SketchUp logo"
-  contact_email: hello@sketchup.com  
-  # verified on Commons :contentReference[oaicite:4]{index=4}
+  tagline: "3D modeling for everyone"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: hello@sketchup.com
 
 - name: Vectorworks
   website: https://www.vectorworks.net
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Vectorworks_Logo.png/512px-Vectorworks_Logo.png  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Vectorworks_Logo.png/512px-Vectorworks_Logo.png
   tier: Platinum
   active: true
   order: 60
   alt: "Vectorworks logo"
-  contact_email: support@vectorworks.net  
-  # verified on Commons :contentReference[oaicite:5]{index=5}
+  tagline: "Design without limits"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: support@vectorworks.net
 
 - name: Adobe
   website: https://www.adobe.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Systems_logo_and_wordmark.svg/512px-Adobe_Systems_logo_and_wordmark.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Systems_logo_and_wordmark.svg/512px-Adobe_Systems_logo_and_wordmark.svg
   tier: Platinum
   active: true
   order: 70
   alt: "Adobe logo"
-  contact_email: adobe-support@adobe.com  
-  # verified on Commons :contentReference[oaicite:6]{index=6}
+  tagline: "Creativity for all"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: adobe-support@adobe.com
 
 - name: SOM
   website: https://www.som.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/SOM_logo.png/512px-SOM_logo.png  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/SOM_logo.png/512px-SOM_logo.png
   tier: Platinum
   active: true
   order: 80
   alt: "SOM logo"
-  contact_email: info@som.com  
-  # verified on Commons :contentReference[oaicite:7]{index=7}
+  tagline: "Shaping skylines"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: info@som.com
 
 - name: HOK
   website: https://www.hok.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/HOK_logo.svg/512px-HOK_logo.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/HOK_logo.svg/512px-HOK_logo.svg
   tier: Gold
   active: true
   order: 90
   alt: "HOK logo"
-  contact_email: info@hok.com  
-  # verified on Commons :contentReference[oaicite:8]{index=8}
+  tagline: "Innovative design solutions"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: info@hok.com
 
 - name: Perkins & Will
   website: https://perkinswill.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/PW-logo-black.svg/512px-PW-logo-black.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/PW-logo-black.svg/512px-PW-logo-black.svg
   tier: Gold
   active: true
   order: 100
   alt: "Perkins & Will logo"
-  contact_email: contact@perkinswill.com  
-  # verified on Commons :contentReference[oaicite:9]{index=9}
+  tagline: "Designing for people"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: contact@perkinswill.com
 
 - name: Arup
   website: https://www.arup.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Arup_logo.svg/512px-Arup_logo.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Arup_logo.svg/512px-Arup_logo.svg
   tier: Gold
   active: true
   order: 110
   alt: "Arup logo"
-  contact_email: info@arup.com  
-  # file exists on Commons
+  tagline: "Total design solutions"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: info@arup.com
 
 - name: AECOM
   website: https://www.aecom.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/AECOM_logo.svg/512px-AECOM_logo.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/AECOM_logo.svg/512px-AECOM_logo.svg
   tier: Gold
   active: true
   order: 120
   alt: "AECOM logo"
-  contact_email: info@aecom.com  
-  # file exists on Commons
+  tagline: "Shaping the future"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: info@aecom.com
 
 - name: Bjarke Ingels Group (BIG)
   website: https://big.dk
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Big_logo.svg/512px-Big_logo.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Big_logo.svg/512px-Big_logo.svg
   tier: Gold
   active: true
   order: 130
   alt: "BIG logo"
-  contact_email: info@big.dk  
-  # file exists on Commons
+  tagline: "Architecture of the future"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: info@big.dk
 
 - name: Foster + Partners
   website: https://www.fosterandpartners.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Foster_%2B_Partners_logo.svg/512px-Foster_%2B_Partners_logo.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Foster_%2B_Partners_logo.svg/512px-Foster_%2B_Partners_logo.svg
   tier: Silver
   active: true
   order: 140
   alt: "Foster + Partners logo"
-  contact_email: contact@fosterandpartners.com  
-  # file exists on Commons
+  tagline: "Global architectural practice"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: contact@fosterandpartners.com
 
 - name: American Institute of Architects (AIA)
   website: https://www.aia.org
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Logo_aia_2021.png/512px-Logo_aia_2021.png  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Logo_aia_2021.png/512px-Logo_aia_2021.png
   tier: Silver
   active: true
   order: 150
   alt: "AIA logo"
-  contact_email: info@aia.org  
-  # file exists on Commons
+  tagline: "Advancing architecture"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: info@aia.org
 
 - name: Adobe XD
   website: https://www.adobe.com/products/xd.html
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Adobe_XD_CC_icon.svg/512px-Adobe_XD_CC_icon.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Adobe_XD_CC_icon.svg/512px-Adobe_XD_CC_icon.svg
   tier: Silver
   active: true
   order: 160
   alt: "Adobe XD logo"
-  contact_email: support@adobe.com  
-  # file exists on Commons
+  tagline: "Design, prototype & share"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: support@adobe.com
 
 - name: Autodesk Revit
   website: https://www.autodesk.com/products/revit
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Revit_Icon.svg/512px-Revit_Icon.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Revit_Icon.svg/512px-Revit_Icon.svg
   tier: Bronze
   active: true
   order: 170
   alt: "Revit logo"
-  contact_email: support@autodesk.com  
-  # file exists on Commons
+  tagline: "Building Information Modeling"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59:Z"
+  media_type: image
+  media_url: ""
+  contact_email: support@autodesk.com
 
 - name: Houzz
   website: https://www.houzz.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Houzz_logo_%282024%29.png/512px-Houzz_logo_%282024%29.png  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Houzz_logo_%282024%29.png/512px-Houzz_logo_%282024%29.png
   tier: Bronze
   active: true
   order: 180
   alt: "Houzz logo"
-  contact_email: support@houzz.com  
-  # file exists on Commons
+  tagline: "Home design inspiration"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: support@houzz.com
 
 - name: Trimble
   website: https://www.trimble.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Trimble_Logo.svg/512px-Trimble_Logo.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Trimble_Logo.svg/512px-Trimble_Logo.svg
   tier: Bronze
   active: true
   order: 190
   alt: "Trimble logo"
-  contact_email: info@trimble.com  
-  # file exists on Commons
+  tagline: "Transforming the way the world works"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: info@trimble.com
 
 - name: Miro
   website: https://miro.com
-  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Miro-logo.svg/512px-Miro-logo.svg  
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Miro-logo.svg/512px-Miro-logo.svg
   tier: Supporting
   active: true
   order: 200
   alt: "Miro logo"
-  contact_email: support@miro.com  
-  # file exists on Commons
+  tagline: "Collaborative whiteboard platform"
+  start_date: "2025-01-01T00:00:00Z"
+  end_date: "2025-12-31T23:59:59Z"
+  media_type: image
+  media_url: ""
+  contact_email: support@miro.com

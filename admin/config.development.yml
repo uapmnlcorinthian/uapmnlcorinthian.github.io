@@ -1,10 +1,7 @@
 <!-- File: /admin/config.yml -->
 backend:
-  name: github
-  repo: uapmnlcorinthian/uapmnlcorinthian.github.io   # GitHub OAuth
+  name: git-gateway
   branch: main
-  auth_scope: "repo"
-  auth_endpoint: ""
 media_folder: "images"
 public_folder: "/images"
 collections:

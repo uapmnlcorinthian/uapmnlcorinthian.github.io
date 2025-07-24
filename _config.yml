@@ -21,6 +21,10 @@ plugins:
   - jekyll-feed           # generates an RSS feed at /feed.xml
   - jekyll-seo-tag        # injects SEO meta tags automatically
   
+# ─── Include these extra folders ─────────────────────────────────
+include:
+  - admin
+  
 # ─── Exclude from Build ──────────────────────────────────────────
 exclude:
   - README.md

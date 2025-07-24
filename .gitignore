@@ -1,5 +1,6 @@
 # Jekyll build output
 _site/
+node_modules/
 
 # Local helper scripts
 MCC WEBSITE.bat
@@ -10,3 +11,18 @@ activities1.html
 bod1.html
 index1.html
 login1.html
+# Local Netlify folder
+.netlify
+
+# Local editor files
+.DS_Store
+Thumbs.db
+
+# IDE settings (VSCode, JetBrains, etc.)
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
