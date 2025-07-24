@@ -1,0 +1,154 @@
+sponsors:
+  - name: ArchDaily
+    website: https://www.archdaily.com
+    logo: https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/ArchDaily-Logo.svg/512px-ArchDaily-Logo.svg
+    tier: Diamond
+    active: true
+    order: 10
+    alt: "ArchDaily logo"
+    tagline: "Your daily architecture source"
+    start_date: "2025-01-01T00:00:00Z"
+    end_date: "2025-12-31T23:59:59Z"
+    media_type: image
+    media_url: ""
+    contact_email: info@archdaily.com
+
+  - name: Autodesk
+    website: https://www.autodesk.com
+    logo: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Autodesk_Logo_2021.svg/512px-Autodesk_Logo_2021.svg
+    tier: Diamond
+    active: true
+    order: 20
+    alt: "Autodesk logo"
+    tagline: "Design and make anything"
+    start_date: "2025-01-01T00:00:00Z"
+    end_date: "2025-12-31T23:59:59Z"
+    media_type: image
+    media_url: ""
+    contact_email: support@autodesk.com
+
+  - name: Bentley Systems
+    website: https://www.bentley.com
+    logo: https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Bentley_Systems_logo.svg/512px-Bentley_Systems_logo.svg
+    tier: Diamond
+    active: true
+    order: 30
+    alt: "Bentley Systems logo"
+    tagline: "Infrastructure engineering software"
+    start_date: "2025-01-01T00:00:00Z"
+    end_date: "2025-12-31T23:59:59Z"
+    media_type: image
+    media_url: ""
+    contact_email: info@bentley.com
+
+  - name: Gensler
+    website: https://www.gensler.com
+    logo: https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Gensler_logo.svg/512px-Gensler_logo.svg
+    tier: Diamond
+    active: true
+    order: 40
+    alt: "Gensler logo"
+    tagline: "Design for a better world"
+    start_date: "2025-01-01T00:00:00Z"
+    end_date: "2025-12-31T23:59:59Z"
+    media_type: image
+    media_url: ""
+    contact_email: contact@gensler.com
+
+  - name: SketchUp
+    website: https://www.sketchup.com
+    logo: https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/SketchUp_Logo_2020.svg/512px-SketchUp_Logo_2020.svg
+    tier: Platinum
+    active: true
+    order: 50
+    alt: "SketchUp logo"
+    tagline: "3D modeling for everyone"
+    start_date: "2025-01-01T00:00:00Z"
+    end_date: "2025-12-31T23:59:59Z"
+    media_type: image
+    media_url: ""
+    contact_email: hello@sketchup.com
+
+  - name: Vectorworks
+    website: https://www.vectorworks.net
+    logo: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Vectorworks_Logo.png/512px-Vectorworks_Logo.png
+    tier: Platinum
+    active: true
+    order: 60
+    alt: "Vectorworks logo"
+    tagline: "Design without limits"
+    start_date: "2025-01-01T00:00:00Z"
+    end_date: "2025-12-31T23:59:59Z"
+    media_type: image
+    media_url: ""
+    contact_email: support@vectorworks.net
+
+  - name: Adobe
+    website: https://www.adobe.com
+    logo: https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Systems_logo_and_wordmark.svg/512px-Adobe_Systems_logo_and_wordmark.svg
+    tier: Platinum
+    active: true
+    order: 70
+    alt: "Adobe logo"
+    tagline: "Creativity for all"
+    start_date: "2025-01-01T00:00:00Z"
+    end_date: "2025-12-31T23:59:59Z"
+    media_type: image
+    media_url: ""
+    contact_email: adobe-support@adobe.com
+
+  - name: SOM
+    website: https://www.som.com
+    logo: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/SOM_logo.png/512px-SOM_logo.png
+    tier: Platinum
+    active: true
+    order: 80
+    alt: "SOM logo"
+    tagline: "Shaping skylines"
+    start_date: "2025-01-01T00:00:00Z"
+    end_date: "2025-12-31T23:59:59Z"
+    media_type: image
+    media_url: ""
+    contact_email: info@som.com
+
+  - name: HOK
+    website: https://www.hok.com
+    logo: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/HOK_logo.svg/512px-HOK_logo.svg
+    tier: Gold
+    active: true
+    order: 90
+    alt: "HOK logo"
+    tagline: "Innovative design solutions"
+    start_date: "2025-01-01T00:00:00Z"
+    end_date: "2025-12-31T23:59:59Z"
+    media_type: image
+    media_url: ""
+    contact_email: info@hok.com
+
+  - name: Perkins & Will
+    website: https://perkinswill.com
+    logo: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/PW-logo-black.svg/512px-PW-logo-black.svg
+    tier: Gold
+    active: true
+    order: 100
+    alt: "Perkins & Will logo"
+    tagline: "Designing for people"
+    start_date: "2025-01-01T00:00:00Z"
+    end_date: "2025-12-31T23:59:59Z"
+    media_type: image
+    media_url: ""
+    contact_email: contact@perkinswill.com
+
+  - name: Arup
+    website: https://www.arup.com
+    logo: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Arup_logo.svg/512px-Arup_logo.svg
+    tier: Gold
+    active: true
+    order: 110
+    alt: "Arup logo"
+    tagline: "Total design solutions"
+    start_date: "2025-01-01T00:00:00Z"
+    end_date: "2025-12-31T23:59:59Z"
+    media_type: image
+    media_url: ""
+    contact_email: info@arup.com

@@ -2,25 +2,29 @@
 backend:
   name: git-gateway
   branch: main
+
 media_folder: "images"
 public_folder: "/images"
+
 collections:
   - name: "sponsors"
     label: "Sponsors"
-    folder: "_data"
+    folder: "_data/sponsors"
     create: true
+    slug: "{{fields.name | slugify}}"
     extension: "yml"
-    slug: "{{slug}}"
+    summary: "{{fields.name}} ({{fields.tier}})"
     fields:
-      - {label: "Name",         name: "name",    widget: "string"}
-      - {label: "Website URL",  name: "website", widget: "string"}
-      - {label: "Logo",         name: "logo",    widget: "image"}
-      - {label: "Alt Text",     name: "alt",     widget: "string"}
-      - {label: "Tier",         name: "tier",    widget: "select", options: ["Platinum","Gold","Silver","Bronze","Event"]}
-      - {label: "Active?",      name: "active",  widget: "boolean", default: true}
-      - {label: "Order",        name: "order",   widget: "number", default: 1}
-      - {label: "Tagline",      name: "tagline", widget: "string", required: false}
-      - {label: "Start Date",   name: "start_date", widget: "datetime", required: false}
-      - {label: "End Date",     name: "end_date",   widget: "datetime", required: false}
-      - {label: "Media Type",   name: "media_type", widget: "select", options: ["image","video"], default: "image"}
-      - {label: "Media URL",    name: "media_url",  widget: "string", required: false}
+      - {label: "Name",        name: "name",        widget: "string"}
+      - {label: "Website URL", name: "website",     widget: "string"}
+      - {label: "Logo",        name: "logo",        widget: "image"}
+      - {label: "Alt Text",    name: "alt",         widget: "string"}
+      - {label: "Tier",        name: "tier",        widget: "select", options: ["Platinum","Gold","Silver","Bronze","Supporting","Event"]}
+      - {label: "Active?",     name: "active",      widget: "boolean"}
+      - {label: "Order",       name: "order",       widget: "number"}
+      - {label: "Tagline",     name: "tagline",     widget: "string", required: false}
+      - {label: "Start Date",  name: "start_date",  widget: "datetime", required: false}
+      - {label: "End Date",    name: "end_date",    widget: "datetime", required: false}
+      - {label: "Media Type",  name: "media_type",  widget: "select", options: ["image","video"], default: "image"}
+      - {label: "Media URL",   name: "media_url",   widget: "string", required: false}
+      - {label: "Contact Email", name: "contact_email", widget: "string"}
