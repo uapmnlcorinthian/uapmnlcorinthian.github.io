@@ -1,8 +1,11 @@
 <!-- File: /admin/config.yml -->
 backend:
   name: github
-  repo: uapmnlcorinthian/uapmnlcorinthian.github.io
+  repo: uapmnlcorinthian/uapmnlcorinthian.github.io   # e.g. “uapmnlcorinthian/website”
   branch: main
+  auth_scope: "repo"              # if you need write access
+  auth_endpoint: ""               # leave blank for Netlify CMS default
+
 media_folder: "assets/img"
 public_folder: "/assets/img"
 collections:
