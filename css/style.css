@@ -1,81 +1,58 @@
-/* css/style.css
-   Project: UAP Manila Corinthian Chapter Website
-   Author: ArZ Miranda
-   Date Created: 2025‑07‑19
-   Last Modified: 2025‑07‑22
-   Version: 1.0.2
-*/
-
-/* Professional brand colors */
 :root {
-  --bs-primary: #2C3E50;    /* Dark Slate Blue */
-  --bs-secondary: #E67E22;  /* Carrot Orange */
-  --bs-body-bg: #F4F6F7;    /* Light Gray Blue */
-  --text-primary: #34495E;  /* Main text */
-  --text-secondary: #7F8C8D;/* Secondary text */
+  --bs-primary: #2C3E50;
+  --bs-secondary: #E67E22;
+  --bs-body-bg: #F4F6F7;
+  --text-primary: #34495E;
+  --text-secondary: #7F8C8D;
 }
 
-/* Digital Card */
-.digital-card {
-  max-width: 480px;
-  margin: auto;
-}
-.card-header-logo {
-  height: 42px;
-}
-.card-header-title {
-  font-size: 1.35rem;
-  font-weight: 600;
-}
-.sensitive-text {
-  user-select: none;
-  letter-spacing: 0.1em;
-}
-.toggle-sensitive-btn {
-  border: none;
-  background: none;
-  color: var(--bs-secondary);
-  cursor: pointer;
+html, body {
+  overflow-x: hidden;
+  background-color: var(--bs-body-bg);
+  color: var(--text-primary);
 }
 
-header img {
-  height: 50px;
-}
+header img { height: 50px; }
 
-
-::selection {
-  background-color: var(--bs-secondary);
-  color: #fff; /* or another contrast color */
-}
-::-moz-selection {
+::selection, ::-moz-selection {
   background-color: var(--bs-secondary);
   color: #fff;
 }
 
-
-/* Hero section */
+/* Hero */
 .hero {
   background: var(--bs-primary);
   color: #fff;
   padding: 3rem 1rem;
-  font-size: 1.75rem;
-  font-weight: 600;
   text-align: center;
-  letter-spacing: 0.03em;
+  font-weight: 600;
+  font-size: 1.75rem;
   margin-bottom: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.03em;
 }
 
-/* Sponsors marquee */
+/* Navbar spacing fix */
+.navbar-nav .nav-link {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Section Padding Fix */
+section.container,
+section.container-fluid {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Sponsors Marquee */
 .sponsors-marquee {
   height: 100px;
   overflow: hidden;
   position: relative;
-  width: 100%;
   margin: 2rem 0;
+  background: #fff;
   border-top: 1px solid #cbd3d9;
   border-bottom: 1px solid #cbd3d9;
-  background: #fff;
   padding: 1rem 0;
 }
 .sponsors-track {
@@ -86,9 +63,9 @@ header img {
   gap: 3rem;
 }
 .sponsor-logo img {
-  height: 80px !important;
+  height: 80px;
   filter: grayscale(70%);
-  transition: filter 0.3s ease, transform 0.3s ease;
+  transition: filter 0.3s, transform 0.3s;
   cursor: pointer;
 }
 .sponsor-logo img:hover {
@@ -100,65 +77,49 @@ header img {
   100% { transform: translateX(-50%); }
 }
 
-/* Post list styling */
+/* News Highlights */
 section[aria-labelledby="news-title"] article {
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s;
   padding: 0.75rem;
   border-radius: 0.375rem;
-  color: var(--text-primary);
 }
-section[aria-labelledby="news-title"] article:hover,
-section[aria-labelledby="news-title"] article:focus {
+section[aria-labelledby="news-title"] article:hover {
   background-color: #fff3e0;
-  outline: none;
 }
-section[aria-labelledby="news-title"] article h3 {
-  margin-bottom: 0.25rem;
+section[aria-labelledby="news-title"] h3 {
   color: var(--bs-primary);
 }
 
 /* Footer */
 footer {
-  width: 100%;
-  background-color: var(--bs-primary);
+  background: var(--bs-primary);
   color: #fff;
-  padding: 1rem;
   text-align: center;
-  flex-shrink: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-footer a {
-  text-decoration: none;
+  padding: 1rem;
 }
 
-/* Scroll‑triggered “back to top” button (#btnTop) */
+/* Back to Top Button */
 #btnTop {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  background-color: var(--bs-secondary);
+  background: var(--bs-secondary);
   color: #fff;
-  border: none;
   padding: 0.5rem;
+  border: none;
   border-radius: 0.25rem;
   font-size: 1.25rem;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   display: none;
   z-index: 1030;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
-#btnTop:hover,
-#btnTop:focus {
+#btnTop:hover {
   background-color: #ca6e17;
-  outline: none;
 }
 
-/* Payment Table Styling */
-#paymentsWrapper {
-  overflow-x: auto;
-}
+/* Payment Table */
+#paymentsWrapper { overflow-x: auto; }
 #paymentsTable {
   min-width: 720px;
   border-radius: 0.5rem;
@@ -175,34 +136,23 @@ footer a {
   background-color: #fff;
   color: var(--text-primary);
   font-weight: 600;
-  border-bottom: 1px solid #dee2e6;
 }
-/* Zebra striping */
 #paymentsTable tbody.group-chapter tr:nth-child(even),
 #paymentsTable tbody.group-iapoa tr:nth-child(even) {
   background-color: #fafafa;
 }
-/* Subtle separator between groups */
 #paymentsTable tbody.group-iapoa {
   border-top: 1px dashed #dee2e6;
 }
-/* Spacer for group heads */
-#paymentsTable tbody.group-iapoa tr:first-child th,
 #paymentsTable tbody.group-iapoa tr:first-child td {
   padding-top: 1rem;
 }
 
-/* Login page base */
-body, html {
-  height: 100%;
-  background-color: #f8f9fa;
-  color: #0d1b2a;
-}
-/* Login & Instructions cards */
+/* Login Page */
 .login-card,
 .instructions {
   max-width: 400px;
-  width: 100%;
+  margin: auto;
   border-radius: 0.5rem;
   padding: 2rem;
   background: #fff;
@@ -214,41 +164,64 @@ body, html {
   color: #856404;
   box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
 }
-/* Toggle view button */
 #toggleViewBtn {
-  display: none; /* shows up only under 992px */
+  display: none;
 }
+
 @media (max-width: 991.98px) {
-  main#mainContent { flex-direction: column; align-items: center; padding: 1rem; }
-  .login-card { display: none; margin-bottom: 1rem; }
-  .instructions { margin-bottom: 1rem; }
+  main#mainContent {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+  .login-card, .instructions {
+    margin-bottom: 1rem;
+  }
   #toggleViewBtn {
     display: block;
     width: 100%;
-    max-width: 400px;
     margin-top: 1rem;
-    box-shadow: none;
     border-radius: 0.5rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
   }
   #toggleViewBtn:hover {
     background-color: #e0a800;
   }
 }
 
+/* Digital Card */
+.digital-card {
+  max-width: 480px;
+  margin: auto;
+}
+.card-header-logo {
+  height: 42px;
+}
+.card-header-title {
+  font-size: 1.35rem;
+  font-weight: 600;
 
-
-/* Freeze first-column cells */
-.sticky-col {
-  position: sticky;   /* enable stickiness */
-  left: 0;            /* pin at the left edge */
-  background: #fff;   /* opaque background */
-  z-index: 2;         /* layer above regular cells */
+}
+.sensitive-text {
+  user-select: none;
+  letter-spacing: 0.1em;
+}
+.toggle-sensitive-btn {
+  border: none;
+  background: none;
+  color: var(--bs-secondary);
+  cursor: pointer;
 }
 
-/* Ensure header cell sits above row labels */
+/* Freeze Table Column */
+.sticky-col {
+  position: sticky;
+  left: 0;
+  background: #fff;
+  z-index: 2;
+}
 thead .sticky-col {
-  top: 0;             /* pin to the top of the scroll container */
-  z-index: 3;         /* highest layer for the header */
+  top: 0;
+  z-index: 3;
 }
