@@ -38,41 +38,10 @@
   cursor: pointer;
 }
 
-/* Base page layout */
-body {
-  background-color: var(--bs-body-bg);
-  color: var(--text-primary);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-main {
-  flex: 1 0 auto;
-  padding: 0 1rem 2rem;
-  max-width: 960px;
-  margin: 0 auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-header {
-  width: 100%;
-  background-color: #fff !important;
-  border-bottom: 1px solid #d0d7db;
-}
 header img {
   height: 50px;
 }
-header nav a {
-  color: var(--text-primary) !important;
-  margin-right: 1rem;
-  text-decoration: none;
-  font-weight: 600;
-}
-header nav a:hover,
-header nav a:focus {
-  color: var(--bs-secondary) !important;
-  text-decoration: underline;
-  outline: none;
-}
+
 
 ::selection {
   background-color: var(--bs-secondary);
