@@ -6,90 +6,68 @@ description: "UAP Manila Corinthian Chapter – Premier community of architectur
 keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community, Workshops, Events"
 ---
 
-<!-- Banner Carousel -->
-<section aria-label="Featured activities and events banner" class="mb-4" data-aos="fade-up" data-aos-duration="800">
-  <div id="homepageBannerCarousel"
-       class="carousel slide"
-       data-bs-ride="carousel"
-       data-bs-interval="4000"
-       data-bs-pause="hover"
-       aria-live="polite"
-       role="region">
-
-    <div class="carousel-indicators">
-      {% for i in (0..3) %}
-        <button type="button"
-                data-bs-target="#homepageBannerCarousel"
-                data-bs-slide-to="{{ i }}"
-                class="{% if i == 0 %}active{% endif %}"
-                aria-current="{% if i == 0 %}true{% endif %}"
-                aria-label="Slide {{ i | plus:1 }}"></button>
-      {% endfor %}
-    </div>
-
-    <div class="carousel-inner rounded shadow-sm">
-      {% assign slides = site.data.activities | slice: 0,4 %}
-      {% for activity in slides %}
-        <div class="carousel-item{% if forloop.first %} active{% endif %}">
-          <img src="{{ activity.images[0].url }}"
-               class="d-block w-100"
-               alt="{{ activity.images[0].alt }}"
-               loading="lazy" />
-          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-3 py-2 animate__animated animate__fadeInUp"
-               data-aos="fade-up" data-aos-delay="200">
-            <h5>{{ activity.title }}</h5>
-            <p>{{ activity.images[0].caption }}</p>
-            <p><small>{{ activity.date | date: "%B %-d, %Y" }} | {{ activity.location }}</small></p>
+<!-- Hero Section: Full-viewport Carousel -->
+<section class="hero-section position-relative" style="height:100vh; overflow:hidden;">
+  <div id="heroCarousel" class="carousel slide h-100" data-bs-ride="carousel">
+    <div class="carousel-inner h-100">
+      {% assign hero_images = site.data.hero_images %}
+      {% if hero_images and hero_images.size > 0 %}
+        {% for img in hero_images %}
+          <div class="carousel-item h-100{% if forloop.first %} active{% endif %}">
+            <img src="{{ img }}" class="d-block w-100 h-100 object-fit-cover" alt="Slide {{ forloop.index }}">
           </div>
+        {% endfor %}
+      {% else %}
+        <div class="carousel-item h-100 active">
+          <img src="/images/MCC_banner.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Hero Image">
         </div>
-      {% endfor %}
+      {% endif %}
     </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#homepageBannerCarousel" data-bs-slide="prev" aria-label="Previous slide">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#homepageBannerCarousel" data-bs-slide="next" aria-label="Next slide">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    {% if hero_images and hero_images.size > 1 %}
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    {% endif %}
+  </div>
+  <div class="overlay position-absolute top-50 start-50 translate-middle text-center text-white" data-aos="zoom-in">
+    <img src="/images/MCC logo.png" alt="UAP MCC Logo" class="mb-3" style="max-width:150px;">
+    <h1 class="display-4">UAP Manila Corinthian Chapter</h1>
+    <p class="lead">Architects shaping Manila’s future</p>
   </div>
 </section>
 
-<main id="mainContent" role="main" class="container">
+<!-- Banner Quote -->
+<section class="py-5 text-center bg-primary text-white" data-aos="fade-up">
+  <div class="container-fluid px-0">
+    <h2 class="fw-bold">“For your Architectural Plans and Designs,<br>GET AN ARCHITECT.”</h2>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <header class="hero animate__animated animate__fadeInDown text-center my-5" data-aos="fade-down" data-aos-duration="800" role="banner" aria-label="Welcome banner for UAP Manila Corinthian Chapter">
-    <h1 class="display-5">Be Part of the Premier Architecture Community in Manila</h1>
-  </header>
-
-  <!-- About -->
-  <section aria-labelledby="about-title" class="mb-5" data-aos="fade-up" data-aos-duration="800">
-    <h2 id="about-title" class="mb-3">About Being a Member</h2>
-    <p>Joining the UAP Manila Corinthian Chapter means becoming part of a dynamic community of architectural professionals dedicated to excellence, innovation, and advocacy in the built environment.</p>
-    <p>Enjoy exclusive access to industry events, educational programs, and networking opportunities.</p>
-    <div class="ratio ratio-16x9 mb-4" tabindex="0" aria-label="Promotional video about UAP MCC membership" data-aos="zoom-in" data-aos-delay="200">
-      <iframe src="https://www.youtube.com/embed/FzoHIHF_EZA"
-              title="Promotional video about UAP MCC membership"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen loading="lazy">
-      </iframe>
+<!-- History Preview -->
+<section class="py-5 bg-light" data-aos="fade-right">
+  <div class="container-fluid px-0">
+    <div class="row g-0">
+      <div class="col-lg-6 p-4">
+        <h3>History of MCC</h3>
+        {% assign history_page = site.pages | where: "permalink", "/mcc_history/" | first %}
+        {% assign history_text = history_page.content | strip_html | truncate: 250 %}
+        <p>{{ history_text }}</p>
+        <a href="{{ site.baseurl }}/mcc_history/" class="btn btn-primary mt-3">Read More</a>
+      </div>
+      <div class="col-lg-6 p-0" data-aos="fade-left">
+        <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="History Image" class="w-100 h-100 object-fit-cover">
+      </div>
     </div>
-    <div class="text-center my-5" data-aos="pulse" data-aos-delay="400">
-      <a id="joinBtn"
-         href="{{ site.baseurl }}/membership.html"
-         class="btn btn-success btn-lg shadow-lg"
-         role="button"
-         aria-label="Join the Chapter">
-        <i class="fas fa-paper-plane me-2"></i> Join Our Chapter
-      </a>
-    </div>
-  </section>
+  </div>
+</section>
 
-  {% include sponsors-footer.html %}
-
-  <!-- News -->
-  <section aria-labelledby="news-title" class="mb-5" data-aos="fade-up" data-aos-duration="800">
+<!-- News & Articles -->
+  <section aria-labelledby="news-title" class="mb-5 mx-5" data-aos="fade-up" data-aos-duration="800">
     <h2 id="news-title" class="mb-3">Latest Activities & Announcements</h2>
     <div class="row g-4">
       {% for post in site.posts limit:4 %}
@@ -106,17 +84,25 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
     </div>
   </section>
 
-</main>
+<!-- Industry Partners -->
+<section class="py-5 bg-light" data-aos="fade-up">
+  <div class="container text-center">
+    <h3 class="mb-4">Our Industry Partners</h3>
+    <div class="row justify-content-center align-items-center g-4">
+      {% for i in (1..6) %}
+        <div class="col-6 col-md-2" data-aos="flip-left" data-aos-delay="{{ i | times:50 }}">
+          <img src="/images/sponsors/p_sponsor.png" alt="Partner {{ i }}" class="img-fluid">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
-<!-- Canvas‑Confetti -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
-<script defer>
-  const joinBtn = document.getElementById('joinBtn');
-  if (joinBtn) {
-    joinBtn.addEventListener('click', e => {
-      e.preventDefault();
-      confetti({ particleCount: 100, spread: 60, origin: { y: 0.6 } });
-      setTimeout(() => { window.location.href = joinBtn.href; }, 500);
-    });
-  }
-</script>
+<!-- Call to Action: Be a Member -->
+<section class="py-5 bg-secondary text-white text-center" data-aos="fade-up">
+  <div class="container">
+    <h3 class="mb-3">Be a Member</h3>
+    <p class="mb-4">Join UAP Manila Corinthian Chapter today and connect with leading architectural professionals, attend exclusive events, and access valuable resources.</p>
+    <a href="{{ site.baseurl }}/membership/" class="btn btn-light btn-lg" data-aos="pulse" data-aos-delay="200">Register Now</a>
+  </div>
+</section>

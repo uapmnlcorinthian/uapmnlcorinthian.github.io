@@ -1,146 +1,107 @@
-<nav class="navbar navbar-light bg-light" aria-label="Primary navigation">
+<!-- Overhauled Navbar: Separate Clickable Link & Toggle Button -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Primary navigation">
   <div class="container-fluid">
-    <!-- Hamburger button for mobile -->
-    <button
-      class="btn btn-link p-0 navbar-toggler-custom"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasMenu"
-      aria-controls="offcanvasMenu"
-      aria-label="Toggle navigation"
-    >
+    <!-- Brand -->
+    <a class="navbar-brand" href="{{ site.baseurl }}/">UAP MCC</a>
+
+    <!-- Mobile drawer toggle -->
+    <button class="navbar-toggler navbar-toggler-custom" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Desktop nav links -->
-    <div class="desktop-menu">
-      <ul class="navbar-nav me-auto mb-0 d-flex flex-row gap-3 align-items-center">
-        <!-- Home link like others -->
+    <!-- Desktop menu -->
+    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <!-- Home -->
         <li class="nav-item">
-          <a class="nav-link" href="{{ site.baseurl }}/" aria-label="Back to homepage">Home</a>
+          <a class="nav-link" href="{{ site.baseurl }}/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ site.baseurl }}/news-and-activities/">News & Activities</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ site.baseurl }}/faqs/">FaQs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ site.baseurl }}/login/">Membership</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="aboutDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            About Us
-          </a>
+
+        <!-- About Us with separate link and toggle -->
+        <li class="nav-item dropdown d-flex align-items-center">
+          <a class="nav-link" href="{{ site.baseurl }}/mcc-history/">About Us</a>
+          <button class="btn p-0 m-0 ms-1 dropdown-toggle dropdown-toggle-split" type="button" id="aboutDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle About</span>
+          </button>
           <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-            <li><a class="dropdown-item" href="{{ site.baseurl }}/BOD">Board of Directors</a></li>
-            <li><a class="dropdown-item" href="{{ site.baseurl }}/history/">MCC History</a></li>
-            <li><a class="dropdown-item" href="{{ site.baseurl }}/chapters/list/">Sister Chapters</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ site.baseurl }}/BOD/">Board of Directors</a></li>
+            <li><a class="dropdown-item" href="{{ site.baseurl }}/mcc-history/">MCC History</a></li>
+            <li><a class="dropdown-item" href="{{ site.baseurl }}/national-officers/">National Officers</a></li>
+          </ul>
+        </li>
+
+        <!-- Events & Activities -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.baseurl }}/events-and-activities/">Events &amp; Activities</a>
+        </li>
+
+        <!-- News & Articles -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.baseurl }}/news-and-articles/">News &amp; Articles</a>
+        </li>
+
+        <!-- Industry Partners -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.baseurl }}/industry-partners/">Industry Partners</a>
+        </li>
+
+        <!-- FAQs with separate link and toggle -->
+        <li class="nav-item dropdown d-flex align-items-center">
+          <a class="nav-link" href="{{ site.baseurl }}/faqs/">FAQs</a>
+          <button class="btn p-0 m-0 ms-1 dropdown-toggle dropdown-toggle-split" type="button" id="faqDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle FAQ</span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="faqDropdown">
+            <li><a class="dropdown-item" href="{{ site.baseurl }}/faqs/scholarship/">Scholarship</a></li>
             <li><a class="dropdown-item" href="{{ site.baseurl }}/useful-files/">Useful Files</a></li>
           </ul>
         </li>
-      </ul>
 
-      <!-- Auth buttons -->
-      <div class="d-flex align-items-center gap-2">
-        <button
-          id="btnSaveScreenshotNav"
-          class="btn btn-outline-primary btn-sm d-none"
-          title="Save account info as PDF/image"
-          type="button"
-        >
-          <i class="fa-solid fa-download"></i> Save Screenshot
-        </button>
-        <button
-          id="btnLogoutNav"
-          class="btn btn-outline-danger btn-sm d-none"
-          title="Logout"
-          type="button"
-        >
-          <i class="fa-solid fa-right-from-bracket"></i> Logout
-        </button>
-      </div>
+        <!-- Membership -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.baseurl }}/membership/">Membership</a>
+        </li>
+
+      </ul>
     </div>
   </div>
 </nav>
 
-<!-- Offcanvas Sidebar for Mobile -->
-<div
-  class="offcanvas offcanvas-end"
-  tabindex="-1"
-  id="offcanvasMenu"
-  aria-labelledby="offcanvasMenuLabel"
->
+<!-- Offcanvas Drawer (mobile) -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasMenuLabel">UAP MCC</h5>
-    <button
-      type="button"
-      class="btn-close text-reset"
-      data-bs-dismiss="offcanvas"
-      aria-label="Close"
-    ></button>
+    <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.baseurl }}/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.baseurl }}/news-and-activities/">News & Activities</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.baseurl }}/faqs/">FaQs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.baseurl }}/login/">Membership</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="offcanvasAboutDropdown"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          About Us
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="offcanvasAboutDropdown">
+      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/">Home</a></li>
+      <li class="nav-item dropdown d-flex align-items-center">
+        <a class="nav-link" href="{{ site.baseurl }}/mcc-history/">About Us</a>
+        <button class="btn p-0 m-0 ms-1 dropdown-toggle dropdown-toggle-split" type="button" id="offcanvasAboutDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="visually-hidden">Toggle About</span>
+        </button>
+        <ul class="dropdown-menu w-100" aria-labelledby="offcanvasAboutDropdown">
           <li><a class="dropdown-item" href="{{ site.baseurl }}/BOD/">Board of Directors</a></li>
-          <li><a class="dropdown-item" href="{{ site.baseurl }}/history/">MCC History</a></li>
-          <li><a class="dropdown-item" href="{{ site.baseurl }}/chapters/list/">Sister Chapters</a></li>
-          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="{{ site.baseurl }}/mcc-history/">MCC History</a></li>
+          <li><a class="dropdown-item" href="{{ site.baseurl }}/national-officers/">National Officers</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/events-and-activities/">Events &amp; Activities</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/news-and-articles/">News &amp; Articles</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/industry-partners/">Industry Partners</a></li>
+      <li class="nav-item dropdown d-flex align-items-center">
+        <a class="nav-link" href="{{ site.baseurl }}/faqs/">FAQs</a>
+        <button class="btn p-0 m-0 ms-1 dropdown-toggle dropdown-toggle-split" type="button" id="offcanvasFaqDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="visually-hidden">Toggle FAQ</span>
+        </button>
+        <ul class="dropdown-menu w-100" aria-labelledby="offcanvasFaqDropdown">
+          <li><a class="dropdown-item" href="{{ site.baseurl }}/faqs/scholarship/">Scholarship</a></li>
           <li><a class="dropdown-item" href="{{ site.baseurl }}/useful-files/">Useful Files</a></li>
         </ul>
       </li>
-      <li class="nav-item mt-3">
-        <button
-          id="btnSaveScreenshotNavOffcanvas"
-          class="btn btn-outline-primary btn-sm w-100 d-none"
-          title="Save account info as PDF/image"
-          type="button"
-        >
-          <i class="fa-solid fa-download"></i> Save Screenshot
-        </button>
-      </li>
-      <li class="nav-item mt-2">
-        <button
-          id="btnLogoutNavOffcanvas"
-          class="btn btn-outline-danger btn-sm w-100 d-none"
-          title="Logout"
-          type="button"
-        >
-          <i class="fa-solid fa-right-from-bracket"></i> Logout
-        </button>
-      </li>
+      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/membership/">Membership</a></li>
     </ul>
   </div>
 </div>
