@@ -11,6 +11,7 @@ activities1.html
 bod1.html
 index1.html
 login1.html
+.env
 # Local Netlify folder
 .netlify
 

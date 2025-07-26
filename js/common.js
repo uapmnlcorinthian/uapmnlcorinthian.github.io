@@ -379,7 +379,6 @@
     btn.classList.toggle('d-none', window.scrollY < 200);
   });
 
-  document.documentElement.style.scrollBehavior = 'smooth';
 
   document.addEventListener('DOMContentLoaded', () => {
 

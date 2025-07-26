@@ -88,23 +88,14 @@
 <!-- Call Recaptcha before any script -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
-//Smooth scroll behavior
-
 document.documentElement.style.scrollBehavior = 'smooth';
-document.addEventListener('scroll', () => {
-  const btn = document.getElementById('btnTop');
-  if (!btn) return;
-  btn.classList.toggle('d-none', window.scrollY < 200);
-});
 
-// Back-to-top button behavior
-  const btn = document.getElementById('btnTop');
-  window.addEventListener('scroll', () => {
-	if (window.scrollY > 300) {
-	  btn.classList.remove('d-none');
-	} else {
-	  btn.classList.add('d-none');
-	}
-  });
+const btn = document.getElementById('btnTop');
+
+window.addEventListener('scroll', () => {
+  if (!btn) return;
+  const y = window.scrollY;
+  btn.classList.toggle('d-none', y < 200);
 });
 </script>
+
