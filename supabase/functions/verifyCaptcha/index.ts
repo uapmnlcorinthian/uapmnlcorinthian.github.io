@@ -5,17 +5,18 @@ serve(async (req) => {
   const origin = req.headers.get("origin") || "*";
 
   // Handle preflight CORS
-  if (req.method === "OPTIONS") {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        "Access-Control-Allow-Origin": origin,
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Max-Age": "86400",
-      },
-    });
-  }
+	if (req.method === "OPTIONS") {
+	  return new Response(null, {
+		status: 204,
+		headers: {
+		  "Access-Control-Allow-Origin": origin,
+		  "Access-Control-Allow-Methods": "POST, OPTIONS",
+		  "Access-Control-Allow-Headers": "Content-Type, Authorization, x-client-info, apikey",
+		  "Access-Control-Max-Age": "86400",
+		},
+	  });
+	}
+
 
   try {
     const { token } = await req.json();
