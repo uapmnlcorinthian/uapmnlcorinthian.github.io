@@ -28,8 +28,8 @@ header img {
   width: auto; }
 
 ::selection, ::-moz-selection {
-  background-color: #E67E22;
-  color: #fff; }
+  background-color: #C55BC5 !important;
+  color: #fff !important; }
 
 #mainContent {
   padding-top: 70px; }
@@ -113,7 +113,7 @@ footer .small {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  background: #7F8C8D;
+  background-color: rgba(50, 50, 50, 0.6);
   color: #fff;
   padding: 0.65rem 0.75rem;
   border: none;

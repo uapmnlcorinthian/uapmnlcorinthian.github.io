@@ -49,8 +49,8 @@ header img {
 }
 
 ::selection, ::-moz-selection {
-  background-color: $secondary;
-  color: #fff;
+  background-color: #C55BC5 !important;
+  color: #fff !important;
 }
 
 #mainContent {
@@ -150,7 +150,7 @@ footer {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  background: $text-secondary;
+  background-color: rgba(50, 50, 50, 0.6);
   color: #fff;
   padding: 0.65rem 0.75rem;
   border: none;

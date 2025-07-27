@@ -26,9 +26,9 @@ keywords: "Architecture, UAP, Manila, Member Login"
 
   <!-- Login Card Section -->
   <section class="login-card card shadow-sm p-4 flex-fill" aria-label="Member login form">
-    <header class="mb-4 text-center">
-      <img src="{{ site.baseurl }}/images/MCC logo.png" alt="UAP Manila Corinthian Chapter Logo" class="img-fluid" style="max-height: 48px" />
-    </header>
+    <div class="mb-4 text-center">
+      <img src="{{ site.data.images.m-logo}}" alt="UAP Manila Corinthian Chapter Logo" class="img-fluid" style="max-height: 48px" />
+    </div>
 
     <h1 class="h4 mb-4 text-center">Member Login</h1>
 
@@ -43,7 +43,7 @@ keywords: "Architecture, UAP, Manila, Member Login"
       <div class="mb-3 position-relative">
         <label for="password" class="form-label">Password</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required autocomplete="current-password" aria-describedby="passwordHelp" />
-        <button type="button" id="togglePassword" class="border-0 bg-transparent toggle-password-btn position-absolute top-50 end-0 translate-middle-y me-3" aria-label="Show password" aria-pressed="false">
+        <button type="button" id="togglePassword" class="border-0 bg-transparent toggle-password-btn position-absolute top-50 end-0 translate-middle-y me-1" aria-label="Show password" aria-pressed="false">
           <i class="fa-solid fa-eye"></i>
         </button>
         <div id="passwordHelp" class="form-text">Keep your password secure.</div>
