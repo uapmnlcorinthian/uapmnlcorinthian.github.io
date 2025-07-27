@@ -450,3 +450,25 @@
   window.addEventListener("scroll", () => {
     btnTop.style.display = window.scrollY > 300 ? "inline-flex" : "none";
   });
+
+//navbar smart view
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('header');
+  let lastScrollY = window.scrollY;
+
+  if (!header) return;
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY < lastScrollY - 10) {
+      header.classList.remove('hide-up');
+    } else if (currentScrollY > lastScrollY + 10) {
+      header.classList.add('hide-up');
+    }
+
+    lastScrollY = currentScrollY;
+  });
+});
+
+

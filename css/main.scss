@@ -43,7 +43,7 @@ html, body {
 }
 
 header img {
-  max-height: 48px;
+  max-height: 60px;
   height: auto;
   width: auto;
 }
@@ -52,6 +52,11 @@ header img {
   background-color: $secondary;
   color: #fff;
 }
+
+#mainContent {
+  padding-top: 70px; // Adjust if your header height is taller
+}
+
 
 .hero {
   background: $primary;
@@ -149,7 +154,7 @@ footer {
   color: #fff;
   padding: 0.65rem 0.75rem;
   border: none;
-  border-radius: 20%;
+  border-radius: 10%;
   font-size: 1.25rem;
   z-index: 1030;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -158,9 +163,9 @@ footer {
   align-items: center;
   justify-content: center;
 }
-
 #btnTop:hover {
   background-color: darken($secondary, 10%);
+  transform: translateY(-2px);
 }
 
 #paymentsWrapper {
@@ -234,10 +239,15 @@ thead .sticky-col {
   box-shadow: none;
 }
 
+.offcanvas.offcanvas-end {
+  width: 30vw !important; // or your preferred smaller width
+  min-width: 200px !important; // or your preferred smaller width
+}
+
 .nav-link {
   transition: background-color 0.3s ease, color 0.3s ease;
   &:hover {
-    background-color: $text-secondary;
+    background-color: $secondary;
     color: #fff !important;
   }
 }
@@ -249,3 +259,24 @@ thead .sticky-col {
     color: #fff;
   }
 }
+
+// Sticky & hide-on-scroll-up for all screen sizes
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1020;
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+}
+header.hide-up {
+  transform: translateY(-100%);
+}
+
+header.scrolled {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
