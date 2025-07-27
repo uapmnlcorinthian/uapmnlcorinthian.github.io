@@ -19,7 +19,7 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
         {% endfor %}
       {% else %}
         <div class="carousel-item h-100 active">
-          <img src="/images/MCC_banner.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Hero Image">
+          <img src="{{ site.data.images.banner}}" class="d-block w-100 h-100 object-fit-cover" alt="Hero Image">
         </div>
       {% endif %}
     </div>
@@ -35,7 +35,7 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
     {% endif %}
   </div>
   <div class="overlay position-absolute top-50 start-50 translate-middle text-center text-white" data-aos="zoom-in">
-    <img src="/images/MCC logo.png" alt="UAP MCC Logo" class="mb-3" style="max-width:150px;">
+    <img src="{{ site.data.images.m-logo}}" alt="UAP MCC Logo" class="mb-3" style="max-width:150px;">
     <h1 class="display-4">UAP Manila Corinthian Chapter</h1>
     <p class="lead">Architects shaping Manila’s future</p>
   </div>
@@ -91,7 +91,7 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
     <div class="row justify-content-center align-items-center g-4">
       {% for i in (1..6) %}
         <div class="col-6 col-md-2" data-aos="flip-left" data-aos-delay="{{ i | times:50 }}">
-          <img src="/images/sponsors/p_sponsor.png" alt="Partner {{ i }}" class="img-fluid">
+          <img src="https://asset.manilacorinthianchapter.workers.dev/p_sponsor.png" alt="Partner {{ i }}" class="img-fluid">
         </div>
       {% endfor %}
     </div>
@@ -110,7 +110,7 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
               allowfullscreen loading="lazy">
       </iframe>
     </div>
-  <div class="bg-secondary text-center" data-aos="fade-up">
+  <div class="t2 text-center" data-aos="fade-up">
     <h3 class="p-5">Be a Member</h3>
     <p class="mb-5">Join UAP Manila Corinthian Chapter today and connect with leading architectural professionals, attend exclusive events, and access valuable resources.</p>
     <a href="{{ site.baseurl }}/membership/" class="btn btn-light btn-lg mb-5" data-aos="pulse" data-aos-delay="200">Register Now</a>

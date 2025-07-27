@@ -5,7 +5,7 @@
     {% for p in site.data.bod %}
       {% if p.position contains 'President' or p.position contains 'Vice President' or p.position == 'Secretary' or p.position == 'Treasurer' or p.position == 'Auditor' %}
         <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
-          <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid mb-2 rounded-5" style="width:120px;aspect-ratio:1;object-fit:cover;">
+          <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid mb-2 rounded-5 shadow-sm" style="width:210px; aspect-ratio:1; object-fit:cover;">
           <h6 class="mb-0">{{ p.name }}</h6>
           <small class="text-muted">{{ p.position }}</small>
         </div>
@@ -37,7 +37,7 @@
     {% for p in site.data.bod %}
       {% if p.position contains 'Protocol' or p.position contains 'Immediate' %}
         <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
-          <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid rounded-5 mb-2" style="width:110px;aspect-ratio:1;object-fit:cover;">
+          <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid rounded-5 mb-2" style="width:200px;aspect-ratio:1;object-fit:cover;">
           <h6 class="mb-0">{{ p.name }}</h6>
           <small class="text-muted">{{ p.position }}</small>
         </div>

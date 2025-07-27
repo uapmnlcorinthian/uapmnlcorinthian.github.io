@@ -1,0 +1,9 @@
+m-logo: https://asset.manilacorinthianchapter.workers.dev/MCC%20LOGO.png
+s-logo: https://asset.manilacorinthianchapter.workers.dev/MCC%20logo%20180x180.png
+f-ico: https://asset.manilacorinthianchapter.workers.dev/favicon.ico
+uap-logo: https://asset.manilacorinthianchapter.workers.dev/uap_logo.png
+banner: https://asset.manilacorinthianchapter.workers.dev/MCC_banner.jpg
+pv-1: https://asset.manilacorinthianchapter.workers.dev/preview.jpg
+pres: https://asset.manilacorinthianchapter.workers.dev/kpv_santos.jpg
+
+# <img src="{{ site.data.images.m-logo }}" alt="Logo">
