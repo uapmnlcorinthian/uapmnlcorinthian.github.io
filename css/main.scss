@@ -145,21 +145,22 @@ footer {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  background: $secondary;
+  background: $text-secondary;
   color: #fff;
-  padding: 0.5rem;
+  padding: 0.65rem 0.75rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 20%;
   font-size: 1.25rem;
   z-index: 1030;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, opacity 0.3s;
+  transition: background-color 0.3s, opacity 0.3s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+
 #btnTop:hover {
   background-color: darken($secondary, 10%);
-}
-#btnTop[x-cloak] {
-  display: none !important;
 }
 
 #paymentsWrapper {
@@ -224,4 +225,27 @@ footer {
 thead .sticky-col {
   top: 0;
   z-index: 3;
+}
+
+.navbar-toggler {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.nav-link {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  &:hover {
+    background-color: $text-secondary;
+    color: #fff !important;
+  }
+}
+
+.dropdown-item {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  &:hover {
+    background-color: $secondary;
+    color: #fff;
+  }
 }

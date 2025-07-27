@@ -445,3 +445,8 @@
     history.replaceState(null, '', '/#uapMCC_' + token);
   });
 })(); 
+
+  const btnTop = document.getElementById("btnTop");
+  window.addEventListener("scroll", () => {
+    btnTop.style.display = window.scrollY > 300 ? "inline-flex" : "none";
+  });
