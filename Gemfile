@@ -1,9 +1,17 @@
 source "https://rubygems.org"
 
-# Use GitHub Pages’ supported Jekyll & plugins in one package:
+# Use GitHub Pages-compatible Jekyll plugins (overrides Jekyll core version)
 gem "github-pages", "~> 232", group: :jekyll_plugins
 
-# Optional: keep logger if you need it
-gem "logger"
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
-gem 'fiddle'
+# Optional enhancements
+gem "jekyll-minifier"         # Compresses HTML, JS, and CSS
+gem "logger"                  # Only if you use custom Ruby logging
+gem "fiddle"                  # Required by some gems on Windows
+gem "wdm", ">= 0.1.0" if Gem.win_platform?  # Optional: watch support for Windows
+
+# Timezone data (for `timezone:` in _config.yml)
+gem "tzinfo-data"
+
+group :windows do
+  gem "tzinfo-data"           # Safe cross-platform setup
+end

@@ -1,32 +1,39 @@
-<!-- _includes/footer.html -->
-<footer class="bg-primary text-white py-4">
+<footer class="bg-primary text-white py-4 mt-auto">
   <div class="container text-center">
-    <div class="mb-3">
-      <a href="https://www.unitedarchitects.ph/" target="_blank" class="me-3">
-        <img src="{{ site.baseurl }}/images/uap_logo.png" alt="UAP Logo" style="max-width:125px;" />
+    <!-- Logos -->
+    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-4 mb-3">
+      <a href="https://www.unitedarchitects.ph/" target="_blank" aria-label="Visit UAP National">
+        <img src="{{ site.baseurl }}/images/uap_logo.png" alt="UAP Logo" class="img-fluid" style="max-height: 60px" />
       </a>
-      <a href="https://www.facebook.com/manilacorinthianchapter" target="_blank">
-        <img src="{{ site.baseurl }}/images/MCC logo.png" alt="MCC Logo" style="max-width:117px;" />
+      <a href="https://www.facebook.com/manilacorinthianchapter" target="_blank" aria-label="Visit UAP MCC Facebook">
+        <img src="{{ site.baseurl }}/images/MCC logo.png" alt="MCC Logo" class="img-fluid" style="max-height: 54px" />
       </a>
     </div>
-    <div class="mb-3">
+
+    <!-- Contact Info -->
+    <div class="mb-3 small">
       <i class="fa-solid fa-envelope me-2"></i>
-      <a href="mailto:uapmccmembership@gmail.com" class="text-white">uapmccmembership@gmail.com</a>
-      <span class="mx-3">|</span>
-      <i class="fa-solid fa-map-marker-alt me-2"></i>Metro Manila, 1002
+      <a href="mailto:uapmccmembership@gmail.com" class="text-white text-decoration-none">uapmccmembership@gmail.com</a>
+      <span class="mx-3 d-none d-md-inline">|</span>
+      <br class="d-md-none" />
+      <i class="fa-solid fa-map-marker-alt me-2 mt-2 mt-md-0"></i>Metro Manila, 1002
     </div>
+
+    <!-- Social Icons -->
     <div class="mb-3">
-      <a href="https://www.facebook.com/manilacorinthianchapter" target="_blank" class="text-white me-3 fs-4">
-        <i class="fab fa-facebook"></i>
+      <a href="https://www.facebook.com/manilacorinthianchapter" target="_blank" class="text-white me-3 fs-5" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
       </a>
-      <a href="https://www.instagram.com/uapmanilacorinthian/" target="_blank" class="text-white me-3 fs-4">
+      <a href="https://www.instagram.com/uapmanilacorinthian/" target="_blank" class="text-white me-3 fs-5" aria-label="Instagram">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="https://www.youtube.com/channel/UCj0SstkYSHqjhMcoW5P7DSQ" target="_blank" class="text-white fs-4">
+      <a href="https://www.youtube.com/channel/UCj0SstkYSHqjhMcoW5P7DSQ" target="_blank" class="text-white fs-5" aria-label="YouTube">
         <i class="fab fa-youtube"></i>
       </a>
     </div>
+
+    <!-- Divider and Copyright -->
     <hr class="border-light" />
-    <div class="small">&copy; 2025 UAP Manila Corinthian Chapter | All Rights Reserved</div>
+    <div class="small">&copy; 2025 UAP Manila Corinthian Chapter &mdash; All Rights Reserved</div>
   </div>
 </footer>

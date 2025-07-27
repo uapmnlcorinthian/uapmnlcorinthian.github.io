@@ -7,6 +7,11 @@ baseurl: ""                                      # your repo subpath
 # ─── Build Options ───────────────────────────────────────────────
 markdown: kramdown
 permalink: pretty                                   # /about/ instead of /about.html
+highlighter: rouge
+sass:
+  style: compressed  # Minify CSS output
+timezone: Asia/Manila
+
 
 # ─── Layout Defaults ─────────────────────────────────────────────
 defaults:
@@ -18,8 +23,11 @@ defaults:
 
 # ─── Plugins (GitHub Pages–supported) ────────────────────────────
 plugins:
-  - jekyll-feed           # generates an RSS feed at /feed.xml
-  - jekyll-seo-tag        # injects SEO meta tags automatically
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-minifier
+  - jekyll-include-cache
   
 # ─── Include these extra folders ─────────────────────────────────
 include:

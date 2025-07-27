@@ -1,0 +1,227 @@
+$primary: #2C3E50;
+$secondary: #E67E22;
+$accent: #9B59B6;
+$success: #27AE60;
+$danger: #E74C3C;
+$warning: #F39C12;
+$info: #3498DB;
+$light: #ECF0F1;
+$dark: #1A252F;
+$body-bg: #F4F6F7;
+$text-primary: #34495E;
+$text-secondary: #7F8C8D;
+$t1: #2ECC71;
+$t2: #E84393;
+$t3: #2980B9;
+$t4: #F1C40F;
+$t5: #D35400;
+
+:root {
+  --bs-primary: #{$primary};
+  --bs-secondary: #{$secondary};
+  --bs-accent: #{$accent};
+  --bs-success: #{$success};
+  --bs-danger: #{$danger};
+  --bs-warning: #{$warning};
+  --bs-info: #{$info};
+  --bs-light: #{$light};
+  --bs-dark: #{$dark};
+  --bs-body-bg: #{$body-bg};
+  --text-primary: #{$text-primary};
+  --text-secondary: #{$text-secondary};
+  --t1: #{$t1};
+  --t2: #{$t2};
+  --t3: #{$t3};
+  --t4: #{$t4};
+  --t5: #{$t5};
+}
+
+html, body {
+  overflow-x: hidden;
+  background-color: $body-bg;
+  color: $text-primary;
+}
+
+header img {
+  max-height: 48px;
+  height: auto;
+  width: auto;
+}
+
+::selection, ::-moz-selection {
+  background-color: $secondary;
+  color: #fff;
+}
+
+.hero {
+  background: $primary;
+  color: #fff;
+  padding: 3rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  letter-spacing: 0.03em;
+}
+
+.sponsors-marquee {
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  margin: 2rem 0;
+  background: #fff;
+  border-top: 1px solid $light;
+  border-bottom: 1px solid $light;
+  padding: 1rem 0;
+}
+.sponsors-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLeft 20s linear infinite;
+  align-items: center;
+  gap: 3rem;
+}
+.sponsor-logo img {
+  height: 80px;
+  filter: grayscale(70%);
+  transition: filter 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+.sponsor-logo img:hover {
+  filter: none;
+  transform: scale(1.15);
+}
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+section[aria-labelledby="news-title"] article {
+  cursor: pointer;
+  transition: background-color 0.15s;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+}
+section[aria-labelledby="news-title"] article:hover {
+  background-color: $warning;
+}
+section[aria-labelledby="news-title"] h3 {
+  color: $primary;
+}
+
+footer {
+  img {
+    display: block;
+    margin: 0 auto;
+    max-height: 60px;
+    object-fit: contain;
+  }
+
+  a {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.85;
+      transform: scale(1.05);
+    }
+  }
+
+  .fa, .fab, .fa-brands {
+    vertical-align: middle;
+    font-family: "Font Awesome 6 Brands", "Font Awesome 6 Free", sans-serif !important;
+    font-weight: 400;
+    font-style: normal;
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0;
+  }
+
+  .small {
+    font-size: 0.875rem;
+  }
+}
+
+#btnTop {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: $secondary;
+  color: #fff;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  z-index: 1030;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, opacity 0.3s;
+}
+#btnTop:hover {
+  background-color: darken($secondary, 10%);
+}
+#btnTop[x-cloak] {
+  display: none !important;
+}
+
+#paymentsWrapper {
+  overflow-x: auto;
+}
+#paymentsTable {
+  min-width: 720px;
+  border-radius: 0.5rem;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+#paymentsTable th,
+#paymentsTable td {
+  border: 1px solid $light;
+  padding: 0.35rem 0.5rem;
+  white-space: nowrap;
+}
+#paymentsTable thead th {
+  background-color: #fff;
+  color: $text-primary;
+  font-weight: 600;
+}
+#paymentsTable tbody.group-chapter tr:nth-child(even),
+#paymentsTable tbody.group-iapoa tr:nth-child(even) {
+  background-color: #fafafa;
+}
+#paymentsTable tbody.group-iapoa {
+  border-top: 1px dashed $light;
+}
+#paymentsTable tbody.group-iapoa tr:first-child td {
+  padding-top: 1rem;
+}
+
+.digital-card {
+  max-width: 480px;
+  margin: auto;
+}
+.card-header-logo {
+  height: 42px;
+}
+.card-header-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+.sensitive-text {
+  user-select: none;
+  letter-spacing: 0.1em;
+}
+.toggle-sensitive-btn {
+  border: none;
+  background: none;
+  color: $secondary;
+  cursor: pointer;
+}
+
+.sticky-col {
+  position: sticky;
+  left: 0;
+  background: #fff;
+  z-index: 2;
+}
+thead .sticky-col {
+  top: 0;
+  z-index: 3;
+}

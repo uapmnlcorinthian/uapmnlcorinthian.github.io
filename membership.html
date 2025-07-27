@@ -6,33 +6,15 @@ description: "UAP Manila Corinthian Chapter – Member login page."
 keywords: "Architecture, UAP, Manila, Member Login"
 ---
 
-
-<style>
-  html, body {
-    height: 100%;
-    margin: 0; padding: 0;
-    background: #f8f9fa;
-  }
-
-  main#mainContent {
-    max-width: 900px;
-    margin: auto;  padding: 2rem;
-    box-sizing: border-box;
-    display: flex;
-    gap: 2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-
-</style>
 <!-- Call Recaptcha before any script -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<main id="mainContent" role="main">
-
+<main id="mainContent" role="main" class="container d-flex flex-column flex-lg-row justify-content-between align-items-center gap-4 py-5">
   <!-- Instructions Section -->
-  <section class="instructions" aria-label="Instructions on how to become a member">
+  <section class="instructions flex-fill text-center text-lg-start" aria-label="Instructions on how to become a member">
     <h2 class="mb-3 fw-bold">How to Become a Member</h2>
-    <ol style="line-height:1.6; font-size:1.05rem;">
+    <ol class="fs-6 lh-lg text-start">
       <li>Visit our <a href="{{ site.baseurl }}/signup/" class="fw-semibold text-decoration-none">Sign Up page</a> and complete the application form.</li>
       <li>Submit required documents such as a valid ID and proof of professional affiliation.</li>
       <li>Pay the membership fee through our secure payment gateway.</li>
@@ -43,9 +25,9 @@ keywords: "Architecture, UAP, Manila, Member Login"
   </section>
 
   <!-- Login Card Section -->
-  <section class="login-card" aria-label="Member login form">
+  <section class="login-card card shadow-sm p-4 flex-fill" aria-label="Member login form">
     <header class="mb-4 text-center">
-      <img src="{{ site.baseurl }}/images/MCC logo.png" alt="UAP Manila Corinthian Chapter Logo" style="height:50px" />
+      <img src="{{ site.baseurl }}/images/MCC logo.png" alt="UAP Manila Corinthian Chapter Logo" class="img-fluid" style="max-height: 48px" />
     </header>
 
     <h1 class="h4 mb-4 text-center">Member Login</h1>
@@ -66,8 +48,9 @@ keywords: "Architecture, UAP, Manila, Member Login"
         </button>
         <div id="passwordHelp" class="form-text">Keep your password secure.</div>
         <div class="invalid-feedback">Please enter your password.</div>
-	</div>
-	<div class="g-recaptcha mb-3" data-sitekey="6LeTrIwrAAAAAIKatcV__C1-uS31A2IV3F6dSJX4"></div>
+      </div>
+
+      <div class="g-recaptcha mb-3" data-sitekey="6LeTrIwrAAAAAIKatcV__C1-uS31A2IV3F6dSJX4"></div>
       <button type="submit" class="btn btn-warning w-100 text-primary fw-semibold">Login</button>
     </form>
 
@@ -75,63 +58,57 @@ keywords: "Architecture, UAP, Manila, Member Login"
       Not a member yet? <a href="{{ site.baseurl }}/signup/">Sign up here</a>
     </p>
   </section>
+
   <!-- Toggle Button for Small Screens -->
   <button id="toggleViewBtn" aria-expanded="false" aria-controls="loginForm" aria-label="Show login form"
-    class="btn btn-warning w-100 text-primary fw-semibold mt-3">
+    class="btn btn-warning w-100 text-primary fw-semibold mt-4 d-lg-none">
     Login here
   </button>
-
 </main>
 
 <script>
-  (function() {
-    const toggleBtn = document.getElementById('toggleViewBtn');
-    const loginCard = document.querySelector('.login-card');
-    const instructions = document.querySelector('.instructions');
+(function() {
+  const toggleBtn = document.getElementById('toggleViewBtn');
+  const loginCard = document.querySelector('.login-card');
+  const instructions = document.querySelector('.instructions');
 
-    function showLogin() {
+  function showLogin() {
+    loginCard.style.display = 'block';
+    instructions.style.display = 'none';
+    toggleBtn.textContent = 'Back to instructions';
+    toggleBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  function showInstructions() {
+    loginCard.style.display = 'none';
+    instructions.style.display = 'block';
+    toggleBtn.textContent = 'Login here';
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const loginVisible = loginCard.style.display === 'block';
+    if (loginVisible) {
+      showInstructions();
+    } else {
+      showLogin();
+    }
+  });
+
+  function handleResize() {
+    if (window.innerWidth >= 992) {
       loginCard.style.display = 'block';
-      instructions.style.display = 'none';
-      toggleBtn.textContent = 'Back to instructions';
-      toggleBtn.setAttribute('aria-expanded', 'true');
-    }
-
-    function showInstructions() {
-      loginCard.style.display = 'none';
       instructions.style.display = 'block';
-      toggleBtn.textContent = 'Login here';
-      toggleBtn.setAttribute('aria-expanded', 'false');
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      const loginVisible = loginCard.style.display === 'block';
-      if (loginVisible) {
+      toggleBtn.style.display = 'none';
+    } else {
+      if (!loginCard.style.display || loginCard.style.display === 'none') {
         showInstructions();
-      } else {
-        showLogin();
-      }
-    });
-
-    function handleResize() {
-      if (window.innerWidth >= 992) {
-        // On large screens show both
-        loginCard.style.display = 'block';
-        instructions.style.display = 'block';
-        toggleBtn.style.display = 'none';
-      } else {
-        // On small screens, default to instructions visible, login hidden
-        if (!loginCard.style.display || loginCard.style.display === 'none') {
-          showInstructions();
-          toggleBtn.style.display = 'block';
-        }
+        toggleBtn.style.display = 'block';
       }
     }
+  }
 
-    window.addEventListener('resize', handleResize);
-
-    // Initialize on DOM load
-    window.addEventListener('DOMContentLoaded', () => {
-      handleResize();
-    });
-  })();
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('DOMContentLoaded', handleResize);
+})();
 </script>

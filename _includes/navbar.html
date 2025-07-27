@@ -1,18 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Primary navigation">
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm" aria-label="Primary navigation">
   <div class="container-fluid">
+    <!-- Toggler for Offcanvas -->
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- Desktop Nav -->
     <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto gap-1">
         <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/">Home</a></li>
 
-        <li class="nav-item dropdown d-flex align-items-center">
-          <a class="nav-link px-3" href="{{ site.baseurl }}/about_us/">About Us</a>
-          <button class="btn p-0 m-0 ms-1 dropdown-toggle dropdown-toggle-split" type="button" id="aboutDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="visually-hidden">Toggle About</span>
-          </button>
+        <!-- About Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle px-3" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            About Us
+          </a>
           <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
             <li><a class="dropdown-item" href="{{ site.baseurl }}/about_us/#bod">Board of Directors</a></li>
             <li><a class="dropdown-item" href="{{ site.baseurl }}/mcc_history/">MCC History</a></li>
@@ -20,15 +22,15 @@
           </ul>
         </li>
 
-        <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/events-and-activities/">Events &amp; Activities</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/news-and-articles/">News &amp; Articles</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/events-and-activities/">Events & Activities</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/news-and-articles/">News & Articles</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/industry-partners/">Industry Partners</a></li>
 
-        <li class="nav-item dropdown d-flex align-items-center">
-          <a class="nav-link px-3" href="{{ site.baseurl }}/faqs/">FAQs</a>
-          <button class="btn p-0 m-0 ms-1 dropdown-toggle dropdown-toggle-split" type="button" id="faqDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="visually-hidden">Toggle FAQ</span>
-          </button>
+        <!-- FAQs Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle px-3" href="#" id="faqDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            FAQs
+          </a>
           <ul class="dropdown-menu" aria-labelledby="faqDropdown">
             <li><a class="dropdown-item" href="{{ site.baseurl }}/faqs/scholarship/">Scholarship</a></li>
             <li><a class="dropdown-item" href="{{ site.baseurl }}/useful-files/">Useful Files</a></li>
@@ -41,21 +43,20 @@
   </div>
 </nav>
 
-<!-- Offcanvas Drawer (Mobile) -->
+<!-- Offcanvas Mobile Nav -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title">Menu</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/">Home</a></li>
+    <ul class="navbar-nav gap-2">
+      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/">Home</a></li>
 
-      <li class="nav-item d-flex align-items-center">
-        <a class="nav-link px-3" href="{{ site.baseurl }}/about_us/">About Us</a>
-        <button class="btn p-0 m-0 ms-1 dropdown-toggle dropdown-toggle-split" type="button" id="offcanvasAboutDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          <span class="visually-hidden">Toggle About</span>
-        </button>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="offcanvasAboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          About Us
+        </a>
         <ul class="dropdown-menu" aria-labelledby="offcanvasAboutDropdown">
           <li><a class="dropdown-item" href="{{ site.baseurl }}/about_us/#bod">Board of Directors</a></li>
           <li><a class="dropdown-item" href="{{ site.baseurl }}/mcc_history/">MCC History</a></li>
@@ -63,22 +64,21 @@
         </ul>
       </li>
 
-      <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/events-and-activities/">Events &amp; Activities</a></li>
-      <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/news-and-articles/">News &amp; Articles</a></li>
-      <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/industry-partners/">Industry Partners</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/events-and-activities/">Events & Activities</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/news-and-articles/">News & Articles</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/industry-partners/">Industry Partners</a></li>
 
-      <li class="nav-item d-flex align-items-center">
-        <a class="nav-link px-3" href="{{ site.baseurl }}/faqs/">FAQs</a>
-        <button class="btn p-0 m-0 ms-1 dropdown-toggle dropdown-toggle-split" type="button" id="offcanvasFaqDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          <span class="visually-hidden">Toggle FAQ</span>
-        </button>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="offcanvasFaqDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          FAQs
+        </a>
         <ul class="dropdown-menu" aria-labelledby="offcanvasFaqDropdown">
           <li><a class="dropdown-item" href="{{ site.baseurl }}/faqs/scholarship/">Scholarship</a></li>
           <li><a class="dropdown-item" href="{{ site.baseurl }}/useful-files/">Useful Files</a></li>
         </ul>
       </li>
 
-      <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/membership/">Membership</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/membership/">Membership</a></li>
     </ul>
   </div>
 </div>

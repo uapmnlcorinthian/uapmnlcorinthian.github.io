@@ -1,5 +1,4 @@
 (() => {
-
   (() => {
     const url = 'https://fvaahtqjusfniadwvoyw.supabase.co';
     const key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8';
@@ -107,27 +106,32 @@
           const pay = Object.fromEntries(cols.map(k => [k, user[k]]));
           delete user.password;
 
-          sessionStorage.setItem('userData', JSON.stringify({
-            ok: 1,
-            row: String(user.row_id).toLowerCase(),
-            pi: {
-              n:   user.name,
-              prc: user.prc_license,
-              a:   user.address,
-              b:   user.birthday,
-              c:   user.contact_no,
-              e:   user.email,
-              bt:  user.batch    || '',
-              co:  user.company  || '',
-              po:  user.position || ''
-            },
-            act: user.membership_active,
-            due: user.total_due,
-            pay
-          }));
+          const session = {
+		  ok: 1,
+		  row: String(user.row_id).toLowerCase(),
+		  pi: {
+			n:   user.name,
+			prc: user.prc_license,
+			a:   user.address,
+			b:   user.birthday,
+			c:   user.contact_no,
+			e:   user.email,
+			bt:  user.batch    || '',
+			co:  user.company  || '',
+			po:  user.position || ''
+		  },
+		  act: user.membership_active,
+		  due: user.total_due,
+		  pay
+		};
 
-          location.href = '/account/';
-        } catch (err) {
+		sessionStorage.setItem('userData', JSON.stringify(session));
+
+		setTimeout(() => {
+		  window.location.replace('/account/');
+		}, 100);
+
+        } catch (err) {		
           alert(err.message || 'Login failed. Please try again.');
           btn.disabled = false;
         }
@@ -135,8 +139,13 @@
     }
 
   function initAccount() {
-    const u = JSON.parse(sessionStorage.getItem('userData') || 'null');
-    if (!u?.ok) return location.href = '/login/';
+	let u = JSON.parse(sessionStorage.getItem('userData') || 'null');
+	if (!u?.ok) {
+	  u = JSON.parse(localStorage.getItem('userData') || 'null');
+	  if (u?.ok) sessionStorage.setItem('userData', JSON.stringify(u));
+	}
+	if (!u?.ok) return location.href = '/membership/';
+
 
     const pi = u.pi;
     $('#cardName').textContent    = pi.n || '*no data*';
@@ -241,8 +250,13 @@
     if (!form) return;
     const fb  = $('#updateFeedback');
     const btn = form.querySelector('button[type=submit]');
-    const user= JSON.parse(sessionStorage.getItem('userData')||'null');
-    if (!user?.ok) return location.href = '/login/';
+    let u = JSON.parse(sessionStorage.getItem('userData') || 'null');
+    if (!u?.ok) {
+      u = JSON.parse(localStorage.getItem('userData') || 'null');
+    if (u?.ok) sessionStorage.setItem('userData', JSON.stringify(u));
+    }
+    if (!u?.ok) return location.href = '/membership/';
+
 
     form.setAttribute('autocomplete','off');
     ['currentPassword','password','confirmPassword','username','email','contact','company','position']
@@ -369,7 +383,7 @@
       localStorage.setItem(limitKey, today);
       alert('Update successful. You will now be logged out for security reasons.');
       sessionStorage.removeItem('userData');
-      location.href = '/login/';
+      location.href = '/membership/';
     });
   }
 
@@ -381,7 +395,6 @@
 
 
   document.addEventListener('DOMContentLoaded', () => {
-
     if ( $('#loginForm') )         initLogin();
     if ( document.querySelector('.account-info') ) initAccount();
 

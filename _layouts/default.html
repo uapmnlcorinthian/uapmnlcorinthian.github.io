@@ -21,12 +21,22 @@
   {% include footer.html %}
   {% include scripts.html %}
 
-  <!-- Back to top button -->
-  <a id="btnTop" href="#top"
-     class="btn btn-secondary shadow position-fixed bottom-0 end-0 m-3 d-none"
-     style="z-index:1030;" aria-label="Back to top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </a>
+<!-- Back to top button -->
+<a id="btnTop" href="#top"
+   x-data="{ visible: false }"
+   x-init="
+     window.addEventListener('scroll', () => {
+       visible = window.scrollY > 500
+     })
+   "
+   x-show="visible"
+   x-transition
+   x-cloak
+   class="btn btn-secondary shadow position-fixed bottom-0 end-0 m-3"
+   style="z-index:1030;" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</a>
+
 
 </body>
 </html>
