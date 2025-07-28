@@ -4,7 +4,7 @@ backend:
   name: github
   repo: uapmnlcorinthian/uapmnlcorinthian.github.io 
   branch: main
-  base_url: "/"                 # site root
+  base_url: "/" 
   auth_endpoint: "/.netlify/functions/auth"
 
 local_backend: true

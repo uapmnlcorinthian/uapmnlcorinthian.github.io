@@ -1,8 +1,8 @@
 [build]
-  publish = "_site"
+  base    = "mcc.2025"
+  publish = "mcc.2025/_site"
   command = "bundle exec jekyll build"
-  # (do NOT set base here when this file is in mcc.2025)
 
 [functions]
-  directory    = "netlify/functions"
+  directory    = "mcc.2025/netlify/functions"
   node_bundler = "esbuild"
