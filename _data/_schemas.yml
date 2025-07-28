@@ -6,19 +6,19 @@ sponsors.yml:
   type: array
   display: name
   fields:
-    - {k: name,         l: Name,             t: text,   req: true,  w: col-8,  p: "Sponsor name"}
+    - {k: name,         l: Name,             t: text,   req: true,  w: col-8}
     - {k: tier,         l: Tier,             t: select, req: true,  w: col-4,  opts: [Platinum, Gold, Silver, Bronze, Supporting, Event]}
-    - {k: website,      l: Website,          t: url,    req: true,  w: col-12, p: "https://example.com"}
-    - {k: logo,         l: Logo URL,         t: image,  req: true,  w: col-12, p: "https://.../logo.svg"}
-    - {k: alt,          l: Alt Text,         t: text,               w: col-12, p: "Accessible logo description"}
-    - {k: tagline,      l: Tagline,          t: text,               w: col-12, p: "Short descriptive line"}
+    - {k: website,      l: Website,          t: url,    req: true,  w: col-12}
+    - {k: logo,         l: Logo URL,         t: image,  req: true,  w: col-12}
+    - {k: alt,          l: Alt Text,         t: text,               w: col-12}
+    - {k: tagline,      l: Tagline,          t: text,               w: col-12}
     - {k: active,       l: Active,           t: bool,               w: col-3}
-    - {k: order,        l: Order,            t: number, req: true,  w: col-3,  p: "Display order within tier"}
+    - {k: order,        l: Order,            t: number, req: true,  w: col-3}
     - {k: start_date,   l: Start Date,       t: date,               w: col-3}
     - {k: end_date,     l: End Date,         t: date,               w: col-3}
     - {k: media_type,   l: Media Type,       t: select,             w: col-4,  opts: [image, video]}
-    - {k: media_url,    l: Media URL,        t: url,                w: col-8,  p: "Video URL if media_type = video"}
-    - {k: contact_email,l: Contact Email,    t: email,              w: col-6,  p: "contact@example.com"}
+    - {k: media_url,    l: Media URL,        t: url,                w: col-8}
+    - {k: contact_email,l: Contact Email,    t: email,              w: col-6}
 
 activities.yml:
   type: array
