@@ -9,9 +9,6 @@ gem "logger"                  # Only if you use custom Ruby logging
 gem "fiddle"                  # Required by some gems on Windows
 gem "wdm", ">= 0.1.0" if Gem.win_platform?  # Optional: watch support for Windows
 
-# Timezone data (for `timezone:` in _config.yml)
-gem "tzinfo-data"
-
 group :windows do
   gem "tzinfo-data"           # Safe cross-platform setup
 end

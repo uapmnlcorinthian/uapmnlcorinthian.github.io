@@ -49,25 +49,23 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
 </section>
 
 <!-- History Preview -->
-<section class="py-5 bg-light" data-aos="fade-right">
-  <div class="container-fluid px-0">
-    <div class="row g-0">
-      <div class="col-lg-6 p-4">
-        <h3>History of MCC</h3>
-        {% assign history_page = site.pages | where: "permalink", "/mcc_history/" | first %}
-        {% assign history_text = history_page.content | strip_html | truncate: 250 %}
-        <p>{{ history_text }}</p>
-        <a href="{{ site.baseurl }}/mcc_history/" class="btn btn-primary mt-3">Read More</a>
-      </div>
-      <div class="col-lg-6 p-0" data-aos="fade-left">
-        <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="History Image" class="w-100 h-100 object-fit-cover">
-      </div>
+<section class="container-fluid p-5 text-white" data-aos="fade-right" style="
+  background: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat left center / cover;
+  position: relative;
+">
+  <div class="row align-items-center" style="background-color: rgba(0,0,0,.5); padding: 2rem; border-radius: 1rem;">
+    <div class="col-12" data-aos="fade-right">
+      <h3 class="mb-3">History of MCC</h3>
+      {% assign history_page = site.pages | where: "permalink", "/mcc_history/" | first %}
+      {% assign history_text = history_page.content | strip_html | truncate: 1200 %}
+      <p class="mb-0">{{ history_text }}</p>
+      <a href="{{ site.baseurl }}/mcc_history/" class="btn btn-primary mt-3">Read More</a>
     </div>
   </div>
 </section>
 
 <!-- News & Articles -->
-  <section aria-labelledby="news-title" class="mb-5 mx-5" data-aos="fade-up" data-aos-duration="800">
+  <section aria-labelledby="news-title" class="m-5" data-aos="fade-up" data-aos-duration="800">
     <h2 id="news-title" class="mb-3">Latest Activities & Announcements</h2>
     <div class="row g-4">
       {% for post in site.posts limit:4 %}
@@ -84,22 +82,107 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
     </div>
   </section>
 
+<!-- Industry Partners (dynamic from _data/sponsors.yml) -->
+{%- assign limit = 6 -%}
+{%- assign data  = site.data.sponsors -%}
+{%- assign list  = data.sponsors | default: data -%}
+
+{%- comment -%} Active: true OR "true" OR 1 {%- endcomment -%}
+{%- assign a1 = list | where: "active", true -%}
+{%- assign a2 = list | where: "active", "true" -%}
+{%- assign a3 = list | where: "active", 1 -%}
+{%- assign active_all = a1 | concat: a2 | concat: a3 -%}
+
+{%- assign tiers = "Platinum|Gold|Silver|Bronze|Supporting|Event" | split: "|" -%}
+{%- assign shown = 0 -%}
+{%- capture picked %}|{% endcapture -%}
+
 <!-- Industry Partners -->
 <section class="py-5 bg-light" data-aos="fade-up">
   <div class="container text-center">
     <h3 class="mb-4">Our Industry Partners</h3>
+
     <div class="row justify-content-center align-items-center g-4">
-      {% for i in (1..6) %}
-        <div class="col-6 col-md-2" data-aos="flip-left" data-aos-delay="{{ i | times:50 }}">
-          <img src="https://asset.manilacorinthianchapter.workers.dev/p_sponsor.png" alt="Partner {{ i }}" class="img-fluid">
-        </div>
-      {% endfor %}
+      {%- comment -%} Pass 1: Tier → Order {%- endcomment -%}
+      {%- for t in tiers -%}
+        {%- if shown >= limit -%}{% break %}{%- endif -%}
+        {%- assign tier_items = active_all | where: "tier", t | sort: "order" -%}
+        {%- for s in tier_items -%}
+          {%- if shown >= limit -%}{% break %}{%- endif -%}
+          {%- assign key = s.name | default: s.logo | replace: "|","_" -%}
+          {%- unless picked contains key -%}
+            {%- if s.logo and s.logo != "" -%}
+              {%- comment -%} Wikimedia SVG → PNG thumbnail {%- endcomment -%}
+              {%- assign logo_url = s.logo -%}
+              {%- if logo_url contains 'upload.wikimedia.org' and logo_url contains '/wikipedia/commons/' -%}
+                {%- assign tail = logo_url | split: '/wikipedia/commons/' | last -%}
+                {%- assign filename = tail | split: '/' | last -%}
+                {%- assign parts = filename | split: '.' -%}
+                {%- assign ext = parts | last -%}
+                {%- if ext == 'svg' -%}
+                  {%- assign logo_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/' 
+                    | append: tail | append: '/320px-' | append: filename | append: '.png' -%}
+                {%- endif -%}
+              {%- endif -%}
+
+              {%- assign shown = shown | plus: 1 -%}
+              {%- capture picked -%}{{ picked }}{{ key }}|{%- endcapture -%}
+              <div class="col-6 col-md-2" data-aos="flip-left" data-aos-delay="{{ shown | minus: 1 | times: 50 }}">
+                <img
+                  src="{{ logo_url }}"
+                  alt="{{ s.alt | default: s.name | default: 'Sponsor' }}"
+                  class="img-fluid"
+                  loading="lazy"
+                  decoding="async"
+                  style="max-height:64px; object-fit:contain;">
+              </div>
+            {%- endif -%}
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- endfor -%}
+
+      {%- comment -%} Pass 2: Fill remaining from any actives (no duplicates) {%- endcomment -%}
+      {%- if shown < limit -%}
+        {%- for s in active_all -%}
+          {%- if shown >= limit -%}{% break %}{%- endif -%}
+          {%- assign key = s.name | default: s.logo | replace: "|","_" -%}
+          {%- unless picked contains key -%}
+            {%- if s.logo and s.logo != "" -%}
+              {%- assign logo_url = s.logo -%}
+              {%- if logo_url contains 'upload.wikimedia.org' and logo_url contains '/wikipedia/commons/' -%}
+                {%- assign tail = logo_url | split: '/wikipedia/commons/' | last -%}
+                {%- assign filename = tail | split: '/' | last -%}
+                {%- assign parts = filename | split: '.' -%}
+                {%- assign ext = parts | last -%}
+                {%- if ext == 'svg' -%}
+                  {%- assign logo_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/' 
+                    | append: tail | append: '/320px-' | append: filename | append: '.png' -%}
+                {%- endif -%}
+              {%- endif -%}
+
+              {%- assign shown = shown | plus: 1 -%}
+              {%- capture picked -%}{{ picked }}{{ key }}|{%- endcapture -%}
+              <div class="col-6 col-md-2" data-aos="flip-left" data-aos-delay="{{ shown | minus: 1 | times: 50 }}">
+                <img
+                  src="{{ logo_url }}"
+                  alt="{{ s.alt | default: s.name | default: 'Sponsor' }}"
+                  class="img-fluid"
+                  loading="lazy"
+                  decoding="async"
+                  style="max-height:64px; object-fit:contain;">
+              </div>
+            {%- endif -%}
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- endif -%}
     </div>
   </div>
 </section>
 
+
+
 <!-- Call to Action: Be a Member --><br>
-  <section aria-labelledby="about-title" class="text-center" data-aos="fade-up" data-aos-duration="800">
+  <section aria-labelledby="about-title" class="text-center" data-aos="fade-up" data-aos-duration="800" >
     <h2 id="about-title" class="m-5 mx-5">About Being a Member</h2>
     <p class="mb-5 mx-5">Joining the UAP Manila Corinthian Chapter means becoming part of a dynamic community of architectural professionals dedicated to excellence, innovation, and advocacy in the built environment.</p>
     <p>Enjoy exclusive access to industry events, educational programs, and networking opportunities.</p>
@@ -110,9 +193,9 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
               allowfullscreen loading="lazy">
       </iframe>
     </div>
-  <div class="t2 text-center" data-aos="fade-up">
+  <div class="text-white text-center" data-aos="fade-up" style="background:rgb(79, 52, 58, .5);">
     <h3 class="p-5">Be a Member</h3>
-    <p class="mb-5">Join UAP Manila Corinthian Chapter today and connect with leading architectural professionals, attend exclusive events, and access valuable resources.</p>
+    <p class="m-5">Join UAP Manila Corinthian Chapter today and connect with leading architectural professionals, attend exclusive events, and access valuable resources.</p>
     <a href="{{ site.baseurl }}/membership/" class="btn btn-light btn-lg mb-5" data-aos="pulse" data-aos-delay="200">Register Now</a>
   </div>
   </section>
