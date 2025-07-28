@@ -1,14 +1,279 @@
-sponsors:
-  - name: ""            # Sponsor name
-    website: ""         # URL to sponsor website
-    logo: ""            # Path or URL to sponsor logo image
-    alt: ""             # Alt text for accessibility
-    tier: ""            # Tier (e.g., Diamond, Platinum, Gold, Silver, Bronze, Supporting, Event)
-    active: true         # true = show in frontend, false = hide
-    order: 1             # Display order among same-tier sponsors
-    tagline: ""         # Short descriptive tagline (optional)
-    start_date: ""      # ISO date when sponsorship starts (YYYY-MM-DDThh:mm:ssZ)
-    end_date: ""        # ISO date when sponsorship ends
-    media_type: "image" # “image” or “video”
-    media_url: ""       # If media_type is video, URL to the video
-    contact_email: ""   # Administrative contact email
+  - name: "Autodesk"
+    website: "https://www.autodesk.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Autodesk_logo.svg"
+    alt: "Autodesk logo"
+    tier: "Platinum"
+    active: true
+    order: 1
+    tagline: "Design and make software for architecture and engineering."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "sponsorships@autodesk.com"
+
+  - name: "Samsung"
+    website: "https://www.samsung.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg"
+    alt: "Samsung logo"
+    tier: "Platinum"
+    active: true
+    order: 2
+    tagline: "Displays and devices for modern workspaces."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "partners@samsung.com"
+
+  - name: "Siemens"
+    website: "https://www.siemens.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Siemens_logo.svg"
+    alt: "Siemens logo"
+    tier: "Platinum"
+    active: true
+    order: 3
+    tagline: "Building technologies and smart infrastructure."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "partnerships@siemens.com"
+
+  - name: "Schneider Electric"
+    website: "https://www.se.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/7/76/Schneider_Electric_2007.svg"
+    alt: "Schneider Electric logo"
+    tier: "Platinum"
+    active: true
+    order: 4
+    tagline: "Energy management and automation."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "global.partners@se.com"
+
+  - name: "Bosch"
+    website: "https://www.bosch.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/8/88/Bosch-logo.svg"
+    alt: "Bosch logo"
+    tier: "Gold"
+    active: true
+    order: 1
+    tagline: "Power tools and smart solutions for construction."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "sponsorships@bosch.com"
+
+  - name: "Hilti"
+    website: "https://www.hilti.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/8/80/Hilti_Logo.svg"
+    alt: "Hilti logo"
+    tier: "Gold"
+    active: true
+    order: 2
+    tagline: "Anchoring, drilling, and fastening systems."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "partners@hilti.com"
+
+  - name: "3M"
+    website: "https://www.3m.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/3M_wordmark.svg"
+    alt: "3M logo"
+    tier: "Gold"
+    active: true
+    order: 3
+    tagline: "Building materials and safety solutions."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "sponsorships@3m.com"
+
+  - name: "LG"
+    website: "https://www.lg.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/20/LG_symbol.svg"
+    alt: "LG logo"
+    tier: "Gold"
+    active: true
+    order: 4
+    tagline: "HVAC, displays, and appliances for built environments."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "partners@lg.com"
+
+  - name: "Canon"
+    website: "https://global.canon/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Canon_wordmark.svg"
+    alt: "Canon logo"
+    tier: "Silver"
+    active: true
+    order: 1
+    tagline: "Imaging and printing for studios and offices."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "partnerships@canon.com"
+
+  - name: "HP"
+    website: "https://www.hp.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/3/3a/HP_logo_2012.svg"
+    alt: "HP logo"
+    tier: "Silver"
+    active: true
+    order: 2
+    tagline: "Workstations and printers for design workflows."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "partners@hp.com"
+
+  - name: "Lenovo"
+    website: "https://www.lenovo.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/3/32/Lenovo_logo_2015.svg"
+    alt: "Lenovo logo"
+    tier: "Silver"
+    active: true
+    order: 3
+    tagline: "Mobile workstations for CAD and BIM."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "sponsorships@lenovo.com"
+
+  - name: "Panasonic"
+    website: "https://www.panasonic.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Panasonic_logo_%28Blue%29.svg"
+    alt: "Panasonic logo"
+    tier: "Silver"
+    active: true
+    order: 4
+    tagline: "Pro AV, displays, and building solutions."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "partners@panasonic.com"
+
+  - name: "Philips"
+    website: "https://www.philips.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Philips_logo.svg"
+    alt: "Philips logo"
+    tier: "Silver"
+    active: true
+    order: 5
+    tagline: "Lighting and health‑tech for human‑centric spaces."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "sponsorships@philips.com"
+
+  - name: "PPG Industries"
+    website: "https://www.ppg.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/9/9d/PPG_Logo.svg"
+    alt: "PPG logo"
+    tier: "Bronze"
+    active: true
+    order: 1
+    tagline: "Protective coatings and architectural finishes."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "partners@ppg.com"
+
+  - name: "Sherwin-Williams"
+    website: "https://www.sherwin-williams.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/Sherwin-Williams_logo.svg"
+    alt: "Sherwin‑Williams logo"
+    tier: "Bronze"
+    active: true
+    order: 2
+    tagline: "Paints and coatings for every surface."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "sponsorships@sherwin.com"
+
+  - name: "Jotun"
+    website: "https://www.jotun.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/en/1/1e/Jotun_logo.svg"
+    alt: "Jotun logo"
+    tier: "Bronze"
+    active: true
+    order: 3
+    tagline: "High‑performance coatings for buildings and infrastructure."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "partners@jotun.com"
+
+  - name: "AkzoNobel"
+    website: "https://www.akzonobel.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/5b/AkzoNobel_logo.svg"
+    alt: "AkzoNobel logo"
+    tier: "Bronze"
+    active: true
+    order: 4
+    tagline: "Global leader in paints and coatings (incl. Dulux)."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "sponsorships@akzonobel.com"
+
+  - name: "CEMEX"
+    website: "https://www.cemex.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Cemex_logo.svg"
+    alt: "CEMEX logo"
+    tier: "Supporting"
+    active: true
+    order: 1
+    tagline: "Cement, ready‑mix concrete, and aggregates."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "partners@cemex.com"
+
+  - name: "Holcim"
+    website: "https://www.holcim.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/23/Holcim_logo.svg"
+    alt: "Holcim logo"
+    tier: "Supporting"
+    active: true
+    order: 2
+    tagline: "Low‑carbon cement and sustainable building materials."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "sponsorships@holcim.com"
+
+  - name: "Mitsubishi Electric"
+    website: "https://www.mitsubishielectric.com/"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/9/9b/Mitsubishi_Electric_logo.svg"
+    alt: "Mitsubishi Electric logo"
+    tier: "Event"
+    active: true
+    order: 1
+    tagline: "HVAC, elevators, and building systems."
+    start_date: "2025-08-01T00:00:00Z"
+    end_date: "2026-07-31T23:59:59Z"
+    media_type: "image"
+    media_url: ""
+    contact_email: "partners@meap.com"

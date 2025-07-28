@@ -1,0 +1,61 @@
+# _data/_schemas.yml
+# Field types supported by the panel:
+# text | url | image | email | date | number | bool | long | list | sublist (fields: [])
+# Special:
+#   type: objlist + wrap: <key>   # YAML stored as { <key>: [ ... ] }
+#   type: array                    # YAML stored as [ ... ]
+#   type: map                      # YAML stored as key: value
+# Optional per-field:
+#   req: true                      # required on save
+#   opts: [a, b, c]                # for select
+#   w: col-3|col-4|col-6|col-8|col-12  # layout width
+#   p: "placeholder"               # placeholder text (UI only)
+
+sponsors.yml:
+  type: objlist
+  wrap: sponsors
+  display: name
+  fields:
+    - {k: name,         l: Name,             t: text,   req: true,  w: col-8,  p: "Sponsor name"}
+    - {k: tier,         l: Tier,             t: select, req: true,  w: col-4,  opts: [Platinum, Gold, Silver, Bronze, Supporting, Event]}
+    - {k: website,      l: Website,          t: url,    req: true,  w: col-12, p: "https://example.com"}
+    - {k: logo,         l: Logo URL,         t: image,  req: true,  w: col-12, p: "https://.../logo.svg"}
+    - {k: alt,          l: Alt Text,         t: text,               w: col-12, p: "Accessible logo description"}
+    - {k: tagline,      l: Tagline,          t: text,               w: col-12, p: "Short descriptive line"}
+    - {k: active,       l: Active,           t: bool,               w: col-3}
+    - {k: order,        l: Order,            t: number, req: true,  w: col-3,  p: "Display order within tier"}
+    - {k: start_date,   l: Start Date,       t: date,               w: col-3}
+    - {k: end_date,     l: End Date,         t: date,               w: col-3}
+    - {k: media_type,   l: Media Type,       t: select,             w: col-4,  opts: [image, video]}
+    - {k: media_url,    l: Media URL,        t: url,                w: col-8,  p: "Video URL if media_type = video"}
+    - {k: contact_email,l: Contact Email,    t: email,              w: col-6,  p: "contact@example.com"}
+
+activities.yml:
+  type: array
+  display: title
+  fields:
+    - {k: title,        l: Title,            t: text,   req: true,  w: col-8}
+    - {k: category,     l: Category,         t: select,            w: col-4,  opts: [Seminar, Workshop, Meetup, Competition, Exhibit, CSR, General]}
+    - {k: date,         l: Date,             t: date,              w: col-4}
+    - {k: location,     l: Location,         t: text,              w: col-8}
+    - {k: description,  l: Description,      t: long,              w: col-12}
+    - {k: tags,         l: Tags,             t: list,              w: col-12}
+    - k: images
+      l: Images
+      t: sublist
+      fields:
+        - {k: url,      l: URL,              t: url,               w: col-6}
+        - {k: alt,      l: Alt,              t: text,              w: col-6}
+        - {k: caption,  l: Caption,          t: text,              w: col-12}
+
+bod.yml:
+  type: array
+  display: name
+  fields:
+    - {k: position,     l: Position,         t: text,              w: col-4}
+    - {k: name,         l: Name,             t: text,   req: true, w: col-8}
+    - {k: image,        l: Image URL,        t: image,             w: col-12}
+    - {k: description,  l: Description,      t: long,              w: col-12}
+
+images.yml:
+  type: map
