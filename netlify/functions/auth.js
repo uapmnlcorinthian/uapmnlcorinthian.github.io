@@ -1,4 +1,3 @@
-// CommonJS variant (no ESM config needed)
-const serverless = require('netlify-cms-oauth-provider-node');
-exports.handler = (event, context) =>
-  serverless({ backend: 'github' })(event, context);
+// CommonJS (simplest)
+const s = require('netlify-cms-oauth-provider-node');
+exports.handler = (e,c) => s({ backend: 'github' })(e,c);
