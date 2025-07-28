@@ -10,42 +10,40 @@
 
 /* now SCSS begins */
 
-$primary: #2C3E50;
-$secondary: #E67E22;
-$accent: #9B59B6;
-$success: #27AE60;
-$danger: #E74C3C;
-$warning: #F39C12;
-$info: #3498DB;
-$light: #ECF0F1;
-$dark: #1A252F;
-$body-bg: #F4F6F7;
-$text-primary: #34495E;
-$text-secondary: #7F8C8D;
-$t1: #2ECC71;
-$t2: #E84393;
-$t3: #2980B9;
-$t4: #F1C40F;
-$t5: #D35400;
+/* 1) Tokens FIRST */
+$primary:   #2C3E50 !default;
+$secondary: #E67E22 !default;
+$accent:    #9B59B6 !default;
+$success:   #27AE60 !default;
+$danger:    #E74C3C !default;
+$warning:   #F39C12 !default;
+$info:      #3498DB !default;
+$light:     #ECF0F1 !default;
+$dark:      #1A252F !default;
+$body-bg:   #F4F6F7 !default;
+$text-primary:   #34495E !default;
+$text-secondary: #7F8C8D !default;
+$t1:#2ECC71 !default; $t2:#E84393 !default; $t3:#2980B9 !default; $t4:#F1C40F !default; $t5:#D35400 !default;
 
+/* 2) Vendor imports (if any) that rely on your tokens go AFTER the tokens.
+   NOTE: On Jekyll 3.x + jekyll-sass-converter 1.x, use @import, NOT @use. */
+/* @import "bootstrap"; */
+
+/* 3) Your CSS */
 :root {
-  --bs-primary: #{$primary};
+  --bs-primary:   #{$primary};
   --bs-secondary: #{$secondary};
-  --bs-accent: #{$accent};
-  --bs-success: #{$success};
-  --bs-danger: #{$danger};
-  --bs-warning: #{$warning};
-  --bs-info: #{$info};
-  --bs-light: #{$light};
-  --bs-dark: #{$dark};
-  --bs-body-bg: #{$body-bg};
-  --text-primary: #{$text-primary};
+  --bs-accent:    #{$accent};
+  --bs-success:   #{$success};
+  --bs-danger:    #{$danger};
+  --bs-warning:   #{$warning};
+  --bs-info:      #{$info};
+  --bs-light:     #{$light};
+  --bs-dark:      #{$dark};
+  --bs-body-bg:   #{$body-bg};
+  --text-primary:   #{$text-primary};
   --text-secondary: #{$text-secondary};
-  --t1: #{$t1};
-  --t2: #{$t2};
-  --t3: #{$t3};
-  --t4: #{$t4};
-  --t5: #{$t5};
+  --t1:#{$t1}; --t2:#{$t2}; --t3:#{$t3}; --t4:#{$t4}; --t5:#{$t5};
 }
 
 html, body {

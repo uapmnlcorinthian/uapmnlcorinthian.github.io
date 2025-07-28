@@ -45,6 +45,9 @@ exclude:
   - bod1.html
   - index1.html
   - login1.html
+  - LOCAL HOST.bat
+  - MCC WEBSITE rebuild .bat
+  - space remover.bat
 
 # ─── Optional Customizations ──────────────────────────────────────
 # You can override directories if needed:
