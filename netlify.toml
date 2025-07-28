@@ -1,0 +1,4 @@
+[functions]
+node_bundler = "esbuild"
+# directory defaults to "netlify/functions"; set it explicitly if you like:
+# directory = "netlify/functions"

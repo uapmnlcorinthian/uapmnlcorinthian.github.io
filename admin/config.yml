@@ -1,8 +1,11 @@
 # File: /admin/config.yml
 
 backend:
-  name: git-gateway
+  name: github
+  repo: uapmnlcorinthian/uapmnlcorinthian.github.io 
   branch: main
+  base_url: "/"                 # site root
+  auth_endpoint: "/.netlify/functions/auth"
 
 local_backend: true
 
