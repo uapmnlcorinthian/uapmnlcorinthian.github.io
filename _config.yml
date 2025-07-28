@@ -9,6 +9,7 @@ markdown: kramdown
 permalink: pretty                                   # /about/ instead of /about.html
 highlighter: rouge
 sass:
+  sass_dir: css
   style: compressed  # Minify CSS output
 timezone: Asia/Manila
 

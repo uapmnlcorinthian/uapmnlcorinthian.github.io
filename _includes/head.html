@@ -93,7 +93,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css" />
 
 <!-- ✅ Your Custom CSS -->
-<link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
+{% assign cb = site.github.build_revision | default: site.time | date: '%s' %}
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ cb }}">
 
 <script>
 document.documentElement.style.scrollBehavior = 'smooth';
