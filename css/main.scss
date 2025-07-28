@@ -1,35 +1,9 @@
 ---
-
-
 ---
 
+@import "tokens"; /* imports _sass/_tokens.scss */
 
 
-
-
-
-/* now SCSS begins */
-
-/* 1) Tokens FIRST */
-$primary:   #2C3E50 !default;
-$secondary: #E67E22 !default;
-$accent:    #9B59B6 !default;
-$success:   #27AE60 !default;
-$danger:    #E74C3C !default;
-$warning:   #F39C12 !default;
-$info:      #3498DB !default;
-$light:     #ECF0F1 !default;
-$dark:      #1A252F !default;
-$body-bg:   #F4F6F7 !default;
-$text-primary:   #34495E !default;
-$text-secondary: #7F8C8D !default;
-$t1:#2ECC71 !default; $t2:#E84393 !default; $t3:#2980B9 !default; $t4:#F1C40F !default; $t5:#D35400 !default;
-
-/* 2) Vendor imports (if any) that rely on your tokens go AFTER the tokens.
-   NOTE: On Jekyll 3.x + jekyll-sass-converter 1.x, use @import, NOT @use. */
-/* @import "bootstrap"; */
-
-/* 3) Your CSS */
 :root {
   --bs-primary:   #{$primary};
   --bs-secondary: #{$secondary};
