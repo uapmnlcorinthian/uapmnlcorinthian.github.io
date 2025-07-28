@@ -1,3 +1,5 @@
+# _data/sponsors.yml
+sponsors:
   - name: "Autodesk"
     website: "https://www.autodesk.com/"
     logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Autodesk_logo.svg"
@@ -173,7 +175,7 @@
     tier: "Silver"
     active: true
     order: 5
-    tagline: "Lighting and health‑tech for human‑centric spaces."
+    tagline: "Lighting and health-tech for human-centric spaces."
     start_date: "2025-08-01T00:00:00Z"
     end_date: "2026-07-31T23:59:59Z"
     media_type: "image"
@@ -197,7 +199,7 @@
   - name: "Sherwin-Williams"
     website: "https://www.sherwin-williams.com/"
     logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/Sherwin-Williams_logo.svg"
-    alt: "Sherwin‑Williams logo"
+    alt: "Sherwin-Williams logo"
     tier: "Bronze"
     active: true
     order: 2
@@ -215,7 +217,7 @@
     tier: "Bronze"
     active: true
     order: 3
-    tagline: "High‑performance coatings for buildings and infrastructure."
+    tagline: "High-performance coatings for buildings and infrastructure."
     start_date: "2025-08-01T00:00:00Z"
     end_date: "2026-07-31T23:59:59Z"
     media_type: "image"
@@ -243,7 +245,7 @@
     tier: "Supporting"
     active: true
     order: 1
-    tagline: "Cement, ready‑mix concrete, and aggregates."
+    tagline: "Cement, ready-mix concrete, and aggregates."
     start_date: "2025-08-01T00:00:00Z"
     end_date: "2026-07-31T23:59:59Z"
     media_type: "image"
@@ -257,7 +259,7 @@
     tier: "Supporting"
     active: true
     order: 2
-    tagline: "Low‑carbon cement and sustainable building materials."
+    tagline: "Low-carbon cement and sustainable building materials."
     start_date: "2025-08-01T00:00:00Z"
     end_date: "2026-07-31T23:59:59Z"
     media_type: "image"

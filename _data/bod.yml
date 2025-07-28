@@ -1,89 +1,89 @@
 - position: Chapter President
-  name: Karl Vincent P. Santos
-  image: https://asset.manilacorinthianchapter.workers.dev/kpv_santos.jpg
-  description: "Guides the chapterâ\x80\x99s vision and strategy with bold leadership."
+  name: "Karl Vincent P. Santos"
+  image: "https://asset.manilacorinthianchapter.workers.dev/kpv_santos.jpg"
+  description: "Guides the chapter's vision and strategy with bold leadership."
+
 - position: Vice President for Program & Development
-  name: "Dianne Darryl May O. Rafananâ\x80\x91Yuzon"
-  image: >-
-    https://images.unsplash.com/photo-1561948955-570b270e7c36?q=80&w=2101&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: "Drives innovative programs and memberâ\x80\x91growth initiatives."
+  name: "Dianne Darryl May O. Rafanan-Yuzon"
+  image: "https://images.unsplash.com/photo-1561948955-570b270e7c36?q=80&w=2101&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Drives innovative programs and members' growth initiatives."
+
 - position: Vice President for Operation
-  name: Christian John C. Moniño
-  image: >-
-    https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Streamlines chapter operations for seamless execution.
+  name: "Christian John C. Moniño"
+  image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Streamlines chapter operations for seamless execution."
+
 - position: Secretary
-  name: Jonathan Christian C. Bautista
-  image: >-
-    https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Keeps records sharp and communications flowing.
+  name: "Jonathan Christian C. Bautista"
+  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Keeps records sharp and communications flowing."
+
 - position: Treasurer
-  name: Bea Denise F. Santos
-  image: >-
-    https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Safeguards finances with precision and transparency.
+  name: "Bea Denise F. Santos"
+  image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Safeguards finances with precision and transparency."
+
 - position: Auditor
-  name: Lovely Diane Q. Rosal
-  image: >-
-    https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Ensures fiscal integrity through diligent review.
+  name: "Lovely Diane Q. Rosal"
+  image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Ensures fiscal integrity through diligent review."
+
 - position: Director for the Committee on Education
-  name: Lovely Diane Q. Rosal
-  image: >-
-    https://images.unsplash.com/photo-1701282090823-1b6e5ea607db?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Elevates learning experiences and CPD pathways.
+  name: "Lovely Diane Q. Rosal"
+  image: "https://images.unsplash.com/photo-1701282090823-1b6e5ea607db?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Elevates learning experiences and CPD pathways."
+
 - position: Director for the Committee on External Affairs
-  name: Emmanuel Francis L. Yuzon
-  image: >-
-    https://images.unsplash.com/photo-1461800919507-79b16743b257?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Builds bridges with partners and the wider community.
+  name: "Emmanuel Francis L. Yuzon"
+  image: "https://images.unsplash.com/photo-1461800919507-79b16743b257?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Builds bridges with partners and the wider community."
+
 - position: Director for the Committee on Internal Affairs
-  name: Christian John C. MoniÃ±o
-  image: >-
-    https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Fosters cohesion and engagement within the chapter.
+  name: "Christian John C. Moniño"
+  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Fosters cohesion and engagement within the chapter."
+
 - position: Director for the Committee on Professional Development
-  name: Cristine O. Sorita
-  image: >-
-    https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Champions lifelong learning and career growth.
+  name: "Cristine O. Sorita"
+  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Champions lifelong learning and career growth."
+
 - position: Director for the Committee on Private Practice
-  name: Crisanto E. Nacino
-  image: >-
-    https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: "Advocates best practices for privateâ\x80\x91sector architects."
+  name: "Crisanto E. Nacino"
+  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Advocates best practices for private-sector architects."
+
 - position: Director for the Committee on Ways and Means
-  name: Adrian Michael C. Katipunan
-  image: >-
-    https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Generates sustainable funding and sponsorships.
+  name: "Adrian Michael C. Katipunan"
+  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Generates sustainable funding and sponsorships."
+
 - position: Director for the Committee on Sports
-  name: Morris V. Tibulan
-  image: >-
-    https://images.unsplash.com/photo-1554139844-af2fc8ad3a3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Promotes wellness and camaraderie through sports.
+  name: "Morris V. Tibulan"
+  image: "https://images.unsplash.com/photo-1554139844-af2fc8ad3a3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Promotes wellness and camaraderie through sports."
+
 - position: Protocol Director
-  name: Reymark C. Gardiola
-  image: >-
-    https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Upholds decorum and ceremonial excellence.
+  name: "Reymark C. Gardiola"
+  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Upholds decorum and ceremonial excellence."
+
 - position: Director for the Committee on Renato A. Heray Bayanihang Arkitektura
-  name: Phoebo A. Santiago
-  image: >-
-    https://images.unsplash.com/photo-1648090322506-c79522085735?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: "Leads communityâ\x80\x91oriented design service initiatives."
+  name: "Phoebo A. Santiago"
+  image: "https://images.unsplash.com/photo-1648090322506-c79522085735?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Leads community-oriented design service initiatives."
+
 - position: Director for the Committee on Resilient Architects
-  name: Alvin P. Tejada
-  image: >-
-    https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: "Drives resilient, futureâ\x80\x91proof architectural solutions."
+  name: "Alvin P. Tejada"
+  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Drives resilient, future-proof architectural solutions."
+
 - position: Director for the Committee on Young Architects
-  name: Bea Denise F. Santos
-  image: >-
-    https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Empowers emerging professionals and fresh graduates.
+  name: "Bea Denise F. Santos"
+  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Empowers emerging professionals and fresh graduates."
+
 - position: Immediate Chapter President
-  name: Adrian Michael C. Katipunan
-  image: >-
-    https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-  description: Advises the board with seasoned leadership insights.
+  name: "Adrian Michael C. Katipunan"
+  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Advises the board with seasoned leadership insights."

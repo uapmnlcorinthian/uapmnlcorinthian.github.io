@@ -1,19 +1,9 @@
 # _data/_schemas.yml
-# Field types supported by the panel:
-# text | url | image | email | date | number | bool | long | list | sublist (fields: [])
-# Special:
-#   type: objlist + wrap: <key>   # YAML stored as { <key>: [ ... ] }
-#   type: array                    # YAML stored as [ ... ]
-#   type: map                      # YAML stored as key: value
-# Optional per-field:
-#   req: true                      # required on save
-#   opts: [a, b, c]                # for select
-#   w: col-3|col-4|col-6|col-8|col-12  # layout width
-#   p: "placeholder"               # placeholder text (UI only)
+# Field types: text | url | image | email | date | number | bool | long | list | sublist(fields:[])
+# K: key   L: label   T: type   W: width   REQ: required   OPTS: select options
 
 sponsors.yml:
-  type: objlist
-  wrap: sponsors
+  type: array
   display: name
   fields:
     - {k: name,         l: Name,             t: text,   req: true,  w: col-8,  p: "Sponsor name"}
