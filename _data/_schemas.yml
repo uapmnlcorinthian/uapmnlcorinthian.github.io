@@ -51,14 +51,10 @@ bod.yml:
 images.yml:
   type: map
 
-events:                        # dropdown value “events”
-  type: folder
+# _data/_schemas.yml
+events.yml:
+  type: array
   display: title
-  folder: "_events"
-  extension: "md"
-  create: true
-  slug: "{{slug}}"
-  path: "{{slug}}.md"
   fields:
     - {k: title,           l: Title,                 t: text,   req: true,  w: col-8}
     - {k: slug,            l: Slug,                  t: text,   req: true,  w: col-4}

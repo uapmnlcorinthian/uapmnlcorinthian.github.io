@@ -1,160 +1,318 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>YAML Admin Panel</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-  <style>
-    :root{--bg:#fafafa;--card:#fff;--bd:#e5e7eb;--txt:#111827;--mut:#6b7280;--pri:#0ea5e9;--warn:#b45309}
-    *,*::before,*::after{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg)}
-    #app{display:flex;flex-direction:column;height:100vh}
-    header{padding:10px 16px;border-bottom:1px solid var(--bd);background:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    header h1{font-size:16px;margin:0}
-    .btn{padding:8px 10px;border:1px solid var(--bd);border-radius:8px;background:#f5f5f5;cursor:pointer}
-    .ok{background:var(--pri);color:#fff;border-color:var(--pri)}
-    .mut{color:var(--mut)}
-    main{flex:1;display:grid;grid-template-columns:320px 1fr;min-height:0}
-    aside{border-right:1px solid var(--bd);background:#fff;display:flex;flex-direction:column}
-    .bar{padding:10px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:8px}
-    .bar select,.bar input{width:100%;padding:8px;border:1px solid var(--bd);border-radius:8px}
-    .list{flex:1;overflow:auto}
-    .item{display:flex;justify-content:space-between;gap:8px;padding:10px 12px;border-bottom:1px solid var(--bd);cursor:pointer}
-    .item:hover{background:#f9fafb}
-    .item.active{background:#eef6ff}
-    .tag{font-size:12px;color:var(--mut)}
-    .pill{font-size:11px;border:1px solid var(--bd);border-radius:999px;padding:2px 8px;background:#f9fafb}
-    section{padding:16px;overflow:auto}
-    .card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
-    label{display:block;margin-bottom:4px;font-size:12px;color:#374151}
-    input,select,textarea{width:100%;padding:8px;border:1px solid var(--bd);border-radius:8px;font:inherit}
-    textarea{resize:vertical;min-height:80px}
-    .row{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;align-items:end}
-    .line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-    .danger{background:#ef4444;color:#fff;border-color:#ef4444}
-    .primary{background:var(--pri);color:#fff;border-color:var(--pri)}
-    .toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;position:sticky;top:0;background:#fff;padding:8px;border-bottom:1px solid var(--bd);z-index:1}
-  </style>
-</head>
-<body>
-<div id="app">
+<!-- admin/index.html – Vue schema-driven YAML CMS (schemas from _data/_schemas.yml) + readability fixes for sponsors -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Panel</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<style>
+ :root{--bg:#fafafa;--card:#fff;--bd:#e5e7eb;--txt:#111827;--mut:#6b7280;--pri:#0ea5e9;--warn:#b45309}
+ *{box-sizing:border-box} body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);margin:0}
+ #app{height:100vh;display:flex;flex-direction:column}
+ header{padding:10px 16px;border-bottom:1px solid var(--bd);background:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+ header h1{font-size:16px;margin:0 8px 0 0}
+ header .btn{padding:8px 10px;border:1px solid var(--bd);background:#f5f5f5;border-radius:8px;cursor:pointer}
+ header .ok{background:var(--pri);color:#fff;border-color:var(--pri)} header .mut{color:var(--mut)}
+ main{flex:1;display:grid;grid-template-columns:320px 1fr;min-height:0}
+ aside{border-right:1px solid var(--bd);background:#fff;display:flex;flex-direction:column}
+ .bar{padding:10px;border-bottom:1px solid var(--bd);display:flex;gap:8px;align-items:center}
+ .bar select,.bar input{width:100%;padding:8px;border:1px solid var(--bd);border-radius:8px}
+ .list{overflow:auto;flex:1}
+ .item{padding:10px 12px;border-bottom:1px solid var(--bd);cursor:pointer;display:flex;justify-content:space-between;gap:8px}
+ .item:hover{background:#f9fafb} .item.active{background:#eef6ff}
+ .tag{font-size:12px;color:var(--mut)} .pill{font-size:11px;border:1px solid var(--bd);border-radius:999px;padding:2px 8px;background:#f9fafb}
+ section{overflow:auto;padding:16px}
+ .card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px}
+ .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+ .col-3{grid-column:span 3}.col-4{grid-column:span 4}.col-6{grid-column:span 6}.col-8{grid-column:span 8}.col-12{grid-column:span 12}
+ label{font-size:12px;color:#374151;display:block;margin-bottom:4px}
+ input,select,textarea{width:100%;padding:8px;border:1px solid var(--bd);border-radius:8px;font:inherit}
+ textarea{resize:vertical;min-height:80px}
+ .row{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;align-items:end}
+ .line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+ .btn{padding:8px 10px;border:1px solid var(--bd);background:#f5f5f5;border-radius:8px;cursor:pointer}
+ .danger{background:#ef4444;color:#fff;border-color:#ef4444}
+ .primary{background:var(--pri);color:#fff;border-color:#pri}
+ .toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+ .mut{color:var(--mut)} .warn{color:var(--warn);font-size:12px}
+ .sticky{position:sticky;top:0;z-index:1;background:var(--card);padding:10px;border:1px solid var(--bd);border-radius:10px;margin-bottom:10px}
+</style></head>
+<body><div id="app">
   <header>
-    <h1>🛠 YAML Admin Panel</h1>
+    <h1>🛠 Admin Panel</h1>
     <button v-if="!tok" class="btn ok" @click="login">🔐 Login</button>
     <button v-else class="btn" @click="logout">🚪 Logout</button>
-    <span v-if="tok" class="mut">Token in sessionStorage.</span>
+    <span v-if="tok" class="mut">Token kept in sessionStorage (clears on tab close).</span>
     <span class="mut">| Repo:</span> <strong>{{repo}}</strong>
   </header>
   <main v-if="tok">
     <aside>
       <div class="bar">
         <select v-model="file" @change="loadFile">
-          <option v-for="f in files" :key="f.name" :value="f">{{f.name}}</option>
+          <option v-for="x in files" :key="x" :value="x">{{x}}</option>
         </select>
       </div>
       <div class="bar">
         <input v-model="q" placeholder="Search items...">
       </div>
-      <div class="bar">
-        <button class="btn" @click="addItem">＋ Add</button>
-        <button class="btn" @click="dupItem" :disabled="sel<0">⧉ Dup</button>
-        <button class="btn danger" @click="delItem" :disabled="sel<0">🗑 Del</button>
+      <div class="bar" v-if="schema.type!=='map'">
+        <select v-model="sortMode">
+          <option value="index">Sort: Index</option>
+          <option value="name">Sort: Name A→Z</option>
+          <option value="tier">Sort: Tier → Order</option>
+        </select>
       </div>
-      <div class="list">
+      <div class="list" v-if="schema.type!=='map'">
         <div v-for="r in rows" :key="r.idx" class="item" :class="{active:r.idx===sel}" @click="open(r.idx)">
-          <span>{{labelOf(r.row)}}</span><span class="tag">#{{r.idx+1}}</span>
+          <div>
+            <div>{{labelOf(r.row)}} <span class="pill" v-if="r.row.tier">{{r.row.tier}}</span> <span class="tag" v-if="r.row.order!==undefined">#{{r.row.order}}</span></div>
+            <div class="tag" v-if="r.row.tagline">{{r.row.tagline}}</div>
+          </div>
+          <div class="tag">#{{r.idx+1}}</div>
         </div>
       </div>
+      <div class="list" v-else>
+        <!-- map files don't show list items -->
+        <div class="mut" style="padding:10px">Map editor active</div>
+      </div>
+      <div class="bar" v-if="schema.type!=='map'">
+        <button class="btn" @click="addItem">＋ Add</button>
+        <button class="btn" @click="dupItem" :disabled="sel<0">⧉ Duplicate</button>
+        <button class="btn danger" @click="delItem" :disabled="sel<0">🗑 Delete</button>
+      </div>
     </aside>
+
     <section>
-      <div class="toolbar">
-        <button class="btn" @click="prev" :disabled="sel<=0">← Prev</button>
-        <button class="btn" @click="next" :disabled="sel>=data.length-1">Next →</button>
-        <button class="btn" @click="moveItem(-1)" :disabled="sel<=0">⬆ Up</button>
-        <button class="btn" @click="moveItem(1)" :disabled="sel>=data.length-1">⬇ Down</button>
-        <button class="btn" @click="save" :disabled="sel<0">💾 Save</button>
+      <div class="sticky toolbar" v-if="schema.type!=='map'">
+        <button class="btn" @click="moveItem(-1)" :disabled="sel<=0">⬆ Move Up</button>
+        <button class="btn" @click="moveItem(1)" :disabled="sel<0||sel>=data.length-1">⬇ Move Down</button>
+        <span class="mut"> | </span>
         <button class="btn" @click="reload">↻ Reload</button>
+        <button class="btn" @click="exportYaml">⬇ Export</button>
+        <button class="btn primary" @click="save">💾 Save</button>
+        <span class="mut" v-if="schema.display">Display key: <code>{{schema.display}}</code></span>
       </div>
-      <div v-if="sel<0" class="mut">Select an item.</div>
-      <div v-else class="card grid">
-        <template v-for="fld in schema.fields" :key="fld.k">
-          <div :class="'col-6'" v-if="['text','url','date','select','number'].includes(fld.t)">
-            <label>{{fld.l}}</label>
-            <input v-if="fld.t!=='select'" :type="fld.t" v-model="cur[fld.k]">
-            <select v-else v-model="cur[fld.k]">
-              <option v-for="o in (fld.opts||[])" :value="o">{{o}}</option>
-            </select>
+
+      <!-- map editor -->
+      <template v-if="schema.type==='map'">
+        <div class="card">
+          <table class="tbl" style="width:100%">
+            <thead><tr><th style="width:30%">Key</th><th>Value</th><th style="width:110px"></th></tr></thead>
+            <tbody>
+              <tr v-for="(v,k,i) in obj" :key="k">
+                <td><input v-model="rowsKeys[i]" @input="syncKey(i,k)"></td>
+                <td><input v-model="obj[k]"></td>
+                <td><button class="btn danger" @click="removeKey(k,i)">🗑</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="toolbar" style="margin-top:10px">
+            <button class="btn" @click="addKey">＋ Add Row</button>
+            <button class="btn" @click="reload">↻ Reload</button>
+            <button class="btn primary" @click="save">💾 Save</button>
           </div>
-          <div class="col-12" v-if="fld.t==='long'">
-            <label>{{fld.l}}</label><textarea v-model="cur[fld.k]" rows="4"></textarea>
-          </div>
-          <div class="col-12" v-if="fld.t==='sublist'">
-            <label>{{fld.l}}</label>
-            <div v-for="(it,i) in cur[fld.k]" :key="i" class="card row">
-              <template v-for="sf in fld.fields">
-                <div class="col-6"><label>{{sf.l}}</label>
-                  <input v-model="it[sf.k]">
+        </div>
+      </template>
+
+      <!-- detail editor for a single item to avoid scrolling -->
+      <template v-else>
+        <div v-if="sel<0" class="mut">Select an item on the left to edit.</div>
+        <div v-else class="card">
+          <div class="grid">
+            <template v-for="fld in schema.fields" :key="fld.k">
+              <div :class="fld.w||'col-6'" v-if="['text','url','image','email','date','select','number','datetime'].includes(fld.t)">
+                <label>{{fld.l}}</label>
+                <select v-if="fld.t==='select'" v-model="cur[fld.k]">
+                  <option v-for="o in (fld.opts||[])" :value="o">{{o}}</option>
+                </select>
+                <input v-else :type="inputType(fld, cur[fld.k])" v-model="cur[fld.k]" :placeholder="fld.p||''">
+              </div>
+              <div :class="fld.w||'col-6'" v-else-if="fld.t==='bool'">
+                <label>{{fld.l}}</label>
+                <input type="checkbox" v-model="cur[fld.k]">
+              </div>
+              <div class="col-12" v-else-if="fld.t==='long'">
+                <label>{{fld.l}}</label>
+                <textarea rows="10" v-model="cur[fld.k]"></textarea>
+              </div>
+              <div class="col-12" v-else-if="fld.t==='list'">
+                <label>{{fld.l}}</label>
+                <div class="line" style="flex-wrap:wrap">
+                  <span v-for="(tag,i) in (cur[fld.k]||(cur[fld.k]=[]))" :key="i" class="line">
+                    <input v-model="cur[fld.k][i]" style="min-width:220px"><button class="btn danger" @click="cur[fld.k].splice(i,1)">✕</button>
+                  </span>
+                  <button class="btn" @click="(cur[fld.k]||(cur[fld.k]=[])).push('')">＋ Add</button>
                 </div>
-              </template>
-              <div class="col-12"><button class="btn danger" @click="cur[fld.k].splice(i,1)">Remove</button></div>
-            </div>
-            <button class="btn" @click="cur[fld.k].push({})">＋ Add {{fld.l}}</button>
+              </div>
+              <div class="col-12" v-else-if="fld.t==='sublist'">
+                <label>{{fld.l}}</label>
+                <div class="card" v-for="(it,ii) in (cur[fld.k]||(cur[fld.k]=[]))" :key="ii">
+                  <div class="row">
+                    <template v-for="sf in fld.fields">
+                      <div class="col-4" v-if="sf.t!=='long' && sf.t!=='bool'" :key="sf.k+ii"><label>{{sf.l}}</label><input :type="sf.t==='number'?'number':'text'" v-model="it[sf.k]"></div>
+                      <div class="col-4" v-else-if="sf.t==='bool'"><label>{{sf.l}}</label><input type="checkbox" v-model="it[sf.k]"></div>
+                      <div class="col-12" v-else><label>{{sf.l}}</label><textarea rows="4" v-model="it[sf.k]"></textarea></div>
+                    </template>
+                    <div class="col-12 line"><button class="btn danger" @click="cur[fld.k].splice(ii,1)">🗑 Remove</button></div>
+                  </div>
+                </div>
+                <button class="btn" @click="(cur[fld.k]||(cur[fld.k]=[])).push(objFromFields(fld.fields))">＋ Add {{fld.l}}</button>
+              </div>
+            </template>
           </div>
-        </template>
-      </div>
+          <div class="toolbar" style="margin-top:10px">
+            <button class="btn" @click="prev" :disabled="sel<=0">← Prev</button>
+            <button class="btn" @click="next" :disabled="sel>=data.length-1">Next →</button>
+            <span class="mut">| Editing #{{sel+1}} / {{data.length}} — {{labelOf(cur)}}</span>
+            <span class="mut" v-if="schema.display"> | Display key: <code>{{schema.display}}</code></span>
+          </div>
+        </div>
+      </template>
     </section>
   </main>
 </div>
 <script>
-(()=>{
-  const {createApp,ref,reactive,computed} = Vue;
-  createApp({
-    setup(){
-      const repo='uapmnlcorinthian/uapmnlcorinthian.github.io', br='main';
-      const baseYml='_data', schemaFile='_schemas.yml', baseMd='_events';
-      const tok=ref(sessionStorage.getItem('gh_token')||'');
-      const files=ref([]), file=ref(null);
-      const SC=reactive({}), schema=reactive({type:'array',fields:[],display:''});
-      const data=ref([]), sha=ref(''), sel=ref(-1), q=ref('');
-      const sortMode=ref('index');
+(()=>{const {createApp,ref,reactive,computed} = Vue;
+createApp({
+  setup(){
+    // ==== config ====
+    const repo="uapmnlcorinthian/uapmnlcorinthian.github.io"; // change if repo differs
+    const br="main", base="_data", schemaFile="_schemas.yml";
 
-      const headers=()=>({Authorization:`Bearer ${tok.value}`});
-      const labelOf=e=>e[schema.display]||e.title||'Item';
-      
-      const fetchJSON=async path=>{const r=await fetch(`https://api.github.com/${path}?ref=${br}`,{headers:headers()});return r.ok?await r.json():[];};
-      const ghJSON=async path=>{const r=await fetch(`https://api.github.com/repos/${repo}/contents/${path}?ref=${br}`,{headers:headers()});if(!r.ok) return null;const j=await r.json();let text=atob(j.content.replace(/(^\uFEFF|\u0000)/g,''));text=text.replace(/[\u0000-\u001F\u007F-\u009F]/g,'');return{text,sha:j.sha};};
-      const ghPUT=async(p,c,ps)=>await fetch(`https://api.github.com/repos/${repo}/contents/${p}`,{method:'PUT',headers:{...headers(),'Content-Type':'application/json'},body:JSON.stringify({message:`Update ${p}`,content:btoa(unescape(encodeURIComponent(c))),sha:ps,branch:br})});
-      
-      const loadSchemas=async()=>{const r=await ghJSON(`${baseYml}/${schemaFile}`);if(r)Object.assign(SC,jsyaml.load(r.text)||{});};
-      const listFiles=async()=>{const y=await fetchJSON(`repos/${repo}/contents/${baseYml}`);files.value=y.filter(f=>f.name.endsWith('.yml')&&f.name!==schemaFile).map(f=>({name:f.name,type:'yml'}));files.value.push({name:'Events',type:'mdlist'});file.value=files.value[0];sel.value=-1;};
-      const listEvents=async()=>{const lst=await fetchJSON(`repos/${repo}/contents/${baseMd}`);return Promise.all(lst.filter(f=>f.name.endsWith('.md')).map(async f=>{const r=await ghJSON(`${baseMd}/${f.name}`);const fm=(r.text.match(/---[\s\S]*?---/)||[''])[0];const doc=jsyaml.load(fm.replace(/---/g,''));if(doc.event_date&&!/^\d{4}-\d{2}-\d{2}$/.test(doc.event_date))doc.event_date=new Date(doc.event_date).toISOString().slice(0,10);return doc;}));};
-      const inferFields=r=>Object.keys(r||{}).map(k=>({k,l:k.replace(/[_-]+/g,' '),t:typeof r[k]==='boolean'?'bool':Array.isArray(r[k])?'list':/^\d{4}-\d{2}-\d{2}$/.test(r[k])?'date':'text'}));
-      const pickSchema=(k,d)=>{const s=SC[k];if(s)Object.assign(schema,s);else if(Array.isArray(d)){schema.type='array';schema.fields=inferFields(d[0]);schema.display=schema.fields[0].k;}};
-      const loadFile=async()=>{if(!file.value)return;if(file.value.type==='mdlist'){const ev=await listEvents();pickSchema('_events',ev);data.value=ev;sel.value=ev.length?0:-1;}else{const r=await ghJSON(`${baseYml}/${file.value.name}`);const arr=jsyaml.load(r.text)||[];pickSchema(file.value.name,arr);data.value=arr;sel.value=arr.length?0:-1;sha.value=r.sha;}};
-      const open=i=>sel.value=i;
-      const cur=computed(()=>data.value[sel.value]||{});
-      const objFromFields=f=>{const o={};f.forEach(x=>o[x.k]=x.t==='list'?[]:x.t==='bool'?false:'');return o;};
-      const addItem=()=>{data.value.push(objFromFields(schema.fields));sel.value=data.value.length-1;};
-      const dupItem=()=>{const c=JSON.parse(JSON.stringify(cur.value));data.value.splice(sel.value+1,0,c);sel.value++;};
-      const delItem=()=>{if(confirm('Delete?')){data.value.splice(sel.value,1);sel.value=Math.min(sel.value,data.value.length-1);}};
-      const moveItem=d=>{const i=sel.value,j=i+d;[data.value[i],data.value[j]]=[data.value[j],data.value[i]];sel.value=j;};
-      const reload=loadFile;
-      const exportYaml=()=>{};
-      const validate=()=>{for(const f of schema.fields)if(f.req&&!cur.value[f.k])return alert(`${f.l} required`),false;return true;};
-      const save=async()=>{if(!validate())return;let c;if(file.value.type==='mdlist')c='---\n'+jsyaml.dump(cur.value)+'---';else c=jsyaml.dump(data.value);const p=file.value.type==='mdlist'?`${baseMd}/${cur.value.slug}.md`:`${baseYml}/${file.value.name}`;const res=await ghPUT(p,c,sha.value);alert(res.ok?'Saved':'Fail');if(res.ok)loadFile();};
-      const prev=()=>{if(sel.value>0)sel.value--;};
-      const next=()=>{if(sel.value<data.value.length-1)sel.value++;};
-      const rows=computed(()=>{if(schema.type==='map')return[];let a=data.value.map((r,i)=>({row:r,idx:i}));if(q.value)a=a.filter(x=>labelOf(x.row).toLowerCase().includes(q.value.toLowerCase()));return sortMode.value==='name'?a.sort((x,y)=>labelOf(x.row).localeCompare(labelOf(y.row))):a;});
-      const inputType=f=>f.t==='date'?'date':f.t==='datetime'?'datetime-local':f.t==='number'?'number':'text';
-      const login=()=>{const t=prompt('Token');if(!t)return;tok.value=t;sessionStorage.setItem('gh_token',t);init();};
-      const logout=()=>{sessionStorage.removeItem('gh_token');location.reload();};
-      const init=async()=>{await loadSchemas();await listFiles();if(file.value)await loadFile();};
-      if(tok.value)init();
-      return{repo,tok,files,file,schema,data,sel,q,sortMode,rows,cur,labelOf,inputType,login,logout,loadFile,addItem,dupItem,delItem,moveItem,reload,exportYaml,save,prev,next};
-    }
-  }).mount('#app');
-})();
+    // ==== state ====
+    const tok=ref(sessionStorage.getItem('gh_token')||'');
+    const files=ref([]), file=ref('');
+    const SC=reactive({}); // loaded schemas from _data/_schemas.yml
+    const schema=reactive({type:'array',wrap:null,fields:[],display:''});
+    const data=ref([]); const obj=reactive({}); const rowsKeys=ref([]);
+    const sha=ref(''); const sel=ref(-1); const q=ref('');
+    const sortMode=ref('index');
+
+    // helpers
+    const headers=()=>({Authorization:`Bearer ${tok.value}`});
+    const displayKey=computed(()=> schema.display || (schema.fields[0]?.k || 'name') );
+    const labelOf=e=>{const k=displayKey.value; return (e&&typeof e==='object'&&e[k])? String(e[k]): (e?.title||e?.name||`Item`)};
+
+    const tierRank=t=>({Platinum:1,Gold:2,Silver:3,Bronze:4,Supporting:5,Event:6}[t]||9);
+
+    const rows=computed(()=>{
+      if(schema.type==='map') return [];
+      const qq=q.value.trim().toLowerCase();
+      let arr=(data.value||[]).map((row,idx)=>({row,idx}));
+      if(qq) arr=arr.filter(r=>labelOf(r.row).toLowerCase().includes(qq));
+      if(sortMode.value==='name') arr.sort((a,b)=>labelOf(a.row).localeCompare(labelOf(b.row)));
+      else if(sortMode.value==='tier') arr.sort((a,b)=> (tierRank(a.row.tier)-tierRank(b.row.tier)) || ((a.row.order??0)-(b.row.order??0)) || labelOf(a.row).localeCompare(labelOf(b.row)) );
+      return arr;
+    });
+
+    // field input type: keep ISO datetime strings readable (fallback to text)
+    const inputType=(fld,val)=>{
+      if(fld.t==='number') return 'number';
+      if(fld.t==='datetime') return 'datetime-local';
+      if(fld.t==='date') return (typeof val==='string' && /T|Z/.test(val)) ? 'text' : 'date';
+      return 'text';
+    };
+
+    // ==== auth ====
+    const login=()=>{const t=prompt('Paste GitHub Personal Access Token (repo: write)'); if(!t)return; tok.value=t; sessionStorage.setItem('gh_token',t); init(); };
+    const logout=()=>{sessionStorage.removeItem('gh_token'); location.reload();};
+
+    // ==== GitHub IO ====
+    const ghJSON=async(path)=>{const r=await fetch(`https://api.github.com/repos/${repo}/contents/${path}?ref=${br}`,{headers:headers()}); if(!r.ok) return null; const j=await r.json(); const text=atob(j.content||''); return {text,sha:j.sha};};
+    const ghPUT=async(path,content,prevSha)=>{
+      const body=JSON.stringify({message:`Update ${path}`,content:btoa(unescape(encodeURIComponent(content))),sha:prevSha,branch:br});
+      return fetch(`https://api.github.com/repos/${repo}/contents/${path}`,{method:'PUT',headers:{...headers(),'Content-Type':'application/json'},body});
+    };
+
+    // ==== schema load ====
+    const loadSchemas=async()=>{
+      const res=await ghJSON(`${base}/${schemaFile}`);
+      if(!res){console.warn('No _schemas.yml found, will infer.'); return;}
+      try{const y=jsyaml.load(res.text)||{}; Object.assign(SC,y);}catch(e){alert('Schema YAML parse error');}
+    };
+
+    // ==== file list ====
+    const listFiles=async()=>{
+      const r=await fetch(`https://api.github.com/repos/${repo}/contents/${base}?ref=${br}`,{headers:headers()});
+      if(!r.ok){alert('Cannot list _data'); return}
+      const j=await r.json(); files.value=j.filter(x=>x.name.endsWith('.yml')).map(x=>x.name).filter(n=>n!==schemaFile);
+      file.value=files.value[0]||''; sel.value=-1;
+    };
+
+    // ==== schema picker & inference ====
+    const pickSchema=(fn,yamlObj)=>{
+      const s=SC[fn];
+      if(s){ schema.type=s.type||'array'; schema.wrap=s.wrap||null; schema.fields=s.fields||[]; schema.display=s.display||''; return; }
+      // infer
+      if(yamlObj && !Array.isArray(yamlObj) && typeof yamlObj==='object'){
+        const keys=Object.keys(yamlObj);
+        if(keys.length && Array.isArray(yamlObj[keys[0]])) { // objlist
+          schema.type='objlist'; schema.wrap=keys[0]; schema.fields=inferFields((yamlObj[keys[0]]||[])[0]); schema.display=findDisplay(schema.fields); return;
+        } else { schema.type='map'; schema.wrap=null; schema.fields=[]; schema.display=''; return; }
+      }
+      schema.type='array'; schema.wrap=null; schema.fields=inferFields((yamlObj||[])[0]); schema.display=findDisplay(schema.fields);
+    };
+
+    const inferFields=(row)=>{ if(!row||typeof row!=='object') return []; return Object.keys(row).map(k=>({k,l:cap(k),t:guessType(row[k])})); };
+    const findDisplay=(flds)=>{const cand=['title','name']; for(const c of cand){if(flds.find(f=>f.k===c)) return c} return flds[0]?.k||''};
+    const cap=s=>s.replace(/[_-]+/g,' ').replace(/\b\w/g,m=>m.toUpperCase());
+    const guessType=v=>{if(typeof v==='boolean')return'bool'; if(typeof v==='number')return'number'; if(Array.isArray(v))return'list'; if(String(v||'').match(/^\d{4}-\d{2}-\d{2}$/))return'date'; return'text'};
+
+    // keep key order when saving according to schema
+    const orderRow=(row)=>{ const o={}; (schema.fields||[]).forEach(f=>{ if(Object.prototype.hasOwnProperty.call(row,f.k)) o[f.k]=row[f.k]; }); for(const k in row){ if(!Object.prototype.hasOwnProperty.call(o,k)) o[k]=row[k]; } return o; };
+
+    // ==== load file ====
+    const loadFile=async()=>{
+      if(!file.value) return;
+      const res=await ghJSON(`${base}/${file.value}`); if(!res){alert('Cannot load'); return}
+      let y={}; try{y=jsyaml.load(res.text)||{}}catch{y={}}; sha.value=res.sha||'';
+      pickSchema(file.value,y);
+      if(schema.type==='map'){
+        Object.keys(obj).forEach(k=>delete obj[k]); Object.entries(y||{}).forEach(([k,v])=>obj[k]=v); rowsKeys.value=Object.keys(obj); sel.value=-1;
+      } else if(schema.type==='objlist'){
+        data.value=Array.isArray(y?.[schema.wrap])?y[schema.wrap]:[]; sel.value=data.value.length?0:-1;
+      } else { data.value=Array.isArray(y)?y:[]; sel.value=data.value.length?0:-1; }
+    };
+
+    // ==== selection helpers ====
+    const open=i=>{ sel.value=i; };
+    const curObj=()=> schema.type==='map'? null : (data.value[sel.value]||null);
+    const cur=computed(()=>curObj()||{});
+    const prev=()=>{ if(sel.value>0) sel.value--; };
+    const next=()=>{ if(sel.value<data.value.length-1) sel.value++; };
+
+    // list ops
+    const addItem=()=>{ if(schema.type==='map') return; const o={}; (schema.fields||[]).forEach(f=>{o[f.k]=f.t==='bool'?false:(f.t==='number'?0:(f.t==='list'?[]:''))}); data.value.push(o); sel.value=data.value.length-1; };
+    const dupItem=()=>{ if(sel.value<0) return; const c=JSON.parse(JSON.stringify(data.value[sel.value])); data.value.splice(sel.value+1,0,c); sel.value++; };
+    const delItem=()=>{ if(sel.value<0) return; if(!confirm('Delete this item?')) return; data.value.splice(sel.value,1); sel.value=Math.min(sel.value,data.value.length-1); };
+    const moveItem=(d)=>{ const i=sel.value, j=i+d; if(i<0||j<0||j>=data.value.length) return; const a=data.value; [a[i],a[j]]=[a[j],a[i]]; sel.value=j; };
+
+    // map ops
+    const addKey=()=>{const k=`key_${Date.now().toString(36).slice(-5)}`; obj[k]=''; rowsKeys.value=Object.keys(obj)};
+    const removeKey=(k,i)=>{ delete obj[k]; rowsKeys.value=Object.keys(obj) };
+    const syncKey=(i,oldK)=>{ const nk=rowsKeys.value[i]; if(!nk||nk===oldK) return; if(obj[nk]!==undefined){ alert('Key exists'); rowsKeys.value[i]=oldK; return } obj[nk]=obj[oldK]; delete obj[oldK]; };
+
+    // save/export
+    const validate=()=>{ if(schema.type==='map') return true; for(const [i,row] of data.value.entries()){ for(const fld of (schema.fields||[])){ if(fld.req && (row[fld.k]===undefined||row[fld.k]==='')){ alert(`Row ${i+1}: ${fld.l} is required`); return false } } } return true };
+    const save=async()=>{
+      if(!validate()) return;
+      let out;
+      if(schema.type==='map') out=Object.assign({},obj);
+      else if(schema.type==='objlist') out={ [schema.wrap]: data.value.map(orderRow) };
+      else out=data.value.map(orderRow);
+      const y=jsyaml.dump(out,{lineWidth:120});
+      const r=await ghPUT(`${base}/${file.value}`,y,sha.value);
+      alert(r.ok?'✅ Saved!':'❌ Save failed'); if(r.ok) loadFile();
+    };
+    const exportYaml=()=>{ let y=''; if(schema.type==='map') y=jsyaml.dump(Object.assign({},obj)); else if(schema.type==='objlist') y=jsyaml.dump({[schema.wrap]:data.value.map(orderRow)}); else y=jsyaml.dump(data.value.map(orderRow)); const blob=new Blob([y],{type:'text/yaml'}); const u=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=u; a.download=file.value; a.click(); URL.revokeObjectURL(u); };
+
+    const init=async()=>{ await loadSchemas(); await listFiles(); if(file.value) await loadFile(); };
+    if(tok.value) init();
+
+    return {repo, tok, files, file, schema, data, obj, rowsKeys, sel, q, sortMode,
+      inputType,
+      login, logout, init, listFiles, loadFile, reload:loadFile,
+      addItem, dupItem, delItem, moveItem, open, prev, next, labelOf,
+      addKey, removeKey, syncKey, save, exportYaml,
+      rows, cur };
+  }
+}).mount('#app');})();
 </script>
+</div></body></html>
