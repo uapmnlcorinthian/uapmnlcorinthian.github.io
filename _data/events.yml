@@ -1,0 +1,321 @@
+# _data/events.yml
+
+cpd-building-code-2025-updates:
+  title: "CPD Building Code 2025 Updates"
+  event_date: 2025-02-10
+  location: "UAP MCC Office, Manila"
+  cover: "/assets/images/events/cpd-building-code-2025-updates-cover.jpg"
+  registration_url: "https://example.com/register/cpd-building-code-2025-updates"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=UAP+MCC+Office,+Manila&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/cpd-building-code-2025-updates-1.jpg"
+      caption: "Speaker presenting code changes"
+    - img: "/assets/images/events/cpd-building-code-2025-updates-2.jpg"
+      caption: "Attendees in discussion"
+  content: >
+    An in‑depth review of the 2025 amendments to the Philippine Building Code, focusing on compliance requirements and enforcement strategies.
+
+workshop-revit-interiors-beginners-2025-02:
+  title: "Workshop: Revit Interiors for Beginners"
+  event_date: 2025-02-20
+  location: "Design Studio, Makati"
+  cover: "/assets/images/events/workshop-revit-interiors-beginners-2025-02-cover.jpg"
+  registration_url: "https://example.com/register/workshop-revit-interiors-beginners-2025-02"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Design+Studio,+Makati&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/workshop-revit-interiors-beginners-2025-02-1.jpg"
+      caption: "Hands-on Revit session"
+    - img: "/assets/images/events/workshop-revit-interiors-beginners-2025-02-2.jpg"
+      caption: "Participant modeling interior layout"
+  content: >
+    Step‑by‑step hands‑on introduction to Revit Interior tools, templates, and best practices for architectural design.
+
+bim-coordination-summit-2025-09:
+  title: "BIM Coordination Summit 2025"
+  event_date: 2025-09-15
+  location: "SMX Convention Center, Pasay"
+  cover: "/assets/images/events/bim-coordination-summit-2025-09-cover.jpg"
+  registration_url: "https://example.com/register/bim-coordination-summit-2025-09"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=SMX+Convention+Center,+Pasay&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/bim-coordination-summit-2025-09-1.jpg"
+      caption: "Panel discussion on clash detection"
+    - img: "/assets/images/events/bim-coordination-summit-2025-09-2.jpg"
+      caption: "Networking among BIM professionals"
+  content: >
+    A full‑day summit on interdisciplinary BIM workflows, clash resolution, and collaborative project delivery.
+
+cpd-sustainable-facades-2025-01:
+  title: "CPD Sustainable Facades"
+  event_date: 2025-01-25
+  location: "UAP Auditorium, Manila"
+  cover: "/assets/images/events/cpd-sustainable-facades-2025-01-cover.jpg"
+  registration_url: "https://example.com/register/cpd-sustainable-facades-2025-01"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=UAP+Auditorium,+Manila&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/cpd-sustainable-facades-2025-01-1.jpg"
+      caption: "Innovative façade mockups"
+    - img: "/assets/images/events/cpd-sustainable-facades-2025-01-2.jpg"
+      caption: "Speaker on material selection"
+  content: >
+    Continuing professional development on eco‑friendly façade systems, materials, and performance testing.
+
+csr-back-to-school-build-2025-10:
+  title: "CSR Back‑to‑School Build"
+  event_date: 2025-10-05
+  location: "Barangay Hall, Quezon City"
+  cover: "/assets/images/events/csr-back-to-school-build-2025-10-cover.jpg"
+  registration_url: "https://example.com/register/csr-back-to-school-build-2025-10"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Quezon+City+Barangay+Hall&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/csr-back-to-school-build-2025-10-1.jpg"
+      caption: "Volunteers assembling desks"
+    - img: "/assets/images/events/csr-back-to-school-build-2025-10-2.jpg"
+      caption: "Completed learning station"
+  content: >
+    Community service project constructing study desks and learning spaces for underprivileged students.
+
+design-talk-adaptive-reuse-2025-04:
+  title: "Design Talk: Adaptive Reuse"
+  event_date: 2025-04-18
+  location: "UAP MCC Conference Room"
+  cover: "/assets/images/events/design-talk-adaptive-reuse-2025-04-cover.jpg"
+  registration_url: "https://example.com/register/design-talk-adaptive-reuse-2025-04"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=UAP+MCC+Conference+Room&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/design-talk-adaptive-reuse-2025-04-1.jpg"
+      caption: "Before-and-after case study"
+    - img: "/assets/images/events/design-talk-adaptive-reuse-2025-04-2.jpg"
+      caption: "Panel Q&A session"
+  content: >
+    Expert insights on repurposing heritage and industrial structures for modern use.
+
+fellowship-midyear-socials-2025-06:
+  title: "Fellowship Midyear Socials"
+  event_date: 2025-06-12
+  location: "Rooftop Garden, Manila"
+  cover: "/assets/images/events/fellowship-midyear-socials-2025-06-cover.jpg"
+  registration_url: "https://example.com/register/fellowship-midyear-socials-2025-06"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Rooftop+Garden,+Manila&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/fellowship-midyear-socials-2025-06-1.jpg"
+      caption: "Networking under the stars"
+    - img: "/assets/images/events/fellowship-midyear-socials-2025-06-2.jpg"
+      caption: "Live acoustic performance"
+  content: >
+    An informal gathering to connect members, share experiences, and build community.
+
+gmm-1-2025:
+  title: "General Membership Meeting 1"
+  event_date: 2025-01-18
+  location: "Manila Hotel"
+  cover: "/assets/images/events/gmm-1-2025-cover.jpg"
+  registration_url: "https://example.com/register/gmm-1-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Manila+Hotel&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/gmm-1-2025-1.jpg"
+      caption: "Opening program"
+    - img: "/assets/images/events/gmm-1-2025-2.jpg"
+      caption: "Oath‑taking"
+  content: >
+    The first GMM of 2025 focused on programs, committees, and calendar alignment.
+
+gmm-2-2025:
+  title: "General Membership Meeting 2"
+  event_date: 2025-02-22
+  location: "Makati Shangri‑La"
+  cover: "/assets/images/events/gmm-2-2025-cover.jpg"
+  registration_url: "https://example.com/register/gmm-2-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Makati+Shangri-La&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/gmm-2-2025-1.jpg"
+      caption: "Keynote address"
+    - img: "/assets/images/events/gmm-2-2025-2.jpg"
+      caption: "Committee breakouts"
+  content: >
+    The second GMM reviewed first‑quarter activities and upcoming initiatives.
+
+site-tour-heritage-iloilo-2025-11:
+  title: "Site Tour: Heritage Iloilo"
+  event_date: 2025-11-10
+  location: "Iloilo Heritage District"
+  cover: "/assets/images/events/site-tour-heritage-iloilo-2025-11-cover.jpg"
+  registration_url: "https://example.com/register/site-tour-heritage-iloilo-2025-11"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Iloilo+Heritage+District&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/site-tour-heritage-iloilo-2025-11-1.jpg"
+      caption: "Historic church façade"
+    - img: "/assets/images/events/site-tour-heritage-iloilo-2025-11-2.jpg"
+      caption: "Walking group"
+  content: >
+    Guided tour of Iloilo’s colonial architecture and conservation efforts.
+
+site-tour-manila-civic-center-2025-03:
+  title: "Site Tour: Manila Civic Center"
+  event_date: 2025-03-12
+  location: "Manila Civic Center"
+  cover: "/assets/images/events/site-tour-manila-civic-center-2025-03-cover.jpg"
+  registration_url: "https://example.com/register/site-tour-manila-civic-center-2025-03"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Manila+Civic+Center&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/site-tour-manila-civic-center-2025-03-1.jpg"
+      caption: "City hall façade"
+    - img: "/assets/images/events/site-tour-manila-civic-center-2025-03-2.jpg"
+      caption: "Group photo"
+  content: >
+    Architectural walkthrough of the Manila Civic Center’s landmark buildings.
+
+awards-night-year-end-2025:
+  title: "Awards Night & Year‑End Celebration"
+  event_date: 2025-12-18
+  location: "Manila Hotel Ballroom"
+  cover: "/assets/images/events/awards-night-year-end-2025-cover.jpg"
+  registration_url: "https://example.com/register/awards-night-year-end-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Manila+Hotel+Ballroom&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/awards-night-year-end-2025-1.jpg"
+      caption: "Award presentation"
+    - img: "/assets/images/events/awards-night-year-end-2025-2.jpg"
+      caption: "Dinner reception"
+  content: >
+    Gala event recognizing outstanding contributions and closing the year in style.
+
+csr-coastal-cleanup-2025:
+  title: "CSR Coastal Cleanup"
+  event_date: 2025-07-20
+  location: "Baywalk, Manila"
+  cover: "/assets/images/events/csr-coastal-cleanup-2025-cover.jpg"
+  registration_url: "https://example.com/register/csr-coastal-cleanup-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Baywalk,+Manila&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/csr-coastal-cleanup-2025-1.jpg"
+      caption: "Volunteers cleaning shoreline"
+    - img: "/assets/images/events/csr-coastal-cleanup-2025-2.jpg"
+      caption: "Collected waste bags"
+  content: >
+    Volunteer-driven coastal cleanup to promote environmental stewardship.
+
+workshop-parametric-grasshopper-2025-08:
+  title: "Workshop: Parametric Grasshopper"
+  event_date: 2025-08-08
+  location: "UAP Lab, Manila"
+  cover: "/assets/images/events/workshop-parametric-grasshopper-2025-08-cover.jpg"
+  registration_url: "https://example.com/register/workshop-parametric-grasshopper-2025-08"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=UAP+Lab,+Manila&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/workshop-parametric-grasshopper-2025-08-1.jpg"
+      caption: "Algorithmic model demo"
+    - img: "/assets/images/events/workshop-parametric-grasshopper-2025-08-2.jpg"
+      caption: "Participant coding session"
+  content: >
+    Hands‑on parametric design techniques using Grasshopper for architects.
+
+outreach-noche-buena-2025:
+  title: "Outreach: Noche Buena Drive"
+  event_date: 2025-12-20
+  location: "Mandaluyong City"
+  cover: "/assets/images/events/outreach-noche-buena-2025-cover.jpg"
+  registration_url: "https://example.com/register/outreach-noche-buena-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Mandaluyong+City&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/outreach-noche-buena-2025-1.jpg"
+      caption: "Food packs distribution"
+    - img: "/assets/images/events/outreach-noche-buena-2025-2.jpg"
+      caption: "Community volunteers"
+  content: >
+    Holiday outreach delivering food packs and essential goods to underserved communities.
+
+open-studio-visit-emerging-practices-2025-11:
+  title: "Open Studio Visit: Emerging Practices"
+  event_date: 2025-11-22
+  location: "Emerging Practices Studio, Manila"
+  cover: "/assets/images/events/open-studio-visit-emerging-practices-2025-11-cover.jpg"
+  registration_url: "https://example.com/register/open-studio-visit-emerging-practices-2025-11"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Emerging+Practices+Studio,+Manila&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "/assets/images/events/open-studio-visit-emerging-practices-2025-11-1.jpg"
+      caption: "Studio tour underway"
+    - img: "/assets/images/events/open-studio-visit-emerging-practices-2025-11-2.jpg"
+      caption: "Dialogue with young architects"
+  content: >
+    Exclusive behind‑the‑scenes visit to innovative architecture studios.

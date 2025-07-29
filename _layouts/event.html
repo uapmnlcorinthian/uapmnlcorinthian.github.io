@@ -3,46 +3,62 @@ layout: default
 permalink: /events-and-activities/:slug/
 ---
 
+{% comment %}
+  Look up this event in your single YAML file
+{% endcomment %}
+{% assign e = site.data.events[page.slug] %}
+
 <article class="container py-5" data-aos="fade-up">
-  <h1 class="mb-3">{{ page.title }}</h1>
+  <h1 class="mb-3">{{ e.title }}</h1>
   <p class="text-muted">
-    {{ page.event_date | date: "%B %-d, %Y" }} &mdash; {{ page.location }}
+    {{ e.event_date | date: "%B %-d, %Y" }} &mdash; {{ e.location }}
   </p>
 
-  {% if page.cover %}
-    <img src="{{ page.cover }}" class="img-fluid mb-4" alt="{{ page.title }}">
+  {% if e.cover %}
+    <img src="{{ e.cover }}" class="img-fluid mb-4" alt="{{ e.title }}">
   {% endif %}
 
-  <div class="content mb-4">{{ page.content }}</div>
+  <div class="content mb-4">{{ e.content }}</div>
 
-  {% if page.registration_url %}
-    <a href="{{ page.registration_url }}" class="btn btn-primary me-2" target="_blank">Register</a>
+  {% if e.registration_url %}
+    <a href="{{ e.registration_url }}" class="btn btn-primary me-2" target="_blank">
+      Register
+    </a>
   {% endif %}
-  {% if page.map_embed %}
-    <div class="map-responsive mb-4">{{ page.map_embed | raw }}</div>
+  {% if e.map_embed %}
+    <div class="map-responsive mb-4">{{ e.map_embed | raw }}</div>
   {% endif %}
 
   {% comment %}
-    Build the sorted events array from the collection
+    Navigation: walk through the keys in your data file
   {% endcomment %}
-  {% assign sorted = site.events 
-        | where: "draft", false 
-        | sort: "event_date" 
-        | reverse %}
-  {% assign idx = sorted | map: "slug" | index_of: page.slug %}
-  {% assign last = sorted.size | minus: 1 %}
+  {% assign keys = site.data.events | map: "first" %}
+  {% assign idx  = keys | index_of: page.slug %}
+  {% assign last = keys.size | minus: 1 %}
 
   <div class="d-flex justify-content-between mt-5 event-navigation">
     {% if idx < last %}
-      {% assign prev = sorted[idx | plus: 1] %}
-      <a href="{{ prev.url }}" class="btn btn-outline-primary">← {{ prev.title }}</a>
+      {% assign prev_slug = keys[idx | plus: 1] %}
+      {% assign prev = site.data.events[prev_slug] %}
+      <a href="/events-and-activities/{{ prev_slug }}/" class="btn btn-outline-primary">
+        ← {{ prev.title }}
+      </a>
     {% else %}
       <span></span>
     {% endif %}
 
     {% if idx > 0 %}
-      {% assign nxt = sorted[idx | minus: 1] %}
-      <a href="{{ nxt.url }}" class="btn btn-outline-primary">{{ nxt.title }} →</a>
+      {% assign next_slug = keys[idx | minus: 1] %}
+      {% assign next = site.data.events[next_slug] %}
+      <a href="/events-and-activities/{{ next_slug }}/" class="btn btn-outline-primary">
+        {{ next.title }} →
+      </a>
     {% endif %}
   </div>
 </article>
+
+<style>
+.map-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+.map-responsive iframe { position: absolute; top:0; left:0; width:100%; height:100%; }
+.event-navigation .btn { min-width: 8rem; }
+</style>
