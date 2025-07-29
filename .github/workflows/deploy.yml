@@ -4,6 +4,10 @@ on:
   push:
     branches: [ main ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -20,14 +24,41 @@ jobs:
         with:
           ruby-version: '3.1'
 
+      - name: Cache Ruby gems
+        uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-cache-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-cache-
+
+      - name: Cache npm modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            node_modules
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-cache-
+
+      - name: Cache Jekyll metadata
+        uses: actions/cache@v3
+        with:
+          path: .jekyll-metadata
+          key: ${{ runner.os }}-jekyll-meta-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-jekyll-meta-
+
       - name: Install dependencies
         run: |
           npm install
+          gem install bundler    # ensure bundler is installed
           bundle config path vendor/bundle
           bundle install
 
       - name: Build site
-        run: npm run build
+        run: npm run build -- --incremental
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -35,4 +66,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
           destination_branch: gh-pages
+          clean: true
           keep_files: false
