@@ -1,5 +1,14 @@
 name: Build & Deploy
 
+# Grant Actions permissions to push to pages
+permissions:
+  contents: read
+  pages: write
+
+on:
+  push:
+    branches: [ main ]
+
 on:
   push:
     branches: [ main ]
