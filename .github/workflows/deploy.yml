@@ -1,22 +1,17 @@
 name: Build & Deploy
 
-# Grant Actions permissions to push to pages
-permissions:
-  contents: write
-  pages: write
-
 on:
   push:
     branches: [ main ]
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+permissions:
+  pages: write
+  id-token: write
 
 jobs:
-  build-deploy:
+  build:
     concurrency:
-      group: ${{ github.workflow }}-build-deploy-${{ github.ref }}
+      group: ${{ github.workflow }}-build-${{ github.ref }}
       cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
@@ -31,40 +26,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2.2'
-
-      - name: Cache Ruby gems
-        uses: actions/cache@v3
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gem-cache-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gem-cache-
-
-      - name: Cache npm modules
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.npm
-            /home/runner/work/_temp/_github_home/actions-runner/_work/mcc.2025/mcc.2025/node_modules
-          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-cache-
-
-      - name: Cache Jekyll metadata
-        uses: actions/cache@v3
-        with:
-          path: .jekyll-metadata
-          key: ${{ runner.os }}-jekyll-meta-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-jekyll-meta-
-
-      - name: Cache generated site
-        uses: actions/cache@v3
-        with:
-          path: _site
-          key: ${{ runner.os }}-site-cache-${{ github.ref }}
-          restore-keys: |
-            ${{ runner.os }}-site-cache-
+          bundler-cache: false
 
       - name: Install dependencies
         run: |
@@ -75,10 +37,14 @@ jobs:
       - name: Build site
         run: npm run build -- --incremental
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: main
-          publish_dir: ./_site
-          keep_files: false
+          path: ./_site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
