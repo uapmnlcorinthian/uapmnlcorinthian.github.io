@@ -10,6 +10,9 @@ concurrency:
 
 jobs:
   build-deploy:
+    concurrency:
+      group: ${{ github.workflow }}-build-deploy-${{ github.ref }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,7 +25,8 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: '3.2.2'
+          bundler-cache: true
 
       - name: Cache Ruby gems
         uses: actions/cache@v3
@@ -37,7 +41,7 @@ jobs:
         with:
           path: |
             ~/.npm
-            node_modules
+            /home/runner/work/_temp/_github_home/actions-runner/_work/mcc.2025/mcc.2025/node_modules
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-cache-
@@ -50,11 +54,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-jekyll-meta-
 
+      - name: Cache generated site
+        uses: actions/cache@v3
+        with:
+          path: _site
+          key: ${{ runner.os }}-site-cache-${{ github.ref }}
+          restore-keys: |
+            ${{ runner.os }}-site-cache-
+
       - name: Install dependencies
         run: |
           npm install
-          gem install bundler    # ensure bundler is installed
-          bundle config path vendor/bundle
           bundle install
 
       - name: Build site
