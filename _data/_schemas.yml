@@ -49,3 +49,28 @@ bod.yml:
 
 images.yml:
   type: map
+
+events.md:
+  type: folder
+  display: title
+  folder: "_events"
+  extension: "md"
+  create: true
+  slug: "{{slug}}"
+  path: "{{slug}}.md"
+  fields:
+    - { k: title,        l: Title,           t: text,    req: true,  w: col-8 }
+    - { k: slug,         l: Slug,            t: text,    req: true,  w: col-4 }
+    - { k: draft,        l: Draft,           t: bool,                w: col-2 }
+    - { k: event_date,   l: Event Date,      t: date,                w: col-4 }
+    - { k: location,     l: Location,        t: text,                w: col-6 }
+    - { k: cover,        l: Cover Image,     t: image,               w: col-6 }
+    - { k: registration_url, l: Registration URL, t: url,           w: col-12 }
+    - { k: map_embed,    l: Map Embed (HTML),t: long,                w: col-12 }
+    - k: image_gallery
+      l: Image Gallery
+      t: sublist
+      fields:
+        - { k: img,      l: Image URL,      t: image,               w: col-6 }
+        - { k: caption,  l: Caption,        t: text,                w: col-6 }
+    - { k: content,      l: Content,        t: long,    req: true,   w: col-12 }

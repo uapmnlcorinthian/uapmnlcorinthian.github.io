@@ -1,0 +1,24 @@
+{%- comment -%} _includes/sponsors-footer.html {%- endcomment -%}
+{%- assign base = site.baseurl | default: '' -%}
+{%- assign data  = site.data.sponsors -%}
+{%- assign list  = data.sponsors | default: data | default: empty -%}
+
+{%- if list and list.size > 0 -%}
+<section class="py-5 bg-light">
+  <div class="container text-center">
+    <h3 class="mb-4">Our Industry Partners</h3>
+    <div class="row justify-content-center align-items-center g-4">
+      {%- for s in list -%}
+        {%- assign logo = s.logo | default: s.image -%}
+        {%- if logo and logo != '' -%}
+          <div class="col-6 col-md-3 col-lg-2">
+            <img src="{{ logo }}" alt="{{ s.alt | default: s.name | default: 'Sponsor' }}"
+                 class="img-fluid" loading="lazy" decoding="async"
+                 style="max-height:64px; object-fit:contain;">
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}

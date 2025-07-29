@@ -12,3 +12,7 @@ gem "wdm", ">= 0.1.0" if Gem.win_platform?  # Optional: watch support for Window
 group :windows do
   gem "tzinfo-data"           # Safe cross-platform setup
 end
+
+group :jekyll_plugins do
+  gem "jekyll-datapage-generator"
+end

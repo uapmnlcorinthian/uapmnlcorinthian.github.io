@@ -1,0 +1,48 @@
+---
+layout: default
+permalink: /events-and-activities/:slug/
+---
+
+<article class="container py-5" data-aos="fade-up">
+  <h1 class="mb-3">{{ page.title }}</h1>
+  <p class="text-muted">
+    {{ page.event_date | date: "%B %-d, %Y" }} &mdash; {{ page.location }}
+  </p>
+
+  {% if page.cover %}
+    <img src="{{ page.cover }}" class="img-fluid mb-4" alt="{{ page.title }}">
+  {% endif %}
+
+  <div class="content mb-4">{{ page.content }}</div>
+
+  {% if page.registration_url %}
+    <a href="{{ page.registration_url }}" class="btn btn-primary me-2" target="_blank">Register</a>
+  {% endif %}
+  {% if page.map_embed %}
+    <div class="map-responsive mb-4">{{ page.map_embed | raw }}</div>
+  {% endif %}
+
+  {% comment %}
+    Build the sorted events array from the collection
+  {% endcomment %}
+  {% assign sorted = site.events 
+        | where: "draft", false 
+        | sort: "event_date" 
+        | reverse %}
+  {% assign idx = sorted | map: "slug" | index_of: page.slug %}
+  {% assign last = sorted.size | minus: 1 %}
+
+  <div class="d-flex justify-content-between mt-5 event-navigation">
+    {% if idx < last %}
+      {% assign prev = sorted[idx | plus: 1] %}
+      <a href="{{ prev.url }}" class="btn btn-outline-primary">← {{ prev.title }}</a>
+    {% else %}
+      <span></span>
+    {% endif %}
+
+    {% if idx > 0 %}
+      {% assign nxt = sorted[idx | minus: 1] %}
+      <a href="{{ nxt.url }}" class="btn btn-outline-primary">{{ nxt.title }} →</a>
+    {% endif %}
+  </div>
+</article>

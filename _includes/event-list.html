@@ -1,0 +1,125 @@
+{%- comment -%}
+Reusable listing for /events-and-activities/
+Usage:
+  {% include event-list.html filter="upcoming" %}
+  {% include event-list.html filter="past" %}
+Optional:
+  {% include event-list.html filter="upcoming" limit=6 exclude_slug=featured_slug %}
+Reads: _data/events.yml
+Fields: title, slug, draft, event_date (YYYY-MM-DD), location, registration_url, image_gallery[{img,caption}], cover
+{%- endcomment -%}
+
+{%- assign now_ts = 'now' | date: '%s' -%}
+{%- assign items = site.data.events | where_exp: 'e', 'e.draft != true' -%}
+{%- assign items = items | sort: 'event_date' -%}
+
+{%- assign max = include.limit | default: 9999 -%}
+{%- assign shown = 0 -%}
+{%- assign exclude = include.exclude_slug | default: '' -%}
+
+<div class="row g-4">
+  {%- if include.filter == 'upcoming' -%}
+    {%- for e in items -%}
+      {%- if e.event_date -%}
+        {%- assign e_ts = e.event_date | date: '%s' -%}
+        {%- assign e_slug = e.slug | default: e.title | slugify -%}
+        {%- if e_ts >= now_ts and e_slug != exclude and shown < max -%}
+          {%- assign url = '/events-and-activities/' | append: e_slug | append: '/' | relative_url -%}
+          {%- assign cover = e.cover -%}
+          {%- if cover == nil or cover == '' -%}
+            {%- if e.image_gallery and e.image_gallery.size > 0 -%}
+              {%- assign cover = e.image_gallery[0].img -%}
+            {%- endif -%}
+          {%- endif -%}
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card h-100 shadow-sm" data-aos="fade-up">
+              {%- if cover -%}
+                <a href="{{ url }}" class="ratio ratio-16x9">
+                  <img src="{{ cover }}" alt="{{ e.title | escape }}" class="img-fluid w-100 h-100" loading="lazy" style="object-fit:cover;">
+                </a>
+              {%- endif -%}
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h3 class="h5 mb-0">
+                    <a href="{{ url }}" class="stretched-link text-decoration-none">{{ e.title }}</a>
+                  </h3>
+                  <span class="badge text-bg-success ms-2">Upcoming</span>
+                </div>
+                <p class="mb-2 small text-muted">
+                  <i class="fa-regular fa-calendar"></i>
+                  {{ e.event_date | date: "%b %d, %Y" }}
+                  {%- if e.location %} &middot; <i class="fa-solid fa-location-dot"></i> {{ e.location }}{%- endif -%}
+                </p>
+                {%- if e.content -%}
+                  <p class="mb-3">{{ e.content | strip_html | truncate: 120 }}</p>
+                {%- endif -%}
+                <div class="mt-auto pt-2 d-flex gap-2">
+                  <a href="{{ url }}" class="btn btn-outline-secondary btn-sm">Details</a>
+                  {%- if e.registration_url -%}
+                    {%- assign utm = '?utm_source=uap-site&utm_medium=button&utm_campaign=' | append: e_slug -%}
+                    <a href="{{ e.registration_url | append: utm }}" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Register</a>
+                  {%- endif -%}
+                </div>
+              </div>
+            </article>
+          </div>
+          {%- assign shown = shown | plus: 1 -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if shown == 0 -%}
+      <div class="col-12"><div class="alert alert-info">No upcoming events yet.</div></div>
+    {%- endif -%}
+
+  {%- elsif include.filter == 'past' -%}
+    {%- assign items_rev = items | reverse -%}
+    {%- assign shown = 0 -%}
+    {%- for e in items_rev -%}
+      {%- if e.event_date -%}
+        {%- assign e_ts = e.event_date | date: '%s' -%}
+        {%- assign e_slug = e.slug | default: e.title | slugify -%}
+        {%- if e_ts < now_ts and e_slug != exclude and shown < max -%}
+          {%- assign url = '/events-and-activities/' | append: e_slug | append: '/' | relative_url -%}
+          {%- assign cover = e.cover -%}
+          {%- if cover == nil or cover == '' -%}
+            {%- if e.image_gallery and e.image_gallery.size > 0 -%}
+              {%- assign cover = e.image_gallery[0].img -%}
+            {%- endif -%}
+          {%- endif -%}
+          <div class="col-12 col-md-6 col-lg-4">
+            <article class="card h-100 shadow-sm" data-aos="fade-up">
+              {%- if cover -%}
+                <a href="{{ url }}" class="ratio ratio-16x9">
+                  <img src="{{ cover }}" alt="{{ e.title | escape }}" class="img-fluid w-100 h-100" loading="lazy" style="object-fit:cover;">
+                </a>
+              {%- endif -%}
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h3 class="h5 mb-0">
+                    <a href="{{ url }}" class="stretched-link text-decoration-none">{{ e.title }}</a>
+                  </h3>
+                  <span class="badge text-bg-secondary ms-2">Past</span>
+                </div>
+                <p class="mb-2 small text-muted">
+                  <i class="fa-regular fa-calendar"></i>
+                  {{ e.event_date | date: "%b %d, %Y" }}
+                  {%- if e.location %} &middot; <i class="fa-solid fa-location-dot"></i> {{ e.location }}{%- endif -%}
+                </p>
+                {%- if e.content -%}
+                  <p class="mb-3">{{ e.content | strip_html | truncate: 120 }}</p>
+                {%- endif -%}
+                <div class="mt-auto pt-2">
+                  <a href="{{ url }}" class="btn btn-outline-secondary btn-sm">View Recap</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          {%- assign shown = shown | plus: 1 -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if shown == 0 -%}
+      <div class="col-12"><div class="alert alert-info">No past events found.</div></div>
+    {%- endif -%}
+  {%- endif -%}
+</div>
