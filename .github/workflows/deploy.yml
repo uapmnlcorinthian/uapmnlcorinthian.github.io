@@ -8,11 +8,6 @@ permissions:
 on:
   push:
     branches: [ main ]
-    branches: [ main ]
-
-on:
-  push:
-    branches: [ main ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
