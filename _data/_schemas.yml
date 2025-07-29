@@ -54,11 +54,12 @@ images.yml:
 # _data/_schemas.yml
 events.yml:
   type: array
-  display: title
+  display: title      # show “Title” in the left‑hand list
+  mapAsArray: true    # custom flag: treat the map as an array
+  keyField: slug      # inject each key under `.slug`
   fields:
-    - {k: title,           l: Title,                 t: text,   req: true,  w: col-8}
     - {k: slug,            l: Slug,                  t: text,   req: true,  w: col-4}
-    - {k: draft,           l: Draft,                 t: bool,               w: col-2}
+    - {k: title,           l: Title,                 t: text,   req: true,  w: col-8}
     - {k: event_date,      l: Event Date,            t: date,               w: col-4}
     - {k: location,        l: Location,              t: text,               w: col-6}
     - {k: cover,           l: Cover Image,           t: image,              w: col-6}
