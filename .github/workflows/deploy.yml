@@ -5,8 +5,8 @@ on:
     branches: [ main ]
 
 permissions:
-  pages: write      # allow deployment to Pages
-  id-token: write   # allow OIDC authentication
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -16,10 +16,10 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4  # Updated to v4:contentReference[oaicite:12]{index=12}
+        uses: actions/checkout@v4
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4  # New step to configure Pages:contentReference[oaicite:13]{index=13}
+        uses: actions/configure-pages@v4
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -27,7 +27,7 @@ jobs:
           ruby-version: '3.2.2'
 
       - name: Cache Ruby gems
-        uses: actions/cache@v4  # Updated to v4:contentReference[oaicite:14]{index=14}
+        uses: actions/cache@v4
         with:
           path: |
             ~/.bundle
@@ -44,11 +44,11 @@ jobs:
       - name: Build site with Jekyll
         run: bundle exec jekyll build --destination _site --verbose
 
-      - name: Debug: List built site
+      - name: Debug List built site
         run: ls -R _site
-
+        
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3  # Updated to v3:contentReference[oaicite:15]{index=15}
+        uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
@@ -59,9 +59,9 @@ jobs:
       pages: write
       id-token: write
     environment:
-      name: github-pages                 # deploy to Pages environment
-      url: ${{ steps.deployment.outputs.page_url }}  # link to the deployed site
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4  # Updated to v4:contentReference[oaicite:16]{index=16}
+        uses: actions/deploy-pages@v4
