@@ -10,7 +10,7 @@ Jekyll.logger.info "gen_events:", "Plugin loaded—converting events.yml to _eve
 module Jekyll
   class EventPageGenerator < Generator
     safe true
-    priority :highest
+    priority :low
 
     def generate(site)
       data_path = File.join(site.source, '_data', 'events.yml')
