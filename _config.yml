@@ -29,10 +29,17 @@ defaults:
       type: "pages"
     values:
       layout: default
-  # event collection items
+  # # event collection items
+  # - scope:
+      # path: ""
+      # type: "events"
+    # values:
+      # layout: event
+      
+# plugin‐generated event pages
   - scope:
-      path: ""
-      type: "events"
+      path: "events-and-activities"
+      type: "pages"
     values:
       layout: event
 
