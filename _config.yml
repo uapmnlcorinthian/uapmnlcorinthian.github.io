@@ -39,8 +39,8 @@ defaults:
       
 collections:
   events:
-    output: true               # render each item to HTML
-    permalink: /events-and-activities/:path/  # how URLs should look
+    output: true
+    permalink: /events-and-activities/:path/
     
 # ─── Plugins ─────────────────────────────────────────────────────
 plugins:
