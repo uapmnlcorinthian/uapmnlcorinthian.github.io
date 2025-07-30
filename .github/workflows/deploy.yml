@@ -1,4 +1,4 @@
-name: Build & Deploy
+name: Build & Deploy 1.0
 
 on:
   push:
@@ -22,9 +22,20 @@ jobs:
         with:
           ruby-version: '3.2.2'
 
+      - name: Cache Ruby gems
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.bundle
+            vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
       - name: Install dependencies
         run: |
           gem install bundler
+          bundle config set path 'vendor/bundle'
           bundle install --jobs 4 --retry 3
 
       - name: Build site with Jekyll
