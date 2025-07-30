@@ -13,14 +13,6 @@ sass:
   style: compressed
 timezone: Asia/Manila
 
-# ─── Collections ─────────────────────────────────────────────────
-data_pages:
-  events:
-    template: event               # uses _layouts/event.html
-    dir: events-and-activities    # output folder
-    name: ":slug/index"           # use each item’s `slug` field
-    extension: "html"             # .html appended automatically
-
 # ─── Default Layouts for Types ──────────────────────────────────
 defaults:
   # regular pages
@@ -49,7 +41,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-minifier
   - jekyll-include-cache
-  - jekyll-datapage-generator
 
 # ─── Include & Exclude ───────────────────────────────────────────
 include:
