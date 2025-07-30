@@ -2,21 +2,24 @@ name: Build & Deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 permissions:
-  pages: write
-  id-token: write
+  pages: write      # allow deployment to Pages
+  id-token: write   # allow OIDC authentication
 
 jobs:
   build:
+    runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-build-${{ github.ref }}
       cancel-in-progress: true
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4  # Updated to v4:contentReference[oaicite:12]{index=12}
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4  # New step to configure Pages:contentReference[oaicite:13]{index=13}
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -24,14 +27,13 @@ jobs:
           ruby-version: '3.2.2'
 
       - name: Cache Ruby gems
-        uses: actions/cache@v3
+        uses: actions/cache@v4  # Updated to v4:contentReference[oaicite:14]{index=14}
         with:
           path: |
             ~/.bundle
             vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
+          restore-keys: ${{ runner.os }}-gems-
 
       - name: Install dependencies
         run: |
@@ -43,18 +45,20 @@ jobs:
         run: bundle exec jekyll build --destination _site --verbose
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3  # Updated to v3:contentReference[oaicite:15]{index=15}
         with:
           path: _site
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
-      name: github-pages
+      name: github-pages                 # deploy to Pages environment
+      url: ${{ steps.deployment.outputs.page_url }}  # link to the deployed site
     steps:
-      - name: Download Pages artifact
-        uses: actions/download-pages-artifact@v2
-
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        id: deployment
+        uses: actions/deploy-pages@v4  # Updated to v4:contentReference[oaicite:16]{index=16}
