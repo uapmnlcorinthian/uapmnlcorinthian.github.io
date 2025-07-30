@@ -18,15 +18,17 @@
     <article class="container py-5" data-aos="fade-up">
       <h1 class="mb-3">{{ page.title }}</h1>
       <p class="text-muted">
-        {{ page.event_date | date: "%B %-d, %Y" }} &mdash; {{ page.location }}
+        {{ page.date | date: "%B %-d, %Y" }}
+        {% if page.location %}&mdash; {{ page.location }}{% endif %}
       </p>
 
       {% if page.cover %}
         <img src="{{ page.cover | relative_url }}" class="img-fluid mb-4" alt="{{ page.title }}">
       {% endif %}
 
+      <!-- Render content from front matter -->
       <div class="content mb-4">
-        {{ content }}
+        {{ page.data.content | markdownify }}
       </div>
 
       {% if page.registration_url %}
@@ -39,7 +41,7 @@
         <div class="map-responsive mb-4">{{ page.map_embed | raw }}</div>
       {% endif %}
 
-            {% comment %} Navigation using the events collection {% endcomment %}
+      {% comment %} Navigation using the events collection {% endcomment %}
       {% assign slugs = site.events | map: "slug" %}
       {% assign idx = slugs | index_of: page.slug %}
       {% assign prev_idx = idx | minus: 1 %}

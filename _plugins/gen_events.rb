@@ -1,7 +1,5 @@
 # _plugins/gen_events.rb
 require 'yaml'
-require 'base64'
-require 'bigdecimal'
 require 'fileutils'
 require 'date'
 
@@ -33,30 +31,56 @@ module Jekyll
         next unless slug
         file_path = File.join(events_dir, "#{slug}.md")
 
-        frontmatter = event.map do |key, value|
-          case key.to_s
-          when 'content', 'map_embed'
-            "#{key}: |\n" + value.to_s.lines.map { |l| "  #{l.chomp}" }.join("\n")
-          when 'image_gallery'
-            yaml_block = value.to_yaml.lines.map { |l| "  #{l}" }.join
-            "#{key}: |\n#{yaml_block}"
-          else
-            "#{key}: #{value.inspect}"
-          end
-        end.join("\n")
+        # Core front matter fields
+        date_obj   = event['event_date'] || event[:event_date]
+        date_str   = date_obj.respond_to?(:strftime) ? date_obj.strftime('%Y-%m-%d') : nil
+        title      = event['title'] || event[:title] || slug
+        permalink  = "/events-and-activities/#{slug}/"
+        content_md = (event['content'] || '').strip
 
+        # Base front matter
+        front = {
+          'layout'    => 'event',
+          'title'     => title,
+          'date'      => date_str,
+          'permalink' => permalink,
+          'content'   => content_md
+        }
+
+        # Merge additional fields (location, cover, registration_url, map_embed, image_gallery)
+        event.each do |k, v|
+          next if ['slug', 'event_date', 'title', 'content'].include?(k.to_s)
+          front[k.to_s] = v
+        end
+
+        # Serialize front matter, quoting strings and handling blocks
+        fm_lines = front.map do |key, val|
+          if val.is_a?(String) && val.include?("\n")
+            # multiline string (map_embed)
+            "#{key}: |\n" + val.lines.map { |l| "  #{l.chomp}" }.join("\n")
+          elsif val.is_a?(Array)
+            # array as YAML block
+            serialized = val.to_yaml
+            "#{key}: |\n" + serialized.lines.map { |l| "  #{l.chomp}" }.join("\n")
+          elsif val.is_a?(String)
+            # quote simple strings
+            "#{key}: #{val.inspect}"
+          else
+            # date or other types
+            "#{key}: #{val}"
+          end
+        end
+
+        # Final markdown (front matter only)
         markdown = <<~MD
           ---
-          #{frontmatter}
+          #{fm_lines.join("\n")}
           ---
-          
-          #{event['content'] || ''}
         MD
 
-        # Skip writing if file unchanged to prevent rebuild loops
-        if File.exist?(file_path)
-          existing = File.read(file_path)
-          next if existing == markdown
+        # Write if changed
+        if File.exist?(file_path) && File.read(file_path) == markdown
+          next
         end
 
         File.write(file_path, markdown)
