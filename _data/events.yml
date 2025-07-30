@@ -1,7 +1,7 @@
 # _data/events.yml
 - slug: cpd-building-code-2025-updates
   title: "CPD Building Code 2025 Updates"
-  event_date: 2025-02-10
+  event_date: 2025-12-30
   location: "UAP MCC Office, Manila"
   cover: "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/cpd-building-code-2025-updates"
@@ -12,9 +12,9 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "/assets/images/events/cpd-building-code-2025-updates-1.jpg"
+    - img: "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       caption: "Speaker presenting code changes"
-    - img: "/assets/images/events/cpd-building-code-2025-updates-2.jpg"
+    - img: "https://images.unsplash.com/photo-1423592707957-3b212afa6733?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       caption: "Attendees in discussion"
   content: >
     An in‑depth review of the 2025 amendments to the Philippine Building Code, focusing on compliance requirements and enforcement strategies.
@@ -63,7 +63,7 @@
   title: "CPD Sustainable Facades"
   event_date: 2025-01-25
   location: "UAP Auditorium, Manila"
-  cover: "/assets/images/events/cpd-sustainable-facades-2025-01-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1608048608029-99c772d199ed?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/cpd-sustainable-facades-2025-01"
   map_embed: |
     <iframe
@@ -83,7 +83,7 @@
   title: "CSR Back‑to‑School Build"
   event_date: 2025-10-05
   location: "Barangay Hall, Quezon City"
-  cover: "/assets/images/events/csr-back-to-school-build-2025-10-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1608048608029-99c772d199ed?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/csr-back-to-school-build-2025-10"
   map_embed: |
     <iframe
@@ -103,7 +103,7 @@
   title: "Design Talk: Adaptive Reuse"
   event_date: 2025-04-18
   location: "UAP MCC Conference Room"
-  cover: "/assets/images/events/design-talk-adaptive-reuse-2025-04-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/design-talk-adaptive-reuse-2025-04"
   map_embed: |
     <iframe
@@ -123,7 +123,7 @@
   title: "Fellowship Midyear Socials"
   event_date: 2025-06-12
   location: "Rooftop Garden, Manila"
-  cover: "/assets/images/events/fellowship-midyear-socials-2025-06-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/fellowship-midyear-socials-2025-06"
   map_embed: |
     <iframe
@@ -143,7 +143,7 @@
   title: "General Membership Meeting 1"
   event_date: 2025-01-18
   location: "Manila Hotel"
-  cover: "/assets/images/events/gmm-1-2025-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/gmm-1-2025"
   map_embed: |
     <iframe
@@ -163,7 +163,7 @@
   title: "General Membership Meeting 2"
   event_date: 2024-02-22
   location: "Makati Shangri‑La"
-  cover: "/assets/images/events/gmm-2-2025-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/gmm-2-2025"
   map_embed: |
     <iframe
@@ -183,7 +183,7 @@
   title: "Site Tour: Heritage Iloilo"
   event_date: 2025-11-10
   location: "Iloilo Heritage District"
-  cover: "/assets/images/events/site-tour-heritage-iloilo-2025-11-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/site-tour-heritage-iloilo-2025-11"
   map_embed: |
     <iframe
@@ -203,7 +203,7 @@
   title: "Site Tour: Manila Civic Center"
   event_date: 2025-03-12
   location: "Manila Civic Center"
-  cover: "/assets/images/events/site-tour-manila-civic-center-2025-03-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/site-tour-manila-civic-center-2025-03"
   map_embed: |
     <iframe
@@ -223,7 +223,7 @@
   title: "Awards Night & Year‑End Celebration"
   event_date: 2025-12-18
   location: "Manila Hotel Ballroom"
-  cover: "/assets/images/events/awards-night-year-end-2025-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/awards-night-year-end-2025"
   map_embed: |
     <iframe
@@ -243,7 +243,7 @@
   title: "CSR Coastal Cleanup"
   event_date: 2025-07-20
   location: "Baywalk, Manila"
-  cover: "/assets/images/events/csr-coastal-cleanup-2025-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/csr-coastal-cleanup-2025"
   map_embed: |
     <iframe
@@ -263,7 +263,7 @@
   title: "Workshop: Parametric Grasshopper"
   event_date: 2025-08-08
   location: "UAP Lab, Manila"
-  cover: "/assets/images/events/workshop-parametric-grasshopper-2025-08-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/workshop-parametric-grasshopper-2025-08"
   map_embed: |
     <iframe
@@ -281,7 +281,7 @@
 
 - slug: outreach-noche-buena-2025
   title: "Outreach: Noche Buena Drive"
-  event_date: 2025-12-20
+  event_date: 2024-12-20
   location: "Mandaluyong City"
   cover: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=1862&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/outreach-noche-buena-2025"
@@ -297,13 +297,13 @@
     - img: "/assets/images/events/outreach-noche-buena-2025-2.jpg"
       caption: "Community volunteers"
   content: >
-    Holiday outreach delivering food packs and essential goods to underserved communities.
+    Holiday outreach delivering food packs and essential goods to underserved communities. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet auctor gravida. Ut vulputate odio id libero venenatis varius. Sed vitae pulvinar lorem. Aliquam erat volutpat. Pellentesque lacinia metus odio, vitae sollicitudin diam egestas at. Quisque sed arcu vitae odio tempus lacinia. Curabitur pretium augue at nulla pharetra, in mattis magna eleifend. Vestibulum gravida enim sed sem cursus, quis elementum ex viverra.Cras pellentesque, orci a accumsan mollis, purus metus cursus est, ut rhoncus purus justo a lorem. Quisque sed quam sed ante ultrices ultricies quis a libero. Donec fringilla diam odio. Fusce ex dolor, bibendum vitae ex at, pretium tempor dolor. Aenean elementum ipsum at lectus suscipit ultricies. In in metus in sem eleifend condimentum. Mauris varius massa fermentum mi tempor, non aliquam eros placerat. Vivamus sed malesuada ante, eu pellentesque enim. Duis laoreet tellus mi, id luctus sem ultricies sagittis.
 
 - slug: open-studio-visit-emerging-practices-2025-11
   title: "Open Studio Visit: Emerging Practices"
   event_date: 2025-11-22
   location: "Emerging Practices Studio, Manila"
-  cover: "/assets/images/events/open-studio-visit-emerging-practices-2025-11-cover.jpg"
+  cover: "https://images.unsplash.com/photo-1608048608029-99c772d199ed?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/open-studio-visit-emerging-practices-2025-11"
   map_embed: |
     <iframe
