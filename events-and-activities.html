@@ -1,79 +1,76 @@
 ---
 layout: default
+<!-- Styles moved to main CSS -->
 title: "Events & Activities"
 permalink: /events-and-activities/
 ---
 {% assign sorted_events = site.events | sort: "date" | reverse %}
 {% assign latest = sorted_events | first %}
 
-<!-- Hero banner for latest event -->
-<section class="position-relative mb-5" style="height:60vh; background:url('{{ latest.cover | relative_url }}') center/cover;" data-aos="fade-in">
+<!-- Hero banner -->
+<section class="position-relative mb-5" style="height:60vh; background:url('{{ latest.cover | relative_url }}') center/cover;" data-aos="fade-in" data-aos-offset="200" data-aos-anchor-placement="center-bottom">
   <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50"></div>
   <div class="container h-100 d-flex flex-column justify-content-center text-white position-relative">
-    <h1 class="display-3 fw-bold mb-3">{{ latest.title }}</h1>
-    <p class="lead mb-4">
+    <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">{{ latest.title }}</h1>
+    <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">
       {{ latest.date | date: "%B %-d, %Y" }}{% if latest.location %} &mdash; {{ latest.location }}{% endif %}
     </p>
-    <div class="d-flex gap-2 mb-4">
+    <div class="d-flex gap-2 mb-4 animate__animated animate__zoomIn animate__delay-2s">
       {% if latest.registration_url %}
-        <a href="{{ latest.registration_url }}" class="btn btn-lg btn-primary" target="_blank">Register</a>
+        <a href="{{ latest.registration_url }}" class="btn btn-lg btn-primary">Register</a>
       {% endif %}
       <a href="{{ latest.url }}" class="btn btn-lg btn-outline-light">View Details</a>
     </div>
-    <!-- Event description below buttons (frontmatter "content") -->
-    <div class="mb-4 text-white">
+    <div class="mb-4 text-white animate__animated animate__fadeInUp animate__delay-3s">
       {{ latest.content | markdownify }}
     </div>
   </div>
 </section>
 
-<section class="container py-1" id="eventsSection">
+<!-- Events gallery with dropdown presets & search -->
+<section class="container py-5" id="eventsSection">
   <h2 class="mb-4">Browse All Events</h2>
-  <div class="row g-1">
+  <div class="d-flex flex-wrap justify-content-end gap-2 mb-3 position-sticky top-0 bg-white py-2 shadow-sm">
+    <select id="filterPreset" class="form-select form-select-sm" style="max-width:200px;">
+      <option value="upcoming">Upcoming</option>
+      <option value="last30">Last 30 Days</option>
+      <option value="thisYear">This Year</option>
+      <option value="all">All</option>
+    </select>
+    <input id="searchInput" type="text" placeholder="Search titles..." class="form-control form-control-sm" style="max-width:200px;">
+  </div>
+  <div id="filterLoader" class="text-center my-4" style="display:none;">
+    <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>
+  </div>
+  <div class="row g-2">
     {% for e in sorted_events %}
-      <div class="col-6 col-md-4 col-lg-3 event-item" {% if forloop.index > 8 %}style="display:none;"{% endif %}>
-        <div class="position-relative" data-bs-toggle="modal" data-bs-target="#modal-{{ forloop.index }}">
+      {% assign idx = forloop.index0 %}
+      <div class="col-6 col-md-4 col-lg-3 event-item" data-title="{{ e.title }}" data-date="{{ e.date | date_to_xmlschema }}" data-idx="{{ idx }}">
+        <div class="position-relative" style="border-radius:4px; cursor:pointer; overflow:hidden;" data-bs-toggle="modal" data-bs-target="#modal-{{ idx }}">
           {% if e.cover %}
-            <div class="ratio ratio-1x1 overflow-hidden rounded-3">
-              <img src="{{ e.cover | relative_url }}" class="w-100 h-100 object-fit-cover" alt="{{ e.title }}" loading="lazy">
-            </div>
+            <div class="ratio ratio-1x1"><img src="{{ e.cover | relative_url }}" class="w-100 h-100 object-fit-cover blur-up" alt="{{ e.title }}"></div>
           {% else %}
-            <div class="ratio ratio-1x1 bg-secondary text-white d-flex align-items-center justify-content-center rounded-3">
-              No Image
-            </div>
+            <div class="ratio ratio-1x1 bg-secondary text-white d-flex align-items-center justify-content-center">No Image</div>
           {% endif %}
-          <div class="position-absolute bottom-0 start-0 w-100 py-1 px-2 bg-dark bg-opacity-50 text-white text-truncate">
-            {{ e.title }}
-          </div>
+          <div class="position-absolute bottom-0 start-0 w-100 py-1 px-2 bg-dark bg-opacity-50 text-white text-truncate">{{ e.title }}</div>
         </div>
-
         <!-- Modal -->
-        <div class="modal fade" id="modal-{{ forloop.index }}" tabindex="-1" aria-labelledby="modalLabel-{{ forloop.index }}" aria-hidden="true">
+        <div class="modal fade" id="modal-{{ idx }}" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalLabel-{{ idx }}">
           <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius:4px;">
               <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel-{{ forloop.index }}">{{ e.title }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="modalLabel-{{ idx }}">{{ e.title }}{% if e.date >= site.time %} <span class="badge bg-success ms-2">Upcoming</span>{% endif %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
               </div>
               <div class="modal-body">
-                {% if e.cover %}
-                  <img src="{{ e.cover | relative_url }}" class="img-fluid mb-3 rounded-3" alt="{{ e.title }}">
-                {% endif %}
-                <p class="text-muted">
-                  {{ e.date | date: "%B %-d, %Y" }}{% if e.location %} &mdash; {{ e.location }}{% endif %}
-                </p>
-                <div>{{ e.data.content | markdownify }}</div>
-                {% if e.map_embed %}
-                  <div class="ratio ratio-16x9 my-3 rounded-3">
-                    {{ e.map_embed | raw }}
-                  </div>
-                {% endif %}
+                {% if e.cover %}<img src="{{ e.cover | relative_url }}" class="img-fluid mb-3" style="border-radius:4px;">{% endif %}
+                <p class="text-muted small mb-3">{{ e.date | date: "%B %-d, %Y" }}{% if e.location %} &mdash; {{ e.location }}{% endif %}</p>
+                <div class="mb-4">{{ e.content | markdownify }}</div>
+                {% if e.map_embed %}<div class="ratio ratio-4x3 my-3" style="max-width:350px; border-radius:4px; overflow:hidden;">{{ e.map_embed | raw }}</div>{% endif %}
               </div>
               <div class="modal-footer">
                 <a href="{{ e.url }}" class="btn btn-secondary">Show More</a>
-                {% if e.registration_url %}
-                  <a href="{{ e.registration_url }}" class="btn btn-primary" target="_blank">Register</a>
-                {% endif %}
+                {% if e.registration_url %}<a href="{{ e.registration_url }}" class="btn btn-primary" target="_blank">Register</a>{% endif %}
               </div>
             </div>
           </div>
@@ -81,22 +78,55 @@ permalink: /events-and-activities/
       </div>
     {% endfor %}
   </div>
-  {% if sorted_events.size > 8 %}
-    <div class="text-center mt-4">
-      <button id="loadMoreBtn" class="btn btn-primary">Load More</button>
-    </div>
-  {% endif %}
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var btn = document.getElementById('loadMoreBtn');
-  if (!btn) return;
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('#eventsSection .event-item').forEach(function(item) {
-      item.style.display = 'block';
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.event-item');
+    const preset = document.getElementById('filterPreset');
+    const search = document.getElementById('searchInput');
+    let visible = 12;
+
+    function filter() {
+      const now = new Date();
+      const txt = search.value.toLowerCase();
+      const type = preset.value;
+      document.getElementById('filterLoader').style.display='block';
+      setTimeout(()=>{
+        let count=0;
+        items.forEach(el=>{
+          const title=el.dataset.title.toLowerCase();
+          const date=new Date(el.dataset.date);
+          let show=false;
+          if(title.includes(txt)){
+            if(type=='upcoming') show = date>=now;
+            else if(type=='last30') show = date>= new Date(now-1000*60*60*24*30);
+            else if(type=='thisYear') show = date>= new Date(now.getFullYear()+'-01-01');
+            else show=true;
+          }
+          if(show && type=='all'){ if(count<visible){ el.style.display='block'; count++; } else el.style.display='none'; }
+          else el.style.display = show ? 'block':'none';
+        });
+        document.getElementById('filterLoader').style.display='none';
+      },200);
+    }
+
+    preset.addEventListener('change', ()=>{ visible=12; filter(); });
+    search.addEventListener('input', filter);
+    filter();
+
+    // Infinite scroll for 'all'
+    const obsTarget = document.createElement('div'); document.querySelector('#eventsSection .row').appendChild(obsTarget);
+    new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting && preset.value=='all'){
+        visible+=12; filter();
+      }
+    },{rootMargin:'0px 0px 200px 0px'}).observe(obsTarget);
+
+    // Blur-up placeholder removal
+    document.querySelectorAll('.blur-up').forEach(img=>{
+      if(img.complete) img.classList.add('loaded');
+      else img.onload=()=>img.classList.add('loaded');
     });
-    btn.style.display = 'none';
   });
-});
 </script>
