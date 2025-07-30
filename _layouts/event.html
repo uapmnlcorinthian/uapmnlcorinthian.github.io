@@ -1,71 +1,73 @@
----
-layout: default
----
-{% assign e = page.event %}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+  {% include head.html %}
+  <!-- AOS Animate On Scroll CSS -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  {% include header.html %}
 
-<article class="container py-5" data-aos="fade-up">
-  <h1 class="mb-3">{{ event.title }}</h1>
-  <p class="text-muted">
-    {{ event.event_date | date: "%B %-d, %Y" }} &mdash; {{ event.location }}
-  </p>
+  <!-- Back-to-top anchor -->
+  <div id="top"></div>
 
-  {% if event.cover %}
-    <img src="{{ event.cover | relative_url }}" class="img-fluid mb-4" alt="{{ event.title }}">
-  {% endif %}
+  <div id="mainContent" class="container-fluid px-0">
+    <article class="container py-5" data-aos="fade-up">
+      <h1 class="mb-3">{{ page.title }}</h1>
+      <p class="text-muted">
+        {{ page.event_date | date: "%B %-d, %Y" }} &mdash; {{ page.location }}
+      </p>
 
-  <div class="content mb-4">{{ event.content | markdownify }}</div>
+      {% if page.cover %}
+        <img src="{{ page.cover | relative_url }}" class="img-fluid mb-4" alt="{{ page.title }}">
+      {% endif %}
 
-  {% if event.registration_url %}
-    <a href="{{ event.registration_url }}" class="btn btn-primary me-2" target="_blank">
-      Register
-    </a>
-  {% endif %}
+      <div class="content mb-4">
+        {{ content }}
+      </div>
 
-  {% if event.map_embed %}
-    <div class="map-responsive mb-4">{{ event.map_embed | raw }}</div>
-  {% endif %}
+      {% if page.registration_url %}
+        <a href="{{ page.registration_url }}" class="btn btn-primary me-2" target="_blank">
+          Register
+        </a>
+      {% endif %}
 
-  {% comment %} Navigation: use array index {% endcomment %}
-  {% assign events = site.data.events %}
-  {% assign index = events | map: "slug" | index_of: page.slug %}
-  <div class="d-flex justify-content-between mt-5 event-navigation">
-    {% if index > 0 %}
-      {% assign prev_event = events[index | minus: 1] %}
-      <a href="/events-and-activities/{{ prev_event.slug }}/" class="btn btn-outline-primary">
-        ← {{ prev_event.title }}
-      </a>
-    {% else %}
-      <span></span>
-    {% endif %}
+      {% if page.map_embed %}
+        <div class="map-responsive mb-4">{{ page.map_embed | raw }}</div>
+      {% endif %}
 
-    {% if index < events.size | minus: 1 %}
-      {% assign next_event = events[index | plus: 1] %}
-      <a href="/events-and-activities/{{ next_event.slug }}/" class="btn btn-outline-primary">
-        {{ next_event.title }} →
-      </a>
-    {% endif %}
+            {% comment %} Navigation using the events collection {% endcomment %}
+      {% assign slugs = site.events | map: "slug" %}
+      {% assign idx = slugs | index_of: page.slug %}
+      {% assign prev_idx = idx | minus: 1 %}
+      {% assign next_idx = idx | plus: 1 %}
+      {% assign last_idx = site.events | size | minus: 1 %}
+
+      <div class="d-flex justify-content-between mt-5 event-navigation">
+        {% if prev_idx >= 0 %}
+          {% assign prev = site.events[prev_idx] %}
+          <a href="{{ prev.url }}" class="btn btn-outline-primary">← {{ prev.title }}</a>
+        {% else %}
+          <span></span>
+        {% endif %}
+
+        {% if idx < last_idx %}
+          {% assign nxt = site.events[next_idx] %}
+          <a href="{{ nxt.url }}" class="btn btn-outline-primary">{{ nxt.title }} →</a>
+        {% endif %}
+      </div>
+    </article>
   </div>
-</article>
 
-<style>
-  .map-responsive {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-  }
-  .map-responsive iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-  }
-  .event-navigation .btn {
-    min-width: 8rem;
-  }
-</style>
+  {% include footer.html %}
+  {% include scripts.html %}
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({ duration: 600, once: true });
-  });
-</script>
+  <!-- Back to Top Button -->
+  <a id="btnTop" href="#top" class="btn btn-secondary shadow" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </a>
+</body>
+</html>

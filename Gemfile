@@ -1,10 +1,19 @@
 source "https://rubygems.org"
 
 # Use GitHub Pages-compatible Jekyll plugins (overrides Jekyll core version)
-gem "github-pages", "~> 232", group: :jekyll_plugins
+#gem "github-pages", "~> 232", group: :jekyll_plugins
+
+gem "jekyll", "~> 3.10"          # if you haven’t already removed `github-pages`
+gem "base64"
+gem "bigdecimal"
+gem "jekyll-feed"
+gem "jekyll-sitemap"
+gem "jekyll-seo-tag"         
+gem "jekyll-minifier"
+gem "jekyll-include-cache"
+gem "kramdown-parser-gfm"
 
 # Optional enhancements
-gem "jekyll-minifier"         # Compresses HTML, JS, and CSS
 gem "logger"                  # Only if you use custom Ruby logging
 gem "fiddle"                  # Required by some gems on Windows
 gem "wdm", ">= 0.1.0" if Gem.win_platform?  # Optional: watch support for Windows

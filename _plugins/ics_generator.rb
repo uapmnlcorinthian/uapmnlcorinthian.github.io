@@ -1,6 +1,6 @@
-<!-- =============================
-6. _plugins/ics_generator.rb
-============================= -->
+# _plugins/ics_generator.rb
+# Generates ICS calendar files for events
+
 module Jekyll
   class ICSFile < Page
     def initialize(site, base, dir, event)

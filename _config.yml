@@ -29,20 +29,19 @@ defaults:
       type: "pages"
     values:
       layout: default
-  # # event collection items
-  # - scope:
-      # path: ""
-      # type: "events"
-    # values:
-      # layout: event
       
-# plugin‐generated event pages
+ # event collection items
   - scope:
-      path: "events-and-activities"
-      type: "pages"
+      path: ""
+      type: "events"
     values:
       layout: event
-
+      
+collections:
+  events:
+    output: true               # render each item to HTML
+    permalink: /events-and-activities/:path/  # how URLs should look
+    
 # ─── Plugins ─────────────────────────────────────────────────────
 plugins:
   - jekyll-feed

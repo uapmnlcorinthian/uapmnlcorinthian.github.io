@@ -1,11 +1,26 @@
 #!/usr/bin/env ruby
 # scripts/test_gen_events.rb
-# Test harness for _plugins/gen_events.rb
+# Harness to test _plugins/gen_events.rb locally without Jekyll
 
 require 'yaml'
 require_relative '../_plugins/gen_events'
 
-# Mock Jekyll site object
+# Minimal stub classes to emulate Jekyll environment
+def stub_jenkins
+  module Jekyll
+    def self.logger
+      @logger ||= Logger.new($stdout)
+    end
+    class Generator; end
+    class Page; end
+  end
+end
+
+# Setup stub
+require 'logger'
+stub_jenkins
+
+# Mock site for generator
 class MockSite
   attr_reader :source, :pages
   def initialize(source)
@@ -14,22 +29,13 @@ class MockSite
   end
 end
 
-# Dummy Page class to capture instantiation
-class Jekyll::Page
-  attr_reader :site, :base, :dir, :name, :data
-  def initialize(site, base, slug, event)
-    @site = site
-    @base = base
-    @dir  = File.join('events-and-activities', slug)
-    @name = 'index.html'
-    @data = { 'slug' => slug, 'event' => event }
-    puts "Generated page: #{@dir}/#{@name}"
-  end
-end
-
-# Run generator
+# Run the generator
 site = MockSite.new(Dir.pwd)
 generator = Jekyll::EventPageGenerator.new
+puts "Running EventPageGenerator..."
 generator.generate(site)
-
-puts "Total pages generated: #{site.pages.size}"
+puts "\nGenerated pages:" 
+site.pages.each do |p|
+  puts " - #{p.dir}/#{p.name}"
+end
+puts "Total: #{site.pages.size} pages generated."
