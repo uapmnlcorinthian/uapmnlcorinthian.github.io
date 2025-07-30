@@ -2,11 +2,7 @@
 <html lang="en" class="h-100">
 <head>
   {% include head.html %}
-  <!-- AOS Animate On Scroll CSS -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    rel="stylesheet"
-  />
+
 </head>
 <body>
   {% include header.html %}
@@ -23,27 +19,33 @@
       </p>
 
       {% if page.cover %}
-        <img src="{{ page.cover | relative_url }}" class="img-fluid mb-4" alt="{{ page.title }}">
+        <img src="{{ page.cover | relative_url }}"
+             class="img-fluid mb-4"
+             alt="{{ page.title }}">
       {% endif %}
 
-      <!-- Render content from front matter -->
+      <!-- Render description from front matter -->
       <div class="content mb-4">
         {{ page.data.content | markdownify }}
       </div>
 
       {% if page.registration_url %}
-        <a href="{{ page.registration_url }}" class="btn btn-primary me-2" target="_blank">
+        <a href="{{ page.registration_url }}"
+           class="btn btn-primary me-2"
+           target="_blank">
           Register
         </a>
       {% endif %}
 
       {% if page.map_embed %}
-        <div class="map-responsive mb-4">{{ page.map_embed | raw }}</div>
+        <div class="map-responsive mb-4">
+          {{ page.map_embed | raw }}
+        </div>
       {% endif %}
 
       {% comment %} Navigation using the events collection {% endcomment %}
-      {% assign slugs = site.events | map: "slug" %}
-      {% assign idx = slugs | index_of: page.slug %}
+      {% assign slugs    = site.events | map: "slug" %}
+      {% assign idx      = slugs | index_of: page.slug %}
       {% assign prev_idx = idx | minus: 1 %}
       {% assign next_idx = idx | plus: 1 %}
       {% assign last_idx = site.events | size | minus: 1 %}
@@ -51,14 +53,18 @@
       <div class="d-flex justify-content-between mt-5 event-navigation">
         {% if prev_idx >= 0 %}
           {% assign prev = site.events[prev_idx] %}
-          <a href="{{ prev.url }}" class="btn btn-outline-primary">← {{ prev.title }}</a>
+          <a href="{{ prev.url }}" class="btn btn-outline-primary">
+            ← {{ prev.title }}
+          </a>
         {% else %}
           <span></span>
         {% endif %}
 
         {% if idx < last_idx %}
           {% assign nxt = site.events[next_idx] %}
-          <a href="{{ nxt.url }}" class="btn btn-outline-primary">{{ nxt.title }} →</a>
+          <a href="{{ nxt.url }}" class="btn btn-outline-primary">
+            {{ nxt.title }} →
+          </a>
         {% endif %}
       </div>
     </article>
