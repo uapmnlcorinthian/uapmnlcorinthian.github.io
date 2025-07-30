@@ -42,7 +42,7 @@ jobs:
         run: bundle exec jekyll build --destination _site --verbose
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v1
         with:
           path: _site
 
@@ -52,8 +52,8 @@ jobs:
     environment:
       name: github-pages
     steps:
-      - name: Download Pages artifact
-        uses: actions/download-pages-artifact@v1
+            - name: Download Pages artifact
+        uses: actions/download-pages-artifact@v2
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
