@@ -5,12 +5,11 @@ permalink: /events-and-activities/
 ---
 
 {% comment %}
-  1. Grab the first entry in your YAML as the “latest” event.
-     (YAML order = display order, so put newest at the top.)
+  site.data.events is now an array:
+  - events[0] is the newest (if you kept descending order in the YAML).
 {% endcomment %}
-{% assign latest_pair = site.data.events | first %}
-{% assign latest_slug = latest_pair[0] %}
-{% assign latest      = latest_pair[1] %}
+
+{%- assign latest = site.data.events[0] -%}
 
 <article class="container py-5" data-aos="fade-up">
   <h1 class="mb-3">{{ latest.title }}</h1>
@@ -19,22 +18,31 @@ permalink: /events-and-activities/
   </p>
 
   {% if latest.cover %}
-    <img src="{{ latest.cover }}" class="img-fluid mb-4" alt="{{ latest.title }}">
+    <img src="{{ latest.cover | relative_url }}"
+         class="img-fluid mb-4"
+         alt="{{ latest.title }}">
   {% endif %}
 
-  <div class="mb-4">{{ latest.content }}</div>
+  <div class="mb-4">
+    {{ latest.content | markdownify }}
+  </div>
 
   {% if latest.registration_url %}
-    <a href="{{ latest.registration_url }}" class="btn btn-primary me-2" target="_blank">
+    <a href="{{ latest.registration_url }}"
+       class="btn btn-primary me-2"
+       target="_blank">
       Register
     </a>
   {% endif %}
 
   {% if latest.map_embed %}
-    <div class="map-responsive mb-4">{{ latest.map_embed | raw }}</div>
+    <div class="map-responsive mb-4">
+      {{ latest.map_embed | raw }}
+    </div>
   {% endif %}
 
-  <a href="/events-and-activities/{{ latest_slug }}/" class="btn btn-outline-secondary">
+  <a href="/events-and-activities/{{ latest.slug }}/"
+     class="btn btn-outline-secondary">
     View Details →
   </a>
 </article>
@@ -42,13 +50,13 @@ permalink: /events-and-activities/
 <section class="container py-5">
   <h2 class="mb-4">Browse All Events</h2>
   <div class="row g-4">
-    {% for pair in site.data.events %}
-      {% assign slug = pair[0] %}
-      {% assign e    = pair[1] %}
+    {% for e in site.data.events %}
       <div class="col-12 col-sm-6 col-md-4 col-lg-3" data-aos="fade-up">
         <div class="card h-100 event-card">
           {% if e.cover %}
-            <img src="{{ e.cover }}" class="card-img-top" alt="{{ e.title }}">
+            <img src="{{ e.cover | relative_url }}"
+                 class="card-img-top"
+                 alt="{{ e.title }}">
           {% endif %}
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{ e.title }}</h5>
@@ -56,7 +64,8 @@ permalink: /events-and-activities/
               {{ e.event_date | date: "%b %-d, %Y" }}
             </p>
             <div class="mt-auto">
-              <a href="/events-and-activities/{{ slug }}/" class="btn btn-sm btn-primary">
+              <a href="/events-and-activities/{{ e.slug }}/"
+                 class="btn btn-sm btn-primary">
                 Go to Event
               </a>
             </div>

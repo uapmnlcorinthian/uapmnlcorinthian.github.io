@@ -15,11 +15,11 @@ timezone: Asia/Manila
 
 # ─── Collections ─────────────────────────────────────────────────
 data_pages:
-  events:                        # matches _data/events.yml
-    template: event              # uses _layouts/event.html
-    dir: events-and-activities   # output folder
-    name: ":key/index"           # put each page in slug/index.html
-    extension: "html"            # (optional—.html will be appended)
+  events:
+    template: event               # uses _layouts/event.html
+    dir: events-and-activities    # output folder
+    name: ":slug/index"           # use each item’s `slug` field
+    extension: "html"             # .html appended automatically
 
 # ─── Default Layouts for Types ──────────────────────────────────
 defaults:

@@ -1,6 +1,5 @@
 # _data/events.yml
-
-cpd-building-code-2025-updates:
+- slug: cpd-building-code-2025-updates
   title: "CPD Building Code 2025 Updates"
   event_date: 2025-02-10
   location: "UAP MCC Office, Manila"
@@ -20,7 +19,7 @@ cpd-building-code-2025-updates:
   content: >
     An in‑depth review of the 2025 amendments to the Philippine Building Code, focusing on compliance requirements and enforcement strategies.
 
-workshop-revit-interiors-beginners-2025-02:
+- slug: workshop-revit-interiors-beginners-2025-02
   title: "Workshop: Revit Interiors for Beginners"
   event_date: 2025-02-20
   location: "Design Studio, Makati"
@@ -40,7 +39,7 @@ workshop-revit-interiors-beginners-2025-02:
   content: >
     Step‑by‑step hands‑on introduction to Revit Interior tools, templates, and best practices for architectural design.
 
-bim-coordination-summit-2025-09:
+- slug: bim-coordination-summit-2025-09
   title: "BIM Coordination Summit 2025"
   event_date: 2025-09-15
   location: "SMX Convention Center, Pasay"
@@ -60,7 +59,7 @@ bim-coordination-summit-2025-09:
   content: >
     A full‑day summit on interdisciplinary BIM workflows, clash resolution, and collaborative project delivery.
 
-cpd-sustainable-facades-2025-01:
+- slug: cpd-sustainable-facades-2025-01
   title: "CPD Sustainable Facades"
   event_date: 2025-01-25
   location: "UAP Auditorium, Manila"
@@ -80,7 +79,7 @@ cpd-sustainable-facades-2025-01:
   content: >
     Continuing professional development on eco‑friendly façade systems, materials, and performance testing.
 
-csr-back-to-school-build-2025-10:
+- slug: csr-back-to-school-build-2025-10
   title: "CSR Back‑to‑School Build"
   event_date: 2025-10-05
   location: "Barangay Hall, Quezon City"
@@ -100,7 +99,7 @@ csr-back-to-school-build-2025-10:
   content: >
     Community service project constructing study desks and learning spaces for underprivileged students.
 
-design-talk-adaptive-reuse-2025-04:
+- slug: design-talk-adaptive-reuse-2025-04
   title: "Design Talk: Adaptive Reuse"
   event_date: 2025-04-18
   location: "UAP MCC Conference Room"
@@ -120,7 +119,7 @@ design-talk-adaptive-reuse-2025-04:
   content: >
     Expert insights on repurposing heritage and industrial structures for modern use.
 
-fellowship-midyear-socials-2025-06:
+- slug: fellowship-midyear-socials-2025-06
   title: "Fellowship Midyear Socials"
   event_date: 2025-06-12
   location: "Rooftop Garden, Manila"
@@ -140,7 +139,7 @@ fellowship-midyear-socials-2025-06:
   content: >
     An informal gathering to connect members, share experiences, and build community.
 
-gmm-1-2025:
+- slug: gmm-1-2025
   title: "General Membership Meeting 1"
   event_date: 2025-01-18
   location: "Manila Hotel"
@@ -160,9 +159,9 @@ gmm-1-2025:
   content: >
     The first GMM of 2025 focused on programs, committees, and calendar alignment.
 
-gmm-2-2025:
+- slug: gmm-2-2024
   title: "General Membership Meeting 2"
-  event_date: 2025-02-22
+  event_date: 2024-02-22
   location: "Makati Shangri‑La"
   cover: "/assets/images/events/gmm-2-2025-cover.jpg"
   registration_url: "https://example.com/register/gmm-2-2025"
@@ -180,7 +179,7 @@ gmm-2-2025:
   content: >
     The second GMM reviewed first‑quarter activities and upcoming initiatives.
 
-site-tour-heritage-iloilo-2025-11:
+- slug: site-tour-heritage-iloilo-2025-11
   title: "Site Tour: Heritage Iloilo"
   event_date: 2025-11-10
   location: "Iloilo Heritage District"
@@ -200,7 +199,7 @@ site-tour-heritage-iloilo-2025-11:
   content: >
     Guided tour of Iloilo’s colonial architecture and conservation efforts.
 
-site-tour-manila-civic-center-2025-03:
+- slug: site-tour-manila-civic-center-2025-03
   title: "Site Tour: Manila Civic Center"
   event_date: 2025-03-12
   location: "Manila Civic Center"
@@ -220,7 +219,7 @@ site-tour-manila-civic-center-2025-03:
   content: >
     Architectural walkthrough of the Manila Civic Center’s landmark buildings.
 
-awards-night-year-end-2025:
+- slug: awards-night-year-end-2025
   title: "Awards Night & Year‑End Celebration"
   event_date: 2025-12-18
   location: "Manila Hotel Ballroom"
@@ -240,7 +239,7 @@ awards-night-year-end-2025:
   content: >
     Gala event recognizing outstanding contributions and closing the year in style.
 
-csr-coastal-cleanup-2025:
+- slug: csr-coastal-cleanup-2025
   title: "CSR Coastal Cleanup"
   event_date: 2025-07-20
   location: "Baywalk, Manila"
@@ -260,7 +259,7 @@ csr-coastal-cleanup-2025:
   content: >
     Volunteer-driven coastal cleanup to promote environmental stewardship.
 
-workshop-parametric-grasshopper-2025-08:
+- slug: workshop-parametric-grasshopper-2025-08
   title: "Workshop: Parametric Grasshopper"
   event_date: 2025-08-08
   location: "UAP Lab, Manila"
@@ -280,7 +279,7 @@ workshop-parametric-grasshopper-2025-08:
   content: >
     Hands‑on parametric design techniques using Grasshopper for architects.
 
-outreach-noche-buena-2025:
+- slug: outreach-noche-buena-2025
   title: "Outreach: Noche Buena Drive"
   event_date: 2025-12-20
   location: "Mandaluyong City"
@@ -300,7 +299,7 @@ outreach-noche-buena-2025:
   content: >
     Holiday outreach delivering food packs and essential goods to underserved communities.
 
-open-studio-visit-emerging-practices-2025-11:
+- slug: open-studio-visit-emerging-practices-2025-11
   title: "Open Studio Visit: Emerging Practices"
   event_date: 2025-11-22
   location: "Emerging Practices Studio, Manila"

@@ -4,61 +4,74 @@ permalink: /events-and-activities/:slug/
 ---
 
 {% comment %}
-  Look up this event in your single YAML file
+  Data is an array: site.data.events
+  Find the event by matching the slug field.
 {% endcomment %}
-{% assign e = site.data.events[page.slug] %}
+{% assign event = site.data.events | where: "slug", page.slug | first %}
 
 <article class="container py-5" data-aos="fade-up">
-  <h1 class="mb-3">{{ e.title }}</h1>
+  <h1 class="mb-3">{{ event.title }}</h1>
   <p class="text-muted">
-    {{ e.event_date | date: "%B %-d, %Y" }} &mdash; {{ e.location }}
+    {{ event.event_date | date: "%B %-d, %Y" }} &mdash; {{ event.location }}
   </p>
 
-  {% if e.cover %}
-    <img src="{{ e.cover }}" class="img-fluid mb-4" alt="{{ e.title }}">
+  {% if event.cover %}
+    <img src="{{ event.cover | relative_url }}" class="img-fluid mb-4" alt="{{ event.title }}">
   {% endif %}
 
-  <div class="content mb-4">{{ e.content }}</div>
+  <div class="content mb-4">{{ event.content | markdownify }}</div>
 
-  {% if e.registration_url %}
-    <a href="{{ e.registration_url }}" class="btn btn-primary me-2" target="_blank">
+  {% if event.registration_url %}
+    <a href="{{ event.registration_url }}" class="btn btn-primary me-2" target="_blank">
       Register
     </a>
   {% endif %}
-  {% if e.map_embed %}
-    <div class="map-responsive mb-4">{{ e.map_embed | raw }}</div>
+
+  {% if event.map_embed %}
+    <div class="map-responsive mb-4">{{ event.map_embed | raw }}</div>
   {% endif %}
 
-  {% comment %}
-    Navigation: walk through the keys in your data file
-  {% endcomment %}
-  {% assign keys = site.data.events | map: "first" %}
-  {% assign idx  = keys | index_of: page.slug %}
-  {% assign last = keys.size | minus: 1 %}
-
+  {% comment %} Navigation: use array index {% endcomment %}
+  {% assign events = site.data.events %}
+  {% assign index = events | map: "slug" | index_of: page.slug %}
   <div class="d-flex justify-content-between mt-5 event-navigation">
-    {% if idx < last %}
-      {% assign prev_slug = keys[idx | plus: 1] %}
-      {% assign prev = site.data.events[prev_slug] %}
-      <a href="/events-and-activities/{{ prev_slug }}/" class="btn btn-outline-primary">
-        ← {{ prev.title }}
+    {% if index > 0 %}
+      {% assign prev_event = events[index | minus: 1] %}
+      <a href="/events-and-activities/{{ prev_event.slug }}/" class="btn btn-outline-primary">
+        ← {{ prev_event.title }}
       </a>
     {% else %}
       <span></span>
     {% endif %}
 
-    {% if idx > 0 %}
-      {% assign next_slug = keys[idx | minus: 1] %}
-      {% assign next = site.data.events[next_slug] %}
-      <a href="/events-and-activities/{{ next_slug }}/" class="btn btn-outline-primary">
-        {{ next.title }} →
+    {% if index < events.size | minus: 1 %}
+      {% assign next_event = events[index | plus: 1] %}
+      <a href="/events-and-activities/{{ next_event.slug }}/" class="btn btn-outline-primary">
+        {{ next_event.title }} →
       </a>
     {% endif %}
   </div>
 </article>
 
 <style>
-.map-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-.map-responsive iframe { position: absolute; top:0; left:0; width:100%; height:100%; }
-.event-navigation .btn { min-width: 8rem; }
+  .map-responsive {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+  }
+  .map-responsive iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+  .event-navigation .btn {
+    min-width: 8rem;
+  }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({ duration: 600, once: true });
+  });
+</script>
