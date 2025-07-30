@@ -23,7 +23,7 @@ module Jekyll
       Jekyll.logger.info "gen_events:", "Found #{events.size} events—generating pages."
 
       events.each do |event|
-        slug = event['slug'] || event[:slug]
+        slug = event['slug']
         next unless slug
         site.pages << EventPage.new(site, site.source, slug.to_s, event)
       end
