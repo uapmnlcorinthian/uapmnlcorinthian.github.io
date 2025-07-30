@@ -1,13 +1,7 @@
 ---
 layout: default
-permalink: /events-and-activities/:slug/
 ---
-
-{% comment %}
-  Data is an array: site.data.events
-  Find the event by matching the slug field.
-{% endcomment %}
-{% assign event = site.data.events | where: "slug", page.slug | first %}
+{% assign e = page.event %}
 
 <article class="container py-5" data-aos="fade-up">
   <h1 class="mb-3">{{ event.title }}</h1>
