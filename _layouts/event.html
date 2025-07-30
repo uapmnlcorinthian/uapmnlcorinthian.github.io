@@ -50,11 +50,26 @@
   {% if page.data.content %}
   <div class="event-content mb-4"> {{ page.data.content | markdownify }} </div>
   {% endif %}
-  <div class="d-flex flex-wrap gap-2 mb-4"> {% if page.registration_url %} <a href="{{ page.registration_url }}" class="btn btn-primary btn-sm" target="_blank"> <i class="fa-solid fa-calendar-check me-1"></i> Register Now </a> {% endif %} <a class="btn btn-outline-dark btn-sm" target="_blank"
-   href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ page.title | uri_escape }}&dates={{ page.date | date: "%Y%m%dT090000Z" }}/{{ page.date | date: "%Y%m%dT100000Z" }}&details={{ page.data.content | strip_html | uri_escape }}&location={{ page.location | uri_escape }}"> <i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar </a> <a class="btn btn-outline-info btn-sm" download="{{ page.title | slugify }}.ics"
-         href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ page.title | uri_escape }}%0ADTSTART:{{ page.date | date: '%Y%m%dT090000Z' }}%0ADTEND:{{ page.date | date: '%Y%m%dT100000Z' }}%0ADESCRIPTION:{{ page.data.content | strip_html | uri_escape }}%0ALOCATION:{{ page.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR"> <i class="fa-solid fa-file-export me-1"></i> Download .ICS </a>
-    <button class="btn btn-outline-secondary btn-sm ms-auto" onclick="navigator.share ? navigator.share({ title: '{{ page.title }}', url: '{{ page.url | absolute_url }}' }) : alert('Share not supported on this browser.')"> <i class="fa-solid fa-share-nodes me-1"></i> Share </button>
-  </div>
+<div class="d-flex flex-wrap gap-2 mb-4">
+  {% if page.registration_url %}
+  <a href="{{ page.registration_url }}" class="btn btn-sm btn-outline-primary fw-semibold animate__animated animate__pulse animate__infinite" target="_blank">
+    <i class="fa-solid fa-calendar-check me-1"></i> Register Now
+  </a>
+  {% endif %}
+  <a class="btn btn-sm btn-outline-dark fw-semibold" target="_blank"
+     href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ page.title | uri_escape }}&dates={{ page.date | date: '%Y%m%d' }}T{{ page.start_time | remove: ':' }}00/{{ page.date | date: '%Y%m%d' }}T{{ page.end_time | remove: ':' }}00&details={{ page.content | strip_html | uri_escape }}&location={{ page.location | uri_escape }}">
+    <i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar
+  </a>
+  <a class="btn btn-sm btn-outline-info fw-semibold" download="{{ page.title | slugify }}.ics"
+     href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ page.title | uri_escape }}%0ADTSTART:{{ page.date | date: '%Y%m%d' }}{{ page.start_time | remove: ':' }}00Z%0ADTEND:{{ page.date | date: '%Y%m%d' }}{{ page.end_time | remove: ':' }}00Z%0ADESCRIPTION:{{ page.content | strip_html | uri_escape }}%0ALOCATION:{{ page.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR">
+    <i class="fa-solid fa-file-export me-1"></i> Download .ICS
+  </a>
+  <button class="btn btn-sm btn-outline-secondary fw-semibold ms-auto"
+          onclick="navigator.share ? navigator.share({ title: '{{ page.title }}', url: '{{ page.url | absolute_url }}' }) : alert('Share not supported on this browser.')">
+    <i class="fa-solid fa-share-nodes me-1"></i> Share
+  </button>
+</div>
+
   {% if page.map_embed %}
   <div class="map-responsive ratio ratio-4x3 mb-4" style="max-width: 400px;"> {{ page.map_embed | raw }} </div>
   {% endif %}

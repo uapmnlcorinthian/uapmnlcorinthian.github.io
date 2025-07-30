@@ -1,0 +1,111 @@
+
+
+<section id="heroAndStats"
+  class="position-relative w-100 d-flex flex-column justify-content-center align-items-center text-center py-5"
+  style="background-size: cover; background-position: center;"
+>
+  <div class="p-5 rounded-4" style="background-color: rgba(0, 0, 0, 0.4);">
+  <div class="content container text-white">
+     <h2>Be a Member</h2>
+    <p class="lead">Connect with the Philippines’ top architects—exclusive events, mentorship, and resources await.</p>
+    <a href="{{ site.baseurl }}/membership/" class="btn btn-light text-dark btn-lg mb-4 animate__animated animate__pulse animate__infinite">  <i class="fa-solid fa-user-plus me-2"></i>Register Now</a>
+    <div class="stats d-flex flex-wrap justify-content-center">
+      <div class="stat col-6 col-sm-4 col-md-3 py-2">
+        <h3 id="stat-members">300</h3>
+        <small>Members</small>
+      </div>
+      <div class="stat col-6 col-sm-4 col-md-3 py-2">
+        <h3 id="stat-events">10</h3>
+        <small>Events</small>
+      </div>
+      <div class="stat col-6 col-sm-4 col-md-3 py-2">
+        <h3 id="stat-workshops">5</h3>
+        <small>Workshops</small>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  // Configuration
+  const config = {
+    bgImages: [
+      'https://plus.unsplash.com/premium_photo-1681823251498-d79148213f39?q=80&w=2075&auto=format&fit=crop',
+      'https://plus.unsplash.com/premium_photo-1663011497788-6b105a5288f7?q=80&w=2070&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1578894650627-e533030868df?q=80&w=1974&auto=format&fit=crop'
+    ],
+    bgInterval: 15000,         // ms between background changes
+    stats: [                   // stats configuration
+      { id: 'stat-members',   start: 300, end: 552, duration: 4000 },
+      { id: 'stat-events',    start: 10,  end: 75,  duration: 4000 },
+      { id: 'stat-workshops', start: 5,   end: 30,  duration: 4000 }
+    ],
+    statInterval: 75,         // ms per increment step
+    postMax: {                // after reaching max, random bumps
+      minIncrement: 1,
+      maxIncrement: 3,
+      minInterval: 20000,     // 20 seconds
+      maxInterval: 60000     // 60 seconds
+    }
+  };
+
+  // Hero background rotation
+  const hero = document.getElementById('heroAndStats');
+  let bgIndex = 0;
+  function setBackground() {
+    hero.style.backgroundImage = `url(${config.bgImages[bgIndex]})`;
+    bgIndex = (bgIndex + 1) % config.bgImages.length;
+  }
+  setBackground();
+  setInterval(setBackground, config.bgInterval);
+
+  // Animate stat via controlled increments
+  function animateStat({ id, start, end, duration }) {
+    const el = document.getElementById(id);
+    let value = start;
+    const totalSteps = Math.ceil(duration / config.statInterval);
+    const increment = (end - start) / totalSteps;
+    let stepCount = 0;
+    const timer = setInterval(() => {
+      stepCount++;
+      value += increment;
+      if (stepCount >= totalSteps) {
+        value = end;
+        clearInterval(timer);
+        schedulePostMax(id);
+      }
+      el.textContent = Math.floor(value);
+    }, config.statInterval);
+  }
+
+  // Schedule random post-max increments
+  function schedulePostMax(id) {
+    const el = document.getElementById(id);
+    function bump() {
+      const inc = Math.floor(Math.random() * (config.postMax.maxIncrement - config.postMax.minIncrement + 1)) + config.postMax.minIncrement;
+      const current = parseInt(el.textContent, 10);
+      el.textContent = current + inc;
+      scheduleNext();
+    }
+    function scheduleNext() {
+      const interval = Math.random() * (config.postMax.maxInterval - config.postMax.minInterval) + config.postMax.minInterval;
+      setTimeout(bump, interval);
+    }
+    scheduleNext();
+  }
+
+  // Trigger stats on scroll into view
+  function onScroll() {
+    const rect = hero.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.75) {
+      config.stats.forEach(animateStat);
+      window.removeEventListener('scroll', onScroll);
+    }
+  }
+  window.addEventListener('scroll', onScroll);
+  // In case already visible
+  onScroll();
+})();
+</script>

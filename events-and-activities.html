@@ -16,7 +16,7 @@ permalink: /events-and-activities/
     </p>
     <div class="d-flex flex-wrap gap-2 mb-4 animate__animated animate__fadeInUp animate__delay-2s">
       {% if latest.registration_url %}
-      <a href="{{ latest.registration_url }}" class="btn btn-sm btn-light text-dark fw-semibold" target="_blank">
+      <a href="{{ latest.registration_url }}" class="btn btn-sm btn-light text-dark fw-semibold animate__animated animate__pulse animate__infinite" target="_blank">
         <i class="fa-solid fa-calendar-check me-1"></i> Register Now
       </a>
       {% endif %}
@@ -25,7 +25,7 @@ permalink: /events-and-activities/
         <i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar
       </a>
       <a class="btn btn-sm btn-outline-info fw-semibold text-white border-white" download="{{ latest.title | slugify }}.ics"
-         href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ latest.title | uri_escape }}%0ADTSTART:{{ latest.date | date: '%Y%m%d' }}{{ latest.start_time | remove: ':' }}00ZZ' }}%0ADTEND:{{ latest.date | date: '%Y%m%d' }}{{ latest.end_time | remove: ':' }}00ZZ' }}%0ADESCRIPTION:{{ latest.content | strip_html | uri_escape }}%0ALOCATION:{{ latest.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR">
+         href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ latest.title | uri_escape }}%0ADTSTART:{{ latest.date | date: '%Y%m%d' }}{{ latest.start_time | remove: ':' }}00Z%0ADTEND:{{ latest.date | date: '%Y%m%d' }}{{ latest.end_time | remove: ':' }}00Z%0ADESCRIPTION:{{ latest.content | strip_html | uri_escape }}%0ALOCATION:{{ latest.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR">
         <i class="fa-solid fa-file-export me-1"></i> Download .ICS
       </a>
       <button class="btn btn-sm btn-light text-dark fw-semibold ms-auto" onclick="navigator.share ? navigator.share({ title: '{{ latest.title }}', url: '{{ latest.url | absolute_url }}' }) : alert('Share not supported on this browser.')">
@@ -82,7 +82,7 @@ permalink: /events-and-activities/
               <div class="modal-footer">
                 <a href="{{ e.url }}" class="btn btn-secondary">Show More</a>
                 {% if e.registration_url %}
-                <a href="{{ e.registration_url }}" class="btn btn-sm btn-light text-dark fw-semibold" target="_blank">
+                <a href="{{ e.registration_url }}" class="btn btn-sm btn-light text-dark fw-semibold animate__animated animate__pulse animate__infinite" target="_blank">
                   <i class="fa-solid fa-calendar-check me-1"></i> Register Now
                 </a>
                 {% endif %}
@@ -105,7 +105,7 @@ permalink: /events-and-activities/
     {% endfor %}
   </div>
 </section>
-<!-- Hero banner -->
+<!-- Hero banner END -->
 
 <style>
 /* Event Gallery Hover */

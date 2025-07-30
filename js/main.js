@@ -518,4 +518,5 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (c > y + 10) h.classList.add('hide-up');
         y = c
     })
+	
 });

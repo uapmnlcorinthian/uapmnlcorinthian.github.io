@@ -12,6 +12,7 @@ sass:
   sass_dir: _sass
   style: compressed
 timezone: Asia/Manila
+future: true  # ← Add this line
 
 # ─── Default Layouts for Types ──────────────────────────────────
 defaults:
