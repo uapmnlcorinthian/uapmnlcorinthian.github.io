@@ -1,16 +1,16 @@
 # ─── Site Settings ────────────────────────────────────────────────
 title: "UAP Manila Corinthian Chapter"
 description: "Premier community of architectural professionals in Manila. Join events, workshops, and networking opportunities."
-url: "http://uapmnlcorinthian.github.io"    # no trailing slash
-baseurl: ""                                 # your repo subpath
+url: "http://uapmnlcorinthian.github.io"
+baseurl: ""
 
 # ─── Build Options ─────────────────────────────────────────────
 markdown: kramdown
-permalink: pretty                           # /about/ instead of /about.html
+permalink: pretty
 highlighter: rouge
 sass:
   sass_dir: _sass
-  style: compressed                         # Minify CSS output
+  style: compressed
 timezone: Asia/Manila
 
 # ─── Collections ─────────────────────────────────────────────────
