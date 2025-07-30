@@ -52,5 +52,8 @@ jobs:
     environment:
       name: github-pages
     steps:
+      - name: Checkout Pages artifact
+        uses: actions/download-pages-artifact@v1
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
