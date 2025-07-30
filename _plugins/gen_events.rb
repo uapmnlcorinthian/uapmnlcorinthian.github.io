@@ -13,17 +13,15 @@ module Jekyll
       Jekyll.logger.info "gen_events:", "Looking for #{data_path}"
       return unless File.exist?(data_path)
 
-      raw = YAML.load_file(data_path)
-      unless raw.is_a?(Array)
+      events = YAML.load_file(data_path)
+      unless events.is_a?(Array)
         Jekyll.logger.warn "gen_events:", "events.yml is not an Array—skipping"
         return
       end
-
-      events = raw
       Jekyll.logger.info "gen_events:", "Found #{events.size} events—generating pages."
 
       events.each do |event|
-        slug = event['slug']
+        slug = event['slug'] || event[:slug]
         next unless slug
         site.pages << EventPage.new(site, site.source, slug.to_s, event)
       end
