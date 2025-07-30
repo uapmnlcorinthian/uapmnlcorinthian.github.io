@@ -4,22 +4,22 @@
   class="position-relative w-100 d-flex flex-column justify-content-center align-items-center text-center py-5"
   style="background-size: cover; background-position: center;"
 >
-  <div class="p-5 rounded-4" style="background-color: rgba(0, 0, 0, 0.4);">
-  <div class="content container text-white">
+  <div class="position-absolute inset-0" ></div>
+  <div class="content container text-white rounded-4" style="padding: 3rem; background-color: rgba(0, 0, 0, 0.5);">
      <h2>Be a Member</h2>
     <p class="lead">Connect with the Philippines’ top architects—exclusive events, mentorship, and resources await.</p>
     <a href="{{ site.baseurl }}/membership/" class="btn btn-light text-dark btn-lg mb-4 animate__animated animate__pulse animate__infinite">  <i class="fa-solid fa-user-plus me-2"></i>Register Now</a>
     <div class="stats d-flex flex-wrap justify-content-center">
       <div class="stat col-6 col-sm-4 col-md-3 py-2">
-        <h3 id="stat-members">300</h3>
+        <h3 id="stat-members">+300</h3>
         <small>Members</small>
       </div>
       <div class="stat col-6 col-sm-4 col-md-3 py-2">
-        <h3 id="stat-events">10</h3>
+        <h3 id="stat-events">+10</h3>
         <small>Events</small>
       </div>
       <div class="stat col-6 col-sm-4 col-md-3 py-2">
-        <h3 id="stat-workshops">5</h3>
+        <h3 id="stat-workshops">+5</h3>
         <small>Workshops</small>
       </div>
     </div>
@@ -38,16 +38,16 @@
     ],
     bgInterval: 15000,         // ms between background changes
     stats: [                   // stats configuration
-      { id: 'stat-members',   start: 300, end: 552, duration: 4000 },
-      { id: 'stat-events',    start: 10,  end: 75,  duration: 4000 },
-      { id: 'stat-workshops', start: 5,   end: 30,  duration: 4000 }
+      { id: 'stat-members',   start: 50, end: 552, duration: 12000 },
+      { id: 'stat-events',    start: 2,  end: 75,  duration: 10000 },
+      { id: 'stat-workshops', start: 1,   end: 50,  duration: 8000 }
     ],
-    statInterval: 75,         // ms per increment step
+    statInterval: 90,         // ms per increment step
     postMax: {                // after reaching max, random bumps
       minIncrement: 1,
       maxIncrement: 3,
-      minInterval: 20000,     // 20 seconds
-      maxInterval: 60000     // 60 seconds
+      minInterval: 10000,     // 10 seconds
+      maxInterval: 90000     // 90 seconds
     }
   };
 
@@ -76,7 +76,7 @@
         clearInterval(timer);
         schedulePostMax(id);
       }
-      el.textContent = Math.floor(value);
+      el.textContent = '+' + Math.floor(value);
     }, config.statInterval);
   }
 
@@ -86,7 +86,7 @@
     function bump() {
       const inc = Math.floor(Math.random() * (config.postMax.maxIncrement - config.postMax.minIncrement + 1)) + config.postMax.minIncrement;
       const current = parseInt(el.textContent, 10);
-      el.textContent = current + inc;
+      el.textContent = '+' + (current + inc);
       scheduleNext();
     }
     function scheduleNext() {
