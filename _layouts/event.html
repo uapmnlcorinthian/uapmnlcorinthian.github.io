@@ -1,81 +1,92 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
-  {% include head.html %}
-
+{% include head.html %}
 </head>
 <body>
-  {% include header.html %}
-
-  <!-- Back-to-top anchor -->
-  <div id="top"></div>
-
-  <div id="mainContent" class="container-fluid px-0">
-    <article class="container py-5" data-aos="fade-up">
-      <h1 class="mb-3">{{ page.title }}</h1>
-      <p class="text-muted">
-        {{ page.date | date: "%B %-d, %Y" }}
-        {% if page.location %}&mdash; {{ page.location }}{% endif %}
-      </p>
-
-      {% if page.cover %}
-        <img src="{{ page.cover | relative_url }}"
-             class="img-fluid mb-4"
-             alt="{{ page.title }}">
-      {% endif %}
-
-      <!-- Render description from front matter -->
-      <div class="content mb-4">
-        {{ page.data.content | markdownify }}
-      </div>
-
-      {% if page.registration_url %}
-        <a href="{{ page.registration_url }}"
-           class="btn btn-primary me-2"
-           target="_blank">
-          Register
-        </a>
-      {% endif %}
-
-      {% if page.map_embed %}
-        <div class="map-responsive mb-4">
-          {{ page.map_embed | raw }}
+{% include header.html %}
+<div id="top"></div>
+{% if page.cover %} 
+<!-- Hero Cover Section -->
+<section class="parallax-hero mb-5" style="background-image: url('{{ page.cover | relative_url }}');" data-aos="fade-in">
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50"></div>
+  <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-white position-relative text-center">
+    <h1 class="display-4 fw-bold animate__animated animate__fadeInDown">{{ page.title }}</h1>
+    <p class="lead animate__animated animate__fadeInUp animate__delay-1s"> {{ page.date | date: "%B %-d, %Y" }}{% if page.location %} &mdash; {{ page.location }}{% endif %} </p>
+    {% if page.tags %}
+    <div class="mt-3"> {% for tag in page.tags %} <span class="badge bg-primary me-1">#{{ tag }}</span> {% endfor %} </div>
+    {% endif %} </div>
+</section>
+{% endif %}
+<main id="mainContent" class="container py-5" data-aos="fade-up"> {% unless page.cover %}
+  <h1 class="mb-3">{{ page.title }}</h1>
+  <p class="text-muted"> {{ page.date | date: "%B %-d, %Y" }}{% if page.location %} &mdash; {{ page.location }}{% endif %} </p>
+  {% endunless %}
+  
+  {% if page.image_gallery %}
+  <div class="row row-cols-1 row-cols-md-2 g-4 mb-4"> {% for img in page.image_gallery %}
+    <div class="col">
+      <div class="card shadow-sm h-100"> <a href="{{ img.img }}" data-bs-toggle="modal" data-bs-target="#modal-img-{{ forloop.index }}"> <img src="{{ img.img }}" class="card-img-top" alt="{{ img.caption }}"> </a>
+        <div class="card-body">
+          <p class="card-text small text-muted">{{ img.caption }}</p>
         </div>
-      {% endif %}
-
-      {% comment %} Navigation using the events collection {% endcomment %}
-      {% assign slugs    = site.events | map: "slug" %}
-      {% assign idx      = slugs | index_of: page.slug %}
-      {% assign prev_idx = idx | minus: 1 %}
-      {% assign next_idx = idx | plus: 1 %}
-      {% assign last_idx = site.events | size | minus: 1 %}
-
-      <div class="d-flex justify-content-between mt-5 event-navigation">
-        {% if prev_idx >= 0 %}
-          {% assign prev = site.events[prev_idx] %}
-          <a href="{{ prev.url }}" class="btn btn-outline-primary">
-            ← {{ prev.title }}
-          </a>
-        {% else %}
-          <span></span>
-        {% endif %}
-
-        {% if idx < last_idx %}
-          {% assign nxt = site.events[next_idx] %}
-          <a href="{{ nxt.url }}" class="btn btn-outline-primary">
-            {{ nxt.title }} →
-          </a>
-        {% endif %}
       </div>
-    </article>
+    </div>
+    
+    <!-- Modal Lightbox -->
+    <div class="modal fade" id="modal-img-{{ forloop.index }}" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-body p-0"> <img src="{{ img.img }}" class="img-fluid w-100 rounded-0" alt="{{ img.caption }}"> </div>
+          <div class="modal-footer border-0 justify-content-center"> <small>{{ img.caption }}</small>
+            <button type="button" class="btn btn-outline-light btn-sm ms-auto" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %} </div>
+  {% endif %}
+  
+  {% if page.data.content %}
+  <div class="event-content mb-4"> {{ page.data.content | markdownify }} </div>
+  {% endif %}
+  <div class="d-flex flex-wrap gap-2 mb-4"> {% if page.registration_url %} <a href="{{ page.registration_url }}" class="btn btn-primary btn-sm" target="_blank"> <i class="fa-solid fa-calendar-check me-1"></i> Register Now </a> {% endif %} <a class="btn btn-outline-dark btn-sm" target="_blank"
+   href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ page.title | uri_escape }}&dates={{ page.date | date: "%Y%m%dT090000Z" }}/{{ page.date | date: "%Y%m%dT100000Z" }}&details={{ page.data.content | strip_html | uri_escape }}&location={{ page.location | uri_escape }}"> <i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar </a> <a class="btn btn-outline-info btn-sm" download="{{ page.title | slugify }}.ics"
+         href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ page.title | uri_escape }}%0ADTSTART:{{ page.date | date: '%Y%m%dT090000Z' }}%0ADTEND:{{ page.date | date: '%Y%m%dT100000Z' }}%0ADESCRIPTION:{{ page.data.content | strip_html | uri_escape }}%0ALOCATION:{{ page.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR"> <i class="fa-solid fa-file-export me-1"></i> Download .ICS </a>
+    <button class="btn btn-outline-secondary btn-sm ms-auto" onclick="navigator.share ? navigator.share({ title: '{{ page.title }}', url: '{{ page.url | absolute_url }}' }) : alert('Share not supported on this browser.')"> <i class="fa-solid fa-share-nodes me-1"></i> Share </button>
   </div>
-
-  {% include footer.html %}
-  {% include scripts.html %}
-
-  <!-- Back to Top Button -->
-  <a id="btnTop" href="#top" class="btn btn-secondary shadow" aria-label="Back to top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </a>
+  {% if page.map_embed %}
+  <div class="map-responsive ratio ratio-4x3 mb-4" style="max-width: 400px;"> {{ page.map_embed | raw }} </div>
+  {% endif %}
+  
+  {% assign sorted = site.events | sort: 'date' %}
+  {% assign idx = sorted | map: 'url' | index_of: page.url %}
+  {% assign prev_idx = idx | minus: 1 %}
+  {% assign prev = sorted[prev_idx] %}
+  {% assign next_idx = idx | plus: 1 %}
+  {% assign next = sorted[next_idx] %}
+  
+  {% if prev and prev.url == page.url %}{% assign prev = nil %}{% endif %}
+  {% if next and next.url == page.url %}{% assign next = nil %}{% endif %}
+  <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top gap-3"> {% if prev %} <a href="{{ prev.url }}" class="btn btn-outline-secondary btn-sm"> ← {{ prev.title }} </a> {% else %}<span></span>{% endif %} <a href="/events-and-activities/" class="btn btn-outline-dark btn-sm"> <i class="fa-solid fa-list me-1"></i> View All Events </a> {% if next %} <a href="{{ next.url }}" class="btn btn-outline-secondary btn-sm"> {{ next.title }} → </a> {% endif %} </div>
+</main>
+{% include footer.html %}
+  {% include scripts.html %} <a id="btnTop" href="#top" class="btn btn-secondary shadow position-fixed bottom-0 end-0 m-3 z-3" data-aos="fade-up" aria-label="Back to top"> <i class="fa-solid fa-arrow-up"></i> </a>
+<style>
+    .parallax-hero {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 60vh;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .parallax-hero { background-attachment: scroll; }
+    }
+    .event-content p { margin-bottom: 1rem; }
+    .event-content h2, .event-content h3 { margin-top: 2rem; }
+    .map-responsive iframe { width: 100%; height: 100%; border: 0; }
+  </style>
 </body>
 </html>

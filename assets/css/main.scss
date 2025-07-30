@@ -263,23 +263,3 @@ header.scrolled {
 
 //Events CSS
 
-.blur-up {
-  filter: blur(10px);
-  transition: filter 0.5s;
-}
-.blur-up.loaded {
-  filter: none;
-}
-
-.event-item img {
-  transition: transform 0.3s;
-}
-.event-item:hover img {
-  transform: scale(1.05);
-}
-
-
-#filterLoader {
-  display: none;
-  margin: 1rem 0;
-}

@@ -2,6 +2,8 @@
 - slug: cpd-building-code-2025-updates
   title: "CPD Building Code 2025 Updates"
   event_date: 2025-12-30
+  start_time: "13:00"
+  end_time: "16:00"
   location: "UAP MCC Office, Manila"
   cover: "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/cpd-building-code-2025-updates"
@@ -22,6 +24,8 @@
 - slug: workshop-revit-interiors-beginners-2025-02
   title: "Workshop: Revit Interiors for Beginners"
   event_date: 2025-02-20
+  start_time: "13:00"
+  end_time: "16:00"
   location: "Design Studio, Makati"
   cover: "https://plus.unsplash.com/premium_photo-1661759013744-4754d402459d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/workshop-revit-interiors-beginners-2025-02"
@@ -42,6 +46,8 @@
 - slug: bim-coordination-summit-2025-09
   title: "BIM Coordination Summit 2025"
   event_date: 2025-09-15
+  start_time: "15:00"
+  end_time: "20:00"
   location: "SMX Convention Center, Pasay"
   cover: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/bim-coordination-summit-2025-09"
@@ -62,6 +68,8 @@
 - slug: cpd-sustainable-facades-2025-01
   title: "CPD Sustainable Facades"
   event_date: 2025-01-25
+  start_time: "15:00"
+  end_time: "21:00"
   location: "UAP Auditorium, Manila"
   cover: "https://images.unsplash.com/photo-1608048608029-99c772d199ed?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/cpd-sustainable-facades-2025-01"
@@ -82,6 +90,8 @@
 - slug: csr-back-to-school-build-2025-10
   title: "CSR Back‑to‑School Build"
   event_date: 2025-10-05
+  start_time: "18:00"
+  end_time: "21:00"
   location: "Barangay Hall, Quezon City"
   cover: "https://images.unsplash.com/photo-1608048608029-99c772d199ed?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/csr-back-to-school-build-2025-10"
@@ -102,6 +112,8 @@
 - slug: design-talk-adaptive-reuse-2025-04
   title: "Design Talk: Adaptive Reuse"
   event_date: 2025-04-18
+  start_time: "18:00"
+  end_time: "21:00"
   location: "UAP MCC Conference Room"
   cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/design-talk-adaptive-reuse-2025-04"
@@ -122,6 +134,8 @@
 - slug: fellowship-midyear-socials-2025-06
   title: "Fellowship Midyear Socials"
   event_date: 2025-06-12
+  start_time: "18:00"
+  end_time: "23:00"
   location: "Rooftop Garden, Manila"
   cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/fellowship-midyear-socials-2025-06"
@@ -142,6 +156,8 @@
 - slug: gmm-1-2025
   title: "General Membership Meeting 1"
   event_date: 2025-01-18
+  start_time: "08:00"
+  end_time: "12:00"
   location: "Manila Hotel"
   cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/gmm-1-2025"
@@ -162,6 +178,8 @@
 - slug: gmm-2-2024
   title: "General Membership Meeting 2"
   event_date: 2024-02-22
+  start_time: "11:00"
+  end_time: "18:00"
   location: "Makati Shangri‑La"
   cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/gmm-2-2025"
@@ -172,9 +190,9 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "/assets/images/events/gmm-2-2025-1.jpg"
+    - img: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       caption: "Keynote address"
-    - img: "/assets/images/events/gmm-2-2025-2.jpg"
+    - img: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       caption: "Committee breakouts"
   content: >
     The second GMM reviewed first‑quarter activities and upcoming initiatives.
@@ -182,6 +200,8 @@
 - slug: site-tour-heritage-iloilo-2025-11
   title: "Site Tour: Heritage Iloilo"
   event_date: 2025-11-10
+  start_time: "08:00"
+  end_time: "17:00"
   location: "Iloilo Heritage District"
   cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/site-tour-heritage-iloilo-2025-11"
@@ -202,6 +222,8 @@
 - slug: site-tour-manila-civic-center-2025-03
   title: "Site Tour: Manila Civic Center"
   event_date: 2025-03-12
+  start_time: "08:00"
+  end_time: "15:00"
   location: "Manila Civic Center"
   cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/site-tour-manila-civic-center-2025-03"
@@ -222,6 +244,8 @@
 - slug: awards-night-year-end-2025
   title: "Awards Night & Year‑End Celebration"
   event_date: 2025-12-18
+  start_time: "20:00"
+  end_time: "23:00"
   location: "Manila Hotel Ballroom"
   cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/awards-night-year-end-2025"
@@ -242,6 +266,8 @@
 - slug: csr-coastal-cleanup-2025
   title: "CSR Coastal Cleanup"
   event_date: 2025-07-20
+  start_time: "11:00"
+  end_time: "17:00"
   location: "Baywalk, Manila"
   cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/csr-coastal-cleanup-2025"
@@ -262,6 +288,8 @@
 - slug: workshop-parametric-grasshopper-2025-08
   title: "Workshop: Parametric Grasshopper"
   event_date: 2025-08-08
+  start_time: "12:00"
+  end_time: "18:00"
   location: "UAP Lab, Manila"
   cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/workshop-parametric-grasshopper-2025-08"
@@ -282,6 +310,8 @@
 - slug: outreach-noche-buena-2025
   title: "Outreach: Noche Buena Drive"
   event_date: 2024-12-20
+  start_time: "08:00"
+  end_time: "12:00"
   location: "Mandaluyong City"
   cover: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=1862&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/outreach-noche-buena-2025"
@@ -302,6 +332,8 @@
 - slug: open-studio-visit-emerging-practices-2025-11
   title: "Open Studio Visit: Emerging Practices"
   event_date: 2025-11-22
+  start_time: "13:00"
+  end_time: "21:00"
   location: "Emerging Practices Studio, Manila"
   cover: "https://images.unsplash.com/photo-1608048608029-99c772d199ed?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   registration_url: "https://example.com/register/open-studio-visit-emerging-practices-2025-11"
