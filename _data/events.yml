@@ -1,805 +1,6 @@
 # _data/events.yml
-- slug: cpd-building-code-2025-updates
-  title: "CPD Building Code 2025 Updates"
-  event_date: 2025-11-30
-  start_time: "13:00"
-  end_time: "16:00"
-  location: "UAP MCC Office, Manila"
-  cover: "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/cpd-building-code-2025-updates"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=UAP+MCC+Office,+Manila&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Speaker presenting code changes"
-    - img: "https://images.unsplash.com/photo-1423592707957-3b212afa6733?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Attendees in discussion"
-    - img: "https://plus.unsplash.com/premium_photo-1661335257817-4552acab9656?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Image Placeholder 1"
-    - img: "https://plus.unsplash.com/premium_photo-1682974359836-340043a2599a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Image Placeholder 2"
-    - img: "https://plus.unsplash.com/premium_photo-1682974359934-dd2a5bfa20b2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Image Placeholder 3"
-  content: >
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-    > This is a blockquote.  
-    > It can span multiple lines.
-
-
-    - [ ] Incomplete task
-    [Link text](https://example.com)  
-    [Link with title](https://example.com "Title") 
-    ```ruby
-    # This is a Ruby code block
-    puts 'Hello, Jekyll!'
-    ---  
-    ***  
-    ___
-
-
-
-
-- slug: workshop-revit-interiors-beginners-2025-02
-  title: "Workshop: Revit Interiors for Beginners"
-  event_date: 2025-02-20
-  start_time: "13:00"
-  end_time: "16:00"
-  location: "Design Studio, Makati"
-  cover: "https://plus.unsplash.com/premium_photo-1661759013744-4754d402459d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/workshop-revit-interiors-beginners-2025-02"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=Design+Studio,+Makati&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/workshop-revit-interiors-beginners-2025-02-1.jpg"
-      caption: "Hands-on Revit session"
-    - img: "/assets/images/events/workshop-revit-interiors-beginners-2025-02-2.jpg"
-      caption: "Participant modeling interior layout"
-  content: >
-    Step‑by‑step hands‑on introduction to Revit Interior tools, templates, and best practices for architectural design.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: bim-coordination-summit-2025-09
-  title: "BIM Coordination Summit 2025"
-  event_date: 2025-09-15
-  start_time: "15:00"
-  end_time: "20:00"
-  location: "SMX Convention Center, Pasay"
-  cover: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/bim-coordination-summit-2025-09"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=SMX+Convention+Center,+Pasay&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/bim-coordination-summit-2025-09-1.jpg"
-      caption: "Panel discussion on clash detection"
-    - img: "/assets/images/events/bim-coordination-summit-2025-09-2.jpg"
-      caption: "Networking among BIM professionals"
-  content: >
-    A full‑day summit on interdisciplinary BIM workflows, clash resolution, and collaborative project delivery.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: cpd-sustainable-facades-2025-01
-  title: "CPD Sustainable Facades"
-  event_date: 2025-01-25
-  start_time: "15:00"
-  end_time: "21:00"
-  location: "UAP Auditorium, Manila"
-  cover: "https://images.unsplash.com/photo-1608048608029-99c772d199ed?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/cpd-sustainable-facades-2025-01"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=UAP+Auditorium,+Manila&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/cpd-sustainable-facades-2025-01-1.jpg"
-      caption: "Innovative façade mockups"
-    - img: "/assets/images/events/cpd-sustainable-facades-2025-01-2.jpg"
-      caption: "Speaker on material selection"
-  content: >
-    Continuing professional development on eco‑friendly façade systems, materials, and performance testing.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: csr-back-to-school-build-2025-10
-  title: "CSR Back‑to‑School Build"
-  event_date: 2025-10-05
-  start_time: "18:00"
-  end_time: "21:00"
-  location: "Barangay Hall, Quezon City"
-  cover: "https://images.unsplash.com/photo-1608048608029-99c772d199ed?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/csr-back-to-school-build-2025-10"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=Quezon+City+Barangay+Hall&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/csr-back-to-school-build-2025-10-1.jpg"
-      caption: "Volunteers assembling desks"
-    - img: "/assets/images/events/csr-back-to-school-build-2025-10-2.jpg"
-      caption: "Completed learning station"
-  content: >
-    Community service project constructing study desks and learning spaces for underprivileged students.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: design-talk-adaptive-reuse-2025-04
-  title: "Design Talk: Adaptive Reuse"
-  event_date: 2025-04-18
-  start_time: "18:00"
-  end_time: "21:00"
-  location: "UAP MCC Conference Room"
-  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/design-talk-adaptive-reuse-2025-04"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=UAP+MCC+Conference+Room&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/design-talk-adaptive-reuse-2025-04-1.jpg"
-      caption: "Before-and-after case study"
-    - img: "/assets/images/events/design-talk-adaptive-reuse-2025-04-2.jpg"
-      caption: "Panel Q&A session"
-  content: >
-    Expert insights on repurposing heritage and industrial structures for modern use.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: fellowship-midyear-socials-2025-06
-  title: "Fellowship Midyear Socials"
-  event_date: 2025-06-12
-  start_time: "18:00"
-  end_time: "23:00"
-  location: "Rooftop Garden, Manila"
-  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/fellowship-midyear-socials-2025-06"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=Rooftop+Garden,+Manila&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/fellowship-midyear-socials-2025-06-1.jpg"
-      caption: "Networking under the stars"
-    - img: "/assets/images/events/fellowship-midyear-socials-2025-06-2.jpg"
-      caption: "Live acoustic performance"
-  content: >
-    An informal gathering to connect members, share experiences, and build community.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: gmm-1-2025
-  title: "General Membership Meeting 1"
-  event_date: 2025-01-18
-  start_time: "08:00"
-  end_time: "12:00"
-  location: "Manila Hotel"
-  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/gmm-1-2025"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=Manila+Hotel&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/gmm-1-2025-1.jpg"
-      caption: "Opening program"
-    - img: "/assets/images/events/gmm-1-2025-2.jpg"
-      caption: "Oath‑taking"
-  content: >
-    The first GMM of 2025 focused on programs, committees, and calendar alignment.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: gmm-2-2024
-  title: "General Membership Meeting 2"
-  event_date: 2024-02-22
-  start_time: "11:00"
-  end_time: "18:00"
-  location: "Makati Shangri‑La"
-  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/gmm-2-2025"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=Makati+Shangri-La&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Keynote address"
-    - img: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Committee breakouts"
-  content: >
-    The second GMM reviewed first‑quarter activities and upcoming initiatives.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: site-tour-heritage-iloilo-2025-11
-  title: "Site Tour: Heritage Iloilo"
-  event_date: 2025-11-10
-  start_time: "08:00"
-  end_time: "17:00"
-  location: "Iloilo Heritage District"
-  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/site-tour-heritage-iloilo-2025-11"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=Iloilo+Heritage+District&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/site-tour-heritage-iloilo-2025-11-1.jpg"
-      caption: "Historic church façade"
-    - img: "/assets/images/events/site-tour-heritage-iloilo-2025-11-2.jpg"
-      caption: "Walking group"
-  content: >
-    Guided tour of Iloilo’s colonial architecture and conservation efforts.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: site-tour-manila-civic-center-2025-03
-  title: "Site Tour: Manila Civic Center"
-  event_date: 2025-03-12
-  start_time: "08:00"
-  end_time: "15:00"
-  location: "Manila Civic Center"
-  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/site-tour-manila-civic-center-2025-03"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=Manila+Civic+Center&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/site-tour-manila-civic-center-2025-03-1.jpg"
-      caption: "City hall façade"
-    - img: "/assets/images/events/site-tour-manila-civic-center-2025-03-2.jpg"
-      caption: "Group photo"
-  content: >
-    Architectural walkthrough of the Manila Civic Center’s landmark buildings.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: awards-night-year-end-2025
-  title: "Awards Night & Year‑End Celebration"
-  event_date: 2025-12-18
-  start_time: "20:00"
-  end_time: "23:00"
-  location: "Manila Hotel Ballroom"
-  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/awards-night-year-end-2025"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=Manila+Hotel+Ballroom&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/awards-night-year-end-2025-1.jpg"
-      caption: "Award presentation"
-    - img: "/assets/images/events/awards-night-year-end-2025-2.jpg"
-      caption: "Dinner reception"
-  content: >
-    Gala event recognizing outstanding contributions and closing the year in style.
-    ## Gala Night is best
-
-     Sub Heading test 123
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.  
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Integer euismod, nunc vitae 
-      - Curabitur euismod, nunc vitae 
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-    ***
-    1. Sed at lectus nec ante tincidunt dictum.  
-    2. Praesent vitae sapien sed nisi convallis volutpat.
-
-    Mauris cursus, `mi non aliquet molestie, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-    > This is a blockquote.  
-    > It can span multiple lines.
-
-- slug: csr-coastal-cleanup-2025
-  title: "CSR Coastal Cleanup"
-  event_date: 2025-07-20
-  start_time: "11:00"
-  end_time: "17:00"
-  location: "Baywalk, Manila"
-  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/csr-coastal-cleanup-2025"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=Baywalk,+Manila&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/csr-coastal-cleanup-2025-1.jpg"
-      caption: "Volunteers cleaning shoreline"
-    - img: "/assets/images/events/csr-coastal-cleanup-2025-2.jpg"
-      caption: "Collected waste bags"
-  content: >
-    Volunteer-driven coastal cleanup to promote environmental stewardship.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: workshop-parametric-grasshopper-2025-08
-  title: "Workshop: Parametric Grasshopper"
-  event_date: 2025-08-08
-  start_time: "12:00"
-  end_time: "18:00"
-  location: "UAP Lab, Manila"
-  cover: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/workshop-parametric-grasshopper-2025-08"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=UAP+Lab,+Manila&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/workshop-parametric-grasshopper-2025-08-1.jpg"
-      caption: "Algorithmic model demo"
-    - img: "/assets/images/events/workshop-parametric-grasshopper-2025-08-2.jpg"
-      caption: "Participant coding session"
-  content: >
-    Hands‑on parametric design techniques using Grasshopper for architects.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: outreach-noche-buena-2025
-  title: "Outreach: Noche Buena Drive"
-  event_date: 2024-12-20
-  start_time: "08:00"
-  end_time: "12:00"
-  location: "Mandaluyong City"
-  cover: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80&w=1862&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/outreach-noche-buena-2025"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=Mandaluyong+City&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/outreach-noche-buena-2025-1.jpg"
-      caption: "Food packs distribution"
-    - img: "/assets/images/events/outreach-noche-buena-2025-2.jpg"
-      caption: "Community volunteers"
-  content: >
-    Holiday outreach delivering food packs and essential goods to underserved communities. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet auctor gravida. Ut vulputate odio id libero venenatis varius. Sed vitae pulvinar lorem. Aliquam erat volutpat. Pellentesque lacinia metus odio, vitae sollicitudin diam egestas at. Quisque sed arcu vitae odio tempus lacinia. Curabitur pretium augue at nulla pharetra, in mattis magna eleifend. Vestibulum gravida enim sed sem cursus, quis elementum ex viverra.Cras pellentesque, orci a accumsan mollis, purus metus cursus est, ut rhoncus purus justo a lorem. Quisque sed quam sed ante ultrices ultricies quis a libero. Donec fringilla diam odio. Fusce ex dolor, bibendum vitae ex at, pretium tempor dolor. Aenean elementum ipsum at lectus suscipit ultricies. In in metus in sem eleifend condimentum. Mauris varius massa fermentum mi tempor, non aliquam eros placerat. Vivamus sed malesuada ante, eu pellentesque enim. Duis laoreet tellus mi, id luctus sem ultricies sagittis.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
-
-- slug: open-studio-visit-emerging-practices-2025-11
-  title: "Open Studio Visit: Emerging Practices"
-  event_date: 2025-11-22
-  start_time: "13:00"
-  end_time: "21:00"
-  location: "Emerging Practices Studio, Manila"
-  cover: "https://images.unsplash.com/photo-1608048608029-99c772d199ed?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/open-studio-visit-emerging-practices-2025-11"
-  map_embed: |
-    <iframe
-      src="https://www.google.com/maps?q=Emerging+Practices+Studio,+Manila&amp;output=embed"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  image_gallery:
-    - img: "/assets/images/events/open-studio-visit-emerging-practices-2025-11-1.jpg"
-      caption: "Studio tour underway"
-    - img: "/assets/images/events/open-studio-visit-emerging-practices-2025-11-2.jpg"
-      caption: "Dialogue with young architects"
-  content: >
-    Exclusive behind‑the‑scenes visit to innovative architecture studios.
-    ## Project Overview
-
-
-     Key Objectives
-
-    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
-
-    - Vivamus vel dolor non magna sagittis aliquam.
-    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Praesent euismod, nunc vitae
-      - Curabitur euismod, nunc vitae
-        - In-depth analysis of project requirements
-        - Stakeholder engagement plan
-
-
-     Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-
-    ---
-
-    1. Conduct initial site assessment and feasibility study.
-    2. Develop detailed architectural design documentation.
-
-    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-
-    > This project aims to enhance community spaces through sustainable design.  
-    > Collaboration among multidisciplinary teams is critical for success.
-
 # NEW SAMPLE CONTENT
-# New events 16-30
+# New events 1-15
 - slug: workshop-advanced-revit-families-2025
   title: "Workshop: Advanced Revit Families"
   event_date: 2025-05-15
@@ -944,7 +145,7 @@
     > - Green Building Council Representative
 
     - [ ] Post-tour design charrette
-    - [x] Technical documentation provided
+    - [ ] Technical documentation provided
 
 - slug: design-talk-biophilic-design-2025
   title: "Design Talk: Biophilic Design"
@@ -1035,8 +236,8 @@
     > "Each tree planted represents **future resilience** for our communities downstream."  
     > - Watershed Management Director
 
-    - [x] Gloves provided
-    - [x] Planting tools supplied
+    - [ ] Gloves provided
+    - [ ] Planting tools supplied
     - [ ] Personal water bottles required
 
 - slug: workshop-sketchup-landscape-2025
@@ -1134,7 +335,7 @@
     > "Your participation shapes the **future of our profession** in the Philippines."  
     > - Chapter President
 
-    - [x] Digital voting available
+    - [ ] Digital voting available
     - [ ] Proxy forms require notarization
 
 - slug: bim-infrastructure-2025
@@ -1228,7 +429,7 @@
     > - Universal Design Advocate
 
     - [ ] Bring measuring tools
-    - [x] Reference materials provided
+    - [ ] Reference materials provided
 
 - slug: tour-adaptive-reuse-intramuros-2025
   title: "Tour: Adaptive Reuse in Intramuros"
@@ -1273,7 +474,7 @@
     > - Intramuros Conservation Chief
 
     - [ ] Sturdy walking shoes required
-    - [x] Hard hats provided
+    - [ ] Hard hats provided
 
 - slug: fellowship-year-end-party-2025
   title: "Fellowship: Year-End Celebration"
@@ -1317,7 +518,7 @@
     > "An evening to **celebrate our community** and the spaces we create together."  
     > - Social Committee Chair
 
-    - [x] Vegetarian options available
+    - [ ] Vegetarian options available
     - [ ] Parking limited - carpool recommended
 
 - slug: workshop-enscape-rendering-2025
@@ -1414,7 +615,7 @@
     > "We build more than classrooms - we build **environments for dreams**."  
     > - Community Liaison Officer
 
-    - [x] Tools and materials provided
+    - [ ] Tools and materials provided
     - [ ] Closed-toe shoes required
 
 - slug: design-talk-urban-planning-2025
@@ -1509,5 +710,748 @@
     > "These projects demonstrate architecture's power to **heal communities** and **restore environments**."  
     > - Awards Jury Chair
 
-    - [x] Black tie attire
+    - [ ] Black tie attire
     - [ ] Registration closes October 15
+    
+# PART 2
+- slug: workshop-digital-fabrication-2025
+  title: "Workshop: Digital Fabrication Techniques"
+  event_date: 2025-04-10
+  start_time: "09:00"
+  end_time: "15:00"
+  location: "FabLab Manila, Pasig"
+  cover: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/digital-fabrication-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=FabLab+Manila,+Pasig&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "3D printing architectural models"
+    - img: "https://images.unsplash.com/photo-1551650976-3debd0d3d7ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Laser cutting demonstration"
+  content: >
+    ## From Digital to Physical
+    ### Prototyping Architectural Elements
+    
+    Hands-on session with **digital fabrication tools** including CNC routers, laser cutters, and 3D printers. Learn to translate digital models into physical architectural components.
+    
+    - **Techniques Covered**:
+      - 3D printing complex geometries
+      - CNC milling for formwork
+      - Parametric panel fabrication
+      - Assembly strategies
+    
+    ### Project: Create a modular facade component
+    1. Digital modeling in Rhino
+    2. File preparation for fabrication
+    3. Machine operation basics
+    4. Post-processing techniques
+    
+    > "Digital fabrication bridges the gap between **design intent** and **physical reality**."  
+    > - Workshop Director
+    
+    ```gcode
+    ; Sample CNC toolpath
+    G0 X0 Y0 Z5
+    G1 Z-2 F200
+    G2 X10 Y0 I5 J0
+    ```
+
+- slug: cpd-tropical-architecture-2025
+  title: "CPD: Tropical Design Principles"
+  event_date: 2025-03-25
+  start_time: "14:00"
+  end_time: "17:00"
+  location: "Tropical Design Institute, Makati"
+  cover: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/tropical-architecture-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Tropical+Design+Institute,+Makati&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Passive cooling demonstration"
+    - img: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Shading strategy analysis"
+  content: >
+    ## Climate-Responsive Design
+    ### Solutions for High Humidity Regions
+    
+    Master **passive cooling strategies** and rainwater management techniques specifically for Philippine conditions. Case studies from award-winning tropical projects.
+    
+    - **Core Principles**:
+      - Cross-ventilation optimization
+      - Thermal mass vs. lightweight construction
+      - Solar geometry integration
+      - Evaporative cooling techniques
+    
+    ### Design Exercise:
+    1. Site analysis for microclimate
+    2. Building orientation strategies
+    3. Shading device calculation
+    4. Material selection matrix
+    
+    > "Tropical architecture isn't a style - it's a **scientific response** to environmental conditions."  
+    > - Senior Tropical Design Specialist
+    
+    ```python
+    # Solar angle calculation
+    def solar_altitude(lat, day_of_year, hour):
+        declination = 23.45 * sin(360*(284+day_of_year)/365)
+        return arcsin(sin(lat)*sin(declination) + cos(lat)*cos(declination)*cos(15*hour))
+    ```
+
+- slug: tour-prefab-housing-2025
+  title: "Tour: Advanced Prefab Housing Facility"
+  event_date: 2025-06-18
+  start_time: "10:00"
+  end_time: "15:00"
+  location: "Modular Innovations Factory, Laguna"
+  cover: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/prefab-tour-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Modular+Innovations+Factory,+Laguna&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Automated module assembly"
+    - img: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Quality control inspection"
+  content: >
+    ## Factory-Built Architecture
+    ### Revolutionizing Housing Delivery
+    
+    Behind-the-scenes look at **automated modular construction** processes. Witness robotic assembly, quality control systems, and logistics for mass housing projects.
+    
+    - **Innovation Highlights**:
+      - BIM-to-Factory workflow
+      - Robotic welding stations
+      - Integrated MEP systems
+      - Weather-resistant jointing
+    
+    ### Construction Timeline:
+    1. Day 1: Foundation preparation
+    2. Day 2: Module delivery
+    3. Day 3: Crane assembly
+    4. Day 4: Finishing touches
+    
+    > "Prefab reduces construction time by **60%** while improving quality control."  
+    > - Factory Operations Manager
+    
+    - [ ] Safety glasses required
+    - [x] Transportation provided
+
+- slug: workshop-architectural-photography-2025
+  title: "Workshop: Architectural Photography"
+  event_date: 2025-05-22
+  start_time: "16:00"
+  end_time: "19:00"
+  location: "ICCP Building, Manila"
+  cover: "https://images.unsplash.com/photo-1505842381624-c6b0579625a5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/arch-photography-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=ICCP+Building,+Manila&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1505842381624-c6b0579625a5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Composition techniques"
+    - img: "https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Lighting setup demonstration"
+  content: >
+    ## Capturing Built Space
+    ### Professional Documentation Techniques
+    
+    Master **architectural photography** with professional photographer guidance. Learn composition, lighting, and post-processing for portfolio-quality images.
+    
+    - **Key Skills**:
+      - Lens selection for spatial perception
+      - Golden hour shooting
+      - Interior lighting balance
+      - Perspective correction
+    
+    ### Equipment Focus:
+    1. DSLR/Mirrorless cameras
+    2. Tilt-shift lenses
+    3. Tripod techniques
+    4. Light modifiers
+    
+    > "Great architectural photography reveals the **designer's intent** through careful framing."  
+    > - Architectural Photographer
+    
+    ```exif
+    Camera: Sony A7R IV
+    Lens: 16-35mm f/4
+    Aperture: f/8
+    Shutter: 1/60s
+    ISO: 100
+    ```
+
+- slug: talk-urban-agriculture-2025
+  title: "Design Talk: Urban Agriculture Integration"
+  event_date: 2025-07-30
+  start_time: "18:30"
+  end_time: "20:30"
+  location: "Green Roof Initiative Office, QC"
+  cover: "https://images.unsplash.com/photo-1592595896616-c37162298647?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/urban-agriculture-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Green+Roof+Initiative+Office,+QC&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1592595896616-c37162298647?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Rooftop farm installation"
+    - img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Vertical hydroponic system"
+  content: >
+    ## Edible Landscapes
+    ### Integrating Food Production in Urban Design
+    
+    Explore **architectural solutions** for urban food security. Case studies on productive landscapes integrated into buildings and public spaces.
+    
+    - **Integration Methods**:
+      - Rooftop farming systems
+      - Vertical hydroponic facades
+      - Community garden integration
+      - Aquaponic building systems
+    
+    ### Design Considerations:
+    1. Structural loading capacity
+    2. Irrigation infrastructure
+    3. Microclimate modification
+    4. Harvesting accessibility
+    
+    > "Buildings can become **productive assets** rather than just consumers of resources."  
+    > - Urban Agriculture Specialist
+    
+    - [ ] Bring gardening gloves
+    - [x] Seed packets provided
+
+- slug: workshop-arcgis-urban-2025
+  title: "Workshop: GIS for Urban Planning"
+  event_date: 2025-09-12
+  start_time: "09:00"
+  end_time: "16:00"
+  location: "Geospatial Lab, Makati"
+  cover: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/gis-workshop-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Geospatial+Lab,+Makati&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Urban heat mapping"
+    - img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Population density visualization"
+  content: >
+    ## Spatial Data Analysis
+    ### Urban Planning with ArcGIS
+    
+    Practical training in **geographic information systems** for site analysis, land use planning, and infrastructure development. Learn to leverage open data for evidence-based design.
+    
+    - **Key Applications**:
+      - Flood risk mapping
+      - Transportation network analysis
+      - Service area delineation
+      - 3D city modeling
+    
+    ### Workflow:
+    1. Data acquisition from public sources
+    2. Geoprocessing techniques
+    3. Spatial statistics
+    4. Cartographic presentation
+    
+    > "GIS transforms **qualitative assumptions** into **quantitative decisions**."  
+    > - Urban Data Scientist
+    
+    ```python
+    # Calculate walkability index
+    walk_score = (parks*0.3 + transit*0.4 + amenities*0.3) / population_density
+    ```
+
+- slug: csr-disaster-resilience-2025
+  title: "CSR: Disaster-Resilient Community Center"
+  event_date: 2025-08-05
+  start_time: "08:00"
+  end_time: "17:00"
+  location: "Barangay Rizal, Marikina"
+  cover: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/resilience-build-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Barangay+Rizal,+Marikina&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Foundation reinforcement"
+    - img: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Community training session"
+  content: >
+    ## Building for Resilience
+    ### Flood-Adaptive Construction
+    
+    Volunteer to construct a **typhoon-resilient community center** in a flood-prone area. Learn and implement disaster-resistant construction techniques.
+    
+    - **Design Features**:
+      - Elevated structure on piers
+      - Breakaway wall systems
+      - Flood-drainage foundation
+      - Emergency power systems
+    
+    ### Construction Tasks:
+    1. Bamboo treatment and assembly
+    2. Elevated floor framing
+    3. Rainwater harvesting installation
+    4. Community emergency planning
+    
+    > "Resilient design saves lives when disasters strike."  
+    > - Disaster Response Coordinator
+    
+    - [x] Safety equipment provided
+    - [ ] Closed-toe shoes required
+
+- slug: talk-circular-economy-2025
+  title: "Design Talk: Circular Economy in Construction"
+  event_date: 2025-10-08
+  start_time: "17:00"
+  end_time: "19:30"
+  location: "Sustainability Hub, BGC"
+  cover: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/circular-economy-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Sustainability+Hub,+BGC&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Material reuse strategies"
+    - img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Deconstruction vs demolition"
+  content: >
+    ## Waste to Resource
+    ### Closing the Material Loop
+    
+    Explore **innovative approaches** to material reuse, building deconstruction, and design for disassembly. Learn how circular economy principles transform construction waste streams.
+    
+    - **Case Studies**:
+      - Concrete recycling for new construction
+      - Reclaimed timber certification
+      - Modular components for multiple lifecycles
+      - Material passport systems
+    
+    ### Implementation Framework:
+    1. Pre-demolition audits
+    2. Material recovery facilities
+    3. Digital material banks
+    4. Design for disassembly guidelines
+    
+    > "Waste is just **materials in the wrong place**."  
+    > - Circular Economy Advocate
+    
+    ```json
+    {
+      "material_passport": {
+        "component_id": "FAC-2025-001",
+        "material": "Reclaimed teak",
+        "origin": "Demolished warehouse, 1982",
+        "next_use": "Modular partition system"
+      }
+    }
+    ```
+
+- slug: workshop-acoustics-2025
+  title: "Workshop: Architectural Acoustics"
+  event_date: 2025-02-28
+  start_time: "13:00"
+  end_time: "17:00"
+  location: "Acoustic Research Center, Mandaluyong"
+  cover: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/acoustics-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Acoustic+Research+Center,+Mandaluyong&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Sound absorption testing"
+    - img: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Acoustic panel installation"
+  content: >
+    ## Designing Soundscapes
+    ### Acoustic Performance in Spaces
+    
+    Master **acoustic design principles** for different building types. Learn material selection, spatial configuration, and technical solutions for optimal sound environments.
+    
+    - **Focus Areas**:
+      - Speech intelligibility in classrooms
+      - Reverberation control in worship spaces
+      - Noise isolation in residential
+      - Concert hall acoustics
+    
+    ### Measurement Techniques:
+    1. Reverberation time (RT60)
+    2. Sound transmission class (STC)
+    3. Noise reduction coefficient (NRC)
+    4. Background noise levels
+    
+    > "Good acoustics are **felt rather than heard** - creating comfort through absence of distraction."  
+    > - Acoustic Consultant
+    
+    ```matlab
+    % Calculate reverberation time
+    RT60 = 0.161 * V / (A * c)
+    % V = room volume, A = absorption, c = speed of sound
+    ```
+
+- slug: tour-net-zero-building-2025
+  title: "Tour: Net-Zero Energy Building"
+  event_date: 2025-11-18
+  start_time: "10:00"
+  end_time: "14:00"
+  location: "Zero Carbon Tower, Alabang"
+  cover: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/net-zero-tour-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Zero+Carbon+Tower,+Alabang&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Building-integrated photovoltaics"
+    - img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Energy monitoring dashboard"
+  content: >
+    ## Energy-Positive Architecture
+    ### Beyond Sustainability
+    
+    Explore the first **net-positive energy building** in the Philippines. Understand integrated systems that generate more energy than consumed through innovative design.
+    
+    - **Key Systems**:
+      - Building-integrated photovoltaics (BIPV)
+      - Geothermal cooling
+      - Phase-change materials
+      - Smart energy management
+    
+    ### Performance Metrics:
+    1. Energy Use Intensity: 35 kWh/m²/yr
+    2. Renewable generation: 120% of demand
+    3. Water recycling: 90% self-sufficiency
+    4. Carbon sequestration: 5 tons annually
+    
+    > "Net-zero is the starting point - our goal is **regenerative design**."  
+    > - Building Manager
+    
+    - [ ] Limited capacity - register early
+    - [x] Technical specifications provided
+
+- slug: workshop-bim-for-facilities-2025
+  title: "Workshop: BIM for Facilities Management"
+  event_date: 2025-01-15
+  start_time: "09:30"
+  end_time: "16:30"
+  location: "FM Institute, Ortigas"
+  cover: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/bim-facilities-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=FM+Institute,+Ortigas&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Asset information modeling"
+    - img: "https://images.unsplash.com/photo-1551650976-3debd0d3d7ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Maintenance workflow demo"
+  content: >
+    ## Lifecycle Data Management
+    ### From Construction to Operations
+    
+    Learn to leverage **BIM data** for efficient facility management. Implement COBie standards and develop digital twins for building operations.
+    
+    - **Workflow Integration**:
+      - Asset information handover
+      - Maintenance scheduling
+      - Space utilization tracking
+      - Energy performance monitoring
+    
+    ### Software Platforms:
+    1. Autodesk Tandem
+    2. Archibus
+    3. FM:Systems
+    4. IBM TRIRIGA
+    
+    > "BIM doesn't end at handover - it becomes the **living blueprint** for operations."  
+    > - Facility Management Director
+    
+    ```sql
+    -- Query equipment maintenance schedule
+    SELECT asset_id, last_maintenance, next_due 
+    FROM facility_assets 
+    WHERE asset_type = 'HVAC' AND next_due < CURRENT_DATE + INTERVAL '30 days';
+    ```
+
+- slug: talk-ai-architecture-2025
+  title: "Design Talk: AI in Architectural Practice"
+  event_date: 2025-08-28
+  start_time: "18:00"
+  end_time: "20:30"
+  location: "Tech Innovation Hub, BGC"
+  cover: "https://images.unsplash.com/photo-1677442135722-5fbfd44d0d7b?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/ai-architecture-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Tech+Innovation+Hub,+BGC&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1677442135722-5fbfd44d0d7b?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Generative design exploration"
+    - img: "https://images.unsplash.com/photo-1677442135133-33d364e9d83e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "AI-assisted code compliance"
+  content: >
+    ## Algorithmic Design Assistance
+    ### AI Tools for Architects
+    
+    Explore cutting-edge **AI applications** in architectural design, from generative space planning to predictive performance analysis and automated code compliance.
+    
+    - **Emerging Tools**:
+      - Generative adversarial networks (GANs)
+      - Predictive energy modeling
+      - Natural language processing for specs
+      - Computer vision for site analysis
+    
+    ### Ethical Considerations:
+    1. Intellectual property implications
+    2. Bias in training datasets
+    3. Human-AI collaboration models
+    4. Professional responsibility boundaries
+    
+    > "AI won't replace architects - but architects using AI will replace those who don't."  
+    > - Computational Design Specialist
+    
+    ```python
+    # Generative design algorithm
+    for solution in genetic_algorithm(population_size=100, generations=50):
+        evaluate_fitness(solution, constraints)
+        if solution.fitness > threshold:
+            return solution
+    ```
+
+- slug: workshop-climate-analysis-2025
+  title: "Workshop: Climate Analysis Tools"
+  event_date: 2025-04-18
+  start_time: "13:00"
+  end_time: "16:00"
+  location: "Environmental Design Lab, Makati"
+  cover: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/climate-tools-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Environmental+Design+Lab,+Makati&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Solar radiation analysis"
+    - img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Wind pattern visualization"
+  content: >
+    ## Data-Driven Environmental Design
+    ### Climate-Responsive Modeling
+    
+    Master **climate analysis software** including Ladybug Tools for Grasshopper and Climate Consultant. Learn to interpret weather data for passive design strategies.
+    
+    - **Analysis Methods**:
+      - Sun path and shadow studies
+      - Wind rose interpretation
+      - Psychrometric chart analysis
+      - Thermal comfort mapping
+    
+    ### Workflow:
+    1. Import EPW weather data
+    2. Generate climate visualization
+    3. Calculate passive strategies effectiveness
+    4. Optimize building form response
+    
+    > "Climate analysis transforms **weather data** into **design intelligence**."  
+    > - Environmental Designer
+    
+    ```javascript
+    // Generate sun path diagram
+    const sunPath = new SunPath(latitude, longitude);
+    sunPath.calculateForDate(new Date(2025, 5, 21));
+    ```
+
+- slug: tour-mass-timber-2025
+  title: "Tour: Mass Timber Construction"
+  event_date: 2025-07-12
+  start_time: "09:00"
+  end_time: "12:00"
+  location: "Cross-Laminated Timber Tower, QC"
+  cover: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/mass-timber-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Cross-Laminated+Timber+Tower,+QC&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Timber connection details"
+    - img: "https://images.unsplash.com/photo-1593692909680-1e9a14e8ed8a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Prefabricated wall installation"
+  content: >
+    ## Tall Wood Buildings
+    ### Sustainable High-Rise Construction
+    
+    Explore the Philippines' first **mass timber high-rise**. Understand engineering innovations, fire safety approaches, and sustainable forestry certification.
+    
+    - **Material Advantages**:
+      - Carbon sequestration potential
+      - Reduced construction time
+      - Biophilic benefits
+      - Seismic performance
+    
+    ### Technical Details:
+    1. CLT production process
+    2. Connection systems
+    3. Fire-rating methodologies
+    4. Acoustic performance
+    
+    > "Mass timber represents a **paradigm shift** in sustainable construction."  
+    > - Structural Engineer
+    
+    - [ ] Hard hats required
+    - [x] Safety briefing provided
+
+- slug: workshop-architectural-illustration-2025
+  title: "Workshop: Architectural Illustration"
+  event_date: 2025-03-15
+  start_time: "10:00"
+  end_time: "16:00"
+  location: "Artists' Atelier, San Juan"
+  cover: "https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/illustration-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Artists'+Atelier,+San+Juan&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Watercolor rendering techniques"
+    - img: "https://images.unsplash.com/photo-1579783483450-34b5c1e1d0c9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Digital sketching workflow"
+  content: >
+    ## Hand & Digital Rendering
+    ### Expressive Visualization Techniques
+    
+    Develop **architectural illustration skills** combining traditional media and digital tools. Learn to create compelling visual narratives for design concepts.
+    
+    - **Media Techniques**:
+      - Watercolor wash methods
+      - Ink linework precision
+      - Procreate digital painting
+      - Hybrid rendering approaches
+    
+    ### Composition Principles:
+    1. Perspective fundamentals
+    2. Light and shadow dynamics
+    3. Human scale integration
+    4. Atmospheric effects
+    
+    > "Great architectural illustration tells the **story of space** beyond technical representation."  
+    > - Architectural Illustrator
+    
+    ```css
+    /* Digital brush settings */
+    .watercolor-brush {
+      opacity: 0.7;
+      blend-mode: multiply;
+      texture: paper-grain.jpg;
+      wet-edge: true;
+    }
+    ```
+
+- slug: talk-housing-innovation-2025
+  title: "Design Talk: Affordable Housing Innovation"
+  event_date: 2025-11-05
+  start_time: "17:30"
+  end_time: "20:00"
+  location: "Housing Development Center, QC"
+  cover: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  registration_url: "https://example.com/register/housing-innovation-2025"
+  map_embed: |
+    <iframe
+      src="https://www.google.com/maps?q=Housing+Development+Center,+QC&amp;output=embed"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  image_gallery:
+    - img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Incremental housing prototype"
+    - img: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Community participation workshop"
+  content: >
+    ## Scalable Housing Solutions
+    ### Meeting the Urban Challenge
+    
+    Explore **innovative approaches** to affordable housing through design innovation, policy frameworks, and community-driven development models.
+    
+    - **Case Studies**:
+      - Incremental expansion systems
+      - Micro-unit efficiency
+      - Community land trusts
+      - Disaster-resilient core houses
+    
+    ### Design Strategies:
+    1. Space-saving multifunctional furniture
+    2. Shared amenity spaces
+    3. Self-build construction systems
+    4. Infrastructure-first development
+    
+    > "Affordable housing requires **design ingenuity** more than cost reduction."  
+    > - Housing Policy Expert
+    
+    ```json
+    {
+      "housing_unit": {
+        "type": "expandable_core",
+        "initial_area": "24m²",
+        "final_area": "48m²",
+        "construction_cost": "₱15,000/m²",
+        "expansion_phases": 3
+      }
+    }
+    ```
