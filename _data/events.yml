@@ -735,7 +735,7 @@
       caption: "Laser cutting demonstration"
   content: >
     ## From Digital to Physical
-    ### Prototyping Architectural Elements
+    Prototyping Architectural Elements
     
     Hands-on session with **digital fabrication tools** including CNC routers, laser cutters, and 3D printers. Learn to translate digital models into physical architectural components.
     
@@ -745,7 +745,7 @@
       - Parametric panel fabrication
       - Assembly strategies
     
-    ### Project: Create a modular facade component
+    Project: Create a modular facade component
     1. Digital modeling in Rhino
     2. File preparation for fabrication
     3. Machine operation basics
@@ -782,7 +782,7 @@
       caption: "Shading strategy analysis"
   content: >
     ## Climate-Responsive Design
-    ### Solutions for High Humidity Regions
+    Solutions for High Humidity Regions
     
     Master **passive cooling strategies** and rainwater management techniques specifically for Philippine conditions. Case studies from award-winning tropical projects.
     
@@ -792,7 +792,7 @@
       - Solar geometry integration
       - Evaporative cooling techniques
     
-    ### Design Exercise:
+    Design Exercise:
     1. Site analysis for microclimate
     2. Building orientation strategies
     3. Shading device calculation
@@ -829,7 +829,7 @@
       caption: "Quality control inspection"
   content: >
     ## Factory-Built Architecture
-    ### Revolutionizing Housing Delivery
+    Revolutionizing Housing Delivery
     
     Behind-the-scenes look at **automated modular construction** processes. Witness robotic assembly, quality control systems, and logistics for mass housing projects.
     
@@ -839,7 +839,7 @@
       - Integrated MEP systems
       - Weather-resistant jointing
     
-    ### Construction Timeline:
+    Construction Timeline:
     1. Day 1: Foundation preparation
     2. Day 2: Module delivery
     3. Day 3: Crane assembly
@@ -872,7 +872,7 @@
       caption: "Lighting setup demonstration"
   content: >
     ## Capturing Built Space
-    ### Professional Documentation Techniques
+    Professional Documentation Techniques
     
     Master **architectural photography** with professional photographer guidance. Learn composition, lighting, and post-processing for portfolio-quality images.
     
@@ -882,7 +882,7 @@
       - Interior lighting balance
       - Perspective correction
     
-    ### Equipment Focus:
+    Equipment Focus:
     1. DSLR/Mirrorless cameras
     2. Tilt-shift lenses
     3. Tripod techniques
@@ -920,7 +920,7 @@
       caption: "Vertical hydroponic system"
   content: >
     ## Edible Landscapes
-    ### Integrating Food Production in Urban Design
+    Integrating Food Production in Urban Design
     
     Explore **architectural solutions** for urban food security. Case studies on productive landscapes integrated into buildings and public spaces.
     
@@ -930,7 +930,7 @@
       - Community garden integration
       - Aquaponic building systems
     
-    ### Design Considerations:
+    Design Considerations:
     1. Structural loading capacity
     2. Irrigation infrastructure
     3. Microclimate modification
@@ -963,7 +963,7 @@
       caption: "Population density visualization"
   content: >
     ## Spatial Data Analysis
-    ### Urban Planning with ArcGIS
+    Urban Planning with ArcGIS
     
     Practical training in **geographic information systems** for site analysis, land use planning, and infrastructure development. Learn to leverage open data for evidence-based design.
     
@@ -973,7 +973,7 @@
       - Service area delineation
       - 3D city modeling
     
-    ### Workflow:
+    Workflow:
     1. Data acquisition from public sources
     2. Geoprocessing techniques
     3. Spatial statistics
@@ -1008,7 +1008,7 @@
       caption: "Community training session"
   content: >
     ## Building for Resilience
-    ### Flood-Adaptive Construction
+    Flood-Adaptive Construction
     
     Volunteer to construct a **typhoon-resilient community center** in a flood-prone area. Learn and implement disaster-resistant construction techniques.
     
@@ -1018,7 +1018,7 @@
       - Flood-drainage foundation
       - Emergency power systems
     
-    ### Construction Tasks:
+    Construction Tasks:
     1. Bamboo treatment and assembly
     2. Elevated floor framing
     3. Rainwater harvesting installation
@@ -1051,7 +1051,7 @@
       caption: "Deconstruction vs demolition"
   content: >
     ## Waste to Resource
-    ### Closing the Material Loop
+    Closing the Material Loop
     
     Explore **innovative approaches** to material reuse, building deconstruction, and design for disassembly. Learn how circular economy principles transform construction waste streams.
     
@@ -1061,7 +1061,7 @@
       - Modular components for multiple lifecycles
       - Material passport systems
     
-    ### Implementation Framework:
+    Implementation Framework:
     1. Pre-demolition audits
     2. Material recovery facilities
     3. Digital material banks
@@ -1102,7 +1102,7 @@
       caption: "Acoustic panel installation"
   content: >
     ## Designing Soundscapes
-    ### Acoustic Performance in Spaces
+    Acoustic Performance in Spaces
     
     Master **acoustic design principles** for different building types. Learn material selection, spatial configuration, and technical solutions for optimal sound environments.
     
@@ -1112,7 +1112,7 @@
       - Noise isolation in residential
       - Concert hall acoustics
     
-    ### Measurement Techniques:
+    Measurement Techniques:
     1. Reverberation time (RT60)
     2. Sound transmission class (STC)
     3. Noise reduction coefficient (NRC)
@@ -1148,7 +1148,7 @@
       caption: "Energy monitoring dashboard"
   content: >
     ## Energy-Positive Architecture
-    ### Beyond Sustainability
+    Beyond Sustainability
     
     Explore the first **net-positive energy building** in the Philippines. Understand integrated systems that generate more energy than consumed through innovative design.
     
@@ -1158,7 +1158,7 @@
       - Phase-change materials
       - Smart energy management
     
-    ### Performance Metrics:
+    Performance Metrics:
     1. Energy Use Intensity: 35 kWh/m²/yr
     2. Renewable generation: 120% of demand
     3. Water recycling: 90% self-sufficiency
@@ -1191,7 +1191,7 @@
       caption: "Maintenance workflow demo"
   content: >
     ## Lifecycle Data Management
-    ### From Construction to Operations
+    From Construction to Operations
     
     Learn to leverage **BIM data** for efficient facility management. Implement COBie standards and develop digital twins for building operations.
     
@@ -1201,7 +1201,7 @@
       - Space utilization tracking
       - Energy performance monitoring
     
-    ### Software Platforms:
+    Software Platforms:
     1. Autodesk Tandem
     2. Archibus
     3. FM:Systems
@@ -1238,7 +1238,7 @@
       caption: "AI-assisted code compliance"
   content: >
     ## Algorithmic Design Assistance
-    ### AI Tools for Architects
+    AI Tools for Architects
     
     Explore cutting-edge **AI applications** in architectural design, from generative space planning to predictive performance analysis and automated code compliance.
     
@@ -1248,7 +1248,7 @@
       - Natural language processing for specs
       - Computer vision for site analysis
     
-    ### Ethical Considerations:
+    Ethical Considerations:
     1. Intellectual property implications
     2. Bias in training datasets
     3. Human-AI collaboration models
@@ -1286,7 +1286,7 @@
       caption: "Wind pattern visualization"
   content: >
     ## Data-Driven Environmental Design
-    ### Climate-Responsive Modeling
+    Climate-Responsive Modeling
     
     Master **climate analysis software** including Ladybug Tools for Grasshopper and Climate Consultant. Learn to interpret weather data for passive design strategies.
     
@@ -1296,7 +1296,7 @@
       - Psychrometric chart analysis
       - Thermal comfort mapping
     
-    ### Workflow:
+    Workflow:
     1. Import EPW weather data
     2. Generate climate visualization
     3. Calculate passive strategies effectiveness
@@ -1332,7 +1332,7 @@
       caption: "Prefabricated wall installation"
   content: >
     ## Tall Wood Buildings
-    ### Sustainable High-Rise Construction
+    Sustainable High-Rise Construction
     
     Explore the Philippines' first **mass timber high-rise**. Understand engineering innovations, fire safety approaches, and sustainable forestry certification.
     
@@ -1342,7 +1342,7 @@
       - Biophilic benefits
       - Seismic performance
     
-    ### Technical Details:
+    Technical Details:
     1. CLT production process
     2. Connection systems
     3. Fire-rating methodologies
@@ -1375,7 +1375,7 @@
       caption: "Digital sketching workflow"
   content: >
     ## Hand & Digital Rendering
-    ### Expressive Visualization Techniques
+    Expressive Visualization Techniques
     
     Develop **architectural illustration skills** combining traditional media and digital tools. Learn to create compelling visual narratives for design concepts.
     
@@ -1385,7 +1385,7 @@
       - Procreate digital painting
       - Hybrid rendering approaches
     
-    ### Composition Principles:
+    Composition Principles:
     1. Perspective fundamentals
     2. Light and shadow dynamics
     3. Human scale integration
@@ -1425,7 +1425,7 @@
       caption: "Community participation workshop"
   content: >
     ## Scalable Housing Solutions
-    ### Meeting the Urban Challenge
+    Meeting the Urban Challenge
     
     Explore **innovative approaches** to affordable housing through design innovation, policy frameworks, and community-driven development models.
     
@@ -1435,7 +1435,7 @@
       - Community land trusts
       - Disaster-resilient core houses
     
-    ### Design Strategies:
+    Design Strategies:
     1. Space-saving multifunctional furniture
     2. Shared amenity spaces
     3. Self-build construction systems
