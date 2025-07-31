@@ -1,7 +1,5 @@
 # _plugins/gen_events.rb
-require 'yaml'
-require 'fileutils'
-require 'date'
+require 'yaml'; require 'fileutils'; require 'date'
 
 Jekyll.logger.info "gen_events:", "Registering after_reset hook to generate events…"
 
@@ -10,62 +8,64 @@ Jekyll::Hooks.register :site, :after_reset do |site|
   events_dir = File.join(site.source, '_events')
 
   unless File.exist?(data_path)
-    Jekyll.logger.warn "gen_events:", "No events.yml found at #{data_path}"
+    Jekyll.logger.warn "gen_events:", "No events.yml at #{data_path}"
     next
   end
 
-  raw    = File.read(data_path)
-  events = YAML.safe_load(raw, permitted_classes: [Date], aliases: true)
+  events = YAML.safe_load(File.read(data_path), permitted_classes: [Date], aliases: true)
   unless events.is_a?(Array)
-    Jekyll.logger.warn "gen_events:", "events.yml is not an Array—skipping"
+    Jekyll.logger.warn "gen_events:", "events.yml is not an Array"
     next
   end
 
   FileUtils.mkdir_p(events_dir)
   Jekyll.logger.info "gen_events:", "Ensured directory #{events_dir}"
 
+  keys = %w[layout title date permalink start_time end_time location cover registration_url map_embed image_gallery]
+
   events.each do |event|
-    slug      = event['slug'] || event[:slug]
+    slug = event['slug'] || event[:slug]
     next unless slug
     file_path = File.join(events_dir, "#{slug}.md")
 
-    # Build your front matter exactly as before...
-    date_obj  = event['event_date']
-    date_str  = date_obj.respond_to?(:strftime) ? date_obj.strftime('%Y-%m-%d') : nil
-    title     = event['title'] || slug
-    permalink = "/events-and-activities/#{slug}/"
-    content   = (event['content'] || '').strip
+    # Prepare front-matter values
+    date_val = event['event_date']
+    date_str = date_val.respond_to?(:strftime) ? date_val.strftime('%Y-%m-%d') : date_val
 
     front = {
       'layout'    => 'event',
-      'title'     => title,
+      'title'     => event['title'] || slug,
       'date'      => date_str,
-      'permalink' => permalink,
-      'content'   => content
+      'permalink' => "/events-and-activities/#{slug}/"
     }
-    # merge other fields...
-    event.each { |k,v| front[k.to_s]=v unless %w[slug event_date title content].include?(k.to_s) }
 
-    # serialize front matter (stripping inner '---' from YAML blocks)
-    fm = front.map do |key,val|
-      if val.is_a?(String) && val.include?("\n")
-        lines = val.lines.map(&:chomp)
-        "#{key}: |\n" + lines.map { |l| "  #{l}" }.join("\n")
-      elsif val.is_a?(Array)
-        yaml = val.to_yaml.sub(/\A---\s*\n/, '')
-        "#{key}: |\n" + yaml.lines.map { |l| "  #{l.chomp}" }.join("\n")
+    # Build front-matter lines
+    fm_lines = []
+    keys.each do |key|
+      value = front[key] || event[key] || event[key.to_sym]
+      next if value.nil? || value == ''
+
+      if key == 'map_embed' && value.include?("\n")
+        fm_lines << "map_embed: |"
+        value.lines.each { |line| fm_lines << "  #{line.chomp}" }
+      elsif key == 'image_gallery' && value.is_a?(Array)
+        fm_lines << "image_gallery:"
+        value.each do |item|
+          fm_lines << "  - img: #{item['img'].inspect}"
+          fm_lines << "    caption: #{item['caption'].inspect}"
+        end
       else
-        str = val.is_a?(String) ? val.inspect : val
-        "#{key}: #{str}"
+        fm_lines << "#{key}: #{value.inspect}"
       end
-    end.join("\n")
+    end
 
-    markdown = <<~MD
-      ---
-      #{fm}
-      ---
-    MD
+    # Content body
+    content_body = (event['content'] || '').rstrip
 
+    # Assemble markdown
+    markdown = ["---", *fm_lines, "---", "", content_body].join("\n")
+
+    # Write file if changed
     if !File.exist?(file_path) || File.read(file_path) != markdown
       File.write(file_path, markdown)
       Jekyll.logger.info "gen_events:", "Wrote #{file_path}"

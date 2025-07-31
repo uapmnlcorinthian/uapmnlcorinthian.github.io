@@ -18,72 +18,122 @@
     {% endif %} </div>
 </section>
 {% endif %}
-<main id="mainContent" class="container py-5" data-aos="fade-up"> {% unless page.cover %}
+<main id="mainContent" class="p-5" data-aos="fade-up"> {% unless page.cover %}
   <h1 class="mb-3">{{ page.title }}</h1>
   <p class="text-muted"> {{ page.date | date: "%B %-d, %Y" }}{% if page.location %} &mdash; {{ page.location }}{% endif %} </p>
-  {% endunless %}
+
+{% endunless%}	
   
-  {% if page.image_gallery %}
-  <div class="row row-cols-1 row-cols-md-2 g-4 mb-4"> {% for img in page.image_gallery %}
-    <div class="col">
-      <div class="card shadow-sm h-100"> <a href="{{ img.img }}" data-bs-toggle="modal" data-bs-target="#modal-img-{{ forloop.index }}"> <img src="{{ img.img }}" class="card-img-top" alt="{{ img.caption }}"> </a>
-        <div class="card-body">
-          <p class="card-text small text-muted">{{ img.caption }}</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Modal Lightbox -->
-    <div class="modal fade" id="modal-img-{{ forloop.index }}" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-dark text-white">
-          <div class="modal-body p-0"> <img src="{{ img.img }}" class="img-fluid w-100 rounded-0" alt="{{ img.caption }}"> </div>
-          <div class="modal-footer border-0 justify-content-center"> <small>{{ img.caption }}</small>
-            <button type="button" class="btn btn-outline-light btn-sm ms-auto" data-bs-dismiss="modal">Close</button>
+  <div class="d-flex flex-wrap gap-2 mb-4"> {% if page.registration_url %} <a href="{{ page.registration_url }}" class="btn btn-sm btn-outline-primary fw-semibold animate__animated animate__pulse animate__infinite" target="_blank"> <i class="fa-solid fa-calendar-check me-1"></i> Register Now </a> {% endif %} <a class="btn btn-sm btn-outline-dark fw-semibold" target="_blank"
+     href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ page.title | uri_escape }}&dates={{ page.date | date: '%Y%m%d' }}T{{ page.start_time | remove: ':' }}00/{{ page.date | date: '%Y%m%d' }}T{{ page.end_time | remove: ':' }}00&details={{ page.content | strip_html | uri_escape }}&location={{ page.location | uri_escape }}"> <i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar </a> <a class="btn btn-sm btn-outline-info fw-semibold" download="{{ page.title | slugify }}.ics"
+     href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ page.title | uri_escape }}%0ADTSTART:{{ page.date | date: '%Y%m%d' }}{{ page.start_time | remove: ':' }}00Z%0ADTEND:{{ page.date | date: '%Y%m%d' }}{{ page.end_time | remove: ':' }}00Z%0ADESCRIPTION:{{ page.content | strip_html | uri_escape }}%0ALOCATION:{{ page.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR"> <i class="fa-solid fa-file-export me-1"></i> Download .ICS </a>
+    <button class="btn btn-sm btn-outline-secondary fw-semibold ms-auto"
+          onclick="navigator.share ? navigator.share({ title: '{{ page.title }}', url: '{{ page.url | absolute_url }}' }) : alert('Share not supported on this browser.')"> <i class="fa-solid fa-share-nodes me-1"></i> Share </button>
+  </div>	
+	
+  {% if page.content %}
+  <div class="event-content mb-4">{{ page.content | markdownify }}</div>
+  {% endif %}
+	
+	
+  {% if page.map_embed %}
+  <div class="d-flex justify-content-center mb-4">
+    <div class="map-responsive ratio ratio-4x3" style="max-width: 400px;"> {{ page.map_embed | raw }} </div>
+  </div>
+  {% endif %}	
+	
+{% if page.image_gallery %}
+  {% assign imgs = page.image_gallery %}
+  <div id="eventCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for img in imgs %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %} position-relative">
+          <div class="card shadow-sm">
+
+            <div class="ratio ratio-4x3">
+              <img
+                src="{{ img.img }}"
+                class="card-img-top object-fit-cover"
+                alt="{{ img.caption }}">
+            </div>
+
+            {% if img.caption %}
+              <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded px-2 py-1 position-absolute bottom-0 start-50 translate-middle-x mb-2" style="max-width: 90%; font-size: 0.9rem;">
+                {{ img.caption }}
+              </div>
+            {% endif %}
+
           </div>
         </div>
-      </div>
+      {% endfor %}
     </div>
-    {% endfor %} </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+{% endif %}
+
+
+{% assign events_sorted = site.events | sort: 'date' %}
+{% assign current_url = page.url %}
+{% assign idx = -1 %}
+
+{% for e in events_sorted %}
+  {% if e.url == current_url %}
+    {% assign idx = forloop.index0 %}
+    {% break %}
   {% endif %}
-  
-  {% if page.data.content %}
-  <div class="event-content mb-4"> {{ page.data.content | markdownify }} </div>
+{% endfor %}
+
+{%- comment -%} Previous events: all before current {% endcomment %}
+{% assign prev_candidates = events_sorted | slice: 0, idx %}
+{% assign prev_candidates_rev = prev_candidates | reverse %}
+{% assign prev = nil %}
+
+{% for e in prev_candidates_rev %}
+  {% if e.url != current_url %}
+    {% assign prev = e %}
+    {% break %}
   {% endif %}
-<div class="d-flex flex-wrap gap-2 mb-4">
-  {% if page.registration_url %}
-  <a href="{{ page.registration_url }}" class="btn btn-sm btn-outline-primary fw-semibold animate__animated animate__pulse animate__infinite" target="_blank">
-    <i class="fa-solid fa-calendar-check me-1"></i> Register Now
-  </a>
+{% endfor %}
+
+{%- comment -%} Next events: all after current {% endcomment %}
+{% assign next_start = idx | plus: 1 %}
+{% assign next_length = events_sorted.size | minus: next_start %}
+{% assign next_candidates = events_sorted | slice: next_start, next_length %}
+{% assign next = nil %}
+
+{% for e in next_candidates %}
+  {% if e.url != current_url %}
+    {% assign next = e %}
+    {% break %}
   {% endif %}
-  <a class="btn btn-sm btn-outline-dark fw-semibold" target="_blank"
-     href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ page.title | uri_escape }}&dates={{ page.date | date: '%Y%m%d' }}T{{ page.start_time | remove: ':' }}00/{{ page.date | date: '%Y%m%d' }}T{{ page.end_time | remove: ':' }}00&details={{ page.content | strip_html | uri_escape }}&location={{ page.location | uri_escape }}">
-    <i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar
+{% endfor %}
+
+<div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top gap-3">
+  {% if prev %}
+    <a href="{{ prev.url }}" class="btn btn-outline-secondary btn-sm"> ← {{ prev.title }} </a>
+  {% else %}
+    <button class="btn btn-outline-secondary btn-sm" disabled> ← No Previous </button>
+  {% endif %}
+
+  <a href="/events-and-activities/" class="btn btn-outline-dark btn-sm">
+    <i class="fa-solid fa-list me-1"></i> View All Events
   </a>
-  <a class="btn btn-sm btn-outline-info fw-semibold" download="{{ page.title | slugify }}.ics"
-     href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ page.title | uri_escape }}%0ADTSTART:{{ page.date | date: '%Y%m%d' }}{{ page.start_time | remove: ':' }}00Z%0ADTEND:{{ page.date | date: '%Y%m%d' }}{{ page.end_time | remove: ':' }}00Z%0ADESCRIPTION:{{ page.content | strip_html | uri_escape }}%0ALOCATION:{{ page.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR">
-    <i class="fa-solid fa-file-export me-1"></i> Download .ICS
-  </a>
-  <button class="btn btn-sm btn-outline-secondary fw-semibold ms-auto"
-          onclick="navigator.share ? navigator.share({ title: '{{ page.title }}', url: '{{ page.url | absolute_url }}' }) : alert('Share not supported on this browser.')">
-    <i class="fa-solid fa-share-nodes me-1"></i> Share
-  </button>
+
+  {% if next %}
+    <a href="{{ next.url }}" class="btn btn-outline-secondary btn-sm"> {{ next.title }} → </a>
+  {% else %}
+    <button class="btn btn-outline-secondary btn-sm" disabled> No Next → </button>
+  {% endif %}
 </div>
 
-  {% if page.map_embed %}
-  <div class="map-responsive ratio ratio-4x3 mb-4" style="max-width: 400px;"> {{ page.map_embed | raw }} </div>
-  {% endif %}
-  
-  {% assign sorted = site.events | sort: 'date' %}
-  {% assign idx = sorted | map: 'url' | index_of: page.url %}
-  {% assign prev_idx = idx | minus: 1 %}
-  {% assign prev = sorted[prev_idx] %}
-  {% assign next_idx = idx | plus: 1 %}
-  {% assign next = sorted[next_idx] %}
-  
-  {% if prev and prev.url == page.url %}{% assign prev = nil %}{% endif %}
-  {% if next and next.url == page.url %}{% assign next = nil %}{% endif %}
-  <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top gap-3"> {% if prev %} <a href="{{ prev.url }}" class="btn btn-outline-secondary btn-sm"> ← {{ prev.title }} </a> {% else %}<span></span>{% endif %} <a href="/events-and-activities/" class="btn btn-outline-dark btn-sm"> <i class="fa-solid fa-list me-1"></i> View All Events </a> {% if next %} <a href="{{ next.url }}" class="btn btn-outline-secondary btn-sm"> {{ next.title }} → </a> {% endif %} </div>
+	
+	
 </main>
 {% include footer.html %}
   {% include scripts.html %} <a id="btnTop" href="#top" class="btn btn-secondary shadow position-fixed bottom-0 end-0 m-3 z-3" data-aos="fade-up" aria-label="Back to top"> <i class="fa-solid fa-arrow-up"></i> </a>

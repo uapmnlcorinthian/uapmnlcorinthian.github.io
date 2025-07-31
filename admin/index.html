@@ -31,17 +31,19 @@
         <select v-model="sortMode">
           <option value="index">Sort: Index</option>
           <option value="name">Sort: Name A→Z</option>
-          <option value="tier">Sort: Tier → Order</option>
         </select>
       </div>
       <div class="list" v-if="schema.type!=='map'">
         <div v-for="r in rows" :key="r.idx" class="item" :class="{active:r.idx===sel}" @click="open(r.idx)">
           <div>
-            <div>{{labelOf(r.row)}} <span class="pill" v-if="r.row && r.row.tier">{{r.row.tier}}</span> <span class="tag" v-if="r.row.order!==undefined">#{{r.row.order}}</span></div>
-            <div class="tag" v-if="r.row.tagline">{{r.row.tagline}}</div>
-          </div>
-          <div class="tag">#{{r.idx+1}}</div>
-        </div>
+		  <div>{{labelOf(r.row)}} 
+			<!-- Add ?. to tier check -->
+			<span class="pill" v-if="r.row?.tier">{{r.row.tier}}</span> 
+			<!-- Add ?. to order check -->
+			<span class="tag" v-if="r.row?.order !== undefined">#{{r.row.order}}</span>
+		  </div>
+		  <div class="tag" v-if="r.row?.tagline">{{r.row.tagline}}</div>
+		</div>
       </div>
       <div class="list" v-else> 
         <!-- map files don't show list items -->

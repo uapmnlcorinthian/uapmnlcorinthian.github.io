@@ -8,17 +8,18 @@ permalink: /events-and-activities/
 
 <!-- Hero banner -->
 <section class="parallax-hero mb-5" style="background-image: url('{{ latest.cover | relative_url }}');" data-aos="fade-in" data-aos-offset="200" data-aos-anchor-placement="center-bottom">
-  <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50"></div>
+  <div class="position-absolute top-0 start-0 w-100 bg-dark bg-opacity-50"></div>
   <div class="container h-100 d-flex flex-column justify-content-center text-white position-relative">
     <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">{{ latest.title }}</h1>
     <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">
       {{ latest.date | date: "%B %-d, %Y" }}{% if latest.location %} &mdash; {{ latest.location }}{% endif %}
     </p>
+
     <div class="d-flex flex-wrap gap-2 mb-4 animate__animated animate__fadeInUp animate__delay-2s">
       {% if latest.registration_url %}
-      <a href="{{ latest.registration_url }}" class="btn btn-sm btn-light text-dark fw-semibold animate__animated animate__pulse animate__infinite" target="_blank">
-        <i class="fa-solid fa-calendar-check me-1"></i> Register Now
-      </a>
+        <a href="{{ latest.registration_url }}" class="btn btn-sm btn-light text-dark fw-semibold animate__animated animate__pulse animate__infinite" target="_blank">
+          <i class="fa-solid fa-calendar-check me-1"></i> Register Now
+        </a>
       {% endif %}
       <a class="btn btn-sm btn-outline-light fw-semibold" target="_blank"
          href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ latest.title | uri_escape }}&dates={{ latest.date | date: '%Y%m%d' }}T{{ latest.start_time | remove: ':' }}00/{{ latest.date | date: '%Y%m%d' }}T{{ latest.end_time | remove: ':' }}00&details={{ latest.content | strip_html | uri_escape }}&location={{ latest.location | uri_escape }}">
@@ -32,11 +33,18 @@ permalink: /events-and-activities/
         <i class="fa-solid fa-share-nodes me-1"></i> Share
       </button>
     </div>
-    <div class="mb-4 text-white animate__animated animate__fadeInUp animate__delay-3s">
-      {{ latest.content | markdownify }}
+
+    <!-- Truncated Content -->
+    <div class="mb-3 text-white animate__animated animate__fadeInUp animate__delay-3s">
+      {{ latest.content | strip_html | truncatewords: 120, '...' | markdownify }}
+	 <!-- Show More Button Below Content -->
+    <a href="{{ latest.url }}" class="btn-primary btn animate__animated animate__fadeInUp animate__delay-4s">Show More</a>
     </div>
+
+
   </div>
 </section>
+
 
 <!-- Events gallery with dropdown presets & search -->
 <section class="container py-5" id="eventsSection">
@@ -53,57 +61,40 @@ permalink: /events-and-activities/
   <div id="filterLoader" class="text-center my-4" style="display:none;">
     <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>
   </div>
-  <div class="row g-2">
-    {% for e in sorted_events %}
-      {% assign idx = forloop.index0 %}
-      <div class="col-6 col-md-4 col-lg-3 event-item" data-title="{{ e.title }}" data-date="{{ e.date | date_to_xmlschema }}" data-idx="{{ idx }}">
-        <div class="position-relative" style="border-radius:4px; cursor:pointer; overflow:hidden;" data-bs-toggle="modal" data-bs-target="#modal-{{ idx }}">
-          {% if e.cover %}
-            <div class="ratio ratio-1x1"><img src="{{ e.cover | relative_url }}" class="w-100 h-100 object-fit-cover blur-up" alt="{{ e.title }}"></div>
-          {% else %}
-            <div class="ratio ratio-1x1 bg-secondary text-white d-flex align-items-center justify-content-center">No Image</div>
-          {% endif %}
-          <div class="position-absolute bottom-0 start-0 w-100 py-1 px-2 bg-dark bg-opacity-50 text-white text-truncate">{{ e.title }}</div>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modal-{{ idx }}" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalLabel-{{ idx }}">
-          <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content" style="border-radius:4px;">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel-{{ dx }}">{{ e.title }}{% if e.date >= site.time %} <span class="badge bg-success ms-2">Upcoming</span>{% endif %}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                {% if e.cover %}<img src="{{ e.cover | relative_url }}" class="img-fluid mb-3" style="border-radius:4px;">{% endif %}
-                <p class="text-muted small mb-3">{{ e.date | date: "%B %-d, %Y" }}{% if e.location %} &mdash; {{ e.location }}{% endif %}</p>
-                <div class="mb-4">{{ e.content | markdownify }}</div>
-                {% if e.map_embed %}<div class="ratio ratio-4x3 my-3" style="max-width:350px; border-radius:4px; overflow:hidden;">{{ e.map_embed | raw }}</div>{% endif %}
-              </div>
-              <div class="modal-footer">
-                <a href="{{ e.url }}" class="btn btn-secondary">Show More</a>
-                {% if e.registration_url %}
-                <a href="{{ e.registration_url }}" class="btn btn-sm btn-light text-dark fw-semibold animate__animated animate__pulse animate__infinite" target="_blank">
-                  <i class="fa-solid fa-calendar-check me-1"></i> Register Now
-                </a>
-                {% endif %}
-                <a class="btn btn-sm btn-outline-dark fw-semibold" target="_blank"
-                   href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ e.title | uri_escape }}&dates={{ e.date | date: '%Y%m%d' }}T{{ e.start_time | remove: ':' }}00/{{ e.date | date: '%Y%m%d' }}T{{ e.end_time | remove: ':' }}00&details={{ e.content | strip_html | uri_escape }}&location={{ e.location | uri_escape }}">
-                  <i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar
-                </a>
-                <a class="btn btn-sm btn-outline-info fw-semibold" download="{{ e.title | slugify }}.ics"
-                   href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ e.title | uri_escape }}%0ADTSTART:{{ e.date | date: '%Y%m%d' }}{{ e.start_time | remove: ':' }}00Z%0ADTEND:{{ e.date | date: '%Y%m%d' }}{{ e.end_time | remove: ':' }}00Z%0ADESCRIPTION:{{ e.content | strip_html | uri_escape }}%0ALOCATION:{{ e.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR">
-                  <i class="fa-solid fa-file-export me-1"></i> Download .ICS
-                </a>
-                <button class="btn btn-sm btn-outline-secondary fw-semibold" onclick="navigator.share ? navigator.share({ title: '{{ e.title }}', url: '{{ e.url | absolute_url }}' }) : alert('Share not supported on this browser.')">
-                  <i class="fa-solid fa-share-nodes me-1"></i> Share
-                </button>
-              </div>
+  <div class="row g-2"> {% for e in sorted_events %}
+    {% assign idx = forloop.index0 %}
+    <div class="col-6 col-md-4 col-lg-3 event-item" data-title="{{ e.title }}" data-date="{{ e.date | date_to_xmlschema }}" data-idx="{{ idx }}">
+      <div class="position-relative" style="border-radius:10px; cursor:pointer; overflow:hidden;" data-bs-toggle="modal" data-bs-target="#modal-{{ idx }}"> {% if e.cover %}
+        <div class="ratio ratio-1x1"><img src="{{ e.cover | relative_url }}" class="w-100 h-100 object-fit-cover blur-up" alt="{{ e.title }}"></div>
+        {% else %}
+        <div class="ratio ratio-1x1 bg-secondary text-white d-flex align-items-center justify-content-center">No Image</div>
+        {% endif %}
+        <div class="position-absolute bottom-0 start-0 w-100 py-1 px-2 bg-dark bg-opacity-50 text-white text-truncate">{{ e.title }}</div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="modal-{{ idx }}" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalLabel-{{ idx }}">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content" style="border-radius:10px;">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLabel-{{ dx }}">{{ e.title }}{% if e.date >= site.time %} <span class="badge bg-success ms-2">Upcoming</span>{% endif %}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body"> {% if e.cover %}<img src="{{ e.cover | relative_url }}" class="img-fluid mb-3" style="border-radius:10px;">{% endif %}
+              <p class="text-muted small mb-3">{{ e.date | date: "%B %-d, %Y" }}{% if e.location %} &mdash; {{ e.location }}{% endif %}</p>
+              <div class="mb-4">{{ e.content | truncatewords: 50, '...' | markdownify }}</div>
+              {% if e.map_embed %}
+              <div class="ratio ratio-4x3 my-3" style="max-width:350px; border-radius:10px; overflow:hidden;">{{ e.map_embed | raw }}</div>
+              {% endif %} </div>
+            <div class="modal-footer"> <a href="{{ e.url }}" class="btn btn-primary">Show More</a> {% if e.registration_url %} <a href="{{ e.registration_url }}" class="btn btn-sm btn-outline-dark text-dark fw-semibold animate__animated animate__pulse animate__infinite" target="_blank"> <i class="fa-solid fa-calendar-check me-1"></i> Register Now </a> {% endif %} <a class="btn btn-sm btn-outline-dark fw-semibold" target="_blank"
+                   href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ e.title | uri_escape }}&dates={{ e.date | date: '%Y%m%d' }}T{{ e.start_time | remove: ':' }}00/{{ e.date | date: '%Y%m%d' }}T{{ e.end_time | remove: ':' }}00&details={{ e.content | strip_html | uri_escape }}&location={{ e.location | uri_escape }}"> <i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar </a> <a class="btn btn-sm btn-outline-info fw-semibold" download="{{ e.title | slugify }}.ics"
+                   href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ e.title | uri_escape }}%0ADTSTART:{{ e.date | date: '%Y%m%d' }}{{ e.start_time | remove: ':' }}00Z%0ADTEND:{{ e.date | date: '%Y%m%d' }}{{ e.end_time | remove: ':' }}00Z%0ADESCRIPTION:{{ e.content | strip_html | uri_escape }}%0ALOCATION:{{ e.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR"> <i class="fa-solid fa-file-export me-1"></i> Download .ICS </a>
+              <button class="btn btn-sm btn-outline-secondary fw-semibold" onclick="navigator.share ? navigator.share({ title: '{{ e.title }}', url: '{{ e.url | absolute_url }}' }) : alert('Share not supported on this browser.')"> <i class="fa-solid fa-share-nodes me-1"></i> Share </button>
             </div>
           </div>
         </div>
       </div>
-    {% endfor %}
-  </div>
+    </div>
+    {% endfor %} </div>
 </section>
 <!-- Hero banner END -->
 
@@ -128,7 +119,7 @@ permalink: /events-and-activities/
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 60vh;
+  min-height: 70vh; /* minimum 80% viewport height */
   position: relative;
 }
 @media (max-width: 768px) {

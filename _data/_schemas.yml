@@ -1,72 +1,71 @@
-# _data/_schemas.yml
-
 sponsors.yml:
-type: array
-display: name
-fields:
-    - {k: name, l: Name, t: text, req: true, w: col-8}
-    - {k: tier, l: Tier, t: select, req: true, opts: \[Platinum, Gold, Silver, Bronze, Supporting, Event], w: col-4}
-    - {k: website, l: Website, t: url, req: true, w: col-12}
-    - {k: logo, l: Logo URL, t: image, req: true, w: col-12}
-    - {k: alt, l: Alt Text, t: text, w: col-12}
-    - {k: tagline, l: Tagline, t: long, w: col-12}
-    - {k: contact\_email, l: Contact Email, t: email, w: col-6}
-    - {k: media\_type, l: Media Type, t: select, opts: \[image, video], w: col-6}
-    - {k: media\_url, l: Media URL, t: url, w: col-12}
-    - {k: start\_date, l: Start Date, t: datetime, w: col-6}
-    - {k: end\_date, l: End Date, t: datetime, w: col-6}
-    - {k: active, l: Active, t: bool, w: col-3}
-    - {k: order, l: Order, t: number, req: true, w: col-3}
+  type: array
+  display: name
+  fields:
+    - { k: name,           l: Name,         t: text,    req: true, w: col-8 }
+    - { k: tier,           l: Tier,         t: select,  req: true, opts: [Platinum, Gold, Silver, Bronze, Supporting, Event], w: col-4 }
+    - { k: website,        l: Website,      t: url,     req: true, w: col-12 }
+    - { k: logo,           l: Logo URL,     t: image,   req: true, w: col-12 }
+    - { k: alt,            l: Alt Text,     t: text,    w: col-12 }
+    - { k: tagline,        l: Tagline,      t: long,    w: col-12 }
+    - { k: contact_email,  l: Contact Email,t: email,   w: col-6 }
+    - { k: media_type,     l: Media Type,   t: select,  opts: [image, video], w: col-6 }
+    - { k: media_url,      l: Media URL,    t: url,     w: col-12 }
+    - { k: start_date,     l: Start Date,   t: datetime,w: col-6 }
+    - { k: end_date,       l: End Date,     t: datetime,w: col-6 }
+    - { k: active,         l: Active,       t: bool,    w: col-3 }
+    - { k: order,          l: Order,        t: number,  req: true, w: col-3 }
 
 activities.yml:
-type: array
-display: title
-fields:
-    - {k: title, l: Title, t: text, req: true, w: col-6}
-    - {k: category, l: Category, t: select, opts: \[Symposium, Workshop, Outreach, Lecture], w: col-6}
-    - {k: date, l: Date, t: date, w: col-4}
-    - {k: location, l: Location, t: text, w: col-8}
-    - {k: description, l: Description, t: long, w: col-12}
+  type: array
+  display: title
+  fields:
+    - { k: title,    l: Title,    t: text,   req: true, w: col-6 }
+    - { k: category, l: Category, t: select, opts: [Symposium, Workshop, Outreach, Lecture], w: col-6 }
+    - { k: date,     l: Date,     t: date,   w: col-4 }
+    - { k: location, l: Location, t: text,   w: col-8 }
+    - { k: description, l: Description, t: long, w: col-12 }
     - k: images
-l: Images
-t: sublist
-w: col-12
-fields:
-    - {k: url, l: Image URL, t: image, w: col-4}
-    - {k: caption, l: Caption, t: text, w: col-4}
-    - {k: alt, l: Alt Text, t: text, w: col-4}
-    - {k: tags, l: Tags, t: list, w: col-12}
+      l: Images
+      t: sublist
+      w: col-12
+      fields:
+        - { k: url,     l: Image URL, t: image, w: col-4 }
+        - { k: caption, l: Caption,   t: text,  w: col-4 }
+        - { k: alt,     l: Alt Text,  t: text,  w: col-4 }
+        - { k: tags,    l: Tags,      t: list,  w: col-12 }
 
 bod.yml:
-type: array
-display: name
-fields:
-    - {k: name, l: Name, t: text, req: true, w: col-6}
-    - {k: position, l: Position, t: text, w: col-6}
-    - {k: description, l: Description, t: long, w: col-12}
-    - {k: image, l: Photo, t: image, w: col-6}
+  type: array
+  display: name
+  fields:
+    - { k: name,        l: Name,        t: text,  req: true, w: col-6 }
+    - { k: position,    l: Position,    t: text,  w: col-6 }
+    - { k: description, l: Description, t: long,  w: col-12 }
+    - { k: image,       l: Photo,       t: image, w: col-6 }
 
 events.yml:
-type: array
-display: title
-fields:
-    - {k: title, l: Title, t: text, req: true, w: col-6}
-    - {k: slug, l: Slug, t: text, req: true, w: col-6}
-    - {k: event\_date, l: Event Date, t: date, w: col-4}
-    - {k: start\_time, l: Start Time, t: text, w: col-4}
-    - {k: end\_time, l: End Time, t: text, w: col-4}
-    - {k: location, l: Location, t: text, w: col-6}
-    - {k: cover, l: Cover Image, t: image, w: col-6}
-    - {k: registration\_url, l: Registration URL, t: url, w: col-12}
-    - {k: map\_embed, l: Map Embed (HTML), t: long, w: col-12}
-    - k: image\_gallery
-l: Image Gallery
-t: sublist
-w: col-12
-fields:
-    - {k: img, l: Image URL, t: image, w: col-6}
-    - {k: caption, l: Caption, t: text, w: col-6}
-    - {k: content, l: Content, t: long, w: col-12}
+  type: array
+  display: title
+  fields:
+    - { k: title,            l: Title,            t: text,    req: true, w: col-6 }
+    - { k: slug,             l: Slug,             t: text,    req: true, w: col-6 }
+    - { k: event_date,       l: Event Date,       t: date,    w: col-4 }
+    - { k: start_time,       l: Start Time,       t: text,    w: col-4 }
+    - { k: end_time,         l: End Time,         t: text,    w: col-4 }
+    - { k: location,         l: Location,         t: text,    w: col-6 }
+    - { k: cover,            l: Cover Image,      t: image,   w: col-6 }
+    - { k: registration_url, l: Registration URL, t: url,     w: col-12 }
+    - { k: map_embed,        l: Map Embed (HTML), t: long,    w: col-12 }
+    - k: image_gallery
+      l: Image Gallery
+      t: sublist
+      w: col-12
+      fields:
+        - { k: img,     l: Image URL, t: image, w: col-6 }
+        - { k: caption, l: Caption,   t: text,  w: col-6 }
+        - { k: content, l: Content,   t: long,  w: col-12 }
 
 images.yml:
-type: map
+  type: map
+  # …and so on…

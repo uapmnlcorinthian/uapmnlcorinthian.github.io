@@ -1,7 +1,7 @@
 # _data/events.yml
 - slug: cpd-building-code-2025-updates
   title: "CPD Building Code 2025 Updates"
-  event_date: 2025-12-30
+  event_date: 2025-11-30
   start_time: "13:00"
   end_time: "16:00"
   location: "UAP MCC Office, Manila"
@@ -18,8 +18,47 @@
       caption: "Speaker presenting code changes"
     - img: "https://images.unsplash.com/photo-1423592707957-3b212afa6733?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       caption: "Attendees in discussion"
+    - img: "https://plus.unsplash.com/premium_photo-1661335257817-4552acab9656?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Image Placeholder 1"
+    - img: "https://plus.unsplash.com/premium_photo-1682974359836-340043a2599a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Image Placeholder 2"
+    - img: "https://plus.unsplash.com/premium_photo-1682974359934-dd2a5bfa20b2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      caption: "Image Placeholder 3"
   content: >
-    An in‑depth review of the 2025 amendments to the Philippine Building Code, focusing on compliance requirements and enforcement strategies.
+    ## Title Sample
+    # Sub Heading
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.  
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Integer euismod, nunc vitae 
+      - Curabitur euismod, nunc vitae 
+        - 111 Integer euismod, nunc vitae 
+        - 111 Curabitur euismod, nunc vitae 
+
+    Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+    ---
+    1. Sed at lectus nec ante tincidunt dictum.  
+    2. Praesent vitae sapien sed nisi convallis volutpat.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+    > This is a blockquote.  
+    > It can span multiple lines.
+
+
+    - [ ] Incomplete task
+    [Link text](https://example.com)  
+    [Link with title](https://example.com "Title") 
+    ```ruby
+    # This is a Ruby code block
+    puts 'Hello, Jekyll!'
+    ---  
+    ***  
+    ___
+
+
+
 
 - slug: workshop-revit-interiors-beginners-2025-02
   title: "Workshop: Revit Interiors for Beginners"
@@ -42,6 +81,20 @@
       caption: "Participant modeling interior layout"
   content: >
     Step‑by‑step hands‑on introduction to Revit Interior tools, templates, and best practices for architectural design.
+    ### Title Sample
+    ## Sub Heading
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.  
+    - Integer euismod, nunc vitae facilisis placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+
+    Curabitur euismod, justo nec pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus. Donec a mi sit amet libero facilisis aliquet.
+
+    1. Sed at lectus nec ante tincidunt dictum.  
+    2. Praesent vitae sapien sed nisi convallis volutpat.
+
+    Mauris cursus, mi non aliquet molestie, nibh lorem tincidunt eros, vel viverra tortor tortor sit amet massa.
 
 - slug: bim-coordination-summit-2025-09
   title: "BIM Coordination Summit 2025"
@@ -64,6 +117,20 @@
       caption: "Networking among BIM professionals"
   content: >
     A full‑day summit on interdisciplinary BIM workflows, clash resolution, and collaborative project delivery.
+    ### Title Sample
+    ## Sub Heading
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.  
+    - Integer euismod, nunc vitae facilisis placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+
+    Curabitur euismod, justo nec pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus. Donec a mi sit amet libero facilisis aliquet.
+
+    1. Sed at lectus nec ante tincidunt dictum.  
+    2. Praesent vitae sapien sed nisi convallis volutpat.
+
+    Mauris cursus, mi non aliquet molestie, nibh lorem tincidunt eros, vel viverra tortor tortor sit amet massa.
 
 - slug: cpd-sustainable-facades-2025-01
   title: "CPD Sustainable Facades"
@@ -262,6 +329,24 @@
       caption: "Dinner reception"
   content: >
     Gala event recognizing outstanding contributions and closing the year in style.
+    ## Gala Night is best
+    # Sub Heading test 123
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.  
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Integer euismod, nunc vitae 
+      - Curabitur euismod, nunc vitae 
+
+    Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+    ***
+    1. Sed at lectus nec ante tincidunt dictum.  
+    2. Praesent vitae sapien sed nisi convallis volutpat.
+
+    Mauris cursus, `mi non aliquet molestie, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+    > This is a blockquote.  
+    > It can span multiple lines.
 
 - slug: csr-coastal-cleanup-2025
   title: "CSR Coastal Cleanup"
@@ -284,6 +369,24 @@
       caption: "Collected waste bags"
   content: >
     Volunteer-driven coastal cleanup to promote environmental stewardship.
+    ## Gala Night is best
+    # Sub Heading test 123
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.  
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Integer euismod, nunc vitae 
+      - Curabitur euismod, nunc vitae 
+
+    Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+    ***
+    1. Sed at lectus nec ante tincidunt dictum.  
+    2. Praesent vitae sapien sed nisi convallis volutpat.
+
+    Mauris cursus, `mi non aliquet molestie, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+    > This is a blockquote.  
+    > It can span multiple lines.
 
 - slug: workshop-parametric-grasshopper-2025-08
   title: "Workshop: Parametric Grasshopper"
