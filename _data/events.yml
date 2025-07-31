@@ -25,22 +25,31 @@
     - img: "https://plus.unsplash.com/premium_photo-1682974359934-dd2a5bfa20b2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       caption: "Image Placeholder 3"
   content: >
-    ## Title Sample
-    # Sub Heading
+    ## Project Overview
+
+    ### Key Objectives
 
     Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
 
-    - Vivamus vel dolor non magna sagittis aliquam.  
+    - Vivamus vel dolor non magna sagittis aliquam.
     - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Integer euismod, nunc vitae 
-      - Curabitur euismod, nunc vitae 
-        - 111 Integer euismod, nunc vitae 
-        - 111 Curabitur euismod, nunc vitae 
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
 
-    Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
     ---
-    1. Sed at lectus nec ante tincidunt dictum.  
-    2. Praesent vitae sapien sed nisi convallis volutpat.
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
     Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
     > This is a blockquote.  
@@ -81,20 +90,31 @@
       caption: "Participant modeling interior layout"
   content: >
     Step‑by‑step hands‑on introduction to Revit Interior tools, templates, and best practices for architectural design.
-    ### Title Sample
-    ## Sub Heading
+    ## Project Overview
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+    ### Key Objectives
 
-    - Vivamus vel dolor non magna sagittis aliquam.  
-    - Integer euismod, nunc vitae facilisis placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
 
-    Curabitur euismod, justo nec pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus. Donec a mi sit amet libero facilisis aliquet.
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
 
-    1. Sed at lectus nec ante tincidunt dictum.  
-    2. Praesent vitae sapien sed nisi convallis volutpat.
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
 
-    Mauris cursus, mi non aliquet molestie, nibh lorem tincidunt eros, vel viverra tortor tortor sit amet massa.
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: bim-coordination-summit-2025-09
   title: "BIM Coordination Summit 2025"
@@ -117,20 +137,31 @@
       caption: "Networking among BIM professionals"
   content: >
     A full‑day summit on interdisciplinary BIM workflows, clash resolution, and collaborative project delivery.
-    ### Title Sample
-    ## Sub Heading
+    ## Project Overview
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+    ### Key Objectives
 
-    - Vivamus vel dolor non magna sagittis aliquam.  
-    - Integer euismod, nunc vitae facilisis placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
 
-    Curabitur euismod, justo nec pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus. Donec a mi sit amet libero facilisis aliquet.
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
 
-    1. Sed at lectus nec ante tincidunt dictum.  
-    2. Praesent vitae sapien sed nisi convallis volutpat.
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
 
-    Mauris cursus, mi non aliquet molestie, nibh lorem tincidunt eros, vel viverra tortor tortor sit amet massa.
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: cpd-sustainable-facades-2025-01
   title: "CPD Sustainable Facades"
@@ -153,6 +184,31 @@
       caption: "Speaker on material selection"
   content: >
     Continuing professional development on eco‑friendly façade systems, materials, and performance testing.
+    ## Project Overview
+
+    ### Key Objectives
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
+
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: csr-back-to-school-build-2025-10
   title: "CSR Back‑to‑School Build"
@@ -175,6 +231,31 @@
       caption: "Completed learning station"
   content: >
     Community service project constructing study desks and learning spaces for underprivileged students.
+    ## Project Overview
+
+    ### Key Objectives
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
+
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: design-talk-adaptive-reuse-2025-04
   title: "Design Talk: Adaptive Reuse"
@@ -197,6 +278,31 @@
       caption: "Panel Q&A session"
   content: >
     Expert insights on repurposing heritage and industrial structures for modern use.
+    ## Project Overview
+
+    ### Key Objectives
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
+
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: fellowship-midyear-socials-2025-06
   title: "Fellowship Midyear Socials"
@@ -219,6 +325,31 @@
       caption: "Live acoustic performance"
   content: >
     An informal gathering to connect members, share experiences, and build community.
+    ## Project Overview
+
+    ### Key Objectives
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
+
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: gmm-1-2025
   title: "General Membership Meeting 1"
@@ -241,6 +372,31 @@
       caption: "Oath‑taking"
   content: >
     The first GMM of 2025 focused on programs, committees, and calendar alignment.
+    ## Project Overview
+
+    ### Key Objectives
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
+
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: gmm-2-2024
   title: "General Membership Meeting 2"
@@ -263,6 +419,31 @@
       caption: "Committee breakouts"
   content: >
     The second GMM reviewed first‑quarter activities and upcoming initiatives.
+    ## Project Overview
+
+    ### Key Objectives
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
+
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: site-tour-heritage-iloilo-2025-11
   title: "Site Tour: Heritage Iloilo"
@@ -285,6 +466,31 @@
       caption: "Walking group"
   content: >
     Guided tour of Iloilo’s colonial architecture and conservation efforts.
+    ## Project Overview
+
+    ### Key Objectives
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
+
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: site-tour-manila-civic-center-2025-03
   title: "Site Tour: Manila Civic Center"
@@ -307,6 +513,31 @@
       caption: "Group photo"
   content: >
     Architectural walkthrough of the Manila Civic Center’s landmark buildings.
+    ## Project Overview
+
+    ### Key Objectives
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
+
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: awards-night-year-end-2025
   title: "Awards Night & Year‑End Celebration"
@@ -330,7 +561,7 @@
   content: >
     Gala event recognizing outstanding contributions and closing the year in style.
     ## Gala Night is best
-    # Sub Heading test 123
+    ### Sub Heading test 123
 
     Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
 
@@ -339,7 +570,7 @@
       - Integer euismod, nunc vitae 
       - Curabitur euismod, nunc vitae 
 
-    Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
     ***
     1. Sed at lectus nec ante tincidunt dictum.  
     2. Praesent vitae sapien sed nisi convallis volutpat.
@@ -369,24 +600,31 @@
       caption: "Collected waste bags"
   content: >
     Volunteer-driven coastal cleanup to promote environmental stewardship.
-    ## Gala Night is best
-    # Sub Heading test 123
+    ## Project Overview
+
+    ### Key Objectives
 
     Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
 
-    - Vivamus vel dolor non magna sagittis aliquam.  
+    - Vivamus vel dolor non magna sagittis aliquam.
     - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
-      - Integer euismod, nunc vitae 
-      - Curabitur euismod, nunc vitae 
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
 
-    Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
-    ***
-    1. Sed at lectus nec ante tincidunt dictum.  
-    2. Praesent vitae sapien sed nisi convallis volutpat.
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
 
-    Mauris cursus, `mi non aliquet molestie, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
-    > This is a blockquote.  
-    > It can span multiple lines.
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: workshop-parametric-grasshopper-2025-08
   title: "Workshop: Parametric Grasshopper"
@@ -409,6 +647,31 @@
       caption: "Participant coding session"
   content: >
     Hands‑on parametric design techniques using Grasshopper for architects.
+    ## Project Overview
+
+    ### Key Objectives
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
+
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: outreach-noche-buena-2025
   title: "Outreach: Noche Buena Drive"
@@ -431,6 +694,31 @@
       caption: "Community volunteers"
   content: >
     Holiday outreach delivering food packs and essential goods to underserved communities. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet auctor gravida. Ut vulputate odio id libero venenatis varius. Sed vitae pulvinar lorem. Aliquam erat volutpat. Pellentesque lacinia metus odio, vitae sollicitudin diam egestas at. Quisque sed arcu vitae odio tempus lacinia. Curabitur pretium augue at nulla pharetra, in mattis magna eleifend. Vestibulum gravida enim sed sem cursus, quis elementum ex viverra.Cras pellentesque, orci a accumsan mollis, purus metus cursus est, ut rhoncus purus justo a lorem. Quisque sed quam sed ante ultrices ultricies quis a libero. Donec fringilla diam odio. Fusce ex dolor, bibendum vitae ex at, pretium tempor dolor. Aenean elementum ipsum at lectus suscipit ultricies. In in metus in sem eleifend condimentum. Mauris varius massa fermentum mi tempor, non aliquam eros placerat. Vivamus sed malesuada ante, eu pellentesque enim. Duis laoreet tellus mi, id luctus sem ultricies sagittis.
+    ## Project Overview
+
+    ### Key Objectives
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
+
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+
 
 - slug: open-studio-visit-emerging-practices-2025-11
   title: "Open Studio Visit: Emerging Practices"
@@ -453,3 +741,28 @@
       caption: "Dialogue with young architects"
   content: >
     Exclusive behind‑the‑scenes visit to innovative architecture studios.
+    ## Project Overview
+
+    ### Key Objectives
+
+    Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Pellentesque vel urna quis magna fermentum consequat. Phasellus sit amet metus nec libero vehicula luctus.
+
+    - Vivamus vel dolor non magna sagittis aliquam.
+    - Integer euismod, nunc vitae ~~facilisis~~ placerat, odio dui aliquet turpis, eget fermentum urna ipsum eu tortor.
+      - Praesent euismod, nunc vitae
+      - Curabitur euismod, nunc vitae
+        - In-depth analysis of project requirements
+        - Stakeholder engagement plan
+
+    ### Curabitur euismod, justo nec ***pretium aliquet, sapien urna malesuada lorem, nec posuere risus ipsum non risus.*** Donec a mi sit amet libero facilisis aliquet.
+
+    ---
+
+    1. Conduct initial site assessment and feasibility study.
+    2. Develop detailed architectural design documentation.
+
+    Mauris cursus, `mi non aliquet __molestie__, nibh lorem tincidunt eros, vel viverra tortor tortor sit` amet massa.
+
+    > This project aims to enhance community spaces through sustainable design.  
+    > Collaboration among multidisciplinary teams is critical for success.
+

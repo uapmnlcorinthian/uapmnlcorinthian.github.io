@@ -8,7 +8,7 @@
 <div id="top"></div>
 {% if page.cover %} 
 <!-- Hero Cover Section -->
-<section class="parallax-hero mb-5" style="background-image: url('{{ page.cover | relative_url }}');" data-aos="fade-in">
+<section class="parallax-hero" style="background-image: url('{{ page.cover | relative_url }}');" data-aos="fade-in">
   <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50"></div>
   <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-white position-relative text-center">
     <h1 class="display-4 fw-bold animate__animated animate__fadeInDown">{{ page.title }}</h1>
@@ -18,7 +18,7 @@
     {% endif %} </div>
 </section>
 {% endif %}
-<main id="mainContent" class="p-5" data-aos="fade-up"> {% unless page.cover %}
+<main id="mainContent" class="p-5 pt-2" data-aos="fade-up"> {% unless page.cover %}
   <h1 class="mb-3">{{ page.title }}</h1>
   <p class="text-muted"> {{ page.date | date: "%B %-d, %Y" }}{% if page.location %} &mdash; {{ page.location }}{% endif %} </p>
 
