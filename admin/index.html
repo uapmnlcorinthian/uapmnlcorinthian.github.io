@@ -16,7 +16,9 @@
     <h1>🛠 Admin Panel</h1>
     <button v-if="!tok" class="btn ok" @click="login">🔐 Login</button>
     <button v-else class="btn" @click="logout">🚪 Logout</button>
-    <span v-if="tok" class="mut">Token kept in sessionStorage (clears on tab close).</span> <span class="mut">| Repo:</span> <strong>{{repo}}</strong> </header>
+    <span v-if="tok" class="mut">Token kept in sessionStorage (clears on tab close).</span> 
+    <span class="mut">| Repo:</span> <strong>{{repo}}</strong> 
+  </header>
   <main v-if="tok">
     <aside>
       <div class="bar">
@@ -36,17 +38,16 @@
       <div class="list" v-if="schema.type!=='map'">
         <div v-for="r in rows" :key="r.idx" class="item" :class="{active:r.idx===sel}" @click="open(r.idx)">
           <div>
-		  <div>{{labelOf(r.row)}} 
-			<!-- Add ?. to tier check -->
-			<span class="pill" v-if="r.row?.tier">{{r.row.tier}}</span> 
-			<!-- Add ?. to order check -->
-			<span class="tag" v-if="r.row?.order !== undefined">#{{r.row.order}}</span>
-		  </div>
-		  <div class="tag" v-if="r.row?.tagline">{{r.row.tagline}}</div>
-		</div>
+            <div>
+              {{labelOf(r.row)}} 
+              <span class="pill" v-if="r.row?.tier">{{r.row.tier}}</span> 
+              <span class="tag" v-if="r.row?.order !== undefined">#{{r.row.order}}</span>
+            </div>
+            <div class="tag" v-if="r.row?.tagline">{{r.row.tagline}}</div>
+          </div>
+        </div>
       </div>
       <div class="list" v-else> 
-        <!-- map files don't show list items -->
         <div class="mut" style="padding:10px">Map editor active</div>
       </div>
       <div class="bar" v-if="schema.type!=='map'">
@@ -63,7 +64,8 @@
         <button class="btn" @click="reload">↻ Reload</button>
         <button class="btn" @click="exportYaml">⬇ Export</button>
         <button class="btn primary" @click="save">💾 Save</button>
-        <span class="mut" v-if="schema.display">Display key: <code>{{schema.display}}</code></span> </div>
+        <span class="mut" v-if="schema.display">Display key: <code>{{schema.display}}</code></span> 
+      </div>
       
       <!-- map editor -->
       <template v-if="schema.type==='map'">
@@ -77,10 +79,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(v,k,i) in obj" :key="k">
-                <td><input v-model="rowsKeys[i]" @input="syncKey(i,k)"></td>
-                <td><input v-model="obj[k]"></td>
-                <td><button class="btn danger" @click="removeKey(k,i)">🗑</button></td>
+              <tr v-for="(item, i) in mapItems" :key="i">
+                <td><input v-model="item.key"></td>
+                <td><input v-model="item.value"></td>
+                <td><button class="btn danger" @click="removeKey(i)">🗑</button></td>
               </tr>
             </tbody>
           </table>
@@ -92,7 +94,7 @@
         </div>
       </template>
       
-      <!-- detail editor for a single item to avoid scrolling -->
+      <!-- detail editor -->
       <template v-else>
         <div v-if="sel<0" class="mut">Select an item on the left to edit.</div>
         <div v-else class="card">
@@ -115,16 +117,17 @@
               </div>
               <div class="col-12" v-else-if="fld.t==='list'">
                 <label>{{fld.l}}</label>
-                <div class="line" style="flex-wrap:wrap"> <span v-for="(tag,i) in (cur[fld.k]||(cur[fld.k]=[]))" :key="i" class="line">
-                  <input v-model="cur[fld.k][i]" style="min-width:220px">
-                  <button class="btn danger" @click="cur[fld.k].splice(i,1)">✕</button>
+                <div class="line" style="flex-wrap:wrap"> 
+                  <span v-for="(tag,i) in (cur[fld.k]||[])" :key="i" class="line">
+                    <input v-model="cur[fld.k][i]" style="min-width:220px">
+                    <button class="btn danger" @click="cur[fld.k].splice(i,1)">✕</button>
                   </span>
                   <button class="btn" @click="(cur[fld.k]||(cur[fld.k]=[])).push('')">＋ Add</button>
                 </div>
               </div>
               <div class="col-12" v-else-if="fld.t==='sublist'">
                 <label>{{fld.l}}</label>
-                <div class="card" v-for="(it,ii) in (cur[fld.k]||(cur[fld.k]=[]))" :key="ii">
+                <div class="card" v-for="(it,ii) in (cur[fld.k]||[])" :key="ii">
                   <div class="row">
                     <template v-for="sf in fld.fields">
                       <div class="col-4" v-if="sf.t!=='long' && sf.t!=='bool'" :key="sf.k+ii">
@@ -152,12 +155,13 @@
           <div class="toolbar" style="margin-top:10px">
             <button class="btn" @click="prev" :disabled="sel<=0">← Prev</button>
             <button class="btn" @click="next" :disabled="sel>=data.length-1">Next →</button>
-            <span class="mut">| Editing #{{sel+1}} / {{data.length}} — {{labelOf(cur)}}</span> <span class="mut" v-if="schema.display"> | Display key: <code>{{schema.display}}</code></span> </div>
+            <span class="mut">| Editing #{{sel+1}} / {{data.length}} — {{labelOf(cur)}}</span> 
+            <span class="mut" v-if="schema.display"> | Display key: <code>{{schema.display}}</code></span> 
+          </div>
         </div>
       </template>
     </section>
   </main>
-</div>
 </div>
 </body>
 </html>

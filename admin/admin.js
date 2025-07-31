@@ -15,8 +15,7 @@
       const SC       = reactive({}),
             schema   = reactive({ type: "array", wrap: null, fields: [], display: "" }),
             data     = ref([]),
-            obj      = reactive({}),
-            rowsKeys = ref([]),
+            mapItems = ref([]),
             sha      = ref(""),
             sel      = ref(-1),
             q        = ref(""),
@@ -32,10 +31,8 @@
           : e?.title || e?.name || 'Item';
       };
 
-      // Corrected rows mapping: use 'row' and 'idx' keys
       const rows = computed(() => {
         if (schema.type === 'map') return [];
-        // ensure each element is defined
         const valid = Array.isArray(data.value) ? data.value.filter(r => r != null) : [];
         let arr = valid.map((row, idx) => ({ row, idx }));
         const qq = q.value.trim().toLowerCase();
@@ -53,7 +50,7 @@
       : f.t === 'date'      ? 'date'
       : 'text';
 
-      // GitHub API fetch
+      // GitHub API
       async function ghFetch(path) {
         const res = await fetch(
           `https://api.github.com/repos/${repo}/contents/${remoteBase}/${path}?ref=${br}`,
@@ -63,6 +60,7 @@
         const j = await res.json();
         return { text: atob(j.content), sha: j.sha };
       }
+      
       async function ghPut(path, content, prevSha) {
         const body = JSON.stringify({
           message: `Update ${path}`,
@@ -76,7 +74,14 @@
         );
       }
 
-      // Schema inference
+      function objFromFields(fields) {
+        const o = {};
+        fields.forEach(f => {
+          o[f.k] = f.t === 'bool' ? false : (f.t === 'list' ? [] : (f.t === 'sublist' ? [] : ''));
+        });
+        return o;
+      }
+
       function inferFields(o) {
         return o && typeof o==='object'
           ? Object.keys(o).map(k => ({
@@ -90,31 +95,37 @@
             }))
           : [];
       }
+      
       function pickSchema(fn,y) {
         const s = SC[fn];
         if (s) return Object.assign(schema, s);
         if (y && !Array.isArray(y) && typeof y==='object') {
           const ks = Object.keys(y);
           if (ks.length && Array.isArray(y[ks[0]])) {
-            schema.type = 'objlist'; schema.wrap = ks[0];
+            schema.type = 'objlist'; 
+            schema.wrap = ks[0];
             schema.fields = inferFields(y[ks[0]][0]);
             schema.display = schema.fields.find(f => ['title','name'].includes(f.k))?.k || schema.fields[0]?.k;
             return;
           }
-          schema.type = 'map'; schema.wrap = null; schema.fields = []; schema.display = '';
+          schema.type = 'map'; 
+          schema.wrap = null; 
+          schema.fields = []; 
+          schema.display = '';
           return;
         }
-        schema.type = 'array'; schema.wrap = null;
+        schema.type = 'array'; 
+        schema.wrap = null;
         schema.fields = inferFields((y||[])[0]);
         schema.display = schema.fields.find(f => ['title','name'].includes(f.k))?.k || schema.fields[0]?.k;
       }
 
-      // Initialize
+      // Core functions
       async function init() {
         try {
           const s = await ghFetch(schemaFile);
           Object.assign(SC, jsyaml.load(s.text) || {});
-        } catch(err) { console.error('Schema load error:', err); }
+        } catch(err) { console.error('Schema error:', err); }
         try {
           const r = await fetch(
             `https://api.github.com/repos/${repo}/contents/${remoteBase}?ref=${br}`,
@@ -124,20 +135,18 @@
           files.value = list.filter(n => n!==schemaFile);
           file.value = files.value[0] || '';
           await loadFile();
-        } catch(err) { console.error('File list error:', err); }
+        } catch(err) { console.error('File error:', err); }
       }
 
-      // File operations
       async function loadFile() {
         if (!file.value) return;
         const r = await ghFetch(file.value);
         let y = {};
-        try { y = jsyaml.load(r.text) || {}; } catch(e) { console.error('YAML parse error:', e); }
+        try { y = jsyaml.load(r.text) || {}; } catch(e) { console.error('YAML error:', e); }
         sha.value = r.sha || '';
         pickSchema(file.value, y);
         if (schema.type === 'map') {
-          Object.assign(obj, y);
-          rowsKeys.value = Object.keys(obj);
+          mapItems.value = Object.entries(y).map(([k, v]) => ({ key: k, value: v }));
           sel.value = -1;
         } else if (schema.type === 'objlist') {
           const arr = y?.[schema.wrap];
@@ -149,19 +158,133 @@
         }
       }
 
-      function addItem() { /* ... */ }
-      function dupItem() { /* ... */ }
-      function delItem() { /* ... */ }
-      function moveItem(d) { /* ... */ }
-      async function save() { /* ... */ }
-      function exportYaml() { /* ... */ }
-      function login() { /* ... */ }
-      function logout() { /* ... */ }      
+      const cur = computed(() => sel.value >= 0 ? data.value[sel.value] : {});
+
+      function open(idx) {
+        sel.value = idx;
+      }
+
+      function prev() {
+        if (sel.value > 0) sel.value--;
+      }
+
+      function next() {
+        if (sel.value < data.value.length - 1) sel.value++;
+      }
+
+      function reload() {
+        loadFile();
+      }
+
+      function addItem() {
+        const newItem = objFromFields(schema.fields);
+        data.value.push(newItem);
+        sel.value = data.value.length - 1;
+      }
+
+      function dupItem() {
+        if (sel.value < 0) return;
+        const copy = JSON.parse(JSON.stringify(data.value[sel.value]));
+        data.value.splice(sel.value + 1, 0, copy);
+        sel.value++;
+      }
+
+      function delItem() {
+        if (sel.value < 0) return;
+        data.value.splice(sel.value, 1);
+        if (sel.value >= data.value.length) sel.value = data.value.length - 1;
+      }
+
+      function moveItem(d) {
+        if (sel.value < 0) return;
+        const newIdx = sel.value + d;
+        if (newIdx < 0 || newIdx >= data.value.length) return;
+        [data.value[newIdx], data.value[sel.value]] = [data.value[sel.value], data.value[newIdx]];
+        sel.value = newIdx;
+      }
+
+      async function save() {
+        if (!file.value) return;
+        let content;
+        if (schema.type === 'map') {
+          const obj = {};
+          mapItems.value.forEach(item => obj[item.key] = item.value);
+          content = jsyaml.dump(obj);
+        } else if (schema.type === 'objlist') {
+          const wrapObj = {};
+          wrapObj[schema.wrap] = data.value;
+          content = jsyaml.dump(wrapObj);
+        } else {
+          content = jsyaml.dump(data.value);
+        }
+        try {
+          const res = await ghPut(file.value, content, sha.value);
+          if (res.ok) {
+            const j = await res.json();
+            sha.value = j.content.sha;
+            alert('Saved!');
+          } else throw new Error(await res.text());
+        } catch(err) {
+          console.error(err);
+          alert('Save failed: ' + err.message);
+        }
+      }
+
+      function exportYaml() {
+        let content;
+        if (schema.type === 'map') {
+          const obj = {};
+          mapItems.value.forEach(item => obj[item.key] = item.value);
+          content = jsyaml.dump(obj);
+        } else if (schema.type === 'objlist') {
+          const wrapObj = {};
+          wrapObj[schema.wrap] = data.value;
+          content = jsyaml.dump(wrapObj);
+        } else {
+          content = jsyaml.dump(data.value);
+        }
+        const blob = new Blob([content], { type: 'application/yaml' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = file.value;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        }, 0);
+      }
+
+      function addKey() {
+        mapItems.value.push({ key: '', value: '' });
+      }
+
+      function removeKey(i) {
+        mapItems.value.splice(i, 1);
+      }
+
+      function login() {
+        const t = prompt('GitHub Personal Access Token (with repo scope):');
+        if (t) {
+          tok.value = t;
+          sessionStorage.setItem('gh_token', t);
+          init();
+        }
+      }
+
+      function logout() {
+        tok.value = '';
+        sessionStorage.removeItem('gh_token');
+      }
 
       init();
-      return { repo, tok, files, file, schema, data, obj, rowsKeys, sel, q, sortMode,
-               rows, inputType, labelOf, login, logout, loadFile, addItem, dupItem,
-               delItem, moveItem, save, exportYaml, prev, next, reload };
+      return { 
+        repo, tok, files, file, schema, data, mapItems, sel, q, sortMode,
+        rows, inputType, labelOf, login, logout, loadFile, addItem, dupItem,
+        delItem, moveItem, save, exportYaml, prev, next, reload, open, 
+        addKey, removeKey, cur
+      };
     }
   }).mount('#app');
 })();
