@@ -1,0 +1,46 @@
+- title: Home
+  url: /
+  visible: true
+
+- title: About Us
+  url: /about_us/
+  visible: true
+  # aos: fade-right
+  submenu:
+    - title: Board of Directors
+      url: /about_us/#bod
+      visible: true
+    - title: MCC History
+      url: /mcc_history/
+      visible: true
+    - title: National Officers
+      url: /national-officers/
+      visible: true
+
+- title: Events & Activities
+  url: /events-and-activities/
+  visible: true
+
+- title: News & Articles
+  url: /news-and-articles/
+  visible: false
+
+- title: Industry Partners
+  url: /industry-partners/
+  visible: true
+
+- title: FAQs
+  url: /faqs/
+  visible: true
+  submenu:
+    - title: Scholarship
+      url: /faqs/scholarship/
+      visible: true
+    - title: Useful Files
+      url: /useful-files/
+      visible: true
+
+- title: Membership
+  url: /membership/
+  visible: true
+ 

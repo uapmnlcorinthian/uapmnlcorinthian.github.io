@@ -114,7 +114,7 @@
   {% endif %}
 {% endfor %}
 
-<div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top gap-3">
+<div class="d-flex justify-content-between align-items-center mt-5 pt-4 pb-4 border-top gap-3">
   {% if prev %}
     <a href="{{ prev.url }}" class="btn btn-outline-secondary btn-sm"> ← {{ prev.title }} </a>
   {% else %}
@@ -133,6 +133,9 @@
 </div>
 
 	
+<!-- CTA -->
+
+{% include register.html %}
 	
 </main>
 {% include footer.html %}

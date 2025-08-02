@@ -1,47 +1,58 @@
-<!-- Core Officers -->
-<div class="text-center mb-5" data-aos="zoom-in">
-  <h3 class="mb-4">Core Officers</h3>
-  <div class="row justify-content-center">
-    {% for p in site.data.bod %}
-      {% if p.position contains 'President' or p.position contains 'Vice President' or p.position == 'Secretary' or p.position == 'Treasurer' or p.position == 'Auditor' %}
-        <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
-          <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid mb-2 rounded-5 shadow-sm" style="width:210px; aspect-ratio:1; object-fit:cover;">
-          <h6 class="mb-0">{{ p.name }}</h6>
-          <small class="text-muted">{{ p.position }}</small>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-</div>
+<!-- Board of Directors Section -->
+<section class="container py-5 px-3" id="bod" data-aos="zoom-in">
+  <h2 class="mb-4 text-center">Board of Directors</h2>
 
-<!-- Committee Directors -->
-<div class="text-center mb-5" data-aos="fade-up">
-  <h3 class="mb-4">Committee Directors</h3>
-  <div class="row justify-content-center">
-    {% for p in site.data.bod %}
-      {% if p.position contains 'Director' %}
-        <div class="col-6 col-md-3 mb-4" data-aos="flip-left">
-          <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid rounded-5 mb-2" style="width:180px;aspect-ratio:1;object-fit:cover;">
-          <h6 class="mb-0">{{ p.name }}</h6>
-          <small class="text-muted">{{ p.position }}</small>
-        </div>
-      {% endif %}
-    {% endfor %}
+  <!-- Core Officers -->
+  <div class="text-center mb-5" data-aos="zoom-in">
+    <h3 class="mb-4">Core Officers</h3>
+    <div class="row justify-content-center">
+      {% for p in site.data.bod %}
+        {% if p.position contains 'President' or p.position contains 'Vice President' or p.position == 'Secretary' or p.position == 'Treasurer' or p.position == 'Auditor' %}
+          <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
+            <button type="button" class="border-0 bg-transparent p-0" data-bs-toggle="modal" data-bs-target="#bodModal{{ forloop.index0 }}">
+              <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid mb-2 rounded-4 shadow-sm" style="width:210px; aspect-ratio:1; object-fit:cover;">
+            </button>
+            <h6 class="mb-0">{{ p.name }}</h6>
+            <small class="text-muted">{{ p.position }}</small>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
-</div>
 
-<!-- Special Roles -->
-<div class="text-center mb-5" data-aos="fade-up">
-  <h3 class="mb-4">Protocol & Immediate Past President</h3>
-  <div class="row justify-content-center">
-    {% for p in site.data.bod %}
-      {% if p.position contains 'Protocol' or p.position contains 'Immediate' %}
-        <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
-          <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid rounded-5 mb-2" style="width:200px;aspect-ratio:1;object-fit:cover;">
-          <h6 class="mb-0">{{ p.name }}</h6>
-          <small class="text-muted">{{ p.position }}</small>
-        </div>
-      {% endif %}
-    {% endfor %}
+  <!-- Committee Directors -->
+  <div class="text-center mb-5" data-aos="fade-up">
+    <h3 class="mb-4">Committee Directors</h3>
+    <div class="row justify-content-center">
+      {% for p in site.data.bod %}
+        {% if p.position contains 'Director' %}
+          <div class="col-6 col-md-3 mb-4" data-aos="flip-left">
+            <button type="button" class="border-0 bg-transparent p-0" data-bs-toggle="modal" data-bs-target="#bodModal{{ forloop.index0 }}">
+              <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid rounded-4 mb-2" style="width:180px; aspect-ratio:1; object-fit:cover;">
+            </button>
+            <h6 class="mb-0">{{ p.name }}</h6>
+            <small class="text-muted">{{ p.position }}</small>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+
+  <!-- Special Roles -->
+  <div class="text-center mb-5" data-aos="fade-up">
+    <h3 class="mb-4">Protocol & Immediate Past President</h3>
+    <div class="row justify-content-center">
+      {% for p in site.data.bod %}
+        {% if p.position contains 'Protocol' or p.position contains 'Immediate' %}
+          <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
+            <button type="button" class="border-0 bg-transparent p-0" data-bs-toggle="modal" data-bs-target="#bodModal{{ forloop.index0 }}">
+              <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid rounded-4 mb-2" style="width:200px; aspect-ratio:1; object-fit:cover;">
+            </button>
+            <h6 class="mb-0">{{ p.name }}</h6>
+            <small class="text-muted">{{ p.position }}</small>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

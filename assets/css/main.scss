@@ -1,6 +1,10 @@
 ---
 ---
 
+// ---------------------------------------------
+// 1. IMPORTS & CSS VARIABLES
+// ---------------------------------------------
+
 @import "tokens"; /* imports _sass/_tokens.scss */
 
 :root {
@@ -19,16 +23,17 @@
   --t1:#{$t1}; --t2:#{$t2}; --t3:#{$t3}; --t4:#{$t4}; --t5:#{$t5};
 }
 
+
+@import "past-presidents";
+
+// ---------------------------------------------
+// 2. BASE ELEMENTS & BODY
+// ---------------------------------------------
+
 html, body {
   overflow-x: hidden;
   background-color: $body-bg;
   color: $text-primary;
-}
-
-header img {
-  max-height: 60px;
-  height: auto;
-  width: auto;
 }
 
 ::selection, ::-moz-selection {
@@ -36,10 +41,117 @@ header img {
   color: #fff !important;
 }
 
-#mainContent {
-  padding-top: 70px; // Adjust if your header height is taller
+// ---------------------------------------------
+// 3. HEADER & LOGO (Responsive Sizing Only)
+// ---------------------------------------------
+
+header, header img {
+  max-height: 60px;
+  height: auto;
+  width: auto;
+
+  @media (max-width: 600px) {
+    max-height: 40px;
+  }
 }
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1020;
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+}
+header.hide-up {
+  transform: translateY(-100%);
+}
+header.scrolled {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+// ---------------------------------------------
+// 4. NAVBAR & NAVIGATION (Minimalist)
+// ---------------------------------------------
+
+.navbar-toggler {
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .navbar-toggler-icon {
+    width: 1em;
+    height: 1em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    background-color: transparent;
+    // Custom SVG for transparent hamburger
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(33,37,41,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+}
+
+// Nav links & dropdowns
+.nav-link {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  &:hover {
+    background-color: #6c757d;
+    color: #fff !important;
+    font-weight: 600;
+    border-radius: 0.25rem;
+	  
+  }
+}
+.dropdown-item {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  &:hover {
+    background-color: #6c757d;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 0.25rem;
+  }
+}
+
+// ---------------------------------------------
+// 5. RESPONSIVE NAVBAR/HEADER SIZING (SMALL DEVICES)
+// ---------------------------------------------
+
+@media (max-width: 600px) {
+  header,
+  header img {
+    max-height: 40px; // Adjust header/logo height for mobile
+  }
+  .navbar {
+    min-height: 44px;
+  }
+  .navbar-nav .nav-link,
+  .navbar-brand {
+    font-size: 0.89rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+  .offcanvas-title {
+    font-size: 1.07rem;
+  }
+}
+
+// ---------------------------------------------
+// 6. HERO SECTION
+// ---------------------------------------------
 
 .hero {
   background: $primary;
@@ -51,6 +163,10 @@ header img {
   margin-bottom: 2rem;
   letter-spacing: 0.03em;
 }
+
+// ---------------------------------------------
+// 7. SPONSORS MARQUEE
+// ---------------------------------------------
 
 .sponsors-marquee {
   height: 100px;
@@ -84,6 +200,10 @@ header img {
   100% { transform: translateX(-50%); }
 }
 
+// ---------------------------------------------
+// 8. NEWS SECTION
+// ---------------------------------------------
+
 section[aria-labelledby="news-title"] article {
   cursor: pointer;
   transition: background-color 0.15s;
@@ -97,6 +217,10 @@ section[aria-labelledby="news-title"] h3 {
   color: $primary;
 }
 
+// ---------------------------------------------
+// 9. FOOTER
+// ---------------------------------------------
+
 footer {
   img {
     display: block;
@@ -104,17 +228,14 @@ footer {
     max-height: 60px;
     object-fit: contain;
   }
-
   a {
     transition: opacity 0.3s ease, transform 0.3s ease;
     text-decoration: none;
-
     &:hover {
       opacity: 0.85;
       transform: scale(1.05);
     }
   }
-
   .fa, .fab, .fa-brands {
     vertical-align: middle;
     font-family: "Font Awesome 6 Brands", "Font Awesome 6 Free", sans-serif !important;
@@ -123,11 +244,14 @@ footer {
     font-variant-ligatures: none;
     font-feature-settings: "liga" 0;
   }
-
   .small {
     font-size: 0.875rem;
   }
 }
+
+// ---------------------------------------------
+// 10. BUTTONS & INTERACTIONS
+// ---------------------------------------------
 
 #btnTop {
   position: fixed;
@@ -150,6 +274,10 @@ footer {
   background-color: darken($secondary, 10%);
   transform: translateY(-2px);
 }
+
+// ---------------------------------------------
+// 11. TABLES & DATA
+// ---------------------------------------------
 
 #paymentsWrapper {
   overflow-x: auto;
@@ -182,6 +310,10 @@ footer {
   padding-top: 1rem;
 }
 
+// ---------------------------------------------
+// 12. DIGITAL CARDS
+// ---------------------------------------------
+
 .digital-card {
   max-width: 480px;
   margin: auto;
@@ -204,6 +336,10 @@ footer {
   cursor: pointer;
 }
 
+// ---------------------------------------------
+// 13. STICKY COLUMNS
+// ---------------------------------------------
+
 .sticky-col {
   position: sticky;
   max-width: 95px;
@@ -212,54 +348,31 @@ footer {
   z-index: 2;
 }
 thead .sticky-col {
-  top: 0;	
+  top: 0;
   z-index: 3;
 }
 
-.navbar-toggler {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  box-shadow: none;
+// ---------------------------------------------
+// 14. MAIN CONTENT SPACING
+// ---------------------------------------------
+
+#mainContent {
+  padding-top: 70px; // Adjust if your header height is taller
 }
 
-.offcanvas.offcanvas-end {
-  width: 30vw !important; // or your preferred smaller width
-  min-width: 200px !important; // or your preferred smaller width
-}
+// ─────────────────────────────────────────────────────────────────────────────
+//  EVENT CAROUSEL SCROLL TRACK
+// ─────────────────────────────────────────────────────────────────────────────
 
-.nav-link {
-  transition: background-color 0.3s ease, color 0.3s ease;
-  &:hover {
-    background-color: $secondary;
-    color: #fff !important;
-  }
-}
+#event-scroller-track {
+  display: flex;
+  gap: 1rem;           // matches `.gap-3`
+  overflow-x: auto;
+  scroll-behavior: smooth;
 
-.dropdown-item {
-  transition: background-color 0.3s ease, color 0.3s ease;
-  &:hover {
-    background-color: $secondary;
-    color: #fff;
-  }
+  // hide native scrollbars
+  &::-webkit-scrollbar { display: none; }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-// Sticky & hide-on-scroll-up for all screen sizes
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1020;
-  background-color: #fff;
-  transition: transform 0.3s ease-in-out;
-}
-header.hide-up {
-  transform: translateY(-100%);
-}
-
-header.scrolled {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
 

@@ -1,0 +1,309 @@
+# _data/past_presidents.yml
+
+# United Architects of the Philippines Manila Corinthian Chapter
+# Past Presidents (with term details, grouped by decade)
+
+- name: "Quintin Estioko"
+  position: "Chapter President (Charter)"
+  start_month: "January"
+  end_month:   "December"
+  term_start:  1990
+  term_end:    1992
+  decade:      "1990s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"          # e.g. "/assets/images/presidents/estioko.jpg"
+  description: "Charter President for two consecutive terms."
+  bionote:     ""          # brief bio note
+  profile_link: ""          # LinkedIn, etc.
+  major_initiatives: []    # key accomplishments
+  awards: []               # honors received
+  quote:      ""           # optional personal motto
+
+- name: "Wilfredo G. Gacutan"
+  position: "Chapter President"
+  start_month: "January"
+  end_month:   "June"
+  term_start:  1993
+  term_end:    1994
+  decade:      "1990s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: >
+    Presided January–June 1994 and oversaw the fiscal-year change from
+    January–December to July–June under UAP National President Jaime C. Marquez.
+  bionote:     ""
+  profile_link: ""
+  major_initiatives: []
+  awards: []
+  quote:      ""
+
+- name: "Gabriel Ma. A. B. Cascante"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  1994
+  term_end:    1996
+  decade:      "1990s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Led the chapter through its first two-year July–June term."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives: []
+  awards: []
+  quote:      ""
+
+- name: "Vicente Abe A. Relleve"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  1996
+  term_end:    1998
+  decade:      "1990s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Grew membership from ~20 to 50+ architects."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives:
+    - "Expanded chapter roster from 20 to over 50 members"
+  awards: []
+  quote:      ""
+
+- name: "Vicente L. Quesea"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  1998
+  term_end:    2000
+  decade:      "1990s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: >
+    Opened membership to PLM graduates; first District Director for
+    District B2 from Corinthian appointed (Gabriel Cascante).
+  bionote:     ""
+  profile_link: ""
+  major_initiatives:
+    - "Admitted PLM alumni as full members"
+    - "First District B2 Director from Corinthian: Gabriel Cascante"
+  awards: []
+  quote:      ""
+
+- name: "Libertad S.J. Cantiller"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2000
+  term_end:    2001
+  decade:      "2000s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Steered the chapter through a one-year transitional term."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives: []
+  awards: []
+  quote:      ""
+
+- name: "Marlou B. Campaner"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2001
+  term_end:    2004
+  decade:      "2000s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: >
+    Served three consecutive terms after George Pilapil’s departure;
+    institutionalized Vision-Mission-Goals planning, PASKOrinthian,
+    Corinthian Kapihan, KKK, and Gawad Gintong Sibol/Yabong/Ani awards.
+  bionote:     ""
+  profile_link: ""
+  major_initiatives:
+    - "Launched annual planning sessions (Vision–Mission–Goals)"
+    - "Established PASKOrinthian, Kapihan & KKK forums"
+    - "Introduced Gawad Gintong Sibol, Yabong & Ani awards"
+  awards:
+    - title: "1st UAP Model Chapter Award"
+      year:  2003
+  quote:      ""
+
+- name: "Marcial S. Valencia"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2004
+  term_end:    2006
+  decade:      "2000s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Guided MCC to its 2nd & 3rd UAP Model Chapter Awards."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives:
+    - "Earned 2nd & 3rd UAP Model Chapter recognitions"
+  awards:
+    - title: "2nd UAP Model Chapter Award"
+      year:  2005
+    - title: "3rd UAP Model Chapter Award"
+      year:  2006
+  quote:      ""
+
+- name: "Anabel R. Carangan-Valencia"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2006
+  term_end:    2008
+  decade:      "2000s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Secured MCC’s 4th UAP Model Chapter Award in FY 2006–07."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives: []
+  awards:
+    - title: "4th UAP Model Chapter Award"
+      year:  2007
+  quote:      ""
+
+- name: "Patrick N. Rodriguez"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2008
+  term_end:    2010
+  decade:      "2000s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Led the chapter through FY 2008–10; saw Anabel Carangan-Valencia become 3rd District Director."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives: []
+  awards:
+    - title: "District B2 Director"
+      year:  2009
+  quote:      ""
+
+- name: "Pamela Alianza-Constantino"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2010
+  term_end:    2011
+  decade:      "2010s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: >
+    Formulated MCC’s Implementing Rules & Regulations and
+    institutionalized “KEN Estioko Day.”
+  bionote:     ""
+  profile_link: ""
+  major_initiatives:
+    - "Drafted chapter IRR"
+    - "Launched KEN Estioko Day"
+  awards: []
+  quote:      ""
+
+- name: "Ludivico P. Idano"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2011
+  term_end:    2013
+  decade:      "2010s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Earned MCC’s 5th UAP Model Chapter Award; elevated Marlou Campaner to College of Fellows."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives: []
+  awards:
+    - title: "5th UAP Model Chapter Award"
+      year:  2012
+  quote:      ""
+
+- name: "Omar C. Palero"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2013
+  term_end:    2015
+  decade:      "2010s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: >
+    Celebrated MCC’s Silver Anniversary in 2014; Patrick Rodriguez became
+    4th District Director for B2.
+  bionote:     ""
+  profile_link: ""
+  major_initiatives: []
+  awards:
+    - title: "Silver Anniversary Celebration"
+      year:  2014
+  quote:      ""
+
+- name: "Ma. Sheyne Sanchez-Idano"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2015
+  term_end:    2016
+  decade:      "2010s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Presided over FY 2015–16 with continued member engagement."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives: []
+  awards: []
+  quote:      ""
+
+- name: "Joy C. Villar"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2016
+  term_end:    2018
+  decade:      "2010s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Led 48+ chapter activities during her two-year term."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives:
+    - "Organized 48+ events across FY 2016–18"
+  awards: []
+  quote:      ""
+
+- name: "John Paul Manalaysay"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2018
+  term_end:    2019
+  decade:      "2010s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Guided MCC through FY 2018–19."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives: []
+  awards: []
+  quote:      ""
+
+- name: "Reymark Gardiola"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2019
+  term_end:    2022
+  decade:      "2010s"
+  image:       "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  description: "Steered MCC through a three-year FY 2019–22 term."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives: []
+  awards: []
+  quote:      ""
+
+- name: "Michael Adrian C. Katipunan"
+  position: "Chapter President"
+  start_month: "July"
+  end_month:   "June"
+  term_start:  2022
+  term_end:    2025
+  decade:      "2020s"
+  image:       "https://asset.manilacorinthianchapter.workers.dev/ian.jpg"
+  description: "Current president for FY 2022–25."
+  bionote:     ""
+  profile_link: ""
+  major_initiatives: []
+  awards: []
+  quote:      "I put 'IAN' in CorinthIAN"

@@ -1,80 +1,71 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm" aria-label="Primary navigation">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-white p-0" aria-label="Primary navigation">
+  <div class="container-fluid bg-white p-0">
     <!-- Toggler for Offcanvas -->
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <!-- Desktop Nav -->
-    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
+    <div class="collapse navbar-collapse d-none d-lg-flex bg-white p-0" id="navbarNav">
       <ul class="navbar-nav ms-auto gap-1">
-        <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/">Home</a></li>
-
-        <!-- About Dropdown -->
-        <li class="nav-item dropdown d-flex align-items-center">
-          <a href="{{ site.baseurl }}/about_us/" class="nav-link px-3">About Us</a>
-          <a class="nav-link dropdown-toggle px-1" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle About dropdown"></a>
-          <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-            <li><a class="dropdown-item" href="{{ site.baseurl }}/about_us/#bod">Board of Directors</a></li>
-            <li><a class="dropdown-item" href="{{ site.baseurl }}/mcc_history/">MCC History</a></li>
-            <li><a class="dropdown-item" href="{{ site.baseurl }}/national-officers/">National Officers</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/events-and-activities/">Events & Activities</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/news-and-articles/">News & Articles</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/industry-partners/">Industry Partners</a></li>
-
-        <!-- FAQs Dropdown -->
-        <li class="nav-item dropdown d-flex align-items-center">
-          <a href="{{ site.baseurl }}/faqs/" class="nav-link px-3">FAQs</a>
-          <a class="nav-link dropdown-toggle px-1" href="#" id="faqDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle FAQ dropdown"></a>
-          <ul class="dropdown-menu" aria-labelledby="faqDropdown">
-            <li><a class="dropdown-item" href="{{ site.baseurl }}/faqs/scholarship/">Scholarship</a></li>
-            <li><a class="dropdown-item" href="{{ site.baseurl }}/useful-files/">Useful Files</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item"><a class="nav-link px-3" href="{{ site.baseurl }}/membership/">Membership</a></li>
+        {% for item in site.data.navbar %}
+          {% if item.visible %}
+            {% if item.submenu %}
+              <li class="nav-item dropdown d-flex align-items-center"{% if item.aos %} data-aos="{{ item.aos }}"{% endif %}>
+                <a href="{{ site.baseurl }}{{ item.url }}" class="nav-link px-3">{{ item.title }}</a>
+                <a class="nav-link dropdown-toggle px-1" href="#" id="dropdown{{ forloop.index0 }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle {{ item.title }} dropdown"></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown{{ forloop.index0 }}">
+                  {% for sub in item.submenu %}
+                    {% if sub.visible %}
+                      <li>
+                        <a class="dropdown-item" href="{{ site.baseurl }}{{ sub.url }}">{{ sub.title }}</a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </li>
+            {% else %}
+              <li class="nav-item"{% if item.aos %} data-aos="{{ item.aos }}"{% endif %}>
+                <a class="nav-link px-3" href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
+              </li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Offcanvas Mobile Nav -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-  <div class="offcanvas-header">
+<div class="offcanvas offcanvas-end bg-white" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+  <div class="offcanvas-header bg-white">
     <h5 class="offcanvas-title">Menu</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-    <ul class="navbar-nav gap-2">
-      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/">Home</a></li>
-
-      <li class="nav-item dropdown d-flex align-items-center">
-        <a href="{{ site.baseurl }}/about_us/" class="nav-link">About Us</a>
-        <a class="nav-link dropdown-toggle px-1" href="#" id="offcanvasAboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle About dropdown"></a>
-        <ul class="dropdown-menu" aria-labelledby="offcanvasAboutDropdown">
-          <li><a class="dropdown-item" href="{{ site.baseurl }}/about_us/#bod">Board of Directors</a></li>
-          <li><a class="dropdown-item" href="{{ site.baseurl }}/mcc_history/">MCC History</a></li>
-          <li><a class="dropdown-item" href="{{ site.baseurl }}/national-officers/">National Officers</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/events-and-activities/">Events & Activities</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/news-and-articles/">News & Articles</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/industry-partners/">Industry Partners</a></li>
-
-      <li class="nav-item dropdown d-flex align-items-center">
-        <a href="{{ site.baseurl }}/faqs/" class="nav-link">FAQs</a>
-        <a class="nav-link dropdown-toggle px-1" href="#" id="offcanvasFaqDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle FAQ dropdown"></a>
-        <ul class="dropdown-menu" aria-labelledby="offcanvasFaqDropdown">
-          <li><a class="dropdown-item" href="{{ site.baseurl }}/faqs/scholarship/">Scholarship</a></li>
-          <li><a class="dropdown-item" href="{{ site.baseurl }}/useful-files/">Useful Files</a></li>
-        </ul>
-      </li>
-
-      <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/membership/">Membership</a></li>
+  <div class="offcanvas-body  bg-white">
+    <ul class="navbar-nav gap-2 bg-white">
+      {% for item in site.data.navbar %}
+        {% if item.visible %}
+          {% if item.submenu %}
+            <li class="nav-item dropdown d-flex align-items-center"{% if item.aos %} data-aos="{{ item.aos }}"{% endif %}>
+              <a href="{{ site.baseurl }}{{ item.url }}" class="nav-link">{{ item.title }}</a>
+              <a class="nav-link dropdown-toggle px-1" href="#" id="offcanvasDropdown{{ forloop.index0 }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle {{ item.title }} dropdown"></a>
+              <ul class="dropdown-menu" aria-labelledby="offcanvasDropdown{{ forloop.index0 }}">
+                {% for sub in item.submenu %}
+                  {% if sub.visible %}
+                    <li>
+                      <a class="dropdown-item" href="{{ site.baseurl }}{{ sub.url }}">{{ sub.title }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </li>
+          {% else %}
+            <li class="nav-item"{% if item.aos %} data-aos="{{ item.aos }}"{% endif %}>
+              <a class="nav-link" href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
+            </li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
     </ul>
   </div>
 </div>

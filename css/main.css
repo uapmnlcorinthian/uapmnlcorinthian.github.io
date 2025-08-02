@@ -1,19 +1,21 @@
 /*
 Error: Invalid CSS after "@import "tokens"": expected "{", was "; /* imports _s..."
-        on line 4 of E:\MCC FILES\MCC WEBSITE\Website\manilacorinthian\mcc.2025\assets\css\main.scss
+        on line 8 of E:\MCC FILES\MCC WEBSITE\Website\manilacorinthian\mcc.2025\assets\css\main.scss
 
-1: ---
-2: ---
 3: 
-4: @import "tokens"; /* imports _sass/_tokens.scss *\/
-5: 
-6: :root {
-7:   --bs-primary:   #{$primary};
-8:   --bs-secondary: #{$secondary};
-9:   --bs-accent:    #{$accent};
+4: // ---------------------------------------------
+5: // 1. IMPORTS & CSS VARIABLES
+6: // ---------------------------------------------
+7: 
+8: @import "tokens"; /* imports _sass/_tokens.scss *\/
+9: 
+10: :root {
+11:   --bs-primary:   #{$primary};
+12:   --bs-secondary: #{$secondary};
+13:   --bs-accent:    #{$accent};
 
 Backtrace:
-E:\MCC FILES\MCC WEBSITE\Website\manilacorinthian\mcc.2025\assets\css\main.scss:4
+E:\MCC FILES\MCC WEBSITE\Website\manilacorinthian\mcc.2025\assets\css\main.scss:8
 C:/Program Files/Adobe/Adobe Dreamweaver 2021/ruby/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
 C:/Program Files/Adobe/Adobe Dreamweaver 2021/ruby/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1238:in `expected'
 C:/Program Files/Adobe/Adobe Dreamweaver 2021/ruby/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1233:in `tok!'
@@ -36,4 +38,4 @@ C:/Program Files/Adobe/Adobe Dreamweaver 2021/ruby/bin/sass:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"@import \"tokens\"\": expected \"{\", was \"; /* imports _s...\"\A         on line 4 of E:\MCC FILES\MCC WEBSITE\Website\manilacorinthian\mcc.2025\assets\css\main.scss\A \A 1: ---\A 2: ---\A 3: \A 4: @import \"tokens\"; /* imports _sass/_tokens.scss */\A 5: \A 6: :root {\A 7:   --bs-primary:   #{$primary};\A 8:   --bs-secondary: #{$secondary};\A 9:   --bs-accent:    #{$accent};"; }
+  content: "Error: Invalid CSS after \"@import \"tokens\"\": expected \"{\", was \"; /* imports _s...\"\A         on line 8 of E:\MCC FILES\MCC WEBSITE\Website\manilacorinthian\mcc.2025\assets\css\main.scss\A \A 3: \A 4: // ---------------------------------------------\A 5: // 1. IMPORTS & CSS VARIABLES\A 6: // ---------------------------------------------\A 7: \A 8: @import \"tokens\"; /* imports _sass/_tokens.scss */\A 9: \A 10: :root {\A 11:   --bs-primary:   #{$primary};\A 12:   --bs-secondary: #{$secondary};\A 13:   --bs-accent:    #{$accent};"; }

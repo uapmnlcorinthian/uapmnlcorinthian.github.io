@@ -1,0 +1,176 @@
+/* ─── _past-presidents.scss ─── */
+#past-presidents {
+  // Sidebar navigation
+  .pp-nav-desktop {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    padding: 0.5rem;
+    z-index: 1050;
+
+    .nav-link {
+      color: rgb(0, 0, 0) !important;
+      padding: 0.5rem;
+      font-size: 0.875rem;
+      text-decoration: none !important;
+      white-space: nowrap;
+      transition: color 0.2s, background-color 0.2s;
+
+      &:hover {
+        background-color: #6c757d;
+        color: #fff !important;
+        font-weight: 600;
+        border-radius: 0.25rem;
+      }
+      &:focus {
+        outline: none;
+      }
+      &:active,
+      &.active {
+        background-color: #6c757d;
+        color: #fff !important;
+        font-weight: 600;
+        border-radius: 0.25rem;
+      }
+    }
+  }
+
+  // Cards grid with offset
+  .pp-cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-left: 6rem;
+    padding-left: 1rem;
+  }
+
+  // Card styling
+  .pp-card {
+    width: 280px;
+    height: 460px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+
+      .description {
+        flex: 1;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        margin-bottom: 0;
+      }
+
+      .pp-toggle {
+        padding: 0;
+        font-size: 0.9rem;
+      }
+
+      ul {
+        padding-left: 1rem;
+        margin-bottom: 0.5rem;
+        li {
+          margin-bottom: 0.25rem;
+        }
+      }
+
+      blockquote {
+        margin: 0.5rem 0;
+        padding-left: 1rem;
+        border-left: 3px solid #ddd;
+      }
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .pp-cards-wrapper {
+      margin-left: 0;
+      padding-left: 0;
+    }
+    .pp-card {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+/* ─── Modal styling ─── */
+.modal-past-president {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .modal-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+
+    .modal-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .modal-body {
+    padding: 2rem;
+
+    .modal-name {
+      margin-top: 0;
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      margin-bottom: 1rem;
+      padding-left: 1.25rem;
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    blockquote {
+      margin: 1rem 0;
+      padding-left: 1rem;
+      border-left: 4px solid var(--bs-primary);
+      font-style: italic;
+      color: #555;
+    }
+  }
+}

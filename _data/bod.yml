@@ -2,88 +2,124 @@
   name: "Karl Vincent P. Santos"
   image: "https://asset.manilacorinthianchapter.workers.dev/kpv_santos.jpg"
   description: "Guides the chapter's vision and strategy with bold leadership."
+  bionote: "Architect Santos is dedicated to driving chapter innovation and fostering a culture of service among members. He brings over 15 years of leadership in architecture and volunteerism."
+  profile_link: "https://www.linkedin.com/in/arkarlsantos/"
 
 - position: Vice President for Program & Development
   name: "Dianne Darryl May O. Rafanan-Yuzon"
-  image: "https://images.unsplash.com/photo-1561948955-570b270e7c36?q=80&w=2101&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://asset.manilacorinthianchapter.workers.dev/dii.jpeg"
   description: "Drives innovative programs and members' growth initiatives."
+  bionote: "A passionate architect-advocate, Ar. Rafanan-Yuzon specializes in program design and member empowerment, consistently elevating the chapter’s development agenda."
+  profile_link: "https://linkedin.com/in/drafanan-yuzon"
 
 - position: Vice President for Operation
   name: "Christian John C. Moniño"
-  image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=800&auto=format&fit=facearea&facepad=3"
   description: "Streamlines chapter operations for seamless execution."
+  bionote: "Ar. Moniño brings a strong background in operations and project management, ensuring all chapter activities run efficiently and effectively."
+  profile_link: "https://www.linkedin.com/in/christian-john-c-m-2a3a35292/"
 
 - position: Secretary
   name: "Jonathan Christian C. Bautista"
-  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://images.unsplash.com/photo-1617966225086-d297180aaf18?q=80&w=1967&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   description: "Keeps records sharp and communications flowing."
+  bionote: "Ar. Bautista is meticulous in documentation and chapter communications, with a commitment to organizational transparency and record-keeping."
+  profile_link: "https://linkedin.com/in/jcbautista"
 
 - position: Treasurer
   name: "Bea Denise F. Santos"
-  image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://asset.manilacorinthianchapter.workers.dev/bea.jpg"
   description: "Safeguards finances with precision and transparency."
+  bionote: "A finance-oriented professional, Ar. Santos ensures responsible stewardship of chapter funds and transparent financial reporting."
+  profile_link: "https://linkedin.com/in/beasantos"
 
 - position: Auditor
   name: "Lovely Diane Q. Rosal"
-  image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=facearea&facepad=3"
   description: "Ensures fiscal integrity through diligent review."
+  bionote: "Ar. Rosal upholds the chapter’s integrity through systematic audits and a keen attention to compliance and best practices."
+  profile_link: "https://www.linkedin.com/in/diane-rosal-56b604140/"
 
 - position: Director for the Committee on Education
   name: "Lovely Diane Q. Rosal"
-  image: "https://images.unsplash.com/photo-1701282090823-1b6e5ea607db?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=800&auto=format&fit=facearea&facepad=3"
   description: "Elevates learning experiences and CPD pathways."
+  bionote: "With a focus on continuing professional development, Ar. Rosal champions quality education for all members."
+  profile_link: "https://www.linkedin.com/in/diane-rosal-56b604140/"
 
 - position: Director for the Committee on External Affairs
   name: "Emmanuel Francis L. Yuzon"
-  image: "https://images.unsplash.com/photo-1461800919507-79b16743b257?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://asset.manilacorinthianchapter.workers.dev/emman.jpeg"
   description: "Builds bridges with partners and the wider community."
+  bionote: "Ar. Yuzon expands the chapter’s influence by forging strong external partnerships and representing the chapter in the broader community."
+  profile_link: "https://www.linkedin.com/in/emmanuel-francis-yuzon-21b86330/"
 
 - position: Director for the Committee on Internal Affairs
   name: "Christian John C. Moniño"
-  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?q=80&w=800&auto=format&fit=facearea&facepad=3"
   description: "Fosters cohesion and engagement within the chapter."
+  bionote: "Ar. Moniño nurtures camaraderie and unity, coordinating initiatives to strengthen member engagement."
+  profile_link: "https://www.linkedin.com/in/christian-john-c-m-2a3a35292/"
 
 - position: Director for the Committee on Professional Development
   name: "Cristine O. Sorita"
-  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=800&auto=format&fit=facearea&facepad=3"
   description: "Champions lifelong learning and career growth."
+  bionote: "Ar. Sorita is an advocate for continuous learning, advancing professional excellence through skills development."
+  profile_link: "https://www.linkedin.com/in/christinesorita/"
 
 - position: Director for the Committee on Private Practice
   name: "Crisanto E. Nacino"
-  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://images.unsplash.com/photo-1582897291228-f7676bfcd52c?q=80&w=2008&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   description: "Advocates best practices for private-sector architects."
+  bionote: "With extensive experience in private practice, Ar. Nacino advocates for business growth and professional ethics."
+  profile_link: "https://linkedin.com/in/cenacino"
 
 - position: Director for the Committee on Ways and Means
   name: "Adrian Michael C. Katipunan"
-  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://asset.manilacorinthianchapter.workers.dev/ian.jpg"
   description: "Generates sustainable funding and sponsorships."
+  bionote: "Ar. Katipunan specializes in resource generation, connecting the chapter to valuable sponsors and funding streams."
+  profile_link: "https://linkedin.com/in/amkatipunan"
 
 - position: Director for the Committee on Sports
   name: "Morris V. Tibulan"
-  image: "https://images.unsplash.com/photo-1554139844-af2fc8ad3a3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://images.unsplash.com/photo-1629641320554-c8e8cfed610f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   description: "Promotes wellness and camaraderie through sports."
+  bionote: "Ar. Tibulan encourages member well-being and team spirit through sports and wellness initiatives."
+  profile_link: "https://linkedin.com/in/mvtibulan"
 
 - position: Protocol Director
   name: "Reymark C. Gardiola"
-  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=800&auto=format&fit=facearea&facepad=3"
   description: "Upholds decorum and ceremonial excellence."
+  bionote: "Ar. Gardiola ensures that chapter events and protocols are conducted with order and dignity."
+  profile_link: "https://linkedin.com/in/rcgardiola"
 
 - position: Director for the Committee on Renato A. Heray Bayanihang Arkitektura
   name: "Phoebo A. Santiago"
-  image: "https://images.unsplash.com/photo-1648090322506-c79522085735?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://images.unsplash.com/photo-1629641320554-c8e8cfed610f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   description: "Leads community-oriented design service initiatives."
+  bionote: "Ar. Santiago is committed to serving communities through architecture that uplifts and empowers."
+  profile_link: "https://linkedin.com/in/pasantiago"
 
 - position: Director for the Committee on Resilient Architects
   name: "Alvin P. Tejada"
-  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://asset.manilacorinthianchapter.workers.dev/alvin.jpg"
   description: "Drives resilient, future-proof architectural solutions."
+  bionote: "Ar. Tejada is an advocate for disaster-resilient and sustainable architecture, promoting readiness and innovation."
+  profile_link: "https://www.linkedin.com/in/alvintejada/"
 
 - position: Director for the Committee on Young Architects
   name: "Bea Denise F. Santos"
-  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://asset.manilacorinthianchapter.workers.dev/bea.jpg"
   description: "Empowers emerging professionals and fresh graduates."
+  bionote: "Ar. Santos inspires and guides the next generation of architects, fostering career opportunities for young professionals."
+  profile_link: "https://linkedin.com/in/beasantos-young"
 
 - position: Immediate Chapter President
   name: "Adrian Michael C. Katipunan"
-  image: "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://asset.manilacorinthianchapter.workers.dev/ian.jpg"
   description: "Advises the board with seasoned leadership insights."
+  bionote: "A seasoned leader, Ar. Katipunan lends wisdom and continuity to the chapter’s evolving vision."
+  profile_link: "https://linkedin.com/in/amkatipunan-past"
