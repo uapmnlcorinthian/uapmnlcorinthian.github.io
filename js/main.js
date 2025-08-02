@@ -539,7 +539,11 @@ function initEventCarousel() {
 document.addEventListener('DOMContentLoaded', async () => {
   // 1) Core inits
   initLogin();
-  initAccount();
+
+  // Only guard (“account” page) — skip on the login page
+  if (location.pathname.startsWith('/account/')) {
+    initAccount();
+  }
   initMiscUI();
   initAOSandDeepLink();
   initEventCarousel();
