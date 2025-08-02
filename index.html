@@ -65,9 +65,6 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
 </section>
 
 <!-- EVENTS -->
-{% comment %}
-  1. Pick the 4 upcoming events, else latest 4
-{% endcomment %}
 {% assign sorted_events = site.events | sort: "date" | reverse %}
 {% assign upcoming = sorted_events | where_exp: "ev","ev.date >= site.time" %}
 {% if upcoming.size > 0 %}
