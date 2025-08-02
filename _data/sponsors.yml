@@ -13,19 +13,19 @@
   media_url: ""
   contact_email: "inquiry@boysen.com.ph"
 
-- name: "Autodesk"
-  website: "https://www.autodesk.com/"
-  logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Autodesk_logo.svg"
-  alt: "Autodesk logo"
+- name: "Mega Pacific Metal and Steel Corp "
+  website: "http://www.megapacificmetal.com/"
+  logo: "https://asset.manilacorinthianchapter.workers.dev/megapacific.png"
+  alt: "Mega Pacific logo"
   tier: "Gold"
   active: true
-  order: 30
-  tagline: "Design and make software for architecture and engineering."
+  order: 2
+  tagline: "Metal and Steel Supplier"
   start_date: "2025-08-01T00:00:00Z"
   end_date: "2026-07-31T23:59:59Z"
   media_type: "image"
   media_url: ""
-  contact_email: "sponsorships@autodesk.com"
+  contact_email: "megapacificmetal@gmail.com"
 
 - name: "Samsung"
   website: "https://www.samsung.com/"
@@ -33,7 +33,7 @@
   alt: "Samsung logo"
   tier: "Gold"
   active: true
-  order: 2
+  order: 3
   tagline: "Displays and devices for modern workspaces."
   start_date: "2025-08-01T00:00:00Z"
   end_date: "2026-07-31T23:59:59Z"
@@ -47,7 +47,7 @@
   alt: "Siemens logo"
   tier: "Gold"
   active: true
-  order: 3
+  order: 30
   tagline: "Building technologies and smart infrastructure."
   start_date: "2025-08-01T00:00:00Z"
   end_date: "2026-07-31T23:59:59Z"

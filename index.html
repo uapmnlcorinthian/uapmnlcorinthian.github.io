@@ -252,7 +252,18 @@ sitemap: true
     <h3 class="mb-4">Our Industry Partners</h3>
 
     <div class="row justify-content-center align-items-center g-4">
-      {%- comment -%} Pass 1: Tier → Order {%- endcomment -%}
+      {%- assign limit = 6 -%}
+      {%- assign data  = site.data.sponsors -%}
+      {%- assign list  = data.sponsors | default: data -%}
+      {%- assign a1 = list | where: "active", true -%}
+      {%- assign a2 = list | where: "active", "true" -%}
+      {%- assign a3 = list | where: "active", 1 -%}
+      {%- assign active_all = a1 | concat: a2 | concat: a3 -%}
+      {%- assign tiers = "Platinum|Gold|Silver|Bronze|Supporting|Event" | split: "|" -%}
+      {%- assign shown = 0 -%}
+      {%- capture picked %}|{% endcapture -%}
+
+      {%- assign process_sponsors = "" -%}
       {%- for t in tiers -%}
         {%- if shown >= limit -%}{% break %}{%- endif -%}
         {%- assign tier_items = active_all | where: "tier", t | sort: "order" -%}
@@ -261,7 +272,6 @@ sitemap: true
           {%- assign key = s.name | default: s.logo | replace: "|","_" -%}
           {%- unless picked contains key -%}
             {%- if s.logo and s.logo != "" -%}
-              {%- comment -%} Wikimedia SVG → PNG thumbnail {%- endcomment -%}
               {%- assign logo_url = s.logo -%}
               {%- if logo_url contains 'upload.wikimedia.org' and logo_url contains '/wikipedia/commons/' -%}
                 {%- assign tail = logo_url | split: '/wikipedia/commons/' | last -%}
@@ -277,20 +287,21 @@ sitemap: true
               {%- assign shown = shown | plus: 1 -%}
               {%- capture picked -%}{{ picked }}{{ key }}|{%- endcapture -%}
               <div class="col-6 col-md-2" data-aos="flip-left" data-aos-delay="{{ shown | minus: 1 | times: 50 }}">
-                <img
-                  src="{{ logo_url }}"
-                  alt="{{ s.alt | default: s.name | default: 'Sponsor' }}"
-                  class="img-fluid"
-                  loading="lazy"
-                  decoding="async"
-                  style="max-height:64px; object-fit:contain;">
+                <a href="{{ s.website | default: '#' }}" target="_blank" rel="noopener noreferrer">
+                  <img
+                    src="{{ logo_url }}"
+                    alt="{{ s.alt | default: s.name | default: 'Sponsor' }}"
+                    class="img-fluid"
+                    loading="lazy"
+                    decoding="async"
+                    style="max-height:64px; object-fit:contain;">
+                </a>
               </div>
             {%- endif -%}
           {%- endunless -%}
         {%- endfor -%}
       {%- endfor -%}
 
-      {%- comment -%} Pass 2: Fill remaining from any actives (no duplicates) {%- endcomment -%}
       {%- if shown < limit -%}
         {%- for s in active_all -%}
           {%- if shown >= limit -%}{% break %}{%- endif -%}
@@ -312,13 +323,15 @@ sitemap: true
               {%- assign shown = shown | plus: 1 -%}
               {%- capture picked -%}{{ picked }}{{ key }}|{%- endcapture -%}
               <div class="col-6 col-md-2" data-aos="flip-left" data-aos-delay="{{ shown | minus: 1 | times: 50 }}">
-                <img
-                  src="{{ logo_url }}"
-                  alt="{{ s.alt | default: s.name | default: 'Sponsor' }}"
-                  class="img-fluid"
-                  loading="lazy"
-                  decoding="async"
-                  style="max-height:64px; object-fit:contain;">
+                <a href="{{ s.website | default: '#' }}" target="_blank" rel="noopener noreferrer">
+                  <img
+                    src="{{ logo_url }}"
+                    alt="{{ s.alt | default: s.name | default: 'Sponsor' }}"
+                    class="img-fluid"
+                    loading="lazy"
+                    decoding="async"
+                    style="max-height:64px; object-fit:contain;">
+                </a>
               </div>
             {%- endif -%}
           {%- endunless -%}
@@ -327,7 +340,6 @@ sitemap: true
     </div>
   </div>
 </section>
-
 
 
 <!-- Call to Action: Be a Member --><br>
