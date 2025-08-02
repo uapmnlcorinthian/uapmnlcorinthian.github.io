@@ -1,10 +1,15 @@
 ---
 layout: default
+title: "UAP Manila Corinthian Chapter"
+description: "Premier community of architectural professionals in Manila. Join events, workshops, and networking opportunities."
+image: "https://asset.manilacorinthianchapter.workers.dev/preview.jpg"
+author: "UAP Manila Corinthian"
 permalink: /
-title: Home
-description: "UAP Manila Corinthian Chapter – Premier community of architectural professionals in Manila. Join events, workshops, and networking opportunities."
-keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community, Workshops, Events"
+lang: en
+published: true
+sitemap: true
 ---
+
 
 <!-- Hero Section: Full-viewport Carousel -->
 <section class="hero-section position-relative" style="height:100vh; overflow:hidden;">
@@ -75,12 +80,12 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
          | first %}
 
       {%- comment -%}
-      • Grab up to 1,200 chars of plain text from that page  
+      • Grab up to 800 chars of plain text from that page  
       {%- endcomment -%}
       {% if history_page %}
         {% assign history_text = history_page.content
            | strip_html
-           | truncate: 1200 %}
+           | truncate: 800 %}
       {% else %}
         {% assign history_text = "History content not available." %}
       {% endif %}

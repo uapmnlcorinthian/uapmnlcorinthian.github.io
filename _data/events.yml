@@ -2,6 +2,7 @@
 # NEW SAMPLE CONTENT
 # New events 1-15
 - slug: workshop-advanced-revit-families-2025
+  published: true
   title: "Workshop: Advanced Revit Families"
   event_date: 2025-05-15
   start_time: "14:00"
@@ -54,6 +55,7 @@
     ```
 
 - slug: cpd-fire-safety-high-rise-2025
+  published: true
   title: "CPD: Fire Safety in High-Rise Buildings"
   event_date: 2025-06-10
   start_time: "09:00"
@@ -104,6 +106,7 @@
     ```
 
 - slug: site-tour-bgc-green-buildings-2025
+  published: true
   title: "Site Tour: BGC Green Buildings"
   event_date: 2025-04-22
   start_time: "08:30"
@@ -148,6 +151,7 @@
     - [ ] Technical documentation provided
 
 - slug: design-talk-biophilic-design-2025
+  published: true
   title: "Design Talk: Biophilic Design"
   event_date: 2025-07-17
   start_time: "18:30"
@@ -195,6 +199,7 @@
     ```
 
 - slug: csr-tree-planting-2025
+  published: true
   title: "CSR: Watershed Tree Planting"
   event_date: 2025-08-12
   start_time: "07:00"
@@ -241,6 +246,7 @@
     - [ ] Personal water bottles required
 
 - slug: workshop-sketchup-landscape-2025
+  published: true
   title: "Workshop: SketchUp for Landscape Architecture"
   event_date: 2025-03-08
   start_time: "13:00"
@@ -295,6 +301,7 @@
     ```
 
 - slug: gmm-3-2025
+  published: true
   title: "General Membership Meeting 3"
   event_date: 2025-09-05
   start_time: "09:00"
@@ -339,6 +346,7 @@
     - [ ] Proxy forms require notarization
 
 - slug: bim-infrastructure-2025
+  published: true
   title: "BIM for Infrastructure Projects"
   event_date: 2025-10-18
   start_time: "08:30"
@@ -387,6 +395,7 @@
     ```
 
 - slug: cpd-accessibility-standards-2025
+  published: true
   title: "CPD: Universal Accessibility Standards"
   event_date: 2025-02-15
   start_time: "10:00"
@@ -432,6 +441,7 @@
     - [ ] Reference materials provided
 
 - slug: tour-adaptive-reuse-intramuros-2025
+  published: true
   title: "Tour: Adaptive Reuse in Intramuros"
   event_date: 2025-11-05
   start_time: "09:00"
@@ -477,6 +487,7 @@
     - [ ] Hard hats provided
 
 - slug: fellowship-year-end-party-2025
+  published: true
   title: "Fellowship: Year-End Celebration"
   event_date: 2025-12-12
   start_time: "19:00"
@@ -522,6 +533,7 @@
     - [ ] Parking limited - carpool recommended
 
 - slug: workshop-enscape-rendering-2025
+  published: true
   title: "Workshop: Enscape Real-time Rendering"
   event_date: 2025-01-30
   start_time: "13:00"
@@ -574,6 +586,7 @@
     ```
 
 - slug: csr-school-renovation-2025
+  published: true
   title: "CSR: Community School Renovation"
   event_date: 2025-05-03
   start_time: "08:00"
@@ -619,6 +632,7 @@
     - [ ] Closed-toe shoes required
 
 - slug: design-talk-urban-planning-2025
+  published: true
   title: "Design Talk: Metro Manila Urban Challenges"
   event_date: 2025-08-22
   start_time: "18:00"
@@ -668,6 +682,7 @@
     ```
 
 - slug: awards-design-competition-2025
+  published: true
   title: "Awards: Sustainable Design Competition"
   event_date: 2025-10-30
   start_time: "18:00"
@@ -715,6 +730,7 @@
     
 # PART 2
 - slug: workshop-digital-fabrication-2025
+  published: true
   title: "Workshop: Digital Fabrication Techniques"
   event_date: 2025-04-10
   start_time: "09:00"
@@ -762,6 +778,7 @@
     ```
 
 - slug: cpd-tropical-architecture-2025
+  published: true
   title: "CPD: Tropical Design Principles"
   event_date: 2025-03-25
   start_time: "14:00"
@@ -809,6 +826,7 @@
     ```
 
 - slug: tour-prefab-housing-2025
+  published: true
   title: "Tour: Advanced Prefab Housing Facility"
   event_date: 2025-06-18
   start_time: "10:00"
@@ -852,6 +870,7 @@
     - [ ] Transportation provided
 
 - slug: workshop-architectural-photography-2025
+  published: true
   title: "Workshop: Architectural Photography"
   event_date: 2025-05-22
   start_time: "16:00"
@@ -900,6 +919,7 @@
     ```
 
 - slug: talk-urban-agriculture-2025
+  published: true
   title: "Design Talk: Urban Agriculture Integration"
   event_date: 2025-07-30
   start_time: "18:30"
@@ -943,6 +963,7 @@
     - [ ] Seed packets provided
 
 - slug: workshop-arcgis-urban-2025
+  published: true
   title: "Workshop: GIS for Urban Planning"
   event_date: 2025-09-12
   start_time: "09:00"
@@ -988,6 +1009,7 @@
     ```
 
 - slug: csr-disaster-resilience-2025
+  published: true
   title: "CSR: Disaster-Resilient Community Center"
   event_date: 2025-08-05
   start_time: "08:00"
@@ -1031,6 +1053,7 @@
     - [ ] Closed-toe shoes required
 
 - slug: talk-circular-economy-2025
+  published: true
   title: "Design Talk: Circular Economy in Construction"
   event_date: 2025-10-08
   start_time: "17:00"
@@ -1082,6 +1105,7 @@
     ```
 
 - slug: workshop-acoustics-2025
+  published: true
   title: "Workshop: Architectural Acoustics"
   event_date: 2025-02-28
   start_time: "13:00"
@@ -1128,6 +1152,7 @@
     ```
 
 - slug: tour-net-zero-building-2025
+  published: true
   title: "Tour: Net-Zero Energy Building"
   event_date: 2025-11-18
   start_time: "10:00"
@@ -1171,6 +1196,7 @@
     - [ ] Technical specifications provided
 
 - slug: workshop-bim-for-facilities-2025
+  published: true
   title: "Workshop: BIM for Facilities Management"
   event_date: 2025-01-15
   start_time: "09:30"
@@ -1218,6 +1244,7 @@
     ```
 
 - slug: talk-ai-architecture-2025
+  published: true
   title: "Design Talk: AI in Architectural Practice"
   event_date: 2025-08-28
   start_time: "18:00"
@@ -1266,6 +1293,7 @@
     ```
 
 - slug: workshop-climate-analysis-2025
+  published: true
   title: "Workshop: Climate Analysis Tools"
   event_date: 2025-04-18
   start_time: "13:00"
@@ -1312,6 +1340,7 @@
     ```
 
 - slug: tour-mass-timber-2025
+  published: true
   title: "Tour: Mass Timber Construction"
   event_date: 2025-07-12
   start_time: "09:00"
@@ -1355,6 +1384,7 @@
     - [ ] Safety briefing provided
 
 - slug: workshop-architectural-illustration-2025
+  published: true
   title: "Workshop: Architectural Illustration"
   event_date: 2025-03-15
   start_time: "10:00"
@@ -1405,6 +1435,7 @@
     ```
 
 - slug: talk-housing-innovation-2025
+  published: true
   title: "Design Talk: Affordable Housing Innovation"
   event_date: 2025-11-05
   start_time: "17:30"

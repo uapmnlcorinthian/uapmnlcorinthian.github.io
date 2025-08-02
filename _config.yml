@@ -1,41 +1,34 @@
 # ─── Site Settings ────────────────────────────────────────────────
 title: "UAP Manila Corinthian Chapter"
 description: "Premier community of architectural professionals in Manila. Join events, workshops, and networking opportunities."
-url: "http://uapmnlcorinthian.github.io"
-baseurl: ""
+url: "https://uapmnlcorinthian.com"  # ✅ Update to live domain
+baseurl: ""  # Leave blank if deploying to root (GitHub Pages w/ custom domain)
 
-# ─── Build Options ─────────────────────────────────────────────
+lang: "en"  # ✅ Helps with SEO & accessibility
+timezone: "Asia/Manila"
+future: true
+
+# ─── SEO Defaults ─────────────────────────────────────────────────
+author: "UAP Manila Corinthian"
+logo: "https://asset.manilacorinthianchapter.workers.dev/MCC%20LOGO.png"
+social:
+  name: "UAP Manila Corinthian Chapter"
+  links:
+    - https://www.facebook.com/manilacorinthianchapter
+    - https://www.instagram.com/uapmanilacorinthian/
+    - https://x.com/uapmnlcorinth
+    - mailto:manilacorinthianchapter@gmail.com
+
+# ─── Build Settings ───────────────────────────────────────────────
 markdown: kramdown
 permalink: pretty
 highlighter: rouge
+
 sass:
   sass_dir: _sass
   style: compressed
-timezone: Asia/Manila
-future: true  # ← Add this line
 
-# ─── Default Layouts for Types ──────────────────────────────────
-defaults:
-  # regular pages
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: default
-      
- # event collection items
-  - scope:
-      path: ""
-      type: "events"
-    values:
-      layout: event
-      
-collections:
-  events:
-    output: true
-    permalink: /events-and-activities/:path/
-    
-# ─── Plugins ─────────────────────────────────────────────────────
+# ─── Plugins ──────────────────────────────────────────────────────
 plugins:
   - jekyll-feed
   - jekyll-sitemap
@@ -43,7 +36,33 @@ plugins:
   - jekyll-minifier
   - jekyll-include-cache
 
-# ─── Include & Exclude ───────────────────────────────────────────
+# ─── Collections ──────────────────────────────────────────────────
+collections:
+  events:
+    output: true
+    permalink: /events-and-activities/:path/
+
+# ─── Defaults ─────────────────────────────────────────────────────
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+      lang: "en"
+      author: "UAP Manila Corinthian"
+      image: "https://asset.manilacorinthianchapter.workers.dev/preview.jpg"
+      description: "Official page of UAP Manila Corinthian Chapter"
+
+  - scope:
+      path: ""
+      type: "events"
+    values:
+      layout: event
+      lang: "en"
+      author: "UAP Manila Corinthian"
+
+# ─── Include & Exclude ────────────────────────────────────────────
 include:
   - admin
 

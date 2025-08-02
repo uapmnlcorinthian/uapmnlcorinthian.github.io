@@ -2,7 +2,13 @@
 <html lang="en" class="h-100">
 <head>
 {% include head.html %}
+	{% if page.cover %}
+<meta property="og:image" content="{{ page.cover | absolute_url }}">
+<meta name="twitter:image" content="{{ page.cover | absolute_url }}">
+{% endif %}
+
 </head>
+	
 <body>
 {% include header.html %}
 <div id="top"></div>

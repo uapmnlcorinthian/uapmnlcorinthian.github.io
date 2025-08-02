@@ -1,127 +1,38 @@
 <!-- _includes/head.html -->
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>{{ page.title }} | {{ site.title }}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="theme-color" content="#ffffff">
 
-<meta name="description" content="{{ page.description | default: site.description }}" />
-<meta name="keywords" content="{{ page.keywords | default: site.keywords }}" />
-<link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+<!-- ✅ Favicons -->
+<link rel="shortcut icon" href="{{ site.data.images.f-ico }}" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ site.data.images.s-logo }}">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
 
-<link rel="shortcut icon" href="{{ site.data.images.f-ico }}" type="image/x-icon" />
-<link rel="apple-touch-icon" sizes="180x180" href="{{ site.data.images.s-logo}}" />
+<!-- ✅ Preconnect for Fonts (Performance) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<meta property="og:title" content="{{ page.og_title | default: site.title }}" />
-<meta property="og:description" content="{{ page.og_description | default: site.description }}" />
-<meta property="og:image" content="{{ site.url }}{{ page.og_image | default: '{{ site.data.images.pv-1}}' }}" />
-<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-<meta name="twitter:card" content="summary_large_image" />
+<!-- ✅ jekyll-seo-tag handles: title, meta description, og:image, twitter:image, structured data -->
+{% seo %}
 
-<!--
-  STANDARD CONTENT SECURITY POLICY
-  — Uncomment the block below to restore the original CSP after testing.
-
-<meta http-equiv="Content-Security-Policy" content=" default-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.youtube.com https://fvaahtqjusfniadwvoyw.supabase.co https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com https://cdn.datatables.net; connect-src 'self' https://fvaahtqjusfniadwvoyw.supabase.co https://api.github.com https://maps.googleapis.com https://fonts.googleapis.com; img-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://images.unsplash.com https://fonts.gstatic.com data: https://upload.wikimedia.org https://cdn-icons-png.flaticon.com https://raw.githubusercontent.com; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; frame-src https://www.youtube.com https://player.vimeo.com https://www.google.com/recaptcha/;" />
-" />
--->
-
-<!-- TEMPORARY CSP WITH SPONSOR DOMAINS WHITELISTED -->
-<meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-
-  script-src 'self'
-    https://cdn.jsdelivr.net
-    https://cdnjs.cloudflare.com
-    https://unpkg.com
-    https://www.googletagmanager.com
-    https://www.google-analytics.com
-    https://www.google.com/recaptcha/api.js
-    https://www.gstatic.com/recaptcha/releases/
-    'unsafe-inline';
-
-  connect-src 'self'
-    https://fvaahtqjusfniadwvoyw.supabase.co
-    https://fvaahtqjusfniadwvoyw.functions.supabase.co
-    https://api.github.com
-    https://maps.googleapis.com
-    https://www.google.com/recaptcha/api2/anchor
-    https://www.gstatic.com/recaptcha/releases/;
-
-  frame-src 'self'
-    https://www.google.com
-    https://www.google.com/recaptcha/api2/anchor
-    https://www.google.com/recaptcha/api2/bframe
-    https://recaptcha.google.com/recaptcha/api2/anchor
-    https://recaptcha.google.com/recaptcha/api2/frame
-
-    <!-- YouTube embeds -->
-    https://www.youtube.com
-    https://www.youtube.com/embed
-    https://www.youtube-nocookie.com
-
-    <!-- (Optional) Vimeo or other video providers -->
-    https://player.vimeo.com;
-
-  img-src 'self' data:
-    https://upload.wikimedia.org
-    https://cdn-icons-png.flaticon.com
-    https://raw.githubusercontent.com
-    https://images.unsplash.com
-    https://plus.unsplash.com/
-    https://asset.manilacorinthianchapter.workers.dev;
-
-  style-src 'self' 'unsafe-inline'
-    https://cdn.jsdelivr.net
-    https://cdnjs.cloudflare.com
-    https://fonts.googleapis.com
-    https://unpkg.com;
-
-  font-src 'self'
-    https://fonts.gstatic.com
-    https://cdnjs.cloudflare.com;
-">
-
-
-
-
-<!-- ✅ Font Awesome 6.5.0 -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-
-<!-- ✅ Animate.css 4.1.1 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<!-- ✅ AOS (Animate on Scroll) 2.3.4 -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-
-<!-- ✅ Shoelace Light Theme 2.15.0 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css" />
-
-<!-- Bootstrap 5 CSS (should already be in <head>) -->
+<!-- ✅ Stylesheets -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/..." crossorigin="anonymous" referrerpolicy="no-referrer">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-<!-- ✅ Your Custom CSS -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
+<!-- ✅ Scripts: Smooth scroll + AOS -->
 <script>
-document.documentElement.style.scrollBehavior = 'smooth';
-
-const btn = document.getElementById('btnTop');
-
-window.addEventListener('scroll', () => {
-  if (!btn) return;
-  const y = window.scrollY;
-  btn.classList.toggle('d-none', y < 200);
-});
-</script>
-<!-- ✅ AOS Init -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    AOS.init({
-      once: true,
-      duration: 800,
-      easing: 'ease-in-out'
-    });
+  document.documentElement.style.scrollBehavior = 'smooth';
+  const btn = document.getElementById('btnTop');
+  window.addEventListener('scroll', () => {
+    if (!btn) return;
+    btn.classList.toggle('d-none', window.scrollY < 200);
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({ once: true, duration: 800, easing: 'ease-in-out' });
   });
 </script>
-

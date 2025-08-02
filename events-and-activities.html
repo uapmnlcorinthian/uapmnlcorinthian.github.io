@@ -1,11 +1,20 @@
 ---
 layout: default
 title: "Events & Activities"
+description: "Discover the latest events, seminars, and community activities by UAP Manila Corinthian Chapter. Join us and get involved!"
 permalink: /events-and-activities/
+image: "https://asset.manilacorinthianchapter.workers.dev/preview.jpg"
+published: true
 ---
 {% assign sorted_events = site.events | sort: "date" | reverse %}
 {% assign latest = sorted_events | first %} 
 
+{% unless page.image %}
+  {% if latest.cover %}
+    <meta property="og:image" content="{{ latest.cover | absolute_url }}">
+    <meta name="twitter:image" content="{{ latest.cover | absolute_url }}">
+  {% endif %}
+{% endunless %}
 <!-- Hero banner -->
 <section class="parallax-hero p-5" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ latest.cover | relative_url }}');" data-aos="fade-in" data-aos-offset="200" data-aos-anchor-placement="center-bottom">
   <div class="position-absolute top-0 start-0 w-100 bg-dark bg-opacity-50"></div>

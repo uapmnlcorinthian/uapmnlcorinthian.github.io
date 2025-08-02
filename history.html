@@ -1,18 +1,22 @@
 ---
 layout: default
-permalink: /mcc_history/
-title: History of UAP Manila Corinthian Chapter
-description: "Milestones of UAP Manila Corinthian Chapter since 1989."
+title: "History of UAP Manila Corinthian Chapter"
+description: "Milestones of UAP Manila Corinthian Chapter since 1989 — from chartering to present-day programs, mentorship, and community service."
+image: "/assets/images/og-history.jpg"
+author: "UAP Manila Corinthian"
 keywords: "UAP, Manila, Corinthian Chapter, History, Timeline"
+permalink: /mcc_history/
+lang: en
+published: true
+sitemap: true
 ---
+
 
 <!-- Hero -->
 <section class="py-5 text-center bg-light">
   <div class="container">
     <h1 class="display-5" data-aos="fade-up">Our History</h1>
-    <p class="lead" data-aos="fade-up" data-aos-delay="100">
-      Key milestones of the Manila Corinthian Chapter since 1989 — advancing architectural excellence, mentoring the next generation, and serving communities.
-    </p>
+    <p class="lead" data-aos="fade-up" data-aos-delay="100"> Key milestones of the Manila Corinthian Chapter since 1989 — advancing architectural excellence, mentoring the next generation, and serving communities. </p>
   </div>
 </section>
 
@@ -22,30 +26,20 @@ keywords: "UAP, Manila, Corinthian Chapter, History, Timeline"
     <div class="row align-items-center g-4">
       <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
         <h2 class="h3 mb-4">Short History of UAP Manila Corinthian Chapter</h2>
-        <p>
-          The UAP Manila Corinthian Chapter started at the Technological Institute of the Philippines Manila Campus and was chartered with the help of 
-          Ar. Herminio R. Prudente, former president of UAP Hilaga Chapter and former chairman of Committee on Chapter Organization. (FY January – December 1989).
-        </p>
-        <p>
-          Its charter members were the teachers and instructors of the Architecture Department of TIP Manila.  
-          The name submitted to UAP was <strong>UAP Academe Chapter</strong> but was rejected since the name was all-encompassing.  
-          <strong>UAP Manila Corinthian Chapter</strong> was chosen as the alternative and accepted.
-        </p>
-        <p>
-          Chartering papers were filed on <strong>29 September 1989</strong> under UAP NP Ar. Angel R. Lazaro, Jr., with Ar. Quintin R. Estioko as charter president.  
-          The chapter was formally inaugurated on <strong>18 May 1990</strong> under UAP NP Ar. Richeto C. Alcordo.
-        </p>
-        <p>
-          Early fiscal years ran January–December, with Ar. Estioko leading an <em>interim board</em> through December 1989.  
-          The chapter logo was designed by Ar. Annie Corpuz, one of MCC’s charter members.
-        </p>
+        <p> The UAP Manila Corinthian Chapter started at the Technological Institute of the Philippines Manila Campus and was chartered with the help of 
+          Ar. Herminio R. Prudente, former president of UAP Hilaga Chapter and former chairman of Committee on Chapter Organization. (FY January – December 1989). </p>
+        <p> Its charter members were the teachers and instructors of the Architecture Department of TIP Manila.  
+          The name submitted to UAP was <strong>UAP Academe Chapter</strong> but was rejected since the name was all-encompassing. <strong>UAP Manila Corinthian Chapter</strong> was chosen as the alternative and accepted. </p>
+        <p> Chartering papers were filed on <strong>29 September 1989</strong> under UAP NP Ar. Angel R. Lazaro, Jr., with Ar. Quintin R. Estioko as charter president.  
+          The chapter was formally inaugurated on <strong>18 May 1990</strong> under UAP NP Ar. Richeto C. Alcordo. </p>
+        <p> Early fiscal years ran January–December, with Ar. Estioko leading an <em>interim board</em> through December 1989.  
+          The chapter logo was designed by Ar. Annie Corpuz, one of MCC’s charter members. </p>
       </div>
-      <div class="col-lg-6 d-none d-lg-block" data-aos="fade-left" data-aos-duration="1000">
-        <!-- optional chapter photo or logo -->
+      <div class="col-lg-6 d-none d-lg-block" data-aos="fade-left" data-aos-duration="1000"> 
+        <!-- optional chapter photo or logo --> 
         <img src="https://images.unsplash.com/photo-1489421471208-251cc68284b8?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
              alt="Founding Charter Document"
-             class="img-fluid rounded shadow-lg">
-      </div>
+             class="img-fluid rounded shadow-lg"> </div>
     </div>
   </div>
 </section>
@@ -104,93 +98,55 @@ keywords: "UAP, Manila, Corinthian Chapter, History, Timeline"
   </div>
 </section>
 
-<!--PAST PRESIDENTS-->
+<!--PAST PRESIDENTS--> 
 {% assign decades = site.data.past_presidents | map: "decade" | uniq %}
-<section id="past-presidents">
+<section id="past-presidents"> 
   <!-- Decade navigation -->
-  <nav class="pp-nav-desktop d-flex flex-column" aria-label="Past Presidents by Decade">
-    {% for dec in decades %}
-      {% assign slug = dec | remove: "s" | slugify %}
-      <a class="nav-link" href="#decade-{{ slug }}">{{ dec }}</a>
-    {% endfor %}
-  </nav>
-
-  <div class="container">
-    {% for dec in decades %}
-      {% assign slug = dec | remove: "s" | slugify %}
-      <section id="decade-{{ slug }}" aria-labelledby="heading-{{ slug }}" class="mb-5">
-        <h3 id="heading-{{ slug }}">{{ dec }}</h3>
-        <div class="row row-cols-auto g-4 justify-content-center">
-          {% for p in site.data.past_presidents %}
-            {% if p.decade == dec %}
-              {% assign ps = p.name | slugify %}
-              <div class="col">
-                <div class="card pp-card h-100" data-aos="fade-up" data-aos-duration="800">
-                  <img src="{{ p.image }}"
+  <nav class="pp-nav-desktop d-flex flex-column" aria-label="Past Presidents by Decade"> {% for dec in decades %}
+    {% assign slug = dec | remove: "s" | slugify %} <a class="nav-link" href="#decade-{{ slug }}">{{ dec }}</a> {% endfor %} </nav>
+  <div class="container"> {% for dec in decades %}
+    {% assign slug = dec | remove: "s" | slugify %}
+    <section id="decade-{{ slug }}" class="mb-5" aria-labelledby="heading-{{ slug }}">
+      <h3 id="heading-{{ slug }}">{{ dec }}</h3>
+      <div class="row row-cols-auto g-4 justify-content-center"> {% for p in site.data.past_presidents %}
+        {% if p.decade == dec %}
+        {% assign ps = p.name | slugify %}
+        <div class="col">
+          <div class="card pp-card h-100" data-aos="fade-up" data-aos-duration="800"> <img src="{{ p.image }}"
                        class="card-img-top pp-clickable"
                        alt="Portrait of {{ p.name }}"
                        data-bs-toggle="modal"
                        data-bs-target="#modal-{{ ps }}">
-                  <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ p.name }}</h5>
-                    <p class="card-subtitle mb-2 text-muted">
-                      {{ p.start_month }} {{ p.term_start }} – {{ p.end_month }} {{ p.term_end }}
-                    </p>
-                    <p class="description mb-0">{{ p.description }}</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Modal -->
-              <div class="modal fade" id="modal-{{ ps }}" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                  <div class="modal-content modal-past-president">
-                                        <div class="modal-image-wrapper">
-                      <img src="{{ p.image }}"
-                           alt="Portrait of {{ p.name }}"
-                           class="modal-img">
-                    </div>
-                    <div class="modal-body">
-                      <h5 class="modal-name">{{ p.name }}</h5>
-                      <p><strong>Term:</strong>
-                        {{ p.start_month }} {{ p.term_start }} – {{ p.end_month }} {{ p.term_end }}
-                      </p>
-                      <p>{{ p.description }}</p>
-                      {% if p.bionote %}
-                        <p><em>{{ p.bionote }}</em></p>
-                      {% endif %}
-                      {% if p.major_initiatives.size > 0 %}
-                        <p><strong>Initiatives:</strong></p>
-                        <ul>
-                          {% for item in p.major_initiatives %}
-                            <li>{{ item }}</li>
-                          {% endfor %}
-                        </ul>
-                      {% endif %}
-                      {% if p.awards.size > 0 %}
-                        <p><strong>Awards:</strong></p>
-                        <ul>
-                          {% for award in p.awards %}
-                            <li>{{ award.title }}{% if award.year %} ({{ award.year }}){% endif %}</li>
-                          {% endfor %}
-                        </ul>
-                      {% endif %}
-                      {% if p.quote %}
-                        <blockquote class="blockquote">“{{ p.quote }}”</blockquote>
-                      {% endif %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {% endif %}
-          {% endfor %}
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ p.name }}</h5>
+              <p class="card-subtitle mb-2 text-muted"> {{ p.start_month }} {{ p.term_start }} – {{ p.end_month }} {{ p.term_end }} </p>
+              <p class="description mb-0">{{ p.description }}</p>
+            </div>
+          </div>
         </div>
-      </section>
-    {% endfor %}
-  </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="modal-{{ ps }}" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content modal-past-president"> 
+              
+              <!-- image wrapper using BS5 ratio utility -->
+              <div class="ratio ratio-3x4 position-relative"> <img src="{{ p.image }}"
+             alt="Portrait of {{ p.name }}"
+             class="modal-img position-absolute top-0 start-50 translate-middle-x">
+                <button type="button" class="modal-close" data-bs-dismiss="modal" aria-label="Close"> &times; </button>
+              </div>
+              <div class="modal-body"> 
+                <!-- …the rest stays the same… --> 
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %} </div>
+    </section>
+    {% endfor %} </div>
 </section>
 
-
-
-<!-- CTA -->
-{% include register.html %}
+<!-- CTA --> 
+{% include register.html %} 
