@@ -8,6 +8,12 @@
             remoteBase = "_data",
             schemaFile = "_schemas.yml";
 
+      // Clean non-printable characters from YAML content
+      function cleanYamlContent(str) {
+        // Preserve printable characters (space to tilde), tabs, and newlines
+        return str.replace(/[^\x20-\x7E\n\t]/g, '');
+      }
+
       // State
       const tok      = ref(sessionStorage.getItem("gh_token") || ""),
             files    = ref([]),
@@ -58,7 +64,11 @@
         );
         if (!res.ok) throw new Error('Fetch failed');
         const j = await res.json();
-        return { text: atob(j.content), sha: j.sha };
+        const rawContent = atob(j.content);
+        return { 
+          text: cleanYamlContent(rawContent),  // Clean content here
+          sha: j.sha 
+        };
       }
       
       async function ghPut(path, content, prevSha) {

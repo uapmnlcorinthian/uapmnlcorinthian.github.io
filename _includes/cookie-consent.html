@@ -1,0 +1,27 @@
+<div 
+  x-data="{ show: localStorage.getItem('cookieConsent') !== 'accepted' }" 
+  x-init="$watch('show', val => val && AOS?.refresh?.())" 
+  x-show="show" 
+  x-transition
+  class="position-fixed bottom-0 start-0 end-0 p-3 bg-white border-top shadow-lg animate__animated animate__fadeInUp"
+  style="z-index: 1055;"
+>
+  <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between gap-3">
+
+    <div class="flex-grow-1 small text-dark">
+      By clicking <strong>"I Accept"</strong>, you consent to the collection and processing of your personal data by the 
+      <strong>UAP Manila Corinthian Chapter</strong>. Review our 
+      <a href="/privacy-policy" class="fw-semibold text-primary text-decoration-underline">Privacy Policy</a>.
+    </div>
+
+    <div class="text-end">
+      <button 
+        class="btn btn-sm btn-primary px-4"
+        @click="localStorage.setItem('cookieConsent','accepted'); show = false"
+      >
+        I Accept
+      </button>
+    </div>
+
+  </div>
+</div>
