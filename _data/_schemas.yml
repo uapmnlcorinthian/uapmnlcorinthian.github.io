@@ -1,3 +1,4 @@
+# _data/_schemas.yml
 sponsors.yml:
   type: array
   display: name
@@ -36,7 +37,8 @@ activities.yml:
         - { k: tags,    l: Tags,      t: list,  w: col-12 }
 
 bod.yml:
-  type: array
+  type: objlist
+  wrap: bod
   display: name
   fields:
     - { k: name,        l: Name,        t: text,  req: true, w: col-6 }
@@ -50,9 +52,10 @@ events.yml:
   fields:
     - { k: title,            l: Title,            t: text,    req: true, w: col-6 }
     - { k: slug,             l: Slug,             t: text,    req: true, w: col-6 }
-    - { k: event_date,       l: Event Date,       t: date,    w: col-4 }
-    - { k: start_time,       l: Start Time,       t: text,    w: col-4 }
-    - { k: end_time,         l: End Time,         t: text,    w: col-4 }
+    - { k: published,        l: Published,        t: bool,    w: col-3 }
+    - { k: event_date,       l: Event Date,       t: date,    w: col-3 }
+    - { k: start_time,       l: Start Time,       t: text,    w: col-3 }
+    - { k: end_time,         l: End Time,         t: text,    w: col-3 }
     - { k: location,         l: Location,         t: text,    w: col-6 }
     - { k: cover,            l: Cover Image,      t: image,   w: col-6 }
     - { k: registration_url, l: Registration URL, t: url,     w: col-12 }
@@ -66,6 +69,46 @@ events.yml:
         - { k: caption, l: Caption,   t: text,  w: col-6 }
     - { k: content,          l: Content,         t: long,    w: col-12 }
 
-images.yml:
-  type: map
-  # …and so on…
+navbar.yml:
+  type: array
+  display: title
+  fields:
+    - { k: title,    l: Title,    t: text,   w: col-6 }
+    - { k: url,      l: URL,      t: url,    w: col-6 }
+    - { k: visible,  l: Visible,  t: bool,   w: col-3 }
+    - k: submenu
+      l: Submenu
+      t: sublist
+      w: col-12
+      fields:
+        - { k: title,   l: Title,   t: text, w: col-6 }
+        - { k: url,     l: URL,     t: url,  w: col-6 }
+        - { k: visible, l: Visible, t: bool, w: col-3 }
+
+past_presidents.yml:
+  type: array
+  display: name
+  fields:
+    - { k: name,             l: Name,             t: text,   w: col-6 }
+    - { k: position,         l: Position,         t: text,   w: col-6 }
+    - { k: start_month,      l: Start Month,      t: text,   w: col-3 }
+    - { k: end_month,        l: End Month,        t: text,   w: col-3 }
+    - { k: term_start,       l: Term Start,       t: number, w: col-3 }
+    - { k: term_end,         l: Term End,         t: number, w: col-3 }
+    - { k: decade,           l: Decade,           t: text,   w: col-6 }
+    - { k: image,            l: Image,            t: image,  w: col-6 }
+    - { k: description,      l: Description,      t: long,   w: col-12 }
+    - { k: bionote,          l: Bio Note,         t: long,   w: col-12 }
+    - { k: profile_link,     l: Profile Link,     t: url,    w: col-12 }
+    - k: major_initiatives
+      l: Major Initiatives
+      t: list
+      w: col-12
+    - k: awards
+      l: Awards
+      t: sublist
+      w: col-12
+      fields:
+        - { k: title,        l: Title,            t: text,   w: col-6 }
+        - { k: year,         l: Year,             t: number, w: col-6 }
+    - { k: quote,            l: Quote,            t: text,   w: col-12 }
