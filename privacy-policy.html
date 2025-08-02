@@ -4,49 +4,130 @@ title: Privacy Policy
 permalink: /privacy-policy
 ---
 
-<section class="container py-5">
-  <h1 class="mb-4">Privacy Policy</h1>
+<section class="container py-5" x-data="{ lang: 'en' }">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">Privacy Policy</h1>
+    <div>
+      <button 
+        class="btn btn-outline-primary btn-sm me-1" 
+        :class="{ 'active': lang === 'en' }" 
+        @click="lang = 'en'"
+      >English</button>
+      <button 
+        class="btn btn-outline-primary btn-sm" 
+        :class="{ 'active': lang === 'fil' }" 
+        @click="lang = 'fil'"
+      >Filipino</button>
+    </div>
+  </div>
 
-  <p>
-    The UAP Manila Corinthian Chapter ("we", "our", or "us") respects your privacy and is committed to protecting your personal data. This policy outlines how we collect, use, and store your information through our official website.
-  </p>
+  <!-- English Version -->
+  <div x-show="lang === 'en'" x-cloak>
+    <p>
+      We, the UAP Manila Corinthian Chapter (“we”, “our”, or “us”), are committed to handling your personal data with respect, discretion, and care. This Privacy Policy explains how we manage your information in line with our chapter operations and applicable laws.
+    </p>
 
-  <h5>1. Information We Collect</h5>
-  <ul>
-    <li>Personal identifiers (e.g., full name, email address, contact number)</li>
-    <li>Professional credentials (e.g., PRC license number, company, position)</li>
-    <li>Membership and payment data</li>
-  </ul>
+    <h5>1. What We Collect</h5>
+    <p>
+      We collect only the essential personal information voluntarily provided by members through this website—such as your name, email, PRC license number, company, and payment history.
+    </p>
 
-  <h5>2. How We Use Your Data</h5>
-  <p>
-    Your information is used solely for official chapter communications, membership verification, payment tracking, and access to member-only content. We do not sell or share your data with third-party advertisers.
-  </p>
+    <h5>2. How Your Data Is Used</h5>
+    <p>
+      Your data is used strictly to manage your membership account, confirm your identity, support internal records, and improve chapter services. We do not sell, rent, or share your data with any third-party marketing services.
+    </p>
 
-  <h5>3. Consent & Cookies</h5>
-  <p>
-    By clicking "I Accept" on the consent banner, you consent to our use of cookies and collection of non-sensitive personal data. Cookies are used only to enhance your user experience and maintain session state.
-  </p>
+    <h5>3. Cookies & Consent</h5>
+    <p>
+      This website uses basic cookies to keep you logged in and ensure smooth functionality. By clicking “I Accept” or continuing to use this site, you acknowledge and accept our use of these tools.
+    </p>
 
-  <h5>4. Data Protection & Retention</h5>
-  <p>
-    All personal data is stored securely via Supabase with encryption and access control. Data is retained only as long as necessary for legitimate chapter operations.
-  </p>
+    <h5>4. How We Protect Your Data</h5>
+    <p>
+      All data is stored securely using industry-recognized platforms (e.g., Supabase), with controlled access and technical safeguards. While we take reasonable steps to protect your data, no online system is completely immune to risk.
+    </p>
 
-  <h5>5. Your Rights</h5>
-  <p>
-    In compliance with the Data Privacy Act of 2012 (RA 10173), you have the right to access, correct, or request deletion of your data. Please contact us for any requests.
-  </p>
+    <h5>5. Your Rights</h5>
+    <p>
+      If applicable under the Philippine Data Privacy Act, you may request access to or correction of your data. We reserve the right to assess such requests based on reasonableness, data integrity, and operational feasibility.
+    </p>
 
-  <h5>6. Contact</h5>
-  <p>
-    For questions or concerns, contact us at:
-    <br><strong>Email:</strong> <a href="mailto:manilacorinthianchapter@gmail.com">manilacorinthianchapter@gmail.com</a>
-  </p>
-  <h5>7. NPC Registration</h5>
-<p>
-  As of now, the UAP Manila Corinthian Chapter is not registered with the National Privacy Commission as a Personal Information Controller (PIC). However, we remain committed to protecting your personal data and implementing reasonable safeguards aligned with the Data Privacy Act of 2012 (RA 10173).
-</p>
+    <h5>6. Contact Us</h5>
+    <p>
+      If you have questions or concerns about your information, you may reach us at:
+      <br><strong>Email:</strong> <a href="mailto:manilacorinthianchapter@gmail.com">manilacorinthianchapter@gmail.com</a>
+    </p>
 
-  <p class="text-muted mt-5 small">Last updated: August 2025</p>
+    <h5>7. NPC Registration</h5>
+    <p>
+      At this time, the UAP Manila Corinthian Chapter is not formally registered as a Personal Information Controller (PIC) with the National Privacy Commission. However, we voluntarily align with its principles and strive to uphold your data rights responsibly.
+    </p>
+
+    <h5>8. Limitation of Liability</h5>
+    <p>
+      This policy is informational and does not serve as a legal contract. While we aim to protect user data, we cannot be held liable for unforeseen technical errors, cyber threats, or unauthorized access beyond our reasonable control.
+    </p>
+
+    <h5>9. Policy Updates</h5>
+    <p>
+      This policy may be revised at any time without prior notice. Continued use of the site implies your acceptance of the most recent version.
+    </p>
+
+    <p class="text-muted mt-5 small">Last updated: August 2025</p>
+  </div>
+
+  <!-- Filipino Version -->
+  <div x-show="lang === 'fil'" x-cloak>
+    <p>
+      Kami sa UAP Manila Corinthian Chapter (“kami” o “amin”) ay naninindigang pangalagaan ang inyong personal na impormasyon nang may respeto at pag-iingat. Nilalayon ng patakarang ito na ipaliwanag kung paano namin pinangangasiwaan ang inyong datos alinsunod sa umiiral na batas.
+    </p>
+
+    <h5>1. Impormasyong Kinokolekta</h5>
+    <p>
+      Kinokolekta lamang namin ang impormasyong boluntaryong ibinibigay ng miyembro gaya ng pangalan, email, PRC license, kumpanya, at kasaysayan ng bayad.
+    </p>
+
+    <h5>2. Para Saan Gamit ang Iyong Datos</h5>
+    <p>
+      Ginagamit lamang ang datos para sa lehitimong operasyon ng chapter—gaya ng pag-manage ng miyembro, beripikasyon ng pagkakakilanlan, at internal na record keeping. Hindi namin ibinibenta o ipinapamahagi ang inyong datos sa mga third-party advertiser.
+    </p>
+
+    <h5>3. Cookies at Pahintulot</h5>
+    <p>
+      Gumagamit ang site ng simpleng cookies para sa login at performance. Sa pagpindot ng “I Accept” o pagpapatuloy sa site, sumasang-ayon kayo sa paggamit ng mga cookies na ito.
+    </p>
+
+    <h5>4. Proteksyon ng Datos</h5>
+    <p>
+      Lahat ng datos ay nakaimbak sa secured platforms gaya ng Supabase. Gumagamit kami ng teknikal at administratibong hakbang para sa seguridad, ngunit hindi ganap na walang panganib ang anumang online system.
+    </p>
+
+    <h5>5. Mga Karapatan Ninyo</h5>
+    <p>
+      Batay sa RA 10173, maaaring humiling ng access o pagbabago ng datos. Gayunpaman, may karapatan kaming tumanggi kung labis, paulit-ulit, o hindi makatwiran ang kahilingan.
+    </p>
+
+    <h5>6. Makipag-ugnayan</h5>
+    <p>
+      Para sa mga katanungan, mag-email sa:
+      <br><strong>Email:</strong> <a href="mailto:manilacorinthianchapter@gmail.com">manilacorinthianchapter@gmail.com</a>
+    </p>
+
+    <h5>7. NPC Registration</h5>
+    <p>
+      Sa ngayon, hindi pa rehistrado ang UAP Manila Corinthian Chapter bilang PIC sa NPC. Gayunpaman, boluntaryo naming sinusunod ang mga prinsipyo ng RA 10173 upang mapanatili ang inyong tiwala.
+    </p>
+
+    <h5>8. Limitasyon ng Pananagutan</h5>
+    <p>
+      Ang patakarang ito ay para sa kaalaman lamang at hindi kontraktwal. Hindi kami mananagot sa mga insidenteng teknikal o di-inaasahang breach na lampas sa aming kontrol.
+    </p>
+
+    <h5>9. Pagbabago ng Patakaran</h5>
+    <p>
+      Maaaring baguhin ang patakarang ito anumang oras nang walang abiso. Ang patuloy na paggamit ng site ay nangangahulugang tanggap ninyo ang anumang pagbabago.
+    </p>
+
+    <p class="text-muted mt-5 small">Huling update: Agosto 2025</p>
+  </div>
 </section>
