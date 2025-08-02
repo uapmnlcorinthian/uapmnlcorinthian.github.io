@@ -49,20 +49,50 @@ keywords: "Architecture, UAP, Manila, Corinthian Chapter, Architecture Community
 </section>
 
 <!-- History Preview -->
-<section class="container-fluid p-5 text-white" data-aos="fade-right" style="
-  background: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat left center / cover;
-  position: relative;
-">
-  <div class="row align-items-center" style="background-color: rgba(0,0,0,.5); padding: 2rem; border-radius: 1rem;">
-    <div class="col-12" data-aos="fade-right">
+<section
+  class="container-fluid p-5 text-white"
+  data-aos="fade-right"
+  style="
+    background: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0')
+      no-repeat left center / cover;
+    position: relative;
+  "
+>
+  <div
+    class="row align-items-center"
+    style="background-color: rgba(0,0,0,.5); padding: 2rem; border-radius: 1rem;"
+    data-aos="fade-right"
+  >
+    <div class="col-12">
       <h3 class="mb-3">History of MCC</h3>
-      {% assign history_page = site.pages | where: "permalink", "/mcc_history/" | first %}
-      {% assign history_text = history_page.content | strip_html | truncate: 1200 %}
+
+      {%- comment -%}
+      • Find the page whose URL is exactly "/mcc_history/"  
+      • Fallback to an empty string if not found
+      {%- endcomment -%}
+      {% assign history_page = site.pages
+         | where: "url", "/mcc_history/"
+         | first %}
+
+      {%- comment -%}
+      • Grab up to 1,200 chars of plain text from that page  
+      {%- endcomment -%}
+      {% if history_page %}
+        {% assign history_text = history_page.content
+           | strip_html
+           | truncate: 1200 %}
+      {% else %}
+        {% assign history_text = "History content not available." %}
+      {% endif %}
+
       <p class="mb-0">{{ history_text }}</p>
-      <a href="{{ site.baseurl }}/mcc_history/" class="btn btn-primary mt-3">Read More</a>
+      <a href="{{ site.baseurl }}/mcc_history/" class="btn btn-primary mt-3">
+        Read More
+      </a>
     </div>
   </div>
 </section>
+
 
 <!-- EVENTS -->
 {% assign sorted_events = site.events | sort: "date" | reverse %}

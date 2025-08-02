@@ -127,19 +127,30 @@
     border-radius: 50%;
     width: 2rem;
     height: 2rem;
+    border: none;
+    font-size: 1.25rem;
+    line-height: 1;
   }
 
-  .modal-image-wrapper {
-    position: relative;
+  .modal-image-wrapper,
+  .ratio-3x4 {           // if you prefer writing your own wrapper
     width: 100%;
-    height: 300px;
+    aspect-ratio: 3 / 4;
     overflow: hidden;
+    background-color: #f8f9fa; // fallback for “contain” mode
+    position: relative;
+  }
 
-    .modal-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  .modal-img {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    /* choose one: */
+    object-fit: cover;   /* fills the frame, cropping sides */
+    /* object-fit: contain; */ /* shows entire image, adds bars */
+    object-position: center center;
   }
 
   .modal-body {
@@ -150,21 +161,15 @@
       font-size: 1.75rem;
       font-weight: 600;
     }
-
     p {
       margin-bottom: 1rem;
       line-height: 1.6;
     }
-
     ul {
       margin-bottom: 1rem;
       padding-left: 1.25rem;
-
-      li {
-        margin-bottom: 0.5rem;
-      }
+      li { margin-bottom: 0.5rem; }
     }
-
     blockquote {
       margin: 1rem 0;
       padding-left: 1rem;

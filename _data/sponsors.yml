@@ -1,11 +1,25 @@
 # ----- HEAD of sponsors.yml -----
+- name: "Boysen"
+  website: "https://www.autodesk.com/"
+  logo: "https://asset.manilacorinthianchapter.workers.dev/boysen.webp"
+  alt: "Pacific Paint Philippines, Inc. Logo"
+  tier: "Gold"
+  active: true
+  order: 1
+  tagline: "The No. 1 PAINT"
+  start_date: "2024-06-01T00:00:00Z"
+  end_date: "2026-07-31T23:59:59Z"
+  media_type: "image"
+  media_url: ""
+  contact_email: "inquiry@boysen.com.ph"
+
 - name: "Autodesk"
   website: "https://www.autodesk.com/"
   logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Autodesk_logo.svg"
   alt: "Autodesk logo"
-  tier: "Platinum"
+  tier: "Gold"
   active: true
-  order: 1
+  order: 30
   tagline: "Design and make software for architecture and engineering."
   start_date: "2025-08-01T00:00:00Z"
   end_date: "2026-07-31T23:59:59Z"
@@ -17,7 +31,7 @@
   website: "https://www.samsung.com/"
   logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg"
   alt: "Samsung logo"
-  tier: "Platinum"
+  tier: "Gold"
   active: true
   order: 2
   tagline: "Displays and devices for modern workspaces."
@@ -31,7 +45,7 @@
   website: "https://www.siemens.com/"
   logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Siemens_logo.svg"
   alt: "Siemens logo"
-  tier: "Platinum"
+  tier: "Gold"
   active: true
   order: 3
   tagline: "Building technologies and smart infrastructure."
@@ -45,7 +59,7 @@
   website: "https://www.se.com/"
   logo: "https://upload.wikimedia.org/wikipedia/commons/7/76/Schneider_Electric_2007.svg"
   alt: "Schneider Electric logo"
-  tier: "Platinum"
+  tier: "Gold"
   active: true
   order: 4
   tagline: "Energy management and automation."
