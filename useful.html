@@ -1,0 +1,35 @@
+---
+layout: default
+title: "Resources and Tools"
+description: "Downloadable files, templates, guidelines, and tools for UAP Manila Corinthian Chapter members and fellow architects."
+image: "https://asset.manilacorinthianchapter.workers.dev/resource-cover.jpg"
+author: "UAP Manila Corinthian"
+keywords: "UAP, Architect Tools, MCC Resources, files, CPD, Membership files, Design Templates, Architecture Docs"
+permalink: /resources/
+lang: en
+published: true
+sitemap: true
+tags: [tools, files, documents, downloads, guidelines]
+---
+{% assign grouped_files = site.data.files | group_by: "category" %}
+
+{% for group in grouped_files %}
+<div class="p-5">
+  <h3 class="mt-5 mb-3">{{ group.name }}</h3>
+  
+  <div class="row gy-4">
+    {% for form in group.items %}
+      <div class="col-md-6 col-lg-4 text-center">
+        <div class="p-3 border rounded h-100 d-flex flex-column align-items-center">
+          <img src="{{ form.icon }}" alt="" width="48" height="48" class="mb-3">
+          <h5 class="mb-2">{{ form.title }}</h5>
+          <p class="small text-muted">{{ form.subtitle }}</p>
+          <a href="{{ form.url }}" class="btn btn-outline-primary mt-auto" download>
+            Download
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  </div>
+{% endfor %}

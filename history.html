@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "History of UAP Manila Corinthian Chapter"
-description: "Milestones of UAP Manila Corinthian Chapter since 1989 — from chartering to present-day programs, mentorship, and community service."
-image: "/assets/images/og-history.jpg"
+title: ""
+description: ""
+image: "https://asset.manilacorinthianchapter.workers.dev/past%20presidents.jpg"
 author: "UAP Manila Corinthian"
 keywords: "UAP, Manila, Corinthian Chapter, History, Timeline"
 permalink: /mcc_history/
@@ -34,9 +34,9 @@ sitemap: true
         <p> Early fiscal years ran January–December, with Ar. Estioko leading an <em>interim board</em> through December 1989.  
           The chapter logo was designed by Ar. Annie Corpuz, one of MCC’s charter members. </p>
       </div>
-      <div class="col-lg-6 d-none d-lg-block" data-aos="fade-left" data-aos-duration="1000"> 
+      <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000"> 
         <!-- optional chapter photo or logo --> 
-        <img src="https://images.unsplash.com/photo-1489421471208-251cc68284b8?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        <img src="https://asset.manilacorinthianchapter.workers.dev/past%20presidents.jpg"
              alt="Founding Charter Document"
              class="img-fluid rounded shadow-lg"> </div>
     </div>
@@ -101,74 +101,82 @@ sitemap: true
 {% assign decades = site.data.past_presidents | map: "decade" | uniq %}
 <section id="past-presidents"> 
   <!-- Decade navigation -->
-  <nav class="pp-nav-desktop d-flex flex-column" aria-label="Past Presidents by Decade">
-    {% for dec in decades %}
-      {% assign slug = dec | remove: "s" | slugify %}
-      <a class="nav-link" href="#decade-{{ slug }}">{{ dec }}</a>
-    {% endfor %}
-  </nav>
-
-  <div class="container">
-    {% for dec in decades %}
-      {% assign slug = dec | remove: "s" | slugify %}
-      <section id="decade-{{ slug }}" class="mb-5" aria-labelledby="heading-{{ slug }}">
-        <h3 id="heading-{{ slug }}">{{ dec }}</h3>
-        <div class="row row-cols-auto g-4 justify-content-center">
-          {% for p in site.data.past_presidents %}
-            {% if p.decade == dec %}
-              {% assign ps = p.name | slugify %}
-              <div class="col">
-                <div class="card pp-card h-100" data-aos="fade-up" data-aos-duration="800">
-                  <img src="{{ p.image }}" class="card-img-top pp-clickable" alt="Portrait of {{ p.name }}" data-bs-toggle="modal" data-bs-target="#modal-{{ ps }}">
-                  <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ p.name }}</h5>
-                    <p class="card-subtitle mb-2 text-muted">{{ p.start_month }} {{ p.term_start }} – {{ p.end_month }} {{ p.term_end }}</p>
-                    <p class="description mb-0">{{ p.description }}</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Modal -->
-              <div class="modal fade" id="modal-{{ ps }}" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                  <div class="modal-content modal-past-president">
-                    <div class="ratio ratio-3x4 position-relative">
-                      <img src="{{ p.image }}" alt="Portrait of {{ p.name }}" class="modal-img position-absolute top-0 start-50 translate-middle-x">
-                    </div>
-                    <div class="modal-body">
-                      <h2 class="modal-name">{{ p.name }}</h2>
-                      {% if p.position %}<p class="text-muted">{{ p.position }}</p>{% endif %}
-                      <p class="text-muted">{{ p.start_month }} {{ p.term_start }} – {{ p.end_month }} {{ p.term_end }}</p>
-                      {% if p.description %}<p>{{ p.description }}</p>{% endif %}
-                      {% if p.bionote and p.bionote != "" %}<p><strong>Bio Note:</strong> {{ p.bionote }}</p>{% endif %}
-                      {% if p.profile_link and p.profile_link != "" %}<p><strong>Profile:</strong> <a href="{{ p.profile_link }}" target="_blank" rel="noopener">View</a></p>{% endif %}
-                      {% if p.major_initiatives and p.major_initiatives.size > 0 %}
-                        <h5>Major Initiatives</h5>
-                        <ul>
-                          {% for item in p.major_initiatives %}<li>{{ item }}</li>{% endfor %}
-                        </ul>
-                      {% endif %}
-                      {% if p.awards and p.awards.size > 0 %}
-                        <h5>Awards</h5>
-                        <ul>
-                          {% for award in p.awards %}
-                            {% if award.title %}<li>{{ award.title }}{% if award.year %} ({{ award.year }}){% endif %}</li>{% endif %}
-                          {% endfor %}
-                        </ul>
-                      {% endif %}
-                      {% if p.quote and p.quote != "" %}<blockquote>"{{ p.quote }}"</blockquote>{% endif %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {% endif %}
-          {% endfor %}
+  <nav class="pp-nav-desktop d-flex flex-column" aria-label="Past Presidents by Decade"> {% for dec in decades %}
+    {% assign slug = dec | remove: "s" | slugify %} <a class="nav-link" href="#decade-{{ slug }}">{{ dec }}</a> {% endfor %} </nav>
+  <div class="container"> {% for dec in decades %}
+    {% assign slug = dec | remove: "s" | slugify %}
+    <section id="decade-{{ slug }}" class="mb-5" aria-labelledby="heading-{{ slug }}">
+      <h3 id="heading-{{ slug }}">{{ dec }}</h3>
+      <div class="row row-cols-auto g-4 justify-content-center"> {% for p in site.data.past_presidents %}
+        {% if p.decade == dec %}
+        {% assign ps = p.name | slugify %}
+        <div class="col">
+          <div class="card pp-card h-100" data-aos="fade-up" data-aos-duration="800"> <img src="{{ p.image }}" class="card-img-top pp-clickable" alt="Portrait of {{ p.name }}" data-bs-toggle="modal" data-bs-target="#modal-{{ ps }}">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ p.name }}</h5>
+              <p class="card-subtitle mb-2 text-muted">{{ p.start_month }} {{ p.term_start }} – {{ p.end_month }} {{ p.term_end }}</p>
+              <p class="description mb-0">{{ p.description }}</p>
+            </div>
+          </div>
         </div>
-      </section>
-    {% endfor %}
-  </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="modal-{{ ps }}" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content modal-past-president">
+              <div class="ratio ratio-3x4 position-relative"> <img src="{{ p.image }}" alt="Portrait of {{ p.name }}" class="modal-img position-absolute top-0 start-50 translate-middle-x"> </div>
+              <!-- close button, always on top -->
+              <button
+          type="button"
+          class="btn-close position-absolute top-0 end-0 m-3"
+          style="z-index:2000;"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+              <div class="modal-body">
+                <h2 class="modal-name">{{ p.name }}</h2>
+                {% if p.position %}
+                <p class="text-muted">{{ p.position }}</p>
+                {% endif %}
+                <p class="text-muted">{{ p.start_month }} {{ p.term_start }} – {{ p.end_month }} {{ p.term_end }}</p>
+                {% if p.description %}
+                <p>{{ p.description }}</p>
+                {% endif %}
+                {% if p.bionote and p.bionote != "" %}
+                <p><strong>Bio Note:</strong> {{ p.bionote }}</p>
+                {% endif %}
+                {% if p.profile_link and p.profile_link != "" %}
+                <p><strong>Profile:</strong> <a href="{{ p.profile_link }}" target="_blank" rel="noopener">View</a></p>
+                {% endif %}
+                {% if p.major_initiatives and p.major_initiatives.size > 0 %}
+                <h5>Major Initiatives</h5>
+                <ul>
+                  {% for item in p.major_initiatives %}
+                  <li>{{ item }}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+                {% if p.awards and p.awards.size > 0 %}
+                <h5>Awards</h5>
+                <ul>
+                  {% for award in p.awards %}
+                  {% if award.title %}
+                  <li>{{ award.title }}{% if award.year %} ({{ award.year }}){% endif %}</li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+                {% endif %}
+                {% if p.quote and p.quote != "" %}
+                <blockquote>"{{ p.quote }}"</blockquote>
+                {% endif %} </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %} </div>
+    </section>
+    {% endfor %} </div>
 </section>
-
 
 <!-- CTA --> 
 {% include register.html %} 

@@ -4,6 +4,7 @@ node_modules/
 images/
 .bundle/
 vendor/
+assets/files
 
 # Local helper scripts
 MCC WEBSITE.bat

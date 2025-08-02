@@ -1,0 +1,101 @@
+- title: "UAP Membership Application Form"
+  subtitle: "UAP registration form for new members"
+  url: "https://asset.manilacorinthianchapter.workers.dev/UAP%20MEMBERSHIP%20APPLICATION%20FORM%20081324_MCC.pdf"
+  icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  category: "Membership"
+
+- title: "UAP Membership Transfer Form"
+  subtitle: "Form to request transfer to MCC from another UAP chapter"
+  url: "https://asset.manilacorinthianchapter.workers.dev/UAP%20MEMBERSHIP%20TRANSFER%20FORM%20as%20of%20April%2026%2C%202024.pdf"
+  icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  category: "Membership"
+
+- title: "PRC Authorization Letter"
+  subtitle: "Letter authorizing someone to transact PRC renewal on your behalf"
+  url: "https://asset.manilacorinthianchapter.workers.dev/PRC%20Authorization%20Letter.docx"
+  icon: "https://asset.manilacorinthianchapter.workers.dev/MCC%20logo%20180x180.png"
+  category: "PRC Requirements"
+
+- title: "UAP Diversified Experience Logbook (2021)"
+  subtitle: "PRC logbook for keeping diversified training entries"
+  url: "https://asset.manilacorinthianchapter.workers.dev/UAP%20Logbook%202021%20FINAL%20VERSION.pdf"
+  icon: "https://asset.manilacorinthianchapter.workers.dev/uap_logo.png"
+  category: "PRC Requirements"
+
+- title: "United Architects of the Philippines"
+  subtitle: "Official UAP website for CPD, membership, and more forms"
+  url: "https://www.united‑architects.org"
+  icon: "https://asset.manilacorinthianchapter.workers.dev/uap_logo.png"
+  category: "External Links"
+  
+# ### 1️⃣ Continuing Professional Development (CPD) Forms – mandated by PRC for PIC renewal
+
+# - title: "CPD Application Form (CPDD‑02)"
+  # subtitle: "Submit a CPD activity (e.g. seminar) for PRC accreditation (Architecture professionals)"
+  # url: "https://www.prc.gov.ph/general-forms-application-form-accreditation-cpd-program"
+  # icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  # category: "CPD Forms"
+
+# - title: "Monitoring Report / Attendance Sheet"
+  # subtitle: "For evaluators to submit CPD compliance monitoring and signatures"
+  # url: "https://www.prc.gov.ph/continuing-professional-development-forms#monitoring-report"
+  # icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  # category: "CPD Forms"
+
+# - title: "Completion Report"
+  # subtitle: "Provider’s completion report after CPD event (CPDD‑05)"
+  # url: "https://www.prc.gov.ph/continuing-professional-development-forms#completion-report"
+  # icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  # category: "CPD Forms"
+
+# - title: "Affidavit of Undertaking (CPDD‑06)"
+  # subtitle: "Formal declaration if CPD units are pending; valid during transitional renewal"
+  # url: "https://www.prc.gov.ph/continuing-professional-development-forms#affidavit-of-undertaking"
+  # icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  # category: "CPD Forms"
+
+# - title: "Instructional Design Template"
+  # subtitle: "PRC’s prescribed workshop/course design format for CPD program proposals"
+  # url: "https://www.prc.gov.ph/continuing-professional-development-forms#instructional-design"
+  # icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  # category: "CPD Forms"
+
+# - title: "Certificate of Attendance Template"
+  # subtitle: "Editable CPD certificate format indicating hours and accreditation ID"
+  # url: "https://www.prc.gov.ph/continuing-professional-development-forms#certificate-template"
+  # icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  # category: "CPD Forms"
+
+### 2️⃣ Legal & Code Documents
+
+- title: "2010 Standards of Professional Practice (SPP)"
+  subtitle: "Mandatory scope and duties for all professional architects (RA 9266)"
+  url: "https://www.architectureboard.com.ph/wp-content/uploads/2019/09/1.4-2010-SPP-for-PH-Architects.pdf"
+  icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  category: "Regulations"
+
+# ### 3️⃣ Contracts & Deliverables
+
+# - title: "Architect‑Owner Professional Services Agreement"
+  # subtitle: "Template agreement based on UAP‑informed Standards of Practice"
+  # url: "https://www.manyrequests.com/templates/freelance-architect-contract-template"
+  # icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  # category: "Templates"
+
+# - title: "Architect Title‑Block Guidelines"
+  # subtitle: "Recommended layout, margins and contents for Philippine A‑E drawings"
+  # url: "https://www.archisoup.com/architectural-title-blocks"
+  # icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  # category: "Templates"
+
+# - title: "Minimalist InDesign Architecture Portfolio Template"
+  # subtitle: "A clean, print‑ready InDesign layout built for project portfolios"
+  # url: "https://www.indesignskills.com/templates/minimal-architecture-portfolio/"
+  # icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  # category: "Templates"
+
+# - title: "Archisoup Portfolio Set (80+ InDesign layouts)"
+  # subtitle: "Large collection of editable portfolio presentations made for architects"
+  # url: "https://www.archisoup.com/architecture-portfolio-templates"
+  # icon: "https://unpkg.com/feather-icons/dist/icons/file-text.svg"
+  # category: "Templates"
