@@ -1,6 +1,5 @@
 /* ─── _past-presidents.scss ─── */
 #past-presidents {
-  // Sidebar navigation
   .pp-nav-desktop {
     display: flex;
     position: fixed;
@@ -21,15 +20,7 @@
       white-space: nowrap;
       transition: color 0.2s, background-color 0.2s;
 
-      &:hover {
-        background-color: #6c757d;
-        color: #fff !important;
-        font-weight: 600;
-        border-radius: 0.25rem;
-      }
-      &:focus {
-        outline: none;
-      }
+      &:hover,
       &:active,
       &.active {
         background-color: #6c757d;
@@ -40,7 +31,6 @@
     }
   }
 
-  // Cards grid with offset
   .pp-cards-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -50,7 +40,6 @@
     padding-left: 1rem;
   }
 
-  // Card styling
   .pp-card {
     width: 280px;
     height: 460px;
@@ -79,14 +68,10 @@
         margin-bottom: 0;
       }
 
-      .pp-toggle {
-        padding: 0;
-        font-size: 0.9rem;
-      }
-
       ul {
         padding-left: 1rem;
         margin-bottom: 0.5rem;
+
         li {
           margin-bottom: 0.25rem;
         }
@@ -96,6 +81,7 @@
         margin: 0.5rem 0;
         padding-left: 1rem;
         border-left: 3px solid #ddd;
+        font-style: italic;
       }
     }
   }
@@ -105,6 +91,7 @@
       margin-left: 0;
       padding-left: 0;
     }
+
     .pp-card {
       width: 100%;
       height: auto;
@@ -112,8 +99,8 @@
   }
 }
 
-/* ─── Modal styling ─── */
 .modal-past-president {
+  max-width: 700px;
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
@@ -132,24 +119,22 @@
     line-height: 1;
   }
 
-  .modal-image-wrapper,
-  .ratio-3x4 {           // if you prefer writing your own wrapper
+  .ratio-3x4 {
     width: 100%;
     aspect-ratio: 3 / 4;
     overflow: hidden;
-    background-color: #f8f9fa; // fallback for “contain” mode
+    background-color: #f8f9fa;
     position: relative;
   }
 
   .modal-img {
     position: absolute;
-    top: 0; left: 50%;
+    top: 0;
+    left: 50%;
     transform: translateX(-50%);
     width: 100%;
     height: 100%;
-    /* choose one: */
-    object-fit: cover;   /* fills the frame, cropping sides */
-    /* object-fit: contain; */ /* shows entire image, adds bars */
+    object-fit: cover;
     object-position: center center;
   }
 
@@ -161,15 +146,21 @@
       font-size: 1.75rem;
       font-weight: 600;
     }
+
     p {
       margin-bottom: 1rem;
       line-height: 1.6;
     }
+
     ul {
       margin-bottom: 1rem;
       padding-left: 1.25rem;
-      li { margin-bottom: 0.5rem; }
+
+      li {
+        margin-bottom: 0.5rem;
+      }
     }
+
     blockquote {
       margin: 1rem 0;
       padding-left: 1rem;
