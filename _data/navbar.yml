@@ -1,11 +1,9 @@
 - title: Home
   url: /
   visible: true
-
 - title: About Us
   url: /about_us/
   visible: true
-  # aos: fade-right
   submenu:
     - title: Board of Directors
       url: /about_us/#bod
@@ -16,31 +14,25 @@
     - title: National Officers
       url: https://www.unitedarchitects.ph/about/national-officers/
       visible: true
-
 - title: Events & Activities
   url: /events-and-activities/
   visible: true
-
 - title: News & Articles
   url: /news-and-articles/
   visible: false
-
 - title: Industry Partners
   url: /industry-partners/
   visible: true
-
 - title: FAQs
   url: /faqs/
   visible: true
   submenu:
     - title: Scholarship
-      url: /faqs/scholarship/
+      url: /scholarship/
       visible: true
-    - title: Useful Files
+    - title: Resources
       url: /resources/
       visible: true
-
 - title: Membership
   url: /membership/
   visible: true
- 
