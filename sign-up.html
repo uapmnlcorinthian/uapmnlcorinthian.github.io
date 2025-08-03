@@ -1,0 +1,292 @@
+---
+layout: default
+title: "Membership Sign-Up"
+description: "Official membership application form for UAP Manila Corinthian Chapter — complete your details, verify via OTP, and auto-generate your PDF."
+image: "https://asset.manilacorinthianchapter.workers.dev/preview.jpg"
+author: "UAP Manila Corinthian"
+permalink: /sign-up/
+lang: en
+published: true
+sitemap: true
+---
+<style>
+.rtitle{font-size:clamp(1.25rem,1.2vw+1rem,2rem)}.rhd{font-size:clamp(1rem,.9vw+.85rem,1.15rem)}.uap-wrap{max-width:1200px}.chk-row .form-check{min-width:220px}
+.photo-frame{width:160px;height:160px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #dee2e6}
+.photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:.25rem}
+.photo-ctrls .btn{padding:.25rem .5rem;font-size:.875rem}
+@media print{.uap-wrap{max-width:100%!important}body{color:#000}.btn,.form-check-input{display:none}.rtitle{font-size:18pt}.rhd{font-size:12pt}}
+/* Readability + scroll behavior*/
+#uap-info{margin:1rem;max-height:80vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;font-size:.95rem;line-height:1.55}
+#uap-info .lead,#uap-info p,#uap-info li{font-size:.95rem;line-height:1.6;margin-bottom:.75rem}
+#uap-info .text-justify{text-align:justify;text-justify:auto}
+#uap-info h1,#uap-info h2,#uap-info h4,#uap-info h5{margin-bottom:.4rem;font-size:1rem}
+#uap-info .card-body p{margin-bottom:0}
+#uap-info .table{font-size:.875rem}
+#uap-info .table th,#uap-info .table td{vertical-align:top;white-space:normal;word-break:break-word}
+#uap-info .table-responsive{overflow-x:auto}/* horizontal only; avoid vertical clipping*/
+#uap-info .table thead.sticky-top{top:0;z-index:5}
+@media (max-width:576px){#uap-info{max-height:70vh}#uap-info .table{font-size:.84rem}}
+</style>
+
+<div class="container uap-wrap py-5" x-data="formCtx()">
+  <h2 class="text-center mb-4 rtitle" data-aos="fade-down">UAP Membership Application Form</h2>
+  <form id="membershipForm" class="p-3" data-aos="fade-up" novalidate>
+    <div class="row g-3 mb-2">
+      <div class="col-md-6">
+        <label class="form-label">Membership Type <span class="text-danger">*</span></label><br>
+        <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="type" value="New" required><label class="form-check-label">New Member</label></div>
+        <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="type" value="Existing"><label class="form-check-label">Existing Member</label></div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Upload 1.5” × 1.5” Photo (White Background)</label>
+        <div class="d-flex align-items-center gap-3">
+          <div class="photo-frame rounded"><img id="phPrev" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><rect width='100%' height='100%' fill='white'/><circle cx='80' cy='60' r='28' fill='%23d1d5db'/><rect x='30' y='100' width='100' height='40' rx='20' fill='%23d1d5db'/></svg>" alt="Photo preview"></div>
+          <div class="photo-ctrls"><input id="ph" type="file" class="visually-hidden" accept="image/*"><label for="ph" class="btn btn-outline-secondary btn-sm">Upload</label><div class="form-text">JPG/PNG ≤ 2MB · square image</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-sm-6 col-md-4"><label class="form-label">Family Name*</label><input type="text" class="form-control" name="lastName" autocomplete="family-name" required></div>
+      <div class="col-sm-6 col-md-4"><label class="form-label">First Name*</label><input type="text" class="form-control" name="firstName" autocomplete="given-name" required></div>
+      <div class="col-sm-12 col-md-4"><label class="form-label">Middle Name*</label><input type="text" class="form-control" name="middleName" required></div>
+    </div>
+    <div class="row g-3 mt-0">
+      <div class="col-sm-6 col-md-4"><label class="form-label">Birthdate*</label><input type="date" class="form-control" name="birthdate" required></div>
+      <div class="col-sm-6 col-md-4"><label class="form-label">Birthplace*</label><input type="text" class="form-control" name="birthplace" required></div>
+      <div class="col-6 col-md-2"><label class="form-label">Sex*</label><select class="form-select" name="sex" required><option value="">Select</option><option>Male</option><option>Female</option></select></div>
+      <div class="col-6 col-md-2"><label class="form-label">Civil Status*</label><select class="form-select" name="civilStatus" required><option value="">Select</option><option>Single</option><option>Married</option><option>Widowed</option><option>Separated</option></select></div>
+    </div>
+    <div class="mb-3 mt-3"><label class="form-label">Home / Permanent Address*</label><textarea class="form-control" rows="2" name="homeAddress" autocomplete="street-address" required></textarea></div>
+    <div class="row g-3">
+      <div class="col-sm-6 col-md-4"><label class="form-label">Tel No/s.</label><input type="tel" class="form-control" name="tel" inputmode="tel"></div>
+      <div class="col-sm-6 col-md-4"><label class="form-label">Fax No/s.</label><input type="text" class="form-control" name="fax"></div>
+      <div class="col-sm-12 col-md-4"><label class="form-label">Mobile No/s.*</label><input type="tel" class="form-control" name="mobile" inputmode="numeric" pattern="^(?:\+63|0)9\d{9}$" title="09 or +639xxxxxxxxx" required><div class="form-text">Use 09 or +639xxxxxxxxx</div></div>
+    </div>
+    <div class="row g-3 mt-0">
+      <div class="col-sm-12 col-md-6"><label class="form-label">Facebook ID</label><input type="text" class="form-control" name="facebook" autocomplete="off"></div>
+      <div class="col-sm-12 col-md-6"><label class="form-label">Twitter ID</label><input type="text" class="form-control" name="twitter" autocomplete="off"></div>
+    </div>
+    <div class="row g-3 mt-0">
+      <div class="col-sm-12 col-md-6"><label class="form-label">PRC No.</label><input type="text" class="form-control" name="prc" pattern="^[0-9-]{5,12}$" title="Digits/dashes only, 5–12 chars"><div class="form-text">Digits/dashes only (5–12)</div></div>
+      <div class="col-sm-12 col-md-6"><label class="form-label">UAP No.</label><input type="text" class="form-control" name="uap"></div>
+    </div>
+    <div class="mb-3 mt-0"><label class="form-label">Email Address*</label><input type="email" class="form-control" name="email" autocomplete="email" required></div>
+
+    <hr class="my-4"><h5 class="mb-3 rhd">Company / Office</h5>
+    <div class="row g-2 mb-2">
+      <div class="col-md-7"><label class="form-label">Name of Company and its Official Address</label><textarea class="form-control" name="co_name_addr" rows="2"></textarea></div>
+      <div class="col-md-5"><div class="row g-2">
+        <div class="col-12 col-md-4"><label class="form-label">Tel No/s.</label><input class="form-control" type="text" name="co_tel"></div>
+        <div class="col-12 col-md-4"><label class="form-label">Fax No/s.</label><input class="form-control" type="text" name="co_fax"></div>
+        <div class="col-12 col-md-4"><label class="form-label">Email Address</label><input class="form-control" type="email" name="co_email"></div>
+      </div></div>
+    </div>
+    <div class="row g-2 mb-2"><div class="col-12"><label class="form-label">Designation</label><input class="form-control" type="text" name="co_designation"></div></div>
+
+    <hr class="my-4"><h5 class="mb-3 rhd">A. Education</h5>
+    <div class="row g-2 align-items-end mb-2">
+      <div class="col-md-6"><label class="form-label">School Graduated (BS Architecture)</label><input class="form-control" name="bs_school" type="text"></div>
+      <div class="col-6 col-md-3"><label class="form-label">Year Graduated</label><input class="form-control" name="bs_year" type="number" min="1950" max="2100"></div>
+      <div class="col-6 col-md-3"><label class="form-label">Honors</label><input class="form-control" name="bs_honors" type="text"></div>
+    </div>
+    <div class="row g-2 align-items-end mb-2">
+      <div class="col-md-6"><label class="form-label">Post Graduate (School or Currently Enrolled In)</label><input class="form-control" name="pg_school" type="text"></div>
+      <div class="col-6 col-md-3"><label class="form-label">Year Graduated</label><input class="form-control" name="pg_year" type="number" min="1950" max="2100"></div>
+      <div class="col-6 col-md-3"><label class="form-label">Honors</label><input class="form-control" name="pg_honors" type="text"></div>
+    </div>
+    <div class="row g-2 align-items-end mb-2">
+      <div class="col-md-6"><label class="form-label">Special Course / Training</label><input class="form-control" name="sp_course" type="text"></div>
+      <div class="col-md-4"><label class="form-label">School / Institute / Etc.</label><input class="form-control" name="sp_school" type="text"></div>
+      <div class="col-md-2"><label class="form-label">Year Completed</label><input class="form-control" name="sp_year" type="number" min="1950" max="2100"></div>
+    </div>
+    <div class="mb-3"><label class="form-label">Awards, Recognitions, Honors Received</label><textarea class="form-control" name="awards" rows="2"></textarea></div>
+
+    <hr class="my-4"><h5 class="mb-3 rhd">B. Professional Information</h5>
+    <div class="row g-2 align-items-end mb-2">
+      <div class="col-md-4"><label class="form-label">Profession</label><select class="form-select" name="profession"><option>Registered and Licensed Architect</option><option>Architect</option></select></div>
+      <div class="col-md-3"><label class="form-label">PRC Registration No.</label><input class="form-control" name="prc_no" type="text"></div>
+      <div class="col-md-3"><label class="form-label">Date Issued</label><input class="form-control" name="prc_issued" type="date"></div>
+      <div class="col-md-2"><label class="form-label">Valid Until</label><input class="form-control" name="prc_valid" type="date"></div>
+    </div>
+    <div class="row g-2 mb-2">
+      <div class="col-md-5"><label class="form-label">Specific Type of Expertise (01)</label><input class="form-control" name="ex1" type="text"></div>
+      <div class="col-6 col-md-2"><label class="form-label">Years of Practice</label><input class="form-control" name="xp1" type="number" min="0" max="70"></div>
+      <div class="col-md-5"><label class="form-label">Specific Type of Expertise (02)</label><input class="form-control" name="ex2" type="text"></div>
+      <div class="col-6 col-md-2"><label class="form-label">Years of Practice</label><input class="form-control" name="xp2" type="number" min="0" max="70"></div>
+    </div>
+    <div class="row g-2 mb-2">
+      <div class="col-md-5"><label class="form-label">Specific Type of Expertise (03)</label><input class="form-control" name="ex3" type="text"></div>
+      <div class="col-6 col-md-2"><label class="form-label">Years of Practice</label><input class="form-control" name="xp3" type="number" min="0" max="70"></div>
+      <div class="col-md-5"><label class="form-label">Specific Type of Expertise (04)</label><input class="form-control" name="ex4" type="text"></div>
+      <div class="col-6 col-md-2"><label class="form-label">Years of Practice</label><input class="form-control" name="xp4" type="number" min="0" max="70"></div>
+    </div>
+    <div class="mb-2"><label class="form-label">Type of Architectural Practice</label>
+      <div class="d-flex flex-wrap gap-3 chk-row">
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="practice[]" value="Academe" id="p1"><label class="form-check-label" for="p1">Academe</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="practice[]" value="Government" id="p2"><label class="form-check-label" for="p2">Government</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="practice[]" value="Private Practice" id="p3"><label class="form-check-label" for="p3">Private Practice</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="practice[]" value="Private Corporation" id="p4"><label class="form-check-label" for="p4">Private Corporation</label></div>
+      </div>
+    </div>
+    <div class="mb-3"><label class="form-label">Architectural Services Rendered</label>
+      <div class="d-flex flex-wrap gap-3 chk-row">
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="svc[]" value="Pre-Design" id="s1"><label class="form-check-label" for="s1">Pre-Design</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="svc[]" value="Design" id="s2"><label class="form-check-label" for="s2">Design</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="svc[]" value="Specialized/Allied" id="s3"><label class="form-check-label" for="s3">Specialized/Allied</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="svc[]" value="Construction" id="s4"><label class="form-check-label" for="s4">Construction</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="svc[]" value="Post-Construction" id="s5"><label class="form-check-label" for="s5">Post-Construction</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="svc[]" value="Consulting" id="s6"><label class="form-check-label" for="s6">Consulting</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="svc[]" value="Design-Build" id="s7"><label class="form-check-label" for="s7">Design-Build</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" name="svc[]" value="Others" id="s8"><label class="form-check-label" for="s8">Others</label></div>
+      </div>
+      <input class="form-control mt-2" type="text" name="svc_others" style="display:none" placeholder="Specify others">
+    </div>
+    <div class="mb-3"><label class="form-label">CPE/CPD Seminars/Modules Attended (Previous Fiscal Year)</label>
+      <div class="row g-2 mb-2"><div class="col-md-6"><input class="form-control" type="text" name="cpd1_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd1_date"></div><div class="col-6 col-md-2"><input class="form-control" type="number" step="0.5" min="0" name="cpd1_units"></div><div class="col-md-2"><select class="form-select" name="cpd1_part"><option>Participant</option><option>Speaker</option></select></div></div>
+      <div class="row g-2 mb-2"><div class="col-md-6"><input class="form-control" type="text" name="cpd2_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd2_date"></div><div class="col-6 col-md-2"><input class="form-control" type="number" step="0.5" min="0" name="cpd2_units"></div><div class="col-md-2"><select class="form-select" name="cpd2_part"><option>Participant</option><option>Speaker</option></select></div></div>
+      <div class="row g-2 mb-2"><div class="col-md-6"><input class="form-control" type="text" name="cpd3_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd3_date"></div><div class="col-6 col-md-2"><input class="form-control" type="number" step="0.5" min="0" name="cpd3_units"></div><div class="col-md-2"><select class="form-select" name="cpd3_part"><option>Participant</option><option>Speaker</option></select></div></div>
+      <div class="row g-2"><div class="col-md-6"><input class="form-control" type="text" name="cpd4_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd4_date"></div><div class="col-6 col-md-2"><input class="form-control" type="number" step="0.5" min="0" name="cpd4_units"></div><div class="col-md-2"><select class="form-select" name="cpd4_part"><option>Participant</option><option>Speaker</option></select></div></div>
+      <div class="text-end small text-muted mt-1">Total CPE Units: <span id="cpdTot">0.0</span></div>
+    </div>
+
+    <hr class="my-4"><h5 class="mb-3 rhd">C. Membership Status</h5>
+    <div class="row g-2 mb-2"><div class="col-md-4"><label class="form-label">Current Chapter</label><input class="form-control" type="text" name="cur_chap"></div><div class="col-6 col-md-2"><label class="form-label">Years of Residency</label><input class="form-control" type="number" min="0" name="cur_res"></div><div class="col-md-6"><label class="form-label">Latest Positions Held</label><input class="form-control" type="text" name="cur_pos"></div></div>
+    <div class="row g-2 mb-3"><div class="col-md-4"><label class="form-label">Previous Chapter</label><input class="form-control" type="text" name="prev_chap"></div><div class="col-6 col-md-2"><label class="form-label">Years of Residency</label><input class="form-control" type="number" min="0" name="prev_res"></div><div class="col-md-6"><label class="form-label">Latest Positions Held</label><input class="form-control" type="text" name="prev_pos"></div></div>
+    <div class="row g-2 mb-2"><div class="col-md-9"><label class="form-label">Positions Held in the National Board, National or Special Committees (01)</label><input class="form-control" type="text" name="natpos1"></div><div class="col-md-3"><label class="form-label">Inclusive Dates</label><input class="form-control" type="text" name="natpos1_dates"></div></div>
+    <div class="row g-2 mb-2"><div class="col-md-9"><label class="form-label">Position Positions(02)</label><input class="form-control" type="text" name="natpos2"></div><div class="col-md-3"><label class="form-label">Inclusive Dates</label><input class="form-control" type="text" name="natpos2_dates"></div></div>
+    <div class="row g-2 mb-3"><div class="col-md-9"><label class="form-label">Positions (03)</label><input class="form-control" type="text" name="natpos3"></div><div class="col-md-3"><label class="form-label">Inclusive Dates</label><input class="form-control" type="text" name="natpos3_dates"></div></div>
+    <div class="row g-2 mb-3"><div class="col-6 col-md-5"><label class="form-label">UAP College of Fellows, Year Elevated</label><input class="form-control" type="number" min="1950" max="2100" name="cof_year"></div><div class="col-md-7"><label class="form-label">Expertise</label><input class="form-control" type="text" name="cof_exp"></div></div>
+   
+  </form>
+
+  <!-- OTP Dialog & Alerts (Shoelace) -->
+  <sl-dialog label="OTP Verification" class="otp-dialog" x-ref="d">
+    <div class="mb-3"><label>Enter OTP sent to your email</label><input type="text" class="form-control" x-model="oc" inputmode="numeric" maxlength="6" placeholder="000000"></div>
+    <div class="text-end"><button class="btn btn-primary" @click="v()">Verify & Submit</button></div>
+  </sl-dialog>
+  <sl-alert variant="primary" duration="3500" closable x-ref="ok"><span slot="message">Application submitted.</span></sl-alert>
+  <sl-alert variant="danger" duration="4000" closable x-ref="err"><span slot="message">Invalid OTP. Please try again.</span></sl-alert>
+</div>
+
+<!-- Scroll-to-acknowledge section with all tables and improved styling -->
+<section id="uap-info" class="mt-4 p-4 shadow-lg rounded-lg bg-white border border-gray-200" x-data="scrollHandler" x-ref="i" @scroll.passive="sc()">
+  <div class="text-center mb-5" data-aos="fade-down">
+    <h4 class="fw-bold text-primary mb-3">WHAT IS UAP?</h4>
+    <p class="lead text-justify">Joining the United Architects of the Philippines builds on the strength of thousands of your peers. It also enables you to tap into a network of knowledge; experience and vision that will help your professional career grow. As UAP Member, you have access to knowledge and resources, a supportive network of colleagues, and a reputation built on more than 34 years of service to the architecture profession. By completing and signing this Application Form, I agree to abide by the Code of Ethics and Standards of Professional Conduct, UAP Bylaws, its rules and regulations, and policies duly promulgated by the United Architects of the Philippines as the Integrated and Accredited Professional Organization of Architects in the country in relation to Republic Act No. 9266.</p>
+  </div>
+  <div class="row g-4 mb-5" data-aos="fade-up">
+    <div class="col-md-6"><div class="card h-100 shadow-sm animate__animated animate__fadeInLeft"><div class="card-header bg-primary text-white"><h5 class="fw-bold mb-0">MEMBER BENEFITS WITH UAP ADVANTAGE</h5></div><div class="card-body"><p class="text-justify">The United Architects of the Philippines is the voice of the architectural profession and the resource for its members in service to society. We serve our membership in all areas of the profession, professionals, professional products and professional organization including: connecting members with peers, vendors and professional opportunities; providing convenient continuing education programs; and leading government advocacy programs that benefit architects. UAP works to increase public awareness of the built environment and the role architects and affiliated professionals play in making Philippines one of the best in ASIA.</p></div></div></div>
+    <div class="col-md-6"><div class="card h-100 shadow-sm animate__animated animate__fadeInRight"><div class="card-header bg-primary text-white"><h5 class="fw-bold mb-0">UAP IS ABOUT PEOPLE</h5></div><div class="card-body"><p class="text-justify">Architects working together, helping each other create better places to live, work, and play. Membership in the UAP offers a vast pool of resources to help you compete in today's market and keeps you informed of critical professional issues that may challenge your success. Moreover, when you get involved locally through your UAP's local and international Chapters, you make new friends, expand your professional contacts and knowledge base, and work together with colleagues to improve the quality of life in your home community.</p></div></div></div>
+    <div class="col-md-6"><div class="card h-100 shadow-sm animate__animated animate__fadeInLeft"><div class="card-header bg-primary text-white"><h5 class="fw-bold mb-0">UAP IS ABOUT COMMUNITY</h5></div><div class="card-body"><p class="text-justify">Promoting fellowship and collaboration among members and within our community at large. UAP Members are design professionals who are eager to extend their professional network, to share information and exchange ideas. The calendar of events incorporates a rich and varied program of educational events, social gatherings, committee meetings, and other events that connect members with each other, to the broader professional community, and to the public.</p></div></div></div>
+    <div class="col-md-6"><div class="card h-100 shadow-sm animate__animated animate__fadeInRight"><div class="card-header bg-primary text-white"><h5 class="fw-bold mb-0">UAP IS ABOUT KNOWLEDGE</h5></div><div class="card-body"><p class="text-justify">Facilitating the sharing of Knowledge about Design and about Practice that inspires and enables members and the public. UAP Chapters provides a variety of continuing education programs that address current challenges, innovations, and practice trends. UAP Members also have access to a variety of professional resources and technical materials at a discounted rate.</p></div></div></div>
+    <div class="col-md-12"><div class="card shadow-sm animate__animated animate__fadeInUp"><div class="card-header bg-primary text-white"><h5 class="fw-bold mb-0">UAP IS ABOUT ADVOCACY</h5></div><div class="card-body"><p class="text-justify">Serving as a voice on community, legislative and design matters and promoting the rights of every registered and licensed architects and the value of their services to the public. UAP Chapter members work collaboratively with their local government units in coordination with the UAP National to strengthen the voices of architects in government and community leadership at the city, municipal, provincial and national level. To promote the unique value of architects and the importance of design excellence, UAP features members' works through programs like the National Design Competition sponsored by various non-government sectors.</p></div></div></div>
+  </div>
+
+  <h1 class="text-center fw-bold my-5 py-3 border-bottom border-top" data-aos="zoom-in">UAP CHAPTERS <small class="fs-6 fw-light">(as of August 13, 2024)</small></h1>
+
+  <section class="mb-5" data-aos="fade-right"><h2 class="bg-dark text-white p-3 rounded shadow">AREA A</h2>
+    <div class="table-responsive"><table class="table table-hover table-striped align-middle w-100"><thead class="table-dark sticky-top"><tr><th>District</th><th>Chapters</th></tr></thead><tbody>
+      <tr><td><b>A1A (Northern Luzon)</b></td><td>Pangasinan-Dagupan, Baguio, Ilocos-Ciudad Fernandina, La Union, Ilocos Norte-Laoag City, Summer Capital, Pangasinan Scale, Ylocos Vigan, La Union-Aguila, Cordillera</td></tr>
+      <tr><td><b>A1B (Part of Northern Luzon)</b></td><td>Cagayan Valley, Isabela Sierra Madre, Nueva Vizcaya, Cagayan North</td></tr>
+      <tr><td><b>A2A (Central Luzon)</b></td><td>Nueva Ecija Cabanatuan, Bulacan, Barasoain, Sta. Maria-Bulacan East</td></tr>
+      <tr><td><b>A2B (Part of Central Luzon)</b></td><td>Zambales-Olongapo, Tarlac, Pampanga-San Fernando, Balanga-Bataan, Angeles City, Sinukwan-Pampanga</td></tr>
+      <tr><td><b>A3 (Quezon City - North)</b></td><td>Quezon City, QC Silangan, QC Capitol, QC Tandang Sora, Hongkong, QC Central, QC South Triangle, Los Angeles</td></tr>
+      <tr><td><b>A4 (Quezon City South)</b></td><td>Diliman, New Manila, Camanava Hilaga, QC Elliptical, Nova Central, KSA Eastern Province, KSA Western Region, KSA Riyadh, UAE Dubai, UAE Abu Dhabi, Qatar, Bahrain, Kuwait</td></tr>
+      <tr><td><b>A5 (Metro Manila - North)</b></td><td>Rizal Taytay, Pasig, Marikina Valley, San Juan Mandaluyong, Greenhills, Rizal East, California San Francisco, California 116, Rizal Kalayaan 100, Rizal Cainta 101, San Juan Pinaglabanan, Southern California</td></tr>
+      <tr><td><b>A6 - MENA</b></td><td></td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section class="mb-5" data-aos="fade-left"><h2 class="bg-dark text-white p-3 rounded shadow">AREA B</h2>
+    <div class="table-responsive"><table class="table table-hover table-striped align-middle w-100"><thead class="table-dark sticky-top"><tr><th>District</th><th>Chapters</th></tr></thead><tbody>
+      <tr><td><b>B1 (Manila North)</b></td><td>Manila Atelier, Manila Sampaloc, Manila Metro, Manila Centrum, Manila Archizonian, Manila Sta. Mesa, Singapore, Canada Calgary</td></tr>
+      <tr><td><b>B2 (Manila South)</b></td><td>Manila MAGS, Manila Maharlika, Manila Maynilad, Manila Corinthian, Manila Intramuros, Manila Alcaldia, Ontario-Canada, Manila La Solidaridad, British Columbia</td></tr>
+      <tr><td><b>B3 (Metro Manila - South)</b></td><td>Makati, Makati-CBD, Parañaque-Palanyag, Makati Greenbelt, Alabang, Cavite, Fort Bonifacio, Shanghai, Brunei, Kuala Lumpur, Las Piñas</td></tr>
+      <tr><td><b>B4 (Southern Tagalog)</b></td><td>Quezon Province, San Pablo, Laguna, Batangas, Palawan</td></tr>
+      <tr><td><b>B5 (Bicol Region)</b></td><td>Camarines, Legazpi, Iriga-Rinconada, Daraga-Cagsawa, Sorsogon-Kasanggayahan, Daet-Camarines Norte, Tabaco, Catanduanes, Masbate Rodeo</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section class="mb-5" data-aos="fade-right"><h2 class="bg-dark text-white p-3 rounded shadow">AREA C</h2>
+    <div class="table-responsive"><table class="table table-hover table-striped align-middle w-100"><thead class="table-dark sticky-top"><tr><th>District</th><th>Chapters</th></tr></thead><tbody>
+      <tr><td><b>C1 (Central Visayas)</b></td><td>Cebu, Dumaguete, Rajah Humabon, Bohol, Lapu-Lapu, Sugbu, Cebu Leon Kilat</td></tr>
+      <tr><td><b>C2 (Western Visayas)</b></td><td>Bacolod, Negrense, Mt. Kanlaon</td></tr>
+      <tr><td><b>C3 (Eastern Visayas)</b></td><td>Leyte, San Juanico, Leyte West, Metro Tacloban, Samar Sinirangan</td></tr>
+      <tr><td><b>C4 (Panay Island)</b></td><td>Iloilo, Capiz, Marikudo, Antique, Hamili, Aklan</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section class="mb-5" data-aos="fade-left"><h2 class="bg-dark text-white p-3 rounded shadow">AREA D</h2>
+    <div class="table-responsive"><table class="table table-hover table-striped align-middle w-100"><thead class="table-dark sticky-top"><tr><th>District</th><th>Chapters</th></tr></thead><tbody>
+      <tr><td><b>D1a (Southern Mindanao)</b></td><td>Davao, Mount Apo, Cotabato, SOCCSKSARGEN, Datu Bago-Dabaw, Kadayawan-Dabaw, North Davao, Davao Alpha</td></tr>
+      <tr><td><b>D1b (Southern Mindanao)</b></td><td>Davao, Mount Apo, Cotabato, SOCCSKSARGEN, Datu Bago-Dabaw, North Davao, Davao Alpha</td></tr>
+      <tr><td><b>D2 (Western Mindanao)</b></td><td>Zamboanga, Zamboanga-Chavacano</td></tr>
+      <tr><td><b>D3 (Northern Mindanao)</b></td><td>Cagayan de Oro, Butuan, Surigao, Gold-CDO, Metro Kagay-an</td></tr>
+      <tr><td><b>D4 (Northern Mindanao)</b></td><td>Iligan City, Dipolog, Ozamis City, Pagadian</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <div class="my-5" data-aos="flip-up"><h2 class="bg-dark text-white p-3 rounded shadow mb-4">MEMBERSHIP FEES</h2>
+    <div class="table-responsive"><table class="table table-bordered table-sm align-middle w-100"><thead class="table-primary sticky-top"><tr><th>PARTICULAR</th><th>BASIS</th><th>FEES</th><th>DUE ON</th></tr></thead><tbody>
+      <tr><td colspan="4" class="fw-bold bg-light">A. FOR NEW MEMBER</td></tr>
+      <tr><td>1. Initial Membership Fee</td><td>Article IV Section 2.1<br>The initial membership fee shall be assessed on new members upon registration... shall not be greater than the national annual membership dues.</td><td>P100.00</td><td>Upon application</td></tr>
+      <tr><td>2. National Annual Membership Dues</td><td>Article IV Section 2.2<br>The national annual membership dues, in such amounts... must be remitted on or before September 30.</td><td>P600.00</td><td>September 30</td></tr>
+      <tr><td>3. Chapter Annual Membership Fee</td><td>Article IV Section 2.4<br>The chapter annual membership dues, in such amounts... shall be collected from the members</td><td>As may be determined by the Chapter</td><td>On or before end of August</td></tr>
+      <tr><td colspan="4" class="fw-bold bg-light">B. FOR REGULAR MEMBER, OTHER FEES</td></tr>
+      <tr><td>1. National Annual Membership Dues</td><td>Article IV Section 2.2<br>Same as A.2</td><td>P600.00</td><td>September 30</td></tr>
+      <tr><td>2. Annual Dues (National) Likha Gold Medal Awardee, COF Honorary Member, Member Emeritus, Senior Member</td><td>Article IV Section 6<br>Other Fees and Dues</td><td>P1.00</td><td>September 30</td></tr>
+      <tr><td>3. Annual Dues (Chapter)</td><td>Article IV Section 1.2.2<br>Chapter Dues – shall be established by the Chapter Board to be remitted on or before end of August</td><td>As may be determined by the Chapter</td><td>On or before end of August</td></tr>
+      <tr><td colspan="4" class="fw-bold bg-light">C. FOR CHAPTER</td></tr>
+      <tr><td>1. Chapter Annual Fee</td><td>Article IV Section 2.3<br>Each Chapter shall pay... on or before August 31</td><td>P1,500.00</td><td>August 31</td></tr>
+      <tr><td colspan="4" class="fw-bold bg-light">D. FOR CHAPTER ABROAD</td></tr>
+      <tr><td>1. Initial Membership Fee</td><td>Article IV Section 2.1<br>Same as A.1</td><td>P100.00</td><td>Upon application</td></tr>
+      <tr><td>2. National Annual Membership Dues</td><td>Article IV Section 2.2<br>Same as A.2</td><td>P600.00</td><td>September 30</td></tr>
+      <tr><td>3. Chapter Annual Membership Fee</td><td>Article IV Section 2.4<br>Same as A.3</td><td>As may be determined by the Chapter</td><td>On or before end of August</td></tr>
+      <tr><td>4. Chapter Annual Fee</td><td>Article IV Section 2.3<br>Same as C.1</td><td>P1,500.00</td><td>August 31</td></tr>
+      <tr><td colspan="4" class="fw-bold bg-light">E. OTHER CHARGES/FEES</td></tr>
+      <tr><td>1. Penalty</td><td>Article IV Section 4.4<br>10% of the Annual Membership Dues for late payment effective FY 2021-2022 (per year)</td><td>10%</td><td>Upon payment</td></tr>
+      <tr><td>2. UAP Corporate Identification Card</td><td>Executive Order No. 0708-004... 2007</td><td>P100.00</td><td>-</td></tr>
+      <tr><td>3. Re-printing of UAP Annual Certificate</td><td>Administrative Cost</td><td>P100.00</td><td>-</td></tr>
+      <tr><td>4. Certificate of Good Standing</td><td>Administrative Cost</td><td>P100.00</td><td>-</td></tr>
+      <tr><td>5. Facilitation of the Renewal of PRC Processing of IDs</td><td>UAP Board Resolution No. 09-10, No. 5-07</td><td>P200.00</td><td>-</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="alert alert-info d-flex align-items-center mt-4" x-show="scrolled" x-transition:enter="animate__animated animate__fadeInUp" x-transition:leave="animate__animated animate__fadeOutDown"><sl-icon name="check-circle" class="me-2"></sl-icon><span>You've reviewed all membership information</span></div>
+</section>
+
+<!--SIGNATURE-->
+<div class="p-4">
+ <hr class="my-4"><div class="mb-2"><small class="text-muted">I hereby certify and declare under the penalties of perjury, that all the information herein is a true statement of my personal and professional information as of this date, as required by and in accordance with the UAP By-Laws and its Implementing Rules and Regulations.</small></div>
+    <div class="row g-2 mb-3"><div class="col-md-8"><label class="form-label">Signature (Type Full Name)</label><input class="form-control" type="text" name="sig"></div><div class="col-md-4"><label class="form-label">Date</label><input class="form-control" type="date" name="sig_date"></div></div>
+    <div class="form-check mt-3"><input id="agreeInfo" class="form-check-input" type="checkbox" required><label class="form-check-label" for="agreeInfo">I have read and understood the <a href="#uap-info" class="text-decoration-underline">UAP Membership General Information</a></label></div>
+    <div class="text-center mt-4"><button class="btn btn-primary btn-lg w-100 w-md-auto" type="submit">Submit Form</button></div>
+</div>
+
+<script>
+document.addEventListener('alpine:init',()=>{
+  Alpine.data('scrollHandler',()=>({scrolled:!1,init(){document.querySelectorAll('#uap-info [data-aos]').forEach(e=>e.setAttribute('data-aos-anchor','#uap-info'));if(window.AOS){AOS.refreshHard()}this.$refs.i.addEventListener('scroll',()=>{if(window.AOS){AOS.refresh()}})},sc(){const e=this.$refs.i,s=e.scrollHeight-e.scrollTop-e.clientHeight;this.scrolled=s<50;if(window.AOS){AOS.refresh()}}}));
+  Alpine.data('formCtx',()=>({oc:'',v(){const d=this.$refs.d,ok=this.$refs.ok,er=this.$refs.err;/* demo check: 6 digits*/if(/^\d{6}$/.test(this.oc)){d?.hide?.();ok?.show?.()}else{er?.show?.()}}}));
+});
+</script>
+<script>
+(()=>{const d=document,f=d.getElementById('membershipForm'),q=s=>d.querySelector(s),qa=s=>[...d.querySelectorAll(s)],ls=localStorage,now=new Date(),yr=now.getFullYear(),td=now.toISOString().slice(0,10);
+const bd=q('[name=birthdate]');if(bd)bd.max=td;['bs_year','pg_year','sp_year','cof_year'].forEach(n=>{const e=q('[name='+n+']');if(e)e.max=yr});
+['tel','fax','co_tel','co_fax'].forEach(n=>{const e=q('[name='+n+']');if(e)e.addEventListener('blur',()=>{e.value=e.value.replace(/[^0-9+\-() ]/g,'').replace(/\s+/g,' ').trim()})});
+['firstName','middleName','lastName','cur_chap','prev_chap','co_designation'].forEach(n=>{const e=q('[name='+n+']');if(e)e.addEventListener('blur',()=>{e.value=e.value.toLowerCase().replace(/(^|\s)\S/g,m=>m.toUpperCase())})});
+['email','co_email'].forEach(n=>{const e=q('[name='+n+']');if(e)e.addEventListener('blur',()=>{e.value=e.value.trim().toLowerCase()})});
+const bad=['mailinator.com','10minutemail.com','guerrillamail.com','tempmail.com'];['email','co_email'].forEach(n=>{const e=q('[name='+n+']');if(e)e.addEventListener('change',()=>{const ok=!bad.includes(((e.value.split('@')[1])||'').toLowerCase());e.setCustomValidity(ok?'':'Please use a non-disposable email')}))});
+function ageOK(){if(!bd||!bd.value)return true;const a=Math.floor((now-new Date(bd.value))/31557600000);bd.setCustomValidity(a<18?'Must be at least 18 years old':'');return a>=18}
+const svcO=q('[name=svc_others]'),chkO=d.getElementById('s8');if(svcO&&chkO){chkO.addEventListener('change',()=>{svcO.style.display=chkO.checked?'block':'none';if(!chkO.checked)svcO.value=''})}
+function needCo(){const a=q('[name=co_name_addr]'),t=q('[name=co_tel]'),f2=q('[name=co_fax]'),e=q('[name=co_email]'),g=q('[name=co_designation]');const on=[a,t,f2,e,g].some(x=>x&&x.value.trim());[e,g].forEach(x=>{if(x)x.required=on})};['co_name_addr','co_tel','co_fax','co_email','co_designation'].forEach(n=>{const e=q('[name='+n+']');if(e)e.addEventListener('input',needCo)});needCo();
+function tot(){let s=0;['1','2','3','4'].forEach(i=>{const e=q('[name=cpd'+i+'_units]');s+=parseFloat(e&&e.value)||0});const t=q('#cpdTot');if(t)t.textContent=s.toFixed(1)};['1','2','3','4'].forEach(i=>{const e=q('[name=cpd'+i+'_units]');if(e)e.addEventListener('input',tot)});tot();
+function oneGrp(){const a=qa('input[name="practice[]"]:checked').length,b=qa('input[name="svc[]"]:checked').length;if(a+b==0){alert('Select at least one Type of Practice or Service Rendered.');return false}return true}
+function xp(){const di=q('[name=prc_issued]'),x=qa('[name^=xp]');if(!di||!di.value)return true;const y=Math.max(0,yr-new Date(di.value).getFullYear());let ok=true;x.forEach(e=>{if(e.value&&+e.value>y+5){e.setCustomValidity('Check years vs PRC issue date');ok=false}else e.setCustomValidity('')});return ok}
+const fi=d.getElementById('ph'),phP=d.getElementById('phPrev');if(fi)fi.addEventListener('change',()=>{const f0=fi.files[0];if(!f0)return; if(f0.size>2097152){fi.setCustomValidity('Max photo size 2MB');return}else fi.setCustomValidity('');const im=new Image();im.onload=()=>{fi.setCustomValidity(Math.abs(im.width-im.height)>10?'Photo must be square (~1.5×1.5 in)':'');phP.src=URL.createObjectURL(f0)};im.src=URL.createObjectURL(f0)});
+function save(){const fd=new FormData(f),o={};fd.forEach((v,k)=>{if(o[k]){if(!Array.isArray(o[k]))o[k]=[o[k]];o[k].push(v)}else o[k]=v});ls.setItem('uapForm',JSON.stringify(o))}
+function load(){const s=ls.getItem('uapForm');if(!s)return;try{const o=JSON.parse(s);Object.keys(o).forEach(k=>{const v=o[k],el=f.querySelector('[name="'+k+'"]');if(!el){qa('[name="'+k+'"]').forEach(e=>{if(e.type=='checkbox'||e.type=='radio')e.checked=(Array.isArray(v)?v.includes(e.value):v==e.value)});return}if(el.type=='checkbox'||el.type=='radio'){qa('[name="'+k+'"]').forEach(e=>{e.checked=(Array.isArray(v)?v.includes(e.value):v==e.value)});}else el.value=Array.isArray(v)?v[0]:v});needCo();tot()}catch(e){}}
+load();f.addEventListener('input',e=>{if(e.target&&e.target.name)save()});
+f.addEventListener('submit',e=>{if(!ageOK()||!xp()||!oneGrp()){e.preventDefault();return}save();if(!confirm('Review your entries then click OK to submit.'))e.preventDefault()});
+})();
+</script>
