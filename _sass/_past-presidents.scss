@@ -44,14 +44,14 @@
 
   .pp-card {
     width: 280px;
-    height: 460px;
-      border-radius: 1rem;
+    height: 650px;
+    border-radius: 1rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 
     .card-img-top {
-      height: 200px;
+      height: 300px;
       object-fit: cover;
       cursor: pointer;
     }
@@ -89,17 +89,6 @@
     }
   }
 
-  @media (max-width: 767.98px) {
-    .pp-cards-wrapper {
-      margin-left: 0;
-      padding-left: 0;
-    }
-
-    .pp-card {
-      width: 100%;
-      height: auto;
-    }
-  }
 }
 
 .modal-past-president {
