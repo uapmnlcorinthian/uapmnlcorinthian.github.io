@@ -89,16 +89,37 @@ async function initLogin() {
         return;
       }
       const cols  = await getPaymentColumns(sb);
-      const fixed = ['row_id','username','password','name','prc_license','address',
-        'birthday','contact_no','email','membership_active','total_due','batch','company','position'];
-      const { data: user, error: authErr } = await sb
-        .from('xxsr_001')
-        .select([...fixed, ...cols].join(','))
-        .eq('username', usr.value.trim().toLowerCase())
-        .maybeSingle();
-      if (authErr || !user || pwd.value !== user.password) {
-        throw new Error('Invalid username or password.');
-      }
+		const fixed = [
+		  'row_id',
+		  'username',
+		  'password_hash',      // ← fetch the hash instead of clear-text
+		  'name','prc_license','address',
+		  'birthday','contact_no','email',
+		  'membership_active','total_due','batch','company','position'
+		];
+		const { data: user, error: authErr } = await sb
+		  .from('xxsr_001')
+		  .select([...fixed, ...cols].join(','))
+		  .eq('username', usr.value.trim().toLowerCase())
+		  .maybeSingle();
+
+
+		if (authErr || !user) {
+		  throw new Error('Invalid username or password.');
+		}
+
+		// ✅ Verify against bcrypt hash on the server
+		const { data: isValid, error: verifyErr } = await sb
+		  .rpc('verify_password', {
+			plain: pwd.value.trim(),
+			hash:  user.password_hash
+		  })
+		  .single();
+
+		if (verifyErr || !isValid) {
+		  throw new Error('Invalid username or password.');
+		}
+
       const pay = Object.fromEntries(cols.map(k => [k, user[k]]));
       delete user.password;
       const sess = { ok:1, row:String(user.row_id).toLowerCase(), pi:{

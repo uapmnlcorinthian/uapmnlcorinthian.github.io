@@ -18,7 +18,7 @@ let otpVerified = false;
   const API = 'https://uap-apply.manilacorinthianchapter.workers.dev/apply';
 
   // === PDF-LIB fill (fixed template + your coords + auto-align) === //
-  const TEMPLATE_URL = 'https://pdf-cors.uapmnlcorinthian.com/';
+  const TEMPLATE_URL = '/assets/files/uap-membership-2024-08-13-mcc.pdf';
 
   // Your coordinates (as provided; small typos cleaned)
   const COORDS_RAW = {
@@ -780,7 +780,7 @@ infoSection?.appendChild(scrollSentinel);
         });
 
         document.body.appendChild(toast);
-        toast.show();   
+        toast.toast(); 
       }
     }, { threshold: 1.0 });
 
