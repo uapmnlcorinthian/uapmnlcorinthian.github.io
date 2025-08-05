@@ -67,39 +67,69 @@ setSize();gravity=GRAVITY_BASE*(gameContainer.clientHeight/480);flapStrength=FLA
 
 <!-- ScoreKit (single instance) --> 
 <script>
+<script>
 (()=>{"use strict";
+// --- setup
 const S=(()=>{try{return JSON.parse(document.getElementById("sb").textContent)}catch(_){return{}}})();
 const C=window.supabase?.createClient(S.u,S.k);
+const LIMIT=10,KL="mcc_lb",KT="mcc_lb_thr",KN="mcc_lb_len",KS="mcc_lb_ts";
 const fmt=h=>{const d=new Date(h);return d.toLocaleDateString(void 0,{month:"short",day:"2-digit"})+" "+d.toLocaleTimeString(void 0,{hour:"2-digit",minute:"2-digit"})};
 const piName=()=>{try{const o=JSON.parse(sessionStorage.getItem("userData")||"{}");return (o?.pi?.n||"").toString().trim()||null}catch(_){return null}};
-async function LB(){const m=document.getElementById("lb");if(!m||!C)return;try{
+// --- cache helpers
+const saveLB=r=>{try{localStorage.setItem(KL,JSON.stringify(r));localStorage.setItem(KT,String(r.length?(r[r.length-1].s||0):0));localStorage.setItem(KN,String(r.length));localStorage.setItem(KS,String(Date.now()))}catch(_){}}; 
+const getThr=()=>{const n=parseInt(localStorage.getItem(KT)||"0",10);return isNaN(n)?0:n};
+const getLen=()=>{const n=parseInt(localStorage.getItem(KN)||"0",10);return isNaN(n)?0:n};
+const getCache=()=>{try{return JSON.parse(localStorage.getItem(KL)||"[]")}catch(_){return[]}};
+// --- render
+function render(rows,uid){const m=document.getElementById("lb");if(!m)return;
+  const html=['<div class="card shadow-sm"><div class="card-body p-2"><div class="d-flex justify-content-between align-items-center mb-1"><strong>Top Scores</strong><small class="text-muted">updated now</small></div><div class="table-responsive"><table class="table table-sm mb-0"><thead><tr><th>#</th><th>Name</th><th class="text-end">Score</th><th>Date</th></tr></thead><tbody>'];
+  rows.forEach(r=>html.push(`<tr ${uid&&r.u===uid?'class="table-primary"':''}><td>${r.i}</td><td>${r.n}</td><td class="text-end">${r.s}</td><td>${fmt(r.d)}</td></tr>`));
+  if(rows.length===0) html.push('<tr><td colspan="4" class="text-center text-muted">No scores yet</td></tr>');
+  html.push("</tbody></table></div></div></div>"); m.innerHTML=html.join("");
+}
+// --- load leaderboard (fetch ? render ? cache; fallback to cache on error)
+async function LB(){if(!C)return;try{
   const {data,error}=await C.from("game_scores")
     .select("best_score,best_at,user_id,profiles:profiles!inner(display_name)")
-    .order("best_score",{ascending:!1}).order("best_at",{ascending:!0}).limit(20);
+    .order("best_score",{ascending:false}).order("best_at",{ascending:true}).limit(LIMIT);
   if(error) throw error;
   const u=await C.auth.getUser(),uid=u.data.user?.id;
   const rows=(data||[]).map((r,i)=>({i:i+1,n:r.profiles?.display_name||"Player",s:r.best_score,d:r.best_at,u:r.user_id}));
-  const me=rows.find(x=>x.u===uid);
-  const html=['<div class="card shadow-sm"><div class="card-body p-2"><div class="d-flex justify-content-between align-items-center mb-1"><strong>Top Scores</strong><small class="text-muted">updated now</small></div><div class="table-responsive"><table class="table table-sm mb-0"><thead><tr><th>#</th><th>Name</th><th class="text-end">Score</th><th>Date</th></tr></thead><tbody>'];
-  rows.forEach(r=>html.push(`<tr ${me&&r.u===me.u?'class="table-primary"':''}><td>${r.i}</td><td>${r.n}</td><td class="text-end">${r.s}</td><td>${fmt(r.d)}</td></tr>`));
-  if(rows.length===0) html.push('<tr><td colspan="4" class="text-center text-muted">No scores yet</td></tr>');
-  html.push("</tbody></table></div></div></div>");
-  m.innerHTML=html.join("");
-}catch(e){console.warn("LB err",e)}}
+  saveLB(rows); render(rows,uid);
+}catch(e){console.warn("LB err; cache shown",e);const u=await C?.auth.getUser?.();render(getCache(),u?.data?.user?.id)}}
+// --- ensure profile (uses sessionStorage name ? Supabase full_name ? email)
 async function ENSURE_NAME(){if(!C)return;const u=await C.auth.getUser();if(!u.data.user)return;
-  const stor=piName();
-  const n=(stor||u.data.user.user_metadata?.full_name||u.data.user.email||"Player").slice(0,60);
+  const stor=piName(); const n=(stor||u.data.user.user_metadata?.full_name||u.data.user.email||"Player").slice(0,60);
   try{await C.rpc("ensure_profile",{p_name:n})}catch(e){console.warn("ensure_profile",e)}
 }
-async function SEND_SCORE(sc,ms){if(!C)return;const u=await C.auth.getUser();if(!u.data.user)return;
+// --- send score (ties allowed; live re-check to prevent stale cache misses)
+async function SEND_SCORE(sc,ms){
+  if(!C)return;
+  const u=await C.auth.getUser(),uid=u.data.user?.id; if(!uid)return;       // upload only when logged in
+  const len=getLen(),thr=getThr(); let ok=(len<LIMIT)||(sc>=thr);           // allow ties (>=)
+  if(!ok){ // live re-check Top10
+    try{
+      const {data,error}=await C.from("game_scores")
+        .select("best_score").order("best_score",{ascending:false}).order("best_at",{ascending:true}).limit(LIMIT);
+      if(!error){ const L=(data||[]).length, T=L<LIMIT?0:data[L-1].best_score; ok=(L<LIMIT)||(sc>=T); }
+    }catch(_){}
+  }
+  if(!ok)return;
   await ENSURE_NAME();
-  try{await C.rpc("record_score",{p_score:sc,p_ms:Math.max(0,ms|0),p_ua:navigator.userAgent.slice(0,256)})}catch(e){console.warn("record_score",e)}
-  await LB();
+  try{await C.rpc("record_score",{p_score:sc,p_ms:Math.max(0,(ms|0)),p_ua:navigator.userAgent.slice(0,256)})}
+  catch(e){console.warn("record_score",e)}
+  await LB(); // refresh + recache
 }
-window.__MCC_SCOREKIT__={LB,ENSURE_NAME,SEND_SCORE,WHOAMI:async()=> (await C.auth.getUser()).data.user,NAME:piName};
+// --- exports & boot
+window.__MCC_SCOREKIT__={LB,ENSURE_NAME,SEND_SCORE,WHOAMI:async()=> (await C?.auth.getUser())?.data?.user,NAME:piName,THRESH:getThr,LEN:getLen};
 document.readyState!=="loading"?LB():document.addEventListener("DOMContentLoaded",LB);
 })();
 </script>
+
+
+<br>
+<br>
+
 <!-- Industry Partners -->
 {% include industry-partner.html %}
 

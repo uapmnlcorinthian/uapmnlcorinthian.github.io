@@ -67,10 +67,17 @@
   description: "Champions lifelong learning and career growth."
   bionote: "Ar. Sorita is an advocate for continuous learning, advancing professional excellence through skills development."
   profile_link: "https://www.linkedin.com/in/christinesorita/"
+  
+- position: Co-Chair for the Committee on Professional Development
+  name: "Densie Camille de Leon"
+  image: "https://asset.manilacorinthianchapter.workers.dev/Nacino2.png"
+  description: "Co-leads PURSUIT, the chapter’s Professional Development Program: plans CPD-aligned learning tracks, curates seminars/workshops/certifications, engages speakers and accreditation bodies, and tracks member participation and CPD credits. Coordinates with UAP National, academic/industry partners, and the Secretariat for scheduling, documentation, and reporting."
+  bionote: "Co-chairs UAPMCC’s professional upskilling initiatives with focus on practice-readiness and lifelong learning. Oversees program design, quality assurance of course content, feedback loops, and hybrid delivery; manages partnerships and supports digital credentialing to broaden member access."
+  profile_link: ""
 
 - position: Director for the Committee on Private Practice
   name: "Crisanto E. Nacino"
-  image: "https://images.unsplash.com/photo-1582897291228-f7676bfcd52c?q=80&w=2008&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  image: "https://asset.manilacorinthianchapter.workers.dev/Nacino.png"
   description: "Advocates best practices for private-sector architects."
   bionote: "With extensive experience in private practice, Ar. Nacino advocates for business growth and professional ethics."
   profile_link: "https://linkedin.com/in/cenacino"
@@ -84,10 +91,17 @@
 
 - position: Director for the Committee on Sports
   name: "Morris V. Tibulan"
-  image: "https://asset.manilacorinthianchapter.workers.dev/17_Manila%20Corinthian%20Chapter%20Committee%20Co-Chair%20for%20Sports_Morris%20V%20Tibulan.jpg"
+  image: "https://asset.manilacorinthianchapter.workers.dev/Morris.jpg"
   description: "Promotes wellness and camaraderie through sports."
   bionote: "Ar. Tibulan encourages member well-being and team spirit through sports and wellness initiatives."
   profile_link: "https://linkedin.com/in/mvtibulan"
+  
+- position: Co-Chair for the Committee on Sports
+  name: "Cathreen Jhune Trigo"
+  image: "https://asset.manilacorinthianchapter.workers.dev/trigo.png"
+  description: "Promotes wellness and camaraderie through sports."
+  bionote: "Ar. Trigo encourages member well-being and team spirit through sports and wellness initiatives."
+  profile_link: "https://linkedin.com/in/"
 
 - position: Protocol Director
   name: "Reymark C. Gardiola"
@@ -101,6 +115,13 @@
   image: "https://asset.manilacorinthianchapter.workers.dev/010%20CHAPTER%20DIRECTOR%20BAYANIHANG%20ARKITEKTURA.png"
   description: "Leads community-oriented design service initiatives."
   bionote: "Ar. Santiago is committed to serving communities through architecture that uplifts and empowers."
+  profile_link: "https://linkedin.com/in/pasantiago"
+  
+- position: Co-Chair for the Committee on Renato A. Heray Bayanihang Arkitektura
+  name: "Raphael Maria Miguel Cascante"
+  image: "https://asset.manilacorinthianchapter.workers.dev/ram.jpeg"
+  description: "Leads community-oriented design service initiatives."
+  bionote: "Ar. Raphael Cascante is committed to serving communities through architecture that uplifts and empowers."
   profile_link: "https://linkedin.com/in/pasantiago"
 
 - position: Director for the Committee on Resilient Architects
@@ -116,6 +137,14 @@
   description: "Empowers emerging professionals and fresh graduates."
   bionote: "Ar. Santos inspires and guides the next generation of architects, fostering career opportunities for young professionals."
   profile_link: "https://linkedin.com/in/beasantos-young"
+  
+- position: Committee on by Laws
+  name: "GABRIEL Ma. ANEGLO B. CASCANTE"
+  image: "https://asset.manilacorinthianchapter.workers.dev/Cascanter%20Gab-2.jpg"
+  description: "Oversees chapter by-laws and governance; leads updates and compliance alignment with UAP standards; advises the Board on policy, due process, and documentation."
+  bionote: "Former UAPMCC President (1994–1996); first District B2 Director from UAPMCC (1999). Helped grow membership from ~20 to 50+ and strengthened academic roots and chapter cohesion."
+  profile_link: "https://linkedin.com/in/beasantos-young"
+
 
 - position: Immediate Chapter President
   name: "Adrian Michael C. Katipunan"
