@@ -1,62 +1,54 @@
 # _data/events.yml
 # NEW SAMPLE CONTENT
 # New events 1-15
-- slug: workshop-advanced-revit-families-2025
+- slug: general-membership-meeting-induction-turnover-ceremonies-2025
   published: true
-  title: "Workshop: Advanced Revit Families"
-  event_date: 2025-05-15
-  start_time: "14:00"
-  end_time: "17:00"
-  location: "UAP Training Center, Manila"
-  cover: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1750&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  title: "General Membership Meeting Induction & Turnover Ceremonies 2025"
+  event_date: 2025-08-06
+  start_time: "18:00"
+  end_time: "21:00"
+  location: "Ground Floor of the UAP Headquarters, 53 Sct. Rallos St, Diliman, Quezon City,1103 Metro Manila"
+  cover: "https://asset.manilacorinthianchapter.workers.dev/Induction%20and%20Turnover%202025.jpg"
   registration_url: "https://example.com/register/workshop-advanced-revit-families-2025"
   map_embed: |
     <iframe
-      src="https://www.google.com/maps?q=UAP+Training+Center,+Manila&amp;output=embed"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.3791927891316!2d121.03153487610665!3d14.634403776246156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7b209df1e33%3A0x12c5f36a996a615a!2sUnited%20Architects%20of%20the%20Philippines!5e0!3m2!1sen!2sph!4v1754382775764!5m2!1sen!2sph"
       loading="lazy"
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Creating parametric components"
-    - img: "https://images.unsplash.com/photo-1551650976-3debd0d3d7ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Custom family demonstration"
+    # - img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      # caption: "Creating parametric components"
+    # - img: "https://images.unsplash.com/photo-1551650976-3debd0d3d7ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      # caption: "Custom family demonstration"
   content: >
-    ## Mastering Complex Components
+        **Join Us for a Memorable Evening!**
+          Discover new connections, celebrate leadership, and witness the handing-over of responsibilities in an inspiring ceremony—complete with distinguished guests, special recognitions, and delightful refreshments.
 
-     Advanced Family Creation Techniques
+        ---
 
-    Dive deep into **Revit family creation** for specialized architectural components. Learn to develop parametric fixtures, adaptive components, and complex curtain panel systems that respond intelligently to project constraints.
+        ## UAP Manila Corinthian Chapter  
+          General Membership Meeting  
+          Induction & Turnover Ceremonies
 
-    - Create nested families with conditional parameters
-    - Develop formula-driven geometry
-    - Implement type catalogs for efficient library management
-    - Advanced reference plane strategies
-      - Workplane-based modeling
-      - Constraint methodologies
+        **📍 Venue:**  
+          Ground Floor, UAP Headquarters  
+          53 Sct. Rallos St, Diliman, Quezon City, 1103 Metro Manila, Pilipinas
 
+        **📅 Date:**  
+          August 06, 2025 (Wednesday)
 
-     Real-World Applications
-    Participants will build a complete **custom window system** incorporating:
-    1. Parametric sizing constraints
-    2. Material options
-    3. Performance analytics
-    4. Automated documentation tags
+        **👔 Dress Code:**  
+          Filipiniana / Formal Barong Attire  
+          *Kasuotang Pambansa*
 
-    > "The ability to create intelligent families separates proficient users from true BIM specialists."  
-    > - Maria Santos, BIM Manager
+        ---
 
-    ```python
-    # Sample parametric formula
-    if Width > 1200:
-        mullion_count = 3
-    else:
-        mullion_count = 2
-    ```
+        We look forward to your presence as we welcome new officers, honor our outgoing leaders, and chart an exciting course for the year ahead!  
 
 - slug: cpd-fire-safety-high-rise-2025
   published: true
-  title: "CPD: Fire Safety in High-Rise Buildings"
+  title: " (Placeholder Only)CPD: Fire Safety in High-Rise Buildings"
   event_date: 2025-06-10
   start_time: "09:00"
   end_time: "12:00"
@@ -107,7 +99,7 @@
 
 - slug: site-tour-bgc-green-buildings-2025
   published: true
-  title: "Site Tour: BGC Green Buildings"
+  title: " (Placeholder Only)Site Tour: BGC Green Buildings"
   event_date: 2025-04-22
   start_time: "08:30"
   end_time: "15:00"
@@ -152,7 +144,7 @@
 
 - slug: design-talk-biophilic-design-2025
   published: true
-  title: "Design Talk: Biophilic Design"
+  title: " (Placeholder Only)Design Talk: Biophilic Design"
   event_date: 2025-07-17
   start_time: "18:30"
   end_time: "21:00"
@@ -200,7 +192,7 @@
 
 - slug: csr-tree-planting-2025
   published: true
-  title: "CSR: Watershed Tree Planting"
+  title: " (Placeholder Only)CSR: Watershed Tree Planting"
   event_date: 2025-08-12
   start_time: "07:00"
   end_time: "14:00"
@@ -247,7 +239,7 @@
 
 - slug: workshop-sketchup-landscape-2025
   published: true
-  title: "Workshop: SketchUp for Landscape Architecture"
+  title: " (Placeholder Only)Workshop: SketchUp for Landscape Architecture"
   event_date: 2025-03-08
   start_time: "13:00"
   end_time: "17:00"
@@ -302,7 +294,7 @@
 
 - slug: gmm-3-2025
   published: true
-  title: "General Membership Meeting 3"
+  title: " (Placeholder Only)General Membership Meeting 3"
   event_date: 2025-09-05
   start_time: "09:00"
   end_time: "12:00"
@@ -347,7 +339,7 @@
 
 - slug: bim-infrastructure-2025
   published: true
-  title: "BIM for Infrastructure Projects"
+  title: " (Placeholder Only)BIM for Infrastructure Projects"
   event_date: 2025-10-18
   start_time: "08:30"
   end_time: "16:30"
@@ -396,7 +388,7 @@
 
 - slug: cpd-accessibility-standards-2025
   published: true
-  title: "CPD: Universal Accessibility Standards"
+  title: " (Placeholder Only)CPD: Universal Accessibility Standards"
   event_date: 2025-02-15
   start_time: "10:00"
   end_time: "13:00"
@@ -442,7 +434,7 @@
 
 - slug: tour-adaptive-reuse-intramuros-2025
   published: true
-  title: "Tour: Adaptive Reuse in Intramuros"
+  title: " (Placeholder Only)Tour: Adaptive Reuse in Intramuros"
   event_date: 2025-11-05
   start_time: "09:00"
   end_time: "16:00"
@@ -488,7 +480,7 @@
 
 - slug: fellowship-year-end-party-2025
   published: true
-  title: "Fellowship: Year-End Celebration"
+  title: " (Placeholder Only)Fellowship: Year-End Celebration"
   event_date: 2025-12-12
   start_time: "19:00"
   end_time: "23:00"
@@ -534,7 +526,7 @@
 
 - slug: workshop-enscape-rendering-2025
   published: true
-  title: "Workshop: Enscape Real-time Rendering"
+  title: " (Placeholder Only)Workshop: Enscape Real-time Rendering"
   event_date: 2025-01-30
   start_time: "13:00"
   end_time: "16:00"
@@ -587,7 +579,7 @@
 
 - slug: csr-school-renovation-2025
   published: true
-  title: "CSR: Community School Renovation"
+  title: " (Placeholder Only)CSR: Community School Renovation"
   event_date: 2025-05-03
   start_time: "08:00"
   end_time: "17:00"
@@ -633,7 +625,7 @@
 
 - slug: design-talk-urban-planning-2025
   published: true
-  title: "Design Talk: Metro Manila Urban Challenges"
+  title: " (Placeholder Only)Design Talk: Metro Manila Urban Challenges"
   event_date: 2025-08-22
   start_time: "18:00"
   end_time: "20:30"
@@ -683,7 +675,7 @@
 
 - slug: awards-design-competition-2025
   published: true
-  title: "Awards: Sustainable Design Competition"
+  title: " (Placeholder Only)Awards: Sustainable Design Competition"
   event_date: 2025-10-30
   start_time: "18:00"
   end_time: "22:00"
@@ -731,7 +723,7 @@
 # PART 2
 - slug: workshop-digital-fabrication-2025
   published: true
-  title: "Workshop: Digital Fabrication Techniques"
+  title: " (Placeholder Only)Workshop: Digital Fabrication Techniques"
   event_date: 2025-04-10
   start_time: "09:00"
   end_time: "15:00"
@@ -779,7 +771,7 @@
 
 - slug: cpd-tropical-architecture-2025
   published: true
-  title: "CPD: Tropical Design Principles"
+  title: " (Placeholder Only)CPD: Tropical Design Principles"
   event_date: 2025-03-25
   start_time: "14:00"
   end_time: "17:00"
@@ -827,7 +819,7 @@
 
 - slug: tour-prefab-housing-2025
   published: true
-  title: "Tour: Advanced Prefab Housing Facility"
+  title: " (Placeholder Only)Tour: Advanced Prefab Housing Facility"
   event_date: 2025-06-18
   start_time: "10:00"
   end_time: "15:00"
@@ -871,7 +863,7 @@
 
 - slug: workshop-architectural-photography-2025
   published: true
-  title: "Workshop: Architectural Photography"
+  title: " (Placeholder Only)Workshop: Architectural Photography"
   event_date: 2025-05-22
   start_time: "16:00"
   end_time: "19:00"
@@ -920,7 +912,7 @@
 
 - slug: talk-urban-agriculture-2025
   published: true
-  title: "Design Talk: Urban Agriculture Integration"
+  title: " (Placeholder Only)Design Talk: Urban Agriculture Integration"
   event_date: 2025-07-30
   start_time: "18:30"
   end_time: "20:30"
@@ -964,7 +956,7 @@
 
 - slug: workshop-arcgis-urban-2025
   published: true
-  title: "Workshop: GIS for Urban Planning"
+  title: " (Placeholder Only)Workshop: GIS for Urban Planning"
   event_date: 2025-09-12
   start_time: "09:00"
   end_time: "16:00"
@@ -1010,7 +1002,7 @@
 
 - slug: csr-disaster-resilience-2025
   published: true
-  title: "CSR: Disaster-Resilient Community Center"
+  title: " (Placeholder Only)CSR: Disaster-Resilient Community Center"
   event_date: 2025-08-05
   start_time: "08:00"
   end_time: "17:00"
@@ -1054,7 +1046,7 @@
 
 - slug: talk-circular-economy-2025
   published: true
-  title: "Design Talk: Circular Economy in Construction"
+  title: " (Placeholder Only)Design Talk: Circular Economy in Construction"
   event_date: 2025-10-08
   start_time: "17:00"
   end_time: "19:30"
@@ -1106,7 +1098,7 @@
 
 - slug: workshop-acoustics-2025
   published: true
-  title: "Workshop: Architectural Acoustics"
+  title: " (Placeholder Only)Workshop: Architectural Acoustics"
   event_date: 2025-02-28
   start_time: "13:00"
   end_time: "17:00"
@@ -1153,7 +1145,7 @@
 
 - slug: tour-net-zero-building-2025
   published: true
-  title: "Tour: Net-Zero Energy Building"
+  title: " (Placeholder Only)Tour: Net-Zero Energy Building"
   event_date: 2025-11-18
   start_time: "10:00"
   end_time: "14:00"
@@ -1197,7 +1189,7 @@
 
 - slug: workshop-bim-for-facilities-2025
   published: true
-  title: "Workshop: BIM for Facilities Management"
+  title: " (Placeholder Only)Workshop: BIM for Facilities Management"
   event_date: 2025-01-15
   start_time: "09:30"
   end_time: "16:30"
@@ -1245,7 +1237,7 @@
 
 - slug: talk-ai-architecture-2025
   published: true
-  title: "Design Talk: AI in Architectural Practice"
+  title: " (Placeholder Only)Design Talk: AI in Architectural Practice"
   event_date: 2025-08-28
   start_time: "18:00"
   end_time: "20:30"
@@ -1294,7 +1286,7 @@
 
 - slug: workshop-climate-analysis-2025
   published: true
-  title: "Workshop: Climate Analysis Tools"
+  title: " (Placeholder Only)Workshop: Climate Analysis Tools"
   event_date: 2025-04-18
   start_time: "13:00"
   end_time: "16:00"
@@ -1341,7 +1333,7 @@
 
 - slug: tour-mass-timber-2025
   published: true
-  title: "Tour: Mass Timber Construction"
+  title: " (Placeholder Only)Tour: Mass Timber Construction"
   event_date: 2025-07-12
   start_time: "09:00"
   end_time: "12:00"
@@ -1385,7 +1377,7 @@
 
 - slug: workshop-architectural-illustration-2025
   published: true
-  title: "Workshop: Architectural Illustration"
+  title: " (Placeholder Only)Workshop: Architectural Illustration"
   event_date: 2025-03-15
   start_time: "10:00"
   end_time: "16:00"
@@ -1436,7 +1428,7 @@
 
 - slug: talk-housing-innovation-2025
   published: true
-  title: "Design Talk: Affordable Housing Innovation"
+  title: " (Placeholder Only)Design Talk: Affordable Housing Innovation"
   event_date: 2025-11-05
   start_time: "17:30"
   end_time: "20:00"
