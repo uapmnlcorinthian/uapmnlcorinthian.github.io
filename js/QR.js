@@ -26,7 +26,7 @@
 	if (isVisible('cardPosition')) lines.push(`TITLE:${pi.po || ''}`);
 
 	// Add categories
-	lines.push(`CATEGORIES:Architect,UAP,Manila Corinthian Chapter`);
+	lines.push(`CATEGORIES:Architect,UAP,MCC`);
 	lines.push('END:VCARD');
 
     const qr = document.getElementById('qr-vcard');
