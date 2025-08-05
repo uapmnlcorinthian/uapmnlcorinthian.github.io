@@ -16,6 +16,41 @@ sitemap: true
 .tag{font-size:clamp(.75rem,1.5vmin,1rem)}
 </style>
 
+<!-- Tiny inline controller (Alpine + YouTube IFrame API) -->
+<script>
+(()=>{if(!window._ytApi){let s=document.createElement('script');s.src="https://www.youtube.com/iframe_api";document.head.appendChild(s);window._ytApi=1}})();
+document.addEventListener('alpine:init',()=>{
+Alpine.data('ytSeq',o=>({p:null,a:[],s:[],i:0,seg:o.seg||20,th:o.th??.6,io:null,vis:0,t:null,
+i(){ // init
+  let ids=(this.$el.dataset.ids||'').split(',').map(x=>x.trim()).filter(Boolean);
+  let st=(this.$el.dataset.starts||'').split(',').map(x=>+x||0);
+  this.a=ids.map((id,k)=>({id,st:st[k]||0}));
+  // shuffle
+  for(let m=this.a.length-1;m>0;m--){let r=Math.floor(Math.random()*(m+1));[this.a[m],this.a[r]]=[this.a[r],this.a[m]];}
+  // watch visibility
+  this.io=new IntersectionObserver(e=>{this.vis=e[0]?.isIntersecting?1:0;this.vis?this.play():this.pause()},{threshold:this.th});
+  this.io.observe(this.$el);
+  // wait for YT API then make player
+  let r=()=>{if(window.YT&&YT.Player){this.mk()}else setTimeout(r,60)};r();
+},
+mk(){let cur=this.a[this.i]||{id:'FzoHIHF_EZA',st:0};
+  this.p=new YT.Player(this.$refs.v,{videoId:cur.id,
+    playerVars:{autoplay:1,controls:0,rel:0,modestbranding:1,playsinline:1,mute:1,start:cur.st},
+    events:{onReady:()=>{this.p.mute();this.play();this.tick();},
+            onStateChange:e=>{if(e.data===0)this.nxt();}}
+  });
+},
+play(){try{if(this.vis)this.p.playVideo()}catch{}},
+pause(){try{this.p.pauseVideo()}catch{}},
+tick(){clearInterval(this.t);this.t=setInterval(()=>{if(!this.p||!this.vis)return;
+  let ct=this.p.getCurrentTime()||0, st=(this.a[this.i]?.st)||0; if(ct>=st+this.seg)this.nxt();
+},400)},
+nxt(){this.i=(this.i+1)%this.a.length; let nx=this.a[this.i]||{id:'FzoHIHF_EZA',st:0};
+  try{this.p.loadVideoById({videoId:nx.id,startSeconds:nx.st});this.p.mute();this.play()}catch{}
+}
+}))});
+</script>
+
 <!-- Hero Section: Full-viewport Carousel -->
 <section class="hero-section position-relative" style="height:100vh; overflow:hidden;">
   <div id="heroCarousel" class="carousel slide h-100" data-bs-ride="carousel">
@@ -244,13 +279,20 @@ sitemap: true
     <h2 id="about-title" class="m-5">About Being a Member</h2>
     <p class="mb-5 mx-5">Joining the UAP Manila Corinthian Chapter means becoming part of a dynamic community of architectural professionals dedicated to excellence, innovation, and advocacy in the built environment.</p>
     <p class="px-5 pb-5">Enjoy exclusive access to industry events, educational programs, and networking opportunities.</p>
-    <div class="ratio ratio-16x9" tabindex="0" aria-label="Promotional video about UAP MCC membership" data-aos="zoom-in" data-aos-delay="200">
-      <iframe src="https://www.youtube.com/embed/FzoHIHF_EZA"
-              title="Promotional video about UAP MCC membership"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen loading="lazy">
-      </iframe>
-    </div>
+
+	  
+<!-- Random, muted, 20s-per-video YouTube sequence (pauses off-view) -->
+<div class="ratio ratio-16x9" data-aos="zoom-in" data-aos-delay="200"
+     x-data="ytSeq({seg:20,th:.6})" x-init="i()"
+     data-ids="FzoHIHF_EZA,PK4q52tXMCY,xoFBkZJJjBM" data-starts="0,0,0"
+     aria-label="UAP MCC video sequence" tabindex="0">
+  <div x-ref="v"></div>
+</div>
+
+
+
 {% include register.html %}
 
   </section>
+
+
