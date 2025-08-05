@@ -1,60 +1,57 @@
-# _data/events.yml
-# NEW SAMPLE CONTENT
-# New events 1-15
 - slug: general-membership-meeting-induction-turnover-ceremonies-2025
   published: true
-  title: "General Membership Meeting Induction & Turnover Ceremonies 2025"
-  event_date: 2025-08-06
-  start_time: "18:00"
-  end_time: "21:00"
-  location: "Ground Floor of the UAP Headquarters, 53 Sct. Rallos St, Diliman, Quezon City,1103 Metro Manila"
-  cover: "https://asset.manilacorinthianchapter.workers.dev/Induction%20and%20Turnover%202025.jpg"
-  registration_url: "https://example.com/register/workshop-advanced-revit-families-2025"
+  title: General Membership Meeting Induction & Turnover Ceremonies 2025
+  event_date: 2025-08-06T00:00:00.000Z
+  start_time: '18:00'
+  end_time: '21:00'
+  location: >-
+    Ground Floor of the UAP Headquarters, 53 Sct. Rallos St, Diliman, Quezon
+    City,1103 Metro Manila
+  cover: >-
+    https://asset.manilacorinthianchapter.workers.dev/Induction%20and%20Turnover%202025.jpg
+  registration_url: https://example.com/register/workshop-advanced-revit-families-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.3791927891316!2d121.03153487610665!3d14.634403776246156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7b209df1e33%3A0x12c5f36a996a615a!2sUnited%20Architects%20of%20the%20Philippines!5e0!3m2!1sen!2sph!4v1754382775764!5m2!1sen!2sph"
       loading="lazy"
       allowfullscreen>
     </iframe>
-  image_gallery:
-    # - img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      # caption: "Creating parametric components"
-    # - img: "https://images.unsplash.com/photo-1551650976-3debd0d3d7ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      # caption: "Custom family demonstration"
+  image_gallery: null
   content: >
-        **Join Us for a Memorable Evening!**
-          Discover new connections, celebrate leadership, and witness the handing-over of responsibilities in an inspiring ceremony—complete with distinguished guests, special recognitions, and delightful refreshments.
+    **Join Us for a Memorable Evening!**
+      Discover new connections, celebrate leadership, and witness the handing-over of responsibilities in an inspiring ceremonycomplete with distinguished guests, special recognitions, and delightful refreshments.
 
-        ---
+    ---
 
-        ## UAP Manila Corinthian Chapter  
-          General Membership Meeting  
-          Induction & Turnover Ceremonies
+    ## UAP Manila Corinthian Chapter  
+      General Membership Meeting  
+      Induction & Turnover Ceremonies
 
-        **📍 Venue:**  
-          Ground Floor, UAP Headquarters  
-          53 Sct. Rallos St, Diliman, Quezon City, 1103 Metro Manila, Pilipinas
+    ** Venue:**  
+      Ground Floor, UAP Headquarters  
+      53 Sct. Rallos St, Diliman, Quezon City, 1103 Metro Manila, Pilipinas
 
-        **📅 Date:**  
-          August 06, 2025 (Wednesday)
+    ** Date:**  
+      August 06, 2025 (Wednesday)
 
-        **👔 Dress Code:**  
-          Filipiniana / Formal Barong Attire  
-          *Kasuotang Pambansa*
+    ** Dress Code:**  
+      Filipiniana / Formal Barong Attire  
+      *Kasuotang Pambansa*
 
-        ---
+    ---
 
-        We look forward to your presence as we welcome new officers, honor our outgoing leaders, and chart an exciting course for the year ahead!  
-
+    We look forward to your presence as we welcome new officers, honor our
+    outgoing leaders, and chart an exciting course for the year ahead!  
 - slug: cpd-fire-safety-high-rise-2025
   published: true
-  title: " (Placeholder Only)CPD: Fire Safety in High-Rise Buildings"
-  event_date: 2025-06-10
-  start_time: "09:00"
-  end_time: "12:00"
-  location: "UAP Auditorium, Manila"
-  cover: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/cpd-fire-safety-high-rise-2025"
+  title: ' (Placeholder Only)CPD: Fire Safety in High-Rise Buildings'
+  event_date: 2025-06-10T00:00:00.000Z
+  start_time: '09:00'
+  end_time: '12:00'
+  location: UAP Auditorium, Manila
+  cover: >-
+    https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/cpd-fire-safety-high-rise-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=UAP+Auditorium,+Manila&amp;output=embed"
@@ -62,50 +59,49 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Fire compartmentalization diagram"
-    - img: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Smoke control system demonstration"
+    - img: >-
+        https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Fire compartmentalization diagram
+    - img: >-
+        https://images.unsplash.com/photo-1617802690992-15d93263d3a9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Smoke control system demonstration
   content: >
     ## Evolving Fire Safety Standards
 
      NFPA 2025 Updates
 
-    Critical updates on **high-rise fire safety protocols** including new requirements for evacuation systems, compartmentalization, and fire-resistant materials. Case studies from recent Manila developments illustrate practical implementation challenges.
+    Critical updates on **high-rise fire safety protocols** including new
+    requirements for evacuation systems, compartmentalization, and
+    fire-resistant materials. Case studies from recent Manila developments
+    illustrate practical implementation challenges.
 
-    - Vertical evacuation strategies
-    - Pressurization systems for stairwells
-    - ~~Conventional~~ vs. performance-based approaches
-    - Materials testing certifications:
+    - Vertical evacuation strategies - Pressurization systems for stairwells -
+    ~~Conventional~~ vs. performance-based approaches - Materials testing
+    certifications:
       - ASTM E119 compliance
       - EN 1364 ratings
       - Local BFP requirements
 
 
      Design Integration Workshop
-    1. Conduct egress capacity calculations
-    2. Plan firefighter access zones
-    3. Coordinate MEP integration
-    4. Document compliance pathways
+    1. Conduct egress capacity calculations 2. Plan firefighter access zones 3.
+    Coordinate MEP integration 4. Document compliance pathways
 
-    > "Fire safety is not just compliance - it's **moral responsibility** in vertical urbanism."  
-    > - Fire Safety Commissioner
+    > "Fire safety is not just compliance - it's **moral responsibility** in
+    vertical urbanism."   > - Fire Safety Commissioner
 
-    ```ruby
-    # Egress calculation formula
-    occupancy_load = floor_area / occupant_factor
-    exit_width = (occupancy_load * 0.2) / exit_count
-    ```
-
+    ```ruby # Egress calculation formula occupancy_load = floor_area /
+    occupant_factor exit_width = (occupancy_load * 0.2) / exit_count ```
 - slug: site-tour-bgc-green-buildings-2025
   published: true
-  title: " (Placeholder Only)Site Tour: BGC Green Buildings"
-  event_date: 2025-04-22
-  start_time: "08:30"
-  end_time: "15:00"
-  location: "Bonifacio Global City, Taguig"
-  cover: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/site-tour-bgc-green-buildings-2025"
+  title: ' (Placeholder Only)Site Tour: BGC Green Buildings'
+  event_date: 2025-04-22T00:00:00.000Z
+  start_time: '08:30'
+  end_time: '15:00'
+  location: Bonifacio Global City, Taguig
+  cover: >-
+    https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/site-tour-bgc-green-buildings-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Bonifacio+Global+City,+Taguig&amp;output=embed"
@@ -113,44 +109,44 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Vertical gardens at Net Lima"
-    - img: "https://images.unsplash.com/photo-1591476961697-2d9b4425c0c9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Rainwater harvesting system"
+    - img: >-
+        https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Vertical gardens at Net Lima
+    - img: >-
+        https://images.unsplash.com/photo-1591476961697-2d9b4425c0c9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Rainwater harvesting system
   content: >
     ## Sustainable Skyscrapers
 
      LEED Platinum Case Studies
 
-    Explore **cutting-edge sustainable features** in BGC's landmark towers. This walking tour examines passive design strategies, energy recovery systems, and biophilic integration in tropical high-rises.
+    Explore **cutting-edge sustainable features** in BGC's landmark towers. This
+    walking tour examines passive design strategies, energy recovery systems,
+    and biophilic integration in tropical high-rises.
 
-    Key buildings include:
-    - **Net Park** (LEED Platinum)
-    - **Shangri-La at the Fort**
-    - **Menarco Tower**
+    Key buildings include: - **Net Park** (LEED Platinum) - **Shangri-La at the
+    Fort** - **Menarco Tower**
 
 
      Technical Focus Areas:
-    1. Façade performance in tropical climate
-    2. Water recycling systems
-    3. Urban heat island mitigation
-    4. Vertical transportation energy recovery
+    1. Faade performance in tropical climate 2. Water recycling systems 3. Urban
+    heat island mitigation 4. Vertical transportation energy recovery
 
-    > "These buildings demonstrate that sustainability and commercial viability can coexist in **tropical megacities**."  
-    > - Green Building Council Representative
+    > "These buildings demonstrate that sustainability and commercial viability
+    can coexist in **tropical megacities**."   > - Green Building Council
+    Representative
 
-    - [ ] Post-tour design charrette
-    - [ ] Technical documentation provided
-
+    - [ ] Post-tour design charrette - [ ] Technical documentation provided
 - slug: design-talk-biophilic-design-2025
   published: true
-  title: " (Placeholder Only)Design Talk: Biophilic Design"
-  event_date: 2025-07-17
-  start_time: "18:30"
-  end_time: "21:00"
-  location: "EcoDesign Hub, Makati"
-  cover: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/design-talk-biophilic-design-2025"
+  title: ' (Placeholder Only)Design Talk: Biophilic Design'
+  event_date: 2025-07-17T00:00:00.000Z
+  start_time: '18:30'
+  end_time: '21:00'
+  location: EcoDesign Hub, Makati
+  cover: >-
+    https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/design-talk-biophilic-design-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=EcoDesign+Hub,+Makati&amp;output=embed"
@@ -158,16 +154,20 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Living wall integration"
-    - img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Natural light optimization"
+    - img: >-
+        https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Living wall integration
+    - img: >-
+        https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Natural light optimization
   content: >
     ## Nature-Integrated Architecture
 
      Principles and Applications
 
-    Explore how **biophilic design** improves occupant wellbeing and productivity. Learn to quantify benefits of nature integration in commercial and residential projects across the Philippines.
+    Explore how **biophilic design** improves occupant wellbeing and
+    productivity. Learn to quantify benefits of nature integration in commercial
+    and residential projects across the Philippines.
 
     - **14 Patterns of Biophilic Design**:
       - Visual connection with nature
@@ -177,28 +177,25 @@
 
 
      Implementation Strategies:
-    1. Cost-effective vertical greening
-    2. Material selection for sensory richness
-    3. Water feature acoustics
-    4. Biomimetic structural solutions
+    1. Cost-effective vertical greening 2. Material selection for sensory
+    richness 3. Water feature acoustics 4. Biomimetic structural solutions
 
-    > "We don't just add plants - we create **architectural ecosystems** that nurture human physiology."  
-    > - Dr. Elena Torres, Environmental Psychologist
+    > "We don't just add plants - we create **architectural ecosystems** that
+    nurture human physiology."   > - Dr. Elena Torres, Environmental
+    Psychologist
 
-    ```javascript
-    // Wellbeing metric calculation
-    const biophiliaScore = (naturalLight + airQuality + greenery) * spatialQuality;
-    ```
-
+    ```javascript // Wellbeing metric calculation const biophiliaScore =
+    (naturalLight + airQuality + greenery) * spatialQuality; ```
 - slug: csr-tree-planting-2025
-  published: true
-  title: " (Placeholder Only)CSR: Watershed Tree Planting"
-  event_date: 2025-08-12
-  start_time: "07:00"
-  end_time: "14:00"
-  location: "Marikina Watershed"
-  cover: "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/csr-tree-planting-2025"
+  published: false
+  title: ' (Placeholder Only)CSR: Watershed Tree Planting'
+  event_date: 2025-08-12T00:00:00.000Z
+  start_time: '07:00'
+  end_time: '14:00'
+  location: Marikina Watershed
+  cover: >-
+    https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/csr-tree-planting-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Marikina+Watershed&amp;output=embed"
@@ -206,16 +203,21 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Reforestation site preparation"
-    - img: "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Native species planting"
+    - img: >-
+        https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Reforestation site preparation
+    - img: >-
+        https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Native species planting
   content: >
     ## Reforestation Initiative
 
      Ecological Restoration Program
 
-    Participate in our annual **watershed rehabilitation effort** planting native Narra and Molave trees. This CSR activity directly contributes to flood mitigation and biodiversity conservation in Metro Manila's critical watershed.
+    Participate in our annual **watershed rehabilitation effort** planting
+    native Narra and Molave trees. This CSR activity directly contributes to
+    flood mitigation and biodiversity conservation in Metro Manila's critical
+    watershed.
 
     - **Native species focus**:
       - *Pterocarpus indicus* (Narra)
@@ -224,28 +226,25 @@
 
 
      Day Schedule:
-    1. 7:00 AM - Transportation from assembly point
-    2. 8:30 AM - Safety briefing and technique training
-    3. 9:00 AM - Planting session (groups of 5)
-    4. 12:00 PM - Community lunch
-    5. 1:00 PM - Site stewardship commitments
+    1. 7:00 AM - Transportation from assembly point 2. 8:30 AM - Safety briefing
+    and technique training 3. 9:00 AM - Planting session (groups of 5) 4. 12:00
+    PM - Community lunch 5. 1:00 PM - Site stewardship commitments
 
-    > "Each tree planted represents **future resilience** for our communities downstream."  
-    > - Watershed Management Director
+    > "Each tree planted represents **future resilience** for our communities
+    downstream."   > - Watershed Management Director
 
-    - [ ] Gloves provided
-    - [ ] Planting tools supplied
-    - [ ] Personal water bottles required
-
+    - [ ] Gloves provided - [ ] Planting tools supplied - [ ] Personal water
+    bottles required
 - slug: workshop-sketchup-landscape-2025
   published: true
-  title: " (Placeholder Only)Workshop: SketchUp for Landscape Architecture"
-  event_date: 2025-03-08
-  start_time: "13:00"
-  end_time: "17:00"
-  location: "Design Collaborative Space, Quezon City"
-  cover: "https://images.unsplash.com/photo-1472289065668-ce650ac443d2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/workshop-sketchup-landscape-2025"
+  title: ' (Placeholder Only)Workshop: SketchUp for Landscape Architecture'
+  event_date: 2025-03-08T00:00:00.000Z
+  start_time: '13:00'
+  end_time: '17:00'
+  location: Design Collaborative Space, Quezon City
+  cover: >-
+    https://images.unsplash.com/photo-1472289065668-ce650ac443d2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/workshop-sketchup-landscape-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Design+Collaborative+Space,+Quezon+City&amp;output=embed"
@@ -253,16 +252,20 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Topography modeling demo"
-    - img: "https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Planting design workflow"
+    - img: >-
+        https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Topography modeling demo
+    - img: >-
+        https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Planting design workflow
   content: >
     ## Landscape Visualization Intensive
 
      Site Modeling to Presentation
 
-    Master **SketchUp workflows** specifically for landscape architecture. Learn terrain modeling, planting design, and rendering techniques for compelling project presentations.
+    Master **SketchUp workflows** specifically for landscape architecture. Learn
+    terrain modeling, planting design, and rendering techniques for compelling
+    project presentations.
 
     - **Core Techniques**:
       - Site contour interpretation
@@ -272,35 +275,29 @@
 
 
      Project Pipeline:
-    1. Import survey data (CAD/DWG)
-    2. Generate topography
-    3. Apply materials library
-    4. Create dynamic scenes
-    5. Export for rendering
+    1. Import survey data (CAD/DWG) 2. Generate topography 3. Apply materials
+    library 4. Create dynamic scenes 5. Export for rendering
 
-    > "Transform flat sites into **living landscapes** with intelligent component systems."  
-    > - Workshop Instructor
+    > "Transform flat sites into **living landscapes** with intelligent
+    component systems."   > - Workshop Instructor
 
-    ```ruby
-    # Plant database structure
-    class Plant
+    ```ruby # Plant database structure class Plant
       attr_accessor :name, :mature_size, :seasonality
       def initialize(name, mature_size)
         @name = name
         @mature_size = mature_size
       end
-    end
-    ```
-
+    end ```
 - slug: gmm-3-2025
   published: true
-  title: " (Placeholder Only)General Membership Meeting 3"
-  event_date: 2025-09-05
-  start_time: "09:00"
-  end_time: "12:00"
-  location: "PICC Forum 2, Pasay"
-  cover: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/gmm-3-2025"
+  title: ' (Placeholder Only)General Membership Meeting 3'
+  event_date: 2025-09-05T00:00:00.000Z
+  start_time: '09:00'
+  end_time: '12:00'
+  location: PICC Forum 2, Pasay
+  cover: >-
+    https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/gmm-3-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=PICC+Forum+2,+Pasay&amp;output=embed"
@@ -308,16 +305,20 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Annual report presentation"
-    - img: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Committee breakout sessions"
+    - img: >-
+        https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Annual report presentation
+    - img: >-
+        https://images.unsplash.com/photo-1431540015161-0bf868a2d407?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Committee breakout sessions
   content: >
     ## Mid-Year Strategic Review
 
      Organizational Development
 
-    Critical meeting addressing **professional practice updates**, financial review, and 2026 planning. Features special session on new government regulations affecting architectural services.
+    Critical meeting addressing **professional practice updates**, financial
+    review, and 2026 planning. Features special session on new government
+    regulations affecting architectural services.
 
     - **Agenda Highlights**:
       - Financial status report
@@ -327,25 +328,23 @@
 
 
      Voting Items:
-    1. Bylaw amendments for digital membership
-    2. 2026 budget approval
-    3. Election of audit committee
+    1. Bylaw amendments for digital membership 2. 2026 budget approval 3.
+    Election of audit committee
 
-    > "Your participation shapes the **future of our profession** in the Philippines."  
-    > - Chapter President
+    > "Your participation shapes the **future of our profession** in the
+    Philippines."   > - Chapter President
 
-    - [ ] Digital voting available
-    - [ ] Proxy forms require notarization
-
+    - [ ] Digital voting available - [ ] Proxy forms require notarization
 - slug: bim-infrastructure-2025
-  published: true
-  title: " (Placeholder Only)BIM for Infrastructure Projects"
-  event_date: 2025-10-18
-  start_time: "08:30"
-  end_time: "16:30"
-  location: "DPWH Training Center, Quezon City"
-  cover: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=1710&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/bim-infrastructure-2025"
+  published: false
+  title: ' (Placeholder Only)BIM for Infrastructure Projects'
+  event_date: 2025-10-18T00:00:00.000Z
+  start_time: '08:30'
+  end_time: '16:30'
+  location: DPWH Training Center, Quezon City
+  cover: >-
+    https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=1710&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/bim-infrastructure-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=DPWH+Training+Center,+Quezon+City&amp;output=embed"
@@ -353,16 +352,20 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Bridge modeling workflow"
-    - img: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Road corridor coordination"
+    - img: >-
+        https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Bridge modeling workflow
+    - img: >-
+        https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Road corridor coordination
   content: >
     ## Civil Infrastructure Digitalization
 
      From Roads to Utilities
 
-    Specialized training on **BIM workflows** for transportation, utilities, and civil infrastructure projects. Aligns with DPWH digital delivery mandates for major public works.
+    Specialized training on **BIM workflows** for transportation, utilities, and
+    civil infrastructure projects. Aligns with DPWH digital delivery mandates
+    for major public works.
 
     - **Key Applications**:
       - Civil 3D/Infraworks integration
@@ -372,29 +375,26 @@
 
 
      Implementation Framework:
-    1. Establish project information requirements
-    2. Develop modeling standards
-    3. Coordinate multi-disciplinary interfaces
-    4. Validate constructability
+    1. Establish project information requirements 2. Develop modeling standards
+    3. Coordinate multi-disciplinary interfaces 4. Validate constructability
 
-    > "Infrastructure BIM reduces **project risks** by 30% through clash detection."  
-    > - DPWH BIM Director
+    > "Infrastructure BIM reduces **project risks** by 30% through clash
+    detection."   > - DPWH BIM Director
 
-    ```python
-    # Utility conflict detection
-    if pipeline.intersects(electrical_conduit):
+    ```python # Utility conflict detection if
+    pipeline.intersects(electrical_conduit):
         raise ConflictError(f"Utility clash at {pipeline.location}")
     ```
-
 - slug: cpd-accessibility-standards-2025
   published: true
-  title: " (Placeholder Only)CPD: Universal Accessibility Standards"
-  event_date: 2025-02-15
-  start_time: "10:00"
-  end_time: "13:00"
-  location: "Accessibility Resource Center, Mandaluyong"
-  cover: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/cpd-accessibility-standards-2025"
+  title: ' (Placeholder Only)CPD: Universal Accessibility Standards'
+  event_date: 2025-02-15T00:00:00.000Z
+  start_time: '10:00'
+  end_time: '13:00'
+  location: Accessibility Resource Center, Mandaluyong
+  cover: >-
+    https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/cpd-accessibility-standards-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Accessibility+Resource+Center,+Mandaluyong&amp;output=embed"
@@ -402,16 +402,20 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1617103996702-96ff29b1c467?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Wheelchair maneuverability demo"
-    - img: "https://images.unsplash.com/photo-1582730147924-d92f4da00252?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Sensory design considerations"
+    - img: >-
+        https://images.unsplash.com/photo-1617103996702-96ff29b1c467?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Wheelchair maneuverability demo
+    - img: >-
+        https://images.unsplash.com/photo-1582730147924-d92f4da00252?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Sensory design considerations
   content: >
     ## Inclusive Design Certification
 
      Beyond Compliance
 
-    **Advanced accessibility training** covering 2025 revisions to BP 344. Practical strategies for creating environments usable by people of all abilities through empathetic design solutions.
+    **Advanced accessibility training** covering 2025 revisions to BP 344.
+    Practical strategies for creating environments usable by people of all
+    abilities through empathetic design solutions.
 
     - **Key Focus Areas**:
       - Cognitive accessibility principles
@@ -421,26 +425,23 @@
 
 
      Certification Requirements:
-    1. Complete 3-hour workshop
-    2. Pass online assessment
-    3. Submit accessibility case study
-    4. Join design charrette
+    1. Complete 3-hour workshop 2. Pass online assessment 3. Submit
+    accessibility case study 4. Join design charrette
 
-    > "True accessibility is **invisible design** - seamlessly serving everyone without segregation."  
-    > - Universal Design Advocate
+    > "True accessibility is **invisible design** - seamlessly serving everyone
+    without segregation."   > - Universal Design Advocate
 
-    - [ ] Bring measuring tools
-    - [ ] Reference materials provided
-
+    - [ ] Bring measuring tools - [ ] Reference materials provided
 - slug: tour-adaptive-reuse-intramuros-2025
-  published: true
-  title: " (Placeholder Only)Tour: Adaptive Reuse in Intramuros"
-  event_date: 2025-11-05
-  start_time: "09:00"
-  end_time: "16:00"
-  location: "Intramuros Administration Office"
-  cover: "https://images.unsplash.com/photo-1593692909680-1e9a14e8ed8a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/tour-adaptive-reuse-intramuros-2025"
+  published: false
+  title: ' (Placeholder Only)Tour: Adaptive Reuse in Intramuros'
+  event_date: 2025-11-05T00:00:00.000Z
+  start_time: '09:00'
+  end_time: '16:00'
+  location: Intramuros Administration Office
+  cover: >-
+    https://images.unsplash.com/photo-1593692909680-1e9a14e8ed8a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/tour-adaptive-reuse-intramuros-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Intramuros+Administration+Office&amp;output=embed"
@@ -448,16 +449,20 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Restored Spanish-era structure"
-    - img: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Modern insertions in historic fabric"
+    - img: >-
+        https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Restored Spanish-era structure
+    - img: >-
+        https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Modern insertions in historic fabric
   content: >
     ## Heritage Conservation Techniques
 
      Balancing Old and New
 
-    Exclusive access to **ongoing conservation projects** within Manila's historic walled city. Learn structural reinforcement methods, material compatibility, and programming strategies for heritage structures.
+    Exclusive access to **ongoing conservation projects** within Manila's
+    historic walled city. Learn structural reinforcement methods, material
+    compatibility, and programming strategies for heritage structures.
 
     - **Featured Projects**:
       - San Ignacio Church reconstruction
@@ -467,26 +472,23 @@
 
 
      Technical Sessions:
-    1. Lime mortar formulation workshop
-    2. Structural health monitoring
-    3. Archaeological integration
-    4. Climate-responsive retrofits
+    1. Lime mortar formulation workshop 2. Structural health monitoring 3.
+    Archaeological integration 4. Climate-responsive retrofits
 
-    > "Adaptive reuse is **cultural sustainability** - preserving memory through contemporary function."  
-    > - Intramuros Conservation Chief
+    > "Adaptive reuse is **cultural sustainability** - preserving memory through
+    contemporary function."   > - Intramuros Conservation Chief
 
-    - [ ] Sturdy walking shoes required
-    - [ ] Hard hats provided
-
+    - [ ] Sturdy walking shoes required - [ ] Hard hats provided
 - slug: fellowship-year-end-party-2025
-  published: true
-  title: " (Placeholder Only)Fellowship: Year-End Celebration"
-  event_date: 2025-12-12
-  start_time: "19:00"
-  end_time: "23:00"
-  location: "The Glass Garden, Pasig"
-  cover: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/fellowship-year-end-party-2025"
+  published: false
+  title: ' (Placeholder Only)Fellowship: Year-End Celebration'
+  event_date: 2025-12-12T00:00:00.000Z
+  start_time: '19:00'
+  end_time: '23:00'
+  location: The Glass Garden, Pasig
+  cover: >-
+    https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/fellowship-year-end-party-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=The+Glass+Garden,+Pasig&amp;output=embed"
@@ -494,16 +496,20 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Venue with architectural lighting"
-    - img: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Networking during reception"
+    - img: >-
+        https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Venue with architectural lighting
+    - img: >-
+        https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Networking during reception
   content: >
     ## Architectural Community Gathering
 
      Celebrating 2025 Achievements
 
-    Unwind with colleagues at our **annual year-end gala** featuring live music, architectural installations, and recognition of members' professional accomplishments. Dress code: Creative Black Tie.
+    Unwind with colleagues at our **annual year-end gala** featuring live music,
+    architectural installations, and recognition of members' professional
+    accomplishments. Dress code: Creative Black Tie.
 
     - **Highlights**:
       - Interactive light installations
@@ -513,26 +519,24 @@
 
 
      Schedule:
-    1. 7:00 PM - Cocktail reception
-    2. 8:00 PM - Dinner service
-    3. 9:00 PM - Recognition ceremony
-    4. 10:00 PM - Dancing and networking
+    1. 7:00 PM - Cocktail reception 2. 8:00 PM - Dinner service 3. 9:00 PM -
+    Recognition ceremony 4. 10:00 PM - Dancing and networking
 
-    > "An evening to **celebrate our community** and the spaces we create together."  
-    > - Social Committee Chair
+    > "An evening to **celebrate our community** and the spaces we create
+    together."   > - Social Committee Chair
 
-    - [ ] Vegetarian options available
-    - [ ] Parking limited - carpool recommended
-
+    - [ ] Vegetarian options available - [ ] Parking limited - carpool
+    recommended
 - slug: workshop-enscape-rendering-2025
   published: true
-  title: " (Placeholder Only)Workshop: Enscape Real-time Rendering"
-  event_date: 2025-01-30
-  start_time: "13:00"
-  end_time: "16:00"
-  location: "Visualization Lab, Makati"
-  cover: "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/workshop-enscape-rendering-2025"
+  title: ' (Placeholder Only)Workshop: Enscape Real-time Rendering'
+  event_date: 2025-01-30T00:00:00.000Z
+  start_time: '13:00'
+  end_time: '16:00'
+  location: Visualization Lab, Makati
+  cover: >-
+    https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/workshop-enscape-rendering-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Visualization+Lab,+Makati&amp;output=embed"
@@ -540,16 +544,20 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Real-time rendering demonstration"
-    - img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Material editing workflow"
+    - img: >-
+        https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Real-time rendering demonstration
+    - img: >-
+        https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Material editing workflow
   content: >
     ## Instant Visualization Mastery
 
      From Model to Presentation
 
-    Hands-on training in **real-time rendering** using Enscape 3.4. Learn to create client-ready visuals directly from Revit, SketchUp, and ArchiCAD in minutes rather than hours.
+    Hands-on training in **real-time rendering** using Enscape 3.4. Learn to
+    create client-ready visuals directly from Revit, SketchUp, and ArchiCAD in
+    minutes rather than hours.
 
     - **Key Features Covered**:
       - Material customization library
@@ -559,33 +567,28 @@
 
 
      Workflow Optimization:
-    1. Optimize model for real-time
-    2. Apply environmental settings
-    3. Create curated views
-    4. Export presentation packages
+    1. Optimize model for real-time 2. Apply environmental settings 3. Create
+    curated views 4. Export presentation packages
 
-    > "Real-time rendering transforms **client communication** from technical explanation to emotional experience."  
-    > - Visualization Specialist
+    > "Real-time rendering transforms **client communication** from technical
+    explanation to emotional experience."   > - Visualization Specialist
 
-    ```javascript
-    // Enscape settings preset
-    const preset = {
+    ```javascript // Enscape settings preset const preset = {
       quality: "Ultra",
       atmosphere: "Sunset",
       output: "4K Video",
       watermark: false
-    };
-    ```
-
+    }; ```
 - slug: csr-school-renovation-2025
   published: true
-  title: " (Placeholder Only)CSR: Community School Renovation"
-  event_date: 2025-05-03
-  start_time: "08:00"
-  end_time: "17:00"
-  location: "Barangay Elementary School, Tondo"
-  cover: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/csr-school-renovation-2025"
+  title: ' (Placeholder Only)CSR: Community School Renovation'
+  event_date: 2025-05-03T00:00:00.000Z
+  start_time: '08:00'
+  end_time: '17:00'
+  location: Barangay Elementary School, Tondo
+  cover: >-
+    https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/csr-school-renovation-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Barangay+Elementary+School,+Tondo&amp;output=embed"
@@ -593,16 +596,20 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Classroom painting volunteers"
-    - img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Reading corner construction"
+    - img: >-
+        https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Classroom painting volunteers
+    - img: >-
+        https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Reading corner construction
   content: >
     ## Educational Space Transformation
 
      Design-Build Initiative
 
-    Help renovate under-resourced classrooms through **participatory design**. This hands-on project combines community engagement with practical construction skills for meaningful impact.
+    Help renovate under-resourced classrooms through **participatory design**.
+    This hands-on project combines community engagement with practical
+    construction skills for meaningful impact.
 
     - **Project Scope**:
       - Repair damaged classroom furniture
@@ -612,26 +619,23 @@
 
 
      Volunteer Roles:
-    1. Carpentry team (experienced)
-    2. Painting crew
-    3. Landscape volunteers
-    4. Children's activity coordinators
+    1. Carpentry team (experienced) 2. Painting crew 3. Landscape volunteers 4.
+    Children's activity coordinators
 
     > "We build more than classrooms - we build **environments for dreams**."  
     > - Community Liaison Officer
 
-    - [ ] Tools and materials provided
-    - [ ] Closed-toe shoes required
-
+    - [ ] Tools and materials provided - [ ] Closed-toe shoes required
 - slug: design-talk-urban-planning-2025
-  published: true
-  title: " (Placeholder Only)Design Talk: Metro Manila Urban Challenges"
-  event_date: 2025-08-22
-  start_time: "18:00"
-  end_time: "20:30"
-  location: "Urban Design Center, Ortigas"
-  cover: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/design-talk-urban-planning-2025"
+  published: false
+  title: ' (Placeholder Only)Design Talk: Metro Manila Urban Challenges'
+  event_date: 2025-08-22T00:00:00.000Z
+  start_time: '18:00'
+  end_time: '20:30'
+  location: Urban Design Center, Ortigas
+  cover: >-
+    https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/design-talk-urban-planning-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Urban+Design+Center,+Ortigas&amp;output=embed"
@@ -639,16 +643,20 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=1710&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Transit-oriented development models"
-    - img: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Urban density visualization"
+    - img: >-
+        https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=1710&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Transit-oriented development models
+    - img: >-
+        https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Urban density visualization
   content: >
     ## Megacity Sustainable Development
 
      2040 Vision Framework
 
-    Critical discussion on **urban resilience strategies** for Metro Manila. Experts address flood management, transit integration, and density planning in Southeast Asia's most complex megacity.
+    Critical discussion on **urban resilience strategies** for Metro Manila.
+    Experts address flood management, transit integration, and density planning
+    in Southeast Asia's most complex megacity.
 
     - **Key Challenge Areas**:
       - Coastal inundation adaptation
@@ -658,30 +666,27 @@
 
 
      Case Studies:
-    1. BGC flood mitigation system
-    2. Pasig River rehabilitation
-    3. MRT-7 station area planning
-    4. New Manila Bay development
+    1. BGC flood mitigation system 2. Pasig River rehabilitation 3. MRT-7
+    station area planning 4. New Manila Bay development
 
-    > "Urban design must balance **economic growth** with **ecological responsibility** in our climate-vulnerable region."  
-    > - NEDA Urban Development Director
+    > "Urban design must balance **economic growth** with **ecological
+    responsibility** in our climate-vulnerable region."   > - NEDA Urban
+    Development Director
 
-    ```python
-    # Density calculation model
-    fsi = (total_floor_area / site_area)
+    ```python # Density calculation model fsi = (total_floor_area / site_area)
     if fsi > 8.0:
         require_transit_impact_study()
     ```
-
 - slug: awards-design-competition-2025
-  published: true
-  title: " (Placeholder Only)Awards: Sustainable Design Competition"
-  event_date: 2025-10-30
-  start_time: "18:00"
-  end_time: "22:00"
-  location: "National Museum of Fine Arts"
-  cover: "https://images.unsplash.com/photo-1519642918688-7e43b1925dba?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/awards-design-competition-2025"
+  published: false
+  title: ' (Placeholder Only)Awards: Sustainable Design Competition'
+  event_date: 2025-10-30T00:00:00.000Z
+  start_time: '18:00'
+  end_time: '22:00'
+  location: National Museum of Fine Arts
+  cover: >-
+    https://images.unsplash.com/photo-1519642918688-7e43b1925dba?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/awards-design-competition-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=National+Museum+of+Fine+Arts&amp;output=embed"
@@ -689,16 +694,20 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1519642918688-7e43b1925dba?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Award-winning project display"
-    - img: "https://images.unsplash.com/photo-1551650976-3debd0d3d7ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Jury deliberation process"
+    - img: >-
+        https://images.unsplash.com/photo-1519642918688-7e43b1925dba?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Award-winning project display
+    - img: >-
+        https://images.unsplash.com/photo-1551650976-3debd0d3d7ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Jury deliberation process
   content: >
     ## Celebrating Innovation
 
      Annual Design Excellence Awards
 
-    Gala ceremony recognizing **outstanding sustainable projects** across the Philippines. Features exhibition of shortlisted entries and keynote from renowned ecological architect.
+    Gala ceremony recognizing **outstanding sustainable projects** across the
+    Philippines. Features exhibition of shortlisted entries and keynote from
+    renowned ecological architect.
 
     - **Award Categories**:
       - Climate Responsive Design
@@ -709,27 +718,23 @@
 
 
      Event Highlights:
-    1. Exhibition opening (6 PM)
-    2. Jury comments (7 PM)
-    3. Award presentation (8 PM)
-    4. Networking reception (9 PM)
+    1. Exhibition opening (6 PM) 2. Jury comments (7 PM) 3. Award presentation
+    (8 PM) 4. Networking reception (9 PM)
 
-    > "These projects demonstrate architecture's power to **heal communities** and **restore environments**."  
-    > - Awards Jury Chair
+    > "These projects demonstrate architecture's power to **heal communities**
+    and **restore environments**."   > - Awards Jury Chair
 
-    - [ ] Black tie attire
-    - [ ] Registration closes October 15
-    
-# PART 2
+    - [ ] Black tie attire - [ ] Registration closes October 15
 - slug: workshop-digital-fabrication-2025
   published: true
-  title: " (Placeholder Only)Workshop: Digital Fabrication Techniques"
-  event_date: 2025-04-10
-  start_time: "09:00"
-  end_time: "15:00"
-  location: "FabLab Manila, Pasig"
-  cover: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/digital-fabrication-2025"
+  title: ' (Placeholder Only)Workshop: Digital Fabrication Techniques'
+  event_date: 2025-04-10T00:00:00.000Z
+  start_time: '09:00'
+  end_time: '15:00'
+  location: FabLab Manila, Pasig
+  cover: >-
+    https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/digital-fabrication-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=FabLab+Manila,+Pasig&amp;output=embed"
@@ -737,47 +742,43 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "3D printing architectural models"
-    - img: "https://images.unsplash.com/photo-1551650976-3debd0d3d7ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Laser cutting demonstration"
+    - img: >-
+        https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: 3D printing architectural models
+    - img: >-
+        https://images.unsplash.com/photo-1551650976-3debd0d3d7ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Laser cutting demonstration
   content: >
-    ## From Digital to Physical
-    Prototyping Architectural Elements
-    
-    Hands-on session with **digital fabrication tools** including CNC routers, laser cutters, and 3D printers. Learn to translate digital models into physical architectural components.
-    
+    ## From Digital to Physical Prototyping Architectural Elements
+
+    Hands-on session with **digital fabrication tools** including CNC routers,
+    laser cutters, and 3D printers. Learn to translate digital models into
+    physical architectural components.
+
     - **Techniques Covered**:
       - 3D printing complex geometries
       - CNC milling for formwork
       - Parametric panel fabrication
       - Assembly strategies
-    
-    Project: Create a modular facade component
-    1. Digital modeling in Rhino
-    2. File preparation for fabrication
-    3. Machine operation basics
-    4. Post-processing techniques
-    
-    > "Digital fabrication bridges the gap between **design intent** and **physical reality**."  
-    > - Workshop Director
-    
-    ```gcode
-    ; Sample CNC toolpath
-    G0 X0 Y0 Z5
-    G1 Z-2 F200
-    G2 X10 Y0 I5 J0
-    ```
 
+    Project: Create a modular facade component 1. Digital modeling in Rhino 2.
+    File preparation for fabrication 3. Machine operation basics 4.
+    Post-processing techniques
+
+    > "Digital fabrication bridges the gap between **design intent** and
+    **physical reality**."   > - Workshop Director
+
+    ```gcode ; Sample CNC toolpath G0 X0 Y0 Z5 G1 Z-2 F200 G2 X10 Y0 I5 J0 ```
 - slug: cpd-tropical-architecture-2025
   published: true
-  title: " (Placeholder Only)CPD: Tropical Design Principles"
-  event_date: 2025-03-25
-  start_time: "14:00"
-  end_time: "17:00"
-  location: "Tropical Design Institute, Makati"
-  cover: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/tropical-architecture-2025"
+  title: ' (Placeholder Only)CPD: Tropical Design Principles'
+  event_date: 2025-03-25T00:00:00.000Z
+  start_time: '14:00'
+  end_time: '17:00'
+  location: Tropical Design Institute, Makati
+  cover: >-
+    https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/tropical-architecture-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Tropical+Design+Institute,+Makati&amp;output=embed"
@@ -785,47 +786,46 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Passive cooling demonstration"
-    - img: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Shading strategy analysis"
+    - img: >-
+        https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Passive cooling demonstration
+    - img: >-
+        https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Shading strategy analysis
   content: >
-    ## Climate-Responsive Design
-    Solutions for High Humidity Regions
-    
-    Master **passive cooling strategies** and rainwater management techniques specifically for Philippine conditions. Case studies from award-winning tropical projects.
-    
+    ## Climate-Responsive Design Solutions for High Humidity Regions
+
+    Master **passive cooling strategies** and rainwater management techniques
+    specifically for Philippine conditions. Case studies from award-winning
+    tropical projects.
+
     - **Core Principles**:
       - Cross-ventilation optimization
       - Thermal mass vs. lightweight construction
       - Solar geometry integration
       - Evaporative cooling techniques
-    
-    Design Exercise:
-    1. Site analysis for microclimate
-    2. Building orientation strategies
-    3. Shading device calculation
-    4. Material selection matrix
-    
-    > "Tropical architecture isn't a style - it's a **scientific response** to environmental conditions."  
-    > - Senior Tropical Design Specialist
-    
-    ```python
-    # Solar angle calculation
-    def solar_altitude(lat, day_of_year, hour):
+
+    Design Exercise: 1. Site analysis for microclimate 2. Building orientation
+    strategies 3. Shading device calculation 4. Material selection matrix
+
+    > "Tropical architecture isn't a style - it's a **scientific response** to
+    environmental conditions."   > - Senior Tropical Design Specialist
+
+    ```python # Solar angle calculation def solar_altitude(lat, day_of_year,
+    hour):
         declination = 23.45 * sin(360*(284+day_of_year)/365)
         return arcsin(sin(lat)*sin(declination) + cos(lat)*cos(declination)*cos(15*hour))
     ```
-
 - slug: tour-prefab-housing-2025
   published: true
-  title: " (Placeholder Only)Tour: Advanced Prefab Housing Facility"
-  event_date: 2025-06-18
-  start_time: "10:00"
-  end_time: "15:00"
-  location: "Modular Innovations Factory, Laguna"
-  cover: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/prefab-tour-2025"
+  title: ' (Placeholder Only)Tour: Advanced Prefab Housing Facility'
+  event_date: 2025-06-18T00:00:00.000Z
+  start_time: '10:00'
+  end_time: '15:00'
+  location: Modular Innovations Factory, Laguna
+  cover: >-
+    https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/prefab-tour-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Modular+Innovations+Factory,+Laguna&amp;output=embed"
@@ -833,43 +833,42 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Automated module assembly"
-    - img: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Quality control inspection"
+    - img: >-
+        https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Automated module assembly
+    - img: >-
+        https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Quality control inspection
   content: >
-    ## Factory-Built Architecture
-    Revolutionizing Housing Delivery
-    
-    Behind-the-scenes look at **automated modular construction** processes. Witness robotic assembly, quality control systems, and logistics for mass housing projects.
-    
+    ## Factory-Built Architecture Revolutionizing Housing Delivery
+
+    Behind-the-scenes look at **automated modular construction** processes.
+    Witness robotic assembly, quality control systems, and logistics for mass
+    housing projects.
+
     - **Innovation Highlights**:
       - BIM-to-Factory workflow
       - Robotic welding stations
       - Integrated MEP systems
       - Weather-resistant jointing
-    
-    Construction Timeline:
-    1. Day 1: Foundation preparation
-    2. Day 2: Module delivery
-    3. Day 3: Crane assembly
-    4. Day 4: Finishing touches
-    
-    > "Prefab reduces construction time by **60%** while improving quality control."  
-    > - Factory Operations Manager
-    
-    - [ ] Safety glasses required
-    - [ ] Transportation provided
 
+    Construction Timeline: 1. Day 1: Foundation preparation 2. Day 2: Module
+    delivery 3. Day 3: Crane assembly 4. Day 4: Finishing touches
+
+    > "Prefab reduces construction time by **60%** while improving quality
+    control."   > - Factory Operations Manager
+
+    - [ ] Safety glasses required - [ ] Transportation provided
 - slug: workshop-architectural-photography-2025
   published: true
-  title: " (Placeholder Only)Workshop: Architectural Photography"
-  event_date: 2025-05-22
-  start_time: "16:00"
-  end_time: "19:00"
-  location: "ICCP Building, Manila"
-  cover: "https://images.unsplash.com/photo-1505842381624-c6b0579625a5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/arch-photography-2025"
+  title: ' (Placeholder Only)Workshop: Architectural Photography'
+  event_date: 2025-05-22T00:00:00.000Z
+  start_time: '16:00'
+  end_time: '19:00'
+  location: ICCP Building, Manila
+  cover: >-
+    https://images.unsplash.com/photo-1505842381624-c6b0579625a5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/arch-photography-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=ICCP+Building,+Manila&amp;output=embed"
@@ -877,48 +876,43 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1505842381624-c6b0579625a5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Composition techniques"
-    - img: "https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Lighting setup demonstration"
+    - img: >-
+        https://images.unsplash.com/photo-1505842381624-c6b0579625a5?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Composition techniques
+    - img: >-
+        https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Lighting setup demonstration
   content: >
-    ## Capturing Built Space
-    Professional Documentation Techniques
-    
-    Master **architectural photography** with professional photographer guidance. Learn composition, lighting, and post-processing for portfolio-quality images.
-    
+    ## Capturing Built Space Professional Documentation Techniques
+
+    Master **architectural photography** with professional photographer
+    guidance. Learn composition, lighting, and post-processing for
+    portfolio-quality images.
+
     - **Key Skills**:
       - Lens selection for spatial perception
       - Golden hour shooting
       - Interior lighting balance
       - Perspective correction
-    
-    Equipment Focus:
-    1. DSLR/Mirrorless cameras
-    2. Tilt-shift lenses
-    3. Tripod techniques
-    4. Light modifiers
-    
-    > "Great architectural photography reveals the **designer's intent** through careful framing."  
-    > - Architectural Photographer
-    
-    ```exif
-    Camera: Sony A7R IV
-    Lens: 16-35mm f/4
-    Aperture: f/8
-    Shutter: 1/60s
-    ISO: 100
-    ```
 
+    Equipment Focus: 1. DSLR/Mirrorless cameras 2. Tilt-shift lenses 3. Tripod
+    techniques 4. Light modifiers
+
+    > "Great architectural photography reveals the **designer's intent** through
+    careful framing."   > - Architectural Photographer
+
+    ```exif Camera: Sony A7R IV Lens: 16-35mm f/4 Aperture: f/8 Shutter: 1/60s
+    ISO: 100 ```
 - slug: talk-urban-agriculture-2025
   published: true
-  title: " (Placeholder Only)Design Talk: Urban Agriculture Integration"
-  event_date: 2025-07-30
-  start_time: "18:30"
-  end_time: "20:30"
-  location: "Green Roof Initiative Office, QC"
-  cover: "https://images.unsplash.com/photo-1592595896616-c37162298647?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/urban-agriculture-2025"
+  title: ' (Placeholder Only)Design Talk: Urban Agriculture Integration'
+  event_date: 2025-07-30T00:00:00.000Z
+  start_time: '18:30'
+  end_time: '20:30'
+  location: Green Roof Initiative Office, QC
+  cover: >-
+    https://images.unsplash.com/photo-1592595896616-c37162298647?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/urban-agriculture-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Green+Roof+Initiative+Office,+QC&amp;output=embed"
@@ -926,43 +920,41 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1592595896616-c37162298647?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Rooftop farm installation"
-    - img: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Vertical hydroponic system"
+    - img: >-
+        https://images.unsplash.com/photo-1592595896616-c37162298647?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Rooftop farm installation
+    - img: >-
+        https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Vertical hydroponic system
   content: >
-    ## Edible Landscapes
-    Integrating Food Production in Urban Design
-    
-    Explore **architectural solutions** for urban food security. Case studies on productive landscapes integrated into buildings and public spaces.
-    
+    ## Edible Landscapes Integrating Food Production in Urban Design
+
+    Explore **architectural solutions** for urban food security. Case studies on
+    productive landscapes integrated into buildings and public spaces.
+
     - **Integration Methods**:
       - Rooftop farming systems
       - Vertical hydroponic facades
       - Community garden integration
       - Aquaponic building systems
-    
-    Design Considerations:
-    1. Structural loading capacity
-    2. Irrigation infrastructure
-    3. Microclimate modification
-    4. Harvesting accessibility
-    
-    > "Buildings can become **productive assets** rather than just consumers of resources."  
-    > - Urban Agriculture Specialist
-    
-    - [ ] Bring gardening gloves
-    - [ ] Seed packets provided
 
+    Design Considerations: 1. Structural loading capacity 2. Irrigation
+    infrastructure 3. Microclimate modification 4. Harvesting accessibility
+
+    > "Buildings can become **productive assets** rather than just consumers of
+    resources."   > - Urban Agriculture Specialist
+
+    - [ ] Bring gardening gloves - [ ] Seed packets provided
 - slug: workshop-arcgis-urban-2025
-  published: true
-  title: " (Placeholder Only)Workshop: GIS for Urban Planning"
-  event_date: 2025-09-12
-  start_time: "09:00"
-  end_time: "16:00"
-  location: "Geospatial Lab, Makati"
-  cover: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/gis-workshop-2025"
+  published: false
+  title: ' (Placeholder Only)Workshop: GIS for Urban Planning'
+  event_date: 2025-09-12T00:00:00.000Z
+  start_time: '09:00'
+  end_time: '16:00'
+  location: Geospatial Lab, Makati
+  cover: >-
+    https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/gis-workshop-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Geospatial+Lab,+Makati&amp;output=embed"
@@ -970,45 +962,43 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Urban heat mapping"
-    - img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Population density visualization"
+    - img: >-
+        https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Urban heat mapping
+    - img: >-
+        https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Population density visualization
   content: >
-    ## Spatial Data Analysis
-    Urban Planning with ArcGIS
-    
-    Practical training in **geographic information systems** for site analysis, land use planning, and infrastructure development. Learn to leverage open data for evidence-based design.
-    
+    ## Spatial Data Analysis Urban Planning with ArcGIS
+
+    Practical training in **geographic information systems** for site analysis,
+    land use planning, and infrastructure development. Learn to leverage open
+    data for evidence-based design.
+
     - **Key Applications**:
       - Flood risk mapping
       - Transportation network analysis
       - Service area delineation
       - 3D city modeling
-    
-    Workflow:
-    1. Data acquisition from public sources
-    2. Geoprocessing techniques
-    3. Spatial statistics
-    4. Cartographic presentation
-    
-    > "GIS transforms **qualitative assumptions** into **quantitative decisions**."  
-    > - Urban Data Scientist
-    
-    ```python
-    # Calculate walkability index
-    walk_score = (parks*0.3 + transit*0.4 + amenities*0.3) / population_density
-    ```
 
+    Workflow: 1. Data acquisition from public sources 2. Geoprocessing
+    techniques 3. Spatial statistics 4. Cartographic presentation
+
+    > "GIS transforms **qualitative assumptions** into **quantitative
+    decisions**."   > - Urban Data Scientist
+
+    ```python # Calculate walkability index walk_score = (parks*0.3 +
+    transit*0.4 + amenities*0.3) / population_density ```
 - slug: csr-disaster-resilience-2025
   published: true
-  title: " (Placeholder Only)CSR: Disaster-Resilient Community Center"
-  event_date: 2025-08-05
-  start_time: "08:00"
-  end_time: "17:00"
-  location: "Barangay Rizal, Marikina"
-  cover: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/resilience-build-2025"
+  title: ' (Placeholder Only)CSR: Disaster-Resilient Community Center'
+  event_date: 2025-08-05T00:00:00.000Z
+  start_time: '08:00'
+  end_time: '17:00'
+  location: Barangay Rizal, Marikina
+  cover: >-
+    https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/resilience-build-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Barangay+Rizal,+Marikina&amp;output=embed"
@@ -1016,43 +1006,42 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Foundation reinforcement"
-    - img: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Community training session"
+    - img: >-
+        https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Foundation reinforcement
+    - img: >-
+        https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Community training session
   content: >
-    ## Building for Resilience
-    Flood-Adaptive Construction
-    
-    Volunteer to construct a **typhoon-resilient community center** in a flood-prone area. Learn and implement disaster-resistant construction techniques.
-    
+    ## Building for Resilience Flood-Adaptive Construction
+
+    Volunteer to construct a **typhoon-resilient community center** in a
+    flood-prone area. Learn and implement disaster-resistant construction
+    techniques.
+
     - **Design Features**:
       - Elevated structure on piers
       - Breakaway wall systems
       - Flood-drainage foundation
       - Emergency power systems
-    
-    Construction Tasks:
-    1. Bamboo treatment and assembly
-    2. Elevated floor framing
-    3. Rainwater harvesting installation
-    4. Community emergency planning
-    
-    > "Resilient design saves lives when disasters strike."  
-    > - Disaster Response Coordinator
-    
-    - [ ] Safety equipment provided
-    - [ ] Closed-toe shoes required
 
+    Construction Tasks: 1. Bamboo treatment and assembly 2. Elevated floor
+    framing 3. Rainwater harvesting installation 4. Community emergency planning
+
+    > "Resilient design saves lives when disasters strike."   > - Disaster
+    Response Coordinator
+
+    - [ ] Safety equipment provided - [ ] Closed-toe shoes required
 - slug: talk-circular-economy-2025
-  published: true
-  title: " (Placeholder Only)Design Talk: Circular Economy in Construction"
-  event_date: 2025-10-08
-  start_time: "17:00"
-  end_time: "19:30"
-  location: "Sustainability Hub, BGC"
-  cover: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/circular-economy-2025"
+  published: false
+  title: ' (Placeholder Only)Design Talk: Circular Economy in Construction'
+  event_date: 2025-10-08T00:00:00.000Z
+  start_time: '17:00'
+  end_time: '19:30'
+  location: Sustainability Hub, BGC
+  cover: >-
+    https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/circular-economy-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Sustainability+Hub,+BGC&amp;output=embed"
@@ -1060,51 +1049,49 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Material reuse strategies"
-    - img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Deconstruction vs demolition"
+    - img: >-
+        https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Material reuse strategies
+    - img: >-
+        https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Deconstruction vs demolition
   content: >
-    ## Waste to Resource
-    Closing the Material Loop
-    
-    Explore **innovative approaches** to material reuse, building deconstruction, and design for disassembly. Learn how circular economy principles transform construction waste streams.
-    
+    ## Waste to Resource Closing the Material Loop
+
+    Explore **innovative approaches** to material reuse, building
+    deconstruction, and design for disassembly. Learn how circular economy
+    principles transform construction waste streams.
+
     - **Case Studies**:
       - Concrete recycling for new construction
       - Reclaimed timber certification
       - Modular components for multiple lifecycles
       - Material passport systems
-    
-    Implementation Framework:
-    1. Pre-demolition audits
-    2. Material recovery facilities
-    3. Digital material banks
-    4. Design for disassembly guidelines
-    
-    > "Waste is just **materials in the wrong place**."  
-    > - Circular Economy Advocate
-    
-    ```json
-    {
+
+    Implementation Framework: 1. Pre-demolition audits 2. Material recovery
+    facilities 3. Digital material banks 4. Design for disassembly guidelines
+
+    > "Waste is just **materials in the wrong place**."   > - Circular Economy
+    Advocate
+
+    ```json {
       "material_passport": {
         "component_id": "FAC-2025-001",
         "material": "Reclaimed teak",
         "origin": "Demolished warehouse, 1982",
         "next_use": "Modular partition system"
       }
-    }
-    ```
-
+    } ```
 - slug: workshop-acoustics-2025
   published: true
-  title: " (Placeholder Only)Workshop: Architectural Acoustics"
-  event_date: 2025-02-28
-  start_time: "13:00"
-  end_time: "17:00"
-  location: "Acoustic Research Center, Mandaluyong"
-  cover: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/acoustics-2025"
+  title: ' (Placeholder Only)Workshop: Architectural Acoustics'
+  event_date: 2025-02-28T00:00:00.000Z
+  start_time: '13:00'
+  end_time: '17:00'
+  location: Acoustic Research Center, Mandaluyong
+  cover: >-
+    https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/acoustics-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Acoustic+Research+Center,+Mandaluyong&amp;output=embed"
@@ -1112,46 +1099,43 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Sound absorption testing"
-    - img: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Acoustic panel installation"
+    - img: >-
+        https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Sound absorption testing
+    - img: >-
+        https://images.unsplash.com/photo-1617802690992-15d93263d3a9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Acoustic panel installation
   content: >
-    ## Designing Soundscapes
-    Acoustic Performance in Spaces
-    
-    Master **acoustic design principles** for different building types. Learn material selection, spatial configuration, and technical solutions for optimal sound environments.
-    
+    ## Designing Soundscapes Acoustic Performance in Spaces
+
+    Master **acoustic design principles** for different building types. Learn
+    material selection, spatial configuration, and technical solutions for
+    optimal sound environments.
+
     - **Focus Areas**:
       - Speech intelligibility in classrooms
       - Reverberation control in worship spaces
       - Noise isolation in residential
       - Concert hall acoustics
-    
-    Measurement Techniques:
-    1. Reverberation time (RT60)
-    2. Sound transmission class (STC)
-    3. Noise reduction coefficient (NRC)
-    4. Background noise levels
-    
-    > "Good acoustics are **felt rather than heard** - creating comfort through absence of distraction."  
-    > - Acoustic Consultant
-    
-    ```matlab
-    % Calculate reverberation time
-    RT60 = 0.161 * V / (A * c)
-    % V = room volume, A = absorption, c = speed of sound
-    ```
 
+    Measurement Techniques: 1. Reverberation time (RT60) 2. Sound transmission
+    class (STC) 3. Noise reduction coefficient (NRC) 4. Background noise levels
+
+    > "Good acoustics are **felt rather than heard** - creating comfort through
+    absence of distraction."   > - Acoustic Consultant
+
+    ```matlab % Calculate reverberation time RT60 = 0.161 * V / (A * c) % V =
+    room volume, A = absorption, c = speed of sound ```
 - slug: tour-net-zero-building-2025
-  published: true
-  title: " (Placeholder Only)Tour: Net-Zero Energy Building"
-  event_date: 2025-11-18
-  start_time: "10:00"
-  end_time: "14:00"
-  location: "Zero Carbon Tower, Alabang"
-  cover: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/net-zero-tour-2025"
+  published: false
+  title: ' (Placeholder Only)Tour: Net-Zero Energy Building'
+  event_date: 2025-11-18T00:00:00.000Z
+  start_time: '10:00'
+  end_time: '14:00'
+  location: Zero Carbon Tower, Alabang
+  cover: >-
+    https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/net-zero-tour-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Zero+Carbon+Tower,+Alabang&amp;output=embed"
@@ -1159,43 +1143,44 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Building-integrated photovoltaics"
-    - img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Energy monitoring dashboard"
+    - img: >-
+        https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Building-integrated photovoltaics
+    - img: >-
+        https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Energy monitoring dashboard
   content: >
-    ## Energy-Positive Architecture
-    Beyond Sustainability
-    
-    Explore the first **net-positive energy building** in the Philippines. Understand integrated systems that generate more energy than consumed through innovative design.
-    
+    ## Energy-Positive Architecture Beyond Sustainability
+
+    Explore the first **net-positive energy building** in the Philippines.
+    Understand integrated systems that generate more energy than consumed
+    through innovative design.
+
     - **Key Systems**:
       - Building-integrated photovoltaics (BIPV)
       - Geothermal cooling
       - Phase-change materials
       - Smart energy management
-    
-    Performance Metrics:
-    1. Energy Use Intensity: 35 kWh/m²/yr
-    2. Renewable generation: 120% of demand
-    3. Water recycling: 90% self-sufficiency
-    4. Carbon sequestration: 5 tons annually
-    
+
+    Performance Metrics: 1. Energy Use Intensity: 35 kWh/m/yr 2. Renewable
+    generation: 120% of demand 3. Water recycling: 90% self-sufficiency 4.
+    Carbon sequestration: 5 tons annually
+
     > "Net-zero is the starting point - our goal is **regenerative design**."  
     > - Building Manager
-    
-    - [ ] Limited capacity - register early
-    - [ ] Technical specifications provided
 
+    - [ ] Limited capacity - register early - [ ] Technical specifications
+    provided
 - slug: workshop-bim-for-facilities-2025
   published: true
-  title: " (Placeholder Only)Workshop: BIM for Facilities Management"
-  event_date: 2025-01-15
-  start_time: "09:30"
-  end_time: "16:30"
-  location: "FM Institute, Ortigas"
-  cover: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/bim-facilities-2025"
+  title: ' (Placeholder Only)Workshop: BIM for Facilities Management'
+  event_date: 2025-01-15T00:00:00.000Z
+  start_time: '09:30'
+  end_time: '16:30'
+  location: FM Institute, Ortigas
+  cover: >-
+    https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/bim-facilities-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=FM+Institute,+Ortigas&amp;output=embed"
@@ -1203,47 +1188,43 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Asset information modeling"
-    - img: "https://images.unsplash.com/photo-1551650976-3debd0d3d7ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Maintenance workflow demo"
+    - img: >-
+        https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Asset information modeling
+    - img: >-
+        https://images.unsplash.com/photo-1551650976-3debd0d3d7ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Maintenance workflow demo
   content: >
-    ## Lifecycle Data Management
-    From Construction to Operations
-    
-    Learn to leverage **BIM data** for efficient facility management. Implement COBie standards and develop digital twins for building operations.
-    
+    ## Lifecycle Data Management From Construction to Operations
+
+    Learn to leverage **BIM data** for efficient facility management. Implement
+    COBie standards and develop digital twins for building operations.
+
     - **Workflow Integration**:
       - Asset information handover
       - Maintenance scheduling
       - Space utilization tracking
       - Energy performance monitoring
-    
-    Software Platforms:
-    1. Autodesk Tandem
-    2. Archibus
-    3. FM:Systems
-    4. IBM TRIRIGA
-    
-    > "BIM doesn't end at handover - it becomes the **living blueprint** for operations."  
-    > - Facility Management Director
-    
-    ```sql
-    -- Query equipment maintenance schedule
-    SELECT asset_id, last_maintenance, next_due 
-    FROM facility_assets 
-    WHERE asset_type = 'HVAC' AND next_due < CURRENT_DATE + INTERVAL '30 days';
-    ```
 
+    Software Platforms: 1. Autodesk Tandem 2. Archibus 3. FM:Systems 4. IBM
+    TRIRIGA
+
+    > "BIM doesn't end at handover - it becomes the **living blueprint** for
+    operations."   > - Facility Management Director
+
+    ```sql -- Query equipment maintenance schedule SELECT asset_id,
+    last_maintenance, next_due  FROM facility_assets  WHERE asset_type = 'HVAC'
+    AND next_due < CURRENT_DATE + INTERVAL '30 days'; ```
 - slug: talk-ai-architecture-2025
-  published: true
-  title: " (Placeholder Only)Design Talk: AI in Architectural Practice"
-  event_date: 2025-08-28
-  start_time: "18:00"
-  end_time: "20:30"
-  location: "Tech Innovation Hub, BGC"
-  cover: "https://images.unsplash.com/photo-1677442135722-5fbfd44d0d7b?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/ai-architecture-2025"
+  published: false
+  title: ' (Placeholder Only)Design Talk: AI in Architectural Practice'
+  event_date: 2025-08-28T00:00:00.000Z
+  start_time: '18:00'
+  end_time: '20:30'
+  location: Tech Innovation Hub, BGC
+  cover: >-
+    https://images.unsplash.com/photo-1677442135722-5fbfd44d0d7b?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/ai-architecture-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Tech+Innovation+Hub,+BGC&amp;output=embed"
@@ -1251,48 +1232,48 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1677442135722-5fbfd44d0d7b?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Generative design exploration"
-    - img: "https://images.unsplash.com/photo-1677442135133-33d364e9d83e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "AI-assisted code compliance"
+    - img: >-
+        https://images.unsplash.com/photo-1677442135722-5fbfd44d0d7b?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Generative design exploration
+    - img: >-
+        https://images.unsplash.com/photo-1677442135133-33d364e9d83e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: AI-assisted code compliance
   content: >
-    ## Algorithmic Design Assistance
-    AI Tools for Architects
-    
-    Explore cutting-edge **AI applications** in architectural design, from generative space planning to predictive performance analysis and automated code compliance.
-    
+    ## Algorithmic Design Assistance AI Tools for Architects
+
+    Explore cutting-edge **AI applications** in architectural design, from
+    generative space planning to predictive performance analysis and automated
+    code compliance.
+
     - **Emerging Tools**:
       - Generative adversarial networks (GANs)
       - Predictive energy modeling
       - Natural language processing for specs
       - Computer vision for site analysis
-    
-    Ethical Considerations:
-    1. Intellectual property implications
-    2. Bias in training datasets
-    3. Human-AI collaboration models
-    4. Professional responsibility boundaries
-    
-    > "AI won't replace architects - but architects using AI will replace those who don't."  
-    > - Computational Design Specialist
-    
-    ```python
-    # Generative design algorithm
-    for solution in genetic_algorithm(population_size=100, generations=50):
+
+    Ethical Considerations: 1. Intellectual property implications 2. Bias in
+    training datasets 3. Human-AI collaboration models 4. Professional
+    responsibility boundaries
+
+    > "AI won't replace architects - but architects using AI will replace those
+    who don't."   > - Computational Design Specialist
+
+    ```python # Generative design algorithm for solution in
+    genetic_algorithm(population_size=100, generations=50):
         evaluate_fitness(solution, constraints)
         if solution.fitness > threshold:
             return solution
     ```
-
 - slug: workshop-climate-analysis-2025
   published: true
-  title: " (Placeholder Only)Workshop: Climate Analysis Tools"
-  event_date: 2025-04-18
-  start_time: "13:00"
-  end_time: "16:00"
-  location: "Environmental Design Lab, Makati"
-  cover: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/climate-tools-2025"
+  title: ' (Placeholder Only)Workshop: Climate Analysis Tools'
+  event_date: 2025-04-18T00:00:00.000Z
+  start_time: '13:00'
+  end_time: '16:00'
+  location: Environmental Design Lab, Makati
+  cover: >-
+    https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/climate-tools-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Environmental+Design+Lab,+Makati&amp;output=embed"
@@ -1300,46 +1281,45 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Solar radiation analysis"
-    - img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Wind pattern visualization"
+    - img: >-
+        https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Solar radiation analysis
+    - img: >-
+        https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Wind pattern visualization
   content: >
-    ## Data-Driven Environmental Design
-    Climate-Responsive Modeling
-    
-    Master **climate analysis software** including Ladybug Tools for Grasshopper and Climate Consultant. Learn to interpret weather data for passive design strategies.
-    
+    ## Data-Driven Environmental Design Climate-Responsive Modeling
+
+    Master **climate analysis software** including Ladybug Tools for Grasshopper
+    and Climate Consultant. Learn to interpret weather data for passive design
+    strategies.
+
     - **Analysis Methods**:
       - Sun path and shadow studies
       - Wind rose interpretation
       - Psychrometric chart analysis
       - Thermal comfort mapping
-    
-    Workflow:
-    1. Import EPW weather data
-    2. Generate climate visualization
-    3. Calculate passive strategies effectiveness
-    4. Optimize building form response
-    
-    > "Climate analysis transforms **weather data** into **design intelligence**."  
-    > - Environmental Designer
-    
-    ```javascript
-    // Generate sun path diagram
-    const sunPath = new SunPath(latitude, longitude);
-    sunPath.calculateForDate(new Date(2025, 5, 21));
-    ```
 
+    Workflow: 1. Import EPW weather data 2. Generate climate visualization 3.
+    Calculate passive strategies effectiveness 4. Optimize building form
+    response
+
+    > "Climate analysis transforms **weather data** into **design
+    intelligence**."   > - Environmental Designer
+
+    ```javascript // Generate sun path diagram const sunPath = new
+    SunPath(latitude, longitude); sunPath.calculateForDate(new Date(2025, 5,
+    21)); ```
 - slug: tour-mass-timber-2025
   published: true
-  title: " (Placeholder Only)Tour: Mass Timber Construction"
-  event_date: 2025-07-12
-  start_time: "09:00"
-  end_time: "12:00"
-  location: "Cross-Laminated Timber Tower, QC"
-  cover: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/mass-timber-2025"
+  title: ' (Placeholder Only)Tour: Mass Timber Construction'
+  event_date: 2025-07-12T00:00:00.000Z
+  start_time: '09:00'
+  end_time: '12:00'
+  location: Cross-Laminated Timber Tower, QC
+  cover: >-
+    https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/mass-timber-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Cross-Laminated+Timber+Tower,+QC&amp;output=embed"
@@ -1347,43 +1327,42 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Timber connection details"
-    - img: "https://images.unsplash.com/photo-1593692909680-1e9a14e8ed8a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Prefabricated wall installation"
+    - img: >-
+        https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Timber connection details
+    - img: >-
+        https://images.unsplash.com/photo-1593692909680-1e9a14e8ed8a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Prefabricated wall installation
   content: >
-    ## Tall Wood Buildings
-    Sustainable High-Rise Construction
-    
-    Explore the Philippines' first **mass timber high-rise**. Understand engineering innovations, fire safety approaches, and sustainable forestry certification.
-    
+    ## Tall Wood Buildings Sustainable High-Rise Construction
+
+    Explore the Philippines' first **mass timber high-rise**. Understand
+    engineering innovations, fire safety approaches, and sustainable forestry
+    certification.
+
     - **Material Advantages**:
       - Carbon sequestration potential
       - Reduced construction time
       - Biophilic benefits
       - Seismic performance
-    
-    Technical Details:
-    1. CLT production process
-    2. Connection systems
-    3. Fire-rating methodologies
-    4. Acoustic performance
-    
-    > "Mass timber represents a **paradigm shift** in sustainable construction."  
-    > - Structural Engineer
-    
-    - [ ] Hard hats required
-    - [ ] Safety briefing provided
 
+    Technical Details: 1. CLT production process 2. Connection systems 3.
+    Fire-rating methodologies 4. Acoustic performance
+
+    > "Mass timber represents a **paradigm shift** in sustainable
+    construction."   > - Structural Engineer
+
+    - [ ] Hard hats required - [ ] Safety briefing provided
 - slug: workshop-architectural-illustration-2025
   published: true
-  title: " (Placeholder Only)Workshop: Architectural Illustration"
-  event_date: 2025-03-15
-  start_time: "10:00"
-  end_time: "16:00"
-  location: "Artists' Atelier, San Juan"
-  cover: "https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/illustration-2025"
+  title: ' (Placeholder Only)Workshop: Architectural Illustration'
+  event_date: 2025-03-15T00:00:00.000Z
+  start_time: '10:00'
+  end_time: '16:00'
+  location: Artists' Atelier, San Juan
+  cover: >-
+    https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/illustration-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Artists'+Atelier,+San+Juan&amp;output=embed"
@@ -1391,50 +1370,47 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Watercolor rendering techniques"
-    - img: "https://images.unsplash.com/photo-1579783483450-34b5c1e1d0c9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Digital sketching workflow"
+    - img: >-
+        https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Watercolor rendering techniques
+    - img: >-
+        https://images.unsplash.com/photo-1579783483450-34b5c1e1d0c9?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Digital sketching workflow
   content: >
-    ## Hand & Digital Rendering
-    Expressive Visualization Techniques
-    
-    Develop **architectural illustration skills** combining traditional media and digital tools. Learn to create compelling visual narratives for design concepts.
-    
+    ## Hand & Digital Rendering Expressive Visualization Techniques
+
+    Develop **architectural illustration skills** combining traditional media
+    and digital tools. Learn to create compelling visual narratives for design
+    concepts.
+
     - **Media Techniques**:
       - Watercolor wash methods
       - Ink linework precision
       - Procreate digital painting
       - Hybrid rendering approaches
-    
-    Composition Principles:
-    1. Perspective fundamentals
-    2. Light and shadow dynamics
-    3. Human scale integration
-    4. Atmospheric effects
-    
-    > "Great architectural illustration tells the **story of space** beyond technical representation."  
-    > - Architectural Illustrator
-    
-    ```css
-    /* Digital brush settings */
-    .watercolor-brush {
+
+    Composition Principles: 1. Perspective fundamentals 2. Light and shadow
+    dynamics 3. Human scale integration 4. Atmospheric effects
+
+    > "Great architectural illustration tells the **story of space** beyond
+    technical representation."   > - Architectural Illustrator
+
+    ```css /* Digital brush settings */ .watercolor-brush {
       opacity: 0.7;
       blend-mode: multiply;
       texture: paper-grain.jpg;
       wet-edge: true;
-    }
-    ```
-
+    } ```
 - slug: talk-housing-innovation-2025
-  published: true
-  title: " (Placeholder Only)Design Talk: Affordable Housing Innovation"
-  event_date: 2025-11-05
-  start_time: "17:30"
-  end_time: "20:00"
-  location: "Housing Development Center, QC"
-  cover: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  registration_url: "https://example.com/register/housing-innovation-2025"
+  published: false
+  title: ' (Placeholder Only)Design Talk: Affordable Housing Innovation'
+  event_date: 2025-11-05T00:00:00.000Z
+  start_time: '17:30'
+  end_time: '20:00'
+  location: Housing Development Center, QC
+  cover: >-
+    https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  registration_url: https://example.com/register/housing-innovation-2025
   map_embed: |
     <iframe
       src="https://www.google.com/maps?q=Housing+Development+Center,+QC&amp;output=embed"
@@ -1442,39 +1418,37 @@
       allowfullscreen>
     </iframe>
   image_gallery:
-    - img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Incremental housing prototype"
-    - img: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      caption: "Community participation workshop"
+    - img: >-
+        https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Incremental housing prototype
+    - img: >-
+        https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+      caption: Community participation workshop
   content: >
-    ## Scalable Housing Solutions
-    Meeting the Urban Challenge
-    
-    Explore **innovative approaches** to affordable housing through design innovation, policy frameworks, and community-driven development models.
-    
+    ## Scalable Housing Solutions Meeting the Urban Challenge
+
+    Explore **innovative approaches** to affordable housing through design
+    innovation, policy frameworks, and community-driven development models.
+
     - **Case Studies**:
       - Incremental expansion systems
       - Micro-unit efficiency
       - Community land trusts
       - Disaster-resilient core houses
-    
-    Design Strategies:
-    1. Space-saving multifunctional furniture
-    2. Shared amenity spaces
-    3. Self-build construction systems
-    4. Infrastructure-first development
-    
-    > "Affordable housing requires **design ingenuity** more than cost reduction."  
-    > - Housing Policy Expert
-    
-    ```json
-    {
+
+    Design Strategies: 1. Space-saving multifunctional furniture 2. Shared
+    amenity spaces 3. Self-build construction systems 4. Infrastructure-first
+    development
+
+    > "Affordable housing requires **design ingenuity** more than cost
+    reduction."   > - Housing Policy Expert
+
+    ```json {
       "housing_unit": {
         "type": "expandable_core",
-        "initial_area": "24m²",
-        "final_area": "48m²",
-        "construction_cost": "₱15,000/m²",
+        "initial_area": "24m",
+        "final_area": "48m",
+        "construction_cost": "15,000/m",
         "expansion_phases": 3
       }
-    }
-    ```
+    } ```
