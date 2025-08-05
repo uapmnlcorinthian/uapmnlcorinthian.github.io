@@ -4,7 +4,8 @@ node_modules/
 images/
 .bundle/
 vendor/
-assets/files
+#assets/files
+supabase
 
 # Local helper scripts
 MCC WEBSITE.bat

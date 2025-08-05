@@ -9,26 +9,43 @@ lang: en
 published: true
 sitemap: true
 ---
-<style>
-.rtitle{font-size:clamp(1.25rem,1.2vw+1rem,2rem)}.rhd{font-size:clamp(1rem,.9vw+.85rem,1.15rem)}.uap-wrap{max-width:1200px}.chk-row .form-check{min-width:220px}
-.photo-frame{width:160px;height:160px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #dee2e6}
-.photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:.25rem}
-.photo-ctrls .btn{padding:.25rem .5rem;font-size:.875rem}
-@media print{.uap-wrap{max-width:100%!important}body{color:#000}.btn,.form-check-input{display:none}.rtitle{font-size:18pt}.rhd{font-size:12pt}}
-/* Readability + scroll behavior*/
-#uap-info{margin:1rem;max-height:80vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;font-size:.95rem;line-height:1.55}
-#uap-info .lead,#uap-info p,#uap-info li{font-size:.95rem;line-height:1.6;margin-bottom:.75rem}
-#uap-info .text-justify{text-align:justify;text-justify:auto}
-#uap-info h1,#uap-info h2,#uap-info h4,#uap-info h5{margin-bottom:.4rem;font-size:1rem}
-#uap-info .card-body p{margin-bottom:0}
-#uap-info .table{font-size:.875rem}
-#uap-info .table th,#uap-info .table td{vertical-align:top;white-space:normal;word-break:break-word}
-#uap-info .table-responsive{overflow-x:auto}/* horizontal only; avoid vertical clipping*/
-#uap-info .table thead.sticky-top{top:0;z-index:5}
-@media (max-width:576px){#uap-info{max-height:70vh}#uap-info .table{font-size:.84rem}}
-</style>
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('formCtx', () => ({
+      oc: '',
+      v() {
+        const d = this.$refs?.d, ok = this.$refs?.ok, er = this.$refs?.err;
+        if (/^\d{6}$/.test(this.oc)) {
+          d?.hide?.(); ok?.show?.();
+        } else {
+          er?.show?.();
+        }
+      }
+    }));
 
-<div class="container uap-wrap py-5" x-data="formCtx()">
+    Alpine.data('scrollHandler', () => ({
+      scrolled: false,
+      sc() {
+        const el = this.$refs.i || document.documentElement;
+        const remaining = el.scrollHeight - el.scrollTop - el.clientHeight;
+        this.scrolled = remaining < 50;
+      },
+      init() {
+        this.sc();
+        this.$refs.i?.addEventListener('scroll', () => this.sc(), { passive: true });
+      }
+    }));
+  });
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+
+<link rel="stylesheet" href="/assets/css/signup.css"><!--custom style for this page-->
+
+
+<div class="container uap-wrap p-5" x-data="formCtx()">
   <h2 class="text-center mb-4 rtitle" data-aos="fade-down">UAP Membership Application Form</h2>
   <form id="membershipForm" class="p-3" data-aos="fade-up" novalidate>
     <div class="row g-3 mb-2">
@@ -47,9 +64,9 @@ sitemap: true
     </div>
 
     <div class="row g-3">
-      <div class="col-sm-6 col-md-4"><label class="form-label">Family Name*</label><input type="text" class="form-control" name="lastName" autocomplete="family-name" required></div>
-      <div class="col-sm-6 col-md-4"><label class="form-label">First Name*</label><input type="text" class="form-control" name="firstName" autocomplete="given-name" required></div>
-      <div class="col-sm-12 col-md-4"><label class="form-label">Middle Name*</label><input type="text" class="form-control" name="middleName" required></div>
+      <div class="col-sm-6 col-md-4"><label class="form-label">Family Name*</label><input  placeholder="Dela Cruz" type="text" class="form-control" name="lastName" autocomplete="family-name" required></div>
+      <div class="col-sm-6 col-md-4"><label class="form-label">First Name*</label><input  placeholder="Juan" type="text" class="form-control" name="firstName" autocomplete="given-name" required></div>
+      <div class="col-sm-12 col-md-4"><label class="form-label">Middle Name*</label><input  placeholder="Reyes" type="text" class="form-control" name="middleName" required></div>
     </div>
     <div class="row g-3 mt-0">
       <div class="col-sm-6 col-md-4"><label class="form-label">Birthdate*</label><input type="date" class="form-control" name="birthdate" required></div>
@@ -61,28 +78,35 @@ sitemap: true
     <div class="row g-3">
       <div class="col-sm-6 col-md-4"><label class="form-label">Tel No/s.</label><input type="tel" class="form-control" name="tel" inputmode="tel"></div>
       <div class="col-sm-6 col-md-4"><label class="form-label">Fax No/s.</label><input type="text" class="form-control" name="fax"></div>
-      <div class="col-sm-12 col-md-4"><label class="form-label">Mobile No/s.*</label><input type="tel" class="form-control" name="mobile" inputmode="numeric" pattern="^(?:\+63|0)9\d{9}$" title="09 or +639xxxxxxxxx" required><div class="form-text">Use 09 or +639xxxxxxxxx</div></div>
+      <div class="col-sm-12 col-md-4"><label class="form-label">Mobile No/s.*</label><input  placeholder="09881234567" type="tel" class="form-control" name="mobile" inputmode="numeric" pattern="^(?:\+63|0)9\d{9}$" title="09 or +639xxxxxxxxx" required>
     </div>
     <div class="row g-3 mt-0">
-      <div class="col-sm-12 col-md-6"><label class="form-label">Facebook ID</label><input type="text" class="form-control" name="facebook" autocomplete="off"></div>
-      <div class="col-sm-12 col-md-6"><label class="form-label">Twitter ID</label><input type="text" class="form-control" name="twitter" autocomplete="off"></div>
+      <div class="col-sm-12 col-md-6"><label class="form-label" >Facebook ID</label><input placeholder="@manilacorinthianchapter" type="text" class="form-control" name="facebook" autocomplete="off" ></div>
+      <div class="col-sm-12 col-md-6"><label class="form-label">Twitter ID</label><input placeholder="@manilacorinthianchapter" type="text" class="form-control" name="twitter" autocomplete="off"></div>
     </div>
     <div class="row g-3 mt-0">
-      <div class="col-sm-12 col-md-6"><label class="form-label">PRC No.</label><input type="text" class="form-control" name="prc" pattern="^[0-9-]{5,12}$" title="Digits/dashes only, 5–12 chars"><div class="form-text">Digits/dashes only (5–12)</div></div>
+      <div class="col-sm-12 col-md-6"><label class="form-label">PRC No.</label><input type="text" class="form-control" name="prc" pattern="[0-9]{5,12}" title="Digits/dashes only, 5–12 chars"><div class="form-text">Digits (5–12)</div></div>
       <div class="col-sm-12 col-md-6"><label class="form-label">UAP No.</label><input type="text" class="form-control" name="uap"></div>
     </div>
-    <div class="mb-3 mt-0"><label class="form-label">Email Address*</label><input type="email" class="form-control" name="email" autocomplete="email" required></div>
+    <div class="col-6 col-md-6 mb-3 mt-0">
+        <label class="form-label">Email Address <span class="text-danger">*</span></label>
+        <div class="input-group"> <!-- NEW wrapper -->
+          <input  type="email" name="email" class="form-control" placeholder="info@uapmnlcorinthian.com" autocomplete="email" required />
+          <button class="btn btn-outline-primary" type="button" id="sendOtpBtn">Send OTP</button>
+        </div>
+      </div>
+</div>
 
     <hr class="my-4"><h5 class="mb-3 rhd">Company / Office</h5>
     <div class="row g-2 mb-2">
-      <div class="col-md-7"><label class="form-label">Name of Company and its Official Address</label><textarea class="form-control" name="co_name_addr" rows="2"></textarea></div>
-      <div class="col-md-5"><div class="row g-2">
-        <div class="col-12 col-md-4"><label class="form-label">Tel No/s.</label><input class="form-control" type="text" name="co_tel"></div>
-        <div class="col-12 col-md-4"><label class="form-label">Fax No/s.</label><input class="form-control" type="text" name="co_fax"></div>
-        <div class="col-12 col-md-4"><label class="form-label">Email Address</label><input class="form-control" type="email" name="co_email"></div>
+      <div class="col-md-5"><label class="form-label">Name of Company and its Official Address*</label><textarea class="form-control" name="co_name_addr" rows="2" required></textarea></div>
+      <div class="col-md-7"><div class="row g-2">
+        <div class="col-12 col-md-3"><label class="form-label">Tel No/s.</label><input class="form-control" type="text" name="co_tel"></div>
+        <div class="col-12 col-md-3"><label class="form-label">Fax No/s.</label><input class="form-control" type="text" name="co_fax"></div>
+        <div class="col-12 col-md-6"><label class="form-label">Email Address</label><input class="form-control" type="email" name="co_email"></div>
       </div></div>
     </div>
-    <div class="row g-2 mb-2"><div class="col-12"><label class="form-label">Designation</label><input class="form-control" type="text" name="co_designation"></div></div>
+    <div class="row g-2 mb-2"><div class="col-12"><label class="form-label">Designation*</label><input class="form-control" type="text" name="co_designation" required></div></div>
 
     <hr class="my-4"><h5 class="mb-3 rhd">A. Education</h5>
     <div class="row g-2 align-items-end mb-2">
@@ -143,10 +167,10 @@ sitemap: true
       <input class="form-control mt-2" type="text" name="svc_others" style="display:none" placeholder="Specify others">
     </div>
     <div class="mb-3"><label class="form-label">CPE/CPD Seminars/Modules Attended (Previous Fiscal Year)</label>
-      <div class="row g-2 mb-2"><div class="col-md-6"><input class="form-control" type="text" name="cpd1_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd1_date"></div><div class="col-6 col-md-2"><input class="form-control" type="number" step="0.5" min="0" name="cpd1_units"></div><div class="col-md-2"><select class="form-select" name="cpd1_part"><option>Participant</option><option>Speaker</option></select></div></div>
-      <div class="row g-2 mb-2"><div class="col-md-6"><input class="form-control" type="text" name="cpd2_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd2_date"></div><div class="col-6 col-md-2"><input class="form-control" type="number" step="0.5" min="0" name="cpd2_units"></div><div class="col-md-2"><select class="form-select" name="cpd2_part"><option>Participant</option><option>Speaker</option></select></div></div>
-      <div class="row g-2 mb-2"><div class="col-md-6"><input class="form-control" type="text" name="cpd3_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd3_date"></div><div class="col-6 col-md-2"><input class="form-control" type="number" step="0.5" min="0" name="cpd3_units"></div><div class="col-md-2"><select class="form-select" name="cpd3_part"><option>Participant</option><option>Speaker</option></select></div></div>
-      <div class="row g-2"><div class="col-md-6"><input class="form-control" type="text" name="cpd4_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd4_date"></div><div class="col-6 col-md-2"><input class="form-control" type="number" step="0.5" min="0" name="cpd4_units"></div><div class="col-md-2"><select class="form-select" name="cpd4_part"><option>Participant</option><option>Speaker</option></select></div></div>
+      <div class="row g-2 mb-2"><div class="col-md-6"><input placeholder="CPD Seminar Title 1" class="form-control" type="text" name="cpd1_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd1_date"></div><div class="col-6 col-md-2"><input placeholder="5" class="form-control" type="number" step="0.5" min="0" name="cpd1_units"></div><div class="col-md-2"><select class="form-select" name="cpd1_part"><option>Participant</option><option>Speaker</option></select></div></div>
+      <div class="row g-2 mb-2"><div class="col-md-6"><input placeholder="CPD Seminar Title 2" class="form-control" type="text" name="cpd2_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd2_date"></div><div class="col-6 col-md-2"><input placeholder="5" class="form-control" type="number" step="0.5" min="0" name="cpd2_units"></div><div class="col-md-2"><select class="form-select" name="cpd2_part"><option>Participant</option><option>Speaker</option></select></div></div>
+      <div class="row g-2 mb-2"><div class="col-md-6"><input placeholder="CPD Seminar Title 3" class="form-control" type="text" name="cpd3_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd3_date"></div><div class="col-6 col-md-2"><input placeholder="5" class="form-control" type="number" step="0.5" min="0" name="cpd3_units"></div><div class="col-md-2"><select class="form-select" name="cpd3_part"><option>Participant</option><option>Speaker</option></select></div></div>
+      <div class="row g-2"><div class="col-md-6"><input  placeholder="CPD Seminar Title 4" class="form-control" type="text" name="cpd4_title"></div><div class="col-6 col-md-2"><input class="form-control" type="date" name="cpd4_date"></div><div class="col-6 col-md-2"><input placeholder="5" class="form-control" type="number" step="0.5" min="0" name="cpd4_units"></div><div class="col-md-2"><select class="form-select" name="cpd4_part"><option>Participant</option><option>Speaker</option></select></div></div>
       <div class="text-end small text-muted mt-1">Total CPE Units: <span id="cpdTot">0.0</span></div>
     </div>
 
@@ -157,16 +181,8 @@ sitemap: true
     <div class="row g-2 mb-2"><div class="col-md-9"><label class="form-label">Position Positions(02)</label><input class="form-control" type="text" name="natpos2"></div><div class="col-md-3"><label class="form-label">Inclusive Dates</label><input class="form-control" type="text" name="natpos2_dates"></div></div>
     <div class="row g-2 mb-3"><div class="col-md-9"><label class="form-label">Positions (03)</label><input class="form-control" type="text" name="natpos3"></div><div class="col-md-3"><label class="form-label">Inclusive Dates</label><input class="form-control" type="text" name="natpos3_dates"></div></div>
     <div class="row g-2 mb-3"><div class="col-6 col-md-5"><label class="form-label">UAP College of Fellows, Year Elevated</label><input class="form-control" type="number" min="1950" max="2100" name="cof_year"></div><div class="col-md-7"><label class="form-label">Expertise</label><input class="form-control" type="text" name="cof_exp"></div></div>
-   
   </form>
 
-  <!-- OTP Dialog & Alerts (Shoelace) -->
-  <sl-dialog label="OTP Verification" class="otp-dialog" x-ref="d">
-    <div class="mb-3"><label>Enter OTP sent to your email</label><input type="text" class="form-control" x-model="oc" inputmode="numeric" maxlength="6" placeholder="000000"></div>
-    <div class="text-end"><button class="btn btn-primary" @click="v()">Verify & Submit</button></div>
-  </sl-dialog>
-  <sl-alert variant="primary" duration="3500" closable x-ref="ok"><span slot="message">Application submitted.</span></sl-alert>
-  <sl-alert variant="danger" duration="4000" closable x-ref="err"><span slot="message">Invalid OTP. Please try again.</span></sl-alert>
 </div>
 
 <!-- Scroll-to-acknowledge section with all tables and improved styling -->
@@ -257,36 +273,59 @@ sitemap: true
 </section>
 
 <!--SIGNATURE-->
-<div class="p-4">
- <hr class="my-4"><div class="mb-2"><small class="text-muted">I hereby certify and declare under the penalties of perjury, that all the information herein is a true statement of my personal and professional information as of this date, as required by and in accordance with the UAP By-Laws and its Implementing Rules and Regulations.</small></div>
-    <div class="row g-2 mb-3"><div class="col-md-8"><label class="form-label">Signature (Type Full Name)</label><input class="form-control" type="text" name="sig"></div><div class="col-md-4"><label class="form-label">Date</label><input class="form-control" type="date" name="sig_date"></div></div>
-    <div class="form-check mt-3"><input id="agreeInfo" class="form-check-input" type="checkbox" required><label class="form-check-label" for="agreeInfo">I have read and understood the <a href="#uap-info" class="text-decoration-underline">UAP Membership General Information</a></label></div>
-    <div class="text-center mt-4"><button class="btn btn-primary btn-lg w-100 w-md-auto" type="submit">Submit Form</button></div>
+<div class="p-4" id="sigSection">
+  <hr class="my-4">
+  <div class="mb-2"><small class="text-muted">I hereby certify and declare under the penalties of perjury, that all the information herein is a true statement of my personal and professional information as of this date, as required by and in accordance with the UAP By-Laws and its Implementing Rules and Regulations.</small></div>
+
+  <div class="row g-3 align-items-end mb-3">
+    <div class="col-md-8">
+      <label class="form-label">Signature</label>
+      <div class="d-flex flex-wrap gap-3 align-items-center">
+        <div class="border rounded bg-white p-2 flex-grow-1" style="max-width:420px;min-width:260px;height:150px;display:flex;align-items:center;justify-content:center;">
+          <img id="sigPreview" alt="Signature preview" style="max-width:100%;max-height:130px;display:none;"/>
+          <span id="sigPlaceholder" class="text-muted small">No signature yet</span>
+        </div>
+        <button class="btn btn-outline-secondary" type="button" id="openSig">Draw Signature</button>
+      </div>
+      <!-- Data URL gets stored here so it's available to JS/PDF generator -->
+      <input type="hidden" name="sig_draw" id="sigDraw" form="membershipForm">
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Date</label>
+      <input class="form-control" type="date" name="sig_date" form="membershipForm">
+    </div>
+  </div>
+
+  <div class="form-check mt-3">
+    <input id="agreeInfo" class="form-check-input" type="checkbox" name="agreeInfo" form="membershipForm" required>
+    <label class="form-check-label" for="agreeInfo">I have read and understood the <a href="#uap-info" class="text-decoration-underline">UAP Membership General Information</a></label>
+  </div>
+
+  <div class="text-center mt-4">
+    <button id="submitBtn" class="btn btn-primary btn-lg w-100 w-md-auto" type="submit" form="membershipForm">Submit Form</button>
+  </div>
+  <!-- INLINE OTP (place above the submit button) -->
+<div class="col-4 col-md-4 mb-3 mt-0"><label class=form-label for=otpInput>One-Time Passcode <span class=text-danger>*</span></label><div class=input-group><input autocomplete=one-time-code class=form-control id=otpInput inputmode=numeric maxlength=6 name=otp pattern=[0-9]{6} placeholder="Enter 6-digit code"required> <button class="btn btn-outline-primary"id=verifyOtpBtn type=button>Verify OTP</button></div><div class=form-text><span class=small id=otpStatus></span></div></div>
+  <!-- /INLINE OTP -->
+
 </div>
 
-<script>
-document.addEventListener('alpine:init',()=>{
-  Alpine.data('scrollHandler',()=>({scrolled:!1,init(){document.querySelectorAll('#uap-info [data-aos]').forEach(e=>e.setAttribute('data-aos-anchor','#uap-info'));if(window.AOS){AOS.refreshHard()}this.$refs.i.addEventListener('scroll',()=>{if(window.AOS){AOS.refresh()}})},sc(){const e=this.$refs.i,s=e.scrollHeight-e.scrollTop-e.clientHeight;this.scrolled=s<50;if(window.AOS){AOS.refresh()}}}));
-  Alpine.data('formCtx',()=>({oc:'',v(){const d=this.$refs.d,ok=this.$refs.ok,er=this.$refs.err;/* demo check: 6 digits*/if(/^\d{6}$/.test(this.oc)){d?.hide?.();ok?.show?.()}else{er?.show?.()}}}));
-});
-</script>
-<script>
-(()=>{const d=document,f=d.getElementById('membershipForm'),q=s=>d.querySelector(s),qa=s=>[...d.querySelectorAll(s)],ls=localStorage,now=new Date(),yr=now.getFullYear(),td=now.toISOString().slice(0,10);
-const bd=q('[name=birthdate]');if(bd)bd.max=td;['bs_year','pg_year','sp_year','cof_year'].forEach(n=>{const e=q('[name='+n+']');if(e)e.max=yr});
-['tel','fax','co_tel','co_fax'].forEach(n=>{const e=q('[name='+n+']');if(e)e.addEventListener('blur',()=>{e.value=e.value.replace(/[^0-9+\-() ]/g,'').replace(/\s+/g,' ').trim()})});
-['firstName','middleName','lastName','cur_chap','prev_chap','co_designation'].forEach(n=>{const e=q('[name='+n+']');if(e)e.addEventListener('blur',()=>{e.value=e.value.toLowerCase().replace(/(^|\s)\S/g,m=>m.toUpperCase())})});
-['email','co_email'].forEach(n=>{const e=q('[name='+n+']');if(e)e.addEventListener('blur',()=>{e.value=e.value.trim().toLowerCase()})});
-const bad=['mailinator.com','10minutemail.com','guerrillamail.com','tempmail.com'];['email','co_email'].forEach(n=>{const e=q('[name='+n+']');if(e)e.addEventListener('change',()=>{const ok=!bad.includes(((e.value.split('@')[1])||'').toLowerCase());e.setCustomValidity(ok?'':'Please use a non-disposable email')}))});
-function ageOK(){if(!bd||!bd.value)return true;const a=Math.floor((now-new Date(bd.value))/31557600000);bd.setCustomValidity(a<18?'Must be at least 18 years old':'');return a>=18}
-const svcO=q('[name=svc_others]'),chkO=d.getElementById('s8');if(svcO&&chkO){chkO.addEventListener('change',()=>{svcO.style.display=chkO.checked?'block':'none';if(!chkO.checked)svcO.value=''})}
-function needCo(){const a=q('[name=co_name_addr]'),t=q('[name=co_tel]'),f2=q('[name=co_fax]'),e=q('[name=co_email]'),g=q('[name=co_designation]');const on=[a,t,f2,e,g].some(x=>x&&x.value.trim());[e,g].forEach(x=>{if(x)x.required=on})};['co_name_addr','co_tel','co_fax','co_email','co_designation'].forEach(n=>{const e=q('[name='+n+']');if(e)e.addEventListener('input',needCo)});needCo();
-function tot(){let s=0;['1','2','3','4'].forEach(i=>{const e=q('[name=cpd'+i+'_units]');s+=parseFloat(e&&e.value)||0});const t=q('#cpdTot');if(t)t.textContent=s.toFixed(1)};['1','2','3','4'].forEach(i=>{const e=q('[name=cpd'+i+'_units]');if(e)e.addEventListener('input',tot)});tot();
-function oneGrp(){const a=qa('input[name="practice[]"]:checked').length,b=qa('input[name="svc[]"]:checked').length;if(a+b==0){alert('Select at least one Type of Practice or Service Rendered.');return false}return true}
-function xp(){const di=q('[name=prc_issued]'),x=qa('[name^=xp]');if(!di||!di.value)return true;const y=Math.max(0,yr-new Date(di.value).getFullYear());let ok=true;x.forEach(e=>{if(e.value&&+e.value>y+5){e.setCustomValidity('Check years vs PRC issue date');ok=false}else e.setCustomValidity('')});return ok}
-const fi=d.getElementById('ph'),phP=d.getElementById('phPrev');if(fi)fi.addEventListener('change',()=>{const f0=fi.files[0];if(!f0)return; if(f0.size>2097152){fi.setCustomValidity('Max photo size 2MB');return}else fi.setCustomValidity('');const im=new Image();im.onload=()=>{fi.setCustomValidity(Math.abs(im.width-im.height)>10?'Photo must be square (~1.5×1.5 in)':'');phP.src=URL.createObjectURL(f0)};im.src=URL.createObjectURL(f0)});
-function save(){const fd=new FormData(f),o={};fd.forEach((v,k)=>{if(o[k]){if(!Array.isArray(o[k]))o[k]=[o[k]];o[k].push(v)}else o[k]=v});ls.setItem('uapForm',JSON.stringify(o))}
-function load(){const s=ls.getItem('uapForm');if(!s)return;try{const o=JSON.parse(s);Object.keys(o).forEach(k=>{const v=o[k],el=f.querySelector('[name="'+k+'"]');if(!el){qa('[name="'+k+'"]').forEach(e=>{if(e.type=='checkbox'||e.type=='radio')e.checked=(Array.isArray(v)?v.includes(e.value):v==e.value)});return}if(el.type=='checkbox'||el.type=='radio'){qa('[name="'+k+'"]').forEach(e=>{e.checked=(Array.isArray(v)?v.includes(e.value):v==e.value)});}else el.value=Array.isArray(v)?v[0]:v});needCo();tot()}catch(e){}}
-load();f.addEventListener('input',e=>{if(e.target&&e.target.name)save()});
-f.addEventListener('submit',e=>{if(!ageOK()||!xp()||!oneGrp()){e.preventDefault();return}save();if(!confirm('Review your entries then click OK to submit.'))e.preventDefault()});
-})();
-</script>
+<!-- Signature drawing modal -->
+<sl-dialog id="sigPadDialog" label="Draw Signature" class="border rounded bg-white p-2 w-100" style="height:auto;">
+  <div style="padding:24px;">
+    <div style="font-weight:600;margin-bottom:8px;">User Signature*</div>
+    <canvas id="sigCanvas" style="width:100%;height:220px;display:block;border:2px solid #888;border-radius:8px;touch-action:none;"></canvas>
+    <div class="d-flex justify-content-between mt-3">
+      <button class="btn btn-outline-secondary" type="button" id="clearSig">Clear</button>
+      <div class="d-flex gap-2">
+        <button class="btn btn-light" type="button" data-sl-dialog-dismiss>Cancel</button>
+        <button class="btn btn-primary" type="button" id="useSig">Use Signature</button>
+      </div>
+    </div>
+  </div>
+</sl-dialog>
+
+
+
+<!-- Custom scripts -->
+<script defer src="{{ '/js/signup.js' | relative_url }}"></script>
