@@ -2,7 +2,7 @@
 //  main.js (refactored)
 // ─────────────────────────────────────────────────────────────────────────────
 
-// === Supabase loader (ESM → UMD fallback) === */
+// === Supabase loader (ESM → UMD fallback) === 
 (() => {
   const URL = 'https://fvaahtqjusfniadwvoyw.supabase.co';
   const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8';
