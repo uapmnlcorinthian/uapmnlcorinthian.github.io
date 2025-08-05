@@ -252,9 +252,9 @@ sitemap: true
 {%- capture picked %}|{% endcapture -%}
 
 <!-- Industry Partners -->
-<section class="py-5 bg-light" data-aos="fade-up">
+<section class="py-5 bg-light industry-partner" data-aos="fade-up">
   <div class="container text-center">
-    <h3 class="mb-4">Our Industry Partners</h3>
+    <h3 class="mb-4">Industry partner</h3>
 
     <div class="row justify-content-center align-items-center g-4">
       {%- assign limit = 6 -%}
@@ -291,7 +291,7 @@ sitemap: true
 
               {%- assign shown = shown | plus: 1 -%}
               {%- capture picked -%}{{ picked }}{{ key }}|{%- endcapture -%}
-              <div class="col-6 col-md-2" data-aos="flip-left" data-aos-delay="{{ shown | minus: 1 | times: 50 }}">
+              <div class="col-10 col-md-3" data-aos="flip-left" data-aos-delay="{{ shown | minus: 1 | times: 50 }}">
                 <a href="{{ s.website | default: '#' }}" target="_blank" rel="noopener noreferrer">
                   <img
                     src="{{ logo_url }}"

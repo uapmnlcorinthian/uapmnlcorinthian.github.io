@@ -71,6 +71,14 @@ header.scrolled {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Default max-height for all screens */
+  .industry-partner img {
+    max-height: 64px;
+    object-fit: contain;
+  }
+
+
+
 // ---------------------------------------------
 // 4. NAVBAR & NAVIGATION (Minimalist)
 // ---------------------------------------------
@@ -342,7 +350,7 @@ footer {
 
 .sticky-col {
   position: sticky;
-  max-width: 95px;
+  max-width: 180px;
   left: 0;
   background: #fff;
   z-index: 2;
