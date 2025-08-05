@@ -1,56 +1,54 @@
-# ----- HEAD of sponsors.yml -----
-- name: "Boysen"
-  website: "https://www.boysen.com.ph/"
-  logo: "https://asset.manilacorinthianchapter.workers.dev/boysen.webp"
-  alt: "Pacific Paint Philippines, Inc. Logo"
-  tier: "Gold"
-  active: true
-  order: 1
-  tagline: "The No. 1 PAINT"
-  start_date: "2024-06-01T00:00:00Z"
-  end_date: "2026-07-31T23:59:59Z"
-  media_type: "image"
-  media_url: ""
-  contact_email: "inquiry@boysen.com.ph"
-
-- name: "Mega Pacific Metal and Steel Corp "
-  website: "http://www.megapacificmetal.com/"
-  logo: "https://asset.manilacorinthianchapter.workers.dev/megapacific.png"
-  alt: "Mega Pacific logo"
-  tier: "Gold"
-  active: true
-  order: 2
-  tagline: "Metal and Steel Supplier"
-  start_date: "2025-08-01T00:00:00Z"
-  end_date: "2026-07-31T23:59:59Z"
-  media_type: "image"
-  media_url: ""
-  contact_email: "megapacificmetal@gmail.com"
-
-- name: "APTCS GROUP"
-  website: "https://aptcsgroup.com/"
-  logo: "https://asset.manilacorinthianchapter.workers.dev/aptcs-logo.png"
-  alt: "APTCS logo"
-  tier: "Gold"
+- name: APTCS GROUP
+  website: https://aptcsgroup.com/
+  logo: https://asset.manilacorinthianchapter.workers.dev/aptcs-logo.png
+  alt: APTCS logo
+  tier: Gold
   active: true
   order: 3
-  tagline: "Your one stop solution specialist for project management, sustainability, and "
-  start_date: "2025-08-01T00:00:00Z"
-  end_date: "2050-07-31T23:59:59Z"
-  media_type: "image"
-  media_url: ""
-  contact_email: " info@aptcsgroup.com"
-
-- name: "Megabuild Sterling"
-  website: "https://www.facebook.com/megabuildsterling/"
-  logo: "https://asset.manilacorinthianchapter.workers.dev/Megabuild%20Sterling.jpg"
-  alt: "Megabuild Sterling logo"
-  tier: "Gold"
+  tagline: >-
+    Your one stop solution specialist for project management, sustainability,
+    and 
+  start_date: '2025-08-01T00:00:00Z'
+  end_date: '2050-07-31T23:59:59Z'
+  media_type: image
+  media_url: ''
+  contact_email: ' info@aptcsgroup.com'
+- name: Boysen
+  website: https://www.boysen.com.ph/
+  logo: https://asset.manilacorinthianchapter.workers.dev/boysen.webp
+  alt: Pacific Paint Philippines, Inc. Logo
+  tier: Gold
+  active: true
+  order: 1
+  tagline: The No. 1 PAINT
+  start_date: '2024-06-01T00:00:00Z'
+  end_date: '2026-07-31T23:59:59Z'
+  media_type: image
+  media_url: ''
+  contact_email: inquiry@boysen.com.ph
+- name: 'Mega Pacific Metal and Steel Corp '
+  website: http://www.megapacificmetal.com/
+  logo: https://asset.manilacorinthianchapter.workers.dev/megapacific.png
+  alt: Mega Pacific logo
+  tier: Gold
+  active: true
+  order: 2
+  tagline: Metal and Steel Supplier
+  start_date: '2025-08-01T00:00:00Z'
+  end_date: '2026-07-31T23:59:59Z'
+  media_type: image
+  media_url: ''
+  contact_email: megapacificmetal@gmail.com
+- name: Megabuild Sterling
+  website: https://www.facebook.com/megabuildsterling/
+  logo: https://asset.manilacorinthianchapter.workers.dev/Megabuild%20Sterling.jpg
+  alt: Megabuild Sterling logo
+  tier: Gold
   active: true
   order: 4
-  tagline: "Architecture | Interiors | Project Management | Design + Build"
-  start_date: "2025-08-01T00:00:00Z"
-  end_date: "2026-07-31T23:59:59Z"
-  media_type: "image"
-  media_url: ""
-  contact_email: "construction@megabuildsterling.com"
+  tagline: Architecture | Interiors | Project Management | Design + Build
+  start_date: '2025-08-01T00:00:00Z'
+  end_date: '2026-07-31T23:59:59Z'
+  media_type: image
+  media_url: ''
+  contact_email: construction@megabuildsterling.com
