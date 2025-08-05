@@ -1,0 +1,107 @@
+{%- assign limit = 6 -%}
+{%- assign data  = site.data.sponsors -%}
+{%- assign list  = data.sponsors | default: data -%}
+
+{%- comment -%} Active: true OR "true" OR 1 {%- endcomment -%}
+{%- assign a1 = list | where: "active", true -%}
+{%- assign a2 = list | where: "active", "true" -%}
+{%- assign a3 = list | where: "active", 1 -%}
+{%- assign active_all = a1 | concat: a2 | concat: a3 -%}
+
+{%- assign tiers = "Platinum|Gold|Silver|Bronze|Supporting|Event" | split: "|" -%}
+{%- assign shown = 0 -%}
+{%- capture picked %}|{% endcapture -%}
+<!-- Industry Partners -->
+<section class="py-5 bg-light industry-partner" data-aos="fade-up">
+  <div class="container text-center">
+    <h3 class="mb-4">Industry partner</h3>
+
+    <div class="row justify-content-center align-items-center g-4">
+      {%- assign limit = 6 -%}
+      {%- assign data  = site.data.sponsors -%}
+      {%- assign list  = data.sponsors | default: data -%}
+      {%- assign a1 = list | where: "active", true -%}
+      {%- assign a2 = list | where: "active", "true" -%}
+      {%- assign a3 = list | where: "active", 1 -%}
+      {%- assign active_all = a1 | concat: a2 | concat: a3 -%}
+      {%- assign tiers = "Platinum|Gold|Silver|Bronze|Supporting|Event" | split: "|" -%}
+      {%- assign shown = 0 -%}
+      {%- capture picked %}|{% endcapture -%}
+
+      {%- assign process_sponsors = "" -%}
+      {%- for t in tiers -%}
+        {%- if shown >= limit -%}{% break %}{%- endif -%}
+        {%- assign tier_items = active_all | where: "tier", t | sort: "order" -%}
+        {%- for s in tier_items -%}
+          {%- if shown >= limit -%}{% break %}{%- endif -%}
+          {%- assign key = s.name | default: s.logo | replace: "|","_" -%}
+          {%- unless picked contains key -%}
+            {%- if s.logo and s.logo != "" -%}
+              {%- assign logo_url = s.logo -%}
+              {%- if logo_url contains 'upload.wikimedia.org' and logo_url contains '/wikipedia/commons/' -%}
+                {%- assign tail = logo_url | split: '/wikipedia/commons/' | last -%}
+                {%- assign filename = tail | split: '/' | last -%}
+                {%- assign parts = filename | split: '.' -%}
+                {%- assign ext = parts | last -%}
+                {%- if ext == 'svg' -%}
+                  {%- assign logo_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/' 
+                    | append: tail | append: '/320px-' | append: filename | append: '.png' -%}
+                {%- endif -%}
+              {%- endif -%}
+
+              {%- assign shown = shown | plus: 1 -%}
+              {%- capture picked -%}{{ picked }}{{ key }}|{%- endcapture -%}
+              <div class="col-10 col-md-3" data-aos="flip-left" data-aos-delay="{{ shown | minus: 1 | times: 50 }}">
+                <a href="{{ s.website | default: '#' }}" target="_blank" rel="noopener noreferrer">
+                  <img
+                    src="{{ logo_url }}"
+                    alt="{{ s.alt | default: s.name | default: 'Sponsor' }}"
+                    class="img-fluid"
+                    loading="lazy"
+                    decoding="async"
+                    style="max-height:64px; object-fit:contain;">
+                </a>
+              </div>
+            {%- endif -%}
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- endfor -%}
+
+      {%- if shown < limit -%}
+        {%- for s in active_all -%}
+          {%- if shown >= limit -%}{% break %}{%- endif -%}
+          {%- assign key = s.name | default: s.logo | replace: "|","_" -%}
+          {%- unless picked contains key -%}
+            {%- if s.logo and s.logo != "" -%}
+              {%- assign logo_url = s.logo -%}
+              {%- if logo_url contains 'upload.wikimedia.org' and logo_url contains '/wikipedia/commons/' -%}
+                {%- assign tail = logo_url | split: '/wikipedia/commons/' | last -%}
+                {%- assign filename = tail | split: '/' | last -%}
+                {%- assign parts = filename | split: '.' -%}
+                {%- assign ext = parts | last -%}
+                {%- if ext == 'svg' -%}
+                  {%- assign logo_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/' 
+                    | append: tail | append: '/320px-' | append: filename | append: '.png' -%}
+                {%- endif -%}
+              {%- endif -%}
+
+              {%- assign shown = shown | plus: 1 -%}
+              {%- capture picked -%}{{ picked }}{{ key }}|{%- endcapture -%}
+              <div class="col-6 col-md-2" data-aos="flip-left" data-aos-delay="{{ shown | minus: 1 | times: 50 }}">
+                <a href="{{ s.website | default: '#' }}" target="_blank" rel="noopener noreferrer">
+                  <img
+                    src="{{ logo_url }}"
+                    alt="{{ s.alt | default: s.name | default: 'Sponsor' }}"
+                    class="img-fluid"
+                    loading="lazy"
+                    decoding="async"
+                    style="max-height:64px; object-fit:contain;">
+                </a>
+              </div>
+            {%- endif -%}
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>

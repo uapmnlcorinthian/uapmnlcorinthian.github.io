@@ -4,273 +4,102 @@ title: "404 - Page Not Found"
 description: "This page is under construction or cannot be found."
 permalink: /404.html
 ---
-
-<!-- FontAwesome CSS for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pZYz9Gtxp6zgjrtdYC7kqXuPTtKfUlpzh9iG6lH6Yf4tF75VoLC0TV00vHy1M0bH1P4fwvqqIyuLzsnXzoT9Ww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 <style>
-  #game-container {
-  position: relative;
-  width: 90vw;
-  max-width: 480px;
-  height: 640px;
-
-  /* Background with smaller height */
-  background-image: url('https://asset.manilacorinthianchapter.workers.dev/skyline.svg');
-
-  background-repeat: repeat-x;
-  background-position: 0 bottom;
-  background-size: auto 60%; /* 60% of container height */
-
-  /* Use a lighter overlay with CSS gradient for less darkness */
-  background-blend-mode: lighten;
-  background-color: rgba(255, 255, 255, 0.5); /* light overlay */
-
-  animation: scrollBackground 30s linear infinite;
-
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  user-select: none;
-}
-
-@keyframes scrollBackground {
-  from {
-    background-position-x: 0;
-  }
-  to {
-    background-position-x: -1200px; /* match SVG width */
-  }
-}
-
-  #bird {
-    position: absolute;
-    width: 56px;
-    height: 56px;
-    top: 50%;
-    left: 20%;
-    transform: translateY(-50%);
-    user-select: none;
-    pointer-events: none;
-    transition: transform 0.1s ease;
-    filter: drop-shadow(2px 4px 2px rgba(0,0,0,0.4));
-  }
-  .pipe {
-    position: absolute;
-    border-radius: 5px;
-    user-select: none;
-    border: 3px solid #004d00;
-  }
-  #pauseResumeBtn {
-    min-width: 90px;
-  }
-  #pauseOverlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.35);
-    color: #fff;
-    font-size: 3rem;
-    font-weight: 700;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    pointer-events: none;
-  }
+#game-container{position:relative;width:90vw;max-width:480px;height:640px;background-image:url('https://asset.manilacorinthianchapter.workers.dev/skyline.svg');background-repeat:repeat-x;background-position:0 bottom;background-size:auto 60%;background-blend-mode:lighten;background-color:rgba(255,255,255,.5);animation:scrollBackground 30s linear infinite;overflow:hidden;border-radius:12px;box-shadow:0 0 20px rgba(0,0,0,.3);user-select:none}
+@keyframes scrollBackground{from{background-position-x:0}to{background-position-x:-1200px}}
+#bird{position:absolute;width:56px;height:56px;top:50%;left:20%;transform:translateY(-50%);user-select:none;pointer-events:none;transition:transform .1s ease;filter:drop-shadow(2px 4px 2px rgba(0,0,0,.4))}
+.pipe{position:absolute;border-radius:5px;user-select:none;border:3px solid #004d00}
+#pauseResumeBtn{min-width:90px}
+#pauseOverlay{position:absolute;inset:0;background:rgba(0,0,0,.35);color:#fff;font-size:3rem;font-weight:700;display:none;align-items:center;justify-content:center;z-index:10;pointer-events:none}
 </style>
-
 <main class="d-flex flex-column justify-content-center align-items-center text-center vh-100 px-3" role="main">
   <h1 class="display-4 fw-bold mb-2">Oops! Page Not Found</h1>
-  <p class="lead fst-italic text-muted mb-3" style="max-width: 480px; font-weight: 500;">
-    "Just like an architect overcomes design challenges to build lasting structures, every flap through these obstacles is a step toward conquering challenges and reaching new heights."
-  </p>
-
+  <p class="lead fst-italic text-muted mb-3" style="max-width:480px;font-weight:500">"Just like an architect overcomes design challenges to build lasting structures, every flap through these obstacles is a step toward conquering challenges and reaching new heights."</p>
   <a href="{{ site.baseurl }}/" class="btn btn-primary btn-lg mb-3" aria-label="Go back to homepage">🏠 Return Home</a>
-
-  <div id="scoreboard" class="mb-2" aria-live="polite" aria-atomic="true" role="region" style="font-weight:600; font-size:1.1rem;">
-    Last Score: <span id="lastScore">0</span> | Score: <span id="score">0</span> | High Score: <span id="highscore">0</span>
-  </div>
-
+  <div id="scoreboard" class="mb-2" aria-live="polite" aria-atomic="true" role="region" style="font-weight:600;font-size:1.1rem">Last Score: <span id="lastScore">0</span> | Score: <span id="score">0</span> | High Score: <span id="highscore">0</span></div>
+  <div id="lb" class="mb-3" aria-live="polite" style="width:90vw;max-width:480px"></div>
   <div class="d-flex justify-content-center mb-3">
-    <button id="pauseResumeBtn" class="btn btn-outline-primary btn-sm" aria-pressed="false" aria-label="Pause game">
-      <i class="fa-solid fa-pause"></i> Pause
-    </button>
+    <button id="pauseResumeBtn" class="btn btn-outline-primary btn-sm" aria-pressed="false" aria-label="Pause game"><i class="fa-solid fa-pause"></i> Pause</button>
   </div>
-
-  <div id="game-container" role="application" aria-label="Infinite Flappy Bird style game with MCC logo as bird" tabindex="0" aria-live="polite" aria-relevant="additions removals">
-    <img id="bird" src="{{ site.data.images.s-logo}}" alt="MCC Logo Bird" aria-hidden="true" />
+  <div id="game-container" role="application" aria-label="Infinite Flappy Bird style game with MCC logo as bird" tabindex="0" aria-live="polite" aria-relevant="additions removals"> <img id="bird" src="{{ site.data.images.s-logo}}" alt="MCC Logo Bird" aria-hidden="true" />
     <div id="pauseOverlay" role="alert" aria-live="assertive">Paused</div>
   </div>
 </main>
 <script>
-(() => {
-  /* --------------------------------------------------
-     DOM ELEMENTS
-  --------------------------------------------------*/
-  const gameContainer = document.getElementById('game-container');
-  const bird           = document.getElementById('bird');
-  const scoreEl        = document.getElementById('score');
-  const lastScoreEl    = document.getElementById('lastScore');
-  const highScoreEl    = document.getElementById('highscore');
-  const pauseOverlay   = document.getElementById('pauseOverlay');
-  const pauseResumeBtn = document.getElementById('pauseResumeBtn');
+(()=>{"use strict";
+/* DOM */
+const gameContainer=document.getElementById('game-container'),bird=document.getElementById('bird'),scoreEl=document.getElementById('score'),lastScoreEl=document.getElementById('lastScore'),highScoreEl=document.getElementById('highscore'),pauseOverlay=document.getElementById('pauseOverlay'),pauseResumeBtn=document.getElementById('pauseResumeBtn');
+/* CONST */
+const pipeColors=['#FF0000','#FF4500','#FF6347','#FF7F50','#FF8C00','#FFA500','#FFD700','#FFFF00','#FFFFE0','#ADFF2F','#7FFF00','#32CD32','#008000','#006400','#00FA9A','#00FF7F','#40E0D0','#48D1CC','#00CED1','#00BFFF','#1E90FF','#4169E1','#0000FF','#00008B','#8A2BE2','#9400D3','#9932CC','#BA55D3','#C71585','#FF00FF','#FF69B4','#FF1493','#DB7093','#FFC0CB'];
+const GRAVITY_BASE=.35,FLAP_BASE=-5.5,SPEED_BASE=1.5,GAP_BASE=180,PIPE_WIDTH=50,INTERVAL_BASE=2400;
+/* AUDIO */
+const load=s=>{const a=new Audio(s);a.preload='auto';a.load();return a};
+const sPress=load('https://actions.google.com/sounds/v1/cartoon/hitting_a_woodblock.ogg'),sFlap=load('https://actions.google.com/sounds/v1/animals/bird_flapping_wings.ogg'),sScore=load('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg'),sDeath=load('https://actions.google.com/sounds/v1/cartoon/metal_clank.ogg'),sRecord=load('https://actions.google.com/sounds/v1/cartoon/jingle_bells.ogg');
+const play=a=>{a.currentTime=0;a.play().catch(()=>{})},stopAll=()=>[sPress,sFlap,sScore,sDeath,sRecord].forEach(a=>{a.pause();a.currentTime=0});
+/* STATE */
+let gravity,flapStrength,pipeSpeed,pipeGap,pipeInterval;let birdY,birdVy;let score=0,lastScore=0,highScore=0;let pipes=[],running=false,pipeTimer=null;let t0=0;
+/* SIZE */
+const gW=()=>Math.min(480,window.innerWidth*.9),gH=()=>gW()*4/3,setSize=()=>{gameContainer.style.width=`${gW()}px`;gameContainer.style.height=`${gH()}px`};
+/* PIPES */
+function createPipe(){const gapTop=Math.random()*(gameContainer.clientHeight-pipeGap-80)+40;const t=document.createElement('div'),b=document.createElement('div');const c=pipeColors[Math.random()*pipeColors.length|0];[t,b].forEach(p=>{p.className='pipe';p.style.width=`${PIPE_WIDTH}px`;p.style.left=`${gameContainer.clientWidth}px`;p.style.background=c});t.style.cssText+=`top:0;height:${gapTop}px`;b.style.cssText+=`top:${gapTop+pipeGap}px;height:${gameContainer.clientHeight-gapTop-pipeGap}px`;gameContainer.append(t,b);pipes.push({top:t,bottom:b,x:gameContainer.clientWidth,passed:false})}
+function updatePipes(){for(let i=pipes.length-1;i>=0;i--){const p=pipes[i];p.x-=pipeSpeed;p.top.style.left=p.bottom.style.left=`${p.x}px`;if(!p.passed&&p.x+PIPE_WIDTH<bird.offsetLeft){scoreEl.textContent=++score;play(sScore);p.passed=true;if(score%5===0){pipeSpeed+=.15;pipeGap=Math.max(110,pipeGap-5);pipeInterval=Math.max(1200,pipeInterval-100);clearInterval(pipeTimer);pipeTimer=setInterval(createPipe,pipeInterval)}}if(p.x+PIPE_WIDTH<0){gameContainer.removeChild(p.top);gameContainer.removeChild(p.bottom);pipes.splice(i,1)}}}
+const hitPipe=()=>{const r=bird.getBoundingClientRect();if(birdY<0||birdY+bird.clientHeight>gameContainer.clientHeight)return true;return pipes.some(p=>{const r1=p.top.getBoundingClientRect(),r2=p.bottom.getBoundingClientRect();return r.right>r1.left&&r.left<r1.right&&(r.top<r1.bottom||r.bottom>r2.top)})};
+/* CONTROL */
+function reset(){stopAll();t0=performance.now();if(window.__MCC_SCOREKIT__)window.__MCC_SCOREKIT__.ENSURE_NAME();birdY=gameContainer.clientHeight/2;birdVy=0;lastScore=score;lastScoreEl.textContent=lastScore;score=0;scoreEl.textContent='0';pipeSpeed=SPEED_BASE;pipeGap=GAP_BASE;pipeInterval=INTERVAL_BASE;pipes.forEach(p=>{gameContainer.removeChild(p.top);gameContainer.removeChild(p.bottom)});pipes=[];clearInterval(pipeTimer);pipeTimer=setInterval(createPipe,pipeInterval);running=true;pauseOverlay.style.display='none';pauseResumeBtn.disabled=false;pauseResumeBtn.innerHTML='<i class="fa-solid fa-pause"></i> Pause';loop()}
+function gameOver(){running=false;stopAll();if(window.__MCC_SCOREKIT__){const ms=performance.now()-t0;window.__MCC_SCOREKIT__.SEND_SCORE(score,ms)}if(score>highScore){highScore=score;highScoreEl.textContent=highScore;play(sRecord)}else play(sDeath);pauseOverlay.textContent=`Game Over! Score: ${score}`;pauseOverlay.style.display='flex';pauseResumeBtn.disabled=true;showPrompt()}
+function showPrompt(){const m=document.createElement('div');m.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.85);color:#fff;padding:1.5rem 2rem;border-radius:12px;z-index:1000;text-align:center;user-select:none;';m.innerHTML=`<p style="margin-bottom:1rem;">Game Over! Score: ${score}</p><button class="btn btn-primary btn-lg" style="min-width:100px;">OK</button>`;const btn=m.querySelector('button');btn.onclick=()=>{document.body.removeChild(m);reset()};document.body.appendChild(m);const h=e=>{if(e.type==='click'||(e.type==='keydown'&&(e.code==='Space'||e.key==='Enter'))){e.preventDefault();btn.click()}};document.addEventListener('keydown',h);m.addEventListener('click',h);btn.addEventListener('click',()=>{document.removeEventListener('keydown',h);m.removeEventListener('click',h)})}
+function loop(){if(!running)return;birdVy+=gravity;birdY=Math.max(0,Math.min(birdY+birdVy,gameContainer.clientHeight-bird.clientHeight));bird.style.top=`${birdY}px`;updatePipes();if(hitPipe())return gameOver();requestAnimationFrame(loop)}
+const flap=()=>{birdVy=flapStrength;bird.style.transform='translateY(-50%) rotate(-25deg)';setTimeout(()=>bird.style.transform='translateY(-50%) rotate(0deg)',150);play(sFlap)};
+/* EVENTS */
+pauseResumeBtn.addEventListener('click',()=>{play(sPress);if(running){running=false;clearInterval(pipeTimer);pauseOverlay.textContent='Paused';pauseOverlay.style.display='flex';pauseResumeBtn.innerHTML='<i class="fa-solid fa-play"></i> Resume';pauseResumeBtn.setAttribute('aria-label','Resume game')}else{running=true;pipeTimer=setInterval(createPipe,pipeInterval);pauseOverlay.style.display='none';pauseResumeBtn.innerHTML='<i class="fa-solid fa-pause"></i> Pause';pauseResumeBtn.setAttribute('aria-label','Pause game');loop()}});
+window.addEventListener('keydown',e=>{if((e.code==='Space'||e.code==='ArrowUp')&&running){e.preventDefault();flap()}else if((e.code==='Space'||e.code==='Enter')&&!running){e.preventDefault();const ok=document.querySelector('.btn.btn-primary');if(ok)ok.click()}});
+gameContainer.addEventListener('click',()=>{running?flap():(!pauseResumeBtn.disabled&&pauseResumeBtn.innerText.includes('Resume'))&&pauseResumeBtn.click()});
+window.addEventListener('resize',setSize);
+/* INIT */
+setSize();gravity=GRAVITY_BASE*(gameContainer.clientHeight/480);flapStrength=FLAP_BASE*(gameContainer.clientHeight/480);pipeSpeed=SPEED_BASE*(gameContainer.clientWidth/320);pipeGap=GAP_BASE*(gameContainer.clientHeight/480);pipeInterval=INTERVAL_BASE;reset();
+})();
+</script> 
 
-  /* --------------------------------------------------
-     CONSTANTS
-  --------------------------------------------------*/
-  const pipeColors=[
-    '#FF0000','#FF4500','#FF6347','#FF7F50','#FF8C00','#FFA500','#FFD700','#FFFF00','#FFFFE0','#ADFF2F','#7FFF00','#32CD32','#008000','#006400','#00FA9A','#00FF7F','#40E0D0','#48D1CC','#00CED1','#00BFFF','#1E90FF','#4169E1','#0000FF','#00008B','#8A2BE2','#9400D3','#9932CC','#BA55D3','#C71585','#FF00FF','#FF69B4','#FF1493','#DB7093','#FFC0CB'];
-  const GRAVITY_BASE = 0.35,
-        FLAP_BASE    = -5.5,
-        SPEED_BASE   = 1.5,
-        GAP_BASE     = 180,
-        PIPE_WIDTH   = 50,
-        INTERVAL_BASE= 2400;
+<!-- Supabase core + config (load before ScoreKit) --> 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script> 
+<script id="sb" type="application/json">{"u":"https://fvaahtqjusfniadwvoyw.supabase.co","k":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8"}</script> 
 
-  /* --------------------------------------------------
-     AUDIO (pre‑loaded & helper)
-  --------------------------------------------------*/
-  const load = src => {const a=new Audio(src);a.preload='auto';a.load();return a;};
-  const sPress  = load('https://actions.google.com/sounds/v1/cartoon/hitting_a_woodblock.ogg');
-  const sFlap   = load('https://actions.google.com/sounds/v1/animals/bird_flapping_wings.ogg');
-  const sScore  = load('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg');
-  const sDeath  = load('https://actions.google.com/sounds/v1/cartoon/metal_clank.ogg');
-  const sRecord = load('https://actions.google.com/sounds/v1/cartoon/jingle_bells.ogg');
-  const play    = snd=>{snd.currentTime=0; snd.play().catch(()=>{});} ;
-  const stopAll = () => [sPress,sFlap,sScore,sDeath,sRecord].forEach(a=>{a.pause();a.currentTime=0;});
-
-  /* --------------------------------------------------
-     GAME STATE
-  --------------------------------------------------*/
-  let gravity, flapStrength, pipeSpeed, pipeGap, pipeInterval;
-  let birdY, birdVy;
-  let score=0, lastScore=0, highScore=0;
-  let pipes=[], running=false, pipeTimer=null;
-
-  /* --------------------------------------------------
-     SIZE HELPERS (responsive)
-  --------------------------------------------------*/
-  const gW = () => Math.min(480, window.innerWidth*0.9);
-  const gH = () => gW()*4/3;
-  const setSize = () => {
-    gameContainer.style.width  = `${gW()}px`;
-    gameContainer.style.height = `${gH()}px`;
-  };
-
-  /* --------------------------------------------------
-     PIPE MANAGEMENT
-  --------------------------------------------------*/
-  function createPipe(){
-    const gapTop = Math.random()*(gameContainer.clientHeight-pipeGap-80)+40;
-    const t=document.createElement('div'), b=document.createElement('div');
-    const c = pipeColors[Math.random()*pipeColors.length|0];
-    [t,b].forEach(p=>{p.className='pipe';p.style.width=`${PIPE_WIDTH}px`;p.style.left=`${gameContainer.clientWidth}px`;p.style.background=c;});
-    t.style.cssText += `top:0;height:${gapTop}px`;
-    b.style.cssText += `top:${gapTop+pipeGap}px;height:${gameContainer.clientHeight-gapTop-pipeGap}px`;
-    gameContainer.append(t,b);
-    pipes.push({top:t,bottom:b,x:gameContainer.clientWidth,passed:false});
-  }
-
-  function updatePipes(){
-    for(let i=pipes.length-1;i>=0;i--){
-      const p=pipes[i]; p.x-=pipeSpeed;
-      p.top.style.left = p.bottom.style.left = `${p.x}px`;
-      if(!p.passed && p.x+PIPE_WIDTH<bird.offsetLeft){
-        scoreEl.textContent = ++score; play(sScore); p.passed=true;
-        if(score%5===0){
-          pipeSpeed+=0.15; pipeGap=Math.max(110,pipeGap-5); pipeInterval=Math.max(1200,pipeInterval-100);
-          clearInterval(pipeTimer); pipeTimer=setInterval(createPipe,pipeInterval);
-        }
-      }
-      if(p.x+PIPE_WIDTH<0){
-        gameContainer.removeChild(p.top); gameContainer.removeChild(p.bottom); pipes.splice(i,1);
-      }
-    }
-  }
-
-  const hitPipe = () => {
-    const r = bird.getBoundingClientRect();
-    if(birdY<0 || birdY+bird.clientHeight>gameContainer.clientHeight) return true;
-    return pipes.some(p=>{
-      const r1=p.top.getBoundingClientRect(), r2=p.bottom.getBoundingClientRect();
-      return r.right>r1.left && r.left<r1.right && (r.top<r1.bottom || r.bottom>r2.top);
-    });
-  };
-
-  /* --------------------------------------------------
-     GAME CONTROL
-  --------------------------------------------------*/
-  function reset(){
-    stopAll();
-    birdY = gameContainer.clientHeight/2; birdVy=0;
-    lastScore=score; lastScoreEl.textContent=lastScore; score=0; scoreEl.textContent='0';
-    pipeSpeed=SPEED_BASE; pipeGap=GAP_BASE; pipeInterval=INTERVAL_BASE;
-    pipes.forEach(p=>{gameContainer.removeChild(p.top);gameContainer.removeChild(p.bottom);}); pipes=[];
-    clearInterval(pipeTimer); pipeTimer=setInterval(createPipe,pipeInterval);
-    running=true; pauseOverlay.style.display='none'; pauseResumeBtn.disabled=false; pauseResumeBtn.innerHTML='<i class="fa-solid fa-pause"></i> Pause';
-    loop();
-  }
-
-  function gameOver(){
-    running=false; stopAll();
-    if(score>highScore){ highScore=score; highScoreEl.textContent=highScore; play(sRecord);} else play(sDeath);
-    pauseOverlay.textContent=`Game Over! Score: ${score}`; pauseOverlay.style.display='flex'; pauseResumeBtn.disabled=true;
-    showPrompt();
-  }
-
-  function showPrompt(){
-    const m=document.createElement('div');
-    m.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.85);color:#fff;padding:1.5rem 2rem;border-radius:12px;z-index:1000;text-align:center;user-select:none;';
-    m.innerHTML=`<p style="margin-bottom:1rem;">Game Over! Score: ${score}</p><button class="btn btn-primary btn-lg" style="min-width:100px;">OK</button>`;
-    const btn=m.querySelector('button');
-    btn.onclick=()=>{document.body.removeChild(m); reset();};
-    document.body.appendChild(m);
-    const h=e=>{if(e.type==='click'||(e.type==='keydown'&&(e.code==='Space'||e.key==='Enter'))){e.preventDefault();btn.click();}};
-    document.addEventListener('keydown',h); m.addEventListener('click',h);
-    btn.addEventListener('click',()=>{document.removeEventListener('keydown',h);m.removeEventListener('click',h);});
-  }
-
-  function loop(){
-    if(!running) return;
-    birdVy+=gravity; birdY=Math.max(0,Math.min(birdY+birdVy,gameContainer.clientHeight-bird.clientHeight)); bird.style.top=`${birdY}px`;
-    updatePipes(); if(hitPipe()) return gameOver(); requestAnimationFrame(loop);
-  }
-
-  const flap = () => { birdVy=flapStrength; bird.style.transform='translateY(-50%) rotate(-25deg)'; setTimeout(()=>bird.style.transform='translateY(-50%) rotate(0deg)',150); play(sFlap); };
-
-  /* --------------------------------------------------
-     EVENT BINDINGS
-  --------------------------------------------------*/
-  pauseResumeBtn.addEventListener('click',()=>{
-    play(sPress);
-    if(running){
-      running=false; clearInterval(pipeTimer);
-      pauseOverlay.textContent='Paused'; pauseOverlay.style.display='flex';
-      pauseResumeBtn.innerHTML='<i class="fa-solid fa-play"></i> Resume'; pauseResumeBtn.setAttribute('aria-label','Resume game');
-    }else{
-      running=true; pipeTimer=setInterval(createPipe,pipeInterval);
-      pauseOverlay.style.display='none'; pauseResumeBtn.innerHTML='<i class="fa-solid fa-pause"></i> Pause'; pauseResumeBtn.setAttribute('aria-label','Pause game');
-      loop();
-    }
-  });
-
-  window.addEventListener('keydown',e=>{
-    if((e.code==='Space'||e.code==='ArrowUp')&&running){ e.preventDefault(); flap(); }
-    else if((e.code==='Space'||e.code==='Enter')&&!running){ e.preventDefault(); const ok=document.querySelector('.btn.btn-primary'); if(ok) ok.click(); }
-  });
-
-  gameContainer.addEventListener('click',()=>{ running?flap():(!pauseResumeBtn.disabled&&pauseResumeBtn.innerText.includes('Resume'))&&pauseResumeBtn.click(); });
-  window.addEventListener('resize',setSize);
-
-  /* --------------------------------------------------
-     INITIALISE
-  --------------------------------------------------*/
-  setSize();
-  gravity      = GRAVITY_BASE * (gameContainer.clientHeight/480);
-  flapStrength = FLAP_BASE    * (gameContainer.clientHeight/480);
-  pipeSpeed    = SPEED_BASE   * (gameContainer.clientWidth /320);
-  pipeGap      = GAP_BASE     * (gameContainer.clientHeight/480);
-  pipeInterval = INTERVAL_BASE;
-  reset();
+<!-- ScoreKit (single instance) --> 
+<script>
+(()=>{"use strict";
+const S=(()=>{try{return JSON.parse(document.getElementById("sb").textContent)}catch(_){return{}}})();
+const C=window.supabase?.createClient(S.u,S.k);
+const fmt=h=>{const d=new Date(h);return d.toLocaleDateString(void 0,{month:"short",day:"2-digit"})+" "+d.toLocaleTimeString(void 0,{hour:"2-digit",minute:"2-digit"})};
+const piName=()=>{try{const o=JSON.parse(sessionStorage.getItem("userData")||"{}");return (o?.pi?.n||"").toString().trim()||null}catch(_){return null}};
+async function LB(){const m=document.getElementById("lb");if(!m||!C)return;try{
+  const {data,error}=await C.from("game_scores")
+    .select("best_score,best_at,user_id,profiles:profiles!inner(display_name)")
+    .order("best_score",{ascending:!1}).order("best_at",{ascending:!0}).limit(20);
+  if(error) throw error;
+  const u=await C.auth.getUser(),uid=u.data.user?.id;
+  const rows=(data||[]).map((r,i)=>({i:i+1,n:r.profiles?.display_name||"Player",s:r.best_score,d:r.best_at,u:r.user_id}));
+  const me=rows.find(x=>x.u===uid);
+  const html=['<div class="card shadow-sm"><div class="card-body p-2"><div class="d-flex justify-content-between align-items-center mb-1"><strong>Top Scores</strong><small class="text-muted">updated now</small></div><div class="table-responsive"><table class="table table-sm mb-0"><thead><tr><th>#</th><th>Name</th><th class="text-end">Score</th><th>Date</th></tr></thead><tbody>'];
+  rows.forEach(r=>html.push(`<tr ${me&&r.u===me.u?'class="table-primary"':''}><td>${r.i}</td><td>${r.n}</td><td class="text-end">${r.s}</td><td>${fmt(r.d)}</td></tr>`));
+  if(rows.length===0) html.push('<tr><td colspan="4" class="text-center text-muted">No scores yet</td></tr>');
+  html.push("</tbody></table></div></div></div>");
+  m.innerHTML=html.join("");
+}catch(e){console.warn("LB err",e)}}
+async function ENSURE_NAME(){if(!C)return;const u=await C.auth.getUser();if(!u.data.user)return;
+  const stor=piName();
+  const n=(stor||u.data.user.user_metadata?.full_name||u.data.user.email||"Player").slice(0,60);
+  try{await C.rpc("ensure_profile",{p_name:n})}catch(e){console.warn("ensure_profile",e)}
+}
+async function SEND_SCORE(sc,ms){if(!C)return;const u=await C.auth.getUser();if(!u.data.user)return;
+  await ENSURE_NAME();
+  try{await C.rpc("record_score",{p_score:sc,p_ms:Math.max(0,ms|0),p_ua:navigator.userAgent.slice(0,256)})}catch(e){console.warn("record_score",e)}
+  await LB();
+}
+window.__MCC_SCOREKIT__={LB,ENSURE_NAME,SEND_SCORE,WHOAMI:async()=> (await C.auth.getUser()).data.user,NAME:piName};
+document.readyState!=="loading"?LB():document.addEventListener("DOMContentLoaded",LB);
 })();
 </script>
+<!-- Industry Partners -->
+{% include industry-partner.html %}
+
