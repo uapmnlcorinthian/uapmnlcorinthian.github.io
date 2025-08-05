@@ -22,7 +22,7 @@
   visible: false
 - title: Industry Partners
   url: /industry-partners/
-  visible: true
+  visible: false
 - title: FAQs
   url: /faqs/
   visible: true
