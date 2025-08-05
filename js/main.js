@@ -161,11 +161,19 @@ function initAccount() {
     badge.className   = 'badge ' + (active ? 'bg-success' : 'bg-danger');
   }
 
-  ['prcLicense','email','contactNo'].forEach(id => {
-    const el = $('#'+id); if (!el) return;
-    const val = id==='email' ? mailMask(pi.e) : mask(pi[id.slice(0,-2)]);
-    el.textContent = val;
-    el.dataset.real  = pi[id.slice(0,-2)]||'';
+  // correctly map element IDs to pi properties
+  const fieldMap = {
+    prcLicense: 'prc',    // pi.prc contains the PRC License
+    email:      'e',      // pi.e    contains the email
+    contactNo:  'c'       // pi.c    contains the contact number
+  };
+  Object.entries(fieldMap).forEach(([elId, piKey]) => {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    const real   = pi[piKey] || '';
+    const shown  = elId === 'email' ? mailMask(real) : mask(real);
+    el.textContent   = shown;
+    el.dataset.real  = real;
     el.dataset.shown = '0';
   });
   $$('.toggle-sensitive-btn').forEach(btn => {
@@ -236,6 +244,9 @@ function initUpdateForm() {
   f.dataset.init='1';
   const fb  = $('#updateFeedback');
   const btn = f.querySelector('button[type=submit]');
+  const needRules=[ '.{8,}','[a-z]','[A-Z]','\\d','[^A-Za-z0-9]' ];
+  const checkMissing=s=>needRules.filter(r=>!new RegExp(r).test(s)).length;
+	
   let u = JSON.parse(sessionStorage.getItem('userData')||'null');
   if (!u?.ok) {
     const stored=JSON.parse(localStorage.getItem('userData')||'null');
@@ -281,8 +292,8 @@ function initUpdateForm() {
     const barWrap=document.createElement('div'); barWrap.className='progress mt-1';
     barWrap.innerHTML='<div class="progress-bar" role="progressbar" style="width:0%"></div>';
     wrap.parentElement.append(msg,barWrap);
-    const needRules=[ '.{8,}','[a-z]','[A-Z]','\\d','[^A-Za-z0-9]' ];
-    const checkMissing=s=>needRules.filter(r=>!new RegExp(r).test(s)).length;
+
+
     pw.addEventListener('input',()=>{
       const s=pw.value; const miss=checkMissing(s);
       const pct=((5-miss)/5)*100; const bar=barWrap.querySelector('.progress-bar');
@@ -301,6 +312,34 @@ function initUpdateForm() {
     });
   }
 
+  // ————————————————————————————————————————————————
+  // Live username validation (lowercase letters & digits, ≥6 chars)
+  const unameInput    = f.querySelector('#username');
+  const unameFeedback = document.createElement('div');
+  unameFeedback.className = 'form-text text-danger small mt-1';
+  unameInput.after(unameFeedback);
+
+  const usernameRegex = /^[a-z0-9]{6,}$/;
+
+  unameInput.addEventListener('input', () => {
+    const u = unameInput.value.trim();
+    if (!u) {
+      // blank = user opts not to change username
+      unameFeedback.textContent = '';
+      btn.disabled = false;
+      return;
+    }
+    if (!usernameRegex.test(u)) {
+      unameFeedback.textContent =
+        'Username must be at least 6 characters, lowercase letters & numbers only.';
+      btn.disabled = true;
+    } else {
+      unameFeedback.textContent = '';
+      btn.disabled = false;
+    }
+  });
+  // ————————————————————————————————————————————————
+
   const MAX=2;
   const limitKey='updateLimit-'+u.row;
   const quotaEl=document.createElement('div');
@@ -318,6 +357,7 @@ function initUpdateForm() {
   };
   refreshQuota();
 
+
   f.addEventListener('submit', async e=>{
     e.preventDefault(); fb.textContent=''; btn.disabled=true;
     try {
@@ -333,10 +373,22 @@ function initUpdateForm() {
       ['username','email','contact','company','position'].forEach(field=>{
         const val=f[field].value.trim(); if(val) p[field==='contact'?'contact_no':field]=field==='username'?val.toLowerCase():val;
       });
+		
+		  const newU = f.username.value.trim();
+		  if (newU && !usernameRegex.test(newU)) {
+		    fb.textContent =
+		      'Cannot update: Username must be ≥6 chars, lowercase letters & numbers only.';
+		    btn.disabled = false;
+		    return;
+		  }
+
       if(np) p.new_pass=np;
       if(!Object.keys(p).length){ fb.textContent='Nothing to update.'; btn.disabled=false; return; }
       const args={ p_row_id:id, p_current_pass:cur, p_username:p.username||null, p_email:p.email||null, p_contact_no:p.contact_no||null, p_company:p.company||null, p_position:p.position||null, p_new_pass:p.new_pass||null };
-      const { data: updated, error: rpcErr }=await sb.rpc('update_member_profile', args);
+      const res = await sb.rpc('update_member_profile', args);
+      console.log('🔍 update_member_profile RPC response:', res);
+      const { data: updated, error: rpcErr } = res;
+
       if(rpcErr){ fb.textContent=rpcErr.message||'Update failed.'; btn.disabled=false; return; }
       if(!updated?.length){ fb.textContent='No changes were applied.'; btn.disabled=false; return; }
       lim.count++; localStorage.setItem(limitKey, JSON.stringify(lim)); refreshQuota();
