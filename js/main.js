@@ -2,7 +2,7 @@
 //  main.js (refactored)
 // ─────────────────────────────────────────────────────────────────────────────
 
-/* === Supabase loader (ESM → UMD fallback) === */
+// === Supabase loader (ESM → UMD fallback) === */
 (() => {
   const URL = 'https://fvaahtqjusfniadwvoyw.supabase.co';
   const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8';
@@ -31,7 +31,7 @@
   };
 })();
 
-/* === Helpers === */
+// === Helpers === */
 const $   = s => document.querySelector(s);
 const $$  = s => Array.from(document.querySelectorAll(s));
 const mask      = v => v ? '***' + String(v).slice(-4) : '*no data*';
@@ -55,7 +55,7 @@ async function getPaymentColumns(sb, tbl='xxsr_001') {
     .filter(n => /(chapter_|iapoa_).+_\d{4}$/.test(n));
 }
 
-/* === initLogin === */
+// === initLogin === */
 async function initLogin() {
   const f = $('#loginForm'); if (!f) return;
   const btn    = f.querySelector('button[type=submit]');
@@ -136,7 +136,7 @@ async function initLogin() {
   });
 }
 
-/* === initAccount === */
+// === initAccount === */
 function initAccount() {
   // Skip guard on login page
   if (location.pathname === '/membership/') return;
@@ -162,19 +162,23 @@ function initAccount() {
   }
 
   // correctly map element IDs to pi properties
-  const fieldMap = {
-    prcLicense: 'prc',    // pi.prc contains the PRC License
-    email:      'e',      // pi.e    contains the email
-    contactNo:  'c'       // pi.c    contains the contact number
-  };
+const fieldMap = {
+  prcLicense:    'prc',
+  email:         'e',
+  contactNo:     'c',
+  cardCompany:   'co',
+  cardPosition:  'po'
+};
   Object.entries(fieldMap).forEach(([elId, piKey]) => {
     const el = document.getElementById(elId);
     if (!el) return;
-    const real   = pi[piKey] || '';
-    const shown  = elId === 'email' ? mailMask(real) : mask(real);
-    el.textContent   = shown;
-    el.dataset.real  = real;
-    el.dataset.shown = '0';
+    let real = pi[piKey] || '';
+	if (elId === 'contactNo') {
+	  real = '0' + String(real).replace(/^0+/, '');
+	}
+	el.textContent   = real;
+	el.dataset.real  = real;
+	el.dataset.shown = '1';
   });
   $$('.toggle-sensitive-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -238,7 +242,7 @@ function initAccount() {
   ], 'tbody.group-iapoa');
 }
 
-/* === initUpdateForm === */
+// === initUpdateForm === */
 function initUpdateForm() {
   const f  = $('#updateInfoForm'); if (!f||f.dataset.init==='1') return;
   f.dataset.init='1';
@@ -263,7 +267,7 @@ function initUpdateForm() {
       if (d) {
         f.username.value = d.username||'';
         f.email.value    = d.email   ||u.pi.e||'';
-        f.contact.value  = d.contact_no||u.pi.c||'';
+        f.contact.value = ('0' + (data.contact_no || u.pi.c || '').replace(/^0+/, ''));
         f.company.value  = d.company ||u.pi.co||'';
         f.position.value = d.position||u.pi.po||'';
       }
@@ -398,7 +402,7 @@ function initUpdateForm() {
   });
 }
 
-/* === initMiscUI === */
+// === initMiscUI === */
 function initMiscUI() {
   const btnTop=$('#btnTop');
   window.addEventListener('scroll',()=>{
@@ -422,7 +426,7 @@ function initMiscUI() {
   }); }
 }
 
-/* === initAOS & deep-link === */
+// === initAOS & deep-link === */
 function initAOSandDeepLink() {
   if(window.AOS) AOS.init({ duration:800, offset:120, once:true });
   const targets=['/account/','/another-page/'];
@@ -434,7 +438,7 @@ function initAOSandDeepLink() {
   }
 }
 
-/* === EVENT CAROUSEL === */
+// === EVENT CAROUSEL === */
 function initEventCarousel() {
   const track=$('#event-scroller-track'); if(!track) return;
   let paused=false; const speed=1;
