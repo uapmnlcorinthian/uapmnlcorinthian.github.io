@@ -14,59 +14,79 @@ sitemap: true
 <section class="container p-2" data-aos="fade-up" data-aos-duration="700">
   <article class="card shadow-sm">
     <div class="card-body p-2 p-md-2">
-      <!-- Header: Portrait + Title -->
-      <div class="row g-4 align-items-center mb-3">
-        <div class="col-6 col-sm-5 col-md-5">
-          <!-- President portrait (Liquid) -->
-          <img src="{{ site.data.images.pres }}" alt="Portrait of Ar. Karl Vincent Santos" class="img-fluid rounded-4 border animate__animated animate__fadeIn">
+      <div class="row g-4 align-items-start">
+        <!-- LEFT (lg+): Portrait | TOP (sm/md) -->
+        <div class="col-12 col-lg-4 text-center text-lg-start">
+          <img src="{{ site.data.images.pres }}" alt="Portrait of Ar. Karl Vincent Santos"
+               class="img-fluid rounded-4 border d-block mx-auto mx-lg-0 animate__animated animate__fadeIn">
         </div>
-        <div class="col">
-          <h1 class="h3 mb-1">A Message from the Chapter President</h1>
-          <p class="mb-0 fw-semibold">Ar. Karl Vincent Santos, uap, rmp, mmep, earoph</p>
+
+        <!-- RIGHT: Title + Full Message + Signature -->
+        <div class="col-12 col-lg-8">
+          <!-- Title -->
+          <div class="mb-3">
+            <h1 class="h3 mb-1">A Message from the Chapter President</h1>
+            <p class="mb-0 fw-semibold">Ar. Karl Vincent Santos, uap, rmp, mmep, earoph</p>
+          </div>
+
+          <!-- Body (verbatim text with emphasis) -->
+          <p><em>My dear Corinthian Family,</em></p>
+
+          <p>Every chapter of our journey as architects tells a story. For the UAP Manila Corinthian Chapter, this year begins a new one — a story of <strong>connection, empowerment, and shared purpose</strong>.</p>
+
+          <p>When I first envisioned this <em>digital home</em>, I imagined a space where every Corinthian feels seen, heard, and inspired. A place where our collective energy and passion could come alive — not just during our meetings and events, but every day, in every interaction, online and beyond.</p>
+
+          <p>I also foresaw this platform as a way to make our chapter life easier and more sustainable — streamlining our <strong>membership drive</strong>, <strong>renewal processes</strong>, and our usual chapter transactions. By making these services more convenient for every member and less tedious for the people behind them, we are building a system that allows us to focus more on what truly matters: <strong>connection, service, and growth</strong>.</p>
+
+          <p>Our journey this year revolves around three powerful movements — our flagship programs that reflect who we are and what we aspire to become:</p>
+
+          <p><strong>First, there is UPLINK</strong>.– <em>UAP Integration and Alignment Program</em><br>
+          <strong>UPLINK</strong> is our lifeline — our commitment to stay connected with UAP National, to amplify our presence in the profession, and to strengthen the bonds that make us a true Corinthian family.</p>
+
+          <p><strong>Then comes ACTIVATE</strong>. – <em>Active Lifestyle and CSR Program</em><br>
+          I believe that a thriving chapter is a chapter that moves — together. <strong>ACTIVATE</strong> is our call to live actively, give generously, and engage wholeheartedly. From wellness and sports to community and social responsibility programs, it is our reminder that the heart of a Corinthian beats not just for architecture, but also for life and for others.</p>
+
+          <p><strong>And finally, PURSUIT</strong>.  – <em>Professional Development Program</em><br>
+          As architects, we are lifelong learners. <strong>PURSUIT</strong> is our promise to ourselves — to grow, to specialize, and to stay future-ready. Through seminars, trainings, and certifications, we are equipping every Corinthian to rise above challenges, embrace opportunities, and stand tall as proud professionals in a rapidly changing world.</p>
+
+          <p>This website is more than a tool — it is the living page of our story. Here, you can renew your membership with ease, discover programs that reflect your values, join initiatives that strengthen our chapter, and celebrate milestones with fellow members who share your passion. Most of all, it is a space where the <strong>Corinthian spirit</strong> thrives — a spirit of <strong>unity, service, and excellence</strong>.</p>
+
+          <p>As we embark on this new chapter, I invite you to <strong>UPLINK</strong>, <strong>ACTIVATE</strong>, and <strong>PURSUE</strong> with us. Together, let’s continue to grow, to serve, and to live out the Corinthian spirit with pride.</p>
+
+          <p><em>Welcome to our digital home. Welcome to our shared story.</em></p>
+
+          <p><em>Welcome home, my Corinthian family.</em></p>
+          <br><br>
+
+          <!-- Signature block with overlayed signature (percent-based translate) -->
+          <div class="mt-4 position-relative">
+            <!-- Mobile/Tablet: tweak translate for smaller screens -->
+            <img src="https://asset.manilacorinthianchapter.workers.dev/sgkpvs.png"
+                 alt="Signature of Ar. Karl Vincent Santos"
+                 class="d-lg-none position-absolute z-3 img-fluid w-25 pe-none animate__animated animate__fadeIn"
+                 style="left:10%; top:20%; transform:translate(-25%,-95%);">
+
+            <!-- Desktop+: separate transform for precise desktop positioning -->
+            <img src="https://asset.manilacorinthianchapter.workers.dev/sgkpvs.png"
+                 alt="Signature of Ar. Karl Vincent Santos"
+                 class="d-none d-lg-block position-absolute z-3 img-fluid w-50 pe-none animate__animated animate__fadeIn"
+                 style="left:25%; top:10%; transform:translate(-55%,-80%);">
+
+            <!-- Underlying text (signature overlays this) -->
+            <hr class="w-50 my-2">
+            <p class="mb-1">With pride and gratitude,</p>
+            <p class="mb-0"><strong>Ar. Karl Vincent Santos, uap, rmp, mmep, earoph</strong><br>
+              Chapter President, FY 2025–2026<br>
+              UAP Manila Corinthian Chapter
+            </p>
+          </div>
         </div>
-      </div>
-
-      <!-- Body (verbatim text, with emphasis) -->
-      <p><em>My dear Corinthian Family,</em></p>
-
-      <p>Every chapter of our journey as architects tells a story. For the UAP Manila Corinthian Chapter, this year begins a new one — a story of <strong>connection, empowerment, and shared purpose</strong>.</p>
-
-      <p>When I first envisioned this <em>digital home</em>, I imagined a space where every Corinthian feels seen, heard, and inspired. A place where our collective energy and passion could come alive — not just during our meetings and events, but every day, in every interaction, online and beyond.</p>
-
-      <p>I also foresaw this platform as a way to make our chapter life easier and more sustainable — streamlining our <strong>membership drive</strong>, <strong>renewal processes</strong>, and our usual chapter transactions. By making these services more convenient for every member and less tedious for the people behind them, we are building a system that allows us to focus more on what truly matters: <strong>connection, service, and growth</strong>.</p>
-
-      <p>Our journey this year revolves around three powerful movements — our flagship programs that reflect who we are and what we aspire to become:</p>
-
-      <p><strong>First, there is UPLINK</strong>.– <em>UAP Integration and Alignment Program</em><br>
-      <strong>UPLINK</strong> is our lifeline — our commitment to stay connected with UAP National, to amplify our presence in the profession, and to strengthen the bonds that make us a true Corinthian family.</p>
-
-      <p><strong>Then comes ACTIVATE</strong>. – <em>Active Lifestyle and CSR Program</em><br>
-      I believe that a thriving chapter is a chapter that moves — together. <strong>ACTIVATE</strong> is our call to live actively, give generously, and engage wholeheartedly. From wellness and sports to community and social responsibility programs, it is our reminder that the heart of a Corinthian beats not just for architecture, but also for life and for others.</p>
-
-      <p><strong>And finally, PURSUIT</strong>.  – <em>Professional Development Program</em><br>
-      As architects, we are lifelong learners. <strong>PURSUIT</strong> is our promise to ourselves — to grow, to specialize, and to stay future-ready. Through seminars, trainings, and certifications, we are equipping every Corinthian to rise above challenges, embrace opportunities, and stand tall as proud professionals in a rapidly changing world.</p>
-
-      <p>This website is more than a tool — it is the living page of our story. Here, you can renew your membership with ease, discover programs that reflect your values, join initiatives that strengthen our chapter, and celebrate milestones with fellow members who share your passion. Most of all, it is a space where the <strong>Corinthian spirit</strong> thrives — a spirit of <strong>unity, service, and excellence</strong>.</p>
-
-      <p>As we embark on this new chapter, I invite you to <strong>UPLINK</strong>, <strong>ACTIVATE</strong>, and <strong>PURSUE</strong> with us. Together, let’s continue to grow, to serve, and to live out the Corinthian spirit with pride.</p>
-
-      <p><em>Welcome to our digital home. Welcome to our shared story.</em></p>
-
-      <p><em>Welcome home, my Corinthian family.</em></p>
-
-      <!-- Signature block -->
-      <div class="mt-4">
-        <!-- Signature placeholder image -->
-        <img src="/assets/images/signature.png" alt="Signature of Ar. Karl Vincent Santos" class="img-fluid mb-2 animate__animated animate__fadeIn">
-        <hr class="w-50 my-2">
-        <p class="mb-1">With pride and gratitude,</p>
-        <p class="mb-0"><strong>Ar. Karl Vincent Santos, uap, rmp, mmep, earoph</strong><br>
-        Chapter President, FY 2025–2026<br>
-        UAP Manila Corinthian Chapter</p>
       </div>
     </div>
   </article>
 </section>
+
+
 
 
 
