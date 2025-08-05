@@ -1,5 +1,6 @@
-# _plugins/gen_events.rb
-require 'yaml'; require 'fileutils'; require 'date'
+require 'yaml'
+require 'fileutils'
+require 'date'
 
 Jekyll.logger.info "gen_events:", "Registering after_reset hook to generate events…"
 
@@ -24,11 +25,17 @@ Jekyll::Hooks.register :site, :after_reset do |site|
   keys = %w[layout title date permalink start_time end_time location cover registration_url map_embed image_gallery]
 
   events.each do |event|
-    slug = event['slug'] || event[:slug]
+    # Skip events explicitly marked false; default (missing) or true will process
+    if event.key?('published') && event['published'] == false
+      next
+    end
+
+    slug = event['slug'] || event[:slug] = event['slug'] || event[:slug]
     next unless slug
+
     file_path = File.join(events_dir, "#{slug}.md")
 
-    # Prepare front-matter values
+    # Prepare front-matter
     date_val = event['event_date']
     date_str = date_val.respond_to?(:strftime) ? date_val.strftime('%Y-%m-%d') : date_val
 
