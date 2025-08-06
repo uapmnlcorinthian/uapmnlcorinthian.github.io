@@ -36,10 +36,10 @@
 - title: Membership
   url: /membership/
   visible: true
-  submenu:
-    - title: Sign In
-      url: /membership/
-      visible: true
-    - title: Sign Up
-      url: /sign-up/
-      visible: true
+  # submenu:
+    # - title: Sign In
+      # url: /membership/
+      # visible: true
+    # - title: Sign Up
+      # url: /sign-up/
+      # visible: true
