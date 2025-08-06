@@ -5,20 +5,76 @@ description: "This page is under construction or cannot be found."
 permalink: /404
 ---
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
-<style>
-#game-container{position:relative;width:90vw;max-width:480px;height:640px;background-image:url('https://asset.manilacorinthianchapter.workers.dev/skyline.svg');background-repeat:repeat-x;background-position:0 bottom;background-size:auto 60%;background-blend-mode:lighten;background-color:rgba(255,255,255,.5);animation:scrollBackground 30s linear infinite;overflow:hidden;border-radius:12px;box-shadow:0 0 20px rgba(0,0,0,.3);user-select:none}
+<style>	
+#game-container {
+  position: relative;
+  width: 90vw;
+  max-width: 480px;
+  aspect-ratio: 3 / 5;
+  max-height: 750px;
+  min-height: 600px;
+  background-image: url('https://asset.manilacorinthianchapter.workers.dev/skyline.svg');
+  background-repeat: repeat-x;
+  background-position: 0 bottom;
+  background-size: auto 60%;
+  background-blend-mode: lighten;
+  background-color: rgba(255,255,255,0.5);
+  animation: scrollBackground 30s linear infinite;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  user-select: none;
+}
+	
+#scoreboard {1rem;
+  max-width: 500px;
+  margin: 0 auto 0.5rem !important;
+  line-height: 1.1;
+}
+
+#lb .card {
+  font-size: 0.75rem !important;
+}
+
+#lb .table-sm tbody tr td:nth-child(2) {
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+}
+
+#lb .table-sm tbody tr:nth-child(5) td:nth-child(2) {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+}
+#lb .table-sm tbody tr:nth-child(4) td:nth-child(2) {
+  font-size: 1.0rem !important;
+  font-weight: 600 !important;
+}
+#lb .table-sm tbody tr:nth-child(3) td:nth-child(2) {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+}
+#lb .table-sm tbody tr:nth-child(2) td:nth-child(2) {
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+}
+#lb .table-sm tbody tr:nth-child(1) td:nth-child(2) {
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+}	
 @keyframes scrollBackground{from{background-position-x:0}to{background-position-x:-1200px}}
 #bird{position:absolute;width:56px;height:56px;top:50%;left:20%;transform:translateY(-50%);user-select:none;pointer-events:none;transition:transform .1s ease;filter:drop-shadow(2px 4px 2px rgba(0,0,0,.4))}
 .pipe{position:absolute;border-radius:5px;user-select:none;border:3px solid #004d00}
 #pauseResumeBtn{min-width:90px}
 #pauseOverlay{position:absolute;inset:0;background:rgba(0,0,0,.35);color:#fff;font-size:3rem;font-weight:700;display:none;align-items:center;justify-content:center;z-index:10;pointer-events:none}
 </style>
+
 <main class="d-flex flex-column justify-content-center align-items-center text-center vh-100 px-3" role="main">
-  <h1 class="display-4 fw-bold mb-2">Oops! Page Not Found</h1>
+  <h2 class="display-4 fw-bold mb-2">You Found our website Secret Game</h2>
   <p class="lead fst-italic text-muted mb-3" style="max-width:480px;font-weight:500">"Just like an architect overcomes design challenges to build lasting structures, every flap through these obstacles is a step toward conquering challenges and reaching new heights."</p>
   <a href="{{ site.baseurl }}/" class="btn btn-primary btn-lg mb-3" aria-label="Go back to homepage">Return Home</a>
-  <div id="scoreboard" class="mb-2" aria-live="polite" aria-atomic="true" role="region" style="font-weight:600;font-size:1.1rem">Last Score: <span id="lastScore">0</span> | Score: <span id="score">0</span> | High Score: <span id="highscore">0</span></div>
-  <div id="lb" class="mb-3" aria-live="polite" style="width:90vw;max-width:480px"></div>
+<div id="lb" class="mb-3" aria-live="polite" style="width:90vw;max-width:480px"></div>
+  <div id="scoreboard" class="mb-3" aria-live="polite" aria-atomic="true" role="region" style="font-weight:600;font-size:1.4rem !important">Last Score: <span id="lastScore">0</span> | Score: <span id="score">0</span> | High Score: <span id="highscore">0</span></div>
+  
   <div class="d-flex justify-content-center mb-3">
     <button id="pauseResumeBtn" class="btn btn-outline-primary btn-sm" aria-pressed="false" aria-label="Pause game"><i class="fa-solid fa-pause"></i> Pause</button>
   </div>
@@ -26,6 +82,7 @@ permalink: /404
     <div id="pauseOverlay" role="alert" aria-live="assertive">Paused</div>
   </div>
 </main>
+
 <script>
 (()=>{"use strict";
 /* DOM */
@@ -214,12 +271,4 @@ setSize();gravity=GRAVITY_BASE*(gameContainer.clientHeight/480);flapStrength=FLA
   if (document.readyState !== "loading") LB();
   else document.addEventListener("DOMContentLoaded", LB);
 })();
-</script>
-
-
-<br>
-<br>
-
-<!-- Industry Partners -->
-{% include industry-partner.html %}
-
+</script> 
