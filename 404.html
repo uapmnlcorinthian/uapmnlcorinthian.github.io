@@ -6,13 +6,20 @@ permalink: /404
 ---
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 <style>	
+main {
+  min-height: 1600px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;          /* enables scrolling if content overflows */
+}
 #game-container {
   position: relative;
   width: 90vw;
   max-width: 480px;
+  min-height: 70vh;
   aspect-ratio: 3 / 5;
-  max-height: 750px;
-  min-height: 600px;
+  max-height: 800px;
+  min-height: 500px;
   background-image: url('https://asset.manilacorinthianchapter.workers.dev/skyline.svg');
   background-repeat: repeat-x;
   background-position: 0 bottom;
@@ -23,7 +30,7 @@ permalink: /404
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  user-select: none;
+  user-select: none;	
 }
 	
 #scoreboard {1rem;
@@ -82,7 +89,10 @@ permalink: /404
     <div id="pauseOverlay" role="alert" aria-live="assertive">Paused</div>
   </div>
 </main>
-
+<!-- Industry Partners -->
+{% include industry-partner.html %}
+<!-- CTA --> 
+{% include register.html %} 
 <script>
 (()=>{"use strict";
 /* DOM */
