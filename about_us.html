@@ -86,22 +86,43 @@ sitemap: true
   </article>
 </section>
 
-<!-- Chapter History -->
-<section class="container-fluid py-5 text-white" id="chapter-history"
-  style="
-    background: url('https://asset.manilacorinthianchapter.workers.dev/corinthian.png') 
-    no-repeat center center / cover;
-    position: relative;"
-  data-aos="fade-left">
-  <div class="container" style="
-    background-color: rgba(0, 0, 0, 0.4); 
-    padding: 2rem; 
-    border-radius: 1rem;">
-    <h2 class="mb-4 text-center">History of the Chapter</h2>
-    <p>The United Architects of the Philippines Manila Corinthian Chapter was founded with a vision to unify and empower professionals in the architectural field. With humble beginnings and a shared commitment to excellence, the chapter has grown to become a vibrant community that supports innovation, fellowship, and leadership among its members.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet, velit nec laoreet iaculis, justo dolor aliquam ex, ut tincidunt magna lacus nec est. Nam nec ligula vitae justo fermentum facilisis. Sed scelerisque nunc ac convallis semper. In eget elit at mi fermentum finibus. Sed tincidunt odio at fermentum eleifend.</p>
-    <p>Curabitur ac nisl at sapien hendrerit congue. Nulla facilisi. Duis non nisi ac augue pulvinar faucibus. Suspendisse et urna nec risus gravida pretium. Integer ornare vehicula nibh, a rutrum sapien condimentum non. Donec id ante neque.</p>
-    <p>Maecenas vestibulum, massa at feugiat vestibulum, enim eros posuere erat, sit amet consectetur urna quam eu est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+<!-- History Preview -->
+<section
+  class="container-fluid p-5 text-white" data-aos="fade-right"
+  style=" background: url('https://asset.manilacorinthianchapter.workers.dev/corinthian.png')
+      no-repeat left center / cover;position: relative;">
+  <div
+    class="row align-items-center"
+    style="background-color: rgba(0,0,0,.5); padding: 2rem; border-radius: 1rem;"
+    data-aos="fade-right"
+  >
+    <div class="col-12">
+      <h3 class="mb-3">History of MCC</h3>
+
+      {%- comment -%}
+      • Find the page whose URL is exactly "/mcc_history/"  
+      • Fallback to an empty string if not found
+      {%- endcomment -%}
+      {% assign history_page = site.pages
+         | where: "url", "/mcc_history/"
+         | first %}
+
+      {%- comment -%}
+      • Grab up to 800 chars of plain text from that page  
+      {%- endcomment -%}
+      {% if history_page %}
+        {% assign history_text = history_page.content
+           | strip_html
+           | truncate: 1200 %}
+      {% else %}
+        {% assign history_text = "History content not available." %}
+      {% endif %}
+
+      <p class="mb-0">{{ history_text }}</p>
+      <a href="{{ site.baseurl }}/mcc_history/" class="btn btn-primary mt-3">
+        Read More
+      </a>
+    </div>
   </div>
 </section>
 
