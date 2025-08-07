@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
       {% for p in site.data.bod %}
         {% if p.position contains 'President' or p.position contains 'Vice President' or p.position == 'Secretary' or p.position == 'Treasurer' or p.position == 'Auditor' %}
-          <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
+          <div class="col-6 col-md-3 mb-4" data-aos="flip-left">
             <button type="button" class="border-0 bg-transparent p-0" data-bs-toggle="modal" data-bs-target="#bodModal{{ forloop.index0 }}">
               <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid mb-2 rounded-4 shadow-sm" style="width:210px; aspect-ratio:1; object-fit:cover;">
             </button>
@@ -60,7 +60,7 @@
     {% for p in site.data.bod %}
       {% assign pos = p.position | downcase %}
       {% if pos contains 'protocol' or pos contains 'immediate' or pos contains 'by laws' %}
-        <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
+        <div class="col-6 col-md-3 mb-4" data-aos="flip-left">
           <button type="button" class="border-0 bg-transparent p-0" data-bs-toggle="modal" data-bs-target="#bodModal{{ forloop.index0 }}">
             <img src="{{ p.image }}" alt="{{ p.name }}" class="img-fluid rounded-4 mb-2" style="width:200px; aspect-ratio:1; object-fit:cover;">
           </button>

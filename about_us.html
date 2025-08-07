@@ -107,13 +107,10 @@ sitemap: true
          | where: "url", "/mcc_history/"
          | first %}
 
-      {%- comment -%}
-      • Grab up to 800 chars of plain text from that page  
-      {%- endcomment -%}
       {% if history_page %}
         {% assign history_text = history_page.content
            | strip_html
-           | truncate: 1200 %}
+           | truncate: 800 %}
       {% else %}
         {% assign history_text = "History content not available." %}
       {% endif %}

@@ -38,13 +38,14 @@ activities.yml:
 
 bod.yml:
   type: objlist
-  wrap: bod
   display: name
   fields:
     - { k: name,        l: Name,        t: text,  req: true, w: col-6 }
     - { k: position,    l: Position,    t: text,  w: col-6 }
     - { k: description, l: Description, t: long,  w: col-12 }
+    - { k: bionote,     l: Bio Note,    t: long,  w: col-12 }
     - { k: image,       l: Photo,       t: image, w: col-6 }
+    - { k: profile_link,l: Profile Link,t: url,    w: col-6 }
 
 events.yml:
   type: array
