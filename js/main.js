@@ -1,7 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
 //  main.js (refactored)
-// ─────────────────────────────────────────────────────────────────────────────
-
 // === Supabase loader (ESM → UMD fallback) === 
 (() => {
   const URL = 'https://fvaahtqjusfniadwvoyw.supabase.co';
@@ -420,10 +417,21 @@ function initMiscUI() {
   });
   const updWrap=$('#updateWrapper');
   if(updWrap) updWrap.addEventListener('shown.bs.collapse', initUpdateForm);
-  const header=document.querySelector('header');
-  if(header){ let lastY=window.scrollY; window.addEventListener('scroll',()=>{
-    const y=window.scrollY; header.classList.toggle('hide-up', y>lastY+10); lastY=y;
-  }); }
+  const header = document.querySelector('header');
+	if (header) {
+	  let lastY = window.scrollY;
+	  const thresh = 10; // px threshold
+
+	  window.addEventListener('scroll', () => {
+		const y = window.scrollY;
+
+		if (y > lastY + thresh) header.classList.add('hide-up');
+		else if (y < lastY - thresh) header.classList.remove('hide-up');
+
+		lastY = y;
+	  });
+}
+
 }
 
 // === initAOS & deep-link === */
