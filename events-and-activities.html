@@ -6,6 +6,63 @@ permalink: /events-and-activities/
 image: "https://asset.manilacorinthianchapter.workers.dev/preview.jpg"
 published: true
 ---
+
+<style>
+/* Event Gallery Hover */
+.event-item img {
+  transition: transform 0.3s;
+}
+.event-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Loader */
+#filterLoader {
+  display: none;
+  margin: 1rem 0;
+}
+
+/* Hero Banner */
+.parallax-hero {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 70vh; /* minimum 80% viewport height */
+  position: relative;
+}
+@media (max-width: 768px) {
+  .parallax-hero {
+    background-attachment: scroll;
+  }
+}
+
+/* Blur-Up Image Loading */
+.blur-up {
+  filter: blur(10px);
+  transition: filter 0.3s ease-out;
+}
+.blur-up.loaded {
+  filter: blur(0);
+}
+
+/* Event Content Typography */
+.event-content p {
+  margin-bottom: 1rem;
+}
+.event-content h2,
+.event-content h3 {
+  margin-top: 2rem;
+}
+
+/* Embedded Map */
+.map-responsive iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+</style>
+
 {% assign sorted_events = site.events | sort: "date" | reverse %}
 {% assign latest = sorted_events | first %} 
 
@@ -16,7 +73,7 @@ published: true
   {% endif %}
 {% endunless %}
 <!-- Hero banner -->
-<section class="parallax-hero p-5" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ latest.cover | relative_url }}');" data-aos="fade-in" data-aos-offset="200" data-aos-anchor-placement="center-bottom">
+<section class="parallax-hero p-5" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ latest.cover | relative_url }}');">
   <div class="position-absolute top-0 start-0 w-100 bg-dark bg-opacity-50"></div>
   <div class="container h-100 d-flex flex-column justify-content-center text-white position-relative">
     <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">{{ latest.title }}</h1>
@@ -88,107 +145,5 @@ published: true
 <!-- Industry Partners -->
 {% include industry-partner.html %}
 
-<style>
-/* Event Gallery Hover */
-.event-item img {
-  transition: transform 0.3s;
-}
-.event-item:hover img {
-  transform: scale(1.05);
-}
-
-/* Loader */
-#filterLoader {
-  display: none;
-  margin: 1rem 0;
-}
-
-/* Hero Banner */
-.parallax-hero {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 70vh; /* minimum 80% viewport height */
-  position: relative;
-}
-@media (max-width: 768px) {
-  .parallax-hero {
-    background-attachment: scroll;
-  }
-}
-
-/* Blur-Up Image Loading */
-.blur-up {
-  filter: blur(10px);
-  transition: filter 0.3s ease-out;
-}
-.blur-up.loaded {
-  filter: blur(0);
-}
-
-/* Event Content Typography */
-.event-content p {
-  margin-bottom: 1rem;
-}
-.event-content h2,
-.event-content h3 {
-  margin-top: 2rem;
-}
-
-/* Embedded Map */
-.map-responsive iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-</style>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const items = document.querySelectorAll('.event-item');
-  const preset = document.getElementById('filterPreset');
-  const search = document.getElementById('searchInput');
-  let visible = 12;
-
-  function filter() {
-    const now = new Date();
-    const txt = search.value.toLowerCase();
-    const type = preset.value;
-    document.getElementById('filterLoader').style.display='block';
-    setTimeout(()=>{
-      let count=0;
-      items.forEach(el=>{
-        const title=el.dataset.title.toLowerCase();
-        const date=new Date(el.dataset.date);
-        let show=false;
-        if(title.includes(txt)){
-          if(type=='upcoming') show = date>=now;
-          else if(type=='last30') show = date>= new Date(now-1000*60*60*24*30);
-          else if(type=='thisYear') show = date>= new Date(now.getFullYear()+'-01-01');
-          else show=true;
-        }
-        if(show && type=='all'){ if(count<visible){ el.style.display='block'; count++; } else el.style.display='none'; }
-        else el.style.display = show ? 'block':'none';
-      });
-      document.getElementById('filterLoader').style.display='none';
-    },200);
-  }
-
-  preset.addEventListener('change', ()=>{ visible=12; filter(); });
-  search.addEventListener('input', filter);
-  filter();
-
-  const obsTarget = document.createElement('div'); document.querySelector('#eventsSection .row').appendChild(obsTarget);
-  new IntersectionObserver(entries=>{
-    if(entries[0].isIntersecting && preset.value=='all'){
-      visible+=12; filter();
-    }
-  },{rootMargin:'0px 0px 200px 0px'}).observe(obsTarget);
-
-  document.querySelectorAll('.blur-up').forEach(img=>{
-    if(img.complete) img.classList.add('loaded');
-    else img.onload=()=>img.classList.add('loaded');
-  });
-});
-</script> 
+<!-- Events page -->
+<script src="/js/events.js" defer></script>

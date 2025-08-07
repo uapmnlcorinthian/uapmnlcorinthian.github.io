@@ -6,15 +6,31 @@
 <meta property="og:image" content="{{ page.cover | absolute_url }}">
 <meta name="twitter:image" content="{{ page.cover | absolute_url }}">
 {% endif %}
-
 </head>
+	
+<style>
+    .parallax-hero {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 60vh;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .parallax-hero { background-attachment: scroll; }
+    }
+    .event-content p { margin-bottom: 1rem; }
+    .event-content h2, .event-content h3 { margin-top: 2rem; }
+    .map-responsive iframe { width: 100%; height: 100%; border: 0; }
+  </style>
 	
 <body>
 {% include header.html %}
 <div id="top"></div>
 {% if page.cover %} 
 <!-- Hero Cover Section -->
-<section class="parallax-hero" style="background-image: url('{{ page.cover | relative_url }}');" data-aos="fade-in">
+<section class="parallax-hero" style="background-image: url('{{ page.cover | relative_url }}');" >
   <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50"></div>
   <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-white position-relative text-center">
     <h1 class="display-4 fw-bold animate__animated animate__fadeInDown">{{ page.title }}</h1>
@@ -143,23 +159,10 @@
 	
 {% include footer.html %}
   {% include scripts.html %} <a id="btnTop" href="#top" class="btn btn-secondary shadow position-fixed bottom-0 end-0 m-3 z-3" data-aos="fade-up" aria-label="Back to top"> <i class="fa-solid fa-arrow-up"></i> </a>
-<style>
-    .parallax-hero {
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 60vh;
-      position: relative;
-    }
-    @media (max-width: 768px) {
-      .parallax-hero { background-attachment: scroll; }
-    }
-    .event-content p { margin-bottom: 1rem; }
-    .event-content h2, .event-content h3 { margin-top: 2rem; }
-    .map-responsive iframe { width: 100%; height: 100%; border: 0; }
-  </style>
+
   {% include cookie-consent.html %}
 
 </body>
+<!-- Events page -->
+<script src="/js/events.js" defer></script>
 </html>

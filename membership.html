@@ -68,49 +68,6 @@ keywords: "Architecture, UAP, Manila, Member Login"
 </main>
 <!-- Industry Partners -->
 {% include industry-partner.html %}
-<script>
-(function() {
-  const toggleBtn = document.getElementById('toggleViewBtn');
-  const loginCard = document.querySelector('.login-card');
-  const instructions = document.querySelector('.instructions');
 
-  function showLogin() {
-    loginCard.style.display = 'block';
-    instructions.style.display = 'none';
-    toggleBtn.textContent = 'Back to instructions';
-    toggleBtn.setAttribute('aria-expanded', 'true');
-  }
-
-  function showInstructions() {
-    loginCard.style.display = 'none';
-    instructions.style.display = 'block';
-    toggleBtn.textContent = 'Login here';
-    toggleBtn.setAttribute('aria-expanded', 'false');
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    const loginVisible = loginCard.style.display === 'block';
-    if (loginVisible) {
-      showInstructions();
-    } else {
-      showLogin();
-    }
-  });
-
-  function handleResize() {
-    if (window.innerWidth >= 992) {
-      loginCard.style.display = 'block';
-      instructions.style.display = 'block';
-      toggleBtn.style.display = 'none';
-    } else {
-      if (!loginCard.style.display || loginCard.style.display === 'none') {
-        showInstructions();
-        toggleBtn.style.display = 'block';
-      }
-    }
-  }
-
-  window.addEventListener('resize', handleResize);
-  window.addEventListener('DOMContentLoaded', handleResize);
-})();
-</script>
+<!-- Membership page -->
+<script src="{{ '/js/auth.js' | relative_url }}" defer></script>

@@ -25,55 +25,70 @@
 {% include cookie-consent.html %}
 </body>
 </html>
-
 <!--
   Project: UAP Manila Corinthian Chapter Website
   Author: ArZ Miranda
   Date Created: 2025-07-19
-  Last Modified: 2025-07-19
+  Last Modified: 2025-08-08
   Version: 1.0.0
 
   Description:
-    This script powers the interactive features of the UAP Manila Corinthian Chapter (MCC) website.
-    It enables members to securely log in and view their personalized account information,
-    including membership status, payment history, and contact details.
-    The script also enhances the user experience by providing convenient tools such as password visibility toggling
-    and easy options to save or print membership data.
-    Data shown is dynamically updated from the MCC membership database to ensure accuracy and relevance.
+    For Members:
+      • Log in securely and view your personal dashboard:
+        membership status, contact info, and year-by-year payment history.
+      • Renew your membership or apply online in a few clicks––no paperwork.
+      • Explore and sign up for our three flagship programs:
+        – UPLINK (integration with UAP National)
+        – ACTIVATE (wellness, sports, CSR)
+        – PURSUIT (professional development, seminars, certifications)
+      • Browse upcoming events with live search, date filters, and infinite scroll.
+      • Enjoy smooth animations and fast image loading.
 
-  Usage:
-    - This script expects specific DOM elements present on the page:
-      - Login page: #loginForm, username and password inputs, toggle password button.
-      - Account page: Elements with IDs such as #cardName, #statusBadge, #totalDue,
-        payment tables (#paymentsTable), and toggle-sensitive buttons.
-    - It relies on Bootstrap 5 for styling and interactivity,
-      FontAwesome 6 for icons,
-      and Supabase JS SDK v2 for backend database interactions.
-    - User session data is stored in sessionStorage under 'userData' key.
-    - Account info is auto-populated on page load if valid session data exists.
+    For Developers:
+      • Data from Supabase JS SDK v2 for real-time member & payment records.
+      • UI built with Bootstrap 5 (bundle + all.min.css), Shoelace, Alpine.js,
+        Petite Vue, and Reef.js.
+      • Scroll animations via AOS (aos.js) and CSS animations via Animate.css.
+      • Modular init functions (initLogin, initAccount, initEventCarousel, etc.)
+        run on DOMContentLoaded.
+      • Event filtering & infinite scroll powered by vanilla JS
+        + IntersectionObserver.
+      • Blur-up image pattern: low-res placeholder → high-res swap on load.
 
   Dependencies:
-    - Supabase JavaScript SDK v2 (https://supabase.com/docs/reference/javascript/installing)
-    - Bootstrap 5 CSS & JS (https://getbootstrap.com/)
-    - FontAwesome 6 Icons (https://fontawesome.com/)
+    • Supabase JS SDK v2
+    • Bootstrap 5 bundle (bootstrap.bundle.min.js + all.min.css)
+    • AOS (aos.js)
+    • Shoelace
+    • Alpine.js
+    • Petite Vue
+    • Reef.js
+    • Animate.css (animate.min.css)
+    • All.min.css (global styles)
+    • FontAwesome 6
+    • GitHub Pages (hosting)
 
-  Change Log:
-    2025-07-19 - v1.0.0 - Initial implementation with login, session handling, account rendering, and usability features.
+  Build Info:
+    • Last Deployed: 2025-08-08T22:00:00+11:11
 
   Notes:
-    - Ensure that the <body> tag on the account page includes the 'account-info' class to trigger account initialization.
-    - Sensitive member data such as PRC License, Email, and Contact Number are masked by default and toggleable for user convenience.
-    - Payment data columns for different years are dynamically retrieved from Supabase for future-proofing.
-    - Right-click and keyboard shortcut blocking have been disabled to improve user experience.
+    • Account page: <body class="account-info">, and include
+      #cardName, #statusBadge, #totalDue, #paymentsTable, .toggle-sensitive-btn.
+    • Events page: #event-scroller-track, .event-item[data-title][data-date],
+      #filterPreset, #searchInput, #filterLoader.
+    • Membership pages: #loginForm with username/password inputs,
+      and #togglePassword.
+    • Update form: inside #updateWrapper collapse, with #updateInfoForm
+      and #updateFeedback.
+    • Global UI: require #btnTop and AOS (aos.js) loaded before custom scripts.
 
   Contact:
     UAP Manila Corinthian Chapter
     Email: uapmccmembership@gmail.com
-    Website: https://manilacorinthianchapter.github.io/mcc/
+    Repo:  https://github.com/manilacorinthianchapter/mcc
 
   License:
-    Proprietary - For internal use by UAP MCC only
- 
+    Proprietary – Internal use only 
   __  __  _____ _____   ___   ___ ___  _____            _____   ______
  |  \/  |/ ____/ ____| |__ \ / _ \__ \| ____|     /\   |  __ \ |___  /
  | \  / | |   | |         ) | | | | ) | |__      /  \  | |__) |   / / 
