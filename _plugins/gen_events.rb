@@ -22,31 +22,43 @@ Jekyll::Hooks.register :site, :after_reset do |site|
   FileUtils.mkdir_p(events_dir)
   Jekyll.logger.info "gen_events:", "Ensured directory #{events_dir}"
 
-  keys = %w[layout title date permalink start_time end_time location cover registration_url map_embed image_gallery]
+  # include event_date so we can emit "TBA" if needed
+  keys = %w[event_date layout title date permalink start_time end_time location cover registration_url map_embed image_gallery]
 
   events.each do |event|
-    # Skip events explicitly marked false; default (missing) or true will process
+    # skip if explicitly unpublished
     if event.key?('published') && event['published'] == false
       next
     end
 
-    slug = event['slug'] || event[:slug] = event['slug'] || event[:slug]
+    slug = event['slug'] || event[:slug]
     next unless slug
 
     file_path = File.join(events_dir, "#{slug}.md")
 
-    # Prepare front-matter
+    # prepare the raw date value (may be a Date or a String)
     date_val = event['event_date']
-    date_str = date_val.respond_to?(:strftime) ? date_val.strftime('%Y-%m-%d') : date_val
+    date_str = if date_val.respond_to?(:strftime)
+                 date_val.strftime('%Y-%m-%d')
+               else
+                 date_val.to_s
+               end
 
     front = {
       'layout'    => 'event',
       'title'     => event['title'] || slug,
-      'date'      => date_str,
       'permalink' => "/events-and-activities/#{slug}/"
     }
 
-    # Build front-matter lines
+    # *** TWEAK HERE ***
+    # if no date or blank or explicitly "TBA", emit event_date: "TBA"
+    if date_str.nil? || date_str.strip == '' || date_str.strip.upcase == 'TBA'
+      front['event_date'] = 'TBA'
+    else
+      front['date'] = date_str
+    end
+
+    # build front-matter lines
     fm_lines = []
     keys.each do |key|
       value = front[key] || event[key] || event[key.to_sym]
@@ -66,13 +78,13 @@ Jekyll::Hooks.register :site, :after_reset do |site|
       end
     end
 
-    # Content body
+    # content body
     content_body = (event['content'] || '').rstrip
 
-    # Assemble markdown
+    # assemble the markdown file
     markdown = ["---", *fm_lines, "---", "", content_body].join("\n")
 
-    # Write file if changed
+    # write only if changed
     if !File.exist?(file_path) || File.read(file_path) != markdown
       File.write(file_path, markdown)
       Jekyll.logger.info "gen_events:", "Wrote #{file_path}"

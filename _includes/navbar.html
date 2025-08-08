@@ -5,8 +5,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Desktop Nav -->
-    <div class="collapse navbar-collapse d-none d-lg-flex bg-white p-0" id="navbarNav">
-      <ul class="navbar-nav ms-auto gap-1">
+    <div class="collapse navbar-collapse d-none d-lg-flex bg-white" id="navbarNav">
+      <ul class="navbar-nav ms-auto px-2 gap-1">
         {% for item in site.data.navbar %}
           {% if item.visible %}
             {% if item.submenu %}
@@ -42,14 +42,14 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body  bg-white">
-    <ul class="navbar-nav gap-2 bg-white">
+    <ul class="navbar-nav gap-2 bg-white px-2">
       {% for item in site.data.navbar %}
         {% if item.visible %}
           {% if item.submenu %}
             <li class="nav-item dropdown d-flex align-items-center"{% if item.aos %} data-aos="{{ item.aos }}"{% endif %}>
               <a href="{{ site.baseurl }}{{ item.url }}" class="nav-link">{{ item.title }}</a>
               <a class="nav-link dropdown-toggle px-1" href="#" id="offcanvasDropdown{{ forloop.index0 }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle {{ item.title }} dropdown"></a>
-              <ul class="dropdown-menu" aria-labelledby="offcanvasDropdown{{ forloop.index0 }}">
+              <ul class="dropdown-menu px-2" aria-labelledby="offcanvasDropdown{{ forloop.index0 }}">
                 {% for sub in item.submenu %}
                   {% if sub.visible %}
                     <li>
