@@ -28,7 +28,7 @@ published: true
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 70vh; /* minimum 80% viewport height */
+  min-height: 70vh; /* minimum 70% viewport height */
   position: relative;
 }
 @media (max-width: 768px) {
@@ -96,9 +96,9 @@ published: true
   <h2 class="mb-4">Browse All Events</h2>
   <div class="d-flex flex-wrap justify-content-end gap-2 mb-3 position-sticky top-0 bg-white py-2 shadow-sm">
     <select id="filterPreset" class="form-select form-select-sm" style="max-width:200px;"><br>
+      <option value="last30">Last 30 Days</option>
       <option value="all">All</option>
       <option value="upcoming">Upcoming</option>
-      <option value="last30">Last 30 Days</option>
       <option value="thisYear">This Year</option>
     </select>
     <input id="searchInput" type="text" placeholder="Search titles..." class="form-control form-control-sm" style="max-width:200px;">
