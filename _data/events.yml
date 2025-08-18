@@ -18,21 +18,39 @@
     </iframe>
   image_gallery:
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0081.jpg
+    caption: "President, Committee on By-Laws, and the Immediate Past President" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0063.jpg
+    caption: "Immediate Past President and the President" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0165.jpg
+    caption: "Event Registration" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0303.jpg
+    caption: "With the National Officers" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0352.jpg
+    caption: "Director for the Committee on Internal Affairs" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0357.jpg
+    caption: "Members Enjoying the food" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0386.jpg
+    caption: "Members Enjoying the food" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0509.jpg
+    caption: "Group Photo" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0516.jpg
+    caption: "Group Photo" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0517.jpg
+    caption: "Immediate Past President Speech" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0583.jpg
+    caption: "Corinthian Gawad Paglilingkod" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0615.jpg
+    caption: "Some Gifts for the Past President" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0693.jpg
+    caption: "The Incoming Chapter President" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0752.jpg
+    caption: "Newly Inducted Members" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0776.jpg
+    caption: "Members with the Industry Partners" 
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0786.jpg
+    caption: "Raffle Winners" 
     - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0799.jpg
+    caption: "Grand Price Raffle Winners" 
   content: >
     **Join Us for a Memorable Evening!**
       Discover new connections, celebrate leadership, and witness the handing-over of responsibilities in an inspiring ceremonycomplete with distinguished guests, special recognitions, and delightful refreshments.
@@ -77,8 +95,11 @@
       width="100%" height="300" style="border:0" loading="lazy">
     </iframe>
   image_gallery:
+    caption: "" 
     - https://images.unsplash.com/photo-1581091012184-3cf4cfcdbb15?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1517282000684-5da6f0f3fdc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
   content: |
     **Join Us at LECONEX 2025!**  
@@ -89,9 +110,13 @@
     **Time:** 10:00 AM–7:00 PM  
 
     **Highlights:**  
+    caption: "" 
     - 13 expert speakers  
+    caption: "" 
     - Interactive workshops  
+    caption: "" 
     - Exhibits & networking opportunities  
+    caption: "" 
     - Showcase of member projects  
 
 
@@ -108,16 +133,23 @@
     <iframe src="https://maps.google.com/maps?q=Makati%20City%2C%20Philippines&output=embed" width="100%" height="300" style="border:0" loading="lazy"></iframe>
   image_gallery:
     - https://images.unsplash.com/photo-1532710093739-9470acff878f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1622737133809-d95047b9e673?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: "" 
   content: |
     **36 Years of Excellence**  
     A signature black-tie gala celebrating our Chapter's legacy, partners, and future initiatives.
 
     **Highlights**
+    caption: "" 
     - Honors & Special Citations  
+    caption: "" 
     - President's Report & Vision  
+    caption: "" 
     - Live Performances & Raffle  
+    caption: "" 
     - Sponsor Appreciation
 
     **Attire:** Black-tie / Modern Barong / Filipiniana  
@@ -136,14 +168,19 @@
     <iframe src="https://maps.google.com/maps?q=Quezon%20City%2C%20Philippines&output=embed" width="100%" height="300" style="border:0" loading="lazy"></iframe>
   image_gallery:
     - https://images.unsplash.com/photo-1610465299993-e95f6caa7c8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1529699310859-b163e33e4556?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: ""
   content: |
     **Cue the Fun & Game On!**  
     Friendly chapter-wide competitions for billiards and e-sports with prizes and bragging rights.
 
     **Divisions**
+    caption: "" 
     - Billiards (Singles/Doubles)  
+    caption: "" 
     - E-Sports (Team/1v1)
 
     **Check-in:** 12:30 PM | **Matches:** 1:00–9:00 PM  
@@ -162,16 +199,23 @@
   map_embed: |
     <iframe src="https://maps.google.com/maps?q=Bacolod%20City%2C%20Philippines&output=embed" width="100%" height="300" style="border:0" loading="lazy"></iframe>
   image_gallery:
+    caption: "" 
     - https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: "" 
   content: |
     **UAP National Conference "SANDAG"**  
     Two days of learning, fellowship, and national assemblies set in the City of Smiles.
 
     **Program Themes**
+    caption: "" 
     - Practice & Policy Updates  
+    caption: "" 
     - Design, Sustainability & Technology Tracks  
+    caption: "" 
     - Chapter Networking & Expo
 
     **Daily Schedule:** 9:00 AM–5:00 PM (subject to organizer updates)
@@ -189,15 +233,21 @@
     <iframe src="https://maps.google.com/maps?q=Quezon%20City%2C%20Philippines&output=embed" width="100%" height="300" style="border:0" loading="lazy"></iframe>
   image_gallery:
     - https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1543007630-9710e4a00a20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80
+    caption: "" 
   content: |
     **The Annual Christmas Fellowship**  
     Year-end celebration with performances, gift-giving, and recognition of chapter milestones.
 
     **Program**
+    caption: "" 
     - Thanksgiving & Year-in-Review  
+    caption: "" 
     - Inter-unit Performances & Games  
+    caption: "" 
     - Raffle, Prizes & Fellowship Dinner
 
     **Call time:** 5:00 PM | **Program:** 5:30–10:00 PM 
@@ -218,8 +268,11 @@
     <!-- Map embed code will be added once location is finalized -->
   image_gallery:
     - https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1508896694512-cb89e39749b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
   content: >
     Details for **Corinthian KKK** are still being finalized.  
     Please check back soon for the official date, time, and registration details.
@@ -239,8 +292,11 @@
     <!-- Map embed code will be added once location is finalized -->
   image_gallery:
     - https://images.unsplash.com/photo-1545235617-946f5d8a9b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
   content: >
     Planning for **Ken Estioko Day 2025** is underway.  
     Stay tuned for announcements on the event schedule and venue.
@@ -260,8 +316,11 @@
     <!-- Map embed code will be added once location is finalized -->
   image_gallery:
     - https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1514373941175-0d29c39fa2bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
   content: >
     The **Corinthian Kapihan** gathering details are coming soon.  
     Check back for the confirmed date, time, and meeting place.
@@ -281,8 +340,11 @@
     <!-- Map embed code will be added once location is finalized -->
   image_gallery:
     - https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1563104643-0420fc741230?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1516784331066-f2aaadeeb0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
   content: >
     Details for the **Corinthian Annual Elections 2026** will be released shortly.  
     Stay tuned for information on candidate nominations and voting procedures.
@@ -302,8 +364,11 @@
     <!-- Map embed code will be added once location is finalized -->
   image_gallery:
     - https://images.unsplash.com/photo-1508261306069-92c7f263c53d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1516455590571-18256e2dda0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1526481280690-27c18b52b1a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
   content: >
     Our **Corinthian Summer Trip** plans are in progress.  
     Please check back soon for the destination, itinerary, and registration details.
@@ -323,8 +388,11 @@
     <!-- Map embed code will be added once location is finalized -->
   image_gallery:
     - https://images.unsplash.com/photo-1543779280-0f9f7b0f2486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1505443817326-7a25a8ce2e70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1511542119951-de503c9f4fa1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
   content: >
     Join us for **Thanksgiving and Sponsors Night**—details coming soon.  
     We will honor our sponsors and celebrate our chapter’s achievements.
@@ -343,9 +411,13 @@
   map_embed: |
     <!-- Map embed code will be added once location is finalized -->
   image_gallery:
+    caption: "" 
     - https://images.unsplash.com/photo-1542744094-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1556912991-45742b6fd134?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
   content: >
     **World Architecture Day 2025 (WAD 2025)** details will be shared soon.  
     Check back for the theme, speakers, and venue information.
@@ -364,9 +436,13 @@
   map_embed: |
     <!-- Map embed code will be added once location is finalized -->
   image_gallery:
+    caption: "" 
     - https://images.unsplash.com/photo-1621947920199-b997e0a6cc79?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1544564279-8b3f7129db0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1514327591584-53f074c94be1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
   content: >
     Planning for **PAFNAM 2025** is underway.  
     Stay tuned for the program lineup and venue details.
@@ -385,9 +461,13 @@
   map_embed: |
     <!-- Map embed code will be added once location is finalized -->
   image_gallery:
+    caption: "" 
     - https://images.unsplash.com/photo-1523958203904-cdcb402031fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
     - https://images.unsplash.com/photo-1551836022-091d948bb63f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
+    caption: "" 
   content: >
     **NATCON 51** – details coming soon.  
     Please check back for updates on the conference schedule and registration.
