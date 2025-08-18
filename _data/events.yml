@@ -16,7 +16,7 @@
       loading="lazy"
       allowfullscreen>
     </iframe>
-image_gallery:
+  image_gallery:
   - img: https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0081.jpg
     caption: "President, Committee on By-Laws, and the Immediate Past President"
   - img: https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0063.jpg
@@ -52,7 +52,10 @@ image_gallery:
   - img: https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0799.jpg
     caption: "Grand Price Raffle Winners"
 
-  content: >
+
+  content: |
+ 
+ 
     **Join Us for a Memorable Evening!**
       Discover new connections, celebrate leadership, and witness the handing-over of responsibilities in an inspiring ceremonycomplete with distinguished guests, special recognitions, and delightful refreshments.
 
@@ -272,7 +275,10 @@ image_gallery:
     caption: "Placeholder Image"
   - img: https://images.unsplash.com/photo-1508896694512-cb89e39749b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
     caption: "Placeholder Image"
-  content: >
+
+  content: |
+ 
+ 
     Details for **Corinthian KKK** are still being finalized.  
     Please check back soon for the official date, time, and registration details.
 
@@ -296,7 +302,10 @@ image_gallery:
     caption: "Placeholder Image"
   - img: https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
     caption: "Placeholder Image"
-  content: >
+
+  content: |
+ 
+ 
     Planning for **Ken Estioko Day 2025** is underway.  
     Stay tuned for announcements on the event schedule and venue.
 
@@ -320,7 +329,10 @@ image_gallery:
     caption: "Placeholder Image"
   - img: https://images.unsplash.com/photo-1514373941175-0d29c39fa2bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
     caption: "Placeholder Image"
-  content: >
+
+  content: |
+ 
+ 
     The **Corinthian Kapihan** gathering details are coming soon.  
     Check back for the confirmed date, time, and meeting place.
 
@@ -344,7 +356,10 @@ image_gallery:
     caption: "Placeholder Image"
   - img: https://images.unsplash.com/photo-1516784331066-f2aaadeeb0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
     caption: "Placeholder Image"
-  content: >
+
+  content: |
+ 
+ 
     Details for the **Corinthian Annual Elections 2026** will be released shortly.  
     Stay tuned for information on candidate nominations and voting procedures.
 
@@ -368,7 +383,10 @@ image_gallery:
     caption: "Placeholder Image"
   - img: https://images.unsplash.com/photo-1526481280690-27c18b52b1a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
     caption: "Placeholder Image"
-  content: >
+
+  content: |
+ 
+ 
     Our **Corinthian Summer Trip** plans are in progress.  
     Please check back soon for the destination, itinerary, and registration details.
 
@@ -392,7 +410,10 @@ image_gallery:
     caption: "Placeholder Image"
   - img: https://images.unsplash.com/photo-1511542119951-de503c9f4fa1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
     caption: "Placeholder Image"
-  content: >
+
+  content: |
+ 
+ 
     Join us for **Thanksgiving and Sponsors Night**—details coming soon.  
     We will honor our sponsors and celebrate our chapter’s achievements.
 
@@ -416,7 +437,10 @@ image_gallery:
     caption: "Placeholder Image"
   - img: https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
     caption: "Placeholder Image"
-  content: >
+
+  content: |
+ 
+ 
     **World Architecture Day 2025 (WAD 2025)** details will be shared soon.  
     Check back for the theme, speakers, and venue information.
 
@@ -440,7 +464,10 @@ image_gallery:
     caption: "Placeholder Image"
   - img: https://images.unsplash.com/photo-1514327591584-53f074c94be1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
     caption: "Placeholder Image"
-  content: >
+
+  content: |
+ 
+ 
     Planning for **PAFNAM 2025** is underway.  
     Stay tuned for the program lineup and venue details.
 
@@ -464,6 +491,9 @@ image_gallery:
     caption: "Placeholder Image"
   - img: https://images.unsplash.com/photo-1551836022-091d948bb63f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80
     caption: "Placeholder Image"
-  content: >
+
+  content: |
+ 
+ 
     **NATCON 51** – details coming soon.  
     Please check back for updates on the conference schedule and registration.
