@@ -16,7 +16,23 @@
       loading="lazy"
       allowfullscreen>
     </iframe>
-  image_gallery: null
+  image_gallery:
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0081.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0063.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0165.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0303.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0352.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0357.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0386.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0509.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0516.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0517.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0583.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0615.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0693.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0752.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0776.jpg
+    - https://asset.manilacorinthianchapter.workers.dev/Ind_2025_WBX0799.jpg
   content: >
     **Join Us for a Memorable Evening!**
       Discover new connections, celebrate leadership, and witness the handing-over of responsibilities in an inspiring ceremonycomplete with distinguished guests, special recognitions, and delightful refreshments.
