@@ -9,62 +9,25 @@ published: true
 
 <style>
 /* Event Gallery Hover */
-.event-item img {
-  transition: transform 0.3s;
-}
-.event-item:hover img {
-  transform: scale(1.05);
-}
-
+.event-item img{transition:transform .3s}
+.event-item:hover img{transform:scale(1.05)}
 /* Loader */
-#filterLoader {
-  display: none;
-  margin: 1rem 0;
-}
-
+#filterLoader{display:none;margin:1rem 0}
 /* Hero Banner */
-.parallax-hero {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 70vh; /* minimum 70% viewport height */
-  position: relative;
-}
-@media (max-width: 768px) {
-  .parallax-hero {
-    background-attachment: scroll;
-  }
-}
-
+.parallax-hero{background-attachment:fixed;background-position:center;background-repeat:no-repeat;background-size:cover;min-height:70vh;position:relative}
+@media (max-width:768px){.parallax-hero{background-attachment:scroll}}
 /* Blur-Up Image Loading */
-.blur-up {
-  filter: blur(10px);
-  transition: filter 0.3s ease-out;
-}
-.blur-up.loaded {
-  filter: blur(0);
-}
-
+.blur-up{filter:blur(10px);transition:filter .3s ease-out}
+.blur-up.loaded{filter:blur(0)}
 /* Event Content Typography */
-.event-content p {
-  margin-bottom: 1rem;
-}
-.event-content h2,
-.event-content h3 {
-  margin-top: 2rem;
-}
-
+.event-content p{margin-bottom:1rem}
+.event-content h2,.event-content h3{margin-top:2rem}
 /* Embedded Map */
-.map-responsive iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
+.map-responsive iframe{width:100%;height:100%;border:0}
 </style>
 
 {% assign sorted_events = site.events | sort: "date" | reverse %}
-{% assign latest = sorted_events | first %} 
+{% assign latest = sorted_events | first %}
 
 {% unless page.image %}
   {% if latest.cover %}
@@ -72,22 +35,25 @@ published: true
     <meta name="twitter:image" content="{{ latest.cover | absolute_url }}">
   {% endif %}
 {% endunless %}
+
 <!-- Hero banner -->
-<section class="parallax-hero p-5" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ latest.cover | relative_url }}');">
+<section id="hero" class="parallax-hero p-5" style="background-image:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('{{ latest.cover | relative_url }}');">
   <div class="position-absolute top-0 start-0 w-100 bg-dark bg-opacity-50"></div>
   <div class="container h-100 d-flex flex-column justify-content-center text-white position-relative">
-    <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">{{ latest.title }}</h1>
-    <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s"> {{ latest.date | date: "%B %-d, %Y" }}{% if latest.location %} &mdash; {{ latest.location }}{% endif %} </p>
-    <div class="d-flex flex-wrap gap-2 mb-4 animate__animated animate__fadeInUp animate__delay-2s"> {% if latest.registration_url %} <a href="{{ latest.registration_url }}" class="btn btn-sm btn-light text-dark fw-semibold animate__animated animate__pulse animate__infinite" target="_blank"> <i class="fa-solid fa-calendar-check me-1"></i> Register Now </a> {% endif %} <a class="btn btn-sm btn-outline-light fw-semibold" target="_blank"
-         href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ latest.title | uri_escape }}&dates={{ latest.date | date: '%Y%m%d' }}T{{ latest.start_time | remove: ':' }}00/{{ latest.date | date: '%Y%m%d' }}T{{ latest.end_time | remove: ':' }}00&details={{ latest.content | strip_html | uri_escape }}&location={{ latest.location | uri_escape }}"> <i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar </a> <a class="btn btn-sm btn-outline-info fw-semibold text-white border-white" download="{{ latest.title | slugify }}.ics"
-         href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ latest.title | uri_escape }}%0ADTSTART:{{ latest.date | date: '%Y%m%d' }}{{ latest.start_time | remove: ':' }}00Z%0ADTEND:{{ latest.date | date: '%Y%m%d' }}{{ latest.end_time | remove: ':' }}00Z%0ADESCRIPTION:{{ latest.content | strip_html | uri_escape }}%0ALOCATION:{{ latest.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR"> <i class="fa-solid fa-file-export me-1"></i> Download .ICS </a>
-      <button class="btn btn-sm btn-light text-dark fw-semibold ms-auto" onclick="navigator.share ? navigator.share({ title: '{{ latest.title }}', url: '{{ latest.url | absolute_url }}' }) : alert('Share not supported on this browser.')"> <i class="fa-solid fa-share-nodes me-1"></i> Share </button>
+    <h1 id="ht" class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">{{ latest.title }}</h1>
+    <p id="hd" class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">{{ latest.date | date: "%B %-d, %Y" }}{% if latest.location %} &mdash; {{ latest.location }}{% endif %}</p>
+    <div class="d-flex flex-wrap gap-2 mb-4 animate__animated animate__fadeInUp animate__delay-2s">
+      {% if latest.registration_url %}<a id="reg" href="{{ latest.registration_url }}" class="btn btn-sm btn-light text-dark fw-semibold animate__animated animate__pulse animate__infinite" target="_blank"><i class="fa-solid fa-calendar-check me-1"></i> Register Now</a>{% else %}<a id="reg" class="btn btn-sm btn-light text-dark fw-semibold animate__animated animate__pulse animate__infinite" style="display:none"></a>{% endif %}
+      <a id="gcal" class="btn btn-sm btn-outline-light fw-semibold" target="_blank" href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ latest.title | uri_escape }}&dates={{ latest.date | date: '%Y%m%d' }}T{{ latest.start_time | remove: ':' }}00/{{ latest.date | date: '%Y%m%d' }}T{{ latest.end_time | remove: ':' }}00&details={{ latest.content | strip_html | uri_escape }}&location={{ latest.location | uri_escape }}"><i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar</a>
+      <a id="ics" class="btn btn-sm btn-outline-info fw-semibold text-white border-white" download="{{ latest.title | slugify }}.ics" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ latest.title | uri_escape }}%0ADTSTART:{{ latest.date | date: '%Y%m%d' }}{{ latest.start_time | remove: ':' }}00Z%0ADTEND:{{ latest.date | date: '%Y%m%d' }}{{ latest.end_time | remove: ':' }}00Z%0ADESCRIPTION:{{ latest.content | strip_html | uri_escape }}%0ALOCATION:{{ latest.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR"><i class="fa-solid fa-file-export me-1"></i> Download .ICS</a>
+      <button id="shr" class="btn btn-sm btn-light text-dark fw-semibold ms-auto" onclick="navigator.share ? navigator.share({ title: '{{ latest.title }}', url: '{{ latest.url | absolute_url }}' }) : alert('Share not supported on this browser.')"><i class="fa-solid fa-share-nodes me-1"></i> Share</button>
     </div>
-    
     <!-- Truncated Content -->
-    <div class="mb-3 text-white animate__animated animate__fadeInUp animate__delay-3s"> {{ latest.content | strip_html | truncatewords: 120, '...' | markdownify }} 
-      <!-- Show More Button Below Content --> 
-      <a href="{{ latest.url }}" class="btn-primary btn animate__animated animate__fadeInUp animate__delay-4s">Show More</a> </div>
+    <div id="hc" class="mb-3 text-white animate__animated animate__fadeInUp animate__delay-3s">
+      {{ latest.content | strip_html | truncatewords: 120, '...' | markdownify }}
+      <!-- Show More Button Below Content -->
+      <a id="hmr" href="{{ latest.url }}" class="btn-primary btn animate__animated animate__fadeInUp animate__delay-4s">Show More</a>
+    </div>
   </div>
 </section>
 
@@ -106,10 +72,12 @@ published: true
   <div id="filterLoader" class="text-center my-4" style="display:none;">
     <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>
   </div>
-  <div class="row g-2"> {% for e in sorted_events %}
+  <div class="row g-2">
+    {% for e in sorted_events %}
     {% assign idx = forloop.index0 %}
     <div class="col-6 col-md-4 col-lg-3 event-item" data-title="{{ e.title }}" data-date="{{ e.date | date_to_xmlschema }}" data-idx="{{ idx }}">
-      <div class="position-relative" style="border-radius:10px; cursor:pointer; overflow:hidden;" data-bs-toggle="modal" data-bs-target="#modal-{{ idx }}"> {% if e.cover %}
+      <div class="position-relative" style="border-radius:10px;cursor:pointer;overflow:hidden;" data-bs-toggle="modal" data-bs-target="#modal-{{ idx }}">
+        {% if e.cover %}
         <div class="ratio ratio-1x1"><img src="{{ e.cover | relative_url }}" class="w-100 h-100 object-fit-cover blur-up" alt="{{ e.title }}"></div>
         {% else %}
         <div class="ratio ratio-1x1 bg-secondary text-white d-flex align-items-center justify-content-center">No Image</div>
@@ -121,27 +89,40 @@ published: true
         <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content" style="border-radius:10px;">
             <div class="modal-header">
-              <h5 class="modal-title" id="modalLabel-{{ dx }}">{{ e.title }}{% if e.date >= site.time %} <span class="badge bg-success ms-2">Upcoming</span>{% endif %}</h5>
+              <h5 class="modal-title" id="modalLabel-{{ idx }}">{{ e.title }}{% if e.date >= site.time %} <span class="badge bg-success ms-2">Upcoming</span>{% endif %}</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body"> {% if e.cover %}<img src="{{ e.cover | relative_url }}" class="img-fluid mb-3" style="border-radius:10px;">{% endif %}
+            <div class="modal-body">
+              {% if e.cover %}<img src="{{ e.cover | relative_url }}" class="img-fluid mb-3" style="border-radius:10px;">{% endif %}
               <p class="text-muted small mb-3">{{ e.date | date: "%B %-d, %Y" }}{% if e.location %} &mdash; {{ e.location }}{% endif %}</p>
               <div class="mb-4">{{ e.content | truncatewords: 50, '...' | markdownify }}</div>
               {% if e.map_embed %}
-              <div class="ratio ratio-4x3 my-3" style="max-width:350px; border-radius:10px; overflow:hidden;">{{ e.map_embed | raw }}</div>
-              {% endif %} </div>
-            <div class="modal-footer"> <a href="{{ e.url }}" class="btn btn-primary">Show More</a> {% if e.registration_url %} <a href="{{ e.registration_url }}" class="btn btn-sm btn-outline-dark text-dark fw-semibold animate__animated animate__pulse animate__infinite" target="_blank"> <i class="fa-solid fa-calendar-check me-1"></i> Register Now </a> {% endif %} <a class="btn btn-sm btn-outline-dark fw-semibold" target="_blank"
-                   href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ e.title | uri_escape }}&dates={{ e.date | date: '%Y%m%d' }}T{{ e.start_time | remove: ':' }}00/{{ e.date | date: '%Y%m%d' }}T{{ e.end_time | remove: ':' }}00&details={{ e.content | strip_html | uri_escape }}&location={{ e.location | uri_escape }}"> <i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar </a> <a class="btn btn-sm btn-outline-info fw-semibold" download="{{ e.title | slugify }}.ics"
-                   href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ e.title | uri_escape }}%0ADTSTART:{{ e.date | date: '%Y%m%d' }}{{ e.start_time | remove: ':' }}00Z%0ADTEND:{{ e.date | date: '%Y%m%d' }}{{ e.end_time | remove: ':' }}00Z%0ADESCRIPTION:{{ e.content | strip_html | uri_escape }}%0ALOCATION:{{ e.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR"> <i class="fa-solid fa-file-export me-1"></i> Download .ICS </a>
-              <button class="btn btn-sm btn-outline-secondary fw-semibold" onclick="navigator.share ? navigator.share({ title: '{{ e.title }}', url: '{{ e.url | absolute_url }}' }) : alert('Share not supported on this browser.')"> <i class="fa-solid fa-share-nodes me-1"></i> Share </button>
+              <div class="ratio ratio-4x3 my-3" style="max-width:350px;border-radius:10px;overflow:hidden;">{{ e.map_embed | raw }}</div>
+              {% endif %}
+            </div>
+            <div class="modal-footer">
+              <a href="{{ e.url }}" class="btn btn-primary">Show More</a>
+              {% if e.registration_url %}<a href="{{ e.registration_url }}" class="btn btn-sm btn-outline-dark text-dark fw-semibold animate__animated animate__pulse animate__infinite" target="_blank"><i class="fa-solid fa-calendar-check me-1"></i> Register Now</a>{% endif %}
+              <a class="btn btn-sm btn-outline-dark fw-semibold" target="_blank" href="https://www.google.com/calendar/render?action=TEMPLATE&text={{ e.title | uri_escape }}&dates={{ e.date | date: '%Y%m%d' }}T{{ e.start_time | remove: ':' }}00/{{ e.date | date: '%Y%m%d' }}T{{ e.end_time | remove: ':' }}00&details={{ e.content | strip_html | uri_escape }}&location={{ e.location | uri_escape }}"><i class="fa-solid fa-calendar-plus me-1"></i> Add to Calendar</a>
+              <a class="btn btn-sm btn-outline-info fw-semibold" download="{{ e.title | slugify }}.ics" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:{{ e.title | uri_escape }}%0ADTSTART:{{ e.date | date: '%Y%m%d' }}{{ e.start_time | remove: ':' }}00Z%0ADTEND:{{ e.date | date: '%Y%m%d' }}{{ e.end_time | remove: ':' }}00Z%0ADESCRIPTION:{{ e.content | strip_html | uri_escape }}%0ALOCATION:{{ e.location | uri_escape }}%0AEND:VEVENT%0AEND:VCALENDAR"><i class="fa-solid fa-file-export me-1"></i> Download .ICS</a>
+              <button class="btn btn-sm btn-outline-secondary fw-semibold" onclick="navigator.share ? navigator.share({ title: '{{ e.title }}', url: '{{ e.url | absolute_url }}' }) : alert('Share not supported on this browser.')"><i class="fa-solid fa-share-nodes me-1"></i> Share</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    {% endfor %} </div>
+    {% endfor %}
+  </div>
 </section>
 <!-- Hero banner END -->
+
+<!-- Inline events JSON for view-time hero selection -->
+<script id="ev" type="application/json">[
+{% assign ev = site.events | sort:'date' %}
+{% for e in ev %}{"title":{{ e.title | jsonify }},"date":"{{ e.date | date: '%Y-%m-%d' }}","start_time":{{ e.start_time | jsonify }},"end_time":{{ e.end_time | jsonify }},"location":{{ e.location | jsonify }},"cover":{{ e.cover | relative_url | jsonify }},"url":{{ e.url | absolute_url | jsonify }},"registration_url":{{ e.registration_url | jsonify }},"content":{{ e.content | strip_html | strip_newlines | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}
+]</script>
+<script>(()=>{const d=document,J=d.getElementById('ev');if(!J)return;let a=[];try{a=JSON.parse(J.textContent||'[]')}catch(_){}if(!a.length)return;const id=x=>d.getElementById(x),U=s=>encodeURIComponent(s||''),P=s=>s?.replace(/-/g,'')||'',Z=s=>(s||'00:00').replace(':','')+'00',T=e=>new Date(e.date+'T'+(e.start_time||'00:00')+':00+08:00').getTime();a.sort((x,y)=>T(x)-T(y));const n=Date.now();let e=a.find(v=>T(v)>=n)||a[a.length-1];if(!e)return;const hero=id('hero'),ht=id('ht'),hd=id('hd'),reg=id('reg'),gc=id('gcal'),ics=id('ics'),hmr=id('hmr'),hc=id('hc'),shr=id('shr');if(hero&&e.cover)hero.style.backgroundImage=`linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('${e.cover}')`;if(ht)ht.textContent=e.title||'';if(hd){try{hd.textContent=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Manila',month:'long',day:'numeric',year:'numeric'}).format(new Date(e.date+'T00:00:00+08:00'))+(e.location?` — ${e.location}`:'')}catch(_){hd.textContent=(e.date||'')+(e.location?` — ${e.location}`:'')}}if(reg){if(e.registration_url){reg.href=e.registration_url;reg.style.display=''}else{reg.removeAttribute('href');reg.style.display='none'}}const ds=P(e.date)+'T'+Z(e.start_time),de=P(e.date)+'T'+Z(e.end_time||e.start_time);if(gc)gc.href=`https://www.google.com/calendar/render?action=TEMPLATE&text=${U(e.title)}&dates=${ds}/${de}&details=${U(e.content)}&location=${U(e.location)}`;if(ics)ics.href=`data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:${U(e.title)}%0ADTSTART:${ds}Z%0ADTEND:${de}Z%0ADESCRIPTION:${U(e.content)}%0ALOCATION:${U(e.location)}%0AEND:VEVENT%0AEND:VCALENDAR`;if(hmr&&e.url)hmr.href=e.url;if(hc){const p=d.createElement('p');let txt=(e.content||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();if(txt){const w=txt.split(' ');p.textContent=w.slice(0,120).join(' ')+(w.length>120?'...':'');hc.insertBefore(p,hc.firstChild)}}if(shr){shr.onclick=()=>navigator.share?navigator.share({title:e.title||'',url:e.url||location.href}):alert('Share not supported on this browser.')}})();</script>
+
 <!-- Industry Partners -->
 {% include industry-partner.html %}
 

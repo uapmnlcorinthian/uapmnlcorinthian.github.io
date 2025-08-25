@@ -106,10 +106,13 @@ header {
   header, header img { max-height: 40px; }
   .navbar { min-height: 44px; }
   .navbar-nav .nav-link, .navbar-brand {
-    font-size: .89rem; padding: 0 .6rem;
+    font-size: .89rem; padding: .6rem;
   }
   .offcanvas-title { font-size: 1.07rem; }
 }
+
+/* Recommended: clamp to 25vw with safe min & hard max */
+.offcanvas{--bs-offcanvas-width:clamp(185px,30vw,300px)}
 
 // ---------------------------------------------
 // 7. HERO SECTION
