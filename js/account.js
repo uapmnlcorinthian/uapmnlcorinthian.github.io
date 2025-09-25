@@ -17,7 +17,8 @@
     var u2 = u.length <= 2 ? (u.charAt(0) + '•') : (u.charAt(0) + new Array(midLen + 1).join('•') + u.charAt(u.length - 1));
     return u2 + '@' + h;
   };
-  var formatMoney = function (v) { return v ? '₱' + Number(v).toLocaleString() : '—'; };
+  var isZeroish = function (v) { if (v == null) return true; var t = String(v).trim(); return t === '' || /^0+(\.0+)?$/.test(t); };
+  var formatMoney = function (v) { return isZeroish(v) ? '—' : '₱' + Number(v).toLocaleString(); };
   var formatDate = function (v) {
     if (!v || v === '—') return '—';
     var d = new Date(v);
@@ -81,6 +82,8 @@
   var sb = (typeof window !== 'undefined' && window.supabase && typeof window.supabase.createClient === 'function')
     ? window.supabase.createClient(SB_URL, SB_KEY)
     : null;
+  if (typeof window !== 'undefined') window.sb = sb; // <-- expose for console/tests
+
 
   // Table / key actually used
   var TABLE  = 'xxsr_001';
@@ -236,6 +239,7 @@
       var cur = $('#pwdCurrent'); // current password (if changing)
       var p1 = $('#pwd1'),   p2 = $('#pwd2'),   bar = $('#pwdBar'),     tips = $('#pwdTips'),     cap = $('#pwdCap');
       var otpBtn = $('#btnSendOTP'), otpIn = $('#otpCode'), otpGo = $('#btnVerifyOTP'), otpSt = $('#otpStatus');
+      var maxLbl = $('#pwMaxLbl');
 
       var okMsg = function (m) {
         if (box) box.classList.add('d-none');
@@ -317,16 +321,16 @@
         if (tips) tips.textContent = 'Min 8 chars; include UPPER + lower + (number OR symbol).';
       };
       if (p1) {
-        var evs = ['input','keyup','change','paste'];
-        for (var i = 0; i < evs.length; i++) p1.addEventListener(evs[i], function(){ paint(p1.value); });
+        ['input','keyup','change','paste'].forEach(function(ev){ p1.addEventListener(ev, function(){ paint(p1.value); }); });
         paint(p1.value || '');
       }
 
-      // daily cap
+      // dynamic daily cap
       var dayKey = 'pwdCap_' + new Date().toISOString().slice(0, 10);
-      var MAX = 10; // allowed password changes/day
+      var MAX = Number(window.PW_MAX) || 10;
       var cnt = 0;
       try { cnt = +JSON.parse(localStorage.getItem(dayKey) || '0') || 0; } catch (e) {}
+      if (maxLbl) maxLbl.textContent = '(max ' + MAX + '/day)';
       if (cap) cap.textContent = 'Password changes today: ' + cnt + '/' + MAX;
 
       // validity handlers
@@ -339,13 +343,17 @@
         otpVerified = false;
       });
 
-      if (cn) cn.addEventListener('blur', function () {
-        var dbv = normPhone(cn.value);
-        if (typeof cn.setCustomValidity === 'function') {
-          if (cn.value && dbv === null) cn.setCustomValidity('Enter PH mobile as 09XXXXXXXXX or +639XXXXXXXXX');
-          else cn.setCustomValidity('');
-        }
-      });
+      // realtime phone validation (green/red)
+      if (cn) {
+        var setPh = function (v) {
+          var dbv = normPhone(v), ok = v ? dbv !== null : true;
+          cn.classList.toggle('is-valid', ok && !!v);
+          cn.classList.toggle('is-invalid', !ok && !!v);
+          if (typeof cn.setCustomValidity === 'function') cn.setCustomValidity(ok ? '' : 'Enter PH mobile as 09XXXXXXXXX or +639XXXXXXXXX');
+        };
+        ['input','change','keyup','blur','paste'].forEach(function(ev){ cn.addEventListener(ev, function(){ setPh(cn.value); }); });
+        setPh(cn.value || '');
+      }
 
       // OTP flow (required)
       var setOtp = function (t, cls) {
@@ -410,87 +418,60 @@
         var cDb  = cIn ? normPhone(cIn) : null;
         if (cIn && cDb === null) { errMsg('Invalid contact number format.'); return; }
 
-        // Build payload: ALWAYS include company/position/email; include contact_no only if provided
-        var d = { company: newCompany, position: newPosition, email: newEmail };
-        if (cIn) d.contact_no = cDb;
+        // Build inputs for secure RPC: verify + update inside Postgres
+        var sendContact = cIn ? cDb : null;
 
-        // If changing password, verify current first using RPC verify_password and row's password_hash
-        var verifyCurrentPassword = function() { return Promise.resolve(true); };
-        if (A) {
-          verifyCurrentPassword = function() {
-            return sb.from('xxsr_001').select('password_hash').eq('row_id', rowId).maybeSingle()
-              .then(function (sel) {
-                if (!sel || !sel.data || !sel.data.password_hash) throw new Error('no-hash');
-                return sb.rpc('verify_password', { plain: C, hash: sel.data.password_hash });
-              })
-              .then(function (rv) {
-                var ok = (rv && rv.data === true) || rv === true;
-                if (!ok) throw new Error('bad-current');
-                return true;
-              });
-          };
-        }
+		sb.rpc('update_member_profile', {
+		  p_row_id:        Number(rowId),    // <-- force numeric
+		  p_current_plain: C,
+		  p_company:       newCompany || null,
+		  p_position:      newPosition || null,
+		  p_email:         newEmail || null,
+		  p_contact_no:    sendContact,
+		  p_new_password:  A ? A : null
+		})
 
-        verifyCurrentPassword()
-          .then(function () {
-            // include password to trigger your hashing trigger
-            if (A) d.password = A;
+        .then(function(rv){
+          if (!rv || rv.error) throw (rv.error || new Error('rpc-failed'));
+          var res = (rv.data && rv.data[0]) ? rv.data[0] : null;
 
-            // If everything is empty (shouldn't happen since company/position/email are always sent), guard anyway
-            if (!Object.keys(d).length) { errMsg('No changes to save.'); return Promise.resolve(null); }
+          // reflect on card
+          setCard('cardCompany',  res ? (res.company  || '*no data*') : newCompany);
+          setCard('cardPosition', res ? (res.position || '*no data*') : newPosition);
+          setCard('email',        res ? (res.email    || '*no data*') : newEmail);
+          if (res && typeof res.contact_no !== 'undefined') {
+            setCard('contactNo', dispPhone(res.contact_no));
+          } else if (sendContact !== null) {
+            setCard('contactNo', dispPhone(sendContact));
+          }
 
-            return sb.from(TABLE)
-              .update(d)
-              .eq(KEYCOL, rowId)
-              .select('company,position,email,contact_no')
-              .maybeSingle();
-          })
-          .then(function (up) {
-            if (!up) return; // early return already handled
-            if (up && up.error) throw up.error;
+          // sync session snapshot
+          try {
+            var np = {};
+            for (var k in pi) if (pi.hasOwnProperty(k)) np[k] = pi[k];
+            np.co = newCompany; np.po = newPosition; np.e = newEmail;
+            if (sendContact !== null) np.c = sendContact;
+            u0.pi = np; sessionStorage.setItem('userData', JSON.stringify(u0));
+          } catch (e) {}
 
-            var res = (up && up.data) ? up.data : null;
+          // password cap counter
+          if (A) {
+            cnt++; try { localStorage.setItem(dayKey, JSON.stringify(cnt)); } catch (e) {}
+            var rem = Math.max(0, MAX - cnt);
+            if (cap) cap.textContent = 'Password changes today: ' + cnt + '/' + MAX;
+            okMsg('Saved. Password changes: ' + cnt + '/' + MAX + ' (' + rem + ' remaining today).');
+          } else {
+            okMsg('Saved');
+          }
 
-            // reflect on card from DB response (preferred), else from payload
-            setCard('cardCompany',  res ? (res.company  || '*no data*') : d.company);
-            setCard('cardPosition', res ? (res.position || '*no data*') : d.position);
-            setCard('email',        res ? (res.email    || '*no data*') : d.email);
-            if (res && typeof res.contact_no !== 'undefined') {
-              setCard('contactNo', dispPhone(res.contact_no));
-            } else if (typeof d.contact_no !== 'undefined') {
-              setCard('contactNo', dispPhone(d.contact_no));
-            }
-
-            // sync session snapshot
-            try {
-              var np = {};
-              for (var k in pi) if (pi.hasOwnProperty(k)) np[k] = pi[k];
-              np.co = d.company;
-              np.po = d.position;
-              np.e  = d.email;
-              if (typeof d.contact_no !== 'undefined') np.c = d.contact_no;
-              u0.pi = np;
-              sessionStorage.setItem('userData', JSON.stringify(u0));
-            } catch (e) {}
-
-            // password cap
-            if (A) {
-              cnt++;
-              try { localStorage.setItem(dayKey, JSON.stringify(cnt)); } catch (e) {}
-              var rem = Math.max(0, MAX - cnt);
-              if (cap) cap.textContent = 'Password changes today: ' + cnt + '/' + MAX;
-              okMsg('Saved. Password changes: ' + cnt + '/' + MAX + ' (' + rem + ' remaining today).');
-            } else {
-              okMsg('Saved');
-            }
-
-            try { bootstrap.Collapse.getOrCreateInstance('#updateWrapper').hide(); } catch (e) {}
-          })
-          .catch(function (err) {
-            if (err && err.message === 'bad-current') errMsg('Current password is incorrect.');
-            else if (err && err.message === 'no-hash') errMsg('Password not set. Please contact support.');
-            else errMsg('Unable to save. Please try again.');
-          });
+          try { bootstrap.Collapse.getOrCreateInstance('#updateWrapper').hide(); } catch (e) {}
+        })
+        .catch(function(err){
+          var msg = String(err && (err.message || err) || '');
+          if (/bad-current/.test(msg)) errMsg('Current password is incorrect.');
+          else if (/invalid-contact/.test(msg)) errMsg('Invalid contact number format.');
+          else errMsg('Unable to save. Please try again.');
+        });
       });
     }
   });
