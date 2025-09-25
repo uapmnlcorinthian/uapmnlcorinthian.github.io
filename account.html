@@ -188,10 +188,10 @@ sitemap: true
           <div class="input-group input-group-sm" id="emailOtpGroup">
             <input id="updEmail" type="email" class="form-control" autocomplete="email" required>
             <button id="btnSendOTP" class="btn btn-outline-primary rounded-end" type="button">Send OTP</button>
-            <div class="invalid-feedback">Enter a valid, non‑disposable email.</div>
+            <div class="invalid-feedback">Enter a valid email.</div>
           </div>
           <div class="mt-2 d-flex gap-2 align-items-center">
-            <input id="otpCode" class="form-control form-control-sm" placeholder="Enter 6-digit OTP" inputmode="numeric" pattern="^[0-9]{6}$" maxlength="6" style="max-width:160px">
+            <input id="otpCode" class="form-control form-control-sm" placeholder="Enter OTP here" inputmode="numeric" pattern="^[0-9]{6}$" maxlength="6" style="max-width:160px">
             <button id="btnVerifyOTP" class="btn btn-outline-secondary btn-sm" type="button">Verify</button>
             <span id="otpStatus" class="small ms-2" aria-live="polite"></span>
           </div>
@@ -210,7 +210,7 @@ sitemap: true
           <div class="invalid-feedback">Passwords must match and be strong.</div>
           <div id="pwdCap" class="small text-muted mt-1"></div>
         </div>
-        <div id="updateFeedback" class="col-12 small"></div>
+        <div id="updateFeedback" class="col-11 small"></div>
         <div class="col-12 text-end mt-2">
           <button id="btnUpdateSave" type="submit" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-floppy-disk me-1"></i>Save</button>
           <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="collapse" data-bs-target="#updateWrapper"><i class="fa-solid fa-xmark me-1"></i>Close</button>

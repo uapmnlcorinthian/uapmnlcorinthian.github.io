@@ -1,7 +1,6 @@
 // File: account.js
 // Handles account page & update form (xxsr_001 + row_id; OTP; allow-list; phone normalize; pw strength & cap)
 
-// Scope everything to avoid conflicts ($ already used elsewhere)
 (function () {
   // ---------- tiny helpers ----------
   var $  = function (s) { return document.querySelector(s); };
@@ -18,7 +17,11 @@
     return u2 + '@' + h;
   };
   var isZeroish = function (v) { if (v == null) return true; var t = String(v).trim(); return t === '' || /^0+(\.0+)?$/.test(t); };
-  var formatMoney = function (v) { return isZeroish(v) ? '—' : '₱' + Number(v).toLocaleString(); };
+  var formatMoney = function (v) {
+    if (isZeroish(v)) return '—';
+    var n = Number(v);
+    return isFinite(n) ? '₱' + n.toLocaleString() : '—';
+  };
   var formatDate = function (v) {
     if (!v || v === '—') return '—';
     var d = new Date(v);
@@ -42,9 +45,9 @@
   // PH phone: DB stores 9XXXXXXXXX; UI shows 09XXXXXXXXX
   var normPhone = function (v) {
     v = String(v || '').replace(/\D/g, '');
-    if (/^09\d{9}$/.test(v)) return v.slice(1);
-    if (/^\+?63\d{10}$/.test(v)) return v.replace(/^\+?63/, '');
-    if (/^\d{10}$/.test(v)) return v; // already 10 digits (leading 9 + 9 more)
+    if (/^09\d{9}$/.test(v)) return v.slice(1);          // 09XXXXXXXXX -> 9XXXXXXXXX
+    if (/^\+?63\d{10}$/.test(v)) return v.replace(/^\+?63/, ''); // +639XXXXXXXXX or 639XXXXXXXXX -> 9XXXXXXXXX
+    if (/^\d{10}$/.test(v)) return v;                     // already 10 digits (leading 9 + 9 more)
     return null;
   };
   var dispPhone = function (db) { return db ? ('0' + String(db).replace(/^0+/, '')) : ''; };
@@ -82,8 +85,7 @@
   var sb = (typeof window !== 'undefined' && window.supabase && typeof window.supabase.createClient === 'function')
     ? window.supabase.createClient(SB_URL, SB_KEY)
     : null;
-  if (typeof window !== 'undefined') window.sb = sb; // <-- expose for console/tests
-
+  if (typeof window !== 'undefined') window.sb = sb; // expose for console/tests
 
   // Table / key actually used
   var TABLE  = 'xxsr_001';
@@ -238,6 +240,45 @@
       var nm = $('#updName'), pr = $('#updPRC'), co = $('#updCompany'), po = $('#updPosition'), cn = $('#updContact'), em = $('#updEmail');
       var cur = $('#pwdCurrent'); // current password (if changing)
       var p1 = $('#pwd1'),   p2 = $('#pwd2'),   bar = $('#pwdBar'),     tips = $('#pwdTips'),     cap = $('#pwdCap');
+
+      // add eye toggle buttons (do it after inputs exist)
+		var addEye = function (input) {
+		  if (!input || input.dataset.eyeBound === '1') return;
+		  input.dataset.eyeBound = '1';
+
+		  // Create a group and move the input inside
+		  var group = document.createElement('div');
+		  group.className = 'input-group input-group-sm pw-group mb-2';
+
+		  // Remove margin-bottom from the input (it belongs to the group)
+		  input.classList.remove('mb-2');
+
+		  input.parentNode.insertBefore(group, input);
+		  group.appendChild(input);
+
+		  // Eye button inside the group (inline with the input)
+		  var btn = document.createElement('button');
+		  btn.type = 'button';
+		  btn.className = 'btn btn-outline-secondary';
+		  btn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+		  btn.setAttribute('aria-label', 'Show/Hide password');
+
+		  btn.addEventListener('click', function () {
+			var show = input.type === 'password';
+			input.type = show ? 'text' : 'password';
+			btn.innerHTML = show ? '<i class="fa-solid fa-eye-slash"></i>' : '<i class="fa-solid fa-eye"></i>';
+			// keep caret at end
+			try { var v = input.value; input.value = ''; input.value = v; } catch (e) {}
+		  });
+
+		  group.appendChild(btn);
+		};
+
+
+      addEye(cur);
+      addEye(p1);
+      //addEye(p2);
+
       var otpBtn = $('#btnSendOTP'), otpIn = $('#otpCode'), otpGo = $('#btnVerifyOTP'), otpSt = $('#otpStatus');
       var maxLbl = $('#pwMaxLbl');
 
@@ -273,11 +314,11 @@
       // refresh from DB (xxsr_001 via row_id)
       (function refreshFromDBOnce(){
         if (!sb || !rowId) return;
-		sb.from(TABLE)
-		  .select('name,prc_license,company,position,contact_no,email')
-		  .eq(KEYCOL, rowId)
-		  .maybeSingle()
-		  .then(function (r) {
+        sb.from(TABLE)
+          .select('name,prc_license,company,position,contact_no,email')
+          .eq(KEYCOL, rowId)
+          .maybeSingle()
+          .then(function (r) {
             if (!r || !r.data) return;
             var d = r.data;
 
@@ -311,19 +352,59 @@
           .catch(function(){});
       })();
 
-      // strength bar
-      var paint = function (v) {
-        var p = pwScore(v || '');
-        if (bar) {
-          bar.style.width = p + '%';
-          bar.className = 'progress-bar' + (p >= 80 ? ' bg-success' : (p >= 60 ? ' bg-warning' : ' bg-danger'));
-        }
-        if (tips) tips.textContent = 'Min 8 chars; include UPPER + lower + (number OR symbol).';
-      };
-      if (p1) {
-        ['input','keyup','change','paste'].forEach(function(ev){ p1.addEventListener(ev, function(){ paint(p1.value); }); });
-        paint(p1.value || '');
-      }
+      // strength + realtime confirm match
+		var paint = function (v) {
+		  var p = pwScore(v || '');
+		  if (bar) {
+			bar.style.width = p + '%';
+			bar.className = 'progress-bar' + (p >= 80 ? ' bg-success' : (p >= 60 ? ' bg-warning' : ' bg-danger'));
+		  }
+		  if (tips) tips.textContent = 'Min 8 chars; include UPPER + lower + (number OR symbol).';
+		};
+
+		var saveBtn = $('#btnUpdateSave'); // optional: disable Save while mismatch/weak
+
+		function updatePwMatchUI() {
+		  var a = p1 ? (p1.value || '') : '';
+		  var b = p2 ? (p2.value || '') : '';
+
+		  // always keep strength bar in sync with #pwd1
+		  paint(a);
+
+		  if (!p2) return;
+		  var hasConfirm = b.length > 0;
+		  var same = a === b;
+		  var strong = pwMeetsRule(a) || a.length === 0; // allow “no change” state
+
+		  // Bootstrap validity classes on #pwd2
+		  p2.classList.toggle('is-valid',   hasConfirm && same && strong);
+		  p2.classList.toggle('is-invalid', hasConfirm && (!same || (!strong && a.length > 0)));
+
+		  // Native validity message
+		  if (hasConfirm && !same) {
+			p2.setCustomValidity('Passwords do not match');
+		  } else if (hasConfirm && a.length > 0 && !strong) {
+			p2.setCustomValidity('Password too weak');
+		  } else {
+			p2.setCustomValidity('');
+		  }
+
+		  // (optional) gate the Save button while mismatch/weak
+		  if (saveBtn) {
+			var block = hasConfirm && (!same || (!strong && a.length > 0));
+			saveBtn.disabled = !!block;
+		  }
+		}
+
+		// wire up realtime listeners
+		['input','keyup','change','paste'].forEach(function(ev){
+		  if (p1) p1.addEventListener(ev, updatePwMatchUI);
+		  if (p2) p2.addEventListener(ev, updatePwMatchUI);
+		});
+
+		// run once to sync initial UI
+		updatePwMatchUI();
+
 
       // dynamic daily cap
       var dayKey = 'pwdCap_' + new Date().toISOString().slice(0, 10);
@@ -343,13 +424,16 @@
         otpVerified = false;
       });
 
-      // realtime phone validation (green/red)
+      // realtime phone validation: only allow 09XXXXXXXXX or +639XXXXXXXXX in UI
       if (cn) {
         var setPh = function (v) {
-          var dbv = normPhone(v), ok = v ? dbv !== null : true;
-          cn.classList.toggle('is-valid', ok && !!v);
-          cn.classList.toggle('is-invalid', !ok && !!v);
-          if (typeof cn.setCustomValidity === 'function') cn.setCustomValidity(ok ? '' : 'Enter PH mobile as 09XXXXXXXXX or +639XXXXXXXXX');
+          var raw = String(v || '').trim();
+          var ok = (raw === '') || /^(09\d{9}|\+639\d{9})$/.test(raw);
+          cn.classList.toggle('is-valid', ok && !!raw);
+          cn.classList.toggle('is-invalid', !ok && !!raw);
+          if (cn.setCustomValidity) {
+            cn.setCustomValidity(ok ? '' : 'Enter PH mobile as 09XXXXXXXXX or +639XXXXXXXXX');
+          }
         };
         ['input','change','keyup','blur','paste'].forEach(function(ev){ cn.addEventListener(ev, function(){ setPh(cn.value); }); });
         setPh(cn.value || '');
@@ -386,13 +470,54 @@
       });
 
       if (em) em.addEventListener('input', function(){ otpVerified = false; setOtp('', ''); });
+		// --- logout countdown toast ---
+		function startLogoutCountdown(seconds) {
+		  // remove any previous toast
+		  var old = document.getElementById('logoutCountdown');
+		  if (old) old.remove();
+
+		  // toast container
+		  var toast = document.createElement('div');
+		  toast.id = 'logoutCountdown';
+		  toast.className = 'toast align-items-center text-bg-dark border-0 show';
+		  toast.setAttribute('role', 'alert');
+		  toast.setAttribute('aria-live', 'assertive');
+		  toast.setAttribute('aria-atomic', 'true');
+		  toast.style.position = 'fixed';
+		  toast.style.right = '1rem';
+		  toast.style.bottom = '1rem';
+		  toast.style.zIndex = '1080';
+
+		  toast.innerHTML =
+			'<div class="d-flex">' +
+			  '<div class="toast-body">' +
+				'Password updated. Logging out in <strong><span id="logoutSecs">' + seconds + '</span>s</strong>…' +
+			  '</div>' +
+			'</div>';
+
+		  document.body.appendChild(toast);
+
+		  var n = seconds;
+		  var tick = setInterval(function () {
+			n--;
+			var el = document.getElementById('logoutSecs');
+			if (el) el.textContent = n;
+			if (n <= 0) {
+			  clearInterval(tick);
+			  // sign out + clear local/session and go home
+			  try { if (sb && sb.auth && typeof sb.auth.signOut === 'function') sb.auth.signOut(); } catch (e) {}
+			  try { sessionStorage.removeItem('userData'); localStorage.removeItem('userData'); } catch (e) {}
+			  location.href = '/';
+			}
+		  }, 1000);
+		}
 
       // submit
       f.addEventListener('submit', function (e) {
         e.preventDefault();
-		// clear any stale alert/success from previous tries
-		if (box) { box.classList.add('d-none'); box.textContent=''; }
-		if (fb)  { fb.className='small'; fb.textContent=''; }
+        // clear any stale alert/success from previous tries
+        if (box) { box.classList.add('d-none'); box.textContent=''; }
+        if (fb)  { fb.className='small'; fb.textContent=''; }
 
         if (!sb) { errMsg('Supabase not available.'); return; }
         if (!rowId) { errMsg('Missing member key.'); return; }
@@ -422,89 +547,105 @@
         var cDb  = cIn ? normPhone(cIn) : null;
         if (cIn && cDb === null) { errMsg('Invalid contact number format.'); return; }
 
-        // Build inputs for secure RPC: verify + update inside Postgres
-        var sendContact = cIn ? cDb : null;
+        // payload for direct table update
+        var d = { company: newCompany, position: newPosition, email: newEmail };
+        if (cIn) d.contact_no = cDb;
 
-		// Build payload for direct table update
-var d = { company: newCompany, position: newPosition, email: newEmail };
-if (sendContact !== null) d.contact_no = sendContact;
+        // Verify current password only if changing it
+        var verifyCurrentPassword = function(){ return Promise.resolve(true); };
+        if (A) {
+          verifyCurrentPassword = function(){
+            return sb.from('xxsr_001')
+              .select('password_hash')
+              .eq('row_id', Number(rowId))
+              .maybeSingle()
+              .then(function(sel){
+                if (!sel || !sel.data || !sel.data.password_hash) throw new Error('no-hash');
+                return sb.rpc('verify_password', { plain: C, hash: sel.data.password_hash });
+              })
+              .then(function(rv){
+                var ok = (rv && rv.data === true) || rv === true;
+                if (!ok) throw new Error('bad-current');
+                return true;
+              });
+          };
+        }
 
-// Verify current password only if changing it
-var verifyCurrentPassword = function(){ return Promise.resolve(true); };
-if (A) {
-  verifyCurrentPassword = function(){
-    return sb.from('xxsr_001')
-      .select('password_hash')
-      .eq('row_id', rowId)
-      .maybeSingle()
-      .then(function(sel){
-        if (!sel || !sel.data || !sel.data.password_hash) throw new Error('no-hash');
-        return sb.rpc('verify_password', { plain: C, hash: sel.data.password_hash });
-      })
-      .then(function(rv){
-        var ok = (rv && rv.data === true) || rv === true;
-        if (!ok) throw new Error('bad-current');
-        return true;
+        verifyCurrentPassword()
+          .then(function () {
+            if (A) d.password = A; // trigger hashes & clears plaintext in DB
+            return sb.from(TABLE)
+              .update(d)
+              .eq(KEYCOL, Number(rowId))     // ensure numeric for bigint PKs
+              .select('company,position,email,contact_no')
+              .maybeSingle();
+          })
+          .then(function (up) {
+            if (!up) return;
+            if (up.error) throw up.error;
+
+            var res = up.data || null;
+
+            // reflect on card
+            setCard('cardCompany',  res ? (res.company  || '*no data*') : d.company);
+            setCard('cardPosition', res ? (res.position || '*no data*') : d.position);
+            setCard('email',        res ? (res.email    || '*no data*') : d.email);
+            if (res && typeof res.contact_no !== 'undefined') {
+              setCard('contactNo', dispPhone(res.contact_no));
+            } else if (typeof d.contact_no !== 'undefined') {
+              setCard('contactNo', dispPhone(d.contact_no));
+            }
+
+            // sync session snapshot
+            try {
+              var np = {};
+              for (var k in pi) if (pi.hasOwnProperty(k)) np[k] = pi[k];
+              np.co = d.company; np.po = d.position; np.e = d.email;
+              if (typeof d.contact_no !== 'undefined') np.c = d.contact_no;
+              u0.pi = np; sessionStorage.setItem('userData', JSON.stringify(u0));
+            } catch (e) {}
+
+			// password cap + security logout with countdown
+			if (A) {
+			  cnt++; try { localStorage.setItem(dayKey, JSON.stringify(cnt)); } catch (e) {}
+			  if (cap) cap.textContent = 'Password changes today: ' + cnt + '/' + MAX;
+
+			  // collapse the form so the toast is clearly visible
+			  try { bootstrap.Collapse.getOrCreateInstance('#updateWrapper').hide(); } catch (e) {}
+
+			  // show non-blocking countdown (5 seconds) and auto-logout
+			  startLogoutCountdown(5);
+			  return; // stop further handling; we’re redirecting
+			} else {
+			  okMsg('Saved');
+			}
+
+
+            try { bootstrap.Collapse.getOrCreateInstance('#updateWrapper').hide(); } catch (e) {}
+          })
+          .catch(function (err) {
+            console.error('[update failed]', err);
+            var msg = (err && (err.message || err)) || '';
+            if (/bad-current/.test(msg))     { errMsg('Current password is incorrect.'); return; }
+            if (/no-hash/.test(msg))         { errMsg('Password not set. Please contact support.'); return; }
+            if (/invalid-contact/.test(msg)) { errMsg('Invalid contact number format.'); return; }
+            if (err && (err.code || err.status)) { errMsg('Save failed: ' + (err.message || err.code || err.status)); return; }
+            errMsg('Unable to save. Please try again.');
+          });
+
       });
-  };
-}
-
-verifyCurrentPassword()
-  .then(function () {
-    if (A) d.password = A; // trigger hashes & clears plaintext in DB
-    return sb.from(TABLE)
-      .update(d)
-      .eq(KEYCOL, Number(rowId))     // ensure numeric for bigint PKs
-      .select('company,position,email,contact_no')
-      .maybeSingle();
-  })
-  .then(function (up) {
-    if (!up) return;
-    if (up.error) throw up.error;
-
-    var res = up.data || null;
-
-    // reflect on card
-    setCard('cardCompany',  res ? (res.company  || '*no data*') : d.company);
-    setCard('cardPosition', res ? (res.position || '*no data*') : d.position);
-    setCard('email',        res ? (res.email    || '*no data*') : d.email);
-    if (res && typeof res.contact_no !== 'undefined') {
-      setCard('contactNo', dispPhone(res.contact_no));
-    } else if (typeof d.contact_no !== 'undefined') {
-      setCard('contactNo', dispPhone(d.contact_no));
     }
 
-    // sync session snapshot
-    try {
-      var np = {};
-      for (var k in pi) if (pi.hasOwnProperty(k)) np[k] = pi[k];
-      np.co = d.company; np.po = d.position; np.e = d.email;
-      if (typeof d.contact_no !== 'undefined') np.c = d.contact_no;
-      u0.pi = np; sessionStorage.setItem('userData', JSON.stringify(u0));
-    } catch (e) {}
-
-    // password cap
-    if (A) {
-      cnt++; try { localStorage.setItem(dayKey, JSON.stringify(cnt)); } catch (e) {}
-      var rem = Math.max(0, MAX - cnt);
-      if (cap) cap.textContent = 'Password changes today: ' + cnt + '/' + MAX;
-      okMsg('Saved. Password changes: ' + cnt + '/' + MAX + ' (' + rem + ' remaining today).');
-    } else {
-      okMsg('Saved');
-    }
-
-    try { bootstrap.Collapse.getOrCreateInstance('#updateWrapper').hide(); } catch (e) {}
-  })
-  .catch(function (err) {
-    console.error('[update failed]', err);
-    var msg = (err && (err.message || err)) || '';
-    if (/bad-current/.test(msg))     { errMsg('Current password is incorrect.'); return; }
-    if (/no-hash/.test(msg))         { errMsg('Password not set. Please contact support.'); return; }
-    if (/invalid-contact/.test(msg)) { errMsg('Invalid contact number format.'); return; }
-    if (err && (err.code || err.status)) { errMsg('Save failed: ' + (err.message || err.code || err.status)); return; }
-    errMsg('Unable to save. Please try again.');
-  });
-
+    // footer logout button (optional convenience)
+    var btnLogout = $('#btnLogoutFooter');
+    if (btnLogout) {
+      btnLogout.addEventListener('click', function () {
+        try { if (sb && sb.auth && typeof sb.auth.signOut === 'function') sb.auth.signOut(); } catch (e) {}
+        try {
+          sessionStorage.removeItem('userData');
+          localStorage.removeItem('userData');
+        } catch (e) {}
+        location.href = '/';
       });
     }
   });
