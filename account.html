@@ -14,13 +14,15 @@ sitemap: true
 <!-- Custom scripts -->
 <script defer src="{{ '/js/QR.js' | relative_url }}"></script>
 
-<!-- Account page -->
+<!-- Load Supabase FIRST so account.js can use it -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
+<!-- Global Supabase config (must be before account.js) -->
+<script>window.SUPABASE_URL='https://fvaahtqjusfniadwvoyw.supabase.co';window.SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8';</script>
+
+<!-- Account page logic (uses Supabase + your helpers) -->
 <script src="{{ '/js/account.js' | relative_url }}" defer></script>
 
-<!-- Call Recaptcha before any script -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
 <div class="account-info d-flex flex-column min-vh-100 py-4" data-aos="fade-up">
-
   <div class="card shadow-sm digital-card mx-auto mb-5" style="max-width: 750px;" data-aos="fade-right">
     <div class="card-header text-center bg-light">
       <img src="{{ site.data.images.s-logo}}" alt="UAP MCC" class="card-header-logo mb-2" />
@@ -84,20 +86,19 @@ sitemap: true
     </div>
   </div>
 
-<!-- QR Code Section -->
-<div class="card shadow-lg mx-auto border-0 mb-3 rounded-4" style="max-width: 420px; background: #fdfdfd;">
-  <div class="card-body d-flex flex-column align-items-center p-4 position-relative">
-    <div id="qr-wrapper" style="position: relative;">
-      <div id="qr-vcard"></div>
-      <img src="{{ site.data.images.s-logo }}" alt="UAP MCC Logo"
-           style="position: absolute; top: 50%; left: 50%; width: 75px; height: 75px; transform: translate(-50%, -50%); border-radius: 10%;" />
+  <!-- QR Code Section -->
+  <div class="card shadow-lg mx-auto border-0 mb-3 rounded-4" style="max-width: 420px; background: #fdfdfd;">
+    <div class="card-body d-flex flex-column align-items-center p-4 position-relative">
+      <div id="qr-wrapper" style="position: relative;">
+        <div id="qr-vcard"></div>
+        <img src="{{ site.data.images.s-logo }}" alt="UAP MCC Logo"
+             style="position: absolute; top: 50%; left: 50%; width: 75px; height: 75px; transform: translate(-50%, -50%); border-radius: 10%;" />
+      </div>
+      <div class="text-primary fw-semibold fs-6 mt-3">Your Digital Business Card</div>
+      <small class="text-muted">Scan to save contact info instantly</small>
+      <small class="text-muted d-block">Only visible fields are included in the QR.</small>
     </div>
-    <div class="text-primary fw-semibold fs-6 mt-3">Your Digital Business Card</div>
-    <small class="text-muted">Scan to save contact info instantly</small>
-    <small class="text-muted d-block">Only visible fields are included in the QR.</small>
   </div>
-</div>
-
 
   <section class="container" data-aos="fade-left">
     <div class="d-flex align-items-center justify-content-between mb-2">
@@ -145,4 +146,66 @@ sitemap: true
   </section>
 
   <div class="container text-end mt-4"></div>
+
+  <!-- Update Info (prefill-ready; name/prc read-only; OTP + password bar) -->
+  <div id="updateWrapper" class="collapse" data-bs-parent=".account-info">
+    <div class="card shadow-sm mx-auto mt-3" style="max-width:750px">
+      <div class="card-header bg-light fw-semibold">Update Member Information</div>
+      <form id="updateInfoForm" class="card-body row g-2 small" autocomplete="on" novalidate>
+        <!-- Global inline alert (shown by JS when something fails) -->
+        <div id="updateAlert" class="alert alert-danger d-none" role="alert"></div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label mb-1">Name</label>
+          <input id="updName" type="text" class="form-control form-control-sm" readonly disabled aria-disabled="true">
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="updPRC" class="form-label mb-1">PRC License</label>
+          <input id="updPRC" type="text" class="form-control form-control-sm" inputmode="numeric" pattern="[0-9]*" readonly disabled aria-disabled="true">
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="updCompany" class="form-label mb-1">Company</label>
+          <input id="updCompany" type="text" class="form-control form-control-sm" autocomplete="organization">
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="updPosition" class="form-label mb-1">Position</label>
+          <input id="updPosition" type="text" class="form-control form-control-sm" autocomplete="organization-title">
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="updContact" class="form-label mb-1">Contact No.</label>
+          <input id="updContact" type="tel" class="form-control form-control-sm" autocomplete="tel-national" pattern="^(09\d{9}|\+639\d{9})$" title="Use 09XXXXXXXXX or +639XXXXXXXXX">
+          <div class="invalid-feedback">Enter PH mobile as 09XXXXXXXXX or +639XXXXXXXXX.</div>
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="updEmail" class="form-label mb-1">Email (OTP required for any update)</label>
+          <div class="input-group input-group-sm">
+            <input id="updEmail" type="email" class="form-control" autocomplete="email" required>
+            <button id="btnSendOTP" class="btn btn-outline-primary" type="button">Send OTP</button>
+            <div class="invalid-feedback">Enter a valid, non‑disposable email.</div>
+          </div>
+          <div class="mt-2 d-flex gap-2 align-items-center">
+            <input id="otpCode" class="form-control form-control-sm" placeholder="Enter 6-digit OTP" inputmode="numeric" pattern="^[0-9]{6}$" maxlength="6" style="max-width:160px">
+            <button id="btnVerifyOTP" class="btn btn-outline-secondary btn-sm" type="button">Verify</button>
+            <span id="otpStatus" class="small ms-2"></span>
+          </div>
+        </div>
+        <div class="col-12">
+          <label class="form-label mb-1">Change Password <span class="text-muted">(max 2/day)</span></label>
+          <input id="pwd1" type="password" class="form-control form-control-sm mb-2" placeholder="New password" autocomplete="new-password" aria-describedby="pwdTips">
+          <div class="progress mb-2" style="height:6px">
+            <div id="pwdBar" class="progress-bar" role="progressbar" style="width:0%"></div>
+          </div>
+          <div id="pwdTips" class="form-text small mb-2">Must be 12+ chars with upper, lower, number & symbol.</div>
+          <input id="pwd2" type="password" class="form-control form-control-sm" placeholder="Confirm new password" autocomplete="new-password">
+          <div class="invalid-feedback">Passwords must match and be strong.</div>
+          <div id="pwdCap" class="small text-muted mt-1"></div>
+        </div>
+        <div id="updateFeedback" class="col-12 small"></div>
+        <div class="col-12 text-end mt-2">
+          <button id="btnUpdateSave" type="submit" class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-floppy-disk me-1"></i>Save</button>
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="collapse" data-bs-target="#updateWrapper"><i class="fa-solid fa-xmark me-1"></i>Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
