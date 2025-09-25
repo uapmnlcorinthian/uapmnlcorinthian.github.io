@@ -1,0 +1,126 @@
+- name: "Placeholder only - Aira Mendoza"
+  year: 2025
+  school: "B.S. Architecture, National University"
+  img: "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  teaser: "Thermal-comfort retrofits for dense row housing; low-cost shading and ventilation kits."
+  bio: "Researched passive cooling strategies for informal settlements and produced a field-tested retrofit kit with step-by-step details."
+  highlights:
+    - "Research Grant Recipient"
+    - "Presented at MCC Tech Talk 2025"
+  link: "https://example.com/aira-portfolio"
+  linkedin: "https://www.linkedin.com/in/aira-mendoza"
+
+- name: "Placeholder only - Miguel Soriano"
+  year: 2024
+  school: "B.S. Architecture, University of the Philippines"
+  img: "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  teaser: "Bamboo transit shelter prototype with modular joinery."
+  bio: "Led a community build for a bamboo micro-shelter optimizing airflow and shade; documented a replicable build manual."
+  highlights:
+    - "Community Build Lead"
+    - "Dean's Lister 2023–2024"
+  link: "https://example.com/miguel-soriano"
+  linkedin: "https://www.linkedin.com/in/miguelsoriano"
+
+- name: "Placeholder only - Clarisse Uy"
+  year: 2023
+  school: "B.S. Architecture, Polytechnic University of the Philippines"
+  img: "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  teaser: "HBIM workflow for rapid heritage condition surveys."
+  bio: "Developed a lightweight photogrammetry-to-HBIM pipeline for municipal heritage façades; trained local staff."
+  highlights:
+    - "HBIM Pilot Contributor"
+    - "Heritage Volunteer"
+  link: "https://example.com/clarisse-uy"
+  linkedin: "https://www.linkedin.com/in/clarisse-uy"
+
+- name: "Placeholder only - Jerome Dizon"
+  year: 2022
+  school: "B.S. Architecture, Mapúa University"
+  img: "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  teaser: "Accessibility audits and upgrade details for barangay halls."
+  bio: "Completed PWD audits across 12 sites and compiled standardized ramp/railing/tactile detail sheets for quick retrofits."
+  highlights:
+    - "Inclusive Design Advocate"
+    - "Barangay Access Kit Author"
+  link: "https://example.com/jerome-dizon"
+  linkedin: "https://www.linkedin.com/in/jerome-dizon"
+
+- name: "Placeholder only - Nika Cabrera"
+  year: 2025
+  school: "B.S. Architecture, Pamantasan ng Lungsod ng Maynila"
+  img: "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  teaser: "Micro-library pavilion with adaptive louvers."
+  bio: "Designed and documented a low-cost pavilion system using manually adjustable louvers to manage glare and heat in community spaces."
+  highlights:
+    - "Community Micro-Library Pilot"
+    - "Women in Architecture Scholar"
+  link: "https://example.com/nika-cabrera"
+  linkedin: "https://www.linkedin.com/in/nika-cabrera"
+
+- name: "Placeholder only - Rafael Lim"
+  year: 2021
+  school: "B.S. Architecture, Far Eastern University"
+  img: "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  teaser: "Construction documentation mentor; QA/QC templates for interns."
+  bio: "Works in site coordination and documentation; returns to mentor MCC scholars on drawing standards and checklists."
+  highlights:
+    - "Mentor (Documentation & QA/QC)"
+  link: "https://example.com/rafael-lim"
+  linkedin: "https://www.linkedin.com/in/rafael-lim"
+
+- name: "Placeholder only - Bianca Cruz"
+  year: 2024
+  school: "B.S. Architecture, Technological University of the Philippines"
+  img: "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  teaser: "Materials reuse bank; circular design playbook for studios."
+  bio: "Co-founded a student materials bank linking donors and studios; produced a circular-design guide for academic use."
+  highlights:
+    - "Circular Design Advocate"
+    - "MCC Community Awardee 2024"
+  link: "https://example.com/bianca-cruz"
+  linkedin: "https://www.linkedin.com/in/bianca-cruz"
+
+- name: "Placeholder only - Noel Santiago"
+  year: 2023
+  school: "B.S. Architecture, University of the East"
+  img: "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  teaser: "Flood-risk mapping and resilient retrofit details."
+  bio: "Mapped flood exposure for 3 barangays and prepared resilient retrofit options for ground-floor businesses and homes."
+  highlights:
+    - "Resilience Mapping Lead"
+  link: "https://example.com/noel-santiago"
+  linkedin: "https://www.linkedin.com/in/noel-santiago"
+
+- name: "Placeholder only - Shaira Villanueva"
+  year: 2022
+  school: "B.S. Architecture, Adamson University"
+  img: "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  teaser: "Wayfinding for health facilities; legible, low-cost signage kit."
+  bio: "Developed a pictogram-based wayfinding kit for outpatient clinics; improved navigation and reduced queue confusion."
+  highlights:
+    - "Health Facility Wayfinding Kit"
+  link: "https://example.com/shaira-villanueva"
+  linkedin: "https://www.linkedin.com/in/shaira-villanueva"
+
+- name: "Placeholder only - Kenji Ramos"
+  year: 2021
+  school: "B.S. Architecture, Bulacan State University"
+  img: "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  teaser: "Parametric shade canopies for public courts."
+  bio: "Prototyped modular shade structures using locally available steel sections; open-sourced connection details."
+  highlights:
+    - "Parametric Canopy Pilot"
+  link: "https://example.com/kenji-ramos"
+  linkedin: "https://www.linkedin.com/in/kenji-ramos"
+
+- name: "Placeholder only - Lara Gatchalian"
+  year: 2025
+  school: "B.S. Architecture, University of Santo Tomas"
+  img: "https://images.unsplash.com/photo-1580493113011-ad79f792a7c2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  teaser: "Bioclimatic studio on mixed-use midrise; daylight-first strategy."
+  bio: "Modeled daylight and heat-gain performance to re-balance façade aperture and shading; improved sDA and ASE targets."
+  highlights:
+    - "Studio Excellence Award"
+  link: "https://example.com/lara-gatchalian"
+  linkedin: "https://www.linkedin.com/in/lara-gatchalian"

@@ -484,16 +484,23 @@
 		  toast.setAttribute('aria-live', 'assertive');
 		  toast.setAttribute('aria-atomic', 'true');
 		  toast.style.position = 'fixed';
-		  toast.style.right = '1rem';
-		  toast.style.bottom = '1rem';
+		  toast.style.top = '50%';
+		  toast.style.left = '50%';
+		  toast.style.transform = 'translate(-50%, -50%)';
+		  toast.style.maxWidth = '520px';
+		  toast.style.textAlign = 'center';
+		  toast.style.boxShadow = '0 0.5rem 1rem rgba(0,0,0,.15)';
+		  toast.style.borderRadius = '.5rem';
 		  toast.style.zIndex = '1080';
 
 		  toast.innerHTML =
-			'<div class="d-flex">' +
-			  '<div class="toast-body">' +
-				'Password updated. Logging out in <strong><span id="logoutSecs">' + seconds + '</span>s</strong>…' +
-			  '</div>' +
-			'</div>';
+			  '<div class="d-flex">' +
+				'<div class="toast-body px-4 py-3">' +
+				  'Your password was updated successfully.<br>' +
+				  '<small class="text-muted">For your security, you’ll be signed out in <strong><span id="logoutSecs">' + seconds + '</span>s</strong>.</small>' +
+				'</div>' +
+			  '</div>';
+
 
 		  document.body.appendChild(toast);
 
