@@ -1,377 +1,496 @@
 // File: account.js
-// Handles account page and update form (OTP, allow-list, phone normalize, pw strength, direct REST update)
+// Handles account page & update form (xxsr_001 + row_id; OTP; allow-list; phone normalize; pw strength & cap)
 
-// scoped helpers (won't clash with other scripts)
-(function(){
-  const $ = s => document.querySelector(s);
-  const $$ = s => document.querySelectorAll(s);
-  const mask = s => !s ? '*no data*' : String(s).replace(/.(?=.{4})/g,'•');
-  const mailMask = e => {
+// Scope everything to avoid conflicts ($ already used elsewhere)
+(function () {
+  // ---------- tiny helpers ----------
+  var $  = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return document.querySelectorAll(s); };
+
+  var mask = function (s) { return !s ? '*no data*' : String(s).replace(/.(?=.{4})/g, '•'); };
+  var mailMask = function (e) {
     if (!e) return '*no data*';
-    const [u,h] = String(e).split('@'); if (!h) return mask(e);
-    const u2 = u.length<=2 ? u[0]+'•' : u[0]+'•'.repeat(Math.max(1,u.length-2))+u.slice(-1);
-    return `${u2}@${h}`;
+    var parts = String(e).split('@');
+    var u = parts[0], h = parts[1];
+    if (!h) return mask(e);
+    var midLen = Math.max(1, u.length - 2);
+    var u2 = u.length <= 2 ? (u.charAt(0) + '•') : (u.charAt(0) + new Array(midLen + 1).join('•') + u.charAt(u.length - 1));
+    return u2 + '@' + h;
   };
-  const formatMoney = v => v ? ('₱'+Number(v).toLocaleString()) : '—';
-  const formatDate  = v => {
-    if (!v || v==='—') return '—';
-    const d = new Date(v);
-    return isNaN(d) ? '—' : d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'2-digit'});
+  var formatMoney = function (v) { return v ? '₱' + Number(v).toLocaleString() : '—'; };
+  var formatDate = function (v) {
+    if (!v || v === '—') return '—';
+    var d = new Date(v);
+    return isNaN(d) ? '—' : d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: '2-digit' });
+  };
+  var setText = function (el, val) { if (el) el.value = (val != null ? String(val) : ''); };
+  var setCard = function (id, val) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = (val != null && val !== '') ? String(val) : '*no data*';
   };
 
   // email allow-list
-  const ALLOW = new Set(['gmail.com','yahoo.com','outlook.com','hotmail.com','live.com','icloud.com','proton.me','protonmail.com','yandex.com','aol.com']);
-  const ALLOW_TXT = [...ALLOW].join(', ');
-  const emailOk = v => { v=(v||'').trim().toLowerCase(); const h=v.split('@')[1]||''; return ALLOW.has(h); };
+  var ALLOW = { 'gmail.com':1,'yahoo.com':1,'outlook.com':1,'hotmail.com':1,'live.com':1,'icloud.com':1,'proton.me':1,'protonmail.com':1,'yandex.com':1,'aol.com':1 };
+  var ALLOW_TXT = 'gmail.com, yahoo.com, outlook.com, hotmail.com, live.com, icloud.com, proton.me, protonmail.com, yandex.com, aol.com';
+  var emailOk = function (v) {
+    v = (v || '').trim().toLowerCase();
+    var h = v.split('@')[1] || '';
+    return !!ALLOW[h];
+  };
 
-  // phone normalize (DB wants 9XXXXXXXXX; UI shows 09XXXXXXXXX)
-  const normPhone = v => {
-    v = String(v||'').replace(/\D/g,'');
+  // PH phone: DB stores 9XXXXXXXXX; UI shows 09XXXXXXXXX
+  var normPhone = function (v) {
+    v = String(v || '').replace(/\D/g, '');
     if (/^09\d{9}$/.test(v)) return v.slice(1);
-    if (/^\+?63\d{10}$/.test(v)) return v.replace(/^\+?63/,'');
+    if (/^\+?63\d{10}$/.test(v)) return v.replace(/^\+?63/, '');
+    if (/^\d{10}$/.test(v)) return v; // already 10 digits (leading 9 + 9 more)
     return null;
   };
-  const dispPhone = db => db ? ('0'+String(db).replace(/^0+/,'')) : '';
+  var dispPhone = function (db) { return db ? ('0' + String(db).replace(/^0+/, '')) : ''; };
 
-  // password strength (NEW RULE: 8+ chars; upper+lower + (digit OR symbol))
-  const pwScore = s => {
+  // Password strength: >=8, upper+lower + (digit OR symbol)
+  var pwScore = function (s) {
     s = s || '';
-    const len = s.length >= 8;
-    const lower = /[a-z]/.test(s);
-    const upper = /[A-Z]/.test(s);
-    const digit = /\d/.test(s);
-    const symbol = /[^A-Za-z0-9]/.test(s);
-    const rep3 = /(.)\1{2,}/.test(s);
+    var len = s.length >= 8;
+    var lower = /[a-z]/.test(s);
+    var upper = /[A-Z]/.test(s);
+    var digit = /\d/.test(s);
+    var symbol = /[^A-Za-z0-9]/.test(s);
+    var rep3 = /(.)\1{2,}/.test(s);
 
-    let score = 0;
+    var score = 0;
     if (len) score += 40;
     if (lower) score += 15;
     if (upper) score += 15;
-    if (digit || symbol) score += 25;     // either is fine
-    if (digit && symbol) score += 5;      // tiny bonus if both
+    if (digit || symbol) score += 25; // either is enough
+    if (digit && symbol) score += 5;  // tiny bonus if both
     if (rep3) score -= 10;
 
-    return Math.max(0, Math.min(100, score));
+    if (score < 0) score = 0;
+    if (score > 100) score = 100;
+    return score;
   };
-  const pwMeetsRule = s => {
+  var pwMeetsRule = function (s) {
     s = s || '';
-    const len = s.length >= 8;
-    const lower = /[a-z]/.test(s);
-    const upper = /[A-Z]/.test(s);
-    const digit = /\d/.test(s);
-    const symbol = /[^A-Za-z0-9]/.test(s);
-    return len && lower && upper && (digit || symbol);
+    return s.length >= 8 && /[a-z]/.test(s) && /[A-Z]/.test(s) && (/\d/.test(s) || /[^A-Za-z0-9]/.test(s));
   };
 
-  // Supabase
-  const SB_URL = window.SUPABASE_URL || 'https://fvaahtqjusfniadwvoyw.supabase.co';
-  const SB_KEY = window.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8';
-  const sb = (window.supabase && window.supabase.createClient) ? window.supabase.createClient(SB_URL, SB_KEY) : null;
+  // Supabase client (provided in HTML)
+  var SB_URL = (typeof window !== 'undefined' && window.SUPABASE_URL) ? window.SUPABASE_URL : 'https://fvaahtqjusfniadwvoyw.supabase.co';
+  var SB_KEY = (typeof window !== 'undefined') ? window.SUPABASE_ANON_KEY : null;
+  var sb = (typeof window !== 'undefined' && window.supabase && typeof window.supabase.createClient === 'function')
+    ? window.supabase.createClient(SB_URL, SB_KEY)
+    : null;
 
-  // Configurable table & key columns
-  const TABLE = window.MCC_TABLE || 'members';
-  const KEY_COLS = Array.isArray(window.MCC_KEYS) ? window.MCC_KEYS : ['row','id','member_id'];
+  // Table / key actually used
+  var TABLE  = 'xxsr_001';
+  var KEYCOL = 'row_id';
 
   // OTP endpoints
-  const OTP_SEND   = 'https://fvaahtqjusfniadwvoyw.functions.supabase.co/send-otp';
-  const OTP_VERIFY = 'https://fvaahtqjusfniadwvoyw.functions.supabase.co/verify-otp';
-  const postOTP = (url, body) =>
-    fetch(url, {
-      method:'POST',
-      headers:{ 'Content-Type':'application/json', 'apikey':SB_KEY, 'Authorization':'Bearer '+SB_KEY },
+  var OTP_SEND   = 'https://fvaahtqjusfniadwvoyw.functions.supabase.co/send-otp';
+  var OTP_VERIFY = 'https://fvaahtqjusfniadwvoyw.functions.supabase.co/verify-otp';
+  var postOTP = function (url, body) {
+    return fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY },
       body: JSON.stringify(body || {})
-    }).then(r => r.text().then(t => { if(!r.ok) throw new Error(t || ('HTTP '+r.status)); return t; }));
+    }).then(function (r) {
+      return r.text().then(function (t) {
+        if (!r.ok) throw new Error(t || ('HTTP ' + r.status));
+        return t;
+      });
+    });
+  };
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // auth snapshot (your logic)
-    let u = JSON.parse(sessionStorage.getItem('userData') || 'null');
-    if (!u?.ok) {
-      const stored = JSON.parse(localStorage.getItem('userData') || 'null');
-      if (stored?.ok) u = stored;
-      else return location.href = '/membership/';
+  // ---------------- Page boot ----------------
+  document.addEventListener('DOMContentLoaded', function () {
+    // auth snapshot from your login flow
+    var u = null;
+    try { u = JSON.parse(sessionStorage.getItem('userData') || 'null'); } catch (e) {}
+    if (!u || !u.ok) {
+      try {
+        var stored = JSON.parse(localStorage.getItem('userData') || 'null');
+        if (stored && stored.ok) u = stored; else { location.href = '/membership/'; return; }
+      } catch (e) { location.href = '/membership/'; return; }
     }
 
-    // ---------------- Account card (unchanged) ----------------
-    const initAccount = () => {
-      const pi = u.pi;
-      $('#cardName').textContent     = pi.n  || '*no data*';
-      $('#cardBatch').textContent    = pi.bt || '*no data*';
-      $('#cardCompany').textContent  = pi.co || '*no data*';
-      $('#cardPosition').textContent = pi.po || '*no data*';
+    // ---- Account card (your original) ----
+    var initAccount = function () {
+      var pi = u.pi || {};
+      var b = $('#statusBadge');
 
-      const badge = $('#statusBadge');
-      if (badge) {
-        const active = String(u.act || '').toLowerCase().startsWith('a');
-        badge.textContent = active ? 'Active' : 'Inactive';
-        badge.className   = 'badge ' + (active ? 'bg-success' : 'bg-danger');
+      setCard('cardName', pi.n || '*no data*');
+      setCard('cardBatch', pi.bt || '*no data*');
+      setCard('cardCompany', pi.co || '*no data*');
+      setCard('cardPosition', pi.po || '*no data*');
+      setCard('prcLicense', pi.prc || '*no data*');
+      setCard('email', pi.e || '*no data*');
+      setCard('contactNo', dispPhone(pi.c || ''));
+
+      if (b) {
+        var active = String(u.act || '').toLowerCase().indexOf('a') === 0;
+        b.textContent = active ? 'Active' : 'Inactive';
+        b.className = 'badge ' + (active ? 'bg-success' : 'bg-danger');
       }
 
-      const fieldMap = { prcLicense:'prc', email:'e', contactNo:'c', cardCompany:'co', cardPosition:'po' };
-      Object.entries(fieldMap).forEach(([elId, piKey]) => {
-        const el = document.getElementById(elId);
-        if (!el) return;
-        let real = pi[piKey] || '';
-        if (elId === 'contactNo') real = dispPhone(real);
-        el.textContent  = real;
-        el.dataset.real = real;
-        el.dataset.shown= '1';
-      });
+      var map = { prcLicense: 'prc', email: 'e', contactNo: 'c', cardCompany: 'co', cardPosition: 'po' };
+      for (var id in map) {
+        if (!map.hasOwnProperty(id)) continue;
+        var el = document.getElementById(id);
+        if (!el) continue;
+        var real = pi[map[id]] || '';
+        if (id === 'contactNo') real = dispPhone(real);
+        el.textContent = real;
+        el.setAttribute('data-real', real);
+        el.setAttribute('data-shown', '1');
+      }
 
-      $$('.toggle-sensitive-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const span = btn.parentElement.querySelector('.sensitive-text');
-          if (!span) return;
-          const show   = span.dataset.shown !== '1';
-          const real   = span.dataset.real || '*no data*';
-          const masked = span.id === 'email' ? mailMask(real) : mask(real);
-          span.textContent  = show ? real : masked;
-          span.dataset.shown= show ? '1' : '0';
-          btn.querySelector('i').className = show ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
-        });
-      });
-
-      $('#totalDue').textContent = u.due ? ('₱'+Number(u.due).toLocaleString()) : '₱0';
-
-      const pay = u.pay || {};
-      const yrs = Array.from(new Set(Object.keys(pay).map(k => (k.match(/_(\d{4})$/)||[])[1]).filter(Boolean))).sort((a,b)=>b-a);
-
-      const headRow = $('#paymentsTable thead tr');
-      while (headRow.children.length > 1) headRow.removeChild(headRow.lastChild);
-      yrs.forEach(y => {
-        const th = document.createElement('th');
-        th.textContent = y;
-        if (y === yrs[0]) { th.style.background='#cce5ff'; th.style.fontWeight='700'; }
-        headRow.appendChild(th);
-      });
-
-      const buildGroup = (cats, selector) => {
-        const tbody = $(selector);
-        if (!tbody) return;
-        tbody.querySelectorAll('td').forEach(t => t.remove());
-        cats.forEach((cat, i) => {
-          const tr = tbody.children[i];
-          yrs.forEach(y => {
-            const key = `${cat.key}_${y}`;
-            let v = pay[key];
-            if (v == null || v === '') v = '—';
-            const td = document.createElement('td');
-            td.textContent = cat.date ? formatDate(v) : (cat.money ? formatMoney(v) : v);
-            if (y === yrs[0]) td.style.fontWeight = '700';
-            tr.appendChild(td);
+      var toggles = $$('.toggle-sensitive-btn');
+      for (var i = 0; i < toggles.length; i++) {
+        (function (btn) {
+          btn.addEventListener('click', function () {
+            var span = btn.parentElement ? btn.parentElement.querySelector('.sensitive-text') : null;
+            if (!span) return;
+            var shown = span.getAttribute('data-shown') !== '1';
+            var real  = span.getAttribute('data-real') || '*no data*';
+            var masked = span.id === 'email' ? mailMask(real) : mask(real);
+            span.textContent = shown ? real : masked;
+            span.setAttribute('data-shown', shown ? '1' : '0');
+            var ico = btn.querySelector('i');
+            if (ico) ico.className = shown ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
           });
-        });
+        })(toggles[i]);
+      }
+
+      var totalDue = $('#totalDue');
+      if (totalDue) totalDue.textContent = u.due ? ('₱' + Number(u.due).toLocaleString()) : '₱0';
+
+      var pay = u.pay || {};
+      var keys = Object.keys(pay);
+      var yearSet = {};
+      for (var k = 0; k < keys.length; k++) {
+        var m = keys[k].match(/_(\d{4})$/);
+        if (m && m[1]) yearSet[m[1]] = 1;
+      }
+      var yrs = Object.keys(yearSet).sort(function (a, b) { return b - a; });
+
+      var headRow = $('#paymentsTable thead tr');
+      if (headRow) {
+        while (headRow.children.length > 1) headRow.removeChild(headRow.lastChild);
+        for (var y = 0; y < yrs.length; y++) {
+          var th = document.createElement('th');
+          th.textContent = yrs[y];
+          if (yrs[y] === yrs[0]) { th.style.background = '#cce5ff'; th.style.fontWeight = '700'; }
+          headRow.appendChild(th);
+        }
+      }
+
+      var buildGroup = function (cats, selector) {
+        var tbody = $(selector);
+        if (!tbody) return;
+        var toRemove = tbody.querySelectorAll('td');
+        for (var r = 0; r < toRemove.length; r++) toRemove[r].remove();
+        for (var c = 0; c < cats.length; c++) {
+          var tr = tbody.children[c];
+          for (var yy = 0; yy < yrs.length; yy++) {
+            var key = cats[c].key + '_' + yrs[yy];
+            var v = pay[key];
+            if (v == null || v === '') v = '—';
+            var td = document.createElement('td');
+            td.textContent = cats[c].date ? formatDate(v) : (cats[c].money ? formatMoney(v) : v);
+            if (yrs[yy] === yrs[0]) td.style.fontWeight = '700';
+            tr.appendChild(td);
+          }
+        }
       };
 
-      buildGroup([
-        { key:'chapter_dues',           money:1 },
-        { key:'chapter_dues_penalty',   money:1 },
-        { key:'chapter_payment_date',   date:1  }
-      ], 'tbody.group-chapter');
-
-      buildGroup([
-        { key:'iapoa_dues',             money:1 },
-        { key:'iapoa_dues_penalty',     money:1 },
-        { key:'iapoa_payment_date',     date:1  }
-      ], 'tbody.group-iapoa');
+      buildGroup(
+        [{ key: 'chapter_dues', money: 1 }, { key: 'chapter_dues_penalty', money: 1 }, { key: 'chapter_payment_date', date: 1 }],
+        'tbody.group-chapter'
+      );
+      buildGroup(
+        [{ key: 'iapoa_dues', money: 1 }, { key: 'iapoa_dues_penalty', money: 1 }, { key: 'iapoa_payment_date', date: 1 }],
+        'tbody.group-iapoa'
+      );
     };
 
     initAccount();
 
-    // init update form on open (and if already open)
-    const updWrap = $('#updateWrapper');
+    // Wire update form on open (and now if already visible)
+    var updWrap = $('#updateWrapper');
     if (updWrap) {
       updWrap.addEventListener('shown.bs.collapse', initUpdateForm);
       if (updWrap.classList.contains('show')) initUpdateForm();
     }
 
-    // ---------------- Update Form ----------------
-    function initUpdateForm(){
-      const f = $('#updateInfoForm');
-      if (!f || f.dataset.init === '1') return;
-      f.dataset.init = '1';
+    // ---- Update form ----
+    function initUpdateForm() {
+      var f = $('#updateInfoForm');
+      if (!f || f.getAttribute('data-init') === '1') return;
+      f.setAttribute('data-init', '1');
 
-      const fb  = $('#updateFeedback');
-      const box = $('#updateAlert');
+      var fb  = $('#updateFeedback');
+      var box = $('#updateAlert');
 
-      const nm = $('#updName'), pr = $('#updPRC'), co = $('#updCompany'), po = $('#updPosition');
-      const cn = $('#updContact'), em = $('#updEmail');
-      const p1 = $('#pwd1'), p2 = $('#pwd2'), bar = $('#pwdBar'), tips = $('#pwdTips'), cap = $('#pwdCap');
-      const otpBtn = $('#btnSendOTP'), otpIn = $('#otpCode'), otpGo = $('#btnVerifyOTP'), otpSt = $('#otpStatus');
+      var nm = $('#updName'), pr = $('#updPRC'), co = $('#updCompany'), po = $('#updPosition'), cn = $('#updContact'), em = $('#updEmail');
+      var cur = $('#pwdCurrent'); // current password (if changing)
+      var p1 = $('#pwd1'),   p2 = $('#pwd2'),   bar = $('#pwdBar'),     tips = $('#pwdTips'),     cap = $('#pwdCap');
+      var otpBtn = $('#btnSendOTP'), otpIn = $('#otpCode'), otpGo = $('#btnVerifyOTP'), otpSt = $('#otpStatus');
 
-      const okMsg = m => { if (box) box.classList.add('d-none'); if (fb){ fb.textContent=m; fb.className='text-success small'; } };
-      const errMsg= m => { if (fb){ fb.textContent=''; fb.className='small'; } if (box){ box.textContent=m; box.classList.remove('d-none'); } };
+      var okMsg = function (m) {
+        if (box) box.classList.add('d-none');
+        if (fb) { fb.textContent = m; fb.className = 'text-success small'; }
+      };
+      var errMsg = function (m) {
+        if (fb) { fb.textContent = ''; fb.className = 'small'; }
+        if (box) { box.textContent = m; box.classList.remove('d-none'); }
+      };
 
-      // user snapshot
-      let u0 = JSON.parse(sessionStorage.getItem('userData') || 'null') || {};
-      if (!u0?.ok) u0 = JSON.parse(localStorage.getItem('userData') || 'null') || {};
-      const pi = u0.pi || {};
-
-      // find usable key column & value (row, id, member_id)
-      let keyCol = null, keyVal = null;
-      for (const k of KEY_COLS) {
-        const v = u0[k];
-        if (v !== undefined && v !== null && String(v).trim() !== '') { keyCol = k; keyVal = v; break; }
-      }
+      // session again (fresh)
+      var u0 = null;
+      try { u0 = JSON.parse(sessionStorage.getItem('userData') || 'null') || {}; } catch (e) { u0 = {}; }
+      if (!u0 || !u0.ok) { try { u0 = JSON.parse(localStorage.getItem('userData') || 'null') || {}; } catch (e) { u0 = {}; } }
+      var pi = u0.pi || {};
+      var rowId = (u0 && (u0.row != null)) ? String(u0.row) : null; // key value for row_id
 
       // prefill from snapshot
-      (function fill(v){
-        if (nm) nm.value = pi.n || '';
-        if (pr) { pr.value = (v && v.prc != null ? v.prc : (pi.prc || '')); pr.readOnly=true; pr.disabled=true; pr.setAttribute('aria-disabled','true'); }
-        if (co) co.value = (v && v.co  != null ? v.co  : (pi.co  || ''));
-        if (po) po.value = (v && v.po  != null ? v.po  : (pi.po  || ''));
-        if (cn) cn.value = (v && v.c   != null ? dispPhone(v.c) : dispPhone(pi.c || ''));
-        if (em) em.value = (v && v.e   != null ? v.e   : (pi.e   || ''));
-      })(pi);
-
-      // refresh from DB once (try each key col until one works)
-      (async () => {
-        try {
-          if (!sb) return;
-          let got = null;
-          const valCandidates = [];
-          if (keyCol) valCandidates.push([keyCol, keyVal]);
-          for (const k of KEY_COLS) {
-            if (!valCandidates.find(([kk])=>kk===k) && u0[k]!=null) valCandidates.push([k, u0[k]]);
-          }
-          for (const [kc, kv] of valCandidates) {
-            const r = await sb.from(TABLE).select('n,prc,co,po,c,e').eq(kc, kv).maybeSingle();
-            if (r && r.data) { keyCol = kc; keyVal = kv; got = r.data; break; }
-          }
-          if (got) {
-            if (nm) nm.value = got.n  || (pi.n  || '');
-            if (pr) pr.value = got.prc|| (pi.prc|| '');
-            if (co) co.value = got.co || (pi.co || '');
-            if (po) po.value = got.po || (pi.po || '');
-            if (cn) cn.value = dispPhone(got.c || (pi.c || ''));
-            if (em) em.value = got.e || (pi.e || '');
-            try { u0.pi = Object.assign({}, u0.pi, got); sessionStorage.setItem('userData', JSON.stringify(u0)); } catch(e){}
-          }
-        } catch(e) {/*silent*/}
+      (function fillFromSnapshot() {
+        setText(nm, pi.n || '');
+        if (pr) {
+          pr.value = (pi.prc != null ? pi.prc : '');
+          pr.readOnly = true; pr.disabled = true; pr.setAttribute('aria-disabled', 'true');
+        }
+        setText(co, pi.co || '');
+        setText(po, pi.po || '');
+        setText(cn, pi.c != null ? dispPhone(pi.c) : '');
+        setText(em, pi.e || '');
       })();
 
-      // strength meter (new tips)
-      const paint = v => {
-        const p = pwScore(v||'');
-        if (bar){ bar.style.width=p+'%'; bar.className='progress-bar'+(p>=80?' bg-success':p>=60?' bg-warning':' bg-danger'); }
-        if (tips){ tips.textContent='Min 8 chars; include UPPER + lower + (number OR symbol).'; }
+      // refresh from DB (xxsr_001 via row_id)
+      (function refreshFromDBOnce(){
+        if (!sb || !rowId) return;
+        sb.from(TABLE)
+          .select('name,prc_license,company,position,contact_no,email')
+          .eq(KEYCOL, rowId)
+          .maybeSingle()
+          .then(function (r) {
+            if (!r || !r.data) return;
+            var d = r.data;
+
+            setText(nm, d.name != null ? d.name : (pi.n || ''));
+            if (pr) pr.value = (d.prc_license != null ? d.prc_license : (pi.prc || ''));
+            setText(co, d.company != null ? d.company : (pi.co || ''));
+            setText(po, d.position != null ? d.position : (pi.po || ''));
+            setText(cn, d.contact_no != null ? dispPhone(d.contact_no) : (pi.c != null ? dispPhone(pi.c) : ''));
+            setText(em, d.email != null ? d.email : (pi.e || ''));
+
+            // reflect on card
+            setCard('cardCompany',  d.company != null ? d.company : (pi.co || '*no data*'));
+            setCard('cardPosition', d.position != null ? d.position : (pi.po || '*no data*'));
+            setCard('contactNo',    d.contact_no != null ? dispPhone(d.contact_no) : (pi.c != null ? dispPhone(pi.c) : '*no data*'));
+            setCard('email',        d.email != null ? d.email : (pi.e || '*no data*'));
+            setCard('prcLicense',   d.prc_license != null ? d.prc_license : (pi.prc || '*no data*'));
+
+            // sync session
+            try {
+              var np = (u0 && u0.pi) ? u0.pi : {};
+              if (d.name        != null) np.n   = d.name;
+              if (d.prc_license != null) np.prc = d.prc_license;
+              if (d.company     != null) np.co  = d.company;
+              if (d.position    != null) np.po  = d.position;
+              if (d.contact_no  != null) np.c   = d.contact_no;
+              if (d.email       != null) np.e   = d.email;
+              u0.pi = np;
+              sessionStorage.setItem('userData', JSON.stringify(u0));
+            } catch (e) {}
+          })
+          .catch(function(){});
+      })();
+
+      // strength bar
+      var paint = function (v) {
+        var p = pwScore(v || '');
+        if (bar) {
+          bar.style.width = p + '%';
+          bar.className = 'progress-bar' + (p >= 80 ? ' bg-success' : (p >= 60 ? ' bg-warning' : ' bg-danger'));
+        }
+        if (tips) tips.textContent = 'Min 8 chars; include UPPER + lower + (number OR symbol).';
       };
-      if (p1){ ['input','keyup','change','paste'].forEach(ev => p1.addEventListener(ev, () => paint(p1.value))); paint(p1.value||''); }
+      if (p1) {
+        var evs = ['input','keyup','change','paste'];
+        for (var i = 0; i < evs.length; i++) p1.addEventListener(evs[i], function(){ paint(p1.value); });
+        paint(p1.value || '');
+      }
 
       // daily cap
-      const dayKey='pwdCap_'+new Date().toISOString().slice(0,10), MAX=2;
-      let cnt=0; try{ cnt=+JSON.parse(localStorage.getItem(dayKey)||'0')||0 }catch(e){}
-      if (cap) cap.textContent = `Password changes today: ${cnt}/${MAX}`;
+      var dayKey = 'pwdCap_' + new Date().toISOString().slice(0, 10);
+      var MAX = 10; // allowed password changes/day
+      var cnt = 0;
+      try { cnt = +JSON.parse(localStorage.getItem(dayKey) || '0') || 0; } catch (e) {}
+      if (cap) cap.textContent = 'Password changes today: ' + cnt + '/' + MAX;
 
-      // email/phone validity
-      let otpVerified=false;
-      if (em) em.addEventListener('input', () => {
-        const ok = emailOk(em.value);
-        em.setCustomValidity(ok ? '' : 'Allowed domains: '+ALLOW_TXT);
-        if (otpSt){ otpSt.textContent=''; otpSt.className='small'; }
+      // validity handlers
+      var otpVerified = false;
+
+      if (em) em.addEventListener('input', function () {
+        var ok = emailOk(em.value);
+        if (typeof em.setCustomValidity === 'function') em.setCustomValidity(ok ? '' : 'Allowed domains: ' + ALLOW_TXT);
+        if (otpSt) { otpSt.textContent = ''; otpSt.className = 'small'; }
         otpVerified = false;
       });
-      if (cn) cn.addEventListener('blur', () => {
-        const dbv = normPhone(cn.value);
-        if (cn.value && dbv===null) cn.setCustomValidity('Enter PH mobile as 09XXXXXXXXX or +639XXXXXXXXX');
-        else cn.setCustomValidity('');
-      });
 
-      // OTP (ALWAYS required)
-      const setOtp = (t,cls)=>{ if(otpSt){ otpSt.textContent=t; otpSt.className='small '+(cls||''); } };
-
-      if (otpBtn) otpBtn.addEventListener('click', async () => {
-        const to = (em && em.value ? em.value : '').trim().toLowerCase();
-        if (!to){ setOtp('Enter email first','text-danger'); return; }
-        if (!emailOk(to)){ setOtp('Only these domains are allowed: '+ALLOW_TXT,'text-danger'); return; }
-        otpBtn.disabled=true; const t=otpBtn.textContent; otpBtn.textContent='Sending...';
-        try { await postOTP(OTP_SEND, { email: to }); setOtp('OTP sent to email','text-success'); otpVerified=false; }
-        catch { setOtp('Failed to send OTP','text-danger'); }
-        otpBtn.disabled=false; otpBtn.textContent=t;
-      });
-
-      if (otpGo) otpGo.addEventListener('click', async () => {
-        const to   = (em && em.value ? em.value : '').trim().toLowerCase();
-        const code = (otpIn && otpIn.value ? otpIn.value : '').trim();
-        if (!/^\d{6}$/.test(code)){ setOtp('Enter 6-digit OTP','text-danger'); return; }
-        otpGo.disabled=true; const t=otpGo.textContent; otpGo.textContent='Verifying...';
-        try {
-          const v = await postOTP(OTP_VERIFY, { email: to, otp: code });
-          otpVerified = (String(v).trim()==='Verified');
-          setOtp(otpVerified?'Email verified':'Incorrect or expired', otpVerified?'text-success':'text-danger');
-        } catch {
-          otpVerified=false; setOtp('Network/verify error','text-danger');
+      if (cn) cn.addEventListener('blur', function () {
+        var dbv = normPhone(cn.value);
+        if (typeof cn.setCustomValidity === 'function') {
+          if (cn.value && dbv === null) cn.setCustomValidity('Enter PH mobile as 09XXXXXXXXX or +639XXXXXXXXX');
+          else cn.setCustomValidity('');
         }
-        otpGo.disabled=false; otpGo.textContent=t;
       });
 
-      if (em) em.addEventListener('input', () => { otpVerified=false; setOtp('',''); });
+      // OTP flow (required)
+      var setOtp = function (t, cls) {
+        if (otpSt) { otpSt.textContent = t; otpSt.className = 'small ' + (cls || ''); }
+      };
+
+      if (otpBtn) otpBtn.addEventListener('click', function () {
+        var to = (em && em.value ? em.value : '').trim().toLowerCase();
+        if (!to) { setOtp('Enter email first', 'text-danger'); return; }
+        if (!emailOk(to)) { setOtp('Only these domains are allowed: ' + ALLOW_TXT, 'text-danger'); return; }
+        otpBtn.disabled = true; var t = otpBtn.textContent; otpBtn.textContent = 'Sending...';
+        postOTP(OTP_SEND, { email: to })
+          .then(function(){ setOtp('OTP sent to email', 'text-success'); otpVerified = false; })
+          .catch(function(){ setOtp('Failed to send OTP', 'text-danger'); })
+          .finally(function(){ otpBtn.disabled = false; otpBtn.textContent = t; });
+      });
+
+      if (otpGo) otpGo.addEventListener('click', function () {
+        var to   = (em && em.value ? em.value : '').trim().toLowerCase();
+        var code = (otpIn && otpIn.value ? otpIn.value : '').trim();
+        if (!/^\d{6}$/.test(code)) { setOtp('Enter 6-digit OTP', 'text-danger'); return; }
+        otpGo.disabled = true; var t = otpGo.textContent; otpGo.textContent = 'Verifying...';
+        postOTP(OTP_VERIFY, { email: to, otp: code })
+          .then(function (v) {
+            otpVerified = (String(v).trim() === 'Verified');
+            setOtp(otpVerified ? 'Email verified' : 'Incorrect or expired', otpVerified ? 'text-success' : 'text-danger');
+          })
+          .catch(function(){ otpVerified = false; setOtp('Network/verify error', 'text-danger'); })
+          .finally(function(){ otpGo.disabled = false; otpGo.textContent = t; });
+      });
+
+      if (em) em.addEventListener('input', function(){ otpVerified = false; setOtp('', ''); });
 
       // submit
-      f.addEventListener('submit', async (e) => {
+      f.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (!sb) { errMsg('Supabase not available.'); return; }
+        if (!rowId) { errMsg('Missing member key.'); return; }
         if (!otpVerified) { errMsg('Please verify the OTP sent to your email.'); return; }
-        if (!sb)          { errMsg('Supabase not available.'); return; }
-        if (!keyCol || keyVal==null) { errMsg('Missing member key.'); return; }
 
         // password checks (only if provided)
-        const A = p1 && p1.value ? p1.value : '';
-        const B = p2 && p2.value ? p2.value : '';
+        var A = p1 ? (p1.value || '') : '';
+        var B = p2 ? (p2.value || '') : '';
+        var C = cur ? (cur.value || '') : ''; // current password
         if (A || B) {
-          if (cnt >= MAX) { const rem = 0; errMsg(`Max 2 per day (${rem} remaining).`); return; }
-          if (A !== B)    { errMsg('Passwords do not match.'); return; }
+          if (cnt >= MAX) { var remCap = 0; errMsg('Max ' + MAX + ' per day (' + remCap + ' remaining).'); return; }
+          if (A !== B) { errMsg('Passwords do not match.'); return; }
           if (!pwMeetsRule(A)) { errMsg('Password too weak. Use 8+ chars, UPPER + lower + (number OR symbol).'); return; }
+          if (!C) { errMsg('Enter your current password to change it.'); return; }
         }
+
+        // ALWAYS read current form values
+        var newCompany  = co ? String(co.value || '').trim() : '';
+        var newPosition = po ? String(po.value || '').trim() : '';
+        var newEmail    = (em && em.value ? em.value : '').trim().toLowerCase();
 
         // email allow-list
-        const newEmail = (em && em.value ? em.value : '').trim().toLowerCase();
-        if (!emailOk(newEmail)) { errMsg('Please use an allowed email domain: '+ALLOW_TXT); return; }
+        if (!emailOk(newEmail)) { errMsg('Please use an allowed email domain: ' + ALLOW_TXT); return; }
 
-        // compare to originals
-        const orig = { co:(pi.co||''), po:(pi.po||''), c:String(pi.c||''), e:(pi.e||'').toLowerCase() };
-        const cIn  = (cn && cn.value ? cn.value : '').trim();
-        const cDb  = cIn ? normPhone(cIn) : null;
-        const cChanged = (cIn!=='' && cDb!==orig.c && cDb!==null);
-        if (cIn && cDb===null) { errMsg('Invalid contact number format.'); return; }
+        // phone normalize: only send if user typed something
+        var cIn  = (cn && cn.value ? String(cn.value).trim() : '');
+        var cDb  = cIn ? normPhone(cIn) : null;
+        if (cIn && cDb === null) { errMsg('Invalid contact number format.'); return; }
 
-        // build payload with only changed fields
-        const d = {};
-        if (co && co.value !== orig.co) d.co = co.value;
-        if (po && po.value !== orig.po) d.po = po.value;
-        if (newEmail && newEmail !== orig.e) d.e = newEmail;
-        if (cChanged) d.c = cDb;
+        // Build payload: ALWAYS include company/position/email; include contact_no only if provided
+        var d = { company: newCompany, position: newPosition, email: newEmail };
+        if (cIn) d.contact_no = cDb;
 
-        if (!Object.keys(d).length && !A) { errMsg('No changes to save.'); return; }
-
-        try {
-          // 1) Update profile fields via REST
-          if (Object.keys(d).length) {
-            const up = await sb.from(TABLE).update(d).eq(keyCol, keyVal).select().maybeSingle();
-            if (up && up.error) throw up.error;
-          }
-
-          // (If you also change password server-side, call your function here.)
-
-          // Reflect on top card
-          if (d.co) $('#cardCompany').textContent  = d.co;
-          if (d.po) $('#cardPosition').textContent = d.po;
-          if (d.c  !== undefined) $('#contactNo').textContent = dispPhone(d.c);
-          if (d.e) $('#email').textContent = d.e;
-
-          // Update daily cap + message
-          if (A) {
-            cnt++;
-            try { localStorage.setItem(dayKey, JSON.stringify(cnt)); } catch(e){}
-            const rem = Math.max(0, MAX - cnt);
-            if (cap) cap.textContent = `Password changes today: ${cnt}/${MAX}`;
-            okMsg(`Saved. Password changes: ${cnt}/${MAX} (${rem} remaining today).`);
-          } else {
-            okMsg('Saved');
-          }
-
-          try { bootstrap.Collapse.getOrCreateInstance('#updateWrapper').hide(); } catch(e){}
-        } catch (e2) {
-          errMsg('Unable to save. Please try again.');
+        // If changing password, verify current first using RPC verify_password and row's password_hash
+        var verifyCurrentPassword = function() { return Promise.resolve(true); };
+        if (A) {
+          verifyCurrentPassword = function() {
+            return sb.from('xxsr_001').select('password_hash').eq('row_id', rowId).maybeSingle()
+              .then(function (sel) {
+                if (!sel || !sel.data || !sel.data.password_hash) throw new Error('no-hash');
+                return sb.rpc('verify_password', { plain: C, hash: sel.data.password_hash });
+              })
+              .then(function (rv) {
+                var ok = (rv && rv.data === true) || rv === true;
+                if (!ok) throw new Error('bad-current');
+                return true;
+              });
+          };
         }
+
+        verifyCurrentPassword()
+          .then(function () {
+            // include password to trigger your hashing trigger
+            if (A) d.password = A;
+
+            // If everything is empty (shouldn't happen since company/position/email are always sent), guard anyway
+            if (!Object.keys(d).length) { errMsg('No changes to save.'); return Promise.resolve(null); }
+
+            return sb.from(TABLE)
+              .update(d)
+              .eq(KEYCOL, rowId)
+              .select('company,position,email,contact_no')
+              .maybeSingle();
+          })
+          .then(function (up) {
+            if (!up) return; // early return already handled
+            if (up && up.error) throw up.error;
+
+            var res = (up && up.data) ? up.data : null;
+
+            // reflect on card from DB response (preferred), else from payload
+            setCard('cardCompany',  res ? (res.company  || '*no data*') : d.company);
+            setCard('cardPosition', res ? (res.position || '*no data*') : d.position);
+            setCard('email',        res ? (res.email    || '*no data*') : d.email);
+            if (res && typeof res.contact_no !== 'undefined') {
+              setCard('contactNo', dispPhone(res.contact_no));
+            } else if (typeof d.contact_no !== 'undefined') {
+              setCard('contactNo', dispPhone(d.contact_no));
+            }
+
+            // sync session snapshot
+            try {
+              var np = {};
+              for (var k in pi) if (pi.hasOwnProperty(k)) np[k] = pi[k];
+              np.co = d.company;
+              np.po = d.position;
+              np.e  = d.email;
+              if (typeof d.contact_no !== 'undefined') np.c = d.contact_no;
+              u0.pi = np;
+              sessionStorage.setItem('userData', JSON.stringify(u0));
+            } catch (e) {}
+
+            // password cap
+            if (A) {
+              cnt++;
+              try { localStorage.setItem(dayKey, JSON.stringify(cnt)); } catch (e) {}
+              var rem = Math.max(0, MAX - cnt);
+              if (cap) cap.textContent = 'Password changes today: ' + cnt + '/' + MAX;
+              okMsg('Saved. Password changes: ' + cnt + '/' + MAX + ' (' + rem + ' remaining today).');
+            } else {
+              okMsg('Saved');
+            }
+
+            try { bootstrap.Collapse.getOrCreateInstance('#updateWrapper').hide(); } catch (e) {}
+          })
+          .catch(function (err) {
+            if (err && err.message === 'bad-current') errMsg('Current password is incorrect.');
+            else if (err && err.message === 'no-hash') errMsg('Password not set. Please contact support.');
+            else errMsg('Unable to save. Please try again.');
+          });
       });
     }
   });

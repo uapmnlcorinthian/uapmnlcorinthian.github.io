@@ -177,7 +177,7 @@ sitemap: true
           <div class="invalid-feedback">Enter PH mobile as 09XXXXXXXXX or +639XXXXXXXXX.</div>
         </div>
         <div class="col-12 col-md-6">
-          <label for="updEmail" class="form-label mb-1">Email (OTP required for any update)</label>
+          <label for="updEmail" class="form-label mb-1">Email (OTP required to update)</label>
           <div class="input-group input-group-sm">
             <input id="updEmail" type="email" class="form-control" autocomplete="email" required>
             <button id="btnSendOTP" class="btn btn-outline-primary" type="button">Send OTP</button>
@@ -189,13 +189,22 @@ sitemap: true
             <span id="otpStatus" class="small ms-2"></span>
           </div>
         </div>
+		<!-- Current password (required only if changing password) -->
+		<div class="col-12">
+		  <label class="form-label mb-1">Current Password</label>
+		  <input id="pwdCurrent" type="password" class="form-control form-control-sm"
+				 placeholder="Enter current password to change it"
+				 autocomplete="current-password">
+		  <div class="form-text small">Only required if you’re changing password.</div>
+		</div>
+
         <div class="col-12">
           <label class="form-label mb-1">Change Password <span class="text-muted">(max 2/day)</span></label>
           <input id="pwd1" type="password" class="form-control form-control-sm mb-2" placeholder="New password" autocomplete="new-password" aria-describedby="pwdTips">
           <div class="progress mb-2" style="height:6px">
             <div id="pwdBar" class="progress-bar" role="progressbar" style="width:0%"></div>
           </div>
-          <div id="pwdTips" class="form-text small mb-2">Must be 12+ chars with upper, lower, number & symbol.</div>
+          <div id="pwdTips" class="form-text small mb-2">Must be 8+ chars with upper, lower, number OR symbol.</div>
           <input id="pwd2" type="password" class="form-control form-control-sm" placeholder="Confirm new password" autocomplete="new-password">
           <div class="invalid-feedback">Passwords must match and be strong.</div>
           <div id="pwdCap" class="small text-muted mt-1"></div>
