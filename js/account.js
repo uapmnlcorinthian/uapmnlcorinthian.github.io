@@ -406,13 +406,13 @@
 		updatePwMatchUI();
 
 
-      // dynamic daily cap
-      var dayKey = 'pwdCap_' + new Date().toISOString().slice(0, 10);
-      var MAX = Number(window.PW_MAX) || 10;
-      var cnt = 0;
-      try { cnt = +JSON.parse(localStorage.getItem(dayKey) || '0') || 0; } catch (e) {}
-      if (maxLbl) maxLbl.textContent = '(max ' + MAX + '/day)';
-      if (cap) cap.textContent = 'Password changes today: ' + cnt + '/' + MAX;
+		// dynamic daily cap (ALL changes, not just password)
+		var dayKey = 'updCap_' + new Date().toISOString().slice(0, 10);
+		var MAX = Number(window.UPD_MAX) || 2;  // default to 2/day
+		var cnt = 0;
+		try { cnt = +JSON.parse(localStorage.getItem(dayKey) || '0') || 0; } catch (e) {}
+		if (maxLbl) maxLbl.textContent = '(max ' + MAX + '/day)';
+		if (cap) cap.textContent = 'Changes today: ' + cnt + ' out of ' + MAX;
 
       // validity handlers
       var otpVerified = false;
@@ -525,6 +525,12 @@
         // clear any stale alert/success from previous tries
         if (box) { box.classList.add('d-none'); box.textContent=''; }
         if (fb)  { fb.className='small'; fb.textContent=''; }
+		
+		// global cap check for ANY change
+		if (cnt >= MAX) {
+		  errMsg('Daily limit reached (' + MAX + '/day). Please try again tomorrow.');
+		  return;
+		}
 
         if (!sb) { errMsg('Supabase not available.'); return; }
         if (!rowId) { errMsg('Missing member key.'); return; }
@@ -534,12 +540,11 @@
         var A = p1 ? (p1.value || '') : '';
         var B = p2 ? (p2.value || '') : '';
         var C = cur ? (cur.value || '') : ''; // current password
-        if (A || B) {
-          if (cnt >= MAX) { var remCap = 0; errMsg('Max ' + MAX + ' per day (' + remCap + ' remaining).'); return; }
-          if (A !== B) { errMsg('Passwords do not match.'); return; }
-          if (!pwMeetsRule(A)) { errMsg('Password too weak. Use 8+ chars, UPPER + lower + (number OR symbol).'); return; }
-          if (!C) { errMsg('Enter your current password to change it.'); return; }
-        }
+		if (A || B) {
+		  if (A !== B) { errMsg('Passwords do not match.'); return; }
+		  if (!pwMeetsRule(A)) { errMsg('Password too weak. Use 8+ chars, UPPER + lower + (number OR symbol).'); return; }
+		  if (!C) { errMsg('Enter your current password to change it.'); return; }
+		}
 
         // ALWAYS read current form values
         var newCompany  = co ? String(co.value || '').trim() : '';
@@ -612,21 +617,21 @@
               u0.pi = np; sessionStorage.setItem('userData', JSON.stringify(u0));
             } catch (e) {}
 
+            // increment daily counter for ANY successful change
+            cnt++;
+            try { localStorage.setItem(dayKey, JSON.stringify(cnt)); } catch (e) {}
+            if (cap) cap.textContent = 'Changes today: ' + cnt + '/' + MAX;
+
 			// password cap + security logout with countdown
 			if (A) {
-			  cnt++; try { localStorage.setItem(dayKey, JSON.stringify(cnt)); } catch (e) {}
-			  if (cap) cap.textContent = 'Password changes today: ' + cnt + '/' + MAX;
-
 			  // collapse the form so the toast is clearly visible
 			  try { bootstrap.Collapse.getOrCreateInstance('#updateWrapper').hide(); } catch (e) {}
-
 			  // show non-blocking countdown (5 seconds) and auto-logout
 			  startLogoutCountdown(5);
-			  return; // stop further handling; we’re redirecting
+			  return; // redirecting
 			} else {
 			  okMsg('Saved');
 			}
-
 
             try { bootstrap.Collapse.getOrCreateInstance('#updateWrapper').hide(); } catch (e) {}
           })

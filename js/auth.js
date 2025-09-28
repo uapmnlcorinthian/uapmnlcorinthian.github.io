@@ -1,4 +1,12 @@
 // auth.js (for membership.html)
+
+// --- role/session helpers (tamper-evident + expiry) ---
+function rlLevel(r){return({member:0,moderator:1,admin:2,super_admin:3})[String(r||'member')]??0}
+function nowSec(){return Math.floor(Date.now()/1000)}
+function expForRole(r){return rlLevel(r)>=rlLevel('admin')?nowSec()+86400:nowSec()+1200} // admin=1d; others=20m
+async function sha256Hex(s){const b=new TextEncoder().encode(s),h=await crypto.subtle.digest('SHA-256',b);return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function makeRoleSig({uid,role,exp,accessToken}){return sha256Hex([uid,role,exp,accessToken||''].join('|'))}
+
 document.addEventListener('DOMContentLoaded', async () => {
   if (!window.location.pathname.includes('/membership/')) return;
 
@@ -103,9 +111,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Fetch user data
         const cols = await getPaymentColumns(sb);
         const fixed = [
-          'row_id', 'username', 'password_hash', 'name', 'prc_license', 
-          'address', 'birthday', 'contact_no', 'email', 'membership_active', 
-          'total_due', 'batch', 'company', 'position'
+          'row_id','username','password_hash','name','prc_license',
+          'address','birthday','contact_no','email','membership_active',
+          'total_due','batch','company','position','role'
         ];
         
         const { data: user, error: authErr } = await sb
@@ -118,17 +126,47 @@ document.addEventListener('DOMContentLoaded', async () => {
           throw new Error('Invalid username or password.');
         }
 
-        // Verify password
-        const { data: isValid, error: verifyErr } = await sb
-          .rpc('verify_password', {
-            plain: pwd.value.trim(),
-            hash: user.password_hash
-          })
-          .single();
+		// Verify password
+		const { data: isValid, error: verifyErr } = await sb
+		  .rpc('verify_password', { plain: pwd.value.trim(), hash: user.password_hash });
 
-        if (verifyErr || !isValid) {
-          throw new Error('Invalid username or password.');
-        }
+		if (verifyErr || !isValid) {
+		  throw new Error('Invalid username or password.');
+		}
+		
+		// === Ensure Supabase Auth session (needed for RLS writes later) ===
+		try {
+		  // Already signed in?
+		  const { data: s0 } = await sb.auth.getSession();
+		  if (!s0?.session) {
+			// Try sign-in with email + same password the user entered
+			let { error: siErr } = await sb.auth.signInWithPassword({
+			  email: user.email,               // uses the email you fetched from your table
+			  password: pwd.value.trim()
+			});
+
+			if (siErr) {
+			  // If the user doesn't exist in Supabase Auth yet, create once (auto-confirm must be enabled OR email confirmation is handled)
+			  const { error: suErr } = await sb.auth.signUp({
+				email: user.email,
+				password: pwd.value.trim()
+			  });
+
+			  if (!suErr) {
+				// Sign in again after sign-up
+				const { error: siErr2 } = await sb.auth.signInWithPassword({
+				  email: user.email,
+				  password: pwd.value.trim()
+				});
+				if (siErr2) console.warn('Supabase sign-in-after-signup failed', siErr2);
+			  } else {
+				console.warn('Supabase sign-up failed', suErr);
+			  }
+			}
+		  }
+		} catch (e) {
+		  console.warn('Supabase auth bootstrap failed', e);
+		}
 
         // Store session
         const pay = Object.fromEntries(cols.map(k => [k, user[k]]));
@@ -150,8 +188,29 @@ document.addEventListener('DOMContentLoaded', async () => {
           due: user.total_due,
           pay 
         };
-        
+		
+		// --- append role + bounded validity + tamper-evident signature (after SB auth is ready) ---
+		const role = String(user.role || 'member').toLowerCase();
+
+		// get the fresh session AFTER sign-in/sign-up above
+		const { data: sR2 } = await sb.auth.getSession();
+		const at = (sR2 && sR2.session && sR2.session.access_token) || '';
+
+		const rlexp = expForRole(role); // admin=1d; others=20m
+		const rlsig = await makeRoleSig({
+		  uid: String(user.row_id || ''),
+		  role,
+		  exp: rlexp,
+		  accessToken: at
+		});
+
+		sess.rl    = role;   // role string
+		sess.rlexp = rlexp;  // expiry
+		sess.rlsig = rlsig;  // signature bound to this login session
+
         sessionStorage.setItem('userData', JSON.stringify(sess));
+        try{ localStorage.setItem('userData', JSON.stringify(sess)); }catch(e){}
+		
         setTimeout(() => window.location.replace('/account/'), 100);
       } catch (err) {
         alert(err.message || 'Login failed. Please try again.');
