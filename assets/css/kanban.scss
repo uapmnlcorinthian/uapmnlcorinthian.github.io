@@ -1,206 +1,46 @@
-/* ====== Kanban layout & look (SCSS) ====== */
-$col-gap: 16px;
-$col-min: 280px;
-$card-radius: 10px;
-$card-pad: 10px;
-$slot-gap: 8px;
-
-/* Runtime knobs (CSS vars) */
-:root {
-  --kan-max-cards: 6;        /* how many cards visible before scroll */
-  --kan-card-h: 96px;        /* avg card height incl. padding */
-  --kan-col-h: 520px;        /* column card height (header+list+composer) */
-  --kan-slot-gap: #{$slot-gap};
-}
-
-/* --- GRID: 3 columns desktop, wrap to next row after 3 --- */
-/* Harden specificity and use !important for 'display' to beat Bootstrap/other libs */
-.kan-wrap, #kanWrap.kan-wrap {
-  display: grid !important;
-  grid-template-columns: repeat(3, minmax($col-min, 1fr));
-  gap: $col-gap;
-  align-items: start;
-  width: 100%;
-}
-
-/* responsive: 2 columns on tablets, 1 on phones */
-@media (max-width: 1200px) {
-  .kan-wrap, #kanWrap.kan-wrap { grid-template-columns: repeat(2, minmax($col-min, 1fr)); }
-}
-@media (max-width: 768px) {
-  .kan-wrap, #kanWrap.kan-wrap { grid-template-columns: 1fr; }
-}
-
-/* Each grid item (column) */
-.kan-col { min-width: 0; } /* prevent overflow when titles are long */
-
-/* --- COLUMN CARD: only the list scrolls --- */
-.kan-col > .card {
-  display: flex;
-  flex-direction: column;
-  height: var(--kan-col-h);
-  border: 1px solid #e9ecef;
-  border-radius: 12px;
-  overflow: hidden; /* clean edges for sticky header + scrollbar */
-  background: #fff;
-}
-
-/* sticky column header */
-.kan-h {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: #f8f9fa !important;
-  border-bottom: 1px solid #e9ecef;
-  padding: 10px 12px;
-
-  .t {
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .btn.btn-sm {
-    padding: 3px 8px;
-    border-radius: 8px;
-  }
-}
-
-/* column body layout */
-.kan-col .card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
-}
-
-/* subtle colored bar (already in markup) */
-.col-color {
-  height: 4px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #e9ecef, #dee2e6);
-}
-
-/* --- SCROLLABLE LIST AREA --- */
-.kan-slot {
-  display: flex;
-  flex-direction: column;
-  gap: var(--kan-slot-gap);
-  /* cap visible cards; then scroll */
-  max-height: calc(
-    var(--kan-max-cards) * var(--kan-card-h) +
-    (var(--kan-max-cards) - 1) * var(--kan-slot-gap)
-  );
-  overflow: auto;
-  padding-right: 4px; /* space for scrollbar so content doesn’t jiggle */
-}
-
-/* nicer scrollbars (column lists only) */
-.kan-slot {
-  scrollbar-width: thin;
-  scrollbar-color: #c7d2fe transparent;
-
-  &::-webkit-scrollbar { width: 8px; }
-  &::-webkit-scrollbar-thumb {
-    background: #c7d2fe;
-    border-radius: 6px;
-  }
-  &::-webkit-scrollbar-track { background: transparent; }
-}
-
-/* empty-state hint */
-.kan-slot.empty {
-  min-height: 80px;
-  border: 2px dashed #e9ecef;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  color: #6c757d;
-  font-size: 12px;
-
-  &::after { content: attr(data-empty); }
-}
-
-/* drop target highlight */
-.kan-slot.col-highlight {
-  outline: 2px dashed #74c0fc;
-  outline-offset: 2px;
-  background: rgba(116, 192, 252, 0.08);
-  border-radius: 10px;
-}
-
-/* --- CARDS --- */
-.kan-card {
-  border-radius: $card-radius;
-  padding: $card-pad;               /* requested padding */
-  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
-  border: 1px solid rgba(0,0,0,0.04);
-  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-  cursor: default;
-
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-  }
-
-  &.dragging {
-    opacity: .6;
-    transform: scale(.98);
-  }
-
-  .small { line-height: 1.2; }
-
-  /* j-notes readability regardless of bg color */
-  .j-notes {
-    strong { font-weight: 700; }
-    em     { font-style: italic; }
-    del    { opacity: .7; }
-  }
-}
-
-/* drag “grip” */
-.kan-grip {
-  display: inline-grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  font-size: 16px;
-  line-height: 1;
-  cursor: grab;
-  user-select: none;
-  opacity: .65;
-
-  &:active { cursor: grabbing; }
-}
-
-/* composer at bottom */
-.kan-add {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 8px;
-  margin-top: 6px;
-}
-
-/* Search input tightening (Bootstrap override safe) */
-#kanSearch.form-control {
-  height: 32px;
-  padding: 4px 10px;
-}
-
-/* Status toast (sticky) */
-#kanStatus {
-  position: sticky;
-  top: 8px;
-  z-index: 30;
-  margin-bottom: 8px;
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-size: 13px;
-  display: none;
-
-  &.show { display: inline-block; }
-  &.ok   { background: #e6fcf5; color: #087f5b; border: 1px solid #c3fae8; }
-  &.warn { background: #fff4e6; color: #d9480f; border: 1px solid #ffe8cc; }
-  &.err  { background: #fff5f5; color: #c92a2a; border: 1px solid #ffe3e3; }
-}
+---
+---
+/* ===== Kanban layout & look (Jekyll SCSS that compiles to /assets/css/kanban.css) ===== */
+$col-gap:16px;$col-min:280px;$card-radius:10px;$card-pad:10px;$slot-gap:8px;
+:root{--kan-max-cards:6;--kan-card-h:96px;--kan-col-h:520px;--kan-slot-gap:#{$slot-gap}}
+/* GRID */
+.kan-wrap,#kanWrap.kan-wrap{display:grid!important;grid-template-columns:repeat(3,minmax($col-min,1fr));gap:$col-gap;align-items:start;width:100%}
+@media(max-width:1200px){.kan-wrap,#kanWrap.kan-wrap{grid-template-columns:repeat(2,minmax($col-min,1fr))}}
+@media(max-width:768px){.kan-wrap,#kanWrap.kan-wrap{grid-template-columns:1fr}}
+.kan-col{min-width:0}
+/* COLUMN CARD */
+.kan-col>.card{display:flex;flex-direction:column;height:var(--kan-col-h);border:1px solid #e9ecef;border-radius:12px;overflow:hidden;background:#fff}
+.kan-h{position:sticky;top:0;z-index:2;background:#f8f9fa!important;border-bottom:1px solid #e9ecef;padding:10px 12px}
+.kan-h .t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kan-h .btn.btn-sm{padding:3px 8px;border-radius:8px}
+.kan-col .card-body{display:flex;flex-direction:column;gap:10px;padding:10px}
+.col-color{height:4px;border-radius:2px;background:linear-gradient(90deg,#e9ecef,#dee2e6)}
+/* LIST AREA */
+.kan-slot{display:flex;flex-direction:column;gap:var(--kan-slot-gap);max-height:calc(var(--kan-max-cards)*var(--kan-card-h) + (var(--kan-max-cards) - 1)*var(--kan-slot-gap));overflow:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:#c7d2fe transparent}
+.kan-slot::-webkit-scrollbar{width:8px}
+.kan-slot::-webkit-scrollbar-thumb{background:#c7d2fe;border-radius:6px}
+.kan-slot::-webkit-scrollbar-track{background:transparent}
+.kan-slot.empty{min-height:80px;border:2px dashed #e9ecef;border-radius:10px;display:grid;place-items:center;color:#6c757d;font-size:12px}
+.kan-slot.empty::after{content:attr(data-empty)}
+.kan-slot.col-highlight{outline:2px dashed #74c0fc;outline-offset:2px;background:rgba(116,192,252,.08);border-radius:10px}
+/* CARDS */
+.kan-card{border-radius:$card-radius;padding:$card-pad;box-shadow:0 1px 0 rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.04);transition:transform .12s ease,box-shadow .12s ease,background .12s ease;cursor:default}
+.kan-card:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.06)}
+.kan-card.dragging{opacity:.6;transform:scale(.98)}
+.kan-card .small{line-height:1.2}
+.kan-card .j-notes strong{font-weight:700}
+.kan-card .j-notes em{font-style:italic}
+.kan-card .j-notes del{opacity:.7}
+/* GRIP */
+.kan-grip{display:inline-grid;place-items:center;width:22px;height:22px;font-size:16px;line-height:1;cursor:grab;user-select:none;opacity:.65}
+.kan-grip:active{cursor:grabbing}
+/* COMPOSER */
+.kan-add{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:6px}
+/* SEARCH */
+#kanSearch.form-control{height:32px;padding:4px 10px}
+/* STATUS TOAST */
+#kanStatus{position:sticky;top:8px;z-index:30;margin-bottom:8px;padding:8px 12px;border-radius:10px;font-size:13px;display:none}
+#kanStatus.show{display:inline-block}
+#kanStatus.ok{background:#e6fcf5;color:#087f5b;border:1px solid #c3fae8}
+#kanStatus.warn{background:#fff4e6;color:#d9480f;border:1px solid #ffe8cc}
+#kanStatus.err{background:#fff5f5;color:#c92a2a;border:1px solid #ffe3e3}

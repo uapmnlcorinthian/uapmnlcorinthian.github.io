@@ -6,17 +6,21 @@ sitemap: false
 ---
 <meta name="page-login" content="required">
 <meta name="page-role" content="admin">
+<!-- Stop cached JS biting us on this page -->
+<meta http-equiv="Cache-Control" content="no-store, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 
-<!-- 1) Supabase client (v2) -->
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+<script defer src="{{ '/js/QR.js' | relative_url }}"></script>
+
+<!-- Supabase (must precede account.js) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
 
 <!-- 2) Env + single initializer used by your JS -->
 <script>
-  // ✅ FILL THESE WITH YOUR PROJECT VALUES (keep them global)
   window.SUPABASE_URL = "https://fvaahtqjusfniadwvoyw.supabase.co";
   window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8";
-
-  // One-time initializer the app calls everywhere
   window.__ensureSB = async function () {
     if (window.sb) return window.sb;
     if (!window.supabase || !window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) return null;
@@ -29,86 +33,10 @@ sitemap: false
   };
 </script>
 
-<link rel="stylesheet" href="/assets/css/kanban.css"><!-- custom style for this page -->
-
-<!-- 🔧 Hardening inline CSS (beats Bootstrap/overrides). Keeps 3 columns,
-     wraps after 3, caps visible cards per column and makes lists scroll. -->
-<style id="kanban-inline">
-  :root{
-    --kan-max-cards:6;        /* how many cards are visible before scroll */
-    --kan-card-h:96px;        /* avg card height incl. padding */
-    --kan-col-h:520px;        /* column height: header + list + composer */
-    --kan-slot-gap:8px;
-  }
-
-  /* Force the grid even if something set display:block elsewhere */
-  #kanWrap.kan-wrap{
-    display:grid !important;
-    grid-template-columns:repeat(3,minmax(280px,1fr));
-    gap:16px;
-    align-items:start;
-    width:100%;
-  }
-  @media (max-width:1200px){ #kanWrap.kan-wrap{ grid-template-columns:repeat(2,minmax(280px,1fr)); } }
-  @media (max-width:768px){  #kanWrap.kan-wrap{ grid-template-columns:1fr; } }
-
-  .kan-col{ min-width:0; }
-
-  .kan-col > .card{
-    display:flex; flex-direction:column;
-    height:var(--kan-col-h);
-    border:1px solid #e9ecef; border-radius:12px; overflow:hidden; background:#fff;
-  }
-  .kan-h{
-    position:sticky; top:0; z-index:2;
-    background:#f8f9fa !important; border-bottom:1px solid #e9ecef; padding:10px 12px;
-  }
-  .kan-h .t{ font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .kan-h .btn.btn-sm{ padding:3px 8px; border-radius:8px; }
-
-  .kan-col .card-body{ display:flex; flex-direction:column; gap:10px; padding:10px; }
-  .col-color{ height:4px; border-radius:2px; background:linear-gradient(90deg,#e9ecef,#dee2e6); }
-
-  .kan-slot{
-    display:flex; flex-direction:column; gap:var(--kan-slot-gap);
-    max-height:calc(var(--kan-max-cards)*var(--kan-card-h) + (var(--kan-max-cards) - 1)*var(--kan-slot-gap));
-    overflow:auto; padding-right:4px;
-    scrollbar-width:thin; scrollbar-color:#c7d2fe transparent;
-  }
-  .kan-slot::-webkit-scrollbar{ width:8px; }
-  .kan-slot::-webkit-scrollbar-thumb{ background:#c7d2fe; border-radius:6px; }
-  .kan-slot::-webkit-scrollbar-track{ background:transparent; }
-
-  .kan-slot.empty{
-    min-height:80px; border:2px dashed #e9ecef; border-radius:10px;
-    display:grid; place-items:center; color:#6c757d; font-size:12px;
-  }
-  .kan-slot.empty::after{ content:attr(data-empty); }
-  .kan-slot.col-highlight{ outline:2px dashed #74c0fc; outline-offset:2px; background:rgba(116,192,252,.08); border-radius:10px; }
-
-  .kan-card{
-    border-radius:10px; padding:10px; /* padding requested */
-    box-shadow:0 1px 0 rgba(0,0,0,.02);
-    border:1px solid rgba(0,0,0,.04);
-    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
-    cursor:default;
-  }
-  .kan-card:hover{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.06); }
-  .kan-card.dragging{ opacity:.6; transform:scale(.98); }
-
-  .kan-grip{ display:inline-grid; place-items:center; width:22px; height:22px; font-size:16px; line-height:1; cursor:grab; user-select:none; opacity:.65; }
-  .kan-grip:active{ cursor:grabbing; }
-
-  .kan-add{ display:grid; grid-template-columns:1fr auto; gap:8px; margin-top:6px; }
-
-  #kanStatus{
-    position:sticky; top:8px; z-index:30; margin-bottom:8px; padding:8px 12px; border-radius:10px; font-size:13px; display:none;
-  }
-  #kanStatus.show{ display:inline-block; }
-  #kanStatus.ok{   background:#e6fcf5; color:#087f5b; border:1px solid #c3fae8; }
-  #kanStatus.warn{ background:#fff4e6; color:#d9480f; border:1px solid #ffe8cc; }
-  #kanStatus.err{  background:#fff5f5; color:#c92a2a; border:1px solid #ffe3e3; }
-</style>
+<!-- Page logic -->
+<!-- IMPORTANT: add cache-busting query (Jekyll timestamp) -->
+<script src="{{ '/js/account.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<link rel="stylesheet" href="/assets/css/kanban.css">
 
 <section class="container py-4" data-aos="fade-up">
   <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
@@ -174,4 +102,207 @@ sitemap: false
   </div></div>
 </div>
 
-<script src="{{ '/js/kanban.js' | relative_url }}" defer></script>
+<div class="d-grid gap-2 col-12 col-md-6 mx-auto my-3">
+  <button id="btnToggleMembers" class="btn btn-primary btn-lg">
+    Show Member Tools
+  </button>
+</div>
+
+
+<div id="mbv_wrap" style="display:none">
+
+  <!-- Member Viewer -->
+  <section id="mbv" class="container my-4" data-aos="fade-up">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h2 class="h5 fw-semibold mb-0">Member Viewer</h2>
+      <div class="input-group" style="max-width:520px">
+        <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+        <input id="mbv_q" class="form-control" placeholder="Search by name (any part) or PRC number…" autocomplete="off">
+        <button id="mbv_clr" class="btn btn-outline-secondary" type="button">Clear</button>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-light fw-semibold">Results</div>
+          <div class="list-group list-group-flush" id="mbv_list" style="max-height:420px;overflow:auto"></div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-8">
+        <div id="mbv_card">
+          <div id="exportArea">
+            <div class="card shadow-sm digital-card mx-auto mb-3" style="max-width: 750px;">
+              <div class="card-header text-center bg-light">
+                <img src="{{ site.data.images.s-logo}}" alt="UAP MCC" class="card-header-logo mb-2" />
+                <div class="card-header-title fw-semibold">UAP Manila Corinthian Chapter</div>
+              </div>
+              <div class="card-body p-4">
+                <h2 id="cardName" class="fw-bold mb-1 text-center">Member Name</h2>
+                <p class="text-center mb-3">
+                  <span id="statusBadge" class="badge bg-secondary" style="font-size: 1.2rem;" aria-live="polite">Status</span>
+                </p>
+                <div class="row gx-2 gy-1 mb-3 small">
+                  <div class="col-5 text-end fw-semibold">Batch:</div><div class="col-7" id="cardBatch"></div>
+                  <div class="col-5 text-end fw-semibold">Company:</div>
+                  <div class="col-7 d-flex align-items-center"><span id="cardCompany" class="sensitive-text flex-grow-1" data-shown="1">*</span><button type="button" class="toggle-sensitive-btn btn btn-sm border-0 bg-transparent text-body ms-2" aria-label="Toggle Company"><i class="fa-solid fa-eye-slash"></i></button></div>
+                  <div class="col-5 text-end fw-semibold">Position:</div>
+                  <div class="col-7 d-flex align-items-center"><span id="cardPosition" class="sensitive-text flex-grow-1" data-shown="1">*</span><button type="button" class="toggle-sensitive-btn btn btn-sm border-0 bg-transparent text-body ms-2" aria-label="Toggle Position"><i class="fa-solid fa-eye-slash"></i></button></div>
+                </div>
+                <hr />
+                <div class="small">
+                  <div class="d-flex align-items-center mb-2"><span class="fw-semibold me-1">PRC License:</span><span id="prcLicense" class="sensitive-text flex-grow-1" tabindex="0" aria-label="PRC license masked" data-shown="1">*</span><button type="button" class="toggle-sensitive-btn btn btn-sm border-0 bg-transparent text-body ms-2" aria-label="Toggle PRC"><i class="fa-solid fa-eye-slash"></i></button></div>
+                  <div class="d-flex align-items-center mb-2"><span class="fw-semibold me-1">Email:</span><span id="email" class="sensitive-text flex-grow-1" tabindex="0" aria-label="Email masked" data-shown="1">*</span><button type="button" class="toggle-sensitive-btn btn btn-sm border-0 bg-transparent text-body ms-2" aria-label="Toggle Email"><i class="fa-solid fa-eye-slash"></i></button></div>
+                  <div class="d-flex align-items-center"><span class="fw-semibold me-1">Contact No.:</span><span id="contactNo" class="sensitive-text flex-grow-1" tabindex="0" aria-label="Contact number masked" data-shown="1">*</span><button type="button" class="toggle-sensitive-btn btn btn-sm border-0 bg-transparent text-body ms-2" aria-label="Toggle Contact"><i class="fa-solid fa-eye-slash"></i></button></div>
+                </div>
+              </div>
+              <div class="card-footer text-center py-3 bg-light"><p class="mb-0"><strong>Total Due:</strong> <span id="totalDue">₱0</span></p></div>
+            </div>
+
+            <div class="card shadow-lg mx-auto border-0 mb-3 rounded-4" style="max-width: 420px; background: #fdfdfd;">
+              <div class="card-body d-flex flex-column align-items-center p-4 position-relative">
+                <div id="qr-wrapper" style="position: relative;"><div id="qr-vcard"></div><img src="{{ site.data.images.s-logo }}" alt="UAP MCC Logo" style="position: absolute; top: 50%; left: 50%; width: 75px; height: 75px; transform: translate(-50%, -50%); border-radius: 10%;" /></div>
+                <div class="text-primary fw-semibold fs-6 mt-3">Digital Business Card</div>
+                <small class="text-muted">Scan to save contact info</small>
+                <small class="text-muted d-block">Only visible fields are included in the QR.</small>
+              </div>
+            </div>
+
+            <section class="container">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h2 class="h6 text-primary fw-semibold mb-0">Payment History</h2>
+                <button id="paymentsToggleBtn" class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#paymentsCollapse" aria-expanded="true" aria-controls="paymentsCollapse"><i class="fa-solid fa-angle-down rotate-icon"></i></button>
+              </div>
+              <div id="paymentsCollapse" class="collapse show">
+                <div id="paymentsWrapper" class="d-flex justify-content-center">
+                  <div class="scrollable-table-container">
+                    <table id="paymentsTable" class="table table-sm align-middle text-center mb-0 payment-table">
+                      <thead class="table-light"><tr><th class="sticky-col">Year</th></tr></thead>
+                      <tbody class="group-chapter"><tr><th scope="row" class="sticky-col">Chapter Dues</th></tr><tr><th scope="row" class="sticky-col">Chapter Penalty</th></tr><tr><th scope="row" class="sticky-col">Payment Date</th></tr></tbody>
+                      <tbody class="group-iapoa"><tr><th scope="row" class="sticky-col">IAPOA Dues</th></tr><tr><th scope="row" class="sticky-col">IAPOA Penalty</th></tr><tr><th scope="row" class="sticky-col">IAPOA Payment Date</th></tr></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Edit Panel -->
+  <section id="mbv_editpanel" class="container my-3" data-aos="fade-up">
+    <div class="card shadow-sm">
+      <div class="card-header bg-light fw-semibold d-flex align-items-center justify-content-between">
+        <span>Edit Selected Member</span>
+        <small class="text-muted">Please double check before editing, this will directly edit the database</small>
+      </div>
+      <div class="card-body">
+        <div class="row g-2 mb-2">
+          <div class="col-12"><label class="form-label small mb-1">Surname</label>
+            <input id="upd2Surname" class="form-control form-control-sm" autocomplete="off">
+          </div>
+          <div class="col-12"><label class="form-label small mb-1">Given Name</label>
+            <input id="upd2Given" class="form-control form-control-sm" autocomplete="off">
+          </div>
+          <div class="col-12"><label class="form-label small mb-1">Middle Name</label>
+            <input id="upd2Middle" class="form-control form-control-sm" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+          <label class="form-label mb-1">PRC License</label>
+          <input id="upd2PRC" class="form-control form-control-sm" inputmode="numeric" pattern="[0-9]*">
+        </div>
+        <div class="col-12 col-md-3">
+          <label class="form-label mb-1">Batch</label>
+          <input id="upd2Batch" class="form-control form-control-sm">
+        </div>
+
+        <div class="col-12">
+          <label class="form-label mb-1">Address</label>
+          <input id="upd2Address" class="form-control form-control-sm" autocomplete="street-address">
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label class="form-label mb-1">Birthday</label>
+          <input id="upd2Birthday" type="date" class="form-control form-control-sm">
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label class="form-label mb-1">Contact No.</label>
+          <input id="upd2Contact" class="form-control form-control-sm" placeholder="09xxxxxxxxx or +639xxxxxxxxx">
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label mb-1">Email</label>
+          <input id="upd2Email" type="email" class="form-control form-control-sm" autocomplete="email">
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label class="form-label mb-1">Company</label>
+          <input id="upd2Company" class="form-control form-control-sm" autocomplete="organization">
+        </div>
+        <div class="col-12 col-md-6">
+          <label class="form-label mb-1">Position</label>
+          <input id="upd2Position" class="form-control form-control-sm" autocomplete="organization-title">
+        </div>
+
+        <div class="col-12 d-flex align-items-center gap-2 mt-2">
+          <input id="chkResetPw" class="form-check-input" type="checkbox">
+          <label for="chkResetPw" class="form-check-label">Reset their password?</label>
+        </div>
+      </div>
+      <div class="card-footer d-flex justify-content-between">
+        <small class="text-muted">Selected row: <span id="mbv_selid">—</span></small>
+        <div class="btn-group">
+          <button id="mbv_editbtn" class="btn btn-sm btn-primary">Edit &amp; Save</button>
+          <button id="mbv_fillfromcard" class="btn btn-sm btn-outline-secondary">Load from Card</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- IMPORTANT: cache-bust these two as well -->
+<script src="{{ '/js/kanban.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<script src="{{ '/js/member_viewer.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<script src="{{ '/js/member_editor.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+
+<!-- Toggle + first-show boot -->
+<script>
+  (function () {
+    const btn = document.getElementById('btnToggleMembers');
+    const sec = document.getElementById('mbv_wrap');
+    if (!btn || !sec) return;
+
+    const KEY = 'mbvVisible';
+
+    function setState(show) {
+      sec.style.display = show ? '' : 'none';
+      btn.textContent = show ? 'Hide Member Tools' : 'Show Member Tools';
+      try { localStorage.setItem(KEY, show ? '1' : '0'); } catch (_) {}
+
+      if (show) {
+        // ensure SB client exists
+        if (typeof window.__ensureSB === 'function') { window.__ensureSB(); }
+        // boot viewer bindings + list fill
+        if (typeof window.__mbv_forceInit === 'function') window.__mbv_forceInit();
+
+        // explicit first search (empty), plus retrigger input for debounce path
+        setTimeout(() => {
+          const q = document.getElementById('mbv_q');
+          if (typeof window.__mbv_search === 'function') window.__mbv_search('');
+          if (q) q.dispatchEvent(new Event('input', { bubbles: true }));
+        }, 80);
+      }
+    }
+
+    // restore last state
+    const saved = (typeof localStorage !== 'undefined') ? localStorage.getItem(KEY) : null;
+    setState(saved === '1'); // default hidden unless previously shown
+
+    btn.addEventListener('click', () => setState(sec.style.display === 'none'));
+  })();
+</script>
+
+
