@@ -211,6 +211,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         sessionStorage.setItem('userData', JSON.stringify(sess));
         try{ localStorage.setItem('userData', JSON.stringify(sess)); }catch(e){}
 		
+		try{localStorage.setItem('u_role',String(({member:0,moderator:1,admin:2,super_admin:3})[String(sess.rl||'member')]||0));document.dispatchEvent(new Event('role:changed'));}catch{}
+		
         setTimeout(() => window.location.replace('/account/'), 100);
       } catch (err) {
         alert(err.message || 'Login failed. Please try again.');

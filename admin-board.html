@@ -6,37 +6,46 @@ sitemap: false
 ---
 <meta name="page-login" content="required">
 <meta name="page-role" content="admin">
-<!-- Stop cached JS biting us on this page -->
 <meta http-equiv="Cache-Control" content="no-store, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
+
+<link rel="stylesheet" href="/assets/css/kanban.css">
+<style>
+/* Make the Admin Guide button obvious and left-bottom */
+#adm-help{z-index:2147483647;}
+.btn-admin{background:linear-gradient(135deg,#0d6efd 0%,#6610f2 100%);color:#fff;border:0;font-weight:700;letter-spacing:.2px;pointer-events:auto;}
+.btn-admin i{margin-right:.4rem}
+.btn-admin{animation:admGlow 2.2s ease-in-out infinite;border-radius:1rem;}
+.btn-admin:hover{transform:translateY(-1px)}
+.btn-admin:active{transform:translateY(0)}
+.btn-admin:focus-visible{outline:3px solid rgba(255,255,255,.9);outline-offset:2px}
+@keyframes admGlow{0%,100%{box-shadow:0 8px 18px rgba(13,110,253,.35),0 0 0 0 rgba(13,110,253,.0),0 0 22px rgba(102,16,242,.55)}50%{box-shadow:0 10px 22px rgba(13,110,253,.45),0 0 0 6px rgba(13,110,253,.18),0 0 34px rgba(102,16,242,.75)}}
+</style>
 
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 <script defer src="{{ '/js/QR.js' | relative_url }}"></script>
 
 <!-- Supabase (must precede account.js) -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
-
-<!-- 2) Env + single initializer used by your JS -->
 <script>
   window.SUPABASE_URL = "https://fvaahtqjusfniadwvoyw.supabase.co";
   window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2YWFodHFqdXNmbmlhZHd2b3l3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4MDQ4ODgsImV4cCI6MjA2ODM4MDg4OH0.uvHGXXlijYIbuX_l85Ak7kdQDy3OaLmeplEEPlMqHo8";
-  window.__ensureSB = async function () {
-    if (window.sb) return window.sb;
-    if (!window.supabase || !window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) return null;
-    window.sb = window.supabase.createClient(
-      window.SUPABASE_URL,
-      window.SUPABASE_ANON_KEY,
-      { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
-    );
+  window.__ensureSB = async function(){
+    if(window.sb) return window.sb;
+    if(!window.supabase||!window.SUPABASE_URL||!window.SUPABASE_ANON_KEY) return null;
+    window.sb = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY, {
+      auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}
+    });
     return window.sb;
   };
 </script>
 
-<!-- Page logic -->
-<!-- IMPORTANT: add cache-busting query (Jekyll timestamp) -->
+<!-- Page logic (keep account.js before member/kanban utilities if it sets globals) -->
 <script src="{{ '/js/account.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
-<link rel="stylesheet" href="/assets/css/kanban.css">
+<script src="{{ '/js/kanban.js'  | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<script src="{{ '/js/member_viewer.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<script src="{{ '/js/member_editor.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 
 <section class="container py-4" data-aos="fade-up">
   <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
@@ -66,9 +75,7 @@ sitemap: false
       </div>
 
       <div class="btn-group ms-2" role="group" aria-label="Drafts">
-        <button id="btnSync" class="btn btn-danger btn-sm btn-sync">
-          Sync to Database <span id="syncCount" class="badge rounded-pill text-bg-light sync-count d-none">0</span>
-        </button>
+        <button id="btnSync" class="btn btn-danger btn-sm btn-sync">Sync to Database <span id="syncCount" class="badge rounded-pill text-bg-light sync-count d-none">0</span></button>
         <button id="btnDiscard" class="btn btn-outline-secondary btn-sm">Discard Drafts</button>
         <button id="btnReload" class="btn btn-outline-secondary btn-sm">Reload</button>
         <button id="btnUndo" class="btn btn-outline-secondary btn-sm" title="Undo last local change">Undo</button>
@@ -83,64 +90,223 @@ sitemap: false
   </div>
 </section>
 
+<!-- Conflicts modal used by kanban.js -->
 <div class="modal fade" id="conflictModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title">Conflicts detected</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-      <p class="mb-2">Some items were modified by others since you loaded the board:</p>
-      <ul id="conflictList" class="small"></ul>
-      <p class="small text-muted mb-0">Choose an action below:</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-      <button type="button" id="btnSkipConflicts" class="btn btn-outline-primary">Skip conflicting ops</button>
-      <button type="button" id="btnOverwriteConflicts" class="btn btn-danger">Overwrite with my changes</button>
-    </div>
+    <div class="modal-header"><h5 class="modal-title">Conflicts detected</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+    <div class="modal-body"><p class="mb-2">Some items were modified by others since you loaded the board:</p><ul id="conflictList" class="small"></ul><p class="small text-muted mb-0">Choose an action below:</p></div>
+    <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button type="button" id="btnSkipConflicts" class="btn btn-outline-primary">Skip conflicting ops</button><button type="button" id="btnOverwriteConflicts" class="btn btn-danger">Overwrite with my changes</button></div>
   </div></div>
 </div>
 
-<div class="d-grid gap-2 col-12 col-md-6 mx-auto my-3">
-  <button id="btnToggleMembers" class="btn btn-primary btn-lg">
-    Show Member Tools
-  </button>
+<!-- Admin-Only Help Button + Modal (gate by role) -->
+<div id="adm-help" class="position-fixed bottom-0 start-0 p-3" data-aos="zoom-in" data-aos-delay="300">
+<button id="admBtn" class="btn btn-admin btn-lg shadow rounded-2xl d-none" data-bs-toggle="modal" data-bs-target="#admM" aria-controls="admM">
+<i class="fa-solid fa-shield"></i> Admin Guide
+</button>
 </div>
 
 
-<div id="mbv_wrap" style="display:none">
+<div class="modal fade" id="admM" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-dialog-scrollable modal-lg">
+<div class="modal-content rounded-4 shadow-lg">
+<div class="modal-header">
+<h5 class="modal-title m-0">Website Editing Access — Admin Guide</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body small lh-sm">
+  <p class="mb-2">Only <strong>Admin</strong> and <strong>Super Admin</strong> can view this guide.</p>
+  <hr class="my-3">
 
-  <!-- Member Viewer -->
+  <h6 class="text-primary fw-semibold">1) Website Editor (GitHub Pages)</h6>
+  <ol class="mb-3 ps-3">
+    <li>Open <a href="https://uapmnlcorinthian.com/admin/" target="_blank" rel="noopener">Site Admin</a>.</li>
+    <li>Sign in with a <strong>GitHub fine-grained personal access token</strong> that has repo access to <code>manilacorinthianchapter/mcc</code>.</li>
+    <li>If you don’t have a token: log into GitHub for <strong>manilacorinthianchapter@gmail.com</strong>, create a fine-grained token, grant repo access, then paste the token in the admin UI.</li>
+  </ol>
+
+  <h6 class="text-primary fw-semibold">2) Assets (Cloudflare R2)</h6>
+  <ul class="mb-3 ps-3">
+    <li>Go to <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">Cloudflare Dashboard</a> &nbsp;→&nbsp; <strong>R2 Object Storage</strong> → <code>assets/</code> (folder by type).</li>
+    <li>Upload images/files there. Get public URLs from: <a href="https://asset.manilacorinthianchapter.workers.dev/list" target="_blank" rel="noopener">asset…/list</a>.</li>
+  </ul>
+
+  <h6 class="text-primary fw-semibold">3) Database (Supabase)</h6>
+  <ul class="mb-3 ps-3">
+    <li>Open <a href="https://fvaahtqjusfniadwvoyw.supabase.co" target="_blank" rel="noopener">Supabase</a>.</li>
+    <li>Same email/2FA flow as GitHub/Cloudflare. Update tables with care (SQL knowledge required).</li>
+  </ul>
+
+  <h6 class="text-primary fw-semibold">4) Domain (Porkbun)</h6>
+  <ul class="mb-3 ps-3">
+    <li>Open <a href="https://porkbun.com/" target="_blank" rel="noopener">Porkbun</a> for DNS updates (same login/2FA approach).</li>
+  </ul>
+
+  <h6 class="text-primary fw-semibold">5) OTP / Emails (Resend)</h6>
+  <ul class="mb-3 ps-3">
+    <li>Open <a href="https://resend.com/" target="_blank" rel="noopener">Resend</a> to manage email/OTP and API keys (same login/2FA approach).</li>
+  </ul>
+
+  <p class="small text-muted mb-3">All logins use <strong>manilacorinthianchapter@gmail.com</strong>. Passwords: ask Super Admin, or reset via Gmail if you have mailbox access. For 2FA, request a code from the Super Admin (site creator).</p>
+
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary btn-sm" data-bs-target="#admHandbook" data-bs-toggle="modal" data-bs-dismiss="modal">
+      Open Full Handbook
+    </button>
+  </div>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Full Admin Handbook (Detailed) -->
+<div class="modal fade" id="admHandbook" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-xl">
+    <div class="modal-content rounded-4 shadow-lg">
+      <div class="modal-header">
+        <h5 class="modal-title m-0">Admin Handbook — Full Guide & Troubleshooting</h5>
+        <button type="button" class="btn-close" data-bs-target="#admM" data-bs-toggle="modal" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <p class="mb-3">This guide explains how to update website content, assets, database, domain, and email/OTP — including what to check when something breaks and what to do if the Super Admin is not available.</p>
+
+        <hr class="my-3">
+
+        <h5 class="text-primary fw-semibold">A) Access & Credentials</h5>
+        <ul class="mb-3 ps-3">
+          <li><strong>Primary email:</strong> <code>manilacorinthianchapter@gmail.com</code></li>
+          <li><strong>Password:</strong> ask the Super Admin or reset via Gmail if you have mailbox access.</li>
+          <li><strong>2FA:</strong> Request code from Super Admin (site creator) when prompted.</li>
+        </ul>
+
+        <h5 class="text-primary fw-semibold">B) Editing Website Content</h5>
+        <ol class="mb-3 ps-3">
+          <li>Open the site admin: <a href="https://uapmnlcorinthian.com/admin/" target="_blank" rel="noopener">/admin</a></li>
+          <li>Sign in using a <strong>GitHub fine-grained personal access token</strong> with access to repo <code>manilacorinthianchapter/mcc</code>:
+            <ol class="mt-2 ps-3">
+              <li>Go to <a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener">GitHub tokens</a> and log in as the chapter account.</li>
+              <li>Create a <strong>Fine-grained token</strong>, scope it to the repo <code>manilacorinthianchapter/mcc</code> with <em>Contents: Read/Write</em>.</li>
+              <li>Copy the token (store securely). Use it in the site admin to enable edit/publish.</li>
+            </ol>
+          </li>
+          <li>Make edits in the UI → Save/Publish. The changes commit to GitHub Pages and redeploy the site.</li>
+          <li><strong>Troubleshoot:</strong>
+            <ul class="mt-1 ps-3">
+              <li>If you get 401/permission errors: regenerate a new token with correct repo access.</li>
+              <li>If site doesn’t update: check GitHub repo (<a href="https://github.com/manilacorinthianchapter/mcc/" target="_blank" rel="noopener">mcc</a>) → Actions/Pages build logs for failures.</li>
+              <li>Hard-refresh or clear cache if the change is live in GitHub but not in your browser.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h5 class="text-primary fw-semibold">C) Assets (Images / Files) via Cloudflare R2</h5>
+        <ol class="mb-3 ps-3">
+          <li>Go to <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">Cloudflare</a> → <strong>R2 Object Storage</strong> → bucket/folder <code>assets/</code>.</li>
+          <li>Upload new images/files. Organize by folder (e.g., <code>assets/events/2025/</code>).</li>
+          <li>To list/browse public URLs, use: <a href="https://asset.manilacorinthianchapter.workers.dev/list" target="_blank" rel="noopener">asset…/list</a></li>
+          <li>Use those URLs directly in site HTML/Markdown.</li>
+          <li><strong>Troubleshoot:</strong>
+            <ul class="mt-1 ps-3">
+              <li>404/403: confirm file is in <code>assets</code> and public via the Worker; check exact filename/case.</li>
+              <li>Wrong file type rendering: ensure correct file extension and MIME (e.g., <code>.jpg</code>, <code>.png</code>, <code>.pdf</code>).</li>
+              <li>Old image still appears: hard-refresh; if using Cloudflare cache, purge the specific URL.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h5 class="text-primary fw-semibold">D) Database (Supabase)</h5>
+        <ol class="mb-3 ps-3">
+          <li>Open <a href="https://fvaahtqjusfniadwvoyw.supabase.co" target="_blank" rel="noopener">Supabase</a> and sign in.</li>
+          <li>Tables: <strong>xxsr_001</strong> (members) and others. Use Table Editor for simple edits. Use SQL editor for advanced operations.</li>
+          <li><strong>Before editing data:</strong> Export CSV backup of the table you’re changing.</li>
+          <li>Respect RLS (Row Level Security) and any RPC you rely on (e.g., <code>verify_password</code>).</li>
+          <li><strong>Troubleshoot:</strong>
+            <ul class="mt-1 ps-3">
+              <li>Writes fail: check RLS policies, your auth session, and role. Admin pages expect a valid Supabase auth session.</li>
+              <li>Member board blank: check the table/query columns and permissions; ensure you didn’t rename required fields.</li>
+              <li>Login issues: verify the captcha function, <code>auth.signInWithPassword</code> flow, and email/password validity.</li>
+            </ul>
+          </li>
+          <li><strong>Danger:</strong> SQL changes are live. Double-check WHERE clauses; prefer Table Editor for single-row updates.</li>
+        </ol>
+
+        <h5 class="text-primary fw-semibold">E) Domain (Porkbun)</h5>
+        <ol class="mb-3 ps-3">
+          <li>Open <a href="https://porkbun.com/" target="_blank" rel="noopener">Porkbun</a> → Domain → DNS.</li>
+          <li>Update DNS records for GitHub Pages (A/AAAA or CNAME per GitHub’s docs) and any subdomains (e.g., Workers, R2 public endpoints).</li>
+          <li><strong>Troubleshoot:</strong> DNS changes can take time to propagate; confirm records and wait up to an hour (often faster).</li>
+        </ol>
+
+        <h5 class="text-primary fw-semibold">F) OTP / Emails (Resend)</h5>
+        <ol class="mb-3 ps-3">
+          <li>Open <a href="https://resend.com/" target="_blank" rel="noopener">Resend</a>.</li>
+          <li>Check domain verification, DNS records (SPF, DKIM), and API keys used by the site.</li>
+          <li><strong>Troubleshoot:</strong>
+            <ul class="mt-1 ps-3">
+              <li>OTP not arriving: verify sending domain is “Verified” in Resend; check logs & bounces.</li>
+              <li>If keys rotated: update the site’s environment/edge worker to use the new key.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h5 class="text-primary fw-semibold">G) If the Super Admin is Unavailable</h5>
+        <ol class="mb-3 ps-3">
+          <li>Try password reset flows using <strong>manilacorinthianchapter@gmail.com</strong> inbox (Gmail recovery).</li>
+          <li>If 2FA blocks you, request recovery codes or temporary 2FA disable from the Super Admin. As a last resort, use provider-level support with proof of ownership.</li>
+          <li>For GitHub: if you can access the Gmail inbox, you can reset GitHub password and create a new token.</li>
+          <li>Document everything you change (who/what/when) so the Super Admin can reconcile later.</li>
+        </ol>
+
+        <h5 class="text-primary fw-semibold">H) Quick Checks When Something “Doesn’t Work”</h5>
+        <ul class="mb-3 ps-3">
+          <li><strong>Admin Guide button hidden:</strong> Open DevTools console:
+            <pre class="mb-2 small bg-light p-2 rounded-3">localStorage.getItem('u_role')        // expect "2" or "3"
+document.querySelector('#admBtn')     // button exists?
+document.dispatchEvent(new Event('role:changed'))</pre>
+          </li>
+          <li><strong>Assets missing:</strong> Confirm the file exists under <code>assets/</code>, URL case correct, and it appears in <a target="_blank" rel="noopener" href="https://asset.manilacorinthianchapter.workers.dev/list">asset…/list</a>.</li>
+          <li><strong>DB writes fail:</strong> Check Supabase <em>Policies</em>, your auth session, and table/column names.</li>
+          <li><strong>Site not updating:</strong> Check GitHub Pages build logs; re-commit or trigger a rebuild if necessary. Hard-refresh.</li>
+        </ul>
+
+        <p class="small text-muted">Keep tokens/keys secure. Revoke any token you no longer use.</p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline-secondary" data-bs-target="#admM" data-bs-toggle="modal" data-bs-dismiss="modal">Back to Short Guide</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Admin-Only Help Button + Modal (gate by role) -->
+
+<!-- Member tools toggle (hidden by default) -->
+<div class="d-grid gap-2 col-12 col-md-6 mx-auto my-3"><button id="btnToggleMembers" class="btn btn-primary btn-lg">Show Member Tools</button></div>
+<div id="mbv_wrap" style="display:none">
   <section id="mbv" class="container my-4" data-aos="fade-up">
     <div class="d-flex align-items-center justify-content-between mb-2">
       <h2 class="h5 fw-semibold mb-0">Member Viewer</h2>
-      <div class="input-group" style="max-width:520px">
-        <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
-        <input id="mbv_q" class="form-control" placeholder="Search by name (any part) or PRC number…" autocomplete="off">
-        <button id="mbv_clr" class="btn btn-outline-secondary" type="button">Clear</button>
-      </div>
+      <div class="input-group" style="max-width:520px"><span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span><input id="mbv_q" class="form-control" placeholder="Search by name (any part) or PRC number…" autocomplete="off"><button id="mbv_clr" class="btn btn-outline-secondary" type="button">Clear</button></div>
     </div>
     <div class="row g-3">
-      <div class="col-12 col-lg-4">
-        <div class="card shadow-sm">
-          <div class="card-header bg-light fw-semibold">Results</div>
-          <div class="list-group list-group-flush" id="mbv_list" style="max-height:420px;overflow:auto"></div>
-        </div>
-      </div>
+      <div class="col-12 col-lg-4"><div class="card shadow-sm"><div class="card-header bg-light fw-semibold">Results</div><div class="list-group list-group-flush" id="mbv_list" style="max-height:420px;overflow:auto"></div></div></div>
       <div class="col-12 col-lg-8">
         <div id="mbv_card">
           <div id="exportArea">
             <div class="card shadow-sm digital-card mx-auto mb-3" style="max-width: 750px;">
-              <div class="card-header text-center bg-light">
-                <img src="{{ site.data.images.s-logo}}" alt="UAP MCC" class="card-header-logo mb-2" />
-                <div class="card-header-title fw-semibold">UAP Manila Corinthian Chapter</div>
-              </div>
+              <div class="card-header text-center bg-light"><img src="{{ site.data.images.s-logo}}" alt="UAP MCC" class="card-header-logo mb-2" /><div class="card-header-title fw-semibold">UAP Manila Corinthian Chapter</div></div>
               <div class="card-body p-4">
                 <h2 id="cardName" class="fw-bold mb-1 text-center">Member Name</h2>
-                <p class="text-center mb-3">
-                  <span id="statusBadge" class="badge bg-secondary" style="font-size: 1.2rem;" aria-live="polite">Status</span>
-                </p>
+                <p class="text-center mb-3"><span id="statusBadge" class="badge bg-secondary" style="font-size: 1.2rem;" aria-live="polite">Status</span></p>
                 <div class="row gx-2 gy-1 mb-3 small">
                   <div class="col-5 text-end fw-semibold">Batch:</div><div class="col-7" id="cardBatch"></div>
                   <div class="col-5 text-end fw-semibold">Company:</div>
@@ -193,116 +359,94 @@ sitemap: false
   <!-- Admin Edit Panel -->
   <section id="mbv_editpanel" class="container my-3" data-aos="fade-up">
     <div class="card shadow-sm">
-      <div class="card-header bg-light fw-semibold d-flex align-items-center justify-content-between">
-        <span>Edit Selected Member</span>
-        <small class="text-muted">Please double check before editing, this will directly edit the database</small>
-      </div>
+      <div class="card-header bg-light fw-semibold d-flex align-items-center justify-content-between"><span>Edit Selected Member</span><small class="text-muted">Please double check before editing, this will directly edit the database</small></div>
       <div class="card-body">
         <div class="row g-2 mb-2">
-          <div class="col-12"><label class="form-label small mb-1">Surname</label>
-            <input id="upd2Surname" class="form-control form-control-sm" autocomplete="off">
-          </div>
-          <div class="col-12"><label class="form-label small mb-1">Given Name</label>
-            <input id="upd2Given" class="form-control form-control-sm" autocomplete="off">
-          </div>
-          <div class="col-12"><label class="form-label small mb-1">Middle Name</label>
-            <input id="upd2Middle" class="form-control form-control-sm" autocomplete="off">
-          </div>
+          <div class="col-12"><label class="form-label small mb-1">Surname</label><input id="upd2Surname" class="form-control form-control-sm" autocomplete="off"></div>
+          <div class="col-12"><label class="form-label small mb-1">Given Name</label><input id="upd2Given" class="form-control form-control-sm" autocomplete="off"></div>
+          <div class="col-12"><label class="form-label small mb-1">Middle Name</label><input id="upd2Middle" class="form-control form-control-sm" autocomplete="off"></div>
         </div>
-
-        <div class="col-12 col-md-3">
-          <label class="form-label mb-1">PRC License</label>
-          <input id="upd2PRC" class="form-control form-control-sm" inputmode="numeric" pattern="[0-9]*">
-        </div>
-        <div class="col-12 col-md-3">
-          <label class="form-label mb-1">Batch</label>
-          <input id="upd2Batch" class="form-control form-control-sm">
-        </div>
-
-        <div class="col-12">
-          <label class="form-label mb-1">Address</label>
-          <input id="upd2Address" class="form-control form-control-sm" autocomplete="street-address">
-        </div>
-
-        <div class="col-12 col-md-4">
-          <label class="form-label mb-1">Birthday</label>
-          <input id="upd2Birthday" type="date" class="form-control form-control-sm">
-        </div>
-
-        <div class="col-12 col-md-4">
-          <label class="form-label mb-1">Contact No.</label>
-          <input id="upd2Contact" class="form-control form-control-sm" placeholder="09xxxxxxxxx or +639xxxxxxxxx">
-        </div>
-        <div class="col-12 col-md-4">
-          <label class="form-label mb-1">Email</label>
-          <input id="upd2Email" type="email" class="form-control form-control-sm" autocomplete="email">
-        </div>
-
-        <div class="col-12 col-md-6">
-          <label class="form-label mb-1">Company</label>
-          <input id="upd2Company" class="form-control form-control-sm" autocomplete="organization">
-        </div>
-        <div class="col-12 col-md-6">
-          <label class="form-label mb-1">Position</label>
-          <input id="upd2Position" class="form-control form-control-sm" autocomplete="organization-title">
-        </div>
-
-        <div class="col-12 d-flex align-items-center gap-2 mt-2">
-          <input id="chkResetPw" class="form-check-input" type="checkbox">
-          <label for="chkResetPw" class="form-check-label">Reset their password?</label>
-        </div>
+        <div class="col-12 col-md-3"><label class="form-label mb-1">PRC License</label><input id="upd2PRC" class="form-control form-control-sm" inputmode="numeric" pattern="[0-9]*"></div>
+        <div class="col-12 col-md-3"><label class="form-label mb-1">Batch</label><input id="upd2Batch" class="form-control form-control-sm"></div>
+        <div class="col-12"><label class="form-label mb-1">Address</label><input id="upd2Address" class="form-control form-control-sm" autocomplete="street-address"></div>
+        <div class="col-12 col-md-4"><label class="form-label mb-1">Birthday</label><input id="upd2Birthday" type="date" class="form-control form-control-sm"></div>
+        <div class="col-12 col-md-4"><label class="form-label mb-1">Contact No.</label><input id="upd2Contact" class="form-control form-control-sm" placeholder="09xxxxxxxxx or +639xxxxxxxxx"></div>
+        <div class="col-12 col-md-4"><label class="form-label mb-1">Email</label><input id="upd2Email" type="email" class="form-control form-control-sm" autocomplete="email"></div>
+        <div class="col-12 col-md-6"><label class="form-label mb-1">Company</label><input id="upd2Company" class="form-control form-control-sm" autocomplete="organization"></div>
+        <div class="col-12 col-md-6"><label class="form-label mb-1">Position</label><input id="upd2Position" class="form-control form-control-sm" autocomplete="organization-title"></div>
+        <div class="col-12 d-flex align-items-center gap-2 mt-2"><input id="chkResetPw" class="form-check-input" type="checkbox"><label for="chkResetPw" class="form-check-label">Reset their password?</label></div>
       </div>
-      <div class="card-footer d-flex justify-content-between">
-        <small class="text-muted">Selected row: <span id="mbv_selid">—</span></small>
-        <div class="btn-group">
-          <button id="mbv_editbtn" class="btn btn-sm btn-primary">Edit &amp; Save</button>
-          <button id="mbv_fillfromcard" class="btn btn-sm btn-outline-secondary">Load from Card</button>
-        </div>
-      </div>
+      <div class="card-footer d-flex justify-content-between"><small class="text-muted">Selected row: <span id="mbv_selid">—</span></small><div class="btn-group"><button id="mbv_editbtn" class="btn btn-sm btn-primary">Edit &amp; Save</button><button id="mbv_fillfromcard" class="btn btn-sm btn-outline-secondary">Load from Card</button></div></div>
     </div>
   </section>
 </div>
 
-<!-- IMPORTANT: cache-bust these two as well -->
-<script src="{{ '/js/kanban.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
-<script src="{{ '/js/member_viewer.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
-<script src="{{ '/js/member_editor.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
-
-<!-- Toggle + first-show boot -->
-<script>
-  (function () {
-    const btn = document.getElementById('btnToggleMembers');
-    const sec = document.getElementById('mbv_wrap');
-    if (!btn || !sec) return;
-
-    const KEY = 'mbvVisible';
-
-    function setState(show) {
-      sec.style.display = show ? '' : 'none';
-      btn.textContent = show ? 'Hide Member Tools' : 'Show Member Tools';
-      try { localStorage.setItem(KEY, show ? '1' : '0'); } catch (_) {}
-
-      if (show) {
-        // ensure SB client exists
-        if (typeof window.__ensureSB === 'function') { window.__ensureSB(); }
-        // boot viewer bindings + list fill
-        if (typeof window.__mbv_forceInit === 'function') window.__mbv_forceInit();
-
-        // explicit first search (empty), plus retrigger input for debounce path
-        setTimeout(() => {
-          const q = document.getElementById('mbv_q');
-          if (typeof window.__mbv_search === 'function') window.__mbv_search('');
-          if (q) q.dispatchEvent(new Event('input', { bubbles: true }));
-        }, 80);
-      }
+<!-- Toggle + first-show boot for member tools -->
+<script>(function(){
+  const e=document.getElementById("btnToggleMembers"),t=document.getElementById("mbv_wrap");
+  if(!e||!t)return;const k="mbvVisible";
+  function set(v){
+    t.style.display=v?"":"none"; e.textContent=v?"Hide Member Tools":"Show Member Tools";
+    try{localStorage.setItem(k,v?"1":"0")}catch{}
+    if(v){ typeof window.__ensureSB=="function"&&window.__ensureSB();
+           typeof window.__mbv_forceInit=="function"&&window.__mbv_forceInit();
+           setTimeout(()=>{ const i=document.getElementById("mbv_q");
+             typeof window.__mbv_search=="function"&&window.__mbv_search("");
+             i&&i.dispatchEvent(new Event("input",{bubbles:true}))
+           },80);
     }
+  }
+  const prev=typeof localStorage!="undefined"?localStorage.getItem(k):null;
+  set(prev==="1");
+  e.addEventListener("click",()=>set(t.style.display==="none"));
+})();</script>
 
-    // restore last state
-    const saved = (typeof localStorage !== 'undefined') ? localStorage.getItem(KEY) : null;
-    setState(saved === '1'); // default hidden unless previously shown
+<!-- Mirror role from userData.rl -> localStorage.u_role (so gates work on this page) -->
+<script>(()=>{try{
+  const j=localStorage.getItem('userData')||sessionStorage.getItem('userData');
+  const u=j?JSON.parse(j):null;
+  if(u&&u.rl){
+    const map=t=>({member:0,moderator:1,admin:2,super_admin:3})[String(t||'member')]||0;
+    const cur=+localStorage.getItem('u_role')||0, nxt=map(u.rl);
+    if(nxt!==cur){ localStorage.setItem('u_role',String(nxt)); document.dispatchEvent(new Event('role:changed')); }
+  }
+}catch{}})();</script>
 
-    btn.addEventListener('click', () => setState(sec.style.display === 'none'));
-  })();
-</script>
-
-
+<!-- Show the Admin Guide button using your gate (meta/page-role + u_role + window.USER.role) -->
+<script> (() => {
+    "use strict";
+    const $ = s => document.querySelector(s),
+        lvl = r => ({
+            member: 0,
+            moderator: 1,
+            admin: 2,
+            super_admin: 3
+        })[String(r || "member")] || 0,
+        getRole = () => {
+            try {
+                const a = localStorage.getItem("u_role");
+                if (a && /^\d+$/.test(a)) return +a;
+                const b = (window.USER && window.USER.role) || (window.user && window.user.role) || a;
+                return lvl(b)
+            } catch {
+                return 0
+            }
+        },
+        show = () => {
+            const b = $("#admBtn");
+            if (!b) return;
+            const v = getRole();
+            if (v >= 2) b.classList.remove("d-none");
+        };
+    document.addEventListener("DOMContentLoaded", show);
+    document.addEventListener("auth:ready", show);
+    document.addEventListener("role:changed", show);
+})();
+ </script>
+<!-- Paint the badge immediately from localStorage (nice-to-have) -->
+<script>(()=>{try{
+  const r=+localStorage.getItem('u_role')||0;
+  const lbl=["Member","Moderator","Admin","Super Admin"][r]||"Member";
+  const b=document.getElementById("roleBadge");
+  if(b){ b.textContent=lbl; b.className="badge "+(r>=2?"bg-primary":"bg-dark"); }
+}catch{}})();</script>

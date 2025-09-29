@@ -1,176 +1,205 @@
-# **UAP Manila Corinthian Chapter (MCC) Website**
+# UAP Manila Corinthian Chapter (MCC) Website
 
-Managed by the **UAP Manila Corinthian Chapter** as the official member portal.
+Static site (Jekyll on **GitHub Pages**) with dynamic data via **Supabase** and a lightweight in‑browser **Admin CMS** that edits `_data/*.yml` through the GitHub API—no separate server required.
+
+> This README is public. It deliberately avoids secrets and operational credentials.
 
 ---
 
 ## 🧭 Overview
 
-This static/Jekyll-powered site (hosted on **GitHub Pages**) integrates with **Supabase JavaScript SDK v2** to provide a secure, dynamic member system:
-
-- Members can **log in securely**.
-- After login, they see a **personalized dashboard**—membership status, company, position, and payment history (multi‑year support).
-- **Sensitive fields (e.g. PRC license, email, phone)** are masked by default, with one-click visibility toggles.
-- **Print/save** buttons for membership card or record.
-- Fully **responsive UI**, built with **Bootstrap 5** + **FontAwesome 6** icons.
-- Custom domain: **uapmnlcorinthian.com**, with HTTPS automatically issued by GitHub Pages.
+- **Frontend**: Jekyll (GitHub Pages) + Bootstrap 5 + Font Awesome.
+- **Dynamic data**: Supabase (Auth + Postgres with RLS) for member login, profile, and payments.
+- **Admin CMS**: `/admin/` page lets authorized editors update `_data/*.yml` files. Save → commits to the repo → GitHub Pages redeploys automatically.
+- **Assets**: Served from object storage/CDN (e.g., Cloudflare R2) via public URLs.
+- **Custom domain & HTTPS** via GitHub Pages + DNS.
 
 ---
 
 ## 🚀 Features
 
-| Category             | Functionality                                                       |
-|----------------------|---------------------------------------------------------------------|
-| Authentication       | Email/password login using Supabase Auth with secure password handling and row-level security |
-| Member Dashboard     | Displays dynamic member data with toggles, print/save, and real-time filtering |
-| Payment History      | Year-based columns auto-generated based on available data |
-| Security & Privacy   | Defaults to masking sensitive data; session stored in `sessionStorage` only |
-| Design & Accessibility | Built with Bootstrap 5 and FontAwesome for accessible UI |
-| Deployment           | Jekyll‑based static site on GitHub Pages, using a **CNAME file** and GitHub DNS configuration |
+| Category               | Details                                                                                                   |
+|------------------------|------------------------------------------------------------------------------------------------------------|
+| Authentication         | Supabase Auth (email/password). RLS policies protect user rows.                                           |
+| Member Dashboard       | Profile, status, company, position, payments (multi-year). Sensitive fields masked by default.            |
+| Payments UI            | Year-based columns auto-generated from available data.                                                     |
+| Admin CMS (no server)  | Left: YAML files/entries; Right: editor form; **Save** commits to `_data` via GitHub API.                 |
+| Security               | JWT + RLS; short-lived client sessions. CMS token stored in `sessionStorage` only.                         |
+| Deployment             | Jekyll → GitHub Pages; custom domain w/ HTTPS; cache busting for key JS/CSS.                               |
+
+---
+
+## 🧱 Architecture (High Level)
+
+- **Jekyll** renders pages from layouts/includes and pulls content from `_data/*.yml`.
+- **Admin CMS** (client-side app) reads/writes YAML via GitHub Contents API using a fine-grained personal access token (PAT).
+- **Supabase** provides Auth + DB. Frontend uses the **public anon key** only; access is limited by **Row Level Security (RLS)**.
+- **Assets** hosted on object storage (e.g., Cloudflare R2); referenced via absolute URLs.
 
 ---
 
 ## 💻 Tech Stack
 
-- **Jekyll** — Organizes layouts, includes, and pages (Home, Login, Dashboard, etc.)
-- **Bootstrap 5** — Responsive layout and standardized components
-- **FontAwesome 6** — Icons for actions (toggle, print, logout)
-- **Vanilla JavaScript** (`js/common.js`) — Handles login flow, UI toggles, session logic, data rendering
-- **Supabase JavaScript SDK v2** — Auth and database operations (CRUD, dashboard HTML injection, payment lookup)
+- Jekyll (GitHub Pages)
+- Bootstrap 5, Font Awesome
+- Vanilla JavaScript (+ small CMS app)
+- Supabase JS SDK v2
+- YAML parsing via `js-yaml`
 
 ---
 
-## 📂 Project Structure
+## 📂 Project Structure (representative)
 
 ```
 /
-├── CNAME                   # Contains your custom domain (e.g. uapmnlcorinthian.com)
-├── _config.yml             # Jekyll site config
-├── _includes/              # Common page bits (navbar, footer, payment table)
-├── _layouts/               # Layout templates (default, dashboard)
-├── pages/                  # Markdown/pages: index.md, login.md, account.md
-├── js/
-│   └── common.js           # Login/API/session/render logic
-├── css/
-│   └── overrides.css       # Custom style overrides for Bootstrap
-└── README.md               # (you’re editing this now)
+├── CNAME                      # Custom domain (e.g., uapmnlcorinthian.com)
+├── _config.yml                # Jekyll config
+├── _includes/                 # Partials (nav, footer, tables…)
+├── _layouts/                  # Layouts (default, dashboard…)
+├── _data/                     # YAML data sources edited by CMS
+│   ├── members.yml
+│   ├── events.yml
+│   └── _schemas.yml          # (optional) form hints for CMS fields
+├── admin/                     # Admin CMS (in-browser)
+│   ├── index.html
+│   ├── admin.js
+│   └── admin.css
+├── assets/                    # Site CSS/JS/images
+│   ├── css/
+│   ├── js/
+│   └── img/
+└── README.md
+```
+> The CMS edits **only** `_data/*.yml`. App logic/templates live in source files—use PRs for code changes.
+
+---
+
+## 🔑 Configuration & Secrets
+
+**Never commit secrets** (service keys, personal tokens, API keys).  
+Frontend uses **public** Supabase anon key only; rely on **RLS** for data protection.
+
+Example public runtime config pattern:
+
+```js
+// js/config.js (example)
+window.RUNTIME = {
+  SUPABASE_URL:  "https://YOUR-PROJECT.supabase.co",
+  SUPABASE_ANON: "YOUR_PUBLIC_ANON_KEY"
+};
+```
+
+**Admin CMS token (for editors)**
+
+- Generate a **GitHub Fine‑grained PAT** with **Contents: Read/Write** for this repo only.
+- Paste it into the Admin CMS when prompted.
+- It is stored in **sessionStorage** (tab-scoped) and cleared when the tab closes.
+
+---
+
+## 🧑‍💼 Admin CMS — How to Use (Editors)
+
+**Location**: `/admin/`
+
+### Quick Start
+1. Open the Admin page and sign in with your **GitHub fine‑grained token** (repo access required).
+2. In the **left sidebar**, choose a `_data/*.yml` file. Use **Search** to find entries.
+3. Click an item to open it in the **right editor**. Edit fields (text, dates, lists, toggles).
+4. Click **💾 Save**. The CMS commits to the repo. GitHub Pages redeploys automatically.
+5. Visit the site and **hard refresh** (Ctrl/Cmd+Shift+R) if you don’t see changes.
+
+### Editor Basics
+- **List files** (arrays): left shows items; right edits one item at a time. Use **Add**, **Duplicate**, **Delete**, **Move Up/Down**.
+- **Map files** (key → value): right side shows a simple table. Use **Add Row** to insert keys.
+- **Display key** (when shown) controls the item label in the sidebar.
+- **Reload** pulls the latest from GitHub; **Export** downloads YAML for backup/review.
+
+---
+
+## 🧰 Supabase (Backend)
+
+> Keep schema names/tables aligned with your production database. Do not include credentials in this repo.
+
+- **Auth**: enable Email/Password in the Supabase dashboard.
+- **Tables**: members, payments (or your current naming). Use Supabase Table Editor for simple edits, SQL editor for migrations.
+- **RLS**: enable Row Level Security and add policies, for example: users can read their own rows.
+
+Example policy sketch:
+```sql
+ALTER TABLE members ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "members_read_own" ON members
+  FOR SELECT TO authenticated USING (auth.uid() = id);
 ```
 
 ---
 
-## 🏁 Getting Started (Locally)
+## 🖼️ Assets (Cloudflare R2 or equivalent)
+
+- Store public images/files in an object storage bucket (e.g., `assets/`).
+- Reference files by their public URLs in Markdown/HTML templates.
+- If a proxy worker or CDN listing exists, you can browse public files there for copy‑paste URLs.
+- When replacing files with the same name, consider cache busting (e.g., versioned filenames).
+
+---
+
+## 🌍 Deployment & Domain
+
+- Deploys from the default branch via **GitHub Pages**.
+- **Custom Domain**: ensure a `CNAME` file exists with `uapmnlcorinthian.com` (or your domain).
+- **DNS**:
+  - Apex → GitHub Pages A/AAAA records (per GitHub docs).
+  - `www` → CNAME to `username.github.io`.
+- Enable **Enforce HTTPS** in repo **Settings → Pages** once the certificate is issued.
+
+---
+
+## 🧪 Local Development
 
 1. **Clone** the repository:
-   ```sh
-   git clone git@github.com:ManilaCorinthianChapter/mcc.git
+   ```bash
+   git clone https://github.com/ManilaCorinthianChapter/mcc.git
    cd mcc
    ```
-2. **Ensure Jekyll is installed** locally (Ruby, Bundler, Bundled gems, etc.)
-3. **Configure Supabase credentials**:
-   - Open `js/common.js` and update:
-     ```js
-     const SUPA_PROJECT_URL = "https://xyz.supabase.co";
-     const SUPA_ANON_KEY = "public‑anon‑key";
-     ```
-   - Store these securely; never push your project key.
-4. **Run Jekyll locally**:
-   ```sh
+2. **Jekyll**: Install Ruby, Bundler, and gems:
+   ```bash
    bundle install
+   ```
+3. (Optional) Add `js/config.js` with your **public** Supabase settings (see snippet above).
+4. **Run**:
+   ```bash
    bundle exec jekyll serve --host=0.0.0.0
    ```
-   View at `http://localhost:4000/` (login dashboard requires Supabase connection).
+   Visit `http://localhost:4000/`. Features that need Supabase will require a reachable project URL + anon key.
 
 ---
 
-## 🧰 Supabase Backend Setup
+## 🩺 Troubleshooting (Common)
 
-1. **Create a Supabase project** (free tier is sufficient).
-2. **Enable Email/Password Auth** in Auth settings; confirm email if desired.
-3. **Define your schema**:
-   ```sql
-   CREATE TABLE members (
-     id            uuid PRIMARY KEY REFERENCES auth.users(id),
-     prc_license   text,
-     batch_year    int,
-     company       text,
-     position      text,
-     contact_email text,
-     contact_phone text
-   );
-
-   CREATE TABLE payments (
-     id            serial PRIMARY KEY,
-     member_id     uuid REFERENCES members(id),
-     year          int,
-     month         int,
-     amount        numeric,
-     paid_at       timestamp
-   );
-   ```
-4. Apply `Row-Level Security`:
-   ```sql
-   ALTER TABLE members ENABLE ROW LEVEL SECURITY;
-   CREATE POLICY "self‑only" ON members
-     FOR SELECT TO authenticated
-     USING ( auth.uid() = id );
-
-   -- Similar policy for payments table
-   ```
+- **CMS Save fails (401/403)**: Token doesn’t have repo **Contents: Read/Write** or has expired → create a new fine‑grained PAT and retry.
+- **Change not visible**: Check GitHub Pages build/Actions logs; hard refresh; ensure you edited the correct YAML file.
+- **Broken YAML**: Validate syntax (quotes, indentation). Use **Export** before large edits. Revert with Git history if needed.
+- **Assets 404**: Confirm the exact path/filename and case sensitivity. Purge CDN cache if necessary.
+- **Supabase write/read fails**: Check RLS policies and the user’s auth session. Verify table/column names did not change.
 
 ---
 
-## 🌍 Deployment & Custom Domain
+## 👥 Contributing
 
-- **Ensure _CNAME file is set** with your real domain (`uapmnlcorinthian.com` or prefixed with `www`).
-- On GitHub:
-  1. Go to **Settings → Pages**.
-  2. Under *Custom domain*, set it to your domain.
-  3. Enable **Enforce HTTPS** once certificate is issued.
-- **DNS setup**:
-  - If using **apex domain**:
-    - A records → IPs 185.199.108.153, 109.153, 110.153, 111.153 (GitHub Pages servers)
-  - If using **www subdomain**:
-    - CNAME → `username.github.io.`
-- DNS changes take effect in minutes to hours.
+This is an internal project. Open issues/PRs are welcome **from authorized org members**. For others, please open an issue first to discuss changes.
 
 ---
 
-## 🔐 Security Best Practices
+## 📄 License
 
-- Credentials (`SUPA_ANON_KEY`) should never be checked in; consider using environment variables (e.g. `.env.local` during build).
-- **Session storage** is isolated per browser tab; no SS with sensitive values in localStorage.
-- Supabase’s **RLS+JWT** combined with the email/password auth protects user data.
-- Validate any frontend input via Supabase backend using Postgres constraints or triggers.
+Proprietary. All rights reserved by **UAP Manila Corinthian Chapter**.
 
 ---
 
-## 👥 Contribution (Internal)
+## ✅ Quick Checklist
 
-- This repository and portal are **proprietary**, limited to UAP‑MCC internal use.
-- To contribute:
-  - Contact the site owner, **UAP MCC** (`uapmccmembership@gmail.com`).
-  - Pull requests or pushes should only come via authenticated contributors.
-- Please keep UI changes minimal and test locally before pushing.
-
----
-
-## 📞 Contact & Support
-
-- **Author / Maintainer**: ArZ Miranda  
-- **Support email**: `uapmccmembership@gmail.com`  
-- Official site: [https://uapmnlcorinthian.com](https://uapmnlcorinthian.com)
-
----
-
-## ⚖️ License
-
-This project is **proprietary**; usage is restricted to UAP‑MCC only.
-
----
-
-## 📌 Quick Summary
-
-- ✅ No need to unpublish your GitHub Pages site—just point your custom domain to it.
-- ✅ Ensure the `CNAME` file and DNS A/CNAME records match your domain.
-- ✅ Once DNS propagates, GitHub automatically provisions **HTTPS**.
-- ✅ Ongoing site updates (Jekyll + JS code) deploy instantly via **commits to `main` branch**.
+- `CNAME` present and DNS records point to GitHub Pages.
+- No secrets committed.
+- CMS edits limited to `_data/*.yml`.
+- Supabase RLS enabled and tested.
+- Assets referenced by public URLs (use cache busting on replacements).
+- Cache‑bust critical JS/CSS when deploying breaking UI updates.

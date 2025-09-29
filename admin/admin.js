@@ -3,14 +3,13 @@
   createApp({
     setup() {
       // === Configuration ===
-      const repo       = "uapmnlcorinthian/uapmnlcorinthian.github.io",
+      const repo       = "uapmnlcorinthian/uapmnlcorinthian.github.io",  // <-- DO NOT CHANGE repo
             br         = "main",
             remoteBase = "_data",
             schemaFile = "_schemas.yml";
 
       // Clean non-printable characters from YAML content
       function cleanYamlContent(str) {
-        // Preserve printable characters (space to tilde), tabs, and newlines
         return str.replace(/[^\x20-\x7E\n\t]/g, '');
       }
 
@@ -66,7 +65,7 @@
         const j = await res.json();
         const rawContent = atob(j.content);
         return { 
-          text: cleanYamlContent(rawContent),  // Clean content here
+          text: cleanYamlContent(rawContent),
           sha: j.sha 
         };
       }
@@ -293,8 +292,66 @@
         repo, tok, files, file, schema, data, mapItems, sel, q, sortMode,
         rows, inputType, labelOf, login, logout, loadFile, addItem, dupItem,
         delItem, moveItem, save, exportYaml, prev, next, reload, open, 
-        addKey, removeKey, cur
+        addKey, removeKey, cur, objFromFields
       };
     }
   }).mount('#app');
+})();
+
+(function(){
+  // Gate: show the button if (a) role >= admin OR (b) a GitHub token exists
+  function canShow(){
+    try{
+      const r = +localStorage.getItem('u_role') || 0; // 2=admin, 3=super_admin
+      if(r >= 2) return true;
+    }catch{}
+    try{
+      if (sessionStorage.getItem('gh_token')) return true;
+    }catch{}
+    return false;
+  }
+
+  const btn = document.getElementById('cms-adm-btn');
+  if(canShow() && btn) btn.style.display = 'inline-flex';
+
+  // Clicking the button opens the short guide
+  btn?.addEventListener('click', () => {
+    const dlg = document.getElementById('cmsGuideShort');
+    if(dlg?.showModal) dlg.showModal();
+  });
+
+  // Close buttons for both dialogs
+  document.addEventListener('click', (e)=>{
+    const closeId = e.target?.getAttribute?.('data-close');
+    if(closeId){
+      const dlg = document.getElementById(closeId);
+      if(dlg?.close) dlg.close();
+    }
+  });
+
+  // Esc to close
+  ['cmsGuideShort','cmsGuideFull'].forEach(id=>{
+    const d = document.getElementById(id);
+    d?.addEventListener('cancel',(ev)=>ev.preventDefault());
+    d?.addEventListener('keydown',(ev)=>{
+      if(ev.key==='Escape'){ d.close(); }
+    });
+  });
+
+  // Open full from short
+  document.getElementById('openFullGuide')?.addEventListener('click',()=>{
+    document.getElementById('cmsGuideShort')?.close();
+    const f = document.getElementById('cmsGuideFull');
+    f?.showModal && f.showModal();
+  });
+})();
+
+// Auto-open the short "How this CMS works" guide once per browser
+(function(){
+  const SEEN = 'cmsGuideSeen_v1';
+  const shortDlg = document.getElementById('cmsGuideShort');
+  if (!localStorage.getItem(SEEN) && shortDlg?.showModal) {
+    setTimeout(() => shortDlg.showModal(), 200);
+    localStorage.setItem(SEEN, '1');
+  }
 })();

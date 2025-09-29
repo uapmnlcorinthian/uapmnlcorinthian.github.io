@@ -1,4 +1,4 @@
-<!-- admin/index.html – Vue schema-driven CMS (schemas from _data/_schemas.yml) + readability fixes for sponsors -->
+<!-- admin/index.html – Vue schema-driven CMS -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +6,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Admin Panel</title>
 <link rel="stylesheet" href="admin.css">
-<script src="admin.js" defer></script> 
-<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<!-- admin.js now embedded or include via external file after Vue/js-yaml -->
+<script src="admin.js" defer></script>
 </head>
 <body>
 <div id="app">
@@ -16,9 +17,10 @@
     <h1>🛠 Admin Panel</h1>
     <button v-if="!tok" class="btn ok" @click="login">🔐 Login</button>
     <button v-else class="btn" @click="logout">🚪 Logout</button>
-    <span v-if="tok" class="mut">Token kept in sessionStorage (clears on tab close).</span> 
-    <span class="mut">| Repo:</span> <strong>{{repo}}</strong> 
+    <span v-if="tok" class="mut">Token kept in sessionStorage (clears on tab close).</span>
+    <span class="mut">| Repo:</span> <strong>{{repo}}</strong>
   </header>
+
   <main v-if="tok">
     <aside>
       <div class="bar">
@@ -26,36 +28,42 @@
           <option v-for="x in files" :key="x" :value="x">{{x}}</option>
         </select>
       </div>
+
       <div class="bar">
         <input v-model="q" placeholder="Search items...">
       </div>
+
       <div class="bar" v-if="schema.type!=='map'">
         <select v-model="sortMode">
           <option value="index">Sort: Index</option>
           <option value="name">Sort: Name A→Z</option>
         </select>
       </div>
+
       <div class="list" v-if="schema.type!=='map'">
         <div v-for="r in rows" :key="r.idx" class="item" :class="{active:r.idx===sel}" @click="open(r.idx)">
           <div>
             <div>
-              {{labelOf(r.row)}} 
-              <span class="pill" v-if="r.row?.tier">{{r.row.tier}}</span> 
+              {{labelOf(r.row)}}
+              <span class="pill" v-if="r.row?.tier">{{r.row.tier}}</span>
               <span class="tag" v-if="r.row?.order !== undefined">#{{r.row.order}}</span>
             </div>
             <div class="tag" v-if="r.row?.tagline">{{r.row.tagline}}</div>
           </div>
         </div>
       </div>
-      <div class="list" v-else> 
+
+      <div class="list" v-else>
         <div class="mut" style="padding:10px">Map editor active</div>
       </div>
+
       <div class="bar" v-if="schema.type!=='map'">
         <button class="btn" @click="addItem">＋ Add</button>
         <button class="btn" @click="dupItem" :disabled="sel<0">⧉ Duplicate</button>
         <button class="btn danger" @click="delItem" :disabled="sel<0">🗑 Delete</button>
       </div>
     </aside>
+
     <section>
       <div class="sticky toolbar" v-if="schema.type!=='map'">
         <button class="btn" @click="moveItem(-1)" :disabled="sel<=0">⬆ Move Up</button>
@@ -64,10 +72,10 @@
         <button class="btn" @click="reload">↻ Reload</button>
         <button class="btn" @click="exportYaml">⬇ Export</button>
         <button class="btn primary" @click="save">💾 Save</button>
-        <span class="mut" v-if="schema.display">Display key: <code>{{schema.display}}</code></span> 
+        <span class="mut" v-if="schema.display">Display key: <code>{{schema.display}}</code></span>
       </div>
-      
-      <!-- map editor -->
+
+      <!-- Map editor -->
       <template v-if="schema.type==='map'">
         <div class="card">
           <table class="tbl" style="width:100%">
@@ -93,8 +101,8 @@
           </div>
         </div>
       </template>
-      
-      <!-- detail editor -->
+
+      <!-- Detail editor -->
       <template v-else>
         <div v-if="sel<0" class="mut">Select an item on the left to edit.</div>
         <div v-else class="card">
@@ -107,17 +115,20 @@
                 </select>
                 <input v-else :type="inputType(fld, cur[fld.k])" v-model="cur[fld.k]" :placeholder="fld.p||''">
               </div>
+
               <div :class="fld.w||'col-6'" v-else-if="fld.t==='bool'">
                 <label>{{fld.l}}</label>
                 <input type="checkbox" v-model="cur[fld.k]">
               </div>
+
               <div class="col-12" v-else-if="fld.t==='long'">
                 <label>{{fld.l}}</label>
                 <textarea rows="10" v-model="cur[fld.k]"></textarea>
               </div>
+
               <div class="col-12" v-else-if="fld.t==='list'">
                 <label>{{fld.l}}</label>
-                <div class="line" style="flex-wrap:wrap"> 
+                <div class="line" style="flex-wrap:wrap">
                   <span v-for="(tag,i) in (cur[fld.k]||[])" :key="i" class="line">
                     <input v-model="cur[fld.k][i]" style="min-width:220px">
                     <button class="btn danger" @click="cur[fld.k].splice(i,1)">✕</button>
@@ -125,6 +136,7 @@
                   <button class="btn" @click="(cur[fld.k]||(cur[fld.k]=[])).push('')">＋ Add</button>
                 </div>
               </div>
+
               <div class="col-12" v-else-if="fld.t==='sublist'">
                 <label>{{fld.l}}</label>
                 <div class="card" v-for="(it,ii) in (cur[fld.k]||[])" :key="ii">
@@ -152,16 +164,151 @@
               </div>
             </template>
           </div>
+
           <div class="toolbar" style="margin-top:10px">
             <button class="btn" @click="prev" :disabled="sel<=0">← Prev</button>
             <button class="btn" @click="next" :disabled="sel>=data.length-1">Next →</button>
-            <span class="mut">| Editing #{{sel+1}} / {{data.length}} — {{labelOf(cur)}}</span> 
-            <span class="mut" v-if="schema.display"> | Display key: <code>{{schema.display}}</code></span> 
+            <span class="mut">| Editing #{{sel+1}} / {{data.length}} — {{labelOf(cur)}}</span>
+            <span class="mut" v-if="schema.display"> | Display key: <code>{{schema.display}}</code></span>
           </div>
         </div>
       </template>
     </section>
   </main>
 </div>
+
+<!-- Floating Admin Guide button -->
+<div id="cms-adm-help">
+  <button id="cms-adm-btn" style="display:none">🛡 Admin Guide</button>
+</div>
+
+<!-- Short Guide dialog (friendlier copy) -->
+<dialog id="cmsGuideShort" class="cms-modal" aria-labelledby="cmsGuideShortTitle">
+  <div class="hd">
+    <h5 id="cmsGuideShortTitle">Admin Guide (Quick)</h5>
+    <button class="cms-btn" data-close="cmsGuideShort">✕</button>
+  </div>
+  <div class="bd">
+    <p class="cms-small">
+      This panel lets you edit site data stored in simple YAML files. Items on the <strong>left</strong> are the files and their entries; the <strong>right</strong> side is the form to edit the selected item. Saving makes a GitHub commit and the site updates automatically.
+    </p>
+    <hr>
+
+    <h5>Make a quick edit</h5>
+    <ol class="cms-list">
+      <li>Click <strong>Login</strong> and paste a GitHub personal access token with repo access.</li>
+      <li>On the <strong>left</strong>:
+        <ul class="cms-list">
+          <li>Pick a <code class="cms-code">_data/*.yml</code> file from the dropdown.</li>
+          <li>Use <em>Search</em> to find an entry; click to open it.</li>
+          <li><em>Add</em>, <em>Duplicate</em>, or <em>Delete</em> when needed.</li>
+        </ul>
+      </li>
+      <li>On the <strong>right</strong>:
+        <ul class="cms-list">
+          <li>Edit fields (text, dates, toggles, lists). For lists, use <em>＋ Add</em> to add rows.</li>
+          <li>Reorder items with <em>Move Up/Down</em>.</li>
+        </ul>
+      </li>
+      <li>Click <strong>💾 Save</strong>. The site redeploys automatically. If you don’t see changes, hard-refresh (Ctrl/Cmd+Shift+R).</li>
+    </ol>
+
+    <h5>File types</h5>
+    <ul class="cms-list">
+      <li><strong>Lists</strong>: left shows all items; right edits the selected one.</li>
+      <li><strong>Maps</strong> (key → value): you’ll see a 2-column table with <em>Add Row</em>.</li>
+    </ul>
+
+    <h5>Tips</h5>
+    <ul class="cms-list">
+      <li><em>↻ Reload</em> pulls the latest from GitHub; <em>⬇ Export</em> downloads current YAML.</li>
+      <li>“Display key” controls the label used for each item in the list.</li>
+    </ul>
+
+    <p class="cms-small">
+      Need access? Use <code class="cms-code">manilacorinthianchapter@gmail.com</code> (ask Super Admin for password/2FA). Create a token via GitHub settings if you don’t have one.
+    </p>
+  </div>
+
+  <div class="ft">
+    <button class="cms-btn" data-close="cmsGuideShort">Close</button>
+    <button class="cms-btn primary" id="openFullGuide">Open Full Handbook</button>
+  </div>
+</dialog>
+
+<!-- Full Handbook dialog -->
+<dialog id="cmsGuideFull" class="cms-modal" aria-labelledby="cmsGuideFullTitle">
+  <div class="hd">
+    <h5 id="cmsGuideFullTitle">Admin Handbook — Full Guide & Troubleshooting</h5>
+    <button class="cms-btn" data-close="cmsGuideFull">✕</button>
+  </div>
+  <div class="bd">
+    <p>This handbook covers content edits, assets, database, DNS, OTP/email, and what to do if the Super Admin is unavailable.</p>
+    <hr>
+
+    <h5>A) Access & Credentials</h5>
+    <ul class="cms-list">
+      <li><strong>Email:</strong> <code class="cms-code">manilacorinthianchapter@gmail.com</code></li>
+      <li><strong>Password:</strong> ask Super Admin or reset via Gmail if you have inbox access.</li>
+      <li><strong>2FA:</strong> request code from Super Admin.</li>
+    </ul>
+
+    <h5>B) Editing Website Content</h5>
+    <ol class="cms-list">
+      <li>Open <a href="https://uapmnlcorinthian.com/admin/" target="_blank" rel="noopener">/admin</a>.</li>
+      <li>Create/use a <strong>fine-grained GitHub token</strong> for repo <code class="cms-code">manilacorinthianchapter/mcc</code> (Contents: Read/Write).</li>
+      <li>Paste token into the admin UI → edit → Save/Publish (commits to GitHub Pages).</li>
+      <li><strong>Troubleshoot:</strong> 401 → wrong token scope; site not updating → check GitHub Actions/Pages logs; hard-refresh.</li>
+    </ol>
+
+    <h5>C) Assets (Cloudflare R2)</h5>
+    <ol class="cms-list">
+      <li>Cloudflare → R2 → <code class="cms-code">assets/</code> (organize by folders).</li>
+      <li>Public URLs: <a href="https://asset.manilacorinthianchapter.workers.dev/list" target="_blank" rel="noopener">asset…/list</a></li>
+      <li><strong>Troubleshoot:</strong> 404/403 → check path/case & Worker; old image → hard-refresh/purge cache.</li>
+    </ol>
+
+    <h5>D) Database (Supabase)</h5>
+    <ol class="cms-list">
+      <li>Open <a href="https://fvaahtqjusfniadwvoyw.supabase.co" target="_blank" rel="noopener">Supabase</a>.</li>
+      <li>Backup (CSV) before edits. Respect RLS and RPCs (<code class="cms-code">verify_password</code>, etc.).</li>
+      <li><strong>Troubleshoot:</strong> writes fail → check RLS, auth session/role; missing data → column names/permissions.</li>
+    </ol>
+
+    <h5>E) Domain (Porkbun)</h5>
+    <ol class="cms-list">
+      <li>Porkbun → Domain → DNS. Keep GitHub Pages + subdomain records correct.</li>
+      <li>Propagation can take time; verify and wait.</li>
+    </ol>
+
+    <h5>F) OTP / Emails (Resend)</h5>
+    <ol class="cms-list">
+      <li>Resend: domain verification, SPF/DKIM, API keys.</li>
+      <li>OTP not arriving → check logs/bounces; rotate key if compromised and update the site.</li>
+    </ol>
+
+    <h5>G) If the Super Admin is Unavailable</h5>
+    <ol class="cms-list">
+      <li>Use Gmail recovery to reset provider passwords (GitHub/Cloudflare/etc.) via inbox control.</li>
+      <li>Document all changes (who/what/when) for later reconciliation.</li>
+    </ol>
+
+    <h5>H) Quick Checks</h5>
+    <ul class="cms-list">
+      <li>Admin button hidden? In console:
+        <pre class="cms-code">localStorage.getItem('u_role')  // "2" or "3"
+sessionStorage.getItem('gh_token') // if you store GitHub token</pre>
+      </li>
+      <li>Assets missing? Verify in <a href="https://asset.manilacorinthianchapter.workers.dev/list" target="_blank" rel="noopener">list</a>, match case, purge cache.</li>
+      <li>DB issues? Check policy/role/session; confirm expected columns.</li>
+      <li>Site not updating? Check GitHub Pages/Actions build logs.</li>
+    </ul>
+
+    <p class="cms-small">Keep tokens/keys secure. Revoke ones you no longer use.</p>
+  </div>
+  <div class="ft">
+    <button class="cms-btn" data-close="cmsGuideFull">Close</button>
+  </div>
+</dialog>
 </body>
 </html>

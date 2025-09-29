@@ -242,3 +242,27 @@ textarea {
     border-radius: 10px;
     margin-bottom: 10px
 }
+
+/* Floating Admin Guide button (left-bottom) */
+#cms-adm-help { position: fixed; left: 20px; bottom: 80px; z-index: 2147483647; }
+#cms-adm-btn  { background: linear-gradient(135deg,#0d6efd 0%,#6610f2 100%); color:#fff; 
+  border:0; border-radius:16px; padding:20px 30px; font-weight:700; letter-spacing:.2px;
+  box-shadow: 0 8px 18px rgba(13,110,253,.35); cursor:pointer; display:none; }
+#cms-adm-btn:hover{ transform: translateY(-1px); }
+#cms-adm-btn:active{ transform: translateY(0); }
+#cms-adm-btn:focus-visible{ outline:3px solid rgba(255,255,255,.9); outline-offset:2px; }
+
+/* Dialog styling */
+.cms-modal::backdrop { background: rgba(0,0,0,.45); }
+.cms-modal { border: 0; border-radius: 18px; padding: 0; max-width: 920px; width: 92vw; }
+.cms-modal .hd { padding: 14px 18px; border-bottom: 1px solid #eee; display:flex; align-items:center; justify-content:space-between; }
+.cms-modal .bd { padding: 16px 18px; max-height: 70vh; overflow:auto; }
+.cms-modal .ft { padding: 12px 18px; border-top: 1px solid #eee; display:flex; gap:8px; justify-content:flex-end; }
+.cms-modal h5 { margin:0; font-size: 1.05rem; }
+.cms-btn { border:1px solid #ddd; background:#fff; padding:8px 12px; border-radius:10px; cursor:pointer; }
+.cms-btn.primary{ background:#0d6efd; border-color:#0d6efd; color:#fff; }
+.cms-btn.danger{ background:#dc3545; border-color:#dc3545; color:#fff; }
+.cms-small{ color:#666; font-size:.9rem; }
+.cms-list{ padding-left: 1.1rem; }
+.cms-list li { margin-bottom:.4rem; }
+.cms-code{ background:#f6f8fa; padding:.45rem .6rem; border-radius:8px; }
